@@ -1,0 +1,36 @@
+ARY LA COTORRA · WEB DE PRESENTACIÓN
+
+Abre index.html en un navegador. Mantén la carpeta assets junto a index.html. La web funciona sin dependencias externas ni instalación. El brochure incluye sus imágenes y puede abrirse por separado.
+
+Pestañas: Inicio, Conoce a Ary, Nuestra historia, Nosotros, Brochure y Solicitar tu Ary.
+
+Incluye:
+- Navegación con enlaces que conservan la pestaña en la dirección.
+- Menú para móvil.
+- Demostración guiada con tres intereses y respuestas preparadas.
+- Escenarios de uso: aeropuertos, restaurantes y espacios culturales.
+- Presentación de tres fases, navegable con las flechas del teclado.
+- Brochure independiente en brochure.html. Permite imprimir o guardar como PDF desde el navegador.
+- Formulario que prepara y descarga un resumen local en TXT.
+
+ALCANCE DE ESTA VERSIÓN
+Las imágenes de Ary y del prototipo Don Rafael fueron proporcionadas por el usuario. La identidad visual usa verde, violeta, rojo y crema de Ary.
+Se documentan Raspberry Pi 4, cuatro servomotores, bocina, micrófono y sensor de detección.
+Se indica el uso de Gemini para conversar y la existencia de un modelo entrenado.
+La historia muestra la evolución desde Don Rafael, un muñeco con Arduino y sensores.
+La demo no usa IA ni se conecta al robot físico.
+El formulario no envía datos a un servidor ni al equipo. El resumen se genera en el dispositivo.
+Arajet se menciona como oportunidad propuesta, sin afirmar una alianza.
+No se han añadido nombres de integrantes, correos comerciales, precios ni resultados no confirmados.
+
+Para una versión comercial conectada faltan las fotografías reales del robot, los nombres del equipo, el contacto oficial y el servicio que recibirá las solicitudes. La integración de la demostración con el robot requiere definir su API y alcance.
+
+VERIFICACIÓN
+Las seis vistas se comprobaron a 390, 820, 1440 y 1920 px sin desbordamiento horizontal. Se probaron la demo, los controles de presentación, los escenarios por teclado, el menú móvil y la descarga del resumen. Sin errores JavaScript en estas pruebas.
+
+REFERENCIAS DE DISEÑO
+Pixel Todo: https://pixel-todo-giro-codes-projects.vercel.app/
+Electro Todo: https://electro-todo-rd.vercel.app/
+Vende Todo: https://vende-todo-rd-giro-codes-projects.vercel.app/
+
+El HTML original suministrado se conserva sin modificar en su ubicación original.
