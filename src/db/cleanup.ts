@@ -11,6 +11,9 @@ export async function cleanupDatabase(db: Database, now = new Date()) {
   for (const qr of expired) await endSession(db, qr.sourceSessionId, now);
   return db.transaction(async tx => {
     await tx.delete(s.chatMessages).where(lte(s.chatMessages.retentionUntil, now));
+    await tx.delete(s.aiUsage).where(lte(s.aiUsage.createdAt, new Date(+now - 30 * 86400_000)));
+    await tx.delete(s.robotEvents).where(lte(s.robotEvents.createdAt, new Date(+now - 30 * 86400_000)));
+    await tx.delete(s.robotCommands).where(lte(s.robotCommands.expiresAt, now));
     await tx.delete(s.qrHandoffs).where(lte(s.qrHandoffs.expiresAt, now));
     await tx.delete(s.visitorSessions).where(lte(s.visitorSessions.expiresAt, now));
     await tx.delete(s.rateLimits).where(lte(s.rateLimits.resetAt, now));

@@ -38,13 +38,17 @@ test("all conceptual tables and real migrations exist; published content has ver
 test("migration snapshot matches schema and rollback removes the isolated test schema", async () => {
   const { generateDrizzleJson, generateMigration } = await import("drizzle-kit/api");
   const initial = JSON.parse(await readFile("drizzle/meta/0000_snapshot.json", "utf8"));
-  const snapshot = JSON.parse(await readFile("drizzle/meta/0001_snapshot.json", "utf8"));
+  const stage3 = JSON.parse(await readFile("drizzle/meta/0001_snapshot.json", "utf8"));
+  const snapshot = JSON.parse(await readFile("drizzle/meta/0002_snapshot.json", "utf8"));
   expect(initial.prevId).toBe("00000000-0000-0000-0000-000000000000");
-  expect(snapshot.prevId).toBe(initial.id);
+  expect(stage3.prevId).toBe(initial.id);
+  expect(snapshot.prevId).toBe(stage3.id);
   expect(await generateMigration(snapshot, generateDrizzleJson(s, snapshot.id))).toEqual([]);
   const isolated = await connectDatabase({ memory: true });
   try {
     await migrateDatabase(isolated.db);
+    const stage4Down = await readFile("drizzle/rollback/0002_stage4a_ai_robot.sql", "utf8");
+    for (const statement of stage4Down.split(";").map(value => value.trim()).filter(Boolean)) await isolated.db.execute(sql.raw(statement));
     const stage3Down = await readFile("drizzle/rollback/0001_stage3_email_privacy.sql", "utf8");
     for (const statement of stage3Down.split(";").map(value => value.trim()).filter(Boolean)) await isolated.db.execute(sql.raw(statement));
     const down = await readFile("drizzle/rollback/0000_ary_core.sql", "utf8");

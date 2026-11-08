@@ -19,7 +19,8 @@ abstract class BaseProvider implements EmailProvider {
   sendMarketing(message: EmailMessage) { return this.send(message); }
 }
 export class DryRunEmailProvider extends BaseProvider {
-  constructor(private db: Database) { super(); }
+  private db: Database;
+  constructor(db: Database) { super(); this.db = db; }
   async send(message: EmailMessage): Promise<EmailResult> {
     // The rendered message is already encrypted in this outbox row. No network or file side effect.
     await this.db.update(emailOutbox).set({ deliveryState: "dry_run" }).where(eq(emailOutbox.id, message.id));
@@ -27,7 +28,9 @@ export class DryRunEmailProvider extends BaseProvider {
   }
 }
 export class EmailDeliveryError extends Error {
-  constructor(public readonly safeCode: string, public readonly retryable = true) { super(safeCode); }
+  readonly safeCode: string;
+  readonly retryable: boolean;
+  constructor(safeCode: string, retryable = true) { super(safeCode); this.safeCode = safeCode; this.retryable = retryable; }
 }
 export class ResendEmailProvider extends BaseProvider {
   async send(message: EmailMessage): Promise<EmailResult> {

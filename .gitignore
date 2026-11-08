@@ -11,6 +11,9 @@ playwright-report/
 *.log
 .cache/
 *.tsbuildinfo
+__pycache__/
+*.pyc
+pi/*.sqlite3*
 # Capturas de regresión regeneradas por `npm run test:e2e` (se versionan solo el resumen y dos muestras)
 docs/screenshots/*.png
 docs/screenshots/*-comparison.json

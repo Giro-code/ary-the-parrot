@@ -16,14 +16,16 @@ export default defineConfig({
     { name: "app", testMatch: "legacy-regression.spec.ts", use: { baseURL: "http://127.0.0.1:3000" } },
     { name: "stage2", testMatch: "stage2.spec.ts", fullyParallel: false, use: { baseURL: "http://127.0.0.1:3002" } },
     { name: "stage3", testMatch: "stage3.spec.ts", fullyParallel: false, use: { baseURL: "http://127.0.0.1:3002" } },
+    { name: "stage4a", testMatch: "stage4a.spec.ts", fullyParallel: false, use: { baseURL: "http://127.0.0.1:3002" } },
   ],
   webServer: [
     {
-      command: "npm run start",
+      // Migrate the local PGlite first so a stale .pglite never makes health report degraded.
+      command: "npm run db:migrate && npm run start",
       url: "http://127.0.0.1:3000/experiencia",
       reuseExistingServer: false,
       timeout: 60_000,
-      env: { APP_BASE_URL: "http://127.0.0.1:3000", DATABASE_URL: "", EMAIL_DRY_RUN: "true", NEXT_TELEMETRY_DISABLED: "1" },
+      env: { APP_BASE_URL: "http://127.0.0.1:3000", DATABASE_URL: "", EMAIL_DRY_RUN: "true", GEMINI_API_KEY: "", NEXT_TELEMETRY_DISABLED: "1" },
     },
     {
       command: "node scripts/legacy-server.mjs",

@@ -1,3 +1,21 @@
+# Revisión visual de etapa 4A
+
+Artefacto local final de esta tarea, sin commit. Rutas afectadas `/kiosco`, `/experiencia`, `/privacidad` y el resultado preparado de `/#solicitar`. Se preservan HTML/CSS de la landing en reposo y recursos originales.
+
+| Pasada | Estado | Evidencia |
+| --- | --- | --- |
+| 1, inspección crítica en navegador | PENDIENTE | next dev y runner Playwright fallan con spawn EPERM. El inventario CUA devuelve Browsers: The browser access host is unavailable |
+| Correcciones técnicas | Realizadas, sin aceptación visual | Consentimiento requerido/checkbox de tamaño propio, estados de salud, texto plano/fuentes, foco, wrapping, error/límite y ausencia de puente |
+| 2, recarga de versión final | PENDIENTE | No se consiguió un runtime/navegador autorizado para inspeccionar la UI |
+
+Los errores exactos están en `docs/evidence/stage4a/{dev,e2e,build}.txt`. Los E2E preparan recorridos independientes para 360, 390, 820 y 1440 px, con chat/fuentes y derivación, y las pruebas B2B de etapa 3 ahora usan el segundo paso integrado. No se han generado ni mirado capturas de la etapa 4A. La regresión actual de 0 píxeles sigue exigida y pendiente, con tolerancia original intacta.
+
+Para cerrar, ejecutar en un runtime autorizado, mirar la primera pasada, registrar/corregir defectos del alcance, recargar y mirar la segunda. Repetir los estados afectados tras cualquier corrección posterior. Revisar jerarquía, textos, teclado/foco, carga, error, límite, consentimiento, fuente y robot desconectado además de geometría. La prueba SSE sintética verifica un puente de test, no hardware.
+
+---
+
+## Historial anterior
+
 # Revisión visual
 
 ## Etapa 3 · pendiente por acceso bloqueado

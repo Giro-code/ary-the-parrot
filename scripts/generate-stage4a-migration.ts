@@ -1,0 +1,13 @@
+import { generateDrizzleJson, generateMigration } from "drizzle-kit/api";
+import { readFile, writeFile } from "node:fs/promises";
+import * as schema from "../src/db/schema.ts";
+const journal = JSON.parse(await readFile("drizzle/meta/_journal.json", "utf8"));
+if (journal.entries.length !== 2) throw new Error("Stage 4A migration already exists.");
+const previous = JSON.parse(await readFile("drizzle/meta/0001_snapshot.json", "utf8"));
+const current = generateDrizzleJson(schema, previous.id);
+const statements = await generateMigration(previous, current);
+await writeFile("drizzle/0002_stage4a_ai_robot.sql", statements.join("\n--> statement-breakpoint\n") + "\n");
+await writeFile("drizzle/meta/0002_snapshot.json", JSON.stringify(current, null, 2) + "\n");
+journal.entries.push({ idx: 2, version: "7", when: Math.max(Date.now(), journal.entries[1].when + 1), tag: "0002_stage4a_ai_robot", breakpoints: true });
+await writeFile("drizzle/meta/_journal.json", JSON.stringify(journal, null, 2) + "\n");
+console.log(`Stage 4A: ${statements.length} SQL statements generated.`);

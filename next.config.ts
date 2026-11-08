@@ -41,6 +41,9 @@ const config: NextConfig = {
         { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=()" },
       ],
     }, {
+      source: "/kiosco",
+      headers: [{ key: "Content-Security-Policy", value: csp.replace(/connect-src [^;]+/, `connect-src 'self' http://127.0.0.1:8765 ws://127.0.0.1:8765${development ? " ws: wss:" : ""}`) }],
+    }, {
       source: "/q/:path*",
       headers: [
         { key: "Referrer-Policy", value: "no-referrer" },

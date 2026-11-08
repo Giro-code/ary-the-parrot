@@ -223,9 +223,8 @@ test("presentación conserva tres diapositivas, límites, flechas y Escape", asy
   await expect(opener).toBeFocused();
 });
 
-test("solicitud valida campos y descarga TXT local con los datos", async ({ page }) => {
-  // The new app requests treatment consent; dismissing preserves the original local-only TXT path.
-  page.on("dialog", dialog => dialog.dismiss());
+test("solicitud valida campos y descarga TXT local con los datos", async ({ page }, testInfo) => {
+  // Preparing preserves the local TXT path. Sending requires a separate explicit checkbox.
   await page.goto("/#solicitar");
   await page.locator('button[type="submit"]').click();
   await expect(page.locator("#request-result")).toBeHidden();
@@ -247,7 +246,7 @@ test("solicitud valida campos y descarga TXT local con los datos", async ({ page
   await page.locator("#message").fill("Queremos conocer la propuesta cultural.");
   await page.locator('button[type="submit"]').click();
   await expect(page.locator("#request-result")).toContainText("La solicitud todavía no se ha enviado");
-  await expect(page.locator("#download-request")).toBeFocused();
+  await expect(page.locator(testInfo.project.name === "app" ? "#request-result" : "#download-request")).toBeFocused();
   const [download] = await Promise.all([
     page.waitForEvent("download"), page.locator("#download-request").click(),
   ]);
@@ -308,7 +307,9 @@ test("API, cabeceras, recursos y entradas de etapa 2", async ({ page, request },
     await page.getByRole("link", { name: "Conocer el acceso para kiosco" }).click();
     await expect(page).toHaveURL(/\/kiosco$/);
     await expect(page.locator("main")).toContainText("Simulador");
-    await expect(page.locator("main")).toContainText("Modo demostración sin dispositivo");
+    // This server runs production mode without a database: the kiosk must say so instead of claiming a device state it could not check.
+    await expect(page.locator("main")).toContainText("Sin conexión al servicio");
+    await expect(page.locator("main")).not.toContainText("Modo demostración sin dispositivo");
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
     await page.getByRole("link", { name: "Volver a la web de Ary" }).click();
     await expect(page.locator("#inicio")).toBeVisible();

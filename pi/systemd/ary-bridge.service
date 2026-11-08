@@ -1,0 +1,25 @@
+[Unit]
+Description=Ary loopback bridge and outbound telemetry
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=ary
+Group=ary
+SupplementaryGroups=dialout
+WorkingDirectory=/opt/ary/pi
+EnvironmentFile=/etc/ary/bridge.env
+Environment=PYTHONUNBUFFERED=1
+ExecStart=/opt/ary/venv/bin/python -m bridge --simulate --queue /var/lib/ary/events.sqlite3
+# Serial faults require an operator to inspect and restart, preventing a movement retry loop.
+Restart=no
+UMask=0077
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/lib/ary
+TimeoutStopSec=10
+
+[Install]
+WantedBy=multi-user.target

@@ -1,5 +1,26 @@
 # Funciones y evidencia
 
+## Etapa 4A · estado actual
+
+Implementación local con pruebas mockeadas y PostgreSQL PGlite. [Informe y comandos](ARY_STAGE4A_REPORT.md). La evidencia histórica de las etapas anteriores no verifica los cambios de esta etapa.
+
+| Función | Estado | Evidencia y límite |
+| --- | --- | --- |
+| Correos inmediatos por IDs tras commit | REAL_IMPLEMENTED | Unitarias request-link dry-run/HTTP simulado y cron posterior sin duplicado |
+| Consentimiento B2B integrado y API requerida | REAL_IMPLEMENTED | Casilla explícita, aviso, foco, TXT y E2E escritos; revisión visual bloqueada |
+| Kiosco frío y backoff corto | REAL_IMPLEMENTED | Comprobando/offline y 1/2/4/8/15 s en código; E2E escrito |
+| Chat fundamentado y demo con fuentes | REAL_IMPLEMENTED | Zod, citas, clasificación, inyección, límites, errores y aislamiento probados con fetch simulado |
+| Gemini real | BLOCKED | Lista de modelos disponible; dos generaciones 3.6 fallaron, segunda HTTP 503; modelo final 3.8 pendiente |
+| Historial temporal y costes | REAL_IMPLEMENTED | Cifrado por sesión, respuesta tardía, cleanup y ai_usage sin texto probados |
+| UI de chat kiosco/móvil | PARTIAL | Estados e idioma implementados; E2E descubiertos, dos inspecciones reales pendientes |
+| Robot HMAC y mantenimiento secundario | REAL_IMPLEMENTED | Firma, timestamp, nonce, eventId, allowlist y ausencia de secreto probados |
+| Adaptadores y puente local | SANDBOX_ONLY | Simulador honesto; tests de token, origen, HTTP/SSE, rate limit y cola SQLite |
+| Firmware y servicio Pi | PARTIAL | Referencias con ACK/watchdog, systemd y guía; hardware y arranque físico sin probar |
+| Regresión de landing de etapa 4A | BLOCKED | Hashes/HTML/CSS/prefijo JS preservados en unitarias; 0 píxeles pendiente |
+| Build y E2E | BLOCKED | Compilación exitosa, después spawn EPERM; 89 casos E2E escritos/descubiertos |
+| Neon, correo y despliegue reales | BLOCKED | Fuera de la operación efectuada en esta tarea |
+
+
 ## Etapa 3 · implementación local
 
 7 de noviembre de 2026. Sin commit/push/despliegue, Gemini ni correos reales. [Informe completo](ARY_STAGE3_REPORT.md). La verificación histórica de etapa 2 más abajo **no acredita las interfaces de etapa 3**.

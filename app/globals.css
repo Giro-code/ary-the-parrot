@@ -95,6 +95,19 @@ body { margin: 0; }
 .public-item { max-width: 780px; margin: 0 auto; padding: 48px 24px; line-height: 1.7; }
 .public-item nav { display: flex; gap: 24px; flex-wrap: wrap; align-items: center; }
 .account-form { display: grid; gap: 16px; }
+.ary-chat { margin-block: 28px; padding-block: 20px; border-block: 1px solid var(--line); max-width: 780px; }
+.ary-chat form { display: grid; gap: 12px; justify-items: start; }
+.ary-chat label { font-weight: 600; }
+.ary-chat textarea { width: 100%; min-width: 0; resize: vertical; border: 1px solid #687c6b; border-radius: 6px; background: var(--white); color: var(--ink); font: inherit; padding: 12px; }
+.chat-suggestions { display: flex; flex-wrap: wrap; gap: 10px; }
+.chat-suggestions button { text-align: left; font-size: .92rem; }
+.chat-messages { padding: 0; list-style: none; }
+.chat-message { padding: 16px 20px; margin-block: 16px; background: var(--white); border-left: 3px solid var(--green); overflow-wrap: anywhere; }
+.chat-message.user { background: transparent; border-color: var(--line); }
+.chat-message p { white-space: pre-wrap; }
+.chat-message p:last-child { margin-bottom: 0; }
+.chat-sources { padding-left: 20px; font-size: .9rem; }
+@media (max-width: 420px) { .chat-suggestions, .chat-suggestions button, .ary-chat form button { width: 100%; } }
 .account-form > label { font-weight: 600; }
 .account-form input[type="email"] { width: 100%; min-width: 0; min-height: 50px; border: 1px solid #687c6b; border-radius: 6px; background: var(--white); color: var(--ink); font: inherit; padding: 10px 14px; }
 .check-row { display: flex; align-items: flex-start; gap: 12px; cursor: pointer; padding-block: 8px; font-weight: 400 !important; }

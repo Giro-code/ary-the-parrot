@@ -15,6 +15,13 @@
       "when": 1794101532624,
       "tag": "0001_stage3_email_privacy",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1794108673148,
+      "tag": "0002_stage4a_ai_robot",
+      "breakpoints": true
     }
   ]
 }

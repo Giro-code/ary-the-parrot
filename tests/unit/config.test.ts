@@ -33,7 +33,13 @@ test("ejemplo de entorno conserva correo dry-run y finalidades opt-in", () => {
   expect(example).toContain("FEATURE_ENABLE_MARKETING=false");
   expect(example).toContain("FEATURE_ENABLE_PARTNER_SHARING=false");
   expect(example).toContain("APP_BASE_URL=https://arytheparrot.app");
-  for (const key of ["DATABASE_URL", "AUTH_SECRET", "SESSION_ENCRYPTION_KEY", "RESEND_API_KEY", "CRON_SECRET", "AI_GATEWAY_API_KEY", "ROBOT_DEVICE_AUTH_SECRET"]) {
+  for (const key of ["DATABASE_URL", "AUTH_SECRET", "SESSION_ENCRYPTION_KEY", "RESEND_API_KEY", "CRON_SECRET", "GEMINI_API_KEY", "ROBOT_DEVICE_AUTH_SECRET", "ROBOT_BRIDGE_SECRET"]) {
     expect(example.split(/\r?\n/)).toContain(`${key}=`);
   }
+});
+test("loopback bridge CSP is scoped to the kiosk route", async () => {
+  const rules = await config.headers!();
+  const global = rules[0].headers.find(header => header.key === "Content-Security-Policy")!.value;
+  const kiosk = rules.find(rule => rule.source === "/kiosco")!.headers.find(header => header.key === "Content-Security-Policy")!.value;
+  expect(global).not.toContain("127.0.0.1:8765"); expect(kiosk).toContain("http://127.0.0.1:8765"); expect(kiosk).toContain("ws://127.0.0.1:8765");
 });

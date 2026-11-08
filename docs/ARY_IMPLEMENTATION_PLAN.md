@@ -114,3 +114,25 @@ Seed: 12 temas en dos idiomas; diez fuentes HTTP 200 publicadas y dos no publica
 Build: compila el código, luego `Running TypeScript ... spawn EPERM`. Dev y runner E2E: `spawn EPERM`. Playwright descubre 74 casos. Se mantuvieron regresiones originales; solo se adaptó el contrato que antes mostraba avisos de etapa 2 y health 200 sin BD. No se ejecutaron las dos pasadas visuales ni se midió CPU 4×. No se añadieron opciones experimentales para eludir el bloqueo.
 
 Fuentes, archivos, comandos y límites: `FEATURE_MATRIX.md`. Seguridad: `ARY_QR_HANDOFF.md`. Revisión pendiente: `VISUAL_REVIEW.md`. La etapa está implementada localmente con aceptación bloqueada; no se presenta como verificada en navegador, Neon, Vercel o Raspberry Pi.
+
+## Etapa 4A · cierre local
+
+- [x] Despachar recovery/B2B/double opt-in por IDs después de commit, con bloqueo/idempotencia y timeout HTTP.
+- [x] Sustituir window.confirm por consentimiento integrado y requerido en API, con TXT disponible.
+- [x] Comprobación inicial honesta del kiosco y backoff offline de hasta 15 s.
+- [x] AiProvider/Gemini/Demo, contexto delimitado, JSON/Zod, fuentes y guardrails.
+- [x] Límites persistentes por sesión/global, ai_usage y migración 0002.
+- [x] Chat temporal cifrado, restauración en sesión móvil, borrado al cerrar/transferir/recuperar y cleanup.
+- [x] UI de chat con sugerencias, texto, carga/error/límite y modo efectivo.
+- [x] RobotAdapter/Mock/Hardware, HMAC, nonce, deduplicación y mantenimiento allowlist.
+- [x] Puente loopback SSE + POST con Origin/token y comandos nombrados.
+- [x] Servicio Python, cola offline, simulador, serie/ACK, firmware de referencia y systemd.
+- [x] Pruebas unitarias, Python y E2E escritos, documentación y placeholders.
+- [x] Comandos de aceptación ejecutados o error exacto de sandbox registrado.
+- [ ] Ejecución real de E2E y build completo fuera del bloqueo spawn EPERM.
+- [ ] Dos pasadas visuales reales y regresión 0 píxeles de la versión final.
+- [ ] Generación Gemini real validada, incluido el modelo final gemini-3.8-flash.
+- [ ] Validación en Pi/servos/sensor reales, Chromium y políticas de red local.
+- [ ] Conservación/transferencia de chat entre sesiones con autorización específica, voz y micrófono.
+
+Los puntos pendientes son límites de verificación o trabajo posterior. Admin/CMS/partner continúan en etapa 4B. [Evidencia y archivos](ARY_STAGE4A_REPORT.md).

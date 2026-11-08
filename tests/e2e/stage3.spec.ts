@@ -64,8 +64,10 @@ test("Flow B: save, dry-run outbox, confirm on a different device and recover My
   } finally { await mobile.close(); }
 });
 test("commercial inquiry confirms reference, test email truth and retained TXT", async ({ page }) => {
-  page.on("dialog", dialog => dialog.accept()); await fillInquiry(page);
+  await fillInquiry(page);
   await page.getByRole("button", { name: "Preparar solicitud" }).click();
+  await page.getByLabel("Autorizo tratar estos datos", { exact: false }).check();
+  await page.getByRole("button", { name: "Enviar solicitud", exact: true }).click();
   await expect(page.locator("#request-result")).toContainText(/Guardada en modo prueba · ARY-\d{4}-[A-F0-9]{8}/);
   await expect(page.locator("#request-result")).toContainText("el correo no se envió");
   const [download] = await Promise.all([page.waitForEvent("download"), page.locator("#download-request").click()]);
@@ -73,9 +75,11 @@ test("commercial inquiry confirms reference, test email truth and retained TXT",
   expect(await readFile((await download.path())!, "utf8")).toContain("Referencia de registro: ARY-");
 });
 test("commercial backend error offers retry and TXT; retry succeeds with the same request", async ({ page }) => {
-  page.on("dialog", dialog => dialog.accept()); await fillInquiry(page);
+  await fillInquiry(page);
   await page.route("**/api/commercial/inquiries", route => route.abort("failed"));
   await page.getByRole("button", { name: "Preparar solicitud" }).click();
+  await page.getByLabel("Autorizo tratar estos datos", { exact: false }).check();
+  await page.getByRole("button", { name: "Enviar solicitud", exact: true }).click();
   await expect(page.locator("#request-result")).toContainText("No se pudo enviar");
   const [download] = await Promise.all([page.waitForEvent("download"), page.locator("#download-request").click()]);
   expect(await readFile((await download.path())!, "utf8")).toContain("Esta solicitud no se ha enviado.");
@@ -97,12 +101,11 @@ test("privacy exports authenticated JSON and deletes account/session", async ({ 
 test("production outbox is 404 and B2B without a database fails honestly", async ({ request }) => {
   expect((await request.get("http://127.0.0.1:3000/dev/outbox")).status()).toBe(404);
   // No cookies or private messages can be returned in production.
-  const response = await request.post("http://127.0.0.1:3000/api/commercial/inquiries", { headers: { origin: "http://127.0.0.1:3000", "x-ary-request": "1", "idempotency-key": randomUUID() }, data: { name: "Synthetic", org: "Hotel", email: address(), place: "Hotel", message: "Synthetic request; never send mail.", locale: "es", consentVersion: "2026-11-07.v1" } });
+  const response = await request.post("http://127.0.0.1:3000/api/commercial/inquiries", { headers: { origin: "http://127.0.0.1:3000", "x-ary-request": "1", "idempotency-key": randomUUID() }, data: { name: "Synthetic", org: "Hotel", email: address(), place: "Hotel", message: "Synthetic request; never send mail.", locale: "es", consentVersion: "2026-11-07.v1", treatmentConsent: true } });
   expect(response.status()).toBe(503);
 });
 for (const pass of [1, 2]) test(`stage3 visual evidence ${pass}: desktop/mobile, errors, verified privacy`, async ({ page }) => {
   test.setTimeout(120000);
-  page.on("dialog", dialog => dialog.accept());
   await verifiedAccount(page);
   for (const width of [360, 390, 820, 1440]) {
     await page.setViewportSize({ width, height: 900 });
@@ -118,6 +121,8 @@ for (const pass of [1, 2]) test(`stage3 visual evidence ${pass}: desktop/mobile,
     await capture(page, `pass-${pass}-recovery-en-${width}`);
     await fillInquiry(page); await page.route("**/api/commercial/inquiries", route => route.abort("failed"));
     await page.getByRole("button", { name: "Preparar solicitud" }).click();
+  await page.getByLabel("Autorizo tratar estos datos", { exact: false }).check();
+  await page.getByRole("button", { name: "Enviar solicitud", exact: true }).click();
     await expect(page.locator("#request-result")).toContainText("No se pudo enviar"); await capture(page, `pass-${pass}-commercial-error-${width}`);
     await page.unroute("**/api/commercial/inquiries"); await page.getByRole("button", { name: "Reintentar envío" }).click();
     await expect(page.locator("#request-result")).toContainText("Guardada en modo prueba · ARY-"); await capture(page, `pass-${pass}-commercial-received-${width}`);

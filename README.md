@@ -1,6 +1,6 @@
 # Ary la Cotorra
 
-Next.js 16, React y TypeScript. La web original y el brochure se conservan en `public/`; `legacy/` es la referencia de regresión. Las etapas 2/3 añaden sesión anónima, kiosco, QR privado, Mi viaje, recuperación opcional por correo verificado, privacidad y solicitudes B2B separadas. Explorar no requiere correo. No hay IA ni hardware conectado en esta etapa.
+Next.js 16, React y TypeScript. La web original y el brochure se conservan en `public/`; `legacy/` es la referencia de regresión. Las etapas 2/3 añaden sesión anónima, kiosco, QR privado, Mi viaje, recuperación opcional por correo verificado, privacidad y solicitudes B2B separadas. Explorar no requiere correo. La etapa 4A añade chat cultural fundamentado con Gemini y fallback de ejemplo, simulador y puente local de robot. La integración física queda pendiente.
 
 La etapa 3 usa **correo dry-run por defecto** y no envió correos reales durante su implementación. [Configuración de correo](docs/ARY_EMAIL_SETUP.md), [seguridad y privacidad](docs/ARY_SECURITY_AND_PRIVACY.md) y [cierre y bloqueos](docs/ARY_STAGE3_REPORT.md). No se hizo commit, push ni despliegue.
 
@@ -24,7 +24,7 @@ Rutas: `/kiosco`, `/experiencia`, `/mi-viaje`, `/privacidad`, `/reingresar`, `/c
 
 Para la demo de recuperación: guardar una ficha, pulsar «Guardar mi experiencia y recibir un enlace por correo», usar `@example.invalid`, aceptar la finalidad de recuperación y abrir el enlace desde `/dev/outbox` en otro contexto del navegador. Solo tras confirmar se crea/vincula la cuenta, se rota la cookie y se recupera Mi viaje. Marketing está desactivado; activarlo en una demo aislada muestra una casilla separada y exige un segundo opt-in. No hay campañas automáticas.
 
-«Preparar solicitud» conserva el TXT y pide confirmación de tratamiento antes del POST comercial. El resultado muestra referencia/estado o error y reintento. Rechazar el tratamiento mantiene el camino de TXT local. El resultado y aviso nuevo solo aparecen tras preparar la solicitud; el HTML/CSS de la landing en reposo se conserva.
+«Preparar solicitud» conserva el TXT y muestra un segundo paso con casilla de tratamiento desmarcada y «Enviar solicitud». La API exige aceptación explícita del aviso. El resultado muestra referencia/estado o error y reintento. El TXT permanece disponible durante el paso de consentimiento y ante errores. El resultado y aviso nuevo solo aparecen tras preparar la solicitud; el HTML/CSS de la landing en reposo se conserva.
 
 Para un teléfono físico, `APP_BASE_URL` debe ser una dirección accesible desde ese teléfono, con el mismo origen que el kiosco. `127.0.0.1` solo sirve para simulación en el mismo ordenador. El comando dev se puede iniciar con `npm run dev -- --hostname 0.0.0.0` en una red de pruebas autorizada. No usar datos personales para la demo.
 
@@ -43,9 +43,9 @@ Para un teléfono físico, `APP_BASE_URL` debe ser una dirección accesible desd
 
 `npm run db:cleanup` elimina registros operativos caducados, tokens, ventanas de rate limit y eventos vencidos. Es una operación manual del operador: no existe cron desplegado. La interfaz distingue caducidad del acceso y borrado físico. Ejecutarlo con el servidor local detenido para PGlite.
 
-Migraciones: `drizzle/0000_ary_core.sql` y `drizzle/0001_stage3_email_privacy.sql`, con journal y snapshots. Ahora hay 26 tablas; las tres nuevas son `commercial_inquiries`, `email_suppressions` y `email_webhook_events`. `npm run db:generate` genera futuras migraciones. Los SQL de `drizzle/rollback/` son destructivos, exclusivos de BD vacías/de pruebas autorizadas, y no se ejecutan automáticamente. El rollback de etapa 3 se aplica antes del inicial.
+Migraciones: `0000_ary_core`, `0001_stage3_email_privacy` y `0002_stage4a_ai_robot`, con journal, snapshots y rollback de pruebas. Hay 29 tablas. La etapa 4A incorpora `ai_usage`, `robot_events` y `robot_commands`. `npm run db:generate` genera futuras migraciones. Los SQL de `drizzle/rollback/` son destructivos, exclusivos de BD vacías/de pruebas autorizadas, y no se ejecutan automáticamente. El rollback de etapa 3 se aplica antes del inicial.
 
-Correo/privacidad requieren `AUTH_SECRET` y `SESSION_ENCRYPTION_KEY` de alta entropía en producción (mínimo 32 caracteres cada uno); sin ellas, 503. `EMAIL_DRY_RUN=true` y la ausencia de remitente/clave seleccionan siempre el adaptador local. `RESEND_WEBHOOK_SECRET`, `ADMIN_NOTIFICATION_EMAIL` y los demás placeholders están en `.env.example`. No imprimir secretos. El cron de `vercel.json` exige un plan compatible con frecuencia de un minuto; un cron diario no sirve para enlaces que caducan en 15 min. No está desplegado.
+Correo/privacidad requieren `AUTH_SECRET` y `SESSION_ENCRYPTION_KEY` de alta entropía en producción (mínimo 32 caracteres cada uno); sin ellas, 503. `EMAIL_DRY_RUN=true` y la ausencia de remitente/clave seleccionan siempre el adaptador local. `RESEND_WEBHOOK_SECRET`, `ADMIN_NOTIFICATION_EMAIL` y los demás placeholders están en `.env.example`. No imprimir secretos. Las filas transaccionales se despachan tras el commit de su petición, con timeout HTTP de 10 s, bloqueo de fila e idempotencia. El cron diario de `vercel.json` queda para reintentos y operaciones diferidas, con descarte de enlaces caducados. Su operación real requiere configurar el despliegue.
 
 La limpieza manual también purga enlaces caducados, outbox/eventos webhook de 30 días, solicitudes comerciales de 180 días y cuentas con 365 días de inactividad. Los plazos son propuestas pendientes de revisión jurídica. La interfaz explica límites de backups y datos ya transmitidos. Ver privacidad para exportación/borrado de una cuenta verificada.
 
@@ -67,3 +67,18 @@ npm run test:e2e
 Playwright usa tres servidores: original en 3001, build de producción sin BD en 3000 y una demo aislada con PGlite en 3002. No utiliza servicios de correo ni datos reales. El script de pruebas crea una BD nueva bajo `.cache/` y cierra su conexión antes de iniciar Next dev. Los casos de rendimiento usan CDP a CPU 4× y guardan cifras; no equivalen a una Raspberry Pi física. `check:kiosk-budget` mide gzip de los chunks de entrada del kiosco, incluido código compartido y excluido el bootstrap de Next.
 
 Estado y bloqueos de esta ejecución: [informe de etapa 3](docs/ARY_STAGE3_REPORT.md) y [FEATURE_MATRIX](docs/FEATURE_MATRIX.md). Amenazas y canje QR: [ARY_QR_HANDOFF](docs/ARY_QR_HANDOFF.md). Las dos pasadas visuales de **etapa 3** están pendientes por el bloqueo del acceso a navegador, documentado en [VISUAL_REVIEW](docs/VISUAL_REVIEW.md); la verificación anterior de etapa 2 se conserva como historial.
+
+## Etapa 4A
+
+Después de las recomendaciones, «Pregúntale a Ary» acepta texto, muestra tres preguntas y enlaza las fuentes. `/experiencia` restaura el historial de la sesión al recargar. El servidor decide el modo de cada respuesta y la UI muestra «IA en línea · Gemini» o «Respuestas de ejemplo». Temas sensibles se derivan sin modelo. El historial es temporal y cifrado. Micrófono, TTS y conservación entre sesiones quedan pendientes de autorización específica.
+
+`GEMINI_API_KEY` es privada de servidor. `AI_MODEL` usa `gemini-3.8-flash` por defecto, confirmado como disponible y estable. La comprobación real de esta tarea consumió tres peticiones, una de modelos y dos generaciones con la referencia inicial 3.6, ambas fallidas, la segunda con 503. Las pruebas mockeadas pasan. El modelo final y la operación real requieren verificación posterior. [Pipeline y evidencia](docs/ARY_AI.md).
+
+`ROBOT_BRIDGE_SECRET` firma tokens de 120 s para un kiosco activado. El servicio Python escucha únicamente en `127.0.0.1:8765` y usa SSE + POST con origen/token, allowlist y límites. `ROBOT_DEVICE_AUTH_SECRET` firma telemetría HTTPS y polling secundario de mantenimiento. Simulador, serie/ACK, cola offline, firmware y systemd están en [pi/](pi/README.md). La presencia muestra bienvenida sin iniciar sesión. [Despliegue reproducible](docs/DEPLOY_VERCEL_AND_PI.md).
+
+```sh
+cd pi
+python -m unittest
+```
+
+Cierre actual en [ARY_STAGE4A_REPORT](docs/ARY_STAGE4A_REPORT.md). Los E2E están escritos. Build/dev/ejecución E2E se bloquean con `spawn EPERM`, y el host de navegador está inaccesible. Las dos pasadas visuales de etapa 4A y la regresión actual de 0 píxeles quedan pendientes. La evidencia histórica anterior se conserva por separado.

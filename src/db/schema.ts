@@ -135,3 +135,16 @@ export const emailSuppressions = pgTable("email_suppressions", {
 export const emailWebhookEvents = pgTable("email_webhook_events", {
   eventId: text("event_id").primaryKey(), createdAt: created(),
 });
+export const aiUsage = pgTable("ai_usage", {
+  id: id(), createdAt: created(), model: text().notNull(), mode: text().notNull(),
+  inputTokens: integer("input_tokens").notNull().default(0), outputTokens: integer("output_tokens").notNull().default(0),
+  latencyMs: integer("latency_ms").notNull(), errorCode: text("error_code"),
+}, t => [index("ai_usage_date").on(t.createdAt)]);
+export const robotEvents = pgTable("robot_events", {
+  eventId: uuid("event_id").primaryKey(), deviceId: uuid("device_id").notNull().references(() => kioskDevices.id, { onDelete: "cascade" }),
+  state: text().notNull(), hardware: text().notNull(), payloadHash: text("payload_hash").notNull(), createdAt: created(),
+}, t => [index("robot_events_device_date").on(t.deviceId, t.createdAt)]);
+export const robotCommands = pgTable("robot_commands", {
+  id: id(), deviceId: uuid("device_id").notNull().references(() => kioskDevices.id, { onDelete: "cascade" }),
+  state: text().notNull(), gesture: text().notNull(), createdAt: created(), deliveredAt: date("delivered_at"), expiresAt: date("expires_at").notNull(),
+}, t => [index("robot_commands_device").on(t.deviceId), check("maintenance_only", sql`${t.state} = 'maintenance' and ${t.gesture} in ('rest','stop')`)]);

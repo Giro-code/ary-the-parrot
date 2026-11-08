@@ -18,7 +18,7 @@ export function csrf(request: NextRequest) {
     if (url.origin !== origin || url.host !== host || !(url.origin === expected.origin || local)) throw new Error();
   } catch { throw new AppError("csrf_rejected", 403); }
 }
-export async function body<T>(request: NextRequest, schema: z.ZodType<T>): Promise<T> {
+export async function jsonText(request: NextRequest): Promise<string> {
   if (!request.headers.get("content-type")?.startsWith("application/json")) throw new AppError("invalid_body", 400);
   // Enforce the cap on actual streamed bytes too (Content-Length is not trusted).
   const reader = request.body?.getReader();
@@ -33,6 +33,10 @@ export async function body<T>(request: NextRequest, schema: z.ZodType<T>): Promi
     content += decoder.decode(part.value, { stream: true });
   }
   content += decoder.decode();
+  return content;
+}
+export async function body<T>(request: NextRequest, schema: z.ZodType<T>): Promise<T> {
+  const content = await jsonText(request);
   let parsed: unknown;
   try { parsed = JSON.parse(content); } catch { throw new AppError("invalid_body", 400); }
   const result = schema.safeParse(parsed);

@@ -9,6 +9,9 @@ import { activateKiosk, createHandoff, createSession, enrollKiosk, setPreference
 process.env.DATABASE_URL = "";
 process.env.APP_BASE_URL = "http://127.0.0.1:3002";
 process.env.EMAIL_DRY_RUN = "true";
+// Never call a real AI provider from automated/browser tests, even if .env.local has a key.
+process.env.GEMINI_API_KEY = "";
+process.env.ROBOT_BRIDGE_SECRET = "synthetic-e2e-bridge-secret-32-characters";
 process.env.FEATURE_ENABLE_MARKETING = "false";
 Object.assign(process.env, { NODE_ENV: "development" });
 await mkdir(".cache", { recursive: true });

@@ -9,7 +9,7 @@ vi.mock("../../src/db/client", () => ({ getConnection: vi.fn(async () => {
 import { GET } from "../../app/api/health/route";
 afterEach(() => { vi.unstubAllEnvs(); connection.mode = "pglite"; });
 test("health checks local database and disables caching", async () => {
-  for (const key of ["DATABASE_URL", "EMAIL_DRY_RUN", "RESEND_API_KEY", "EMAIL_FROM", "AI_GATEWAY_API_KEY", "AI_MODEL"]) vi.stubEnv(key, "");
+  for (const key of ["DATABASE_URL", "EMAIL_DRY_RUN", "RESEND_API_KEY", "EMAIL_FROM", "GEMINI_API_KEY", "AI_MODEL"]) vi.stubEnv(key, "");
   const response = await GET(), health = await response.json();
   expect(response.status).toBe(200); expect(response.headers.get("Cache-Control")).toBe("no-store");
   expect(health).toEqual({ status: "ok", version, time: expect.any(String), checks: { database: "local_pglite", email: "dry_run", ai: "demo", robot: "simulator" } }); expect(connection.db.execute).toHaveBeenCalled();

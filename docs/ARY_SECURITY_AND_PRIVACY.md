@@ -56,3 +56,15 @@ Borrado transaccional: `deletion_jobs` registra procesamiento/completado; elimin
 | Borrado durante entrega | Solo se cancelan pendientes; el correo ya transmitido y backups no se recuperan con esta API |
 
 Pendiente antes de producción: responsable/contacto, normas aplicables, menores, transferencias internacionales, contratos con encargados, DNS real, claves, plan cron, inspección de logs, backups/restauración y pruebas de operación real. Ver [revisión de cumplimiento](PRIVACY_COMPLIANCE_REVIEW.md) y [configuración de correo](ARY_EMAIL_SETUP.md).
+
+## Adiciones de etapa 4A
+
+El chat usa la sesión y CSRF existentes. Clasifica temas sensibles antes del modelo, filtra instrucciones en fichas e historial, delimita entradas y valida JSON/citas. Renderiza texto plano con URLs del catálogo publicado. El patrón de clasificación y la validación de citas reducen riesgos y requieren evaluación semántica antes de operar con visitantes reales.
+
+Historial AES-GCM hasta la expiración de la sesión, borrado al cierre/canje/recuperación y purga con db:cleanup. La retención técnica de ai_usage y robot_events es 30 días, sin texto de conversación ni identidad de visitante. La UI/privacidad informan del procesamiento con Google. Retención externa, menores y transferencias quedan sujetos a revisión. Conservar chat entre sesiones requiere un permiso específico futuro.
+
+Robot cloud requiere HMAC-SHA256 sobre método/ruta/dispositivo/timestamp/nonce/hash de bytes exactos. Timestamp ±60 s, nonce de un uso guardado 180 s y eventId único. El dispositivo debe estar activado y vigente. La web pública carece de una API de comandos de motor. El polling secundario solo obtiene mantenimiento rest/stop de filas insertadas por un operador con acceso autorizado a BD.
+
+Puente exclusivo de loopback, Host fijo, Origin restringido y bearer HMAC de 120 s emitido a una cookie de kiosco autorizada. Verifica audiencia, origen, dispositivo, caducidad y firma. Límites de comandos y campos estrictos bloquean ángulos. Las políticas de Chromium se acotan al origen y la CSP de loopback a /kiosco. Una credencial local es temporal y permanece en memoria/cabeceras. El firmware impone límites mecánicos, suavizado, ACK y watchdog. La configuración física continúa pendiente.
+
+La petición de recuperación conserva su respuesta uniforme, incluso si el proveedor falla. Las filas inmediatas se despachan tras commit por sus IDs y comparten bloqueo/idempotencia con el cron. B2B ahora exige treatmentConsent=true y el aviso vigente, además de su canal cifrado y separado.

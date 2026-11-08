@@ -1,4 +1,4 @@
-import { and, eq, gt, lte, desc } from "drizzle-orm";
+import { and, eq, gt, lte, desc, inArray } from "drizzle-orm";
 import type { Database } from "../../db/client.ts";
 import * as s from "../../db/schema.ts";
 import { decrypt, emailHash, encrypt, normalizeEmail } from "../crypto.ts";
@@ -30,7 +30,7 @@ export async function enqueueEmail(db: Database, args: { template: Template; loc
   const rendered = renderEmail(args.template, args.locale, data);
   const [row] = await db.insert(s.emailOutbox).values({ template: args.template, category, recipientRef: args.visitorId, inquiryId: args.inquiryId, recipientHash: hash, recipientEncrypted: encrypt(normalizeEmail(args.to)), renderedEncrypted: encrypt(JSON.stringify(rendered)), idempotencyKey: args.idempotencyKey, scheduledAt: args.scheduledAt || new Date(), deliveryState: "queued" }).onConflictDoNothing({ target: s.emailOutbox.idempotencyKey }).returning();
   // Demo messages become visible immediately, but ALWAYS pass through the same outbox and policy gate.
-  if (row && isDryRun() && +row.scheduledAt <= Date.now()) await deliverRow(db, row, new DryRunEmailProvider(db));
+  if (row && !immediateTemplates.includes(row.template) && isDryRun() && +row.scheduledAt <= Date.now()) await deliverRow(db, row, new DryRunEmailProvider(db));
   return row?.id || null;
 }
 type Row = typeof s.emailOutbox.$inferSelect;
@@ -54,13 +54,15 @@ async function deliverRow(db: Database, row: Row, provider: EmailProvider) {
     await db.update(s.emailOutbox).set({ retries, lastError: error instanceof EmailDeliveryError ? error.safeCode : "delivery_error", deliveryState: terminal ? "failed" : "queued", scheduledAt: new Date(Date.now() + 30_000 * 2 ** retries) }).where(eq(s.emailOutbox.id, row.id));
   }
 }
-export async function dispatchEmails(db: Database, provider?: EmailProvider) {
+const immediateTemplates = ["recovery", "commercial_receipt", "commercial_admin", "marketing_confirmation"];
+export async function dispatchEmails(db: Database, provider?: EmailProvider, ids?: string[]) {
+  if (ids && !ids.length) return { processed: 0 };
   let processed = 0;
   // A row lock spans policy evaluation and the send. Concurrent workers skip locked rows.
   // All retry calls reuse the same provider idempotency key (retry horizon <24h).
   for (let i = 0; i < 10; i++) {
     const found = await db.transaction(async tx => {
-      const [row] = await tx.select().from(s.emailOutbox).where(and(eq(s.emailOutbox.deliveryState, "queued"), lte(s.emailOutbox.scheduledAt, new Date()))).orderBy(s.emailOutbox.scheduledAt).limit(1).for("update", { skipLocked: true });
+      const [row] = await tx.select().from(s.emailOutbox).where(and(eq(s.emailOutbox.deliveryState, "queued"), lte(s.emailOutbox.scheduledAt, new Date()), ids ? inArray(s.emailOutbox.id, ids) : undefined)).orderBy(s.emailOutbox.scheduledAt).limit(1).for("update", { skipLocked: true });
       if (!row) return false;
       // Recovery/DOI links must not be sent after their 15-minute lifetime.
       if (["recovery", "marketing_confirmation"].includes(row.template) && +row.createdAt + 900_000 <= Date.now()) {
@@ -71,6 +73,11 @@ export async function dispatchEmails(db: Database, provider?: EmailProvider) {
     if (!found) break; processed++;
   }
   return { processed };
+}
+// Call only after commit. Requests dispatch their own rows, at most two concurrently.
+// The HTTP provider aborts at 10 s. Locks and provider keys also protect cron races.
+export async function dispatchImmediate(db: Database, ids: (string | null)[]) {
+  await Promise.allSettled(ids.filter((id): id is string => !!id).map(id => dispatchEmails(db, undefined, [id])));
 }
 export async function getDryRunMessages(db: Database) {
   if (process.env.NODE_ENV === "production") return [];

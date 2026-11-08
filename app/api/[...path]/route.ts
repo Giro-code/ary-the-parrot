@@ -9,6 +9,7 @@ import { baseUrl } from "../../../src/server/config";
 import { AppError } from "../../../src/server/errors";
 import { interests } from "../../../src/i18n";
 import { stage3Http } from "../../../src/server/stage3-http";
+import { chat, chatHistory, chatInputSchema } from "../../../src/server/ai/chat";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -28,7 +29,8 @@ async function handle(request: NextRequest) {
       const token = await service.activateKiosk(db, code);
       const response = json({ activated: true }); setCookie(response, "ary_kiosk", token); return response;
     }
-    if (path === "/api/kiosk/me" && method === "GET") return json({ authorized: !!await service.kioskDevice(db, deviceToken), robot: "simulator" });
+    if (path === "/api/kiosk/me" && method === "GET") return json({ authorized: !!await service.kioskDevice(db, deviceToken) });
+    if (path === "/api/chat" && method === "POST") return json(await chat(db, visitorToken, await body(request, chatInputSchema)));
     if (path === "/api/visitor/session" && method === "POST") {
       const { locale } = await body(request, z.object({ locale: z.enum(["es", "en"]).default("es") }).strict());
       let existing: service.Session | undefined;
@@ -63,6 +65,7 @@ async function handle(request: NextRequest) {
       const response = json({ session: service.publicSession(redeemed.session), redirect: "/experiencia" }); setCookie(response, "ary_sid", redeemed.token); return response;
     }
     const session = await service.getSession(db, visitorToken);
+    if (path === "/api/chat" && method === "GET") return json({ messages: await chatHistory(db, session) });
     if (path === "/api/visitor/me" && method === "GET") return json({ session: service.publicSession(session) });
     if (path === "/api/visitor/preferences" && method === "PATCH") {
       const data = await body(request, prefs); await service.setPreferences(db, session, data);

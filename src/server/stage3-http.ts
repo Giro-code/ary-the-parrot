@@ -10,6 +10,7 @@ import { createInquiry, inquirySchema } from "./commercial.ts";
 import { privacyData, deletePrivateData, setEmailPreferences } from "./privacy.ts";
 import { AppError } from "./errors.ts";
 import { isDryRun } from "./email/providers.ts";
+import { dispatchImmediate } from "./email/outbox.ts";
 const empty = z.object({}).strict();
 export async function stage3Http(request: NextRequest, db: Database) {
   const path = request.nextUrl.pathname, method = request.method, cookie = request.cookies.get("ary_sid")?.value;
@@ -37,11 +38,13 @@ export async function stage3Http(request: NextRequest, db: Database) {
   if (path === "/api/consents" && method === "GET") return json({ consents: await listConsents(db, session) });
   if (path === "/api/consents" && method === "POST") {
     const data = await body(request, z.object({ purpose: z.enum(purposes), locale: z.enum(["es", "en"]), noticeVersion: z.string().max(50) }).strict());
+    let confirmationId: string | null = null;
     const consent = await db.transaction(async tx => {
       const row = await grantConsent(tx, session, data, "privacy_explicit");
-      if (data.purpose === "marketing_email") await requestMarketingConfirmation(tx, session);
+      if (data.purpose === "marketing_email") confirmationId = await requestMarketingConfirmation(tx, session);
       return row;
     });
+    await dispatchImmediate(db, [confirmationId]);
     return json({ consent, ...(data.purpose === "marketing_email" ? { emailState: isDryRun() ? "dry_run" : "queued" } : {}) }, 201);
   }
   const match = path.match(/^\/api\/consents\/([^/]+)$/);

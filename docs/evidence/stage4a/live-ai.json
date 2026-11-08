@@ -1,0 +1,6 @@
+{
+  "model": "gemini-3.8-flash",
+  "latencyMs": 12055,
+  "validated": false,
+  "errorCode": "provider_timeout_or_network"
+}

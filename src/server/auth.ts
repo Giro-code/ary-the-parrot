@@ -7,11 +7,11 @@ import { hashToken, newToken } from "./tokens.ts";
 import { AppError } from "./errors.ts";
 import { baseUrl } from "./config.ts";
 import { grantConsent, hasConsent, noticeVersion } from "./consents.ts";
-import { enqueueEmail } from "./email/outbox.ts";
+import { dispatchImmediate, enqueueEmail } from "./email/outbox.ts";
 import { isDryRun } from "./email/providers.ts";
 import type { Locale } from "../i18n/index.ts";
 
-export const requestLinkResult = () => ({ accepted: true, deliveryState: isDryRun() ? "dry_run" : "queued", message: isDryRun() ? "Modo prueba: el correo no se envió; en desarrollo puedes ver el enlace en /dev/outbox" : "Solicitud registrada. Si procede, el correo queda en cola; la entrega no está confirmada." });
+export const requestLinkResult = () => ({ accepted: true, deliveryState: isDryRun() ? "dry_run" : "queued", message: isDryRun() ? "Modo prueba: el correo no se envió; en desarrollo puedes ver el enlace en /dev/outbox" : "Solicitud registrada. Si procede, se intenta el envío ahora. La entrega no está confirmada y los fallos quedan para reintento." });
 export async function optionalSession(db: Database, token?: string) {
   try { return await getSession(db, token); } catch (error) { if (error instanceof AppError && error.status === 401) return null; throw error; }
 }
@@ -23,15 +23,16 @@ export async function requestLink(db: Database, data: { email: string; locale: L
   const session = await optionalSession(db, visitorToken);
   if (session?.kioskDeviceId) throw new AppError("personal_device_required", 403);
   // No visitor account is created or looked up until the mailbox is verified.
-  await db.transaction(async tx => {
+  const emailId = await db.transaction(async tx => {
     const token = newToken();
     const [link] = await tx.insert(s.authMagicLinks).values({ tokenHash: hashToken(token), purpose: "recovery", sourceSessionId: session?.id, emailEncrypted: encrypt(email), emailLookupHash: lookup, locale: data.locale, marketingRequested: data.marketingEmail && process.env.FEATURE_ENABLE_MARKETING === "true", expiresAt: new Date(Date.now() + 900_000) }).returning();
     if (session) {
       await grantConsent(tx, session, { purpose: "transactional_recovery", noticeVersion, locale: data.locale }, "recovery_form");
       await grantConsent(tx, session, { purpose: "service_storage", noticeVersion, locale: data.locale }, "recovery_form");
     }
-    await enqueueEmail(tx, { template: "recovery", category: "transactional", locale: data.locale, to: email, idempotencyKey: `recovery:${link.id}`, data: { url: `${baseUrl()}/auth/verify?token=${token}` } });
+    return enqueueEmail(tx, { template: "recovery", category: "transactional", locale: data.locale, to: email, idempotencyKey: `recovery:${link.id}`, data: { url: `${baseUrl()}/auth/verify?token=${token}` } });
   });
+  await dispatchImmediate(db, [emailId]);
   return requestLinkResult();
 }
 async function mergeSession(db: Database, session: Session | null, owner: string) {
@@ -47,6 +48,7 @@ async function mergeSession(db: Database, session: Session | null, owner: string
     } });
   }
   await db.delete(s.savedExperiences).where(eq(s.savedExperiences.sessionId, locked.id));
+  await db.delete(s.chatMessages).where(eq(s.chatMessages.sessionId, locked.id));
   await db.update(s.consentRecords).set({ visitorId: owner }).where(and(eq(s.consentRecords.sessionId, locked.id), isNull(s.consentRecords.visitorId)));
   await db.update(s.visitorSessions).set({ ownerUserId: owner, status: "ended", tokenHash: hashToken(newToken()) }).where(eq(s.visitorSessions.id, locked.id));
   await db.update(s.qrHandoffs).set({ invalidatedAt: new Date(), status: "cancelled" }).where(and(eq(s.qrHandoffs.sourceSessionId, locked.id), isNull(s.qrHandoffs.usedAt)));
@@ -54,7 +56,8 @@ async function mergeSession(db: Database, session: Session | null, owner: string
 export async function verifyLink(db: Database, token: string, visitorToken?: string, testClock?: Date) {
   requirePrivacyKeys();
   const now = testClock || new Date(), expiry = testClock || sql`now()`;
-  return db.transaction(async tx => {
+  let confirmationId: string | null = null;
+  const result = await db.transaction(async tx => {
     const [link] = await tx.update(s.authMagicLinks).set({ usedAt: now }).where(and(eq(s.authMagicLinks.tokenHash, hashToken(token)), eq(s.authMagicLinks.purpose, "recovery"), isNull(s.authMagicLinks.usedAt), gt(s.authMagicLinks.expiresAt, expiry))).returning();
     if (!link?.emailEncrypted || !link.emailLookupHash) throw new AppError("link_unavailable", 400);
     const [account] = await tx.insert(s.visitorAccounts).values({ emailEncrypted: link.emailEncrypted, emailLookupHash: link.emailLookupHash, emailVerifiedAt: now }).onConflictDoUpdate({ target: s.visitorAccounts.emailLookupHash, set: { emailVerifiedAt: now } }).returning();
@@ -74,10 +77,12 @@ export async function verifyLink(db: Database, token: string, visitorToken?: str
     await tx.update(s.authMagicLinks).set({ userId: account.id }).where(eq(s.authMagicLinks.id, link.id));
     if (link.marketingRequested && process.env.FEATURE_ENABLE_MARKETING === "true") {
       await grantConsent(tx, session, { purpose: "marketing_email", noticeVersion, locale: link.locale }, "verified_recovery_separate_checkbox");
-      await requestMarketingConfirmation(tx, session);
+      confirmationId = await requestMarketingConfirmation(tx, session);
     }
     return { token: created.token, session };
   });
+  await dispatchImmediate(db, [confirmationId]);
+  return result;
 }
 export async function requireOwner(db: Database, session: Session) {
   if (!session.ownerUserId) throw new AppError("verified_account_required", 401);
@@ -91,7 +96,7 @@ export async function requestMarketingConfirmation(db: Database, session: Sessio
   const token = newToken();
   const [link] = await db.insert(s.authMagicLinks).values({ userId: account.id, purpose: "marketing_opt_in", locale: session.locale, tokenHash: hashToken(token), expiresAt: new Date(Date.now() + 900_000) }).returning();
   await db.insert(s.emailSubscriptions).values({ visitorId: account.id, addressRef: account.id, purpose: "marketing_email", status: "pending", locale: session.locale, frequency: "monthly" }).onConflictDoUpdate({ target: [s.emailSubscriptions.visitorId, s.emailSubscriptions.purpose], set: { status: "pending", doubleOptInAt: null } });
-  await enqueueEmail(db, { template: "marketing_confirmation", category: "confirmation", locale: session.locale as Locale, visitorId: account.id, to: decrypt(account.emailEncrypted!), idempotencyKey: `doi:${link.id}`, data: { url: `${baseUrl()}/email/confirm?token=${token}` } });
+  return enqueueEmail(db, { template: "marketing_confirmation", category: "confirmation", locale: session.locale as Locale, visitorId: account.id, to: decrypt(account.emailEncrypted!), idempotencyKey: `doi:${link.id}`, data: { url: `${baseUrl()}/email/confirm?token=${token}` } });
 }
 export async function confirmMarketing(db: Database, token: string) {
   if (process.env.FEATURE_ENABLE_MARKETING !== "true") throw new AppError("marketing_disabled", 403);

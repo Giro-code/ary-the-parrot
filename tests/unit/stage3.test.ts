@@ -191,7 +191,7 @@ test("privacy export and delete are authenticated, owner scoped, cancel links an
   expect((await db().select().from(s.deletionJobs)).some(row => row.status === "completed" && !row.subjectId)).toBe(true);
 });
 test("B2B inquiry is idempotent, encrypted, audited, honeypot guarded and never creates visitor data", async () => {
-  const data = inquirySchema.parse({ name: "Synthetic Applicant", org: "Test Hotel", email: email(), place: "Hotel", message: "Synthetic commercial inquiry only.", locale: "es", consentVersion: noticeVersion });
+  const data = inquirySchema.parse({ treatmentConsent: true, name: "Synthetic Applicant", org: "Test Hotel", email: email(), place: "Hotel", message: "Synthetic commercial inquiry only.", locale: "es", consentVersion: noticeVersion });
   const before = (await db().select().from(s.visitorAccounts)).length, key = randomUUID();
   const a = await createInquiry(db(), data, key, hashToken(randomUUID())), b = await createInquiry(db(), data, key, hashToken(randomUUID()));
   expect(a).toEqual(b); expect(a.reference).toMatch(/^ARY-\d{4}-[A-F0-9]{8}$/); expect(a.storageMode).toBe("local_test");
@@ -222,7 +222,7 @@ test("revoking storage prevents new persistent saves, and revoking marketing pre
 });
 test("deleting a visitor leaves separate business inquiries untouched", async () => {
   const account = await recover(), reference = randomUUID();
-  await createInquiry(db(), inquirySchema.parse({ name: "Separate applicant", org: "Hotel", email: account.address, place: "Hotel", message: "Separate purpose and separate records.", locale: "en", consentVersion: noticeVersion }), reference, hashToken(randomUUID()));
+  await createInquiry(db(), inquirySchema.parse({ treatmentConsent: true, name: "Separate applicant", org: "Hotel", email: account.address, place: "Hotel", message: "Separate purpose and separate records.", locale: "en", consentVersion: noticeVersion }), reference, hashToken(randomUUID()));
   await deletePrivateData(db(), account.session);
   expect((await db().execute(sql`select count(*)::int as count from commercial_inquiries where idempotency_key = ${reference}`)).rows[0].count).toBe(1);
 });
@@ -244,14 +244,14 @@ test("revoking recovery invalidates outstanding access tokens; a later explicit 
   const newAccount = await recover(account.address); expect(newAccount.session.ownerUserId).toBe(account.session.ownerUserId);
 });
 test("commercial rate limit applies even when bots change their idempotency keys", async () => {
-  const client = hashToken(randomUUID()), data = inquirySchema.parse({ name: "Synthetic", org: "Hotel", email: email(), place: "Hotel", message: "Rate limit synthetic request.", locale: "en", consentVersion: noticeVersion });
+  const client = hashToken(randomUUID()), data = inquirySchema.parse({ treatmentConsent: true, name: "Synthetic", org: "Hotel", email: email(), place: "Hotel", message: "Rate limit synthetic request.", locale: "en", consentVersion: noticeVersion });
   for (let i = 0; i < 5; i++) await createInquiry(db(), data, randomUUID(), client);
   await expect(createInquiry(db(), data, randomUUID(), client)).rejects.toMatchObject({ status: 429 });
 });
 test("retention cleanup purges inactive accounts and aged email/B2B data", async () => {
   const account = await recover(), old = new Date(Date.now() - 366 * 86400_000), key = randomUUID();
   await db().update(s.visitorAccounts).set({ lastActiveAt: old }).where(eq(s.visitorAccounts.id, account.session.ownerUserId!));
-  await createInquiry(db(), inquirySchema.parse({ name: "Expired inquiry", org: "Hotel", email: email(), place: "Hotel", message: "Synthetic retention test only.", locale: "es", consentVersion: noticeVersion }), key, hashToken(randomUUID()));
+  await createInquiry(db(), inquirySchema.parse({ treatmentConsent: true, name: "Expired inquiry", org: "Hotel", email: email(), place: "Hotel", message: "Synthetic retention test only.", locale: "es", consentVersion: noticeVersion }), key, hashToken(randomUUID()));
   const [inquiry] = await db().update(s.commercialInquiries).set({ createdAt: old }).where(eq(s.commercialInquiries.idempotencyKey, key)).returning();
   await db().update(s.emailOutbox).set({ createdAt: old }).where(eq(s.emailOutbox.inquiryId, inquiry.id));
   await cleanupDatabase(db());
