@@ -107,6 +107,41 @@ Verificación real:
   Incluye tests de Python con `unittest` para la firma y la cola.
 - Muestra el estado del robot en el kiosco: «Simulador · gesto: saludar». Nunca «robot conectado» sin eventos reales autenticados recientes.
 
+### 3b. Puente local de baja latencia (decisión del revisor; tiene prioridad sobre el polling para gestos)
+
+Las reacciones físicas (girar la cabeza al detectar presencia, mover el pico mientras habla, gestos por estado) **no deben depender de un viaje de ida y vuelta a Vercel**: añadiría 1–2 s de latencia y fallaría sin internet. El kiosco corre en Chromium **en la misma Pi**, así que:
+
+- **Servicio `pi/bridge`.** En Python, con stdlib o `websockets`/`aiohttp` si hace falta, y documentado:
+  - Escucha **solo en `127.0.0.1:8765`**.
+  - Expone un WebSocket (o SSE + POST) con mensajes JSON:
+    - kiosco → puente: `{"type":"state","state":"thinking"}`, `{"type":"gesture","name":"wave"}`.
+    - puente → kiosco: `{"type":"sensor","sensor":"presence","value":true}`, `{"type":"hardware","status":"ok|simulated|error"}`.
+- **Seguridad del puente:**
+  - Comprueba la cabecera `Origin`: solo el origen configurado (`APP_BASE_URL`) y localhost en dev.
+  - Exige un token local de sesión que el kiosco obtiene de `GET /api/kiosk/bridge-token`. Este endpoint requiere la cookie `ary_kiosk` y devuelve un token corto firmado con HMAC, que el puente verifica con un secreto compartido configurado en la Pi.
+  - **Allowlist de gestos por estado**, rate limit de comandos y descarte de cualquier ángulo crudo. El kiosco nunca envía grados, solo nombres de gesto.
+- **Hacia el Arduino/ESP32**, por serie: `GESTURE <name>\n` / `STATE <state>\n` con `ACK`. Si no hay ACK, el puente marca `error` y no reintenta en bucle.
+  - Sensor → puente: `SENSOR presence 1`.
+  - `--simulate` sin hardware imprime los gestos y permite inyectar eventos de sensor desde la consola, para la demo.
+- **Firmware de referencia** `pi/firmware/ary_servos/ary_servos.ino`, para Arduino o ESP32:
+  - 4 servos (cabeza pan/tilt, pico, alas) con **límites de ángulo fijados en el firmware**.
+  - Movimiento suavizado.
+  - **Watchdog**: sin mensajes en N segundos, vuelve a la posición de reposo y suelta el par si procede.
+  - Sensor de presencia (PIR o ultrasónico) con antirrebote.
+  - Los gestos se definen en el firmware, no en la web.
+  - Documenta que **no está probado en hardware real**.
+- **Kiosco (`src/components/kiosk.tsx`):**
+  - Mejora progresiva: si el puente responde, envía estados reales y gestos, y escucha la presencia. La presencia en `idle` muestra la bienvenida y Ary saluda. **No inicia sesión ni graba nada por sí misma.**
+  - Si el puente no está, todo funciona igual y el estado dice «Robot: no conectado» o «Simulador».
+- **Navegador del kiosco:**
+  - Añade `http://127.0.0.1:8765` / `ws://127.0.0.1:8765` a `connect-src` de la CSP **solo para la ruta `/kiosco`**.
+  - Documenta en `DEPLOY_VERCEL_AND_PI.md` cómo configurar Chromium en la Pi (políticas o flags) para permitir que el sitio HTTPS hable con el puente local (Private/Local Network Access) **solo para ese origen**.
+- **Vercel sigue recibiendo** `POST /api/robot/events` firmados (telemetría, salud, `lastSeenAt`). `GET /api/robot/commands` queda como canal secundario para mantenimiento, no para reacciones en tiempo real.
+- **Tests:**
+  - Python: Origin rechazado, token inválido o caducado, gesto fuera de la allowlist, rate limit, simulador.
+  - Vitest: `bridge-token` requiere la cookie del kiosco.
+  - Playwright: kiosco sin puente → «no conectado» y flujo intacto. Con un puente simulado (un WebSocket de prueba levantado en el test, si es viable), la presencia → bienvenida.
+
 ## Tests
 
 - **Vitest:**
