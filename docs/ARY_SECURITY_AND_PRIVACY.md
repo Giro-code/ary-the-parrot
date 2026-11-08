@@ -68,3 +68,13 @@ Robot cloud requiere HMAC-SHA256 sobre método/ruta/dispositivo/timestamp/nonce/
 Puente exclusivo de loopback, Host fijo, Origin restringido y bearer HMAC de 120 s emitido a una cookie de kiosco autorizada. Verifica audiencia, origen, dispositivo, caducidad y firma. Límites de comandos y campos estrictos bloquean ángulos. Las políticas de Chromium se acotan al origen y la CSP de loopback a /kiosco. Una credencial local es temporal y permanece en memoria/cabeceras. El firmware impone límites mecánicos, suavizado, ACK y watchdog. La configuración física continúa pendiente.
 
 La petición de recuperación conserva su respuesta uniforme, incluso si el proveedor falla. Las filas inmediatas se despachan tras commit por sus IDs y comparten bloqueo/idempotencia con el cron. B2B ahora exige treatmentConsent=true y el aviso vigente, además de su canal cifrado y separado.
+
+## Controles a?adidos en 4B
+
+Personal usa cookie ary_staff separada, HttpOnly/Strict, Secure en producci?n y TTL de ocho horas, con rotaci?n al canjear un enlace propio de quince minutos. Cada API/p?gina vuelve a validar roles/membres?a/organizaci?n activa. Partner filtra organizaci?n en SQL para lecturas, altas, cambios y bajas. No existe MFA nativo; TOTP/IdP requiere integraci?n futura.
+
+Leads: destinatario ?nico, correo verificado elegido expl?citamente, campos limitados, prueba versionada, payload cifrado, idempotencia y caducidad propuesta de treinta d?as. Revocaci?n espec?fica o global elimina el payload y bloquea nuevas lecturas por el join con consent_records. No se puede recuperar lo que un tercero ya haya visto. Nunca se comparte chat/perfil. El flag por defecto es false y no impide revocar datos previos.
+
+Fuente CMS: solo HTTPS sin credenciales ni puerto arbitrario, resoluci?n DNS p?blica completa, conexi?n fijada a direcci?n validada, timeout y sin redirecciones. Una URL disponible no valida contenido, licencia ni consejo factual. Anal?tica: sin texto/correo/perfil, supresi?n <10 y ratios protegidos; periodos solapados a?n permiten inferencias. Cron requiere CRON_SECRET. Revisar jur?dicamente retenci?n, finalidad/responsables, menores y transferencias antes de operar; no se afirma cumplimiento por un checkbox.
+
+Detalles, permisos y l?mites: [operador/proveedor](ARY_OPERATOR_AND_PARTNER.md) y [evidencia 4B](ARY_STAGE4B_REPORT.md).

@@ -1,0 +1,9 @@
+"use client";
+import { useCallback, useEffect, useState } from "react";
+import { api } from "./api";
+export function SharedRequests({ locale }: { locale: "es" | "en" }) {
+  const en = locale === "en", [rows, setRows] = useState<{ id: string; providerName: string; fields: string[]; revokedAt: string | null; expiresAt: string }[]>([]), [error, setError] = useState(false), [busy, setBusy] = useState(false);
+  const load = useCallback(() => api<{ leads: typeof rows }>("/api/visitor/leads").then(result => { setRows(result.leads); setError(false); }).catch(() => setError(true)), []);
+  useEffect(() => { void load(); }, [load]);
+  return <section><h2>{en ? "Shared requests" : "Solicitudes compartidas"}</h2><p>{en ? "Revoking blocks future access. Information already viewed or exported cannot be retrieved." : "Revocar bloquea próximos accesos. No podemos recuperar lo ya visto o exportado."}</p>{!rows.length && !error && <p>{en ? "No shared requests." : "No hay solicitudes compartidas."}</p>}{rows.map(row => <article className="staff-record" key={row.id}><h3>{row.providerName}</h3><p>{row.fields.join(", ")} · {new Date(row.expiresAt).toLocaleDateString(locale)} · {row.revokedAt ? (en ? "Revoked" : "Revocada") : (en ? "Authorized" : "Autorizada")}</p><button className="secondary" disabled={busy || !!row.revokedAt} onClick={() => { setBusy(true); void api(`/api/visitor/leads/${row.id}`, "DELETE", {}).then(load).catch(() => setError(true)).finally(() => setBusy(false)); }}>{en ? "Revoke request" : "Revocar solicitud"}</button></article>)}{error && <p role="alert">{en ? "Could not load or update requests." : "No se pudieron consultar o actualizar las solicitudes."} <button className="secondary" onClick={() => void load()}>{en ? "Retry" : "Reintentar"}</button></p>}</section>;
+}

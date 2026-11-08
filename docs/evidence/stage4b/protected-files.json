@@ -1,0 +1,52 @@
+[
+  {
+    "path": "legacy/LEEME.txt",
+    "sha256": "3e7d9857ad046d233367cfcea24936d253dc40afd421418808bde1e70ecc171c",
+    "matchesHeadBytes": true
+  },
+  {
+    "path": "legacy/SHA256SUMS",
+    "sha256": "2ec55748f3290ac0c3c01d0c8e002b62d0a5b03a0bcace3cad17297ffffa0a29",
+    "matchesHeadBytes": true
+  },
+  {
+    "path": "legacy/assets/ary-la-cotorra.png",
+    "sha256": "5b5f818854d287a91f7c07b75b316cb8d3a390ca5f57a79991a7499135800f0f",
+    "matchesHeadBytes": true
+  },
+  {
+    "path": "legacy/assets/don-rafael-prototipo.png",
+    "sha256": "95987f549661c71fadd5237ac9e7915ce98fbaa8d47f047c4b1f4cb411495b78",
+    "matchesHeadBytes": true
+  },
+  {
+    "path": "legacy/brochure.html",
+    "sha256": "2f1f3ce1fbbdba105f0e7d64587639c52dfbb4d70deac22f5f630e9092ee9827",
+    "matchesHeadBytes": true
+  },
+  {
+    "path": "legacy/index.html",
+    "sha256": "bb9c2eff952b53507e149c5cc205aa8ddcee1bcc2d3b8074fdd9f4c4b1224ea8",
+    "matchesHeadBytes": true
+  },
+  {
+    "path": "public/assets/ary-la-cotorra.png",
+    "sha256": "5b5f818854d287a91f7c07b75b316cb8d3a390ca5f57a79991a7499135800f0f",
+    "matchesHeadBytes": true
+  },
+  {
+    "path": "public/assets/don-rafael-prototipo.png",
+    "sha256": "95987f549661c71fadd5237ac9e7915ce98fbaa8d47f047c4b1f4cb411495b78",
+    "matchesHeadBytes": true
+  },
+  {
+    "path": "public/brochure.html",
+    "sha256": "2f1f3ce1fbbdba105f0e7d64587639c52dfbb4d70deac22f5f630e9092ee9827",
+    "matchesHeadBytes": true
+  },
+  {
+    "path": "public/index.html",
+    "sha256": "accb44fc09b227f84a1a50fe4b8663629b2e6d20a374e3eebf767d96140df579",
+    "matchesHeadBytes": true
+  }
+]

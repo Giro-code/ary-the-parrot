@@ -43,7 +43,7 @@ Para un teléfono físico, `APP_BASE_URL` debe ser una dirección accesible desd
 
 `npm run db:cleanup` elimina registros operativos caducados, tokens, ventanas de rate limit y eventos vencidos. Es una operación manual del operador: no existe cron desplegado. La interfaz distingue caducidad del acceso y borrado físico. Ejecutarlo con el servidor local detenido para PGlite.
 
-Migraciones: `0000_ary_core`, `0001_stage3_email_privacy` y `0002_stage4a_ai_robot`, con journal, snapshots y rollback de pruebas. Hay 29 tablas. La etapa 4A incorpora `ai_usage`, `robot_events` y `robot_commands`. `npm run db:generate` genera futuras migraciones. Los SQL de `drizzle/rollback/` son destructivos, exclusivos de BD vacías/de pruebas autorizadas, y no se ejecutan automáticamente. El rollback de etapa 3 se aplica antes del inicial.
+Migraciones: `0000_ary_core`, `0001_stage3_email_privacy`, `0002_stage4a_ai_robot` y `0003_stage4b_staff_leads`, con journal, snapshots y rollback de pruebas. Hay 31 tablas. La etapa 4A incorpora `ai_usage`, `robot_events` y `robot_commands`. `npm run db:generate` genera futuras migraciones. Los SQL de `drizzle/rollback/` son destructivos, exclusivos de BD vacías/de pruebas autorizadas, y no se ejecutan automáticamente. El rollback de etapa 3 se aplica antes del inicial.
 
 Correo/privacidad requieren `AUTH_SECRET` y `SESSION_ENCRYPTION_KEY` de alta entropía en producción (mínimo 32 caracteres cada uno); sin ellas, 503. `EMAIL_DRY_RUN=true` y la ausencia de remitente/clave seleccionan siempre el adaptador local. `RESEND_WEBHOOK_SECRET`, `ADMIN_NOTIFICATION_EMAIL` y los demás placeholders están en `.env.example`. No imprimir secretos. Las filas transaccionales se despachan tras el commit de su petición, con timeout HTTP de 10 s, bloqueo de fila e idempotencia. El cron diario de `vercel.json` queda para reintentos y operaciones diferidas, con descarte de enlaces caducados. Su operación real requiere configurar el despliegue.
 
@@ -82,3 +82,25 @@ python -m unittest
 ```
 
 Cierre actual en [ARY_STAGE4A_REPORT](docs/ARY_STAGE4A_REPORT.md). Los E2E están escritos. Build/dev/ejecución E2E se bloquean con `spawn EPERM`, y el host de navegador está inaccesible. Las dos pasadas visuales de etapa 4A y la regresión actual de 0 píxeles quedan pendientes. La evidencia histórica anterior se conserva por separado.
+
+## Etapa 4B ? operaci?n y proveedores
+
+Paneles `/admin` y `/partner`, acceso separado en `/admin/entrar`, RBAC por organizaci?n en SQL, anal?tica agregada/CSV con supresi?n <10, CMS y fuentes HTTPS protegidas contra SSRF, dispositivos, organizaciones/invitaciones, moderaci?n de ofertas, solicitudes B2B y seguimiento de borrado. No hay MFA nativo; se documenta la opci?n futura TOTP/IdP.
+
+```powershell
+npm run db:migrate
+npm run admin:create -- --email staff@example.invalid --org "Ary Admin" --role superadmin
+npm run demo:seed
+# Con el servidor detenido y la misma BD demo:
+npm run demo:reset
+```
+
+El bootstrap fuerza dry-run y no imprime credenciales. No hay usuario predeterminado. El seed crea solo identidades ficticias @example.invalid y 129 eventos sint?ticos, claramente DEMO. Para un recorrido completo, seguir [el guion de cinco minutos](docs/ARY_WRO_DEMO_SCRIPT.md), que incluye contenido cultural, activaci?n y perfiles de navegador.
+
+`FEATURE_ENABLE_PARTNER_SHARING=false` conserva ocultas las solicitudes. Con true, una oferta aprobada permite elegir proveedor/campos, confirmar y crear un lead cifrado, consentimiento y recibo transaccional. Revocar en `/cuenta/privacidad` bloquea accesos futuros; lo ya visto no se recupera. `PROVIDER_LEAD_RETENTION_DAYS=30` (m?ximo 90) es un plazo propuesto. Nunca se comparte chat o perfil completo.
+
+`FEATURE_ENABLE_MARKETING=false` no crea campa?as ni destinatarios. Activado, el panel muestra preview/recuento y exige confirmaci?n para encolar; solo DOI y consentimiento vigentes, sin supresi?n. No env?a desde la acci?n de crear campa?a. El dispatcher revalida y procesa diez filas por invocaci?n.
+
+Se a?ade `/api/internal/cleanup` a las 14 UTC diariamente; el dispatcher sigue a las 13 UTC. Ambos requieren `CRON_SECRET`; no se han desplegado. El l?mite diario de Hobby y sus l?mites de cantidad est?n documentados en [operaci?n](docs/ARY_OPERATOR_AND_PARTNER.md).
+
+[Arquitectura](docs/ARY_ARCHITECTURE.md), [permisos y operaci?n](docs/ARY_OPERATOR_AND_PARTNER.md), [diagrama WRO](docs/WRO_TECH_DIAGRAM.md), [hip?tesis B2B](docs/ARY_B2B_BUSINESS_MODEL.md), [tabla final](docs/FEATURE_MATRIX.md) e [informe de ejecuci?n](docs/ARY_STAGE4B_REPORT.md). La verificaci?n del revisor de 4A se conserva en su informe y no acredita las nuevas interfaces de 4B. Las dos pasadas visuales y E2E de 4B quedan pendientes del runtime fuera del sandbox; no se declara producci?n validada.

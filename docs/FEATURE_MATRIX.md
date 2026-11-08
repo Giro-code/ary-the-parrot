@@ -1,5 +1,29 @@
 # Funciones y evidencia
 
+## Etapa 4B · implementación local actual
+
+Sin commits, push, despliegue, correo real ni uso de Gemini. [Informe, comandos e inventario](ARY_STAGE4B_REPORT.md). Los resultados de revisión de etapas anteriores no verifican estas interfaces.
+
+| Función | Implementado | Probado | Requiere configuración | Evidencia |
+| --- | --- | --- | --- | --- |
+| Staff magic link, TTL 15 min, cookie Strict 8 h y rotación | Sí | PGlite/API: enumeración, uso único, caducidad, purpose y cookie | Bootstrap, claves privadas y remitente en producción | `tests/unit/stage4b.test.ts` |
+| Roles y aislamiento horizontal/vertical | Sí | APIs partner de lectura/escritura y escalada negativa | Membresías activas | `requireStaff`, SQL por organización, unitarias |
+| Auditoría de accesos y mutaciones administrativas | Sí | Escrituras verificadas en PostgreSQL local | Política operativa de conservación | `audit_logs`, prueba de dispositivos |
+| Analítica agregada, muestra, filtros y CSV | Sí | Umbral 0–9, ratio, periodos, kiosco, proveedor y CSV | Eventos reales solo tras operar | `analytics.ts`, unitarias; demo sintética |
+| Paneles y gráficos CSS con tabla alternativa | Sí | Compilación; aceptación visual pendiente | Runtime de navegador | E2E 4B escritos, dos pasadas pendientes |
+| Dispositivos, enlace de una visualización, rotar/revocar | Sí | API y no exposición de hashes | Kiosco/hardware para uso real | `stage4b.test.ts` |
+| CMS es/en, revisión, fuente, licencia, puentes, preview/QR | Sí | Transiciones, bloqueo sin fuente, DNS/HTTPS simulado | Verificación editorial y HTTP en red real | Unitarias CMS/SSRF; E2E con fuente sintética |
+| Organizaciones, invitaciones, roles y estado | Sí | RBAC e invitación transaccional en unitarias | Personal real y correo configurado | `staff.ts`, `stage4b-http.ts` |
+| Ofertas propias, moderación y Patrocinado | Sí | CRUD por tenant y nueva revisión al editar | Proveedor y oferta aprobados | Unitarias partner, E2E escrito |
+| Leads por destinatario y campos elegidos | Sí | Payload cifrado/allowlist, recibo inmediato, idempotencia, revocación y flag | Flag, cuenta verificada y revisión de privacidad | `leads.ts`, unitarias; Flujo D E2E escrito |
+| Campañas, preview, recuento, DOI, cola y confirmación | Sí | Flag false cero filas; consent/DOI/supresión y cola sin envío | Flag y suscriptores consentidos; dispatcher limitado a diez filas | Unitarias de campañas |
+| B2B y trabajos de borrado con permisos propios | Sí | Escalada/denegación API | Flujo B2B previo y gestión del responsable | Bandejas admin; unitarias |
+| Eventos mínimos y cleanup protegido diario | Sí | Allowlist, caducados y 401; migración repetida | CRON_SECRET y despliegue autorizado | `cleanup.ts`, dos cron diarios, pruebas locales |
+| Demo/reset y documentación WRO | Sí | Seed/reset aislado e idempotente, CLI | Solo datos ficticios; fuentes culturales en preparación | `demo.ts`, guion, diagramas y modelo B2B |
+| MFA nativo | No | No se afirma disponible | Integración futura TOTP/IdP | `ARY_OPERATOR_AND_PARTNER.md` |
+| Build completo, E2E ejecutados y 0 píxeles de esta etapa | Pendiente | Bloqueado por sandbox | Revisor con subprocesos/navegador | Informe 4B y logs exactos |
+| Neon, Resend, cron y Pi reales | No verificados aquí | No | Infraestructura/operación autorizadas | No hay afirmación de producción |
+
 ## Etapa 4A · estado actual
 
 Implementación local con pruebas mockeadas y PostgreSQL PGlite. [Informe y comandos](ARY_STAGE4A_REPORT.md). La evidencia histórica de las etapas anteriores no verifica los cambios de esta etapa.

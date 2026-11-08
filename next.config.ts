@@ -51,6 +51,12 @@ const config: NextConfig = {
         { key: "X-Robots-Tag", value: "noindex, nofollow" },
       ],
     }, {
+      source: "/admin/:path*",
+      headers: [{ key: "Referrer-Policy", value: "no-referrer" }, { key: "Cache-Control", value: "no-store, max-age=0" }, { key: "X-Robots-Tag", value: "noindex, nofollow" }],
+    }, {
+      source: "/partner/:path*",
+      headers: [{ key: "Referrer-Policy", value: "no-referrer" }, { key: "Cache-Control", value: "no-store, max-age=0" }, { key: "X-Robots-Tag", value: "noindex, nofollow" }],
+    }, {
       source: "/auth/:path*",
       headers: [{ key: "Referrer-Policy", value: "no-referrer" }, { key: "Cache-Control", value: "no-store, max-age=0" }, { key: "X-Robots-Tag", value: "noindex, nofollow" }],
     }, {

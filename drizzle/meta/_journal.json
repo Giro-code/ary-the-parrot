@@ -22,6 +22,13 @@
       "when": 1794108673148,
       "tag": "0002_stage4a_ai_robot",
       "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1794113176170,
+      "tag": "0003_stage4b_staff_leads",
+      "breakpoints": true
     }
   ]
 }

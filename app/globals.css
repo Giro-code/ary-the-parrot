@@ -122,6 +122,40 @@ body { margin: 0; }
 .privacy-panel details summary, .outbox-message summary { cursor: pointer; min-height: 48px; padding-block: 12px; }
 .privacy-panel .actions { margin-top: 16px; }
 .ary-app .danger { border-color: #9a3e28; color: #822e1c; margin-top: 16px; }
+.staff-layout { display: grid; grid-template-columns: 180px minmax(0, 1fr); gap: 28px; }
+.staff-layout > nav { display: flex; flex-direction: column; gap: 6px; padding-block: 36px; }
+.staff-layout > nav a { padding: 8px; min-height: 44px; }
+.staff-layout > nav a:hover { background: var(--line); }
+.staff-layout > nav a[aria-current="page"] { background: var(--line); font-weight: 700; border-left: 3px solid var(--green); }
+.staff-app h1 { font-family: inherit; font-size: 1.8rem; }
+.staff-app h2 { font-family: inherit; font-size: 1.2rem; font-weight: 600; }
+.staff-toolbar { display: flex; flex-wrap: wrap; align-items: end; gap: 12px; margin-block: 20px; }
+.staff-toolbar label { display: grid; gap: 6px; min-width: 140px; flex: 1; }
+.staff-form { display: grid; gap: 14px; max-width: 720px; margin-block: 24px; }
+.staff-form label { display: grid; gap: 6px; }
+.staff-form label.check-row { display: flex; }
+.staff-form input:not([type="checkbox"]), .staff-form textarea, .staff-toolbar input { width: 100%; min-width: 0; min-height: 44px; padding: 10px; font: inherit; color: var(--ink); border: 1px solid #687c6b; border-radius: 6px; background: var(--white); }
+.staff-form textarea { min-height: 96px; resize: vertical; }
+.staff-form fieldset { min-width: 0; border: 1px solid var(--line); }
+.staff-form input:focus-visible, .staff-form textarea:focus-visible, .staff-toolbar input:focus-visible, .table-scroll:focus-visible { outline: 2px solid var(--green); outline-offset: 3px; }
+.staff-record { border-top: 1px solid var(--line); padding-block: 20px; overflow-wrap: anywhere; }
+.staff-record h3 { margin-top: 0; }
+.staff-record dd { margin-left: 0; white-space: pre-wrap; }
+.staff-record dt { font-weight: 600; }
+.staff-record img { display: block; max-width: 100%; height: auto; }
+.table-scroll { overflow-x: auto; max-width: 100%; margin-block: 16px; }
+.table-scroll table { border-collapse: collapse; width: 100%; text-align: left; font-size: .9rem; }
+.table-scroll th, .table-scroll td { padding: 12px; vertical-align: top; border-bottom: 1px solid var(--line); min-width: 90px; max-width: 320px; overflow-wrap: anywhere; }
+.table-scroll thead { background: var(--line); }
+.table-scroll tbody tr:hover { background: var(--white); }
+.aggregate-chart { margin-block: 20px; }
+.chart-row { display: grid; grid-template-columns: minmax(100px, 1fr) 2fr 48px; gap: 12px; align-items: center; margin-block: 8px; font-size: .9rem; }
+.chart-track { background: var(--line); height: 12px; }
+.chart-track > span { display: block; height: 100%; background: var(--green); }
+.provider-offers { border-top: 1px solid var(--line); margin-block: 28px; padding-block: 16px; }
+.preserve-lines { white-space: pre-wrap; }
+@media (max-width: 820px) { .staff-layout { grid-template-columns: minmax(0, 1fr); gap: 0; } .staff-layout > nav { flex-direction: row; flex-wrap: wrap; padding-block: 16px; border-bottom: 1px solid var(--line); } }
+@media (max-width: 420px) { .staff-toolbar { align-items: stretch; flex-direction: column; } .staff-toolbar > button, .staff-toolbar > a { width: 100%; } .chart-row { gap: 6px; grid-template-columns: minmax(80px, 1fr) 1fr 40px; } }
 .outbox-message { border-top: 1px solid var(--line); padding-block: 24px; overflow-wrap: anywhere; }
 .outbox-message pre { white-space: pre-wrap; overflow-wrap: anywhere; font: inherit; max-width: 75ch; }
 .outbox-message iframe { width: 100%; height: 360px; border: 1px solid var(--line); background: white; }

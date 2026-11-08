@@ -1,0 +1,2 @@
+CUA getState failed before obtaining a browser: failed to write kernel assets: The system cannot find the path specified. (os error 3)
+No visual passes performed. No screenshots reviewed.

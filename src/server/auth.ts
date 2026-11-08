@@ -1,7 +1,7 @@
 import { and, eq, gt, isNull, sql } from "drizzle-orm";
 import type { Database } from "../db/client.ts";
 import * as s from "../db/schema.ts";
-import { createSession, getSession, rateLimit, type Session } from "./service.ts";
+import { createSession, getSession, recordEvent, rateLimit, type Session } from "./service.ts";
 import { decrypt, emailHash, encrypt, normalizeEmail, requirePrivacyKeys } from "./crypto.ts";
 import { hashToken, newToken } from "./tokens.ts";
 import { AppError } from "./errors.ts";
@@ -72,13 +72,14 @@ export async function verifyLink(db: Database, token: string, visitorToken?: str
     await tx.delete(s.visitorPreferences).where(eq(s.visitorPreferences.visitorId, account.id));
     await tx.insert(s.visitorPreferences).values({ visitorId: account.id, locale: preferences.locale, countryDeclared: preferences.countryDeclared, interests: preferences.interests });
     const created = await createSession(tx, preferences.locale as Locale);
-    const [session] = await tx.update(s.visitorSessions).set({ ownerUserId: account.id, retentionClass: "verified_optional", locale: preferences.locale, countryDeclared: preferences.countryDeclared, interests: preferences.interests }).where(eq(s.visitorSessions.id, created.session.id)).returning();
+    const [session] = await tx.update(s.visitorSessions).set({ ownerUserId: account.id, retentionClass: "verified_optional", locale: preferences.locale, countryDeclared: preferences.countryDeclared, interests: preferences.interests, originKioskId: current?.originKioskId || source?.originKioskId }).where(eq(s.visitorSessions.id, created.session.id)).returning();
     for (const purpose of ["service_storage", "transactional_recovery"] as const) await grantConsent(tx, session, { purpose, noticeVersion, locale: link.locale }, "verified_recovery");
     await tx.update(s.authMagicLinks).set({ userId: account.id }).where(eq(s.authMagicLinks.id, link.id));
     if (link.marketingRequested && process.env.FEATURE_ENABLE_MARKETING === "true") {
       await grantConsent(tx, session, { purpose: "marketing_email", noticeVersion, locale: link.locale }, "verified_recovery_separate_checkbox");
       confirmationId = await requestMarketingConfirmation(tx, session);
     }
+    await recordEvent(tx, "account_verified", {}, session);
     return { token: created.token, session };
   });
   await dispatchImmediate(db, [confirmationId]);

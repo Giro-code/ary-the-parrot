@@ -9,6 +9,7 @@ import { baseUrl } from "../../../src/server/config";
 import { AppError } from "../../../src/server/errors";
 import { interests } from "../../../src/i18n";
 import { stage3Http } from "../../../src/server/stage3-http";
+import { stage4bHttp } from "../../../src/server/stage4b-http";
 import { chat, chatHistory, chatInputSchema } from "../../../src/server/ai/chat";
 
 export const runtime = "nodejs";
@@ -23,6 +24,7 @@ async function handle(request: NextRequest) {
     if (method !== "GET") await service.rateLimit(db, clientHash(`mutate:${request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "local"}`), 90);
     const visitorToken = request.cookies.get("ary_sid")?.value;
     const deviceToken = request.cookies.get("ary_kiosk")?.value;
+    const stage4b = await stage4bHttp(request, db); if (stage4b) return stage4b;
     const stage3 = await stage3Http(request, db); if (stage3) return stage3;
     if (path === "/api/kiosk/activate" && method === "POST") {
       const { code } = await body(request, z.object({ code: tokenSchema }).strict());

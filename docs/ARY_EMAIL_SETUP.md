@@ -60,3 +60,11 @@ Configurar `/api/email/webhook` con `email.delivered`, `email.bounced`, `email.c
 5. Ejecutar unitarias y E2E. Las pruebas Resend/Svix usan respuestas y firmas locales; nunca envían correo real.
 
 Referencias primarias consultadas: [Resend HTTP send](https://resend.com/docs/api-reference/emails/send-email), [idempotencia](https://resend.com/docs/dashboard/emails/idempotency-keys), [verificación de webhooks](https://resend.com/docs/webhooks/verify-webhooks-requests), [Svix manual](https://docs.svix.com/receiving/verifying-payloads/how-manual), [Vercel Cron](https://vercel.com/docs/schedules/cron-jobs/manage-cron-jobs).
+
+## Personal, recibos y campa?as (4B)
+
+Plantilla staff_login ES/EN: enlace propio a /admin/entrar, quince minutos y un uso. Las invitaciones se confirman con la misma pantalla. Plantilla provider_receipt (plantilla 6): proveedor y nombres de campos, sin valores privados ni chat. Ambas se despachan despu?s de commit, inmediatamente por ID; dry-run no env?a. El bootstrap CLI siempre fuerza dry-run y no imprime enlaces ni secretos.
+
+Campa?as: flag false por defecto, preview y recuento sin lista de direcciones, confirmaci?n e ID de idempotencia. Encola sin despachar incluso en dry-run. Exige suscripci?n activa, DOI, consentimiento, correo verificado, frecuencia y ausencia de supresi?n; el dispatcher vuelve a comprobarlo. Diez filas por invocaci?n: una campa?a mayor no queda entregada con un solo cron. Revocaci?n, baja y supresi?n bloquean env?os futuros.
+
+Dos cron diarios: email-dispatch a las 13 UTC y cleanup a las 14 UTC, ambos con CRON_SECRET. No fueron desplegados ni enviados correos reales en esta etapa. Configuraci?n/verificaci?n de dominio, SPF/DKIM/DMARC, procesadores y plan real siguen siendo previas a la operaci?n. [Gu?a de personal y proveedores](ARY_OPERATOR_AND_PARTNER.md).

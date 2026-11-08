@@ -5,7 +5,7 @@ const id = () => uuid("id").primaryKey().defaultRandom();
 const created = () => timestamp("created_at", { withTimezone: true }).notNull().defaultNow();
 const date = (name: string) => timestamp(name, { withTimezone: true });
 export const organizations = pgTable("organizations", {
-  id: id(), name: text().notNull(), kind: text().notNull(), status: text().notNull().default("active"), createdAt: created(),
+  id: id(), name: text().notNull(), kind: text().notNull(), status: text().notNull().default("active"), createdAt: created(), demo: boolean().notNull().default(false),
 });
 export const visitorAccounts = pgTable("visitor_accounts", {
   id: id(), emailEncrypted: text("email_encrypted"), emailLookupHash: text("email_lookup_hash").unique(),
@@ -27,6 +27,7 @@ export const kioskDevices = pgTable("kiosk_devices", {
 export const visitorSessions = pgTable("visitor_sessions", {
   id: id(), tokenHash: text("token_hash").notNull().unique(),
   kioskDeviceId: uuid("kiosk_device_id").references(() => kioskDevices.id, { onDelete: "set null" }),
+  originKioskId: uuid("origin_kiosk_id").references(() => kioskDevices.id, { onDelete: "set null" }),
   locale: text().notNull().default("es"), countryDeclared: text("country_declared"), interests: jsonb().$type<string[]>().notNull().default([]),
   status: text().notNull().default("active"), createdAt: created(), expiresAt: date("expires_at").notNull(),
   lastActiveAt: date("last_active_at").notNull().defaultNow(),
@@ -84,6 +85,7 @@ export const authMagicLinks = pgTable("auth_magic_links", {
   emailEncrypted: text("email_encrypted"), emailLookupHash: text("email_lookup_hash"),
   sourceSessionId: uuid("source_session_id").references(() => visitorSessions.id, { onDelete: "cascade" }),
   locale: text().notNull().default("es"), marketingRequested: boolean("marketing_requested").notNull().default(false),
+  organizationId: uuid("organization_id").references(() => organizations.id, { onDelete: "cascade" }),
 }, t => [index("magic_expiry").on(t.expiresAt)]);
 export const consentRecords = pgTable("consent_records", {
   id: id(), visitorId: uuid("visitor_id").references(() => visitorAccounts.id, { onDelete: "cascade" }), sessionId: uuid("session_id").references(() => visitorSessions.id, { onDelete: "cascade" }),
@@ -97,11 +99,13 @@ export const analyticsEvents = pgTable("analytics_events", {
   id: id(), createdAt: created(), organizationId: uuid("organization_id").references(() => organizations.id, { onDelete: "set null" }),
   aggregationKey: text("aggregation_key"), eventType: text("event_type").notNull(), culturalItemId: uuid("cultural_item_id").references(() => culturalItems.id, { onDelete: "set null" }),
   providerId: uuid("provider_id").references(() => providers.id, { onDelete: "set null" }), metadata: jsonb().$type<Record<string, unknown>>().notNull().default({}),
+  kioskDeviceId: uuid("kiosk_device_id").references(() => kioskDevices.id, { onDelete: "set null" }),
 }, t => [index("analytics_org_date").on(t.organizationId, t.createdAt), index("analytics_event_date").on(t.eventType, t.createdAt)]);
 export const providerLeads = pgTable("provider_leads", {
   id: id(), providerId: uuid("provider_id").notNull().references(() => providers.id, { onDelete: "cascade" }), visitorId: uuid("visitor_id").notNull().references(() => visitorAccounts.id, { onDelete: "cascade" }),
   userAuthorizedFields: jsonb("user_authorized_fields").notNull(), purpose: text().notNull(), consentRecordId: uuid("consent_record_id").notNull().references(() => consentRecords.id),
   status: text().notNull().default("pending"), createdAt: created(), expiresAt: date("expires_at").notNull(), auditReference: text("audit_reference"),
+  payloadEncrypted: text("payload_encrypted"), idempotencyKey: text("idempotency_key").unique(),
 }, t => [index("leads_provider").on(t.providerId)]);
 export const emailSubscriptions = pgTable("email_subscriptions", {
   id: id(), visitorId: uuid("visitor_id").notNull().references(() => visitorAccounts.id, { onDelete: "cascade" }), addressRef: text("address_ref").notNull(), purpose: text().notNull(), doubleOptInAt: date("double_opt_in_at"),
@@ -148,3 +152,11 @@ export const robotCommands = pgTable("robot_commands", {
   id: id(), deviceId: uuid("device_id").notNull().references(() => kioskDevices.id, { onDelete: "cascade" }),
   state: text().notNull(), gesture: text().notNull(), createdAt: created(), deliveredAt: date("delivered_at"), expiresAt: date("expires_at").notNull(),
 }, t => [index("robot_commands_device").on(t.deviceId), check("maintenance_only", sql`${t.state} = 'maintenance' and ${t.gesture} in ('rest','stop')`)]);
+export const staffSessions = pgTable("staff_sessions", {
+  id: id(), userId: uuid("user_id").notNull().references(() => visitorAccounts.id, { onDelete: "cascade" }),
+  tokenHash: text("token_hash").notNull().unique(), createdAt: created(), expiresAt: date("expires_at").notNull(),
+}, t => [index("staff_session_expiry").on(t.expiresAt)]);
+export const campaigns = pgTable("campaigns", {
+  id: id(), subject: text().notNull(), message: text().notNull(), status: text().notNull().default("queued"),
+  createdAt: created(), createdBy: uuid("created_by").references(() => visitorAccounts.id, { onDelete: "set null" }),
+});

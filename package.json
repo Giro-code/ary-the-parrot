@@ -16,7 +16,10 @@
     "db:seed": "node scripts/database.ts seed",
     "kiosk:enroll": "node scripts/database.ts enroll",
     "db:cleanup": "node scripts/database.ts cleanup",
-    "check:kiosk-budget": "node scripts/kiosk-budget.mjs"
+    "check:kiosk-budget": "node scripts/kiosk-budget.mjs",
+    "admin:create": "node scripts/admin-demo.ts admin:create",
+    "demo:seed": "node scripts/admin-demo.ts demo:seed",
+    "demo:reset": "node scripts/admin-demo.ts demo:reset"
   },
   "dependencies": {
     "@electric-sql/pglite": "^0.5.15",

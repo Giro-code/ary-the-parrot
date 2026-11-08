@@ -10,12 +10,13 @@ import { hasConsent } from "./consents.ts";
 export type Session = typeof s.visitorSessions.$inferSelect;
 export type CulturalItem = typeof s.culturalItems.$inferSelect;
 export type Preferences = { locale: Locale; countryDeclared: string | null; interests: Interest[] };
-type Event = "session_started" | "preferences_set" | "recommendation_shown" | "qr_generated" | "qr_redeemed" | "qr_expired" | "item_saved";
+type Event = "session_started" | "preferences_set" | "recommendation_shown" | "qr_generated" | "qr_redeemed" | "qr_expired" | "item_saved" | "item_viewed" | "chat_asked" | "offer_viewed" | "offer_clicked" | "lead_shared" | "account_verified";
 const eventFields: Record<Event, string[]> = {
   session_started: ["locale"], preferences_set: ["interests"], recommendation_shown: ["count", "mode"],
   qr_generated: [], qr_redeemed: [], qr_expired: [], item_saved: ["state"],
+  item_viewed: [], chat_asked: [], offer_viewed: [], offer_clicked: [], lead_shared: [], account_verified: [],
 };
-export async function recordEvent(db: Database, eventType: Event, metadata: Record<string, unknown> = {}) {
+export async function recordEvent(db: Database, eventType: Event, metadata: Record<string, unknown> = {}, session?: Session, refs?: { providerId?: string; culturalItemId?: string }) {
   const safe = Object.fromEntries(Object.entries(metadata).filter(([key, value]) => {
     if (!eventFields[eventType].includes(key)) return false;
     if (key === "interests") return Array.isArray(value) && value.length <= 6 && value.every(item => interestKeys.includes(item));
@@ -24,7 +25,9 @@ export async function recordEvent(db: Database, eventType: Event, metadata: Reco
     if (key === "mode") return value === "rules";
     return key === "state" && ["saved", "visited", "removed"].includes(String(value));
   }));
-  await db.insert(s.analyticsEvents).values({ eventType, metadata: safe });
+  const kioskId = session?.kioskDeviceId || session?.originKioskId;
+  const [device] = kioskId ? await db.select({ organizationId: s.kioskDevices.organizationId }).from(s.kioskDevices).where(eq(s.kioskDevices.id, kioskId)) : [];
+  await db.insert(s.analyticsEvents).values({ eventType, metadata: safe, kioskDeviceId: kioskId, organizationId: device?.organizationId, providerId: refs?.providerId, culturalItemId: refs?.culturalItemId });
 }
 export async function rateLimit(db: Database, keyHash: string, limit: number, now = new Date(), windowMs = 60_000) {
   const [row] = await db.insert(s.rateLimits).values({ keyHash, count: 1, resetAt: new Date(+now + windowMs) })
@@ -47,7 +50,7 @@ export function publicSession(session: Session) {
 export async function createSession(db: Database, locale: Locale = "es", kioskDeviceId: string | null = null, now = new Date()) {
   const token = newToken();
   const [session] = await db.insert(s.visitorSessions).values({ tokenHash: hashToken(token), locale, kioskDeviceId, expiresAt: new Date(+now + sessionTtl()) }).returning();
-  await recordEvent(db, "session_started", { locale });
+  await recordEvent(db, "session_started", { locale }, session);
   return { token, session };
 }
 async function clearOperational(db: Database, sessionId: string, status: string, now = new Date()) {
@@ -77,7 +80,7 @@ export async function setPreferences(db: Database, session: Session, prefs: Pref
       await tx.delete(s.visitorPreferences).where(eq(s.visitorPreferences.visitorId, session.ownerUserId));
       await tx.insert(s.visitorPreferences).values({ visitorId: session.ownerUserId, ...prefs, updatedAt: now });
     }
-    await recordEvent(tx, "preferences_set", { interests: prefs.interests });
+    await recordEvent(tx, "preferences_set", { interests: prefs.interests }, session);
   });
 }
 export async function kioskDevice(db: Database, token: string | undefined, now = new Date()) {
@@ -112,7 +115,7 @@ export async function createHandoff(db: Database, session: Session, deviceId: st
     if (!locked) throw new AppError("session_required", 401);
     await tx.update(s.qrHandoffs).set({ invalidatedAt: now, status: "cancelled" }).where(and(eq(s.qrHandoffs.sourceSessionId, session.id), isNull(s.qrHandoffs.usedAt), isNull(s.qrHandoffs.invalidatedAt)));
     const [created] = await tx.insert(s.qrHandoffs).values({ sourceSessionId: session.id, tokenHash: hashToken(token), confirmationCode: code, expiresAt }).returning();
-    await recordEvent(tx, "qr_generated");
+    await recordEvent(tx, "qr_generated", {}, session);
     return created;
   });
   return { token, confirmationCode: code, expiresAt, handoffId: qr.id };
@@ -152,13 +155,13 @@ export async function redeemHandoff(db: Database, token: string, code: string, t
     if (!claimed) return { error: "handoff_unavailable" } as const;
     const mobile = await createSession(tx, source.locale as Locale, null, now);
     const prefs: Preferences = { locale: source.locale as Locale, countryDeclared: source.countryDeclared, interests: source.interests as Interest[] };
-    const [session] = await tx.update(s.visitorSessions).set(prefs).where(eq(s.visitorSessions.id, mobile.session.id)).returning();
+    const [session] = await tx.update(s.visitorSessions).set({ ...prefs, originKioskId: source.kioskDeviceId || source.originKioskId }).where(eq(s.visitorSessions.id, mobile.session.id)).returning();
     await tx.insert(s.visitorPreferences).values({ sessionId: session.id, ...prefs });
     const saved = await tx.select().from(s.savedExperiences).where(eq(s.savedExperiences.sessionId, source.id));
     if (saved.length) await tx.insert(s.savedExperiences).values(saved.map(item => ({ sessionId: session.id, itemId: item.itemId, state: item.state, favorite: item.favorite, notes: item.notes })));
     await tx.update(s.qrHandoffs).set({ consumedBySessionId: session.id }).where(eq(s.qrHandoffs.id, claimed.id));
     await clearOperational(tx, source.id, "transferred", now);
-    await recordEvent(tx, "qr_redeemed");
+    await recordEvent(tx, "qr_redeemed", {}, source);
     return { token: mobile.token, session };
   });
   if ("error" in result) throw new AppError(result.error!, result.error === "handoff_expired" ? 410 : 400);
@@ -189,7 +192,7 @@ export async function recommend(db: Database, session: Session) {
   if (!active) throw new AppError("session_required", 401);
   const ranked = rankItems(await listItems(tx, active.locale as Locale, 0, 100), { locale: active.locale as Locale, interests: active.interests as Interest[] });
   if (ranked.length) await tx.insert(s.recommendations).values(ranked.map(row => ({ sessionId: session.id, culturalItemId: row.item.id, rationale: row.rationale, evidenceIds: row.evidenceIds })));
-  await recordEvent(tx, "recommendation_shown", { count: ranked.length, mode: "rules" });
+  await recordEvent(tx, "recommendation_shown", { count: ranked.length, mode: "rules" }, session);
   // Bridges supply sourced context only. They never affect scores.
   const bridges = active.countryDeclared && ranked.length ? await tx.select().from(s.culturalBridges).where(and(eq(s.culturalBridges.countryCode, active.countryDeclared), inArray(s.culturalBridges.culturalItemId, ranked.map(r => r.item.id)))) : [];
   return { mode: "rules" as const, demo: true, recommendations: ranked, bridges };
@@ -209,7 +212,7 @@ export async function saveItem(db: Database, sessionId: string, itemId: string) 
     const owner = session.ownerUserId ? { visitorId: session.ownerUserId } : { sessionId };
     const target = session.ownerUserId ? [s.savedExperiences.visitorId, s.savedExperiences.itemId] : [s.savedExperiences.sessionId, s.savedExperiences.itemId];
     const [row] = await tx.insert(s.savedExperiences).values({ ...owner, itemId }).onConflictDoUpdate({ target, set: { state: "saved" } }).returning();
-    await recordEvent(tx, "item_saved", { state: "saved" });
+    await recordEvent(tx, "item_saved", { state: "saved" }, session, { culturalItemId: itemId });
     return row;
   });
 }

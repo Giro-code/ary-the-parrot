@@ -2,7 +2,7 @@ import { and, desc, eq, gt } from "drizzle-orm";
 import { z } from "zod";
 import type { Database } from "../../db/client.ts";
 import * as s from "../../db/schema.ts";
-import { getSession, rateLimit, type CulturalItem, type Session } from "../service.ts";
+import { getSession, recordEvent, rateLimit, type CulturalItem, type Session } from "../service.ts";
 import { encrypt, decrypt } from "../crypto.ts";
 import { hashToken } from "../tokens.ts";
 import { numericEnv } from "../config.ts";
@@ -53,6 +53,7 @@ export async function chat(db: Database, token: string | undefined, raw: unknown
   await rateLimit(db, hashToken(`chat-total:${session.id}`), 20, now, +session.expiresAt - +now);
   await rateLimit(db, hashToken(`chat-minute:${session.id}`), numericEnv("AI_SESSION_PER_MINUTE", 6, 20), now);
   await rateLimit(db, hashToken("chat-global-minute"), numericEnv("AI_GLOBAL_PER_MINUTE", 30, 120), now);
+  await recordEvent(db, "chat_asked", {}, session);
   const intent = classifyIntent(message), locale = session.locale as Locale;
   const started = Date.now();
   let mode: ChatMode = "demo", model = "template", inputTokens = 0, outputTokens = 0, errorCode: string | null = null;

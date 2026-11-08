@@ -5,6 +5,7 @@ process.env.PLAYWRIGHT_BROWSERS_PATH ??= resolve(".cache/playwright");
 
 export default defineConfig({
   testDir: "./tests/e2e",
+  globalSetup: "./tests/e2e/warmup.ts",
   fullyParallel: true,
   workers: 4,
   timeout: 30_000,
@@ -17,6 +18,7 @@ export default defineConfig({
     { name: "stage2", testMatch: "stage2.spec.ts", fullyParallel: false, use: { baseURL: "http://127.0.0.1:3002" } },
     { name: "stage3", testMatch: "stage3.spec.ts", fullyParallel: false, use: { baseURL: "http://127.0.0.1:3002" } },
     { name: "stage4a", testMatch: "stage4a.spec.ts", fullyParallel: false, use: { baseURL: "http://127.0.0.1:3002" } },
+    { name: "stage4b", testMatch: "stage4b.spec.ts", fullyParallel: false, use: { baseURL: "http://127.0.0.1:3002" } },
   ],
   webServer: [
     {

@@ -81,10 +81,10 @@ Estado de etapa 3 y límites: [ARY_STAGE3_REPORT](ARY_STAGE3_REPORT.md). No se e
 
 ### 4 · Operación
 
-- [ ] Admin, CMS, tenants y autorización.
-- [ ] Partner y analítica agregada con aislamiento.
-- [ ] Adaptador de robot y simulador identificado.
-- [ ] Documentación operativa, privacidad y demo WRO.
+- [x] Admin, CMS, tenants y autorización (4B, pruebas locales).
+- [x] Partner y analítica agregada con aislamiento (4B, pruebas locales).
+- [x] Adaptador de robot y simulador identificado (4A; hardware pendiente).
+- [x] Documentación operativa, privacidad y demo WRO (4B).
 
 La etapa 1 se limita a la orden de `docs/codex/STAGE1.md`. Gemini es el proveedor de IA elegido por el usuario (clave en `.env.local`, nunca en el repo); se integra en una etapa posterior con modo demo de respaldo.
 
@@ -136,3 +136,22 @@ Fuentes, archivos, comandos y límites: `FEATURE_MATRIX.md`. Seguridad: `ARY_QR_
 - [ ] Conservación/transferencia de chat entre sesiones con autorización específica, voz y micrófono.
 
 Los puntos pendientes son límites de verificación o trabajo posterior. Admin/CMS/partner continúan en etapa 4B. [Evidencia y archivos](ARY_STAGE4A_REPORT.md).
+
+## Etapa 4B ? cierre de implementaci?n local
+
+- [x] Login/invitaci?n propios de staff, TTL, uso ?nico, cookie Strict y rotaci?n; bootstrap sin credenciales por defecto.
+- [x] Cinco roles, helper requireStaff en p?ginas/APIs, SQL por tenant, auditor?a y denegaciones horizontales/verticales.
+- [x] Anal?tica SQL, muestra, filtros, gr?ficos CSS/tabla alternativa y CSV con supresi?n.
+- [x] Dispositivos, CMS es/en/fuentes/puentes/preview/QR y organizaciones/membres?as.
+- [x] Campa?as con flag/DOI/supresi?n/confirmaci?n y solo cola; B2B y borrados con permisos propios.
+- [x] Ofertas propias pendientes de moderaci?n, etiqueta Patrocinado y m?tricas propias.
+- [x] Consentimiento por proveedor/campos, lead cifrado y con TTL, recibo inmediato y revocaci?n.
+- [x] Eventos m?nimos, atribuci?n a kiosco sin identidad en analytics y cron protegido de cleanup.
+- [x] Migraci?n 0003, rollback de pruebas, seed/reset aislados, comandos y documentos WRO.
+- [x] Unitarias de dominio/API y E2E escritos; comandos de aceptaci?n ejecutados o bloqueo exacto registrado.
+- [ ] Build completo y ejecuci?n E2E fuera de spawn EPERM.
+- [ ] Dos pasadas visuales reales con capturas miradas y regresi?n actual de 0 p?xeles.
+- [ ] Validaci?n remota Neon, correo/DNS, cron desplegado y hardware f?sico.
+- [ ] MFA nativo: no existe, opci?n futura documentada.
+
+[Resultados reales y archivos](ARY_STAGE4B_REPORT.md). Sin commit/push, mensajes reales ni uso de Gemini.

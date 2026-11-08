@@ -5,7 +5,8 @@ import { api, ApiError } from "./api";
 import type { Recommendations, Saved, Visitor } from "./types";
 import { ErrorNotice, PreferenceForm, RecommendationList, Shell, useLocale } from "./shared";
 import { AryChat } from "./ary-chat";
-export function Experience() {
+import { ProviderOffers } from "./provider-offers";
+export function Experience({ sharingEnabled = false }: { sharingEnabled?: boolean }) {
   const [locale, setLocale] = useLocale(), t = dictionaries[locale];
   const [visitor, setVisitor] = useState<Visitor | null>(null), [loading, setLoading] = useState(true), [editing, setEditing] = useState(false);
   const [country, setCountry] = useState<string | null>(null), [selected, setSelected] = useState<Interest[]>([]), [data, setData] = useState<Recommendations | null>(null), [savedIds, setSavedIds] = useState<string[]>([]);
@@ -30,6 +31,7 @@ export function Experience() {
       {editing ? <section><h2>{t.preferences}</h2><PreferenceForm locale={locale} country={country} selected={selected} onCountry={setCountry} onChange={setSelected} busy={busy} onSubmit={() => void run(async () => { const result = await api<{ session: Visitor }>("/api/visitor/preferences", "PATCH", { locale, countryDeclared: country, interests: selected }); restore(result.session); await refresh(); setEditing(false); })} /></section> : <button className="secondary" onClick={() => setEditing(true)}>{t.edit}</button>}
       {data && <section className="recommendations"><h2 className="section-title">{t.recommendations}</h2><RecommendationList data={data} locale={locale} busy={busy} savedIds={savedIds} onSave={id => void run(async () => { await api("/api/saved", "POST", { itemId: id }); setSavedIds(ids => [...ids, id]); })} /></section>}
       {data && <AryChat locale={locale} disabled={busy || editing} />}
+      {data && <ProviderOffers enabled={sharingEnabled} locale={locale} />}
       <aside className="email-cta"><a className="button secondary" href={`/reingresar?lang=${locale}`}>{t.emailCta}</a><p><a href="/cuenta/privacidad">{locale === "en" ? "Manage my data and consents" : "Gestionar mis datos y consentimientos"}</a></p></aside>
       <button className="secondary" disabled={busy} onClick={() => void run(async () => { await api("/api/visitor/session/end", "POST", {}); setVisitor(null); setData(null); setSelected([]); setCountry(null); setSavedIds([]); })}>{t.clearSession}</button>
     </>}

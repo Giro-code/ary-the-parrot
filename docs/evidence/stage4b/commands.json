@@ -1,0 +1,42 @@
+[
+  {
+    "command": "npm run lint",
+    "result": "PASS",
+    "exitCode": 0
+  },
+  {
+    "command": "npm run typecheck",
+    "result": "PASS after build and restoration of generated next-env",
+    "exitCode": 0
+  },
+  {
+    "command": "npm test",
+    "result": "PASS: 118 tests, 9 files",
+    "exitCode": 0
+  },
+  {
+    "command": "npm run build",
+    "result": "Compiled successfully in 5.1s; Running TypeScript: spawn EPERM",
+    "exitCode": 1
+  },
+  {
+    "command": "npm run test:e2e -- --list",
+    "result": "Discovery only: 95 tests, 5 files",
+    "exitCode": 0
+  },
+  {
+    "command": "npm run test:e2e -- --project=stage4b",
+    "result": "Blocked before execution: spawn EPERM",
+    "exitCode": 1
+  },
+  {
+    "command": "npm run dev",
+    "result": "Blocked: spawn EPERM, errno -4048, next-dev.js:393:45",
+    "exitCode": 1
+  },
+  {
+    "command": "db:migrate x2, demo:seed x2, admin:create, db:cleanup, demo:reset x2",
+    "result": "PASS in isolated .cache/stage4b-cli; see cli-readback.json",
+    "exitCode": 0
+  }
+]

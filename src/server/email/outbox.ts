@@ -15,7 +15,7 @@ export async function marketingAllowed(db: Database, visitorId: string | null, n
   const interval = sub.frequency === "weekly" ? 7 : 30;
   return !sub.lastSentAt || +sub.lastSentAt + interval * 86400_000 <= +now;
 }
-export async function enqueueEmail(db: Database, args: { template: Template; locale: Locale; to: string; idempotencyKey: string; visitorId?: string; inquiryId?: string; category?: Category; data?: TemplateData; scheduledAt?: Date }) {
+export async function enqueueEmail(db: Database, args: { template: Template; locale: Locale; to: string; idempotencyKey: string; visitorId?: string; inquiryId?: string; category?: Category; data?: TemplateData; scheduledAt?: Date; deferDelivery?: boolean }) {
   const category = args.category || "transactional", hash = emailHash(args.to);
   const [suppressed] = await db.select().from(s.emailSuppressions).where(eq(s.emailSuppressions.emailHash, hash));
   if (suppressed) return null;
@@ -30,7 +30,7 @@ export async function enqueueEmail(db: Database, args: { template: Template; loc
   const rendered = renderEmail(args.template, args.locale, data);
   const [row] = await db.insert(s.emailOutbox).values({ template: args.template, category, recipientRef: args.visitorId, inquiryId: args.inquiryId, recipientHash: hash, recipientEncrypted: encrypt(normalizeEmail(args.to)), renderedEncrypted: encrypt(JSON.stringify(rendered)), idempotencyKey: args.idempotencyKey, scheduledAt: args.scheduledAt || new Date(), deliveryState: "queued" }).onConflictDoNothing({ target: s.emailOutbox.idempotencyKey }).returning();
   // Demo messages become visible immediately, but ALWAYS pass through the same outbox and policy gate.
-  if (row && !immediateTemplates.includes(row.template) && isDryRun() && +row.scheduledAt <= Date.now()) await deliverRow(db, row, new DryRunEmailProvider(db));
+  if (row && !args.deferDelivery && !immediateTemplates.includes(row.template) && isDryRun() && +row.scheduledAt <= Date.now()) await deliverRow(db, row, new DryRunEmailProvider(db));
   return row?.id || null;
 }
 type Row = typeof s.emailOutbox.$inferSelect;
@@ -54,7 +54,7 @@ async function deliverRow(db: Database, row: Row, provider: EmailProvider) {
     await db.update(s.emailOutbox).set({ retries, lastError: error instanceof EmailDeliveryError ? error.safeCode : "delivery_error", deliveryState: terminal ? "failed" : "queued", scheduledAt: new Date(Date.now() + 30_000 * 2 ** retries) }).where(eq(s.emailOutbox.id, row.id));
   }
 }
-const immediateTemplates = ["recovery", "commercial_receipt", "commercial_admin", "marketing_confirmation"];
+const immediateTemplates = ["recovery", "commercial_receipt", "commercial_admin", "marketing_confirmation", "staff_login", "provider_receipt"];
 export async function dispatchEmails(db: Database, provider?: EmailProvider, ids?: string[]) {
   if (ids && !ids.length) return { processed: 0 };
   let processed = 0;
@@ -65,7 +65,7 @@ export async function dispatchEmails(db: Database, provider?: EmailProvider, ids
       const [row] = await tx.select().from(s.emailOutbox).where(and(eq(s.emailOutbox.deliveryState, "queued"), lte(s.emailOutbox.scheduledAt, new Date()), ids ? inArray(s.emailOutbox.id, ids) : undefined)).orderBy(s.emailOutbox.scheduledAt).limit(1).for("update", { skipLocked: true });
       if (!row) return false;
       // Recovery/DOI links must not be sent after their 15-minute lifetime.
-      if (["recovery", "marketing_confirmation"].includes(row.template) && +row.createdAt + 900_000 <= Date.now()) {
+      if (["recovery", "marketing_confirmation", "staff_login"].includes(row.template) && +row.createdAt + 900_000 <= Date.now()) {
         await tx.update(s.emailOutbox).set({ deliveryState: "failed", lastError: "link_expired", renderedEncrypted: null }).where(eq(s.emailOutbox.id, row.id));
       } else await deliverRow(tx, row, provider || (isDryRun() ? new DryRunEmailProvider(tx) : new ResendEmailProvider()));
       return true;

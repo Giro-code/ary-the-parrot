@@ -24,6 +24,11 @@ export async function grantConsent(db: Database, session: Session, data: { purpo
 export async function revokeConsent(db: Database, session: Session, purpose: Purpose) {
   await db.transaction(async tx => {
     const now = new Date();
+    if (session.ownerUserId && purpose === "provider_share") {
+      await tx.select().from(s.visitorAccounts).where(eq(s.visitorAccounts.id, session.ownerUserId)).for("update");
+      await tx.update(s.providerLeads).set({ payloadEncrypted: null, status: "revocado" }).where(eq(s.providerLeads.visitorId, session.ownerUserId));
+      await tx.insert(s.auditLogs).values({ action: "lead.revoke_all", targetType: "provider_lead", actor: session.ownerUserId });
+    }
     await tx.update(s.consentRecords).set({ revokedAt: now }).where(and(consentOwner(session), eq(s.consentRecords.purpose, purpose), isNull(s.consentRecords.revokedAt)));
     await tx.insert(s.consentRecords).values({ visitorId: session.ownerUserId, sessionId: session.id, purpose, granted: false, revokedAt: now, noticeVersion, locale: session.locale, source: "privacy_revoke", proof: { action: "explicit_revoke" } });
     if (session.ownerUserId && purpose === "marketing_email") {

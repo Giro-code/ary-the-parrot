@@ -51,3 +51,7 @@ Tamaños preparados: 360, 390, 820 y 1440 px; rendimiento de kiosco a 1280×800 
 El intento directo de lanzar el Chromium de Playwright encontró además el binario headless ausente bajo `.cache/playwright/` (`chromium_headless_shell-1254`). No se instaló un navegador ni se cambió `PLAYWRIGHT_BROWSERS_PATH` para eludir el entorno. El runner respeta un valor ya definido.
 
 Para cerrar: en un entorno con subprocesos y Chromium, ejecutar los cinco comandos de validación, recorrer todas las rutas/estados y mirar las capturas de la primera pasada; corregir defectos del alcance, recargar, realizar y documentar la segunda pasada. Si una corrección posterior afecta un estado, revisarlo de nuevo. Registrar geometría, jerarquía, texto, teclado/foco, interacción, overflow, carga/error y reduced-motion. Una prueba de escritorio con CPU 4× no acredita rendimiento de Raspberry Pi real.
+
+## Etapa 4B ? verificaci?n pendiente
+
+Las nuevas interfaces requieren sus propias dos pasadas. [Registro identificado](evidence/stage4b/visual-review.md): CUA falla al iniciar con error de assets del kernel (os error 3); next dev no puede lanzar subprocesos. E2E y capturas est?n preparados; no se generaron/miraron im?genes de esta etapa ni se afirma 0 p?xeles. El revisor debe ejecutar, inspeccionar, corregir y recargar antes de aceptar.
