@@ -1,5 +1,7 @@
 # Decisión de migración de Ary
 
+> Actualización de etapa 2: las referencias históricas a `experimental.workerThreads` y `experimental.useTypeScriptCli` más abajo no describen la configuración vigente. Ya no estaban en el repositorio al empezar esta etapa y no se han añadido. El build actual compila y se bloquea con `spawn EPERM` al lanzar TypeScript; se documenta en `FEATURE_MATRIX.md`. Health ahora comprueba BD/esquema y en producción sin BD devuelve 503. Las antiguas páginas de aviso de etapa 2 se sustituyeron por la experiencia implementada. El resto del documento conserva la decisión de etapa 1.
+
 Fecha 7 de noviembre de 2026. Alcance de `docs/codex/STAGE1.md`.
 
 ## Arquitectura elegida

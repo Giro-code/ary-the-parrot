@@ -1,0 +1,25 @@
+-- DESTRUCTIVE: only on an explicitly approved empty/test database.
+DROP TABLE IF EXISTS "analytics_events" CASCADE;
+DROP TABLE IF EXISTS "audit_logs" CASCADE;
+DROP TABLE IF EXISTS "auth_magic_links" CASCADE;
+DROP TABLE IF EXISTS "chat_messages" CASCADE;
+DROP TABLE IF EXISTS "consent_records" CASCADE;
+DROP TABLE IF EXISTS "cultural_bridges" CASCADE;
+DROP TABLE IF EXISTS "cultural_items" CASCADE;
+DROP TABLE IF EXISTS "deletion_jobs" CASCADE;
+DROP TABLE IF EXISTS "email_outbox" CASCADE;
+DROP TABLE IF EXISTS "email_subscriptions" CASCADE;
+DROP TABLE IF EXISTS "kiosk_devices" CASCADE;
+DROP TABLE IF EXISTS "memberships" CASCADE;
+DROP TABLE IF EXISTS "offers" CASCADE;
+DROP TABLE IF EXISTS "organizations" CASCADE;
+DROP TABLE IF EXISTS "provider_leads" CASCADE;
+DROP TABLE IF EXISTS "providers" CASCADE;
+DROP TABLE IF EXISTS "qr_handoffs" CASCADE;
+DROP TABLE IF EXISTS "rate_limits" CASCADE;
+DROP TABLE IF EXISTS "recommendations" CASCADE;
+DROP TABLE IF EXISTS "saved_experiences" CASCADE;
+DROP TABLE IF EXISTS "visitor_accounts" CASCADE;
+DROP TABLE IF EXISTS "visitor_preferences" CASCADE;
+DROP TABLE IF EXISTS "visitor_sessions" CASCADE;
+DROP SCHEMA IF EXISTS drizzle CASCADE;

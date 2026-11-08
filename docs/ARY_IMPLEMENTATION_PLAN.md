@@ -1,6 +1,6 @@
 # Plan de implementación de Ary
 
-Etapa solicitada 1. Fecha de trabajo 7 de noviembre de 2026. Base `b04db41`, rama `main`, tag `baseline-static-ary`. Los documentos del usuario ya estaban sin seguimiento en Git. Se conserva ese estado.
+Etapas 1 y 2. Fecha de trabajo 7 de noviembre de 2026. El inventario y cierre de etapa 1 se conservan como historial; el estado actual de etapa 2 está al final y en `FEATURE_MATRIX.md`. Sin commit ni push durante etapa 2. Se preserva trabajo ajeno, incluido `.claude/launch.json` aparecido durante la sesión.
 
 ## Inventario inicial
 
@@ -57,12 +57,14 @@ Se usa CSS original para la landing y CSS local mínimo para los avisos. Sin Tai
 - [x] Completar E2E y capturas: 65 passed, 1 skipped (ejecutado por el revisor fuera del sandbox).
 - [x] Cerrar los cuatro documentos y registrar resultados y bloqueos.
 
-### 2 · BD y continuidad
+### 2 · BD y continuidad (implementación local)
 
-- [ ] Neon Postgres y migraciones transaccionales.
-- [ ] Sesión anónima, preferencias y contenido cultural curado.
-- [ ] Kiosco funcional y QR efímero con canje único.
-- [ ] Continuidad móvil, favoritos y limpieza del kiosco.
+- [x] Esquema completo de 23 tablas y migración SQL, PGlite y driver Neon Pool transaccional.
+- [x] Sesión anónima, preferencias y contenido de demostración con fuentes comprobadas.
+- [x] APIs de kiosco autorizado y QR efímero con canje único, carrera y rollback probados.
+- [x] Código de kiosco/móvil/Mi viaje, favoritos y limpieza transaccional.
+- [ ] Validación remota de Neon (sin instancia configurada).
+- [ ] Build completo, E2E y dos pasadas visuales reales (bloqueados por entorno).
 
 ### 3 · Correo y B2B
 
@@ -79,7 +81,7 @@ Se usa CSS original para la landing y CSS local mínimo para los avisos. Sin Tai
 
 La etapa 1 se limita a la orden de `docs/codex/STAGE1.md`. Gemini es el proveedor de IA elegido por el usuario (clave en `.env.local`, nunca en el repo); se integra en una etapa posterior con modo demo de respaldo.
 
-## Estado de cierre
+## Estado de cierre de la etapa 1 (histórico)
 
 | Elemento | Estado actual | Evidencia |
 | --- | --- | --- |
@@ -93,3 +95,15 @@ La etapa 1 se limita a la orden de `docs/codex/STAGE1.md`. Gemini es el proveedo
 | Operación y hardware real | MISSING | Etapa 4 |
 
 Etapa 1 cerrada: los cinco comandos pasan. Los errores exactos, cambios y decisiones están en `LEGACY_REGRESSION.md` y `ARY_MIGRATION_DECISION.md`.
+
+## Etapa 2 · ejecución y estado actual
+
+Diseño previo en `STAGE2_DESIGN.md`: flujo sin cuenta, preferencias opcionales, recomendador por reglas, sesión móvil nueva y limpieza del kiosco. CSS propio con paleta original, diccionarios centrales, targets ≥48 px, noindex, reduced-motion y estados de carga/error/offline. No se añadieron Tailwind ni librerías de cliente pesadas.
+
+Implementadas las APIs especificadas y activación de dispositivo, cierre de sesión, fichas públicas y QR público. Sesiones/códigos/credenciales se guardan como hash. CSRF, rate limits persistentes, metadatos sin PII y aislamiento servidor. La misma migración funciona en PGlite y se proporciona el driver Neon de transacciones interactivas. En producción sin BD se devuelve 503; no hay persistencia local de respaldo.
+
+Seed: 12 temas en dos idiomas; diez fuentes HTTP 200 publicadas y dos no publicadas (`needs_source`). Pruebas: 36 de dominio/API pasan, incluidas dos redenciones concurrentes con un ganador, rollback, copias, IDOR, expiración, límites, rotación y producción sin BD. El CLI migrate/seed/enroll/cleanup se ejecutó en local. Lint y typecheck pasan. Los chunks de entrada del kiosco compilados suman 17 317 bytes gzip; no es una medición de navegador.
+
+Build: compila el código, luego `Running TypeScript ... spawn EPERM`. Dev y runner E2E: `spawn EPERM`. Playwright descubre 74 casos. Se mantuvieron regresiones originales; solo se adaptó el contrato que antes mostraba avisos de etapa 2 y health 200 sin BD. No se ejecutaron las dos pasadas visuales ni se midió CPU 4×. No se añadieron opciones experimentales para eludir el bloqueo.
+
+Fuentes, archivos, comandos y límites: `FEATURE_MATRIX.md`. Seguridad: `ARY_QR_HANDOFF.md`. Revisión pendiente: `VISUAL_REVIEW.md`. La etapa está implementada localmente con aceptación bloqueada; no se presenta como verificada en navegador, Neon, Vercel o Raspberry Pi.

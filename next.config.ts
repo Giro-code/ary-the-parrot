@@ -18,6 +18,8 @@ const csp = [
 
 const config: NextConfig = {
   poweredByHeader: false,
+  // QR/activation paths contain temporary secrets. Never print incoming URLs.
+  logging: { incomingRequests: false, browserToTerminal: false },
   async rewrites() {
     return {
       beforeFiles: [
@@ -37,6 +39,20 @@ const config: NextConfig = {
         { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
         { key: "X-Frame-Options", value: "DENY" },
         { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=()" },
+      ],
+    }, {
+      source: "/q/:path*",
+      headers: [
+        { key: "Referrer-Policy", value: "no-referrer" },
+        { key: "Cache-Control", value: "no-store, max-age=0" },
+        { key: "X-Robots-Tag", value: "noindex, nofollow" },
+      ],
+    }, {
+      source: "/kiosco/activar",
+      headers: [
+        { key: "Referrer-Policy", value: "no-referrer" },
+        { key: "Cache-Control", value: "no-store, max-age=0" },
+        { key: "X-Robots-Tag", value: "noindex, nofollow" },
       ],
     }];
   },

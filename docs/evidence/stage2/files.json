@@ -1,0 +1,345 @@
+{
+    "recordedAt":  "2026-11-08T01:05:58.0171574Z",
+    "files":  [
+                  {
+                      "path":  ".env.example",
+                      "status":  "modified",
+                      "sha256":  "66637c46a4c70f8784faf0a1defc30cb8a334f4c2346af4453f1b045cbd4f467"
+                  },
+                  {
+                      "path":  "app/api/[...path]/route.ts",
+                      "status":  "new",
+                      "sha256":  "30fc0a23beaac0141d49b6cc5ffb61822832bec2e264ec2f3e421df58fb8359a"
+                  },
+                  {
+                      "path":  "app/api/health/route.ts",
+                      "status":  "modified",
+                      "sha256":  "94ef3e38434a5fc33703250516409c6bbdfdc690dada8a4b3b01be2aa5b60ac6"
+                  },
+                  {
+                      "path":  "app/cultura/[id]/page.tsx",
+                      "status":  "new",
+                      "sha256":  "4ca64fc5a9e7c042fa226feb34a820fdb5219779ce10647c997d685bbfb0f4d7"
+                  },
+                  {
+                      "path":  "app/cultura/[id]/qr/route.ts",
+                      "status":  "new",
+                      "sha256":  "49a1d8d1d6af3ad53bc4acadac0be22af3428efac7268f0dddde2dfaa0565332"
+                  },
+                  {
+                      "path":  "app/experiencia/page.tsx",
+                      "status":  "modified",
+                      "sha256":  "9532114fdd7db5613a980da33af3a9059b3bcfffacfb080cdd008439f6ca39e1"
+                  },
+                  {
+                      "path":  "app/globals.css",
+                      "status":  "modified",
+                      "sha256":  "bc086ea8947867d247d7c4812d02ca5410b2a4fd80008e25371060242a660260"
+                  },
+                  {
+                      "path":  "app/kiosco/activar/page.tsx",
+                      "status":  "new",
+                      "sha256":  "e800ccd6adda9a7044056471b5742911a688290706a219848afa100b0eba3f98"
+                  },
+                  {
+                      "path":  "app/kiosco/page.tsx",
+                      "status":  "modified",
+                      "sha256":  "544daee18c2ce6acf336823420c93d409e2f297bd7473cf7f00d9cd5fbacf5dc"
+                  },
+                  {
+                      "path":  "app/mi-viaje/page.tsx",
+                      "status":  "new",
+                      "sha256":  "dc0ed63dd2ce36d11bdc9c2f19daa66cbcf504382c15348b9078637bde9cde57"
+                  },
+                  {
+                      "path":  "app/privacidad/page.tsx",
+                      "status":  "new",
+                      "sha256":  "8ddb59ee229952d52bb0ed9447015424fe88c637e1fa5edc4dac4d9b33c8a2ff"
+                  },
+                  {
+                      "path":  "app/q/[token]/page.tsx",
+                      "status":  "new",
+                      "sha256":  "5b7821ed987aca2444e016e7e7fb1b861edc1808d26f9f9f43efae92cb8d3e07"
+                  },
+                  {
+                      "path":  "app/reingresar/page.tsx",
+                      "status":  "new",
+                      "sha256":  "59abe3d4c290059873c28e8262ade8cda0ac7fe777d57b65848a70fa8a6645fd"
+                  },
+                  {
+                      "path":  "docs/ARY_IMPLEMENTATION_PLAN.md",
+                      "status":  "modified",
+                      "sha256":  "e958b433d636e579741f6525c50f4d8f761fde61ef9fc5b596c9daa5ce5e5d48"
+                  },
+                  {
+                      "path":  "docs/ARY_MIGRATION_DECISION.md",
+                      "status":  "modified",
+                      "sha256":  "3eaeaf15adfaf9e7aa86c0ec3feec6ed062a18671b183592689e7386b9afc5f1"
+                  },
+                  {
+                      "path":  "docs/ARY_QR_HANDOFF.md",
+                      "status":  "new",
+                      "sha256":  "c0e1aabaac7eed0a05a10a3a2d64d51c9a18191245833fc8210f112e8e87bae9"
+                  },
+                  {
+                      "path":  "docs/DEPLOY_VERCEL_AND_PI.md",
+                      "status":  "new",
+                      "sha256":  "f28068f795f287ead17c3b12cfe3c76f31ca178011b6515b5ebbe22b5fd5441e"
+                  },
+                  {
+                      "path":  "docs/evidence/stage2/build.txt",
+                      "status":  "new",
+                      "sha256":  "f0412a5410455af4a03d5b910218f53ab9fb434318cdc82c342cc1212effa1af"
+                  },
+                  {
+                      "path":  "docs/evidence/stage2/e2e.txt",
+                      "status":  "new",
+                      "sha256":  "6fd63756acc7d86206435c2b516f848f2848a6bd4dd8f1c2b7c08751f8ac81bd"
+                  },
+                  {
+                      "path":  "docs/evidence/stage2/kiosk-budget.json",
+                      "status":  "new",
+                      "sha256":  "bc82d9aaf3d275db3c51aed789820d5d53c7434051da7d8760381afcf1d6dc08"
+                  },
+                  {
+                      "path":  "docs/evidence/stage2/lint.txt",
+                      "status":  "new",
+                      "sha256":  "200e82a41e33cd51ed96757becc1a30fe77932d9e8badf0817e17534b1788755"
+                  },
+                  {
+                      "path":  "docs/evidence/stage2/seed-sources.json",
+                      "status":  "new",
+                      "sha256":  "dbbd3a8d3c9abb863568d32fc1a9b165818e2e9c5bb8e7f7f5ec1d743bbb8905"
+                  },
+                  {
+                      "path":  "docs/evidence/stage2/test.txt",
+                      "status":  "new",
+                      "sha256":  "43372ef852f2684b8f3d47b58880424f915771988e32b6a8d878b1c85c365775"
+                  },
+                  {
+                      "path":  "docs/evidence/stage2/typecheck.txt",
+                      "status":  "new",
+                      "sha256":  "cc9c729d28387500b4ab15a01f69447c818d9164d3b1ef8216d02155324ad597"
+                  },
+                  {
+                      "path":  "docs/FEATURE_MATRIX.md",
+                      "status":  "new",
+                      "sha256":  "67c92808fb375199fdfc66f5d8ef9ba1627a078499fedb5d7624ebb3ab79ddad"
+                  },
+                  {
+                      "path":  "docs/PRIVACY_COMPLIANCE_REVIEW.md",
+                      "status":  "new",
+                      "sha256":  "953bc16c04f67a1396f8b0da3dc870dabced943a0c11f098204a0359b77a8c9a"
+                  },
+                  {
+                      "path":  "docs/STAGE2_DESIGN.md",
+                      "status":  "new",
+                      "sha256":  "bc3fb46eb8a9c6dd30644c707a044240fcdc575b9022283b8a8c4213d5a40732"
+                  },
+                  {
+                      "path":  "docs/VISUAL_REVIEW.md",
+                      "status":  "new",
+                      "sha256":  "df69879e6c3921b1213e3297dbe8ba560b7897f8e471abddf6e6aaf756163270"
+                  },
+                  {
+                      "path":  "drizzle.config.ts",
+                      "status":  "new",
+                      "sha256":  "d64423674dbd28d24363b7c9dc2b8edc6713356eb1545a384129b7b3804d9729"
+                  },
+                  {
+                      "path":  "drizzle/0000_ary_core.sql",
+                      "status":  "new",
+                      "sha256":  "210b763771fb8a2360a01a1ad51ca0dc174560138f697571d83f1cbdabf2ed57"
+                  },
+                  {
+                      "path":  "drizzle/meta/_journal.json",
+                      "status":  "new",
+                      "sha256":  "d26ca22eed1febcdade484206b7df00a27661ebe192b43ec5017148e8ad87237"
+                  },
+                  {
+                      "path":  "drizzle/meta/0000_snapshot.json",
+                      "status":  "new",
+                      "sha256":  "c6198aa199f843d307d7db02182580d5bb3d82463117e1d31cfbe95a3f2a1485"
+                  },
+                  {
+                      "path":  "drizzle/rollback/0000_ary_core.sql",
+                      "status":  "new",
+                      "sha256":  "2b78d1cbeedbe311eb9fa30d55c77b8867cc693c6dcc800c6a9aa4449c08aea2"
+                  },
+                  {
+                      "path":  "next.config.ts",
+                      "status":  "modified",
+                      "sha256":  "6741be399a5de00b4071372dce7e88d4b65ba96d8acc214854a5a1b70b474727"
+                  },
+                  {
+                      "path":  "package.json",
+                      "status":  "modified",
+                      "sha256":  "4cee04193060e66a72e3b334d9d86a7591629ec656388e0d04d2080c35d1becc"
+                  },
+                  {
+                      "path":  "package-lock.json",
+                      "status":  "modified",
+                      "sha256":  "07398b888eec5f681466a81cb143b116436a2f542baed978a89d28b4d6ff12d9"
+                  },
+                  {
+                      "path":  "playwright.config.ts",
+                      "status":  "modified",
+                      "sha256":  "cd08e74994020e2c6ad540a118eef47e9d7633f6ee59b08757b5608e3389524f"
+                  },
+                  {
+                      "path":  "README.md",
+                      "status":  "new",
+                      "sha256":  "6a3be21502ff19f44d28ff70618b1b920778c69a232c44f2aab0fc394bcdfaed"
+                  },
+                  {
+                      "path":  "scripts/database.ts",
+                      "status":  "new",
+                      "sha256":  "8d0a780f139ff9a52361444d90dd2ce0e3b76029c3d39f85925930ae31f2cf60"
+                  },
+                  {
+                      "path":  "scripts/e2e-server.ts",
+                      "status":  "new",
+                      "sha256":  "a8b05920e30cc170981281d45307f0c1da959d7013815b627779ebcd21e39da2"
+                  },
+                  {
+                      "path":  "scripts/generate-migration.ts",
+                      "status":  "new",
+                      "sha256":  "598b14003df0da35fae284fafa6496c57b0c5018cf15cafd71cd0ec4fe29f862"
+                  },
+                  {
+                      "path":  "scripts/kiosk-budget.mjs",
+                      "status":  "new",
+                      "sha256":  "b88fdfda0e7008cb97f62049259845bcf73dbce0f2c765541cebe1b988f73449"
+                  },
+                  {
+                      "path":  "src/components/activation.tsx",
+                      "status":  "new",
+                      "sha256":  "9835a4b9f47362b8047c035fc315c5c1ae234d65022d40a5a1d5f1cfb1279ef2"
+                  },
+                  {
+                      "path":  "src/components/api.ts",
+                      "status":  "new",
+                      "sha256":  "ccdcf8daa27c616072725568e0af0879bf5470d5a75a3ae263db35b428dc6ed3"
+                  },
+                  {
+                      "path":  "src/components/experience.tsx",
+                      "status":  "new",
+                      "sha256":  "ad29d322133bc7d93a6ddaceeb1bd384a171b3f841f42c40201c40245d274718"
+                  },
+                  {
+                      "path":  "src/components/information.tsx",
+                      "status":  "new",
+                      "sha256":  "522029ed502dc404124366f6a2d2f5644a3689b82379f82f8d828aebcb4bf957"
+                  },
+                  {
+                      "path":  "src/components/kiosk.tsx",
+                      "status":  "new",
+                      "sha256":  "b28f89d9866c1c4c1c6addff0594499e099245060af6b6c19fec07d7ecabfe24"
+                  },
+                  {
+                      "path":  "src/components/redeem.tsx",
+                      "status":  "new",
+                      "sha256":  "59ef5ab7a834b4a7174c97850e59ee8f26b3064a31e14a22694d536357e60279"
+                  },
+                  {
+                      "path":  "src/components/shared.tsx",
+                      "status":  "new",
+                      "sha256":  "0a56e102443c29feb720d30a4d200ba840ece3be98f51f2f9f0392fe749c7eaa"
+                  },
+                  {
+                      "path":  "src/components/trip.tsx",
+                      "status":  "new",
+                      "sha256":  "f7cd72774df7729b4fe1889b9d9ebd8d5e3cac941dc8d4e1bb35c372c57a9927"
+                  },
+                  {
+                      "path":  "src/components/types.ts",
+                      "status":  "new",
+                      "sha256":  "5ae4b85f2345341566c5c7c2f087a157c80460c3f88eee37dae2660bdc5c06a9"
+                  },
+                  {
+                      "path":  "src/db/cleanup.ts",
+                      "status":  "new",
+                      "sha256":  "6a14d578b512961e60635b68296c8639845d245ecf0d5c6d49b9c2786a9f52c2"
+                  },
+                  {
+                      "path":  "src/db/client.ts",
+                      "status":  "new",
+                      "sha256":  "5b11ce188ed826dd890f0c92d5ae63b862d0ec038bc81fe0f69f4e4981ba1fb6"
+                  },
+                  {
+                      "path":  "src/db/migrate.ts",
+                      "status":  "new",
+                      "sha256":  "25d3e606a591fe3f3454d2d0b58aab60786e82bd655e978dd7e93631432ea7d1"
+                  },
+                  {
+                      "path":  "src/db/schema.ts",
+                      "status":  "new",
+                      "sha256":  "bab29c17e87d884ef33b0f30636b1d71102197a64e6f87d9acfebb4560c1a215"
+                  },
+                  {
+                      "path":  "src/db/seed.ts",
+                      "status":  "new",
+                      "sha256":  "bc2156c0bb2f9c9f621237df7ceda1982f958f7654eaf60f7b75f26e193c6485"
+                  },
+                  {
+                      "path":  "src/i18n/index.ts",
+                      "status":  "new",
+                      "sha256":  "34e66f424c6847f7d061d77f7ee9584909994dc84da35145645cf2019fb0b604"
+                  },
+                  {
+                      "path":  "src/server/config.ts",
+                      "status":  "new",
+                      "sha256":  "6c422d7055cbfe65a90b91e99c7f1a63afbc6d249b9e2eb75ee93465deaef620"
+                  },
+                  {
+                      "path":  "src/server/errors.ts",
+                      "status":  "new",
+                      "sha256":  "feab8337603301f55236df72f3827bc281a11974e2d462700f81c7a2d43cadb5"
+                  },
+                  {
+                      "path":  "src/server/http.ts",
+                      "status":  "new",
+                      "sha256":  "51fb209813cd62bc7c45b2bfd0fb25e64b81a7c292bd476b8788c48eff4bb3a2"
+                  },
+                  {
+                      "path":  "src/server/service.ts",
+                      "status":  "new",
+                      "sha256":  "c5ebd6d6dc73c9f80583f8e0643ae95665fe6883df82671fa280de234fddaa6e"
+                  },
+                  {
+                      "path":  "src/server/tokens.ts",
+                      "status":  "new",
+                      "sha256":  "f12023305a17ec5a1293e49fbaaa1df90b4af41d92e8bb986992d1ec81f64596"
+                  },
+                  {
+                      "path":  "tests/e2e/legacy-regression.spec.ts",
+                      "status":  "modified",
+                      "sha256":  "2b7480043878f5b98709f1ac3a9f4367d567ef8f19f9d7e01859134c27baddaf"
+                  },
+                  {
+                      "path":  "tests/e2e/stage2.spec.ts",
+                      "status":  "new",
+                      "sha256":  "5b6cf69967c835872b921d730bfcfd6059190eccafd99c3f4b159ba188f23b25"
+                  },
+                  {
+                      "path":  "tests/unit/api.test.ts",
+                      "status":  "new",
+                      "sha256":  "d962f8c177531446b8846ba07f4c1f1c5d9858fd59f7c21f493766baf9fbcf9b"
+                  },
+                  {
+                      "path":  "tests/unit/database.test.ts",
+                      "status":  "new",
+                      "sha256":  "1c70e8e97288d67afc8af71977955c873f054fca2c382c721154fbc32823ffb5"
+                  },
+                  {
+                      "path":  "tests/unit/health.test.ts",
+                      "status":  "modified",
+                      "sha256":  "24107afa7d3fc360cc3d88f7f35522b8e22f6f627b6f5008cc5f4633a8914691"
+                  },
+                  {
+                      "path":  "tsconfig.json",
+                      "status":  "modified",
+                      "sha256":  "1720bce44bc0d3ba86e48d4b1ffdda18fa946a31a7d9bfcb9bf053b94a1bca4a"
+                  }
+              ]
+}

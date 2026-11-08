@@ -1,0 +1,87 @@
+[
+  {
+    "url": "https://whc.unesco.org/en/list/526/",
+    "finalUrl": "https://whc.unesco.org/en/list/526/",
+    "status": 403,
+    "checkedAt": "2026-11-08T00:32:11.890Z",
+    "verified": false
+  },
+  {
+    "url": "https://ich.unesco.org/en/RL/music-and-dance-of-the-merengue-in-the-dominican-republic-01162",
+    "finalUrl": "https://ich.unesco.org/en/RL/music-and-dance-of-the-merengue-in-the-dominican-republic-01162",
+    "status": 200,
+    "checkedAt": "2026-11-08T00:32:11.959Z",
+    "verified": true
+  },
+  {
+    "url": "https://ich.unesco.org/en/RL/music-and-dance-of-dominican-bachata-01514",
+    "finalUrl": "https://ich.unesco.org/en/RL/music-and-dance-of-dominican-bachata-01514",
+    "status": 200,
+    "checkedAt": "2026-11-08T00:32:11.961Z",
+    "verified": true
+  },
+  {
+    "url": "https://ich.unesco.org/en/RL/cocolo-dance-drama-tradition-00104",
+    "finalUrl": "https://ich.unesco.org/en/RL/cocolo-dance-drama-tradition-00104",
+    "status": 200,
+    "checkedAt": "2026-11-08T00:32:11.962Z",
+    "verified": true
+  },
+  {
+    "url": "https://ich.unesco.org/en/RL/cultural-space-of-the-brotherhood-of-the-holy-spirit-of-the-congos-of-villa-mella-00006",
+    "finalUrl": "https://ich.unesco.org/en/RL/cultural-space-of-the-brotherhood-of-the-holy-spirit-of-the-congos-of-villa-mella-00006",
+    "status": 200,
+    "checkedAt": "2026-11-08T00:32:11.963Z",
+    "verified": true
+  },
+  {
+    "url": "https://www.godominicanrepublic.com/travel/faqs",
+    "finalUrl": "https://www.godominicanrepublic.com/travel/faqs",
+    "status": 200,
+    "checkedAt": "2026-11-08T00:32:11.964Z",
+    "verified": true
+  },
+  {
+    "url": "https://mineria.gob.do/noticias/algo-mas-que-una-piedra-semipreciosa-el-larimar/",
+    "finalUrl": "https://mineria.gob.do/noticias/algo-mas-que-una-piedra-semipreciosa-el-larimar/",
+    "status": 200,
+    "checkedAt": "2026-11-08T00:32:11.965Z",
+    "verified": true
+  },
+  {
+    "url": "https://museosrd.gob.do/museos/amber-world-museum/",
+    "finalUrl": null,
+    "status": null,
+    "checkedAt": "2026-11-08T00:32:11.966Z",
+    "verified": false,
+    "error": "http_request_failed"
+  },
+  {
+    "url": "https://www.godominicanrepublic.com/things-to-do/national-park-los-haitises",
+    "finalUrl": "https://www.godominicanrepublic.com/things-to-do/national-park-los-haitises",
+    "status": 200,
+    "checkedAt": "2026-11-08T00:32:11.966Z",
+    "verified": true
+  },
+  {
+    "url": "https://mnhn.gob.do/index.php/exhibiciones/sala-gigantes-marinos",
+    "finalUrl": "https://mnhn.gob.do/index.php/exhibiciones/sala-gigantes-marinos",
+    "status": 200,
+    "checkedAt": "2026-11-08T00:32:11.967Z",
+    "verified": true
+  },
+  {
+    "url": "https://ayuntamientolavega.gob.do/lanzamiento-carnaval-vegano-2026/",
+    "finalUrl": "https://ayuntamientolavega.gob.do/lanzamiento-carnaval-vegano-2026/",
+    "status": 200,
+    "checkedAt": "2026-11-08T00:32:11.968Z",
+    "verified": true
+  },
+  {
+    "url": "https://www.godominicanrepublic.com/things-to-do/altos-de-chavon",
+    "finalUrl": "https://www.godominicanrepublic.com/things-to-do/altos-de-chavon",
+    "status": 200,
+    "checkedAt": "2026-11-08T00:32:11.969Z",
+    "verified": true
+  }
+]

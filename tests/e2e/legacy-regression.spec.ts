@@ -11,7 +11,12 @@ const test = base.extend({
   page: async ({ page }, runTest) => {
     const errors: string[] = [];
     page.on("pageerror", (error) => errors.push(error.message));
-    page.on("console", (message) => { if (message.type() === "error") errors.push(message.text()); });
+    page.on("console", (message) => {
+      // Only the new, intentionally unavailable production APIs may emit HTTP 503.
+      // All landing, JS and CSP errors still fail the regression unchanged.
+      const expectedUnavailable = /Failed to load resource.*503/.test(message.text()) && /\/api\/(health|visitor\/|kiosk\/)/.test(message.location().url);
+      if (message.type() === "error" && !expectedUnavailable) errors.push(message.text());
+    });
     await page.addInitScript(() => {
       document.addEventListener("securitypolicyviolation", (event) => console.error(`CSP ${event.violatedDirective}`));
     });
@@ -275,12 +280,13 @@ test("brochure independiente, impresión disponible y enlace de regreso", async 
 test("API, cabeceras, recursos y entradas de etapa 2", async ({ page, request }, testInfo) => {
   test.skip(testInfo.project.name === "legacy", "Superficies nuevas de la etapa 1");
   const healthResponse = await request.get("/api/health");
-  expect(healthResponse.status()).toBe(200);
-  expect(await healthResponse.json()).toMatchObject({ status: "ok", version: "0.1.0", checks: { email: "dry_run", robot: "simulator" } });
+  // Stage 2 intentionally changes the production contract: no database => safe 503.
+  expect(healthResponse.status()).toBe(503);
+  expect(await healthResponse.json()).toMatchObject({ status: "degraded", error: "database_not_configured", version: "0.1.0", checks: { email: "dry_run", robot: "simulator" } });
   expect(healthResponse.headers()["cache-control"]).toBe("no-store");
   for (const path of ["/", "/index.html", "/brochure.html", "/site/landing.css", "/site/landing.js", "/favicon.ico", "/api/health", "/experiencia", "/kiosco"]) {
     const response = await request.get(path);
-    expect(response.status()).toBe(200);
+    expect(response.status()).toBe(path === "/api/health" ? 503 : 200);
     expect(response.headers()["x-content-type-options"]).toBe("nosniff");
     expect(response.headers()["referrer-policy"]).toBe("strict-origin-when-cross-origin");
     expect(response.headers()["content-security-policy"]).toContain("frame-ancestors 'none'");
@@ -293,11 +299,14 @@ test("API, cabeceras, recursos y entradas de etapa 2", async ({ page, request },
     await expect(page.locator(".experience-entry")).toHaveCount(1);
     await page.locator(".experience-entry a").click();
     await expect(page).toHaveURL(/\/experiencia$/);
-    await expect(page.locator("main")).toContainText("etapa 2");
+    await expect(page.getByRole("heading", { name: "Empieza tu experiencia" })).toBeVisible();
+    // Next.js adds its own empty route-announcer alert; target the app notice.
+    await expect(page.getByRole("alert").filter({ hasText: "servicio no está disponible" })).toBeVisible();
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
     await page.getByRole("link", { name: "Conocer el acceso para kiosco" }).click();
     await expect(page).toHaveURL(/\/kiosco$/);
-    await expect(page.locator("main")).toContainText("modo simulador");
+    await expect(page.locator("main")).toContainText("Simulador");
+    await expect(page.locator("main")).toContainText("Modo demostración sin dispositivo");
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
     await page.getByRole("link", { name: "Volver a la web de Ary" }).click();
     await expect(page.locator("#inicio")).toBeVisible();
