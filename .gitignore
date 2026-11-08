@@ -9,3 +9,10 @@ test-results/
 playwright-report/
 .pglite/
 *.log
+.cache/
+*.tsbuildinfo
+# Capturas de regresión regeneradas por `npm run test:e2e` (se versionan solo el resumen y dos muestras)
+docs/screenshots/*.png
+docs/screenshots/*-comparison.json
+!docs/screenshots/inicio-390-app.png
+!docs/screenshots/inicio-1440-app.png

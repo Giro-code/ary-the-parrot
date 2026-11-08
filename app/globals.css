@@ -1,0 +1,11 @@
+:root { color-scheme: light; font-family: Arial, sans-serif; color: #183e32; background: #f8f6ef; }
+* { box-sizing: border-box; }
+body { margin: 0; }
+.stage-notice { max-width: 720px; margin: 0 auto; padding: clamp(28px, 7vw, 72px) 24px; line-height: 1.7; }
+.stage-notice .eyebrow { font-size: .75rem; letter-spacing: .12em; text-transform: uppercase; }
+.stage-notice h1 { font-size: clamp(2rem, 6vw, 3rem); font-weight: 500; line-height: 1.15; }
+.stage-notice p { max-width: 58ch; }
+.stage-notice nav { display: flex; flex-wrap: wrap; gap: 16px 28px; margin-top: 32px; }
+.stage-notice a { color: inherit; text-underline-offset: 5px; display: inline-flex; align-items: center; min-height: 44px; }
+.stage-notice a:hover { color: #547442; }
+.stage-notice a:focus-visible { outline: 2px solid #183e32; outline-offset: 5px; }
