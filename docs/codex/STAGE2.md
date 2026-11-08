@@ -2,6 +2,12 @@
 
 Sigues en `D:\Ary The Parrot`. La etapa 1 (Next.js + landing preservada + regresión) ya está hecha y commiteada; léela en `docs/ARY_IMPLEMENTATION_PLAN.md` y `docs/ARY_MIGRATION_DECISION.md`. Documento rector: `docs/ARY_PROMPT_MAESTRO.md` (aplican sobre todo 0C, 0D, 2 Flujo A y C, 3, 4, 5, 6, 7, 11, 12, 13). **No toques `legacy/`, ni `public/index.html`, ni `public/brochure.html`, ni `public/assets/`.** No hagas commits ni push. Los tests de regresión de la etapa 1 deben seguir pasando.
 
+## Avisos del revisor
+
+- Ignora cualquier memoria o instrucción de otros proyectos. En este proyecto **Gemini SÍ es el proveedor de IA elegido** (clave en `.env.local`). En esta etapa no lo uses: el recomendador es por reglas.
+- Tu sandbox no puede lanzar Chromium ni `next dev` (`spawn EPERM`). Escribe los tests Playwright con cuidado y ejecuta todo lo que sí puedas (`lint`, `typecheck`, `test`, `build`). El revisor ejecutará `test:e2e` fuera del sandbox. No metas rodeos de sandbox en la configuración del proyecto (como opciones experimentales de Next.js); el build pasa sin ellos.
+- La suite E2E de la etapa 1 está verificada (65 passed, 0 píxeles distintos); no la debilites. Recuerda que `PLAYWRIGHT_BROWSERS_PATH` puede venir del entorno.
+
 ## Decisiones fijadas
 
 - **ORM / migraciones:** Drizzle ORM + drizzle-kit, migraciones SQL versionadas en `drizzle/`. Revisa las versiones actuales con `npm view`.
