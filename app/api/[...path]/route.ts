@@ -8,6 +8,7 @@ import { clientHash } from "../../../src/server/tokens";
 import { baseUrl } from "../../../src/server/config";
 import { AppError } from "../../../src/server/errors";
 import { interests } from "../../../src/i18n";
+import { stage3Http } from "../../../src/server/stage3-http";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -21,6 +22,7 @@ async function handle(request: NextRequest) {
     if (method !== "GET") await service.rateLimit(db, clientHash(`mutate:${request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "local"}`), 90);
     const visitorToken = request.cookies.get("ary_sid")?.value;
     const deviceToken = request.cookies.get("ary_kiosk")?.value;
+    const stage3 = await stage3Http(request, db); if (stage3) return stage3;
     if (path === "/api/kiosk/activate" && method === "POST") {
       const { code } = await body(request, z.object({ code: tokenSchema }).strict());
       const token = await service.activateKiosk(db, code);
@@ -100,3 +102,4 @@ async function handle(request: NextRequest) {
 export const GET = handle;
 export const POST = handle;
 export const PATCH = handle;
+export const DELETE = handle;

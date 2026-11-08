@@ -1,4 +1,27 @@
-# Funciones y evidencia · etapa 2
+# Funciones y evidencia
+
+## Etapa 3 · implementación local
+
+7 de noviembre de 2026. Sin commit/push/despliegue, Gemini ni correos reales. [Informe completo](ARY_STAGE3_REPORT.md). La verificación histórica de etapa 2 más abajo **no acredita las interfaces de etapa 3**.
+
+| Función | Estado | Evidencia y límite |
+| --- | --- | --- |
+| Resend HTTP y DryRun, cuatro operaciones | REAL_IMPLEMENTED | Fetch simulado, cola cifrada/idempotente; cero correo real |
+| Dispatcher y cron protegido | REAL_IMPLEMENTED | 401 sin secreto, autenticación constante, bloqueo de filas, reintentos saneados; cron no desplegado/plan pendiente |
+| Svix, estados y supresiones | REAL_IMPLEMENTED | Firmas locales válidas/inválidas/caducadas, replay, bounce/complaint y orden de eventos |
+| Recuperación verificada y otra cookie | REAL_IMPLEMENTED | PGlite: no enumeración, TTL/uso único/carrera/rollback, fusión y credenciales antiguas invalidadas |
+| Consentimientos granulares e historial | REAL_IMPLEMENTED | API versionada, revocación, invalidación de enlaces y guardados futuros bloqueados sin storage |
+| Double opt-in, frecuencia, pausa, baja | REAL_IMPLEMENTED | Cero marketing sin opt-in/flag, headers one-click y baja sin sesión; no hay campañas/recordatorios automáticos |
+| Exportación y borrado propios | REAL_IMPLEMENTED | API autenticada, JSON, job transaccional y limpieza; límites de backups/terceros explícitos |
+| B2B persistido aparte y auditado | REAL_IMPLEMENTED | Nueva tabla, HMAC/idempotencia, cifrado, honeypot, rate limit y recibos dry-run |
+| Formulario público y TXT | PARTIAL | Código/API listos, HTML y CSS conservados; regresión de 0 píxeles sigue exigida y pendiente de ejecutar esta etapa |
+| Recuperación/privacidad/outbox visuales | BLOCKED | E2E escritos; dos inspecciones reales pendientes por acceso a navegador denegado |
+| Producción sin claves/BD | REAL_IMPLEMENTED | 503 probado; sin persistencia o envío ficticios |
+| Neon/Resend/DNS/Vercel reales | BLOCKED | No configurados ni probados en esta tarea |
+
+Comandos: lint/typecheck/test pasan; build compila y se bloquea con `spawn EPERM` al lanzar TypeScript. Playwright descubre 81 casos, siete nuevos de etapa 3; la ejecución no arrancó por puerto 3000 ocupado. El intento independiente de next dev da `spawn EPERM`. No se detuvo el servidor existente ni se cambiaron los puertos/config para eludirlo.
+
+## Etapa 2 · historial
 
 Trabajo local del 7 de noviembre de 2026 (archivos de evidencia en UTC del 8). Sin push, despliegue, correos reales ni uso de Gemini.
 

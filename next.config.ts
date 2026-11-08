@@ -48,6 +48,15 @@ const config: NextConfig = {
         { key: "X-Robots-Tag", value: "noindex, nofollow" },
       ],
     }, {
+      source: "/auth/:path*",
+      headers: [{ key: "Referrer-Policy", value: "no-referrer" }, { key: "Cache-Control", value: "no-store, max-age=0" }, { key: "X-Robots-Tag", value: "noindex, nofollow" }],
+    }, {
+      source: "/email/:path*",
+      headers: [{ key: "Referrer-Policy", value: "no-referrer" }, { key: "Cache-Control", value: "no-store, max-age=0" }, { key: "X-Robots-Tag", value: "noindex, nofollow" }],
+    }, {
+      source: "/dev/:path*",
+      headers: [{ key: "Referrer-Policy", value: "no-referrer" }, { key: "Cache-Control", value: "no-store, max-age=0" }, { key: "X-Robots-Tag", value: "noindex, nofollow" }],
+    }, {
       source: "/kiosco/activar",
       headers: [
         { key: "Referrer-Policy", value: "no-referrer" },

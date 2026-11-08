@@ -224,6 +224,8 @@ test("presentación conserva tres diapositivas, límites, flechas y Escape", asy
 });
 
 test("solicitud valida campos y descarga TXT local con los datos", async ({ page }) => {
+  // The new app requests treatment consent; dismissing preserves the original local-only TXT path.
+  page.on("dialog", dialog => dialog.dismiss());
   await page.goto("/#solicitar");
   await page.locator('button[type="submit"]').click();
   await expect(page.locator("#request-result")).toBeHidden();

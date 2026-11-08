@@ -10,8 +10,10 @@ export function csrf(request: NextRequest) {
   const origin = request.headers.get("origin");
   const host = request.headers.get("host") || request.nextUrl.host;
   if (!origin) throw new AppError("csrf_rejected", 403);
+  // Resolve config first: a misconfigured APP_BASE_URL is a 503 server problem, not a CSRF rejection.
+  const configured = baseUrl();
   try {
-    const url = new URL(origin), expected = new URL(baseUrl());
+    const url = new URL(origin), expected = new URL(configured);
     const local = process.env.NODE_ENV !== "production" && ["localhost", "127.0.0.1", "[::1]"].includes(url.hostname);
     if (url.origin !== origin || url.host !== host || !(url.origin === expected.origin || local)) throw new Error();
   } catch { throw new AppError("csrf_rejected", 403); }

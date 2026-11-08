@@ -10,6 +10,7 @@ export const organizations = pgTable("organizations", {
 export const visitorAccounts = pgTable("visitor_accounts", {
   id: id(), emailEncrypted: text("email_encrypted"), emailLookupHash: text("email_lookup_hash").unique(),
   emailVerifiedAt: date("email_verified_at"), createdAt: created(), deletionRequestedAt: date("deletion_requested_at"),
+  lastActiveAt: date("last_active_at").notNull().defaultNow(),
 });
 export const memberships = pgTable("memberships", {
   id: id(), userId: uuid("user_id").notNull().references(() => visitorAccounts.id, { onDelete: "cascade" }),
@@ -80,6 +81,9 @@ export const savedExperiences = pgTable("saved_experiences", {
 export const authMagicLinks = pgTable("auth_magic_links", {
   id: id(), tokenHash: text("token_hash").notNull().unique(), userId: uuid("user_id").references(() => visitorAccounts.id, { onDelete: "cascade" }),
   purpose: text().notNull(), expiresAt: date("expires_at").notNull(), usedAt: date("used_at"), createdAt: created(),
+  emailEncrypted: text("email_encrypted"), emailLookupHash: text("email_lookup_hash"),
+  sourceSessionId: uuid("source_session_id").references(() => visitorSessions.id, { onDelete: "cascade" }),
+  locale: text().notNull().default("es"), marketingRequested: boolean("marketing_requested").notNull().default(false),
 }, t => [index("magic_expiry").on(t.expiresAt)]);
 export const consentRecords = pgTable("consent_records", {
   id: id(), visitorId: uuid("visitor_id").references(() => visitorAccounts.id, { onDelete: "cascade" }), sessionId: uuid("session_id").references(() => visitorSessions.id, { onDelete: "cascade" }),
@@ -104,8 +108,11 @@ export const emailSubscriptions = pgTable("email_subscriptions", {
   status: text().notNull().default("pending"), frequency: text(), locale: text().notNull(), timezone: text(), lastSentAt: date("last_sent_at"), unsubscribeTokenHash: text("unsubscribe_token_hash").unique(),
 }, t => [uniqueIndex("subscription_visitor_purpose").on(t.visitorId, t.purpose)]);
 export const emailOutbox = pgTable("email_outbox", {
-  id: id(), template: text().notNull(), recipientRef: uuid("recipient_ref").notNull().references(() => visitorAccounts.id, { onDelete: "cascade" }), idempotencyKey: text("idempotency_key").notNull().unique(),
-  scheduledAt: date("scheduled_at").notNull(), sentAt: date("sent_at"), providerMessageId: text("provider_message_id"), deliveryState: text("delivery_state").notNull().default("pending"), retries: integer().notNull().default(0), lastError: text("last_error"), campaignId: uuid("campaign_id"),
+  id: id(), template: text().notNull(), recipientRef: uuid("recipient_ref").references(() => visitorAccounts.id, { onDelete: "cascade" }), idempotencyKey: text("idempotency_key").notNull().unique(),
+  scheduledAt: date("scheduled_at").notNull(), sentAt: date("sent_at"), providerMessageId: text("provider_message_id"), deliveryState: text("delivery_state").notNull().default("queued"), retries: integer().notNull().default(0), lastError: text("last_error"), campaignId: uuid("campaign_id"),
+  recipientHash: text("recipient_hash"), recipientEncrypted: text("recipient_encrypted"), renderedEncrypted: text("rendered_encrypted"),
+  category: text().notNull().default("transactional"), createdAt: created(),
+  inquiryId: uuid("inquiry_id").references(() => commercialInquiries.id, { onDelete: "cascade" }),
 }, t => [index("outbox_pending").on(t.deliveryState, t.scheduledAt)]);
 export const auditLogs = pgTable("audit_logs", {
   id: id(), actor: uuid().references(() => visitorAccounts.id, { onDelete: "set null" }), action: text().notNull(), targetType: text("target_type").notNull(), targetId: uuid("target_id"),
@@ -117,3 +124,14 @@ export const deletionJobs = pgTable("deletion_jobs", {
 export const rateLimits = pgTable("rate_limits", {
   keyHash: text("key_hash").primaryKey(), count: integer().notNull().default(1), resetAt: date("reset_at").notNull(),
 }, t => [index("rate_limit_expiry").on(t.resetAt)]);
+export const commercialInquiries = pgTable("commercial_inquiries", {
+  id: id(), reference: text().notNull().unique(), idempotencyKey: text("idempotency_key").notNull().unique(), requestHash: text("request_hash").notNull(),
+  payloadEncrypted: text("payload_encrypted").notNull(), source: text().notNull(), status: text().notNull().default("received"),
+  createdAt: created(), leadType: text("lead_type").notNull().default("b2b_installation"), locale: text().notNull(), consentVersion: text("consent_version").notNull(),
+});
+export const emailSuppressions = pgTable("email_suppressions", {
+  emailHash: text("email_hash").primaryKey(), reason: text().notNull(), createdAt: created(),
+});
+export const emailWebhookEvents = pgTable("email_webhook_events", {
+  eventId: text("event_id").primaryKey(), createdAt: created(),
+});

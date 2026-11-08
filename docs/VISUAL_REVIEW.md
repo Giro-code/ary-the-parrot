@@ -1,4 +1,22 @@
-# Revisión visual · etapa 2
+# Revisión visual
+
+## Etapa 3 · pendiente por acceso bloqueado
+
+Artefacto: archivos locales de etapa 3; inventario en `ARY_STAGE3_REPORT.md`, sin commit. Revisión propia de código y unitarias; **no hay capturas nuevas de etapa 3 inspeccionadas ni se acredita paridad de píxeles de esta versión**.
+
+Superficies: `/reingresar` ES/EN, consentimiento obligatorio y marketing ausente con flag false, carga/resultado dry-run/error; `/auth/verify` confirmación/invalidación/replay; `/cuenta/privacidad` autenticado/no autenticado, datos, historial, exportación, baja y borrado; `/privacidad`; `/dev/outbox`; enlaces nuevos en experiencia/Mi viaje; B2B en reposo, resultado, error, reintento y TXT. Preparados anchos 360/390/820/1440; regresión original de seis vistas a 390/820/1440/1920 intacta.
+
+| Pasada | Estado real | Evidencia / bloqueo |
+| --- | --- | --- |
+| 1 · inspección crítica | PENDIENTE | `next dev`: spawn EPERM, errno -4048, next-dev.js:393:45. E2E no arranca por puerto 3000 ya usado. Browser host: unavailable; Computer Use: «Computer Use was not approved to use Microsoft Edge» |
+| Correcciones por lectura/pruebas | Solo revisión técnica | Mensajes dry-run/queued precisos, avisos y CTA, foco/labels/casillas, controles 48px, wrap y columnas móviles; no se presentan como hallazgos visuales |
+| 2 · recarga final | PENDIENTE | Mismo bloqueo; no hay inspección visual final que se pueda afirmar |
+
+No se cerró el servidor ajeno en 3000, no se lanzó Chromium mediante otro mecanismo tras la denegación, no se instalaron herramientas ni se modificó configuración para evitar el sandbox. La lectura de health del servidor existente solo confirmó un demo local dry-run; no valida las pantallas nuevas.
+
+`tests/e2e/stage3.spec.ts` deja dos recorridos independientes con recarga y archivos `docs/screenshots/stage3/pass-<n>-<ruta>-<ancho>.png`. Incluyen privacidad autenticada, recuperación ES/EN, enlace inválido y B2B error/recibido. **Son rutas de evidencia futura; esos archivos no se generaron aquí.** Para cerrar: ejecutar E2E en runtime autorizado, mirar la pasada 1, registrar/corregir hallazgos, recargar, mirar pasada 2 y repetir estados afectados si vuelve a cambiar código. Evaluar texto/jerarquía, interacción/teclado, vacíos/carga/error, consentimientos y overflow además de geometría.
+
+## Etapa 2 · historial
 
 Estado: **verificado por el revisor** (7 nov 2026): la suite E2E (73 passed) cubre los flujos y guarda capturas en `docs/evidence/stage2/`. El texto siguiente es el informe original de Codex, escrito sin acceso a navegador.
 

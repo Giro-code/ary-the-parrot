@@ -94,6 +94,25 @@ body { margin: 0; }
 .public-share img { max-width: 100%; height: auto; }
 .public-item { max-width: 780px; margin: 0 auto; padding: 48px 24px; line-height: 1.7; }
 .public-item nav { display: flex; gap: 24px; flex-wrap: wrap; align-items: center; }
+.account-form { display: grid; gap: 16px; }
+.account-form > label { font-weight: 600; }
+.account-form input[type="email"] { width: 100%; min-width: 0; min-height: 50px; border: 1px solid #687c6b; border-radius: 6px; background: var(--white); color: var(--ink); font: inherit; padding: 10px 14px; }
+.check-row { display: flex; align-items: flex-start; gap: 12px; cursor: pointer; padding-block: 8px; font-weight: 400 !important; }
+.check-row input { width: 22px; height: 22px; flex: 0 0 22px; margin-top: 2px; accent-color: var(--green); }
+.account-form + .notice, .account-form + [role="alert"] { margin-top: 24px; }
+.privacy-panel section { border-top: 1px solid var(--line); margin-top: 28px; padding-top: 12px; }
+.account-email, .privacy-panel li { overflow-wrap: anywhere; }
+.consent-list { padding: 0; list-style: none; }
+.consent-list > li { display: flex; align-items: center; justify-content: space-between; gap: 16px; border-bottom: 1px solid var(--line); padding-block: 16px; }
+.consent-list p { margin: 4px 0 0; font-size: .9rem; }
+.consent-list button { flex-shrink: 0; }
+.privacy-panel details summary, .outbox-message summary { cursor: pointer; min-height: 48px; padding-block: 12px; }
+.privacy-panel .actions { margin-top: 16px; }
+.ary-app .danger { border-color: #9a3e28; color: #822e1c; margin-top: 16px; }
+.outbox-message { border-top: 1px solid var(--line); padding-block: 24px; overflow-wrap: anywhere; }
+.outbox-message pre { white-space: pre-wrap; overflow-wrap: anywhere; font: inherit; max-width: 75ch; }
+.outbox-message iframe { width: 100%; height: 360px; border: 1px solid var(--line); background: white; }
+@media (max-width: 420px) { .consent-list > li { flex-direction: column; align-items: flex-start; } .consent-list button, .privacy-panel .danger { width: 100%; } }
 @media (min-width: 1600px) { .kiosk-app { max-width: 1420px; } .kiosk-app .card-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
 @media (max-width: 760px) {
   .app-header { align-items: flex-start; } .app-header nav { width: 100%; gap: 4px 18px; } .app-header .language { margin-left: auto; }

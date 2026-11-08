@@ -23,7 +23,7 @@ export function Shell({ locale, setLocale, children, kiosk = false }: { locale: 
 export function ErrorNotice({ error, locale, retry }: { error: unknown; locale: Locale; retry?: () => void }) {
   const t = dictionaries[locale];
   const code = error instanceof ApiError ? error.code : "service_unavailable";
-  const message = code === "session_required" ? t.sessionError : code === "rate_limited" ? t.rateError : t.serviceError;
+  const message = code === "session_required" ? t.sessionError : code === "rate_limited" ? t.rateError : code === "storage_consent_required" ? (locale === "en" ? "Authorize storage in your privacy settings to save new places." : "Autoriza la conservación en privacidad para guardar nuevos lugares.") : code === "notice_version_changed" ? (locale === "en" ? "The privacy notice changed. Reload and review it before trying again." : "El aviso de privacidad cambió. Recarga y revísalo antes de volver a intentarlo.") : t.serviceError;
   return <div className="notice error" role="alert"><p>{message}</p>{retry && <button className="secondary" onClick={retry}>{t.retry}</button>}</div>;
 }
 export function PreferenceForm({ locale, country, selected, onChange, onCountry, onSubmit, onSkip, busy }: { locale: Locale; country: string | null; selected: Interest[]; onChange: (value: Interest[]) => void; onCountry: (value: string | null) => void; onSubmit: () => void; onSkip?: () => void; busy: boolean }) {

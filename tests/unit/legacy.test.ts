@@ -25,7 +25,12 @@ describe("originales y copias públicas", () => {
     const style = original.match(/<style>([\s\S]*?)<\/style>/)![1];
     const script = original.match(/<script>([\s\S]*?)<\/script>/)![1];
     expect(read("public/site/landing.css")).toBe(style);
-    expect(read("public/site/landing.js")).toBe(script);
+    // Stage 3 may only change the request-form block, which is the final block of the original script.
+    const marker = "let requestText=";
+    const preserved = script.slice(0, script.indexOf(marker));
+    expect(read("public/site/landing.js").slice(0, preserved.length)).toBe(preserved);
+    expect(read("public/site/landing.js")).toContain("/api/commercial/inquiries");
+    expect(read("public/site/landing.js")).toContain("Solicitud-Ary-la-Cotorra.txt");
     const expected = original
       .replace(/<style>[\s\S]*?<\/style>/, '<link rel="stylesheet" href="/site/landing.css">')
       .replace(/<script>[\s\S]*?<\/script>/, '<script src="/site/landing.js"></script>');

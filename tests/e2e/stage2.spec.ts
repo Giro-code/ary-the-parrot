@@ -6,8 +6,11 @@ const headers = { Origin: origin, "X-Ary-Request": "1" };
 async function fixture() { return JSON.parse(await readFile(".cache/stage2-fixture.json", "utf8")) as { activationCodes: string[]; expiredToken: string }; }
 async function activate(page: Page, index: number) {
   await page.goto(`/kiosco/activar?code=${(await fixture()).activationCodes[index]}`);
-  await page.getByRole("button", { name: "Activar este kiosco", exact: true }).click();
-  await expect(page).toHaveURL(/\/kiosco$/);
+  // On a cold dev server the first click can land before hydration and do nothing; retry until it navigates.
+  await expect(async () => {
+    if (!/\/kiosco$/.test(page.url())) await page.getByRole("button", { name: "Activar este kiosco", exact: true }).click();
+    await expect(page).toHaveURL(/\/kiosco$/, { timeout: 3000 });
+  }).toPass({ timeout: 30000 });
   await expect(page.getByText("Dispositivo autorizado", { exact: true })).toBeVisible();
 }
 async function discover(page: Page) {
@@ -97,8 +100,9 @@ test("no email, keyboard navigation, optional preferences and demo permission bo
   await page.getByRole("button", { name: "Ver recomendaciones" }).click();
   await expect(page.getByRole("heading", { name: "Mangú", exact: true })).toBeVisible();
   await page.getByRole("link", { name: "Guardar mi experiencia y recibir un enlace por correo" }).click();
-  await expect(page.getByRole("heading", { name: "Próximamente", exact: true })).toBeVisible();
-  await expect(page.locator('input[type="email"]')).toHaveCount(0);
+  await expect(page.getByRole("heading", { name: "Guardar y recuperar Mi viaje", exact: true })).toBeVisible();
+  await expect(page.locator('input[type="email"]')).toHaveCount(1);
+  await expect(page.locator('input[type="checkbox"]').first()).not.toBeChecked();
 });
 test("kiosk cancels, resets on inactivity and reports actual offline state", async ({ page, context }) => {
   // Install the fake clock before the kiosk loads so its inactivity timers use it (it still runs naturally).

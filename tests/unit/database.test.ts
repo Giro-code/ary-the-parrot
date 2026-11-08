@@ -37,12 +37,16 @@ test("all conceptual tables and real migrations exist; published content has ver
 });
 test("migration snapshot matches schema and rollback removes the isolated test schema", async () => {
   const { generateDrizzleJson, generateMigration } = await import("drizzle-kit/api");
-  const snapshot = JSON.parse(await readFile("drizzle/meta/0000_snapshot.json", "utf8"));
-  expect(snapshot.prevId).toBe("00000000-0000-0000-0000-000000000000");
+  const initial = JSON.parse(await readFile("drizzle/meta/0000_snapshot.json", "utf8"));
+  const snapshot = JSON.parse(await readFile("drizzle/meta/0001_snapshot.json", "utf8"));
+  expect(initial.prevId).toBe("00000000-0000-0000-0000-000000000000");
+  expect(snapshot.prevId).toBe(initial.id);
   expect(await generateMigration(snapshot, generateDrizzleJson(s, snapshot.id))).toEqual([]);
   const isolated = await connectDatabase({ memory: true });
   try {
     await migrateDatabase(isolated.db);
+    const stage3Down = await readFile("drizzle/rollback/0001_stage3_email_privacy.sql", "utf8");
+    for (const statement of stage3Down.split(";").map(value => value.trim()).filter(Boolean)) await isolated.db.execute(sql.raw(statement));
     const down = await readFile("drizzle/rollback/0000_ary_core.sql", "utf8");
     for (const statement of down.split(";").map(value => value.trim()).filter(Boolean)) await isolated.db.execute(sql.raw(statement));
     const remaining = await isolated.db.execute(sql`select tablename from pg_tables where schemaname='public'`);

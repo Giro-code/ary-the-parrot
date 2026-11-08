@@ -68,9 +68,16 @@ Se usa CSS original para la landing y CSS local mínimo para los avisos. Sin Tai
 
 ### 3 · Correo y B2B
 
-- [ ] Adaptador Resend dry-run y recuperación verificada.
-- [ ] Consentimientos granulares, outbox, baja y supresiones.
-- [ ] Solicitud comercial persistida y TXT conservado.
+- [x] Adaptadores Resend HTTP/dry-run, outbox cifrada e idempotente y recuperación verificada (PGlite).
+- [x] Consentimientos granulares, double opt-in, preferencias, baja, Svix y supresiones.
+- [x] Exportación/borrado autenticados y retención local propuesta.
+- [x] Solicitud comercial persistida aparte, auditada, validada y TXT conservado en código.
+- [x] Migración nueva, unitarias, E2E escritos y documentación de operación/privacidad.
+- [ ] Build completo y ejecución de E2E de etapa 3 fuera del bloqueo del entorno.
+- [ ] Dos pasadas visuales reales de etapa 3 y regresión actual de 0 píxeles.
+- [ ] Operación real de correo/Neon/DNS/cron, solo tras configuración y revisión autorizadas.
+
+Estado de etapa 3 y límites: [ARY_STAGE3_REPORT](ARY_STAGE3_REPORT.md). No se enviaron correos reales y no se hizo commit/push. La ejecución autónoma dejó implementado el alcance y documentó los bloqueos exactos; no certifica verificación visual o producción.
 
 ### 4 · Operación
 

@@ -8,6 +8,8 @@ import { activateKiosk, createHandoff, createSession, enrollKiosk, setPreference
 // Dedicated synthetic DB: never touches DATABASE_URL or the developer's .pglite.
 process.env.DATABASE_URL = "";
 process.env.APP_BASE_URL = "http://127.0.0.1:3002";
+process.env.EMAIL_DRY_RUN = "true";
+process.env.FEATURE_ENABLE_MARKETING = "false";
 Object.assign(process.env, { NODE_ENV: "development" });
 await mkdir(".cache", { recursive: true });
 process.env.PGLITE_DATA_DIR = await mkdtemp(resolve(".cache/ary-e2e-"));

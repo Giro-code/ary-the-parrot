@@ -1,4 +1,4 @@
-import { Information } from "../../src/components/information";
+import { Recovery } from "../../src/components/recovery";
 export default async function RecoveryPage({ searchParams }: { searchParams: Promise<{ lang?: string }> }) {
-  return <Information kind="recovery" initialLocale={(await searchParams).lang === "en" ? "en" : "es"} />;
+  return <Recovery initialLocale={(await searchParams).lang === "en" ? "en" : "es"} marketingEnabled={process.env.FEATURE_ENABLE_MARKETING === "true"} development={process.env.NODE_ENV !== "production"} />;
 }

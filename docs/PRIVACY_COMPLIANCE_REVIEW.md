@@ -1,5 +1,17 @@
 # Privacidad · revisión pendiente
 
+## Estado actual · etapa 3
+
+Se implementaron cuenta opcional solo tras verificar correo, cifrado AES-GCM/HMAC, enlaces de 15 minutos, cinco finalidades versionadas, recuperación explícita, marketing separado con double opt-in y sin preselección, preferencias/pausa/baja, supresiones, JSON propio y borrado transaccional. Solicitudes B2B en tabla separada y nunca inscritas en campañas. Modo prueba por defecto; no se enviaron correos reales. Evidencia de dominio/API con PGlite y fetch simulado; UI/E2E reales pendientes según [informe](ARY_STAGE3_REPORT.md).
+
+La política técnica propuesta conserva cuentas 365 días de inactividad, correo/eventos de webhook 30 días y B2B 180 días; cleanup requiere operación programada. Se conserva evidencia anónima de consentimiento/auditoría y hashes de supresión sin plazo automático aprobado. Borrar la cuenta no certifica borrado de backups o datos transmitidos. No existe integración de cesión a proveedores ni campañas recurrentes en esta etapa.
+
+**Revisión jurídica antes de producción:** identificar responsable y contacto; confirmar base jurídica de cada finalidad y tratamiento B2B; validar retención, supresión, backups, contratos con Resend/BD/alojamiento, transferencias internacionales, menores, reglas de marketing/frecuencia/baja y ejercicio de derechos de solicitantes B2B. La confirmación nativa del formulario informa finalidad/versionado y permite cancelar para descargar solo TXT; revisar su texto final y accesibilidad en navegador. SPF/DKIM/DMARC y plan cron no están verificados. No se declara cumplimiento de una ley concreta.
+
+Detalles de controles y amenazas: [ARY_SECURITY_AND_PRIVACY](ARY_SECURITY_AND_PRIVACY.md). Instrucciones de operación: [ARY_EMAIL_SETUP](ARY_EMAIL_SETUP.md).
+
+## Historial · etapa 2
+
 Etapa 2 implementa minimización técnica, sesión anónima temporal, tokens hash, separación kiosco/móvil, ausencia de correo/marketing, guardados por propietario, país voluntario y analytics con lista blanca. No hay audio, geolocalización, reconocimiento facial ni inferencias de gustos por nacionalidad.
 
 La interfaz explica el acceso temporal (24 h por defecto, configurable), QR de 120 s y diferencia entre caducidad y borrado físico. Los eventos tienen retención de 90 días por defecto, pendiente de decisión; el operador debe ejecutar `db:cleanup`. No hay cron desplegado ni borrado certificado de backups.

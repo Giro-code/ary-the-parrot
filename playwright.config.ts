@@ -15,6 +15,7 @@ export default defineConfig({
     { name: "legacy", testMatch: "legacy-regression.spec.ts", use: { baseURL: "http://127.0.0.1:3001" } },
     { name: "app", testMatch: "legacy-regression.spec.ts", use: { baseURL: "http://127.0.0.1:3000" } },
     { name: "stage2", testMatch: "stage2.spec.ts", fullyParallel: false, use: { baseURL: "http://127.0.0.1:3002" } },
+    { name: "stage3", testMatch: "stage3.spec.ts", fullyParallel: false, use: { baseURL: "http://127.0.0.1:3002" } },
   ],
   webServer: [
     {

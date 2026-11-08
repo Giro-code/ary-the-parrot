@@ -5,6 +5,7 @@ import { AppError } from "./errors.ts";
 import { confirmationCode, hashToken, newToken } from "./tokens.ts";
 import { handoffTtl, sessionTtl } from "./config.ts";
 import { interests as interestKeys, recommendationRationale, type Interest, type Locale } from "../i18n/index.ts";
+import { hasConsent } from "./consents.ts";
 
 export type Session = typeof s.visitorSessions.$inferSelect;
 export type CulturalItem = typeof s.culturalItems.$inferSelect;
@@ -37,10 +38,11 @@ export async function getSession(db: Database, token: string | undefined, now = 
   if (!token || !/^[\w-]{43}$/.test(token)) throw new AppError("session_required", 401);
   const [session] = await db.select().from(s.visitorSessions).where(and(eq(s.visitorSessions.tokenHash, hashToken(token)), gt(s.visitorSessions.expiresAt, now)));
   if (!session || (active && session.status !== "active")) throw new AppError("session_required", 401);
+  if (session.ownerUserId && active) await db.update(s.visitorAccounts).set({ lastActiveAt: now }).where(eq(s.visitorAccounts.id, session.ownerUserId));
   return session;
 }
 export function publicSession(session: Session) {
-  return { locale: session.locale as Locale, countryDeclared: session.countryDeclared, interests: session.interests as Interest[], expiresAt: session.expiresAt.toISOString() };
+  return { locale: session.locale as Locale, countryDeclared: session.countryDeclared, interests: session.interests as Interest[], expiresAt: session.expiresAt.toISOString(), accountVerified: !!session.ownerUserId };
 }
 export async function createSession(db: Database, locale: Locale = "es", kioskDeviceId: string | null = null, now = new Date()) {
   const token = newToken();
@@ -71,6 +73,10 @@ export async function setPreferences(db: Database, session: Session, prefs: Pref
     const [pending] = await tx.select().from(s.qrHandoffs).where(and(eq(s.qrHandoffs.sourceSessionId, session.id), isNull(s.qrHandoffs.usedAt), isNull(s.qrHandoffs.invalidatedAt), gt(s.qrHandoffs.expiresAt, now)));
     if (pending) throw new AppError("handoff_pending", 409);
     await tx.insert(s.visitorPreferences).values({ sessionId: session.id, ...prefs, updatedAt: now }).onConflictDoUpdate({ target: s.visitorPreferences.sessionId, set: { ...prefs, updatedAt: now } });
+    if (session.ownerUserId && await hasConsent(tx, session.ownerUserId, "service_storage")) {
+      await tx.delete(s.visitorPreferences).where(eq(s.visitorPreferences.visitorId, session.ownerUserId));
+      await tx.insert(s.visitorPreferences).values({ visitorId: session.ownerUserId, ...prefs, updatedAt: now });
+    }
     await recordEvent(tx, "preferences_set", { interests: prefs.interests });
   });
 }
@@ -190,14 +196,19 @@ export async function recommend(db: Database, session: Session) {
   });
 }
 export async function listSaved(db: Database, sessionId: string) {
-  return db.select({ saved: s.savedExperiences, item: s.culturalItems }).from(s.savedExperiences).innerJoin(s.culturalItems, eq(s.savedExperiences.itemId, s.culturalItems.id)).where(and(eq(s.savedExperiences.sessionId, sessionId), inArray(s.savedExperiences.state, ["saved", "visited"]))).orderBy(desc(s.savedExperiences.createdAt)).limit(100);
+  const [session] = await db.select().from(s.visitorSessions).where(eq(s.visitorSessions.id, sessionId));
+  const owner = session?.ownerUserId ? eq(s.savedExperiences.visitorId, session.ownerUserId) : eq(s.savedExperiences.sessionId, sessionId);
+  return db.select({ saved: s.savedExperiences, item: s.culturalItems }).from(s.savedExperiences).innerJoin(s.culturalItems, eq(s.savedExperiences.itemId, s.culturalItems.id)).where(and(owner, inArray(s.savedExperiences.state, ["saved", "visited"]))).orderBy(desc(s.savedExperiences.createdAt)).limit(100);
 }
 export async function saveItem(db: Database, sessionId: string, itemId: string) {
   await findItem(db, itemId);
   return db.transaction(async tx => {
     const [session] = await tx.update(s.visitorSessions).set({ lastActiveAt: new Date() }).where(and(eq(s.visitorSessions.id, sessionId), eq(s.visitorSessions.status, "active"), gt(s.visitorSessions.expiresAt, new Date()))).returning();
     if (!session) throw new AppError("session_required", 401);
-    const [row] = await tx.insert(s.savedExperiences).values({ sessionId, itemId }).onConflictDoUpdate({ target: [s.savedExperiences.sessionId, s.savedExperiences.itemId], set: { state: "saved" } }).returning();
+    if (session.ownerUserId && !await hasConsent(tx, session.ownerUserId, "service_storage")) throw new AppError("storage_consent_required", 403);
+    const owner = session.ownerUserId ? { visitorId: session.ownerUserId } : { sessionId };
+    const target = session.ownerUserId ? [s.savedExperiences.visitorId, s.savedExperiences.itemId] : [s.savedExperiences.sessionId, s.savedExperiences.itemId];
+    const [row] = await tx.insert(s.savedExperiences).values({ ...owner, itemId }).onConflictDoUpdate({ target, set: { state: "saved" } }).returning();
     await recordEvent(tx, "item_saved", { state: "saved" });
     return row;
   });
@@ -206,7 +217,8 @@ export async function updateSaved(db: Database, sessionId: string, id: string, c
   return db.transaction(async tx => {
     const [session] = await tx.update(s.visitorSessions).set({ lastActiveAt: new Date() }).where(and(eq(s.visitorSessions.id, sessionId), eq(s.visitorSessions.status, "active"), gt(s.visitorSessions.expiresAt, new Date()))).returning();
     if (!session) throw new AppError("session_required", 401);
-    const [row] = await tx.update(s.savedExperiences).set(changes).where(and(eq(s.savedExperiences.id, id), eq(s.savedExperiences.sessionId, sessionId))).returning();
+    const owner = session.ownerUserId ? eq(s.savedExperiences.visitorId, session.ownerUserId) : eq(s.savedExperiences.sessionId, sessionId);
+    const [row] = await tx.update(s.savedExperiences).set(changes).where(and(eq(s.savedExperiences.id, id), owner)).returning();
     if (!row) throw new AppError("saved_not_found", 404);
     return row;
   });

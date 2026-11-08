@@ -8,6 +8,13 @@
       "when": 1794096000000,
       "tag": "0000_ary_core",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1794101532624,
+      "tag": "0001_stage3_email_privacy",
+      "breakpoints": true
     }
   ]
 }
