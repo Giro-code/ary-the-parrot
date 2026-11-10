@@ -24,6 +24,11 @@ export const kioskDevices = pgTable("kiosk_devices", {
   credentialExpiresAt: date("credential_expires_at"), firmwareVersion: text("firmware_version"),
   status: text().notNull().default("pending"), lastSeenAt: date("last_seen_at"), createdAt: created(),
 });
+export const conversations = pgTable("conversations", {
+  id: id(), visitorId: uuid("visitor_id").notNull().references(() => visitorAccounts.id, { onDelete: "cascade" }),
+  encryptedPayload: text("encrypted_payload").notNull(), createdAt: created(), updatedAt: date("updated_at").notNull().defaultNow(),
+  retentionUntil: date("retention_until").notNull(),
+}, t => [index("conversations_owner").on(t.visitorId), index("conversations_retention").on(t.retentionUntil)]);
 export const visitorSessions = pgTable("visitor_sessions", {
   id: id(), tokenHash: text("token_hash").notNull().unique(),
   kioskDeviceId: uuid("kiosk_device_id").references(() => kioskDevices.id, { onDelete: "set null" }),
@@ -33,6 +38,8 @@ export const visitorSessions = pgTable("visitor_sessions", {
   lastActiveAt: date("last_active_at").notNull().defaultNow(),
   ownerUserId: uuid("owner_user_id").references(() => visitorAccounts.id, { onDelete: "cascade" }),
   retentionClass: text("retention_class").notNull().default("anonymous_operational"),
+  pendingEmailHash: text("pending_email_hash"),
+  conversationId: uuid("conversation_id").references(() => conversations.id, { onDelete: "set null" }),
 }, t => [index("sessions_expiry").on(t.expiresAt), index("sessions_kiosk").on(t.kioskDeviceId), index("sessions_owner").on(t.ownerUserId), check("session_locale", sql`${t.locale} in ('es','en')`)]);
 export const visitorPreferences = pgTable("visitor_preferences", {
   id: id(), sessionId: uuid("session_id").unique().references(() => visitorSessions.id, { onDelete: "cascade" }),
@@ -87,6 +94,11 @@ export const authMagicLinks = pgTable("auth_magic_links", {
   locale: text().notNull().default("es"), marketingRequested: boolean("marketing_requested").notNull().default(false),
   organizationId: uuid("organization_id").references(() => organizations.id, { onDelete: "cascade" }),
 }, t => [index("magic_expiry").on(t.expiresAt)]);
+export const savedPlaces = pgTable("saved_places", {
+  id: id(), sessionId: uuid("session_id").references(() => visitorSessions.id, { onDelete: "cascade" }),
+  visitorId: uuid("visitor_id").references(() => visitorAccounts.id, { onDelete: "cascade" }),
+  encryptedPayload: text("encrypted_payload").notNull(), createdAt: created(),
+}, t => [index("places_session").on(t.sessionId), index("places_visitor").on(t.visitorId), check("place_owner", sql`${t.sessionId} is not null or ${t.visitorId} is not null`)]);
 export const consentRecords = pgTable("consent_records", {
   id: id(), visitorId: uuid("visitor_id").references(() => visitorAccounts.id, { onDelete: "cascade" }), sessionId: uuid("session_id").references(() => visitorSessions.id, { onDelete: "cascade" }),
   purpose: text().notNull(), granted: boolean().notNull(), noticeVersion: text("notice_version").notNull(), collectedAt: date("collected_at").notNull().defaultNow(), revokedAt: date("revoked_at"), source: text().notNull(), proof: jsonb(), locale: text().notNull(),

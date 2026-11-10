@@ -20,7 +20,7 @@ export async function enqueueEmail(db: Database, args: { template: Template; loc
   const [suppressed] = await db.select().from(s.emailSuppressions).where(eq(s.emailSuppressions.emailHash, hash));
   if (suppressed) return null;
   if (["marketing", "reminder"].includes(category) && !await marketingAllowed(db, args.visitorId || null)) return null;
-  if (args.template === "marketing_confirmation" && process.env.FEATURE_ENABLE_MARKETING !== "true") return null;
+  if (args.template === "marketing_confirmation" && process.env.FEATURE_ENABLE_MARKETING !== "true" && (!args.visitorId || !await hasConsent(db, args.visitorId, "marketing"))) return null;
   let data = args.data;
   if (["marketing", "reminder"].includes(category) && args.visitorId) {
     const [sub] = await db.select().from(s.emailSubscriptions).where(and(eq(s.emailSubscriptions.visitorId, args.visitorId), eq(s.emailSubscriptions.purpose, "marketing_email")));
@@ -37,7 +37,7 @@ type Row = typeof s.emailOutbox.$inferSelect;
 async function deliverRow(db: Database, row: Row, provider: EmailProvider) {
   const [suppressed] = row.recipientHash ? await db.select().from(s.emailSuppressions).where(eq(s.emailSuppressions.emailHash, row.recipientHash)) : [];
   const marketing = row.category === "marketing" || row.category === "reminder";
-  const denied = suppressed || (marketing && !await marketingAllowed(db, row.recipientRef)) || (row.template === "marketing_confirmation" && (process.env.FEATURE_ENABLE_MARKETING !== "true" || !row.recipientRef || !await hasConsent(db, row.recipientRef, "marketing_email")));
+  const denied = suppressed || (marketing && !await marketingAllowed(db, row.recipientRef)) || (row.template === "marketing_confirmation" && (!row.recipientRef || !await hasConsent(db, row.recipientRef, "marketing_email")));
   if (denied || !row.recipientEncrypted || !row.renderedEncrypted) {
     await db.update(s.emailOutbox).set({ deliveryState: "failed", lastError: suppressed ? "recipient_suppressed" : "policy_blocked", renderedEncrypted: null }).where(eq(s.emailOutbox.id, row.id)); return;
   }

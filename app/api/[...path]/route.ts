@@ -12,6 +12,9 @@ import { interests } from "../../../src/i18n";
 import { stage3Http } from "../../../src/server/stage3-http";
 import { stage4bHttp } from "../../../src/server/stage4b-http";
 import { chat, chatCue, chatHistory, chatInputSchema, cueSchema } from "../../../src/server/ai/chat";
+import { consumeProvisionalQuestion, emailAdmission } from "../../../src/server/onboarding";
+import { eq } from "drizzle-orm";
+import { visitorSessions } from "../../../src/db/schema";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -35,16 +38,25 @@ async function handle(request: NextRequest) {
       const response = json({ activated: true }); setCookie(response, "ary_kiosk", token); return response;
     }
     if (path === "/api/kiosk/me" && method === "GET") return json({ authorized: !!await service.kioskDevice(db, deviceToken) });
-    if (path === "/api/chat" && method === "POST") return json(await chat(db, visitorToken, await body(request, chatInputSchema)));
-    if (path === "/api/chat/cue" && method === "POST") return json(await chatCue(db, visitorToken, await body(request, cueSchema)));
+    if (path === "/api/chat" && method === "POST") {
+      const input = await body(request, chatInputSchema);
+      await consumeProvisionalQuestion(db, await service.getSession(db, visitorToken));
+      return json(await chat(db, visitorToken, input));
+    }
+    if (path === "/api/chat/cue" && method === "POST") {
+      const session = await service.getSession(db, visitorToken);
+      if (!session.kioskDeviceId && session.retentionClass !== "kiosk_demo" && !await emailAdmission(db, session)) throw new AppError("email_required", 403);
+      return json(await chatCue(db, visitorToken, await body(request, cueSchema)));
+    }
     if (path === "/api/visitor/session" && method === "POST") {
-      const { locale } = await body(request, z.object({ locale: z.enum(["es", "en"]).default("es") }).strict());
+      const { locale, kiosk } = await body(request, z.object({ locale: z.enum(["es", "en"]).default("es"), kiosk: z.boolean().default(false) }).strict());
       let existing: service.Session | undefined;
       try { existing = await service.getSession(db, visitorToken); } catch (error) { if (!(error instanceof AppError)) throw error; }
       if (existing) return json({ session: service.publicSession(existing) });
       await service.rateLimit(db, clientHash(`session:${request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "local"}`), 20);
       const device = await service.kioskDevice(db, deviceToken);
       const created = await service.createSession(db, locale, device?.id);
+      if (kiosk && !device) await db.update(visitorSessions).set({ retentionClass: "kiosk_demo" }).where(eq(visitorSessions.id, created.session.id));
       const response = json({ session: service.publicSession(created.session) }, 201); setCookie(response, "ary_sid", created.token); return response;
     }
     if (path === "/api/cultural/items" && method === "GET") {

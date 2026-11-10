@@ -1,3 +1,15 @@
+# Regla vigente desde etapa 8
+
+El propietario autorizó el rediseño cultural de la landing ES/EN, CSS, JS y brochures. La igualdad de píxeles frente a legacy ya no es un criterio de aceptación. El contenido que sigue es evidencia histórica de etapas anteriores.
+
+`legacy/` permanece intacto: sus hashes originales siguen comprobándose en Vitest. También se conservan los assets originales y el brochure enlazado. `tests/e2e/legacy-regression.spec.ts` ahora comprueba navegación, foco, menú móvil, accesibilidad básica, demo, presentación, TXT/B2B, enlaces, créditos y ausencia de overflow en la nueva landing; no compara píxeles. La etapa 7 conserva idioma automático y sus interacciones; se retira su comparación visual anterior.
+
+Playwright usa los servidores 3000 (build sin BD) y 3002 (demo aislada) sin necesitar el servidor de legacy. La etapa 7 ya estaba integrada; no existía `playwright.stage7.config.ts` al iniciar esta tarea. Se añaden proyectos stage8/Chromium y stage8-webkit, sin conflictos de puertos. Se respeta el directorio de navegadores elegido por el entorno o el predeterminado de Playwright.
+
+**Esta ejecución no acredita E2E ni revisión visual:** procesos bloqueados con `spawn EPERM` y host del navegador inaccesible. Ver [informe de etapa 8](ARY_STAGE8_REPORT.md) y [pendiente visual](evidence/stage8/visual-review.md).
+
+---
+
 # Regresión de la landing de Ary
 
 Fecha local 7 de noviembre de 2026, America/La_Paz. Base `b04db41`. Evidencia HTTP final a `2026-11-08T00:00:33.533Z`, todavía 7 de noviembre en La Paz.

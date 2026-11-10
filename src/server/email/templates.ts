@@ -6,7 +6,7 @@ const copy: Record<Locale, Record<Template, [string, string]>> = {
   es: {
     staff_login: ["Acceso del personal · Ary", "Confirma el acceso de personal solicitado. Este enlace se usa una sola vez y caduca en 15 minutos. No da acceso a una sesión de visitante."],
     campaign: ["Novedades culturales · Ary", "Novedades solicitadas mediante suscripción confirmada. Puedes darte de baja en cualquier momento."],
-    recovery: ["Continúa tu experiencia con Ary", "Has solicitado guardar o recuperar Mi viaje. Conservamos tus selecciones y guardados durante 365 días de inactividad. Confirma el acceso; este enlace caduca en 15 minutos y se usa una sola vez."],
+    recovery: ["Continúa tu experiencia con Ary", "Has solicitado guardar o recuperar Mis viajes. Conservamos tus selecciones y guardados durante 365 días de inactividad. Confirma el acceso; este enlace caduca en 15 minutos y se usa una sola vez."],
     marketing_confirmation: ["Confirma que deseas recibir novedades", "Confirma tu suscripción opcional a novedades culturales de Ary. Hasta que confirmes no recibirás marketing. Este enlace caduca en 15 minutos y se usa una sola vez."],
     saved_places: ["Tus lugares guardados", "Este es el acceso al resumen que solicitaste. Autentícate para ver tus guardados; este correo no contiene tu perfil ni conversaciones."],
     cultural_reminder: ["Tu próxima experiencia cultural", "Recordatorio cultural opcional de Ary según tu frecuencia elegida. Puedes pausar o dar de baja estos correos en cualquier momento."],
@@ -18,7 +18,7 @@ const copy: Record<Locale, Record<Template, [string, string]>> = {
   en: {
     staff_login: ["Staff access · Ary", "Confirm your requested staff access. This single-use link expires in 15 minutes and does not open a visitor session."],
     campaign: ["Cultural updates · Ary", "Updates requested through a confirmed subscription. You can unsubscribe at any time."],
-    recovery: ["Continue your experience with Ary", "You requested to save or recover My trip. We retain your selections and saved places for 365 days of inactivity. Confirm access; this single-use link expires in 15 minutes."],
+    recovery: ["Continue your experience with Ary", "You requested to save or recover My trips. We retain your selections and saved places for 365 days of inactivity. Confirm access; this single-use link expires in 15 minutes."],
     marketing_confirmation: ["Confirm you want to receive updates", "Confirm your optional Ary cultural updates subscription. No marketing is sent before confirmation. This single-use link expires in 15 minutes."],
     saved_places: ["Your saved places", "Access the summary you requested. Sign in to see your saved places; this email contains no profile or conversations."],
     cultural_reminder: ["Your next cultural experience", "An optional Ary cultural reminder at your chosen frequency. Pause or unsubscribe at any time."],
@@ -35,7 +35,7 @@ export function renderEmail(template: Template, locale: Locale, data: TemplateDa
   const subject = template === "campaign" ? (data.campaignSubject || defaultSubject) : defaultSubject;
   const detail = [data.reference, data.providerName, data.sharedFields?.join(", "), template === "campaign" ? data.campaignMessage : undefined].filter(Boolean).join(" · ");
   const links = [safeUrl(data.url), safeUrl(data.preferencesUrl), safeUrl(data.unsubscribeUrl)].filter((url): url is string => !!url);
-  const expiry = locale === "es" ? "Los enlaces de acceso o confirmación caducan en 15 minutos. Preferencias y baja no dan acceso a Mi viaje." : "Access and confirmation links expire in 15 minutes. Preferences and unsubscribe links do not grant access to My trip.";
+  const expiry = locale === "es" ? "Los enlaces de acceso o confirmación caducan en 15 minutos. Preferencias y baja no dan acceso a Mis viajes." : "Access and confirmation links expire in 15 minutes. Preferences and unsubscribe links do not grant access to My trips.";
   const footer = locale === "es" ? "Ary · La Cotorra. Comunicación para la finalidad solicitada. Responsable y contacto: pendientes de revisión jurídica antes de producción." : "Ary · La Cotorra. Communication for the requested purpose. Controller and contact: legal review required before production.";
   const text = [subject, intro, detail, ...links, expiry, footer].filter(Boolean).join("\n\n");
   const html = `<!doctype html><html lang="${locale}"><body><main><h1>${escape(subject)}</h1><p>${escape(intro)}</p>${detail ? `<p>${escape(detail)}</p>` : ""}${links.map((url, i) => `<p><a href="${escape(url)}">${escape(i === 0 && data.url ? (locale === "es" ? "Continuar" : "Continue") : url === data.unsubscribeUrl ? (locale === "es" ? "Dar de baja con un clic" : "Unsubscribe") : (locale === "es" ? "Preferencias" : "Preferences"))}</a></p>`).join("")}<p>${escape(expiry)}</p><footer>${escape(footer)}</footer></main></body></html>`;

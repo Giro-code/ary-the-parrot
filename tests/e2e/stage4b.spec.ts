@@ -1,6 +1,7 @@
 import { test, expect, type Page, type BrowserContext } from "@playwright/test";
 import { mkdir } from "node:fs/promises";
 import { randomUUID } from "node:crypto";
+import { confirmRecovery, requestRecovery } from "./helpers";
 const base = "http://127.0.0.1:3002", evidence = "docs/screenshots/stage4b";
 const ids = { a: "4b000000-0000-4000-8000-000000000002", b: "4b000000-0000-4000-8000-000000000003" };
 type State = Awaited<ReturnType<BrowserContext["storageState"]>>;
@@ -14,10 +15,9 @@ async function staffLogin(page: Page, email: string) {
 }
 async function recoverVisitor(page: Page) {
   const email = `lead-${randomUUID()}@example.invalid`;
-  await page.goto("/reingresar"); await page.getByLabel("Correo electrónico").fill(email); await page.getByRole("checkbox", { name: "Solicito conservar Mi viaje", exact: false }).check();
-  await expect(async () => { await page.getByRole("button", { name: "Solicitar enlace de acceso", exact: true }).click(); await expect(page.getByRole("status").filter({ hasText: "Modo prueba" })).toBeVisible(); }).toPass({ timeout: 20000 });
-  await page.goto("/dev/outbox"); const recovery = page.locator('article[data-template="recovery"]').filter({ hasText: email }).first(); const link = await recovery.getByRole("link", { name: "Abrir enlace", exact: true }).getAttribute("href"); await page.goto(link!);
-  await expect(async () => { await page.getByRole("button", { name: "Confirmar", exact: true }).click(); await expect(page).toHaveURL(`${base}/mi-viaje`); }).toPass({ timeout: 20000 }); return email;
+  await confirmRecovery(page, await requestRecovery(page, email));
+  await page.goto("/mi-viaje");
+  return email;
 }
 test.beforeAll(async ({ browser }) => {
   test.setTimeout(120000);

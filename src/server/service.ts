@@ -6,6 +6,7 @@ import { confirmationCode, hashToken, newToken } from "./tokens.ts";
 import { handoffTtl, sessionTtl } from "./config.ts";
 import { interests as interestKeys, recommendationRationale, type Interest, type Locale } from "../i18n/index.ts";
 import { hasConsent } from "./consents.ts";
+import { archiveConversation } from "./conversations.ts";
 
 export type Session = typeof s.visitorSessions.$inferSelect;
 export type CulturalItem = typeof s.culturalItems.$inferSelect;
@@ -45,7 +46,7 @@ export async function getSession(db: Database, token: string | undefined, now = 
   return session;
 }
 export function publicSession(session: Session) {
-  return { locale: session.locale as Locale, countryDeclared: session.countryDeclared, interests: session.interests as Interest[], expiresAt: session.expiresAt.toISOString(), accountVerified: !!session.ownerUserId };
+  return { locale: session.locale as Locale, countryDeclared: session.countryDeclared, interests: session.interests as Interest[], expiresAt: session.expiresAt.toISOString(), accountVerified: !!session.ownerUserId, emailStarted: !!session.pendingEmailHash };
 }
 export async function createSession(db: Database, locale: Locale = "es", kioskDeviceId: string | null = null, now = new Date()) {
   const token = newToken();
@@ -59,11 +60,13 @@ async function clearOperational(db: Database, sessionId: string, status: string,
   await db.delete(s.savedExperiences).where(eq(s.savedExperiences.sessionId, sessionId));
   await db.delete(s.recommendations).where(eq(s.recommendations.sessionId, sessionId));
   await db.delete(s.chatMessages).where(eq(s.chatMessages.sessionId, sessionId));
+  await db.delete(s.savedPlaces).where(eq(s.savedPlaces.sessionId, sessionId));
 }
 export async function endSession(db: Database, sessionId: string, now = new Date()) {
   await db.transaction(async tx => {
     // Lock the session first, as redeem and handoff creation do.
-    await tx.update(s.visitorSessions).set({ lastActiveAt: now }).where(eq(s.visitorSessions.id, sessionId));
+    const [session] = await tx.update(s.visitorSessions).set({ lastActiveAt: now }).where(eq(s.visitorSessions.id, sessionId)).returning();
+    if (session) await archiveConversation(tx, session);
     const expired = await tx.update(s.qrHandoffs).set({ invalidatedAt: now, status: "cancelled" }).where(and(eq(s.qrHandoffs.sourceSessionId, sessionId), isNull(s.qrHandoffs.usedAt), isNull(s.qrHandoffs.invalidatedAt))).returning();
     for (const qr of expired) if (+qr.expiresAt <= +now) await recordEvent(tx, "qr_expired");
     await clearOperational(tx, sessionId, "ended", now);
@@ -159,6 +162,10 @@ export async function redeemHandoff(db: Database, token: string, code: string, t
     await tx.insert(s.visitorPreferences).values({ sessionId: session.id, ...prefs });
     const saved = await tx.select().from(s.savedExperiences).where(eq(s.savedExperiences.sessionId, source.id));
     if (saved.length) await tx.insert(s.savedExperiences).values(saved.map(item => ({ sessionId: session.id, itemId: item.itemId, state: item.state, favorite: item.favorite, notes: item.notes })));
+    const messages = await tx.select().from(s.chatMessages).where(and(eq(s.chatMessages.sessionId, source.id), gt(s.chatMessages.retentionUntil, now)));
+    if (messages.length) await tx.insert(s.chatMessages).values(messages.map(({ role, encryptedPayload, provenance, createdAt }) => ({ sessionId: session.id, role, encryptedPayload, provenance, createdAt, retentionUntil: session.expiresAt })));
+    const places = await tx.select().from(s.savedPlaces).where(eq(s.savedPlaces.sessionId, source.id));
+    if (places.length) await tx.insert(s.savedPlaces).values(places.map(({ encryptedPayload }) => ({ encryptedPayload, sessionId: session.id })));
     await tx.update(s.qrHandoffs).set({ consumedBySessionId: session.id }).where(eq(s.qrHandoffs.id, claimed.id));
     await clearOperational(tx, source.id, "transferred", now);
     await recordEvent(tx, "qr_redeemed", {}, source);

@@ -1,3 +1,15 @@
+# Etapa 8 · rediseño y conversaciones (local)
+
+Landing cultural ES/EN, bienvenida con correo/términos, cinco preguntas provisionales, chat compacto, intenciones general/directions, QR automático solo en dispositivo público activado, Mis viajes y conversaciones cifradas con retención/retirada. Nuevo: /terminos y /mis-conversaciones. Los lugares sin ficha se guardan como texto del visitante con ubicación sin verificar. Se conserva legacy intacto.
+
+Migración local nueva: `0004_stage8_conversations`. Variable: `CONVERSATION_RETENTION_DAYS=90`. Aviso `2026-11-10.v2`. Las descripciones de etapas anteriores más abajo son históricas donde contradicen estos cambios.
+
+El correo público observado está en `configured_unverified`; no se acreditó entrega ni se enviaron correos. [Activación para el propietario](docs/ARY_EMAIL_SETUP.md). Sin commit, push, despliegue ni llamadas reales a IA. No se usan memorias ajenas ni outputs.
+
+**Verificación incompleta por el entorno:** build/Playwright bloqueados con spawn EPERM y host de navegador inaccesible. Ambas pasadas visuales/capturas siguen pendientes; no se declara UI verificada. [Informe completo](docs/ARY_STAGE8_REPORT.md), [evidencia visual pendiente](docs/evidence/stage8/visual-review.md), [créditos](docs/IMAGE_CREDITS.md).
+
+---
+
 # Ary la Cotorra
 
 ## Etapa 6 · conversación por voz (trabajo local)

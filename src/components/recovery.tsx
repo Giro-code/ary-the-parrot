@@ -1,29 +1,31 @@
 "use client";
-import { uiText } from "../i18n/ui";
 import { useState } from "react";
-import { api } from "./api";
-import { ErrorNotice, Shell, useLocale } from "./shared";
+import { api, ApiError } from "./api";
+import { Shell, useLocale } from "./shared";
 import type { Locale } from "../i18n";
 import { noticeVersion } from "../privacy";
-export function Recovery({ initialLocale, marketingEnabled, development }: { initialLocale: Locale; marketingEnabled: boolean; development: boolean }) {
-  const [locale, setLocale] = useLocale(initialLocale);
-  const [email, setEmail] = useState(""), [recovery, setRecovery] = useState(false), [marketing, setMarketing] = useState(false), [busy, setBusy] = useState(false), [state, setState] = useState<string | null>(null), [error, setError] = useState<unknown>(null);
+import { AccountArt, EmailSteps, EmailSuccess } from "./account-visuals";
+import { Icon } from "./icons";
+export function Recovery({ initialLocale, marketingEnabled }: { initialLocale: Locale; marketingEnabled: boolean }) {
+  const [locale, setLocale] = useLocale(initialLocale), en = locale === "en";
+  const [email, setEmail] = useState(""), [recovery, setRecovery] = useState(false), [marketing, setMarketing] = useState(false), [busy, setBusy] = useState(false), [state, setState] = useState<string | null>(null), [error, setError] = useState("");
   async function submit() {
-    setBusy(true); setError(null); setState(null);
+    setBusy(true); setError("");
     try { const result = await api<{ deliveryState: string }>("/api/auth/request-link", "POST", { email, locale, consentVersion: noticeVersion, transactionalRecovery: recovery, marketingEmail: marketing }); setState(result.deliveryState); }
-    catch (error) { setError(error); } finally { setBusy(false); }
+    catch (error) { setError(error instanceof ApiError && error.code === "rate_limited" ? en ? "Please wait a few minutes before requesting another link." : "Espera unos minutos antes de pedir otro enlace." : error instanceof ApiError && error.code === "notice_version_changed" ? en ? "The privacy notice changed. Reload and review it before continuing." : "El aviso de privacidad cambió. Recarga y revísalo para continuar." : en ? "We couldn't connect. Check your connection and try again." : "No pudimos conectar. Revisa tu conexión y vuelve a intentarlo."); } finally { setBusy(false); }
   }
-  return <Shell locale={locale} setLocale={setLocale}><section className="flow-panel"><p className="eyebrow">Ary · {uiText(locale, "optionalAccount")}</p><h1>{uiText(locale, "saveAndRecoverMyTrip")}</h1>
-    <p>{uiText(locale, "keepYourSelectionsAndSavedPlacesAnd")}</p>
-    <p className="muted">{uiText(locale, "weRetainYourAccountAndSavedPlaces")}</p>
-    <form className="account-form" onSubmit={event => { event.preventDefault(); void submit(); }}>
-      <label htmlFor="recovery-email">{uiText(locale, "email")}</label><input id="recovery-email" type="email" autoComplete="email" required maxLength={254} value={email} onChange={event => setEmail(event.target.value)} disabled={busy} />
-      <label className="check-row"><input type="checkbox" checked={recovery} onChange={event => setRecovery(event.target.checked)} required disabled={busy} /><span>{uiText(locale, "iRequestStorageAndEmailRecoveryOf")}</span></label>
-      {marketingEnabled && <label className="check-row"><input type="checkbox" checked={marketing} onChange={event => setMarketing(event.target.checked)} disabled={busy} /><span>{uiText(locale, "iAlsoWantOptionalCulturalUpdatesMonthly")}</span></label>}
-      <a href="/privacidad">{uiText(locale, "purposesAndPrivacyNotice")} · {noticeVersion}</a>
-      <div className="actions"><button disabled={busy}>{busy ? (uiText(locale, "processing")) : (uiText(locale, "requestAccessLink"))}</button><a href="/experiencia">{uiText(locale, "continueExploring")}</a></div>
-    </form>
-    {state && <div className="notice" role="status"><p>{state === "dry_run" ? (uiText(locale, "testModeTheEmailWasNotSent")) : (uiText(locale, "requestRecordedIfEligibleYourEmailIs"))}</p>{state === "dry_run" && development && <a href="/dev/outbox">{uiText(locale, "openTestOutbox")}</a>}</div>}
-    {error !== null && <ErrorNotice error={error} locale={locale} retry={() => void submit()} />}
-  </section></Shell>;
+  return <Shell locale={locale} setLocale={setLocale}>{state ? <EmailSuccess locale={locale} dryRun={state === "dry_run"} onContinue={() => window.location.replace("/experiencia")}/> : <section className="account-journey" aria-labelledby="recovery-title">
+    <AccountArt locale={locale} envelope mood={error ? "sin-conexion" : "presentar"} bubble={en ? "Let's pick up our conversation!" : "¡Sigamos donde lo dejamos!"}/>
+    <div className="account-content"><h1 id="recovery-title">{en ? "Already talked to Ary? Pick up where you left off." : "¿Ya hablaste con Ary? Recupera tu conversación."}</h1>
+      <p>{en ? "We'll email you a link to return to your conversations and trips." : "Te enviamos un enlace a tu correo para volver a tus conversaciones y viajes."}</p><EmailSteps locale={locale}/>
+      <form className="account-form" onSubmit={event => { event.preventDefault(); void submit(); }} aria-busy={busy}>
+        <div><label htmlFor="recovery-email">{en ? "Your email" : "Tu correo"}</label><input id="recovery-email" type="email" autoComplete="email" required maxLength={254} value={email} onChange={event => setEmail(event.target.value)} disabled={busy} aria-describedby={error ? "recovery-error" : undefined}/></div>
+        <label className="check-row"><input type="checkbox" checked={recovery} onChange={event => setRecovery(event.target.checked)} required disabled={busy}/><span>{en ? "I accept the " : "Acepto el "}<a href={`/privacidad?lang=${locale}`} target="_blank" rel="noreferrer">{en ? "privacy notice" : "aviso de privacidad"}</a></span></label>
+        {marketingEnabled && <label className="check-row"><input type="checkbox" checked={marketing} onChange={event => setMarketing(event.target.checked)} disabled={busy}/><span>{en ? "Email me Ary news (optional)" : "Quiero novedades de Ary por correo (opcional)"}</span></label>}
+        <button disabled={busy || !recovery}>{busy ? en ? "Sending…" : "Enviando…" : en ? "Email me the link" : "Enviarme el enlace"}<Icon kind="mail"/></button>
+        <a className="button secondary" href="/experiencia"><Icon kind="conversations"/>{en ? "Go to chat with Ary" : "Ir al chat con Ary"}</a>
+        {error && <p id="recovery-error" className="notice error" role="alert">{error}</p>}
+      </form>
+    </div>
+  </section>}</Shell>;
 }

@@ -1,3 +1,15 @@
+# Etapa 8 · contrato ampliado
+
+Se añaden `general` y `directions` a intent. Saludos, conversación casual, costumbres, clima general y preguntas amplias sobre República Dominicana/viajes pueden usar conocimiento general del modelo sin citas: tono breve/cálido, sin números, precios, horarios, distancias, datos actuales ni afirmaciones específicas. Se rechazan salidas generales con cifras, monedas, tiempos o URLs/HTML; el prompt impone los límites semánticos restantes. La UI muestra «Respuesta general de IA» / «General AI answer». No equivale a verificación factual.
+
+La recuperación exige coincidencia léxica; los intereses solo ordenan coincidencias, evitando citar una ficha sin relación con el destino. Cultura requiere citas válidas y confianza suficiente; general no requiere fichas. La validación simulada prueba general sin cita → modo gemini, cultura sin cita → demo, sensible → derivación sin proveedor. Ante falta de clave, timeout o salida inválida, el fallback dice «Ahora mismo no puedo pensar bien, ¿lo intentamos otra vez?» y adjunta una ficha relacionada solo si existe. «Respuestas de ejemplo» queda en ese respaldo, no en respuestas generales válidas.
+
+Direcciones ES/EN se derivan antes del modelo en texto; en voz se reclasifica la transcripción. No se crean rutas ni mapas. La ubicación solo procede de una ficha publicada; un destino sin ficha se guarda como texto indicado por el visitante y se marca sin verificar. QR automático dentro del chat solo en un dispositivo público activado; la web ofrece Guardar en Mis viajes. El QR transmite los mensajes cifrados/destinos por el mecanismo existente; al teléfono se le pide correo.
+
+Las APIs públicas de texto/voz aplican admisión por correo y cupo provisional. La demo de dispositivo sin activación no utiliza el proveedor ni TTS. Los mensajes persistentes van a conversaciones solo después de verificar y con consentimiento; ai_usage sigue sin texto ni identidad. Se mantienen fuentes, derivación sensible, inyección y validación de salida. No se hizo ninguna llamada real a Gemini durante esta ejecución; todas las pruebas usan proveedor simulado.
+
+---
+
 # IA cultural de Ary
 
 ## Etapa 6 · contrato actual de voz (10 de noviembre de 2026)

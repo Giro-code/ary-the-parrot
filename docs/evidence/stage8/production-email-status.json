@@ -1,0 +1,11 @@
+{
+  "checkedAt": "2026-11-10T17:07:14.234Z",
+  "source": "https://arytheparrot.app/api/health",
+  "method": "GET, read-only, no email sent",
+  "httpStatus": 200,
+  "status": "ok",
+  "email": "configured_unverified",
+  "database": "connected",
+  "interpretation": "Public health indicates configured email, not confirmed delivery. It contradicts the dry_run snapshot in the task document.",
+  "vercelVariables": "Not inspected: the connected Vercel account/team does not list this project. No secret values requested or printed."
+}

@@ -1,7 +1,9 @@
 import { test, expect, type Page } from "@playwright/test";
 import { mkdir, readFile } from "node:fs/promises";
 import { randomUUID } from "node:crypto";
+import { emailStart } from "./stage8-helpers";
 import { askText, mockSpeech } from "./voice-helpers";
+import { confirmRecovery, recoveryTitle, requestRecovery } from "./helpers";
 const evidence = "docs/screenshots/stage3";
 const address = () => `e2e-${randomUUID()}@example.invalid`;
 test.beforeEach(async ({ context, page }) => {
@@ -10,23 +12,10 @@ test.beforeEach(async ({ context, page }) => {
   const suffix = randomUUID().replaceAll("-", "").slice(0, 8);
   await context.setExtraHTTPHeaders({ "x-forwarded-for": `2001:db8::${suffix.slice(0, 4)}:${suffix.slice(4)}` });
 });
-async function requestRecovery(page: Page, email: string) {
-  await page.goto("/reingresar");
-  await page.getByLabel("Correo electrónico", { exact: true }).fill(email);
-  await expect(page.getByLabel(/También quiero novedades/)).toHaveCount(0);
-  await expect(page.getByRole("checkbox")).not.toBeChecked();
-  await page.getByRole("checkbox").check();
-  await page.getByRole("button", { name: "Solicitar enlace de acceso" }).click();
-  await expect(page.getByRole("status").filter({ hasText: "Modo prueba: el correo no se envió" })).toBeVisible();
-  await page.getByRole("link", { name: "Abrir bandeja de prueba" }).click();
-  const message = page.locator('article[data-template="recovery"]').filter({ hasText: email });
-  await expect(message).toHaveCount(1);
-  return (await message.getByRole("link", { name: "Abrir enlace", exact: true }).getAttribute("href"))!;
-}
 async function verifiedAccount(page: Page) {
   const email = address(), link = await requestRecovery(page, email);
-  await page.goto(link); await page.getByRole("button", { name: "Confirmar", exact: true }).click();
-  await expect(page).toHaveURL(/\/mi-viaje$/); return email;
+  await confirmRecovery(page, link);
+  return email;
 }
 async function fillInquiry(page: Page) {
   await page.goto("/#solicitar");
@@ -39,14 +28,14 @@ async function capture(page: Page, name: string) {
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
   await page.screenshot({ path: `${evidence}/${name}.png`, fullPage: true, animations: "disabled" });
 }
-test("Flow B: save, dry-run outbox, confirm on a different device and recover My trip", async ({ page, browser }) => {
-  await page.goto("/experiencia"); await page.getByRole("button", { name: "Iniciar", exact: true }).click();
+test("Flow B: save, dry-run outbox, confirm on a different device and recover My trips", async ({ page, browser }) => {
+  await emailStart(page);
   await page.locator(".chat-quick-replies").getByRole("button", { name: "Español", exact: true }).click();
   await askText(page, "Cuéntame sobre el mangú");
   const mangu = page.locator("article").filter({ has: page.getByRole("heading", { name: "Mangú", exact: true }) });
   await mangu.getByRole("button", { name: "Guardar", exact: true }).click();
   await expect(mangu.getByRole("button", { name: "Guardado", exact: true })).toBeDisabled();
-  await page.getByRole("link", { name: "Mi viaje", exact: true }).first().click();
+  await page.getByRole("link", { name: "Mis viajes", exact: true }).first().click();
   await page.getByRole("link", { name: "Guardar mi experiencia y recibir un enlace por correo" }).click();
   const email = address();
   // requestRecovery navigates to the same recovery form but preserves the source cookie.
@@ -56,7 +45,7 @@ test("Flow B: save, dry-run outbox, confirm on a different device and recover My
     const phone = await mobile.newPage(); await phone.goto(link);
     expect((await mobile.request.get("http://127.0.0.1:3002/api/visitor/me")).status()).toBe(401);
     await phone.getByRole("button", { name: "Confirmar", exact: true }).click();
-    await expect(phone).toHaveURL("http://127.0.0.1:3002/mi-viaje");
+    await expect(phone).toHaveURL("http://127.0.0.1:3002/experiencia"); await phone.goto("http://127.0.0.1:3002/mi-viaje");
     await expect(phone.getByRole("heading", { name: "Mangú", exact: true })).toBeVisible();
     await capture(phone, "flow-b-mobile-recovered");
     expect((await page.request.get("/api/visitor/me")).status()).toBe(401);
@@ -98,12 +87,12 @@ test("privacy exports authenticated JSON and deletes account/session", async ({ 
   await page.getByRole("button", { name: "Borrar mis datos definitivamente" }).click();
   await expect(page.getByRole("status").filter({ hasText: "Tu cuenta y tus datos operativos se borraron" })).toBeVisible();
   expect((await page.request.get("/api/visitor/me")).status()).toBe(401);
-  await page.reload(); await expect(page.getByRole("link", { name: "Recuperar Mi viaje", exact: true })).toBeVisible();
+  await page.reload(); await expect(page.getByRole("link", { name: "Recuperar Mis viajes", exact: true })).toBeVisible();
 });
 test("production outbox is 404 and B2B without a database fails honestly", async ({ request }) => {
   expect((await request.get("http://127.0.0.1:3000/dev/outbox")).status()).toBe(404);
   // No cookies or private messages can be returned in production.
-  const response = await request.post("http://127.0.0.1:3000/api/commercial/inquiries", { headers: { origin: "http://127.0.0.1:3000", "x-ary-request": "1", "idempotency-key": randomUUID() }, data: { name: "Synthetic", org: "Hotel", email: address(), place: "Hotel", message: "Synthetic request; never send mail.", locale: "es", consentVersion: "2026-11-07.v1", treatmentConsent: true } });
+  const response = await request.post("http://127.0.0.1:3000/api/commercial/inquiries", { headers: { origin: "http://127.0.0.1:3000", "x-ary-request": "1", "idempotency-key": randomUUID() }, data: { name: "Synthetic", org: "Hotel", email: address(), place: "Hotel", message: "Synthetic request; never send mail.", locale: "es", consentVersion: "2026-11-10.v2", treatmentConsent: true } });
   expect(response.status()).toBe(503);
 });
 for (const pass of [1, 2]) test(`stage3 visual evidence ${pass}: desktop/mobile, errors, verified privacy`, async ({ page }) => {
@@ -119,7 +108,7 @@ for (const pass of [1, 2]) test(`stage3 visual evidence ${pass}: desktop/mobile,
     await page.goto(`/auth/verify?token=${"A".repeat(43)}`); await page.getByRole("button", { name: "Confirmar", exact: true }).click();
     await expect(page.getByRole("alert").filter({ hasText: "El enlace no está disponible" })).toBeVisible(); await capture(page, `pass-${pass}-verify-error-${width}`);
     await page.goto("/reingresar");
-    await page.getByRole("button", { name: "English", exact: true }).click(); await expect(page.locator("h1")).toHaveText("Save and recover My trip");
+    await page.getByRole("button", { name: "English", exact: true }).click(); await expect(page.locator("h1")).toHaveText(recoveryTitle.en);
     await capture(page, `pass-${pass}-recovery-en-${width}`);
     // The language choice is remembered (ary_lang cookie); switch back before the Spanish landing steps.
     await page.getByRole("button", { name: "Español", exact: true }).click(); await expect(page.locator("html")).toHaveAttribute("lang", "es");

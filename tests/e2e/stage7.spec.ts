@@ -1,8 +1,6 @@
 import { test, expect, type Page } from "@playwright/test";
 import { mkdir, readFile } from "node:fs/promises";
 import { randomUUID } from "node:crypto";
-import { PNG } from "pngjs";
-import pixelmatch from "pixelmatch";
 import { mockSpeech } from "./voice-helpers";
 const origin = "http://127.0.0.1:3002", evidence = "docs/screenshots/stage7";
 const headers = { Origin: origin, "X-Ary-Request": "1" };
@@ -45,17 +43,6 @@ for (const width of [390, 820, 1440, 1920]) {
     const [download] = await Promise.all([page.waitForEvent("download"), page.locator("#download-request").click()]);
     expect(await readFile((await download.path())!, "utf8")).toContain("Name: Test visitor");
     await page.goto("/en/brochure.html"); await expect(page.getByRole("button", { name: "Print / Save as PDF" })).toBeVisible(); await expect(page.locator(".sheet")).toHaveCount(2);
-  });
-  test(`Spanish landing remains exactly zero pixels changed at ${width}px`, async ({ page, context }) => {
-    await context.setExtraHTTPHeaders({ "x-vercel-ip-country": "MX" }); await page.setViewportSize({ width, height: 900 });
-    const original = await readFile("public/index.html", "utf8");
-    await page.route("**/stage7-spanish-reference", route => route.fulfill({ contentType: "text/html", body: original }));
-    for (const section of ["inicio", "conoce", "historia", "nosotros", "brochure", "solicitar"]) {
-      await page.goto(`/stage7-spanish-reference#${section}`); await stable(page); const reference = PNG.sync.read(await page.screenshot({ fullPage: true }));
-      await page.goto(`/#${section}`); await stable(page); const actual = PNG.sync.read(await page.screenshot({ fullPage: true }));
-      expect([actual.width, actual.height]).toEqual([reference.width, reference.height]);
-      expect(pixelmatch(reference.data, actual.data, undefined, actual.width, actual.height, { threshold: 0 })).toBe(0);
-    }
   });
 }
 test("kiosk ignores MX/cookie/browser, changes language on one mocked voice answer and resets", async ({ page, context }) => {

@@ -6,6 +6,7 @@ export { useLocale } from "./locale-provider";
 import { dictionaries, interests, interestLabels, type Interest, type Locale } from "../i18n";
 import type { Item, Recommendations } from "./types";
 import { ApiError } from "./api";
+import { Icon } from "./icons";
 
 export function Shell({ locale, setLocale, children, kiosk = false }: { locale: Locale; setLocale?: (value: Locale) => void; children: ReactNode; kiosk?: boolean }) {
   const t = dictionaries[locale];
@@ -14,13 +15,13 @@ export function Shell({ locale, setLocale, children, kiosk = false }: { locale: 
     <a className="skip" href="#main">{t.skipContent}</a>
     <header className="app-header"><a className="brand" href="/#inicio">ARY <span>la Cotorra</span></a>
       <nav aria-label={t.navigation}>
-        {!kiosk && <><a href="/experiencia">{t.experience}</a><a href="/mi-viaje">{t.trip}</a></>}
+        {!kiosk && <><a href="/experiencia">{t.experience}</a><a href="/mi-viaje"><Icon kind="trips"/>{t.trip}</a><a href="/mis-conversaciones"><Icon kind="conversations"/>{uiText(locale, "myData")}</a></>}
         <a href="/privacidad">{t.privacy}</a>
         {setLocale && <LanguageSelector locale={locale} onChange={setLocale} />}
       </nav>
     </header>
     <main id="main" tabIndex={-1}>{children}</main>
-    <footer><span>Ary · {t.demo}</span><a href="/#inicio">{t.home}</a>{!kiosk && <a href="/kiosco">{t.kiosk}</a>}</footer>
+    <footer><span>Ary · {t.demo}</span><a href="/#inicio">{t.home}</a><a href="/terminos">{locale === "es" ? "Términos" : "Terms"}</a></footer>
   </div>;
 }
 export function ErrorNotice({ error, locale, retry }: { error: unknown; locale: Locale; retry?: () => void }) {

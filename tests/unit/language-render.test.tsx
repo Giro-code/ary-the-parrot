@@ -11,11 +11,11 @@ import { PublicCulture } from "../../src/components/public-culture";
 import { Kiosk } from "../../src/components/kiosk";
 test("server-rendered app content is English immediately, with language controls", () => {
   const cases = [
-    [<Experience key="experience" />, "A little Dominican magic"],
-    [<Trip key="trip" />, "My trip with Ary"],
+    [<Experience key="experience" />, "My conversations"],
+    [<Trip key="trip" />, "My trips with Ary"],
     [<Information key="privacy" kind="privacy" />, "Your experience, your choices"],
     [<AccountPrivacy key="account" marketingEnabled={false} sharingEnabled={false} />, "Privacy and your data"],
-    [<Recovery key="recovery" initialLocale="en" marketingEnabled={false} development />, "Save and recover My trip"],
+    [<Recovery key="recovery" initialLocale="en" marketingEnabled={false} />, "Pick up where you left off"],
     [<PublicCulture key="culture" items={{}} />, "This item is unavailable."],
     [<Kiosk key="kiosk" />, "Start"],
   ] as const;

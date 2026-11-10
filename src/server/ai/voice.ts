@@ -90,6 +90,7 @@ let cacheBytes = 0;
 export async function speak(db: Database, token: string | undefined, raw: unknown) {
   const parsed = speakInputSchema.safeParse(raw); if (!parsed.success) throw new AppError("invalid_body", 400);
   const session = await getSession(db, token), started = Date.now();
+  if (session.retentionClass === "kiosk_demo") throw new AppError("voice_unavailable", 503);
   await rateLimit(db, hashToken(`speak-session:${session.id}`), numericEnv("AI_TTS_SESSION_PER_MINUTE", 8, 20));
   await rateLimit(db, hashToken("speak-global"), numericEnv("AI_TTS_GLOBAL_PER_MINUTE", 30, 120));
   const [row] = await db.select().from(s.chatMessages).where(and(eq(s.chatMessages.id, parsed.data.messageId), eq(s.chatMessages.sessionId, session.id), eq(s.chatMessages.role, "assistant"), gt(s.chatMessages.retentionUntil, new Date())));

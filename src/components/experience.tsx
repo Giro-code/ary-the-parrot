@@ -2,7 +2,8 @@
 import { uiText } from "../i18n/ui";
 import { useEffect, useRef, useState } from "react";
 import { readLanguageCookie } from "./locale-provider";
-import { interestLabels } from "../i18n";
+import { EmailWelcome } from "./email-welcome";
+import { Icon } from "./icons";
 import { api, ApiError } from "./api";
 import type { Saved, Visitor } from "./types";
 import { useLocale } from "./shared";
@@ -10,7 +11,7 @@ import { VoiceShell } from "./voice-shell";
 import { AryChat } from "./ary-chat";
 import { ProviderOffers } from "./provider-offers";
 import { conversationPreferences, type ConversationPreferences } from "../conversation";
-export function Experience({ sharingEnabled = false, offlineImageAvailable = false }: { sharingEnabled?: boolean; offlineImageAvailable?: boolean }) {
+export function Experience({ sharingEnabled = false, offlineImageAvailable = false, dryRun = true }: { sharingEnabled?: boolean; offlineImageAvailable?: boolean; dryRun?: boolean }) {
   const [locale, setLocale] = useLocale(), [visitor, setVisitor] = useState<Visitor | null>(null), [loading, setLoading] = useState(true), [busy, setBusy] = useState(false);
   const [online, setOnline] = useState(true), [error, setError] = useState(false), [savedIds, setSavedIds] = useState<string[]>([]), [savedItems, setSavedItems] = useState<Saved[]>([]), [celebrating, setCelebrating] = useState(false), [sessionKey, setSessionKey] = useState(0), [startedHere, setStartedHere] = useState(false);
   const current = useRef<Visitor | null>(null), generation = useRef(0), celebration = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -29,9 +30,11 @@ export function Experience({ sharingEnabled = false, offlineImageAvailable = fal
   async function updatePreferences(text: string, value?: ConversationPreferences) { if (!current.current) return; const version = generation.current, next = value || conversationPreferences(text, current.current); if (JSON.stringify(next) === JSON.stringify({ locale: current.current.locale, countryDeclared: current.current.countryDeclared, interests: current.current.interests })) return; const result = await api<{ session: Visitor }>("/api/visitor/preferences", "PATCH", next); if (version === generation.current) { restore(result.session); if (current.current?.locale === next.locale) { const saved = await api<{ items: Saved[] }>("/api/saved"); if (version === generation.current) setSavedItems(saved.items); } } }
   async function save(id: string) { const version = generation.current; await api("/api/saved", "POST", { itemId: id }); if (version === generation.current) { setSavedIds(ids => [...new Set([...ids, id])]); setCelebrating(true); if (celebration.current) clearTimeout(celebration.current); celebration.current = setTimeout(() => setCelebrating(false), 2500); } }
   async function finish() { setBusy(true); generation.current++; current.current = null; setVisitor(null); setSavedIds([]); setSavedItems([]); setCelebrating(false); setSessionKey(key => key + 1); try { await api("/api/visitor/session/end", "POST", {}); } catch { setError(true); } finally { setBusy(false); } }
-  return <VoiceShell locale={locale} setLocale={value => { setLocale(value); if (current.current) void updatePreferences(value === "es" ? "Español" : "English").catch(() => setError(true)); }}><AryChat key={`${sessionKey}-${!!visitor}`} locale={locale} active={!!visitor} online={online} disabled={busy || loading} playWelcome={startedHere} onStart={() => void start()} onPreferences={updatePreferences} savedIds={savedIds} savedItems={savedItems} onSave={save} celebrating={celebrating} offlineImageAvailable={offlineImageAvailable}
-    status={<div className="voice-status">{loading ? <span role="status">{uiText(locale, "loading")}</span> : visitor ? <span data-testid="visitor-selections">{uiText(locale, "language")}: {visitor.locale.toUpperCase()}{visitor.countryDeclared && ` · ${new Intl.DisplayNames([locale], { type: "region" }).of(visitor.countryDeclared)}`}{visitor.interests.length > 0 && ` · ${visitor.interests.map(i => interestLabels[locale][i]).join(", ")}`}</span> : <span>{uiText(locale, "noEmailOrAccountNeeded")}</span>}{!online && <span role="status">{uiText(locale, "serviceOffline")}</span>}{error && <span role="alert">{uiText(locale, "iCouldnTCompleteThatReloadTo")}</span>}</div>}
-    endControls={visitor && <div className="experience-controls"><a href="/mi-viaje">{uiText(locale, "seeSavedPlaces")}</a><button className="text-button finish-chat" onClick={() => void finish()}>{uiText(locale, "endMySession")}</button></div>} />
-    {visitor && <details className="experience-more"><summary>{uiText(locale, "moreForYourTrip")}</summary><a href={`/reingresar?lang=${locale}`}>{uiText(locale, "saveMyExperienceAndReceiveAnEmail")}</a><p>{uiText(locale, "yourTemporaryAccessExpiresOn")} {new Date(visitor.expiresAt).toLocaleString(locale)}.</p><ProviderOffers enabled={sharingEnabled} locale={locale} /></details>}
+  const admitted = !!visitor && (visitor.accountVerified || !!visitor.emailStarted);
+  return <VoiceShell locale={locale} setLocale={value => { setLocale(value); if (current.current) void updatePreferences(value === "es" ? "Español" : "English").catch(() => setError(true)); }} actions={visitor && <><a href="/cuenta/privacidad"><Icon kind="privacy"/>{locale === "es" ? "Privacidad y datos" : "Privacy and data"}</a><button className="text-button" onClick={() => void finish()}><Icon kind="exit"/>{uiText(locale, "endMySession")}</button><ProviderOffers enabled={sharingEnabled} locale={locale}/></>}>
+    {loading ? <p className="welcome-loading" role="status">{uiText(locale, "loading")}</p> : !admitted ? <EmailWelcome locale={locale} dryRun={dryRun} onStarted={session => { restore(session); setStartedHere(true); setSessionKey(key => key + 1); }}/>
+      : <AryChat key={sessionKey} locale={locale} active online={online} disabled={busy} playWelcome={startedHere} onStart={() => void start()} onPreferences={updatePreferences} savedIds={savedIds} savedItems={savedItems} onSave={save} celebrating={celebrating} offlineImageAvailable={offlineImageAvailable}
+        status={<div className="voice-status">{!visitor?.accountVerified && <span>{locale === "es" ? "5 preguntas de prueba. Confirma tu correo para seguir." : "5 trial questions. Verify your email to continue."} {dryRun && (locale === "es" ? "Modo prueba: no se envían correos." : "Test mode: emails are not sent.")} <a href="/reingresar">{locale === "es" ? "Verificar" : "Verify"}</a></span>}{!online && <span role="status">{uiText(locale, "serviceOffline")}</span>}{error && <span role="alert">{uiText(locale, "iCouldnTCompleteThatReloadTo")}</span>}</div>}/>
+    }
   </VoiceShell>;
 }

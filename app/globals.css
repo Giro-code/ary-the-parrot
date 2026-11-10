@@ -266,3 +266,45 @@ body { margin: 0; }
 .voice-header nav { flex-wrap: wrap; justify-content: flex-end; gap: 6px 16px; }
 .voice-header .language button { min-height: 44px; }
 @media (max-width: 600px) { .voice-header { gap: 4px; }.voice-header nav { width: 100%; justify-content: space-between; }.voice-header .language { margin-left: auto; }.voice-header .language button { padding-inline: 10px; } }
+
+/* Stage 8B: compact composer — mic, text field and voice toggle on one row. */
+.compact-composer { display: flex; align-items: center; gap: 8px; }
+.ary-app .compact-composer .microphone { flex: 0 0 52px; width: 52px; height: 52px; min-height: 52px; padding: 12px; }
+.compact-composer .microphone svg { width: 24px; height: 24px; }
+.compact-composer .text-composer { flex: 1 1 auto; min-width: 0; margin: 0; }
+.ary-app .compact-composer .icon-button { flex: 0 0 44px; width: 44px; min-height: 44px; padding: 10px; }
+.recording-status { margin: 6px 0 0; font-size: .85rem; }
+.record-location { font-size: .85rem; margin: 4px 0; }
+
+/* Stage 8B: account and email screens — Ary small beside the content, short copy, visual steps. */
+.account-journey { display: grid; grid-template-columns: minmax(0, 1fr); gap: 20px; max-width: 980px; margin: 0 auto; padding-block: 20px 40px; }
+@media (min-width: 900px) { .account-journey { grid-template-columns: 300px minmax(0, 1fr); align-items: center; gap: 48px; padding-block: 48px; } }
+.account-art { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+.account-illustrations { display: flex; align-items: flex-end; justify-content: center; gap: 4px; }
+.account-illustrations img { width: 128px; height: auto; }
+.account-illustrations svg { width: 76px; height: auto; }
+@media (min-width: 900px) { .account-illustrations img { width: 220px; } .account-illustrations svg { width: 110px; } }
+.ary-speech { position: relative; margin: 0; padding: 10px 16px; background: var(--white); border: 1px solid var(--line); border-radius: 18px; font-size: .95rem; text-align: center; max-width: 260px; }
+.ary-speech::after { content: ""; position: absolute; left: 50%; bottom: -8px; width: 14px; height: 14px; background: var(--white); border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); transform: translateX(-50%) rotate(45deg); }
+.account-content h1 { margin-top: 0; }
+.account-content > p { margin-block: 0 14px; }
+.email-steps { list-style: none; padding: 0; margin: 0 0 20px; display: flex; flex-wrap: wrap; gap: 8px; counter-reset: none; }
+.email-steps li { display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; border: 1px solid var(--line); border-radius: 999px; background: var(--white); font-size: .9rem; }
+.email-steps svg { width: 18px; height: 18px; flex: 0 0 18px; }
+.account-form { display: grid; gap: 14px; }
+.account-form input[type="email"] { width: 100%; min-height: 52px; font-size: 1.05rem; }
+.account-form .button, .account-form button { justify-self: start; gap: 8px; }
+.notice.test-mode, .test-mode { font-size: .9rem; color: #5b6b5d; }
+.library-nav { display: flex; flex-wrap: wrap; gap: 12px 24px; margin-top: 24px; }
+.library-nav a { display: inline-flex; align-items: center; gap: 6px; }
+.library-nav svg, .account-form svg, .start-chat svg { width: 18px; height: 18px; }
+
+/* Full-screen success after the email is sent. */
+.email-success { display: grid; justify-items: center; align-content: center; gap: 12px; min-height: 70dvh; text-align: center; padding: 24px 0; }
+.email-success .account-illustrations img { width: 200px; }
+@media (min-width: 900px) { .email-success .account-illustrations img { width: 260px; } }
+.email-success h1 { margin: 0; }
+.email-success h1:focus { outline: none; }
+.chat-countdown { font-size: .95rem; color: #5b6b5d; }
+@media (prefers-reduced-motion: no-preference) { .email-success .account-illustrations img { animation: ary-pop .5s ease-out both; } }
+@keyframes ary-pop { from { transform: scale(.85); opacity: 0; } to { transform: scale(1); opacity: 1; } }

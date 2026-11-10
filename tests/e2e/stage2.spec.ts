@@ -1,7 +1,9 @@
 import { test, expect, type Page } from "@playwright/test";
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { randomUUID } from "node:crypto";
+import { emailStart } from "./stage8-helpers";
 import { askText, mockSpeech } from "./voice-helpers";
+import { recoveryTitle } from "./helpers";
 const evidence = "docs/evidence/stage2";
 const origin = "http://127.0.0.1:3002";
 const headers = { Origin: origin, "X-Ary-Request": "1" };
@@ -59,7 +61,7 @@ test("A authorized kiosk → B mobile restores exactly → clean kiosk → C rep
     await capture(phone, "flow-confirmation-390");
     await phone.getByRole("button", { name: "Continuar mi experiencia", exact: true }).click();
     await expect(phone).toHaveURL(`${origin}/experiencia`);
-    await expect(phone.getByTestId("visitor-selections")).toHaveText("Idioma: ES · Bolivia · música");
+    await expect(phone.locator("#welcome-email")).toBeVisible();
     const restored = await mobile.request.get("/api/visitor/me");
     expect((await restored.json()).session).toMatchObject({ locale: "es", countryDeclared: "BO", interests: ["music"] });
     expect((await (await mobile.request.get("/api/saved")).json()).items).toHaveLength(1);
@@ -71,7 +73,7 @@ test("A authorized kiosk → B mobile restores exactly → clean kiosk → C rep
     expect((await page.context().request.get("/api/visitor/me")).status()).toBe(401);
     await other.goto(qr.url); await expect(other.getByRole("heading", { name: "Este código no está disponible." })).toBeVisible();
     await expect(other.locator(".confirmation-code")).toHaveCount(0);
-    await phone.getByRole("link", { name: "Mi viaje", exact: true }).click();
+    await phone.getByRole("link", { name: "Mis viajes", exact: true }).click();
     await phone.locator(".saved-controls select").selectOption("visited");
     await expect(phone.getByText("1 / 1 realizadas", { exact: true })).toBeVisible();
     await phone.getByRole("button", { name: "Marcar favorito" }).click();
@@ -101,13 +103,12 @@ test("no email, keyboard navigation, optional preferences and demo permission bo
   const denied = await page.context().request.post("/api/visitor/handoff", { headers, data: {} }); expect(denied.status()).toBe(403);
   await page.getByRole("button", { name: "Terminar sin continuar", exact: true }).click();
   await expect(page.locator('[data-state="idle"]')).toBeVisible({ timeout: 10000 });
-  await page.goto("/experiencia"); await page.getByRole("button", { name: "Iniciar", exact: true }).click();
+  await emailStart(page);
   await page.locator(".chat-quick-replies").getByRole("button", { name: "Español", exact: true }).click();
   await askText(page, "Cuéntame del mangú");
   await expect(page.getByRole("heading", { name: "Mangú", exact: true })).toBeVisible();
-  await page.getByText("Más para tu viaje", { exact: true }).click();
-  await page.getByRole("link", { name: "Guardar mi experiencia y recibir un enlace por correo" }).click();
-  await expect(page.getByRole("heading", { name: "Guardar y recuperar Mi viaje", exact: true })).toBeVisible();
+  await page.goto("/reingresar");
+  await expect(page.getByRole("heading", { name: recoveryTitle.es, exact: true })).toBeVisible();
   await expect(page.locator('input[type="email"]')).toHaveCount(1);
   await expect(page.locator('input[type="checkbox"]').first()).not.toBeChecked();
 });
@@ -151,7 +152,7 @@ for (const pass of [1, 2]) test(`visual evidence pass ${pass}: 360, 390, 820, 14
     await page.setViewportSize({ width, height: 900 });
     for (const route of ["kiosco", "experiencia", "mi-viaje", "privacidad", "reingresar"]) {
       await page.goto(`/${route}`); await page.reload();
-      await expect(page.locator("h1")).toBeVisible(); await capture(page, `pass-${pass}-${route}-${width}`);
+      await expect(page.locator("main")).toBeVisible(); await capture(page, `pass-${pass}-${route}-${width}`);
     }
   }
 });

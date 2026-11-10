@@ -10,12 +10,13 @@ import { grantConsent, hasConsent, noticeVersion } from "./consents.ts";
 import { dispatchImmediate, enqueueEmail } from "./email/outbox.ts";
 import { isDryRun } from "./email/providers.ts";
 import type { Locale } from "../i18n/index.ts";
+import { archiveConversation, listConversations, continueConversation } from "./conversations.ts";
 
 export const requestLinkResult = () => ({ accepted: true, deliveryState: isDryRun() ? "dry_run" : "queued", message: isDryRun() ? "Modo prueba: el correo no se envió; en desarrollo puedes ver el enlace en /dev/outbox" : "Solicitud registrada. Si procede, se intenta el envío ahora. La entrega no está confirmada y los fallos quedan para reintento." });
 export async function optionalSession(db: Database, token?: string) {
   try { return await getSession(db, token); } catch (error) { if (error instanceof AppError && error.status === 401) return null; throw error; }
 }
-export async function requestLink(db: Database, data: { email: string; locale: Locale; consentVersion: string; transactionalRecovery: true; marketingEmail: boolean }, clientKey: string, visitorToken?: string) {
+export async function requestLink(db: Database, data: { email: string; locale: Locale; consentVersion: string; transactionalRecovery: true; marketingEmail: boolean }, clientKey: string, visitorToken?: string, deferDispatch = false) {
   requirePrivacyKeys(); const email = normalizeEmail(data.email), lookup = emailHash(email);
   if (data.consentVersion !== noticeVersion) throw new AppError("notice_version_changed", 409);
   await rateLimit(db, clientKey, 10, new Date(), 900_000);
@@ -25,15 +26,15 @@ export async function requestLink(db: Database, data: { email: string; locale: L
   // No visitor account is created or looked up until the mailbox is verified.
   const emailId = await db.transaction(async tx => {
     const token = newToken();
-    const [link] = await tx.insert(s.authMagicLinks).values({ tokenHash: hashToken(token), purpose: "recovery", sourceSessionId: session?.id, emailEncrypted: encrypt(email), emailLookupHash: lookup, locale: data.locale, marketingRequested: data.marketingEmail && process.env.FEATURE_ENABLE_MARKETING === "true", expiresAt: new Date(Date.now() + 900_000) }).returning();
+    const [link] = await tx.insert(s.authMagicLinks).values({ tokenHash: hashToken(token), purpose: "recovery", sourceSessionId: session?.id, emailEncrypted: encrypt(email), emailLookupHash: lookup, locale: data.locale, marketingRequested: data.marketingEmail && (process.env.FEATURE_ENABLE_MARKETING === "true" || !!session?.pendingEmailHash), expiresAt: new Date(Date.now() + 900_000) }).returning();
     if (session) {
       await grantConsent(tx, session, { purpose: "transactional_recovery", noticeVersion, locale: data.locale }, "recovery_form");
       await grantConsent(tx, session, { purpose: "service_storage", noticeVersion, locale: data.locale }, "recovery_form");
     }
     return enqueueEmail(tx, { template: "recovery", category: "transactional", locale: data.locale, to: email, idempotencyKey: `recovery:${link.id}`, data: { url: `${baseUrl()}/auth/verify?token=${token}` } });
   });
-  await dispatchImmediate(db, [emailId]);
-  return requestLinkResult();
+  if (!deferDispatch) await dispatchImmediate(db, [emailId]);
+  return { ...requestLinkResult(), ...(deferDispatch ? { emailId } : {}) };
 }
 async function mergeSession(db: Database, session: Session | null, owner: string) {
   if (!session || session.kioskDeviceId || (session.ownerUserId && session.ownerUserId !== owner)) return;
@@ -48,10 +49,12 @@ async function mergeSession(db: Database, session: Session | null, owner: string
     } });
   }
   await db.delete(s.savedExperiences).where(eq(s.savedExperiences.sessionId, locked.id));
-  await db.delete(s.chatMessages).where(eq(s.chatMessages.sessionId, locked.id));
+  await db.update(s.savedPlaces).set({ visitorId: owner, sessionId: null }).where(eq(s.savedPlaces.sessionId, locked.id));
   await db.update(s.consentRecords).set({ visitorId: owner }).where(and(eq(s.consentRecords.sessionId, locked.id), isNull(s.consentRecords.visitorId)));
+  const conversationId = await archiveConversation(db, { ...locked, ownerUserId: owner });
   await db.update(s.visitorSessions).set({ ownerUserId: owner, status: "ended", tokenHash: hashToken(newToken()) }).where(eq(s.visitorSessions.id, locked.id));
   await db.update(s.qrHandoffs).set({ invalidatedAt: new Date(), status: "cancelled" }).where(and(eq(s.qrHandoffs.sourceSessionId, locked.id), isNull(s.qrHandoffs.usedAt)));
+  return { sessionId: locked.id, conversationId };
 }
 export async function verifyLink(db: Database, token: string, visitorToken?: string, testClock?: Date) {
   requirePrivacyKeys();
@@ -63,8 +66,8 @@ export async function verifyLink(db: Database, token: string, visitorToken?: str
     const [account] = await tx.insert(s.visitorAccounts).values({ emailEncrypted: link.emailEncrypted, emailLookupHash: link.emailLookupHash, emailVerifiedAt: now }).onConflictDoUpdate({ target: s.visitorAccounts.emailLookupHash, set: { emailVerifiedAt: now } }).returning();
     const current = await optionalSession(tx, visitorToken);
     const [source] = link.sourceSessionId ? await tx.select().from(s.visitorSessions).where(and(eq(s.visitorSessions.id, link.sourceSessionId), eq(s.visitorSessions.status, "active"), gt(s.visitorSessions.expiresAt, now))) : [];
-    await mergeSession(tx, source || null, account.id);
-    if (current?.id !== source?.id) await mergeSession(tx, current, account.id);
+    const merged = await mergeSession(tx, source || null, account.id);
+    const currentMerged = current?.id !== source?.id ? await mergeSession(tx, current, account.id) : merged;
     const [prior] = await tx.select().from(s.visitorPreferences).where(eq(s.visitorPreferences.visitorId, account.id)).limit(1);
     const candidate = [current, source].find(row => row && !row.kioskDeviceId && (!row.ownerUserId || row.ownerUserId === account.id) && (row.countryDeclared || row.interests.length));
     const preferences = candidate || prior || { locale: link.locale, countryDeclared: null, interests: [] };
@@ -73,10 +76,24 @@ export async function verifyLink(db: Database, token: string, visitorToken?: str
     await tx.insert(s.visitorPreferences).values({ visitorId: account.id, locale: preferences.locale, countryDeclared: preferences.countryDeclared, interests: preferences.interests });
     const created = await createSession(tx, preferences.locale as Locale);
     const [session] = await tx.update(s.visitorSessions).set({ ownerUserId: account.id, retentionClass: "verified_optional", locale: preferences.locale, countryDeclared: preferences.countryDeclared, interests: preferences.interests, originKioskId: current?.originKioskId || source?.originKioskId }).where(eq(s.visitorSessions.id, created.session.id)).returning();
+    const selected = currentMerged || merged;
+    if (selected) {
+      await tx.update(s.chatMessages).set({ sessionId: session.id, retentionUntil: session.expiresAt }).where(eq(s.chatMessages.sessionId, selected.sessionId));
+      if (selected.conversationId) { session.conversationId = selected.conversationId; await tx.update(s.visitorSessions).set({ conversationId: selected.conversationId }).where(eq(s.visitorSessions.id, session.id)); }
+    }
+    // A returning visitor on a new device resumes their latest authorized history.
+    // Current device messages take priority; never restore another owner's content.
+    if (!selected?.conversationId && await hasConsent(tx, account.id, "conversation_history")) {
+      const [currentMessage] = await tx.select({ id: s.chatMessages.id }).from(s.chatMessages).where(eq(s.chatMessages.sessionId, session.id)).limit(1);
+      if (!currentMessage) {
+        const [latest] = await listConversations(tx, session);
+        if (latest) { await continueConversation(tx, session, latest.id); session.conversationId = latest.id; }
+      }
+    }
     for (const purpose of ["service_storage", "transactional_recovery"] as const) await grantConsent(tx, session, { purpose, noticeVersion, locale: link.locale }, "verified_recovery");
     await tx.update(s.authMagicLinks).set({ userId: account.id }).where(eq(s.authMagicLinks.id, link.id));
-    if (link.marketingRequested && process.env.FEATURE_ENABLE_MARKETING === "true") {
-      await grantConsent(tx, session, { purpose: "marketing_email", noticeVersion, locale: link.locale }, "verified_recovery_separate_checkbox");
+    if (link.marketingRequested && (process.env.FEATURE_ENABLE_MARKETING === "true" || await hasConsent(tx, account.id, "marketing"))) {
+      if (process.env.FEATURE_ENABLE_MARKETING === "true") await grantConsent(tx, session, { purpose: "marketing_email", noticeVersion, locale: link.locale }, "verified_recovery_separate_checkbox");
       confirmationId = await requestMarketingConfirmation(tx, session);
     }
     await recordEvent(tx, "account_verified", {}, session);
@@ -93,14 +110,13 @@ export async function requireOwner(db: Database, session: Session) {
 }
 export async function requestMarketingConfirmation(db: Database, session: Session) {
   const account = await requireOwner(db, session);
-  if (process.env.FEATURE_ENABLE_MARKETING !== "true" || !await hasConsent(db, account.id, "marketing_email")) throw new AppError("marketing_disabled", 403);
+  if (!await hasConsent(db, account.id, "marketing_email")) throw new AppError("marketing_disabled", 403);
   const token = newToken();
   const [link] = await db.insert(s.authMagicLinks).values({ userId: account.id, purpose: "marketing_opt_in", locale: session.locale, tokenHash: hashToken(token), expiresAt: new Date(Date.now() + 900_000) }).returning();
   await db.insert(s.emailSubscriptions).values({ visitorId: account.id, addressRef: account.id, purpose: "marketing_email", status: "pending", locale: session.locale, frequency: "monthly" }).onConflictDoUpdate({ target: [s.emailSubscriptions.visitorId, s.emailSubscriptions.purpose], set: { status: "pending", doubleOptInAt: null } });
   return enqueueEmail(db, { template: "marketing_confirmation", category: "confirmation", locale: session.locale as Locale, visitorId: account.id, to: decrypt(account.emailEncrypted!), idempotencyKey: `doi:${link.id}`, data: { url: `${baseUrl()}/email/confirm?token=${token}` } });
 }
 export async function confirmMarketing(db: Database, token: string) {
-  if (process.env.FEATURE_ENABLE_MARKETING !== "true") throw new AppError("marketing_disabled", 403);
   return db.transaction(async tx => {
     const [link] = await tx.update(s.authMagicLinks).set({ usedAt: new Date() }).where(and(eq(s.authMagicLinks.tokenHash, hashToken(token)), eq(s.authMagicLinks.purpose, "marketing_opt_in"), isNull(s.authMagicLinks.usedAt), gt(s.authMagicLinks.expiresAt, sql`now()`))).returning();
     if (!link?.userId || !await hasConsent(tx, link.userId, "marketing_email")) throw new AppError("link_unavailable", 400);

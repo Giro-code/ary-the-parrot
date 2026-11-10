@@ -1,4 +1,4 @@
-import { and, desc, eq, isNull, or } from "drizzle-orm";
+import { and, desc, eq, isNull, or, inArray } from "drizzle-orm";
 import type { Database } from "../db/client.ts";
 import * as s from "../db/schema.ts";
 import type { Session } from "./service.ts";
@@ -10,7 +10,7 @@ export async function listConsents(db: Database, session: Session) {
   return db.select().from(s.consentRecords).where(consentOwner(session)).orderBy(desc(s.consentRecords.collectedAt), desc(s.consentRecords.id));
 }
 export async function hasConsent(db: Database, visitorId: string, purpose: Purpose) {
-  const [row] = await db.select().from(s.consentRecords).where(and(eq(s.consentRecords.visitorId, visitorId), eq(s.consentRecords.purpose, purpose), eq(s.consentRecords.granted, true), isNull(s.consentRecords.revokedAt))).limit(1);
+  const [row] = await db.select().from(s.consentRecords).where(and(eq(s.consentRecords.visitorId, visitorId), purpose === "marketing_email" ? inArray(s.consentRecords.purpose, ["marketing_email", "marketing"]) : eq(s.consentRecords.purpose, purpose), eq(s.consentRecords.granted, true), isNull(s.consentRecords.revokedAt))).limit(1);
   return !!row;
 }
 export async function grantConsent(db: Database, session: Session, data: { purpose: Purpose; noticeVersion: string; locale: string }, source: string) {
@@ -29,17 +29,29 @@ export async function revokeConsent(db: Database, session: Session, purpose: Pur
       await tx.update(s.providerLeads).set({ payloadEncrypted: null, status: "revocado" }).where(eq(s.providerLeads.visitorId, session.ownerUserId));
       await tx.insert(s.auditLogs).values({ action: "lead.revoke_all", targetType: "provider_lead", actor: session.ownerUserId });
     }
-    await tx.update(s.consentRecords).set({ revokedAt: now }).where(and(consentOwner(session), eq(s.consentRecords.purpose, purpose), isNull(s.consentRecords.revokedAt)));
+    await tx.update(s.consentRecords).set({ revokedAt: now }).where(and(consentOwner(session), ["marketing", "marketing_email"].includes(purpose) ? inArray(s.consentRecords.purpose, ["marketing", "marketing_email"]) : eq(s.consentRecords.purpose, purpose), isNull(s.consentRecords.revokedAt)));
     await tx.insert(s.consentRecords).values({ visitorId: session.ownerUserId, sessionId: session.id, purpose, granted: false, revokedAt: now, noticeVersion, locale: session.locale, source: "privacy_revoke", proof: { action: "explicit_revoke" } });
-    if (session.ownerUserId && purpose === "marketing_email") {
+    if (["marketing", "marketing_email"].includes(purpose)) {
+      const [account] = session.ownerUserId ? await tx.select().from(s.visitorAccounts).where(eq(s.visitorAccounts.id, session.ownerUserId)) : [];
+      await tx.update(s.authMagicLinks).set({ marketingRequested: false }).where(and(eq(s.authMagicLinks.purpose, "recovery"), or(eq(s.authMagicLinks.sourceSessionId, session.id), account?.emailLookupHash ? eq(s.authMagicLinks.emailLookupHash, account.emailLookupHash) : undefined)));
+    }
+    if (purpose === "conversation_history") {
+      if (session.ownerUserId) {
+        const sessions = await tx.select({ id: s.visitorSessions.id }).from(s.visitorSessions).where(eq(s.visitorSessions.ownerUserId, session.ownerUserId)).for("update");
+        await tx.delete(s.conversations).where(eq(s.conversations.visitorId, session.ownerUserId));
+        await tx.delete(s.chatMessages).where(inArray(s.chatMessages.sessionId, sessions.map(row => row.id)));
+      } else await tx.delete(s.chatMessages).where(eq(s.chatMessages.sessionId, session.id));
+    }
+    if (purpose === "terms") await tx.update(s.visitorSessions).set({ status: "ended" }).where(session.ownerUserId ? eq(s.visitorSessions.ownerUserId, session.ownerUserId) : eq(s.visitorSessions.id, session.id));
+    if (session.ownerUserId && ["marketing", "marketing_email"].includes(purpose)) {
       await tx.update(s.emailSubscriptions).set({ status: "unsubscribed" }).where(eq(s.emailSubscriptions.visitorId, session.ownerUserId));
       await tx.update(s.authMagicLinks).set({ usedAt: now }).where(and(eq(s.authMagicLinks.userId, session.ownerUserId), eq(s.authMagicLinks.purpose, "marketing_opt_in"), isNull(s.authMagicLinks.usedAt)));
     }
-    if (session.ownerUserId && ["marketing_email", "transactional_recovery"].includes(purpose)) {
-      const categories = purpose === "marketing_email" ? or(eq(s.emailOutbox.category, "marketing"), eq(s.emailOutbox.category, "reminder"), eq(s.emailOutbox.template, "marketing_confirmation")) : eq(s.emailOutbox.template, "recovery");
+    if (session.ownerUserId && ["marketing", "marketing_email", "transactional_recovery"].includes(purpose)) {
+      const categories = purpose !== "transactional_recovery" ? or(eq(s.emailOutbox.category, "marketing"), eq(s.emailOutbox.category, "reminder"), eq(s.emailOutbox.template, "marketing_confirmation")) : eq(s.emailOutbox.template, "recovery");
       await tx.update(s.emailOutbox).set({ deliveryState: "failed", lastError: "consent_revoked", renderedEncrypted: null }).where(and(eq(s.emailOutbox.recipientRef, session.ownerUserId), eq(s.emailOutbox.deliveryState, "queued"), categories));
     }
-    if (purpose === "transactional_recovery") {
+    if (["transactional_recovery", "terms"].includes(purpose)) {
       const [account] = session.ownerUserId ? await tx.select().from(s.visitorAccounts).where(eq(s.visitorAccounts.id, session.ownerUserId)) : [];
       await tx.update(s.authMagicLinks).set({ usedAt: now }).where(and(eq(s.authMagicLinks.purpose, "recovery"), isNull(s.authMagicLinks.usedAt), or(eq(s.authMagicLinks.sourceSessionId, session.id), account?.emailLookupHash ? eq(s.authMagicLinks.emailLookupHash, account.emailLookupHash) : undefined)));
       if (account?.emailLookupHash) await tx.update(s.emailOutbox).set({ deliveryState: "failed", lastError: "consent_revoked", renderedEncrypted: null }).where(and(eq(s.emailOutbox.recipientHash, account.emailLookupHash), eq(s.emailOutbox.template, "recovery"), eq(s.emailOutbox.deliveryState, "queued")));

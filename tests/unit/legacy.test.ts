@@ -20,23 +20,16 @@ describe("originales y copias públicas", () => {
     },
   );
 
-  test("HTML, CSS y JS conservan el original salvo la entrada aprobada", () => {
-    const original = read("legacy/index.html");
-    const style = original.match(/<style>([\s\S]*?)<\/style>/)![1];
-    const script = original.match(/<script>([\s\S]*?)<\/script>/)![1];
-    expect(read("public/site/landing.css")).toBe(style);
-    // Stage 3 may only change the request-form block, which is the final block of the original script.
-    const marker = "let requestText=";
-    const preserved = script.slice(0, script.indexOf(marker));
-    expect(read("public/site/landing.js").slice(0, preserved.length)).toBe(preserved);
-    expect(read("public/site/landing.js")).toContain("/api/commercial/inquiries");
-    expect(read("public/site/landing.js")).toContain("Solicitud-Ary-la-Cotorra.txt");
-    const expected = original
-      .replace(/<style>[\s\S]*?<\/style>/, '<link rel="stylesheet" href="/site/landing.css">')
-      .replace(/<script>[\s\S]*?<\/script>/, '<script src="/site/landing.js"></script>');
-    const actual = read("public/index.html");
-    const entry = '<p class="experience-entry"><a class="text-link" href="/experiencia">Explorar Ary · kiosco y móvil <span aria-hidden="true">→</span></a></p>';
-    expect(actual.split(entry)).toHaveLength(2);
-    expect(actual.replace(entry, "")).toBe(expected);
+  test("new ES/EN landing keeps working links, B2B code and visible image credits", () => {
+    for (const path of ["public/index.html", "public/en/index.html"]) {
+      const html = read(path);
+      expect(html).toContain('href="/experiencia"'); expect(html).toContain('id="request-form"');
+      expect(html).toContain("Wikimedia Commons"); expect(html).toContain("creativecommons.org");
+      expect(html).not.toMatch(/kiosco|kiosk/i); expect(html).not.toMatch(/[→↗]/);
+    }
+    for (const path of ["public/site/landing.js", "public/site/landing.en.js"]) {
+      const js = read(path); expect(js).toContain('/api/commercial/inquiries'); expect(js).toMatch(/createElement\(['"]a['"]\)/);
+      expect(js).not.toContain("createElement('to')");
+    }
   });
 });

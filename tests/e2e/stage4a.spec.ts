@@ -2,6 +2,7 @@ import { test, expect } from "@playwright/test";
 import { createServer, type ServerResponse } from "node:http";
 import { randomUUID } from "node:crypto";
 import { askText, mockSpeech, startChat } from "./voice-helpers";
+import { questionField } from "./helpers";
 
 test.beforeEach(async ({ page, context }) => {
   await context.setExtraHTTPHeaders({ "x-forwarded-for": `stage4a-${randomUUID()}` });
@@ -37,8 +38,8 @@ test("chat waiting, service failure and recoverable rate limits remain usable", 
   await startChat(page);
   let release!: () => void; const pending = new Promise<void>(done => { release = done; });
   await page.route("**/api/chat", async route => { if (route.request().method() !== "POST") return route.continue(); await pending; await route.fulfill({ status: 503, json: { error: "service_unavailable" } }); });
-  await page.getByRole("button", { name: "Usar teclado", exact: true }).click();
-  await page.getByLabel("Tu pregunta cultural", { exact: true }).fill("Merengue");
+  await expect(questionField(page)).toBeVisible();
+  await questionField(page).fill("Merengue");
   await page.getByRole("button", { name: "Enviar pregunta", exact: true }).click();
   await expect(page.getByRole("status").filter({ hasText: "Ary está pensando" })).toBeVisible();
   await expect(page.getByTestId("robot-status")).toHaveAttribute("data-gesture", "ponder");
@@ -46,7 +47,7 @@ test("chat waiting, service failure and recoverable rate limits remain usable", 
   await page.unroute("**/api/chat"); await page.route("**/api/chat", route => route.fulfill({ status: 429, json: { error: "rate_limited" } }));
   await page.getByRole("button", { name: "Enviar pregunta", exact: true }).click();
   await expect(page.getByRole("alert").filter({ hasText: "Límite de mensajes alcanzado" })).toBeVisible();
-  await expect(page.getByLabel("Tu pregunta cultural", { exact: true })).toBeEnabled();
+  await expect(questionField(page)).toBeEnabled();
 });
 test("cold kiosk checks health and retries a failed check", async ({ page }) => {
   await page.clock.install(); let release!: () => void, releaseRetry!: () => void, attempts = 0;

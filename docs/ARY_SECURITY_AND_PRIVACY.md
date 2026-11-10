@@ -1,3 +1,20 @@
+# Contrato vigente · etapa 8
+
+Esta sección sustituye los comportamientos anteriores que afirman que no se solicita correo o que las conversaciones se borran siempre al canjear/verificar. Las secciones posteriores son historial técnico.
+
+- Web: correo al iniciar, aceptación desmarcada de términos/privacidad y explicación del historial; marketing separado, opcional y desmarcado. `terms`, `conversation_history` y `marketing` quedan versionados con fuente, prueba y fecha en consent_records. La aceptación agrupada del historial y términos debe revisarse jurídicamente; retirar historial permite seguir con chat temporal.
+- Antes de verificar: máximo cinco preguntas compartidas por HMAC de correo durante 24 h, con contador atómico. Nuevas sesiones/reenvíos no renuevan el cupo. Se mantienen límites por IP de mutaciones, sesiones y solicitudes de enlace, y límites IA globales/por sesión. Sin email no se admite texto ni voz web. No se añade lista de correos desechables ni servicios de comprobación externos.
+- Cuenta solo después de verificar el buzón. La cookie verificada evita volver a pedir correo. Los mensajes del período provisional se conservan cifrados temporalmente; al verificar se trasladan a la sesión nueva y, con consentimiento vigente, al historial cifrado.
+- `conversations`: propietario por visitorId; payload AES-256-GCM con la clave existente; primer mensaje solo se descifra para su dueño. Retención configurable `CONVERSATION_RETENTION_DAYS=90` (1–365), limpieza por el cron existente. Listar/abrir/continuar exigen propietario y consentimiento. Eliminar borra el snapshot y mensajes activos asociados; retirar historial purga todas las conversaciones y mensajes operativos actuales. Exportación y borrado de cuenta incluyen conversaciones. Logout conserva solo el historial autorizado, no las filas operativas de sesión.
+- `saved_places` permite guardar un destino sin ficha desde las palabras del visitante. Nombre cifrado, propiedad por sesión o cuenta, sin ubicación inventada. Se identifica como no verificado en Mis viajes. Los guardados se fusionan al verificar, viajan en QR y se incluyen en exportación/borrado; una sesión anónima caducada los pierde.
+- Dispositivo público activado: no pide correo; QR privado solo ahí, TTL/código de dos dígitos/canje único conservados. Ahora copia mensajes y destinos además de preferencias/fichas. Al teléfono se le pide correo antes de continuar. Demo sin activación no puede emitir QR ni llamar a IA/TTS; usa texto determinista y límites operativos existentes.
+- Promociones: `marketing` es el propósito nuevo, compatible con `marketing_email` heredado. Siempre requieren DOI separado. Una confirmación solicitada puede prepararse aunque las campañas estén deshabilitadas; `FEATURE_ENABLE_MARKETING` sigue bloqueando campañas. Retirada/baja invalidan DOI y marketing pendiente en enlaces antiguos, evitando reactivación accidental. No se enviaron correos ni campañas en esta tarea.
+- IA: general sin citas lleva etiqueta propia; hechos culturales requieren ficha/fuente. Direcciones no inventan rutas ni mapas; si existe ubicación editorial en una ficha, se muestra ese dato. Siguen derivación sensible, defensa de inyección, rechazo de URLs/HTML y ai_usage sin texto. Audio sigue solo en memoria, no en el historial persistente.
+
+[Términos de uso](/terminos) se presentan como **Borrador pendiente de revisión legal**, con marcadores de responsable/contacto, sin inventar razón social. No hay certificación jurídica ni validación de dispositivos físicos. Ver [revisión](PRIVACY_COMPLIANCE_REVIEW.md), [correo](ARY_EMAIL_SETUP.md) e [informe](ARY_STAGE8_REPORT.md).
+
+---
+
 # Seguridad y privacidad · etapa 3
 
 ## Adición vigente · etapa 6: voz opcional

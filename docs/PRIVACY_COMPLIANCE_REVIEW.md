@@ -1,3 +1,17 @@
+# Revisión vigente · etapa 8
+
+La web ahora solicita correo, aceptación explícita de términos/privacidad e informa del historial; el dispositivo público conserva QR. Se almacenan conversaciones de cuentas verificadas con consentimiento `conversation_history`, cifradas, por 90 días por defecto configurables. Finalidad: dar seguimiento y continuar conversaciones y viajes. Se permiten apertura/continuación, exportación, borrado individual, retirada y borrado de cuenta. El cron existente purga caducadas. El audio no se guarda. Ver [contrato técnico actualizado](ARY_SECURITY_AND_PRIVACY.md).
+
+`terms`, `conversation_history` y `marketing` son pruebas técnicas versionadas; no constituyen por sí mismas una conclusión de validez jurídica. Marketing no está premarcado y requiere DOI distinto de verificación de acceso. El correo provisional tiene cinco preguntas por HMAC durante 24 h y límites por IP; no se crea cuenta por conocer una dirección.
+
+Pendientes del responsable: identidad/contacto y ley aplicable; revisión de la aceptación agrupada de términos/historial y bases jurídicas; retención de conversaciones, sesiones, guardados y backups; menores/supervisión; contratos con Google, Resend, Vercel y BD; transferencias internacionales; ejercicio de derechos e incidentes. Los términos muestran «Borrador pendiente de revisión legal» con marcadores claros. No se certifica cumplimiento de ninguna ley.
+
+Comprobación pública de correo el 2026-11-10: health devuelve `configured_unverified`, no `dry_run`. No prueba entrega, DNS ni webhooks. El proyecto no está accesible mediante el conector Vercel de esta sesión; no se leyeron valores privados ni se enviaron correos. La ejecución local mantiene dry-run. [Evidencia](evidence/stage8/production-email-status.json).
+
+Pruebas locales de cifrado/retención/propiedad/retirada no equivalen a aprobación jurídica, despliegue ni validación de producción. Las dos pasadas visuales y Safari/Chrome físico siguen bloqueadas, según [evidencia](evidence/stage8/visual-review.md).
+
+---
+
 # Privacidad · revisión pendiente
 
 ## Estado vigente · etapa 6: audio opcional

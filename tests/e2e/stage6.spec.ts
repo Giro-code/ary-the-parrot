@@ -2,6 +2,7 @@ import { test, expect, type Page } from "@playwright/test";
 import { mkdir } from "node:fs/promises";
 import { randomUUID } from "node:crypto";
 import { askText, mockSpeech, startChat } from "./voice-helpers";
+import { questionField } from "./helpers";
 const evidence = "docs/screenshots/stage6";
 test.beforeEach(async ({ page, context }) => { await context.setExtraHTTPHeaders({ "x-forwarded-for": `stage6-${randomUUID()}` }); await mockSpeech(page, 2); });
 async function capture(page: Page, name: string) {
@@ -52,7 +53,7 @@ test("denied microphone and failed TTS offer the keyboard and accessible caption
   await expect(page.getByRole("status").filter({ hasText: "Ahora no puedo hablar" })).toBeVisible();
   await page.getByRole("button", { name: "Hablar con Ary", exact: true }).click(); await page.getByRole("button", { name: "Acepto · Grabar" }).click();
   await expect(page.getByRole("status").filter({ hasText: "No se permitió el micrófono" })).toBeVisible();
-  await askText(page, "Cuéntame del merengue"); await expect(page.locator(".chat-message.assistant").last()).toContainText(/merengue/i);
+  await askText(page, "Cuéntame del merengue"); await expect(page.locator(".chat-message.assistant").filter({ hasText: /merengue/i }).last()).toBeVisible();
 });
 
 test("keyboard cancels recording and releases every microphone track without uploading", async ({ page }) => {
@@ -70,10 +71,18 @@ test("keyboard cancels recording and releases every microphone track without upl
   await page.getByRole("button", { name: "Hablar con Ary", exact: true }).click();
   await page.getByRole("button", { name: "Acepto · Grabar" }).click();
   await expect(page.getByRole("button", { name: "Parar grabación" })).toBeVisible();
-  await page.getByRole("button", { name: "Usar teclado", exact: true }).click();
-  await expect(page.getByLabel("Tu pregunta cultural", { exact: true })).toBeFocused();
+  await page.waitForTimeout(350); // Include recorded data so cancellation must discard it.
+  const keyboard = page.locator(".recording-status").getByRole("button", { name: "Usar teclado", exact: true });
+  await expect(keyboard).toBeVisible({ timeout: 3000 });
+  await keyboard.focus();
+  await page.keyboard.press("Enter");
+  await expect(questionField(page)).toBeFocused();
   expect(await page.evaluate(() => (window as Window & { aryTestTracks?: MediaStreamTrack[] }).aryTestTracks?.every(track => track.readyState === "ended"))).toBe(true);
   await expect(page.getByTestId("robot-status")).toHaveAttribute("data-robot-state", "idle");
+  await page.waitForTimeout(350); // Let queued MediaRecorder events run after cancellation.
+  expect(uploads).toBe(0);
+  expect((await askText(page, "Cuéntame del merengue")).status()).toBe(200);
+  await expect(page.locator(".chat-message.assistant").filter({ hasText: /merengue/i }).last()).toBeVisible();
   expect(uploads).toBe(0);
 });
 
@@ -114,6 +123,14 @@ for (const pass of [1, 2]) test(`stage6 visual evidence pass ${pass}: character 
     await startChat(page); await mockAsk(page);
     await page.getByRole("button", { name: "Hablar con Ary", exact: true }).click(); await page.getByRole("button", { name: "Acepto · Grabar" }).click();
     await expect(page.locator('[data-ary-image="pensar"]')).toBeVisible(); await capture(page, `pass-${pass}-escuchando-${width}`);
+    const keyboard = page.locator(".recording-status").getByRole("button", { name: "Usar teclado", exact: true });
+    await keyboard.focus(); await page.keyboard.press("Enter");
+    await expect(questionField(page)).toBeFocused();
+    await expect(page.getByTestId("robot-status")).toHaveAttribute("data-robot-state", "idle");
+    await capture(page, `pass-${pass}-teclado-cancelado-${width}`);
+    await page.getByRole("button", { name: "Hablar con Ary", exact: true }).click();
+    await expect(page.getByRole("button", { name: "Parar grabación" })).toBeVisible();
+    await page.waitForTimeout(350);
     await page.getByRole("button", { name: "Parar grabación" }).click();
     await expect(page.locator(".chat-card")).toBeVisible(); await expect(page.locator('[data-ary-image="mostrar"]')).toBeVisible(); await capture(page, `pass-${pass}-hablando-fichas-${width}`);
     await page.getByRole("button", { name: "Guardar", exact: true }).click();
@@ -122,7 +139,7 @@ for (const pass of [1, 2]) test(`stage6 visual evidence pass ${pass}: character 
     await expect(page.getByRole("button", { name: "Hablar con Ary", exact: true })).toBeDisabled();
     await context.setOffline(false); await page.getByRole("button", { name: "Terminar sin continuar" }).click();
     await startChat(page, true); await askText(page, "¿Dónde está mi vuelo?"); await capture(page, `pass-${pass}-movil-redireccion-${width}`);
-    await page.getByRole("button", { name: "Finalizar mi sesión" }).click(); await page.reload();
+    await page.locator(".session-menu summary").click(); await page.getByRole("button", { name: "Finalizar mi sesión" }).click(); await page.reload();
   }
   // Captures are evidence for human inspection; this test alone is not a visual review.
 });

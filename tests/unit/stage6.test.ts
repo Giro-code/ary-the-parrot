@@ -7,7 +7,7 @@ import { connectDatabase, type Connection } from "../../src/db/client";
 import { migrateDatabase } from "../../src/db/migrate";
 import { seedDatabase, type SourceCheck } from "../../src/db/seed";
 import * as s from "../../src/db/schema";
-import { createSession, endSession } from "../../src/server/service";
+import { createSession as anonymousSession, endSession } from "../../src/server/service";
 import { chat, chatCue, chatHistory } from "../../src/server/ai/chat";
 import { answerSchema, voiceAnswerSchema } from "../../src/server/ai/providers";
 import { maxAudioBytes, pcmToWav, validatedWav, defaultTtsModel, defaultTtsVoice } from "../../src/server/ai/voice";
@@ -17,6 +17,13 @@ import { conversationPreferences } from "../../src/conversation";
 import { decrypt } from "../../src/server/crypto";
 import { aryImage } from "../../src/components/ary-stage";
 
+import { grantConsent, noticeVersion } from "../../src/server/consents";
+async function createSession(...args: Parameters<typeof anonymousSession>) {
+  const created = await anonymousSession(...args);
+  const [session] = await args[0].update(s.visitorSessions).set({ pendingEmailHash: randomUUID() }).where(eq(s.visitorSessions.id, created.session.id)).returning();
+  await grantConsent(args[0], session, {purpose:"terms",noticeVersion,locale:session.locale},"synthetic_test");
+  return {...created,session};
+}
 let connection: Connection;
 vi.mock("../../src/db/client", async original => ({ ...await original<typeof import("../../src/db/client")>(), getConnection: async () => connection }));
 import { POST as ask } from "../../app/api/voice/ask/route";

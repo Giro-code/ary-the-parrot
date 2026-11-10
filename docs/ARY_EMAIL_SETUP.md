@@ -1,3 +1,23 @@
+# Estado y activación · etapa 8 (2026-11-10)
+
+**Estado real observado:** GET público a [health](https://arytheparrot.app/api/health) respondió HTTP 200, email `configured_unverified` a las 17:07:14 UTC. Por tanto, el snapshot «EMAIL_DRY_RUN=true y sin RESEND_API_KEY» de la instrucción no describe el estado que publica hoy el servidor. Este resultado no prueba entrega ni revela claves. No se envió ningún correo ni se pidió un enlace a producción. El conector Vercel disponible no lista el proyecto de Ary, por lo que no se inspeccionaron sus variables. [Evidencia saneada](evidence/stage8/production-email-status.json).
+
+La ejecución local/E2E fuerza `EMAIL_DRY_RUN=true` y `GEMINI_API_KEY=`; las pruebas de Resend usan fetch simulado. La bienvenida muestra «Modo prueba: el correo de verificación no se envía todavía» cuando el adaptador efectivo es dry-run (bandera o clave/remitente ausentes). En modo real la UI solo registra la solicitud; no afirma que se entregó.
+
+Pasos exactos para el propietario, **no ejecutados en esta tarea**:
+
+1. Abrir el proyecto correcto de Ary en Vercel y revisar Production. Si ya está configurado, comprobarlo antes de cambiar nada; health actualmente indica configured_unverified. Mantener Preview/Development en dry-run.
+2. En Resend → Domains, verificar el dominio de envío que controla el propietario. Copiar al DNS únicamente los registros SPF/DKIM/retorno proporcionados por esa cuenta y comprobar el estado Verified. Revisar DMARC sin inventar registros ni duplicar SPF. [Documentación oficial de dominios](https://resend.com/docs/dashboard/domains/introduction).
+3. En Vercel → Project → Settings → Environment Variables → Production, cargar mediante el editor privado `RESEND_API_KEY` y `EMAIL_FROM` (remitente del dominio verificado), y establecer `EMAIL_DRY_RUN=false`. No copiar valores al chat ni a logs. Configurar `EMAIL_REPLY_TO` si existe un contacto oficial. Mantener las claves estables existentes de cifrado/HMAC y autenticación; no rotarlas para activar correo. Confirmar `APP_BASE_URL=https://arytheparrot.app` y `CONVERSATION_RETENTION_DAYS=90` o el plazo aprobado.
+4. Resend → Webhooks: añadir `https://arytheparrot.app/api/email/webhook` con los eventos `email.delivered`, `email.bounced`, `email.complained` y `email.failed`. Copiar su secreto privado a `RESEND_WEBHOOK_SECRET` en Production. El endpoint valida la firma Svix. [Documentación oficial de webhooks](https://resend.com/docs/webhooks/introduction).
+5. Antes de publicar este código, aplicar la migración `0004_stage8_conversations` en la BD de destino tras copia/revisión del operador: `npm run db:migrate -- --env-file .env.production.local`. El archivo de entorno es privado, ignorado por Git; nunca imprimirlo. No se migró producción desde esta ejecución.
+6. El propietario deberá autorizar y realizar un nuevo despliegue cuando corresponda. Los cambios de entorno aplican a nuevos despliegues, no al anterior. [Vercel: variables de entorno](https://vercel.com/docs/environment-variables). No se hizo redeploy, commit ni push en esta tarea.
+7. Comprobar health y, solo con autorización posterior del propietario, pedir un enlace a un buzón controlado: revisar outbox/provider, recepción y confirmación única dentro de 15 minutos. `accepted_by_provider` significa aceptación por Resend; `delivered` requiere webhook y tampoco prueba lectura. Probar rechazo de enlace usado/caducado y nueva sesión sin pedir correo otra vez. Ninguna de estas pruebas de correo real se ejecutó aquí.
+8. Verificar `CRON_SECRET` y las tareas ya definidas: dispatcher a 13:00 UTC, cleanup a 14:00 UTC. Los enlaces inmediatos se despachan tras commit; si fallan, solicitar uno nuevo antes de caducar. El cron diario puede llegar después del TTL. No se añadió otro cron.
+9. Marketing permanece desactivado mediante `FEATURE_ENABLE_MARKETING=false` hasta decidir habilitar campañas. La casilla separada solo permite preparar DOI; no activa una suscripción sin confirmar el segundo enlace. Retirada/baja/supresión cancelan acceso futuro y DOI pendiente. Nunca enviar campañas por haber verificado el acceso.
+
+---
+
 # Correo de Ary · etapa 3
 
 Implementación local, 7 de noviembre de 2026. No se configuró una cuenta Resend, no se modificó DNS, no se desplegó ningún cron y **no se enviaron correos reales**. La conectividad con Resend se prueba exclusivamente mediante `fetch` simulado.

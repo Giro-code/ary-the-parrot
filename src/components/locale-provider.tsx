@@ -2,6 +2,7 @@
 import { uiText } from "../i18n/ui";
 import { createContext, useCallback, useContext, useState, type ReactNode } from "react";
 import { LANGUAGE_COOKIE, LANGUAGE_MAX_AGE, supportedLocale, SUPPORTED_LANGUAGES, type Locale } from "../i18n/language";
+import { Icon } from "./icons";
 
 const LocaleContext = createContext<readonly [Locale, (value: Locale) => void] | null>(null);
 export function LocaleProvider({ initialLocale, children }: { initialLocale: Locale; children: ReactNode }) {
@@ -16,5 +17,5 @@ export function useLocale(initial: Locale = "en"): readonly [Locale, (value: Loc
   return context || [local, set];
 }
 export function LanguageSelector({ locale, onChange }: { locale: Locale; onChange: (value: Locale) => void }) {
-  return <div className="language" role="group" aria-label={uiText(locale, "chooseYourLanguage")}>{(Object.keys(SUPPORTED_LANGUAGES) as Locale[]).map(value => <button type="button" key={value} lang={value} aria-pressed={value === locale} onClick={() => { rememberLanguage(value); onChange(value); }}>{SUPPORTED_LANGUAGES[value]}</button>)}</div>;
+  return <div className="language" role="group" aria-label={uiText(locale, "chooseYourLanguage")}><Icon kind="globe"/>{(Object.keys(SUPPORTED_LANGUAGES) as Locale[]).map(value => <button type="button" key={value} lang={value} aria-label={SUPPORTED_LANGUAGES[value]} aria-pressed={value === locale} onClick={() => { rememberLanguage(value); onChange(value); }}>{value.toUpperCase()}</button>)}</div>;
 }

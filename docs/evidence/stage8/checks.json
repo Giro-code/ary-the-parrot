@@ -1,0 +1,15 @@
+{
+  "date": "2026-11-10",
+  "runtime": "Node 26.2.0; repository requires 24.x",
+  "lint": { "command": "npm run lint", "exitCode": 0 },
+  "typecheck": { "command": "npm run typecheck", "exitCode": 0 },
+  "unit": { "command": "npm test", "exitCode": 0, "files": 18, "passed": 193 },
+  "build": { "command": "npm run build", "exitCode": 1, "compiled": true, "blockedAt": "Running TypeScript", "error": "spawn EPERM" },
+  "e2eInventory": { "command": "npx playwright test --list", "exitCode": 0, "cases": 69, "files": 8 },
+  "stage8Inventory": { "command": "npx playwright test --list --project=stage8 --project=stage8-webkit", "exitCode": 0, "cases": 8 },
+  "e2e": { "command": "npx playwright test --project=stage8 --project=stage8-webkit --workers=1", "exitCode": 1, "executed": false, "error": "spawn EPERM" },
+  "browserHost": { "available": false, "error": "The browser access host is unavailable" },
+  "visualReview": { "pass1": "pending", "pass2": "pending", "uiScreenshotsCreated": false },
+  "diffCheck": { "command": "git diff --check", "exitCode": 0 },
+  "constraints": { "commits": 0, "pushes": 0, "deployments": 0, "realEmails": 0, "realAiCalls": 0, "installations": 0, "legacyChanged": false }
+}

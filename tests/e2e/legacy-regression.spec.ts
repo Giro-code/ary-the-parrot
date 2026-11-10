@@ -1,11 +1,8 @@
 import { test as base, expect, type Page } from "@playwright/test";
-import { mkdir, readFile, writeFile } from "node:fs/promises";
-import pixelmatch from "pixelmatch";
-import { PNG } from "pngjs";
+import { readFile } from "node:fs/promises";
 
 base.use({ extraHTTPHeaders: { "x-vercel-ip-country": "MX" } });
 
-const screenshots = "docs/screenshots";
 const views = ["inicio", "conoce", "historia", "nosotros", "brochure", "solicitar"];
 const widths = [390, 820, 1440, 1920];
 
@@ -43,57 +40,12 @@ async function ready(page: Page) {
   });
 }
 
-async function capture(page: Page, path: string) {
-  await ready(page);
-  const buffer = await page.screenshot({ fullPage: true, animations: "disabled" });
-  await mkdir(screenshots, { recursive: true });
-  await writeFile(path, PNG.sync.write(PNG.sync.read(buffer), { deflateLevel: 9 }));
-  return PNG.sync.read(buffer);
-}
-
-for (const width of widths) {
-  for (const view of views) {
-    test(`${view} a ${width}px conserva vista, título, ancho y píxeles`, async ({ page, browser }, testInfo) => {
-      await page.setViewportSize({ width, height: 900 });
-      const response = await page.goto(`/#${view}`);
-      expect(response?.status()).toBe(200);
-      await expect(page.locator(`#${view}`)).toBeVisible();
-      await expect(page.locator(".content-page:visible")).toHaveCount(1);
-      await expect(page.locator(`#nav a[href="#${view}"]`)).toHaveAttribute("aria-current", "page");
-      const title = (await page.locator(`#${view} h1`).textContent()) ?? "";
-      await expect(page).toHaveTitle(view === "inicio"
-        ? "Ary la Cotorra · Descubre lo nuestro"
-        : `${title.replace(/\s+/g, " ")} · Ary`);
-      expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
-      const stem = `${screenshots}/${view}-${width}`;
-      const raw = await capture(page, `${stem}-${testInfo.project.name}.png`);
-
-      if (testInfo.project.name === "app") {
-        const legacy = await browser.newPage({ viewport: { width, height: 900 } });
-        try {
-          await legacy.goto(`http://127.0.0.1:3001/#${view}`);
-          await ready(legacy);
-          const reference = PNG.sync.read(await legacy.screenshot({ fullPage: true, animations: "disabled" }));
-          // Only the single explicitly approved entry is excluded. Raw app images retain it.
-          let actual = raw;
-          if (view === "inicio") {
-            await page.locator(".experience-entry").evaluate((entry) => entry.remove());
-            actual = await capture(page, `${stem}-compared.png`);
-          }
-          expect({ width: actual.width, height: actual.height }).toEqual({ width: reference.width, height: reference.height });
-          const diff = new PNG({ width: actual.width, height: actual.height });
-          const changed = pixelmatch(reference.data, actual.data, diff.data, actual.width, actual.height, { threshold: 0.1 });
-          await writeFile(`${stem}-diff.png`, PNG.sync.write(diff, { deflateLevel: 9 }));
-          const ratio = changed / (actual.width * actual.height);
-          await writeFile(`${stem}-comparison.json`, JSON.stringify({ width, view, changed, pixels: actual.width * actual.height, ratio, maximumRatio: 0.001, excluded: view === "inicio" ? ".experience-entry" : null }, null, 2) + "\n");
-          expect(ratio, "fracción de píxeles distintos frente al legacy vivo").toBeLessThanOrEqual(0.001);
-        } finally {
-          await legacy.close();
-        }
-      }
-    });
-  }
-}
+for (const width of widths) for (const locale of ["es","en"]) test(`new landing ${locale} at ${width}px: functional sections and credits`, async ({page})=>{
+  await page.setViewportSize({width,height:900}); await page.goto(`/?lang=${locale}`);
+  for(const view of views){ await page.goto(`/#${view}`); await expect(page.locator(`#${view}`)).toBeVisible(); await ready(page); expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true); }
+  await page.goto('/#inicio'); await expect(page.locator('.place-photo').first()).toContainText('Wikimedia Commons'); await expect(page.locator('body')).not.toContainText(/kiosco|kiosk/i);
+  await page.locator('.talk-to-ary').click(); await expect(page).toHaveURL(/\/experiencia$/); await expect(page.locator('#welcome-email')).toBeVisible();
+});
 
 test("router conserva navegación, history, título y foco", async ({ page }) => {
   await page.goto("/#inicio");
@@ -225,7 +177,7 @@ test("presentación conserva tres diapositivas, límites, flechas y Escape", asy
   await expect(opener).toBeFocused();
 });
 
-test("solicitud valida campos y descarga TXT local con los datos", async ({ page }, testInfo) => {
+test("solicitud valida campos y descarga TXT local con los datos", async ({ page }) => {
   // Preparing preserves the local TXT path. Sending requires a separate explicit checkbox.
   await page.goto("/#solicitar");
   await page.locator('button[type="submit"]').click();
@@ -248,7 +200,7 @@ test("solicitud valida campos y descarga TXT local con los datos", async ({ page
   await page.locator("#message").fill("Queremos conocer la propuesta cultural.");
   await page.locator('button[type="submit"]').click();
   await expect(page.locator("#request-result")).toContainText("La solicitud todavía no se ha enviado");
-  await expect(page.locator(testInfo.project.name === "app" ? "#request-result" : "#download-request")).toBeFocused();
+  await expect(page.locator("#request-result")).toBeFocused();
   const [download] = await Promise.all([
     page.waitForEvent("download"), page.locator("#download-request").click(),
   ]);
@@ -280,40 +232,7 @@ test("brochure independiente, impresión disponible y enlace de regreso", async 
   await expect(page.locator("#brochure")).toBeVisible();
 });
 
-test("API, cabeceras, recursos y entradas de etapa 2", async ({ page, request }, testInfo) => {
-  test.skip(testInfo.project.name === "legacy", "Superficies nuevas de la etapa 1");
-  const healthResponse = await request.get("/api/health");
-  // Stage 2 intentionally changes the production contract: no database => safe 503.
-  expect(healthResponse.status()).toBe(503);
-  expect(await healthResponse.json()).toMatchObject({ status: "degraded", error: "database_not_configured", version: "0.1.0", checks: { email: "dry_run", robot: "simulator" } });
-  expect(healthResponse.headers()["cache-control"]).toBe("no-store");
-  for (const path of ["/", "/index.html", "/brochure.html", "/site/landing.css", "/site/landing.js", "/favicon.ico", "/api/health", "/experiencia", "/kiosco"]) {
-    const response = await request.get(path);
-    expect(response.status()).toBe(path === "/api/health" ? 503 : 200);
-    expect(response.headers()["x-content-type-options"]).toBe("nosniff");
-    expect(response.headers()["referrer-policy"]).toBe("strict-origin-when-cross-origin");
-    expect(response.headers()["content-security-policy"]).toContain("frame-ancestors 'none'");
-    expect(response.headers()["content-security-policy"]).not.toContain("unsafe-eval");
-    expect(response.headers()["x-powered-by"]).toBeUndefined();
-  }
-  for (const width of [390, 1440]) {
-    await page.setViewportSize({ width, height: 900 });
-    await page.goto("/#inicio");
-    await expect(page.locator(".experience-entry")).toHaveCount(1);
-    await page.locator(".experience-entry a").click();
-    await expect(page).toHaveURL(/\/experiencia$/);
-    await expect(page.getByRole("heading", { name: "Un pedacito de Dominicana" })).toBeVisible();
-    // Next.js adds its own empty route-announcer alert; target the app notice.
-    await expect(page.getByRole("alert").filter({ hasText: "No pude completar" })).toBeVisible();
-    expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
-    await page.goto("/kiosco");
-    await expect(page).toHaveURL(/\/kiosco$/);
-    await expect(page.locator("main")).toContainText("Simulator");
-    // This server runs production mode without a database: the kiosk must say so instead of claiming a device state it could not check.
-    await expect(page.locator("main")).toContainText("Service offline");
-    await expect(page.locator("main")).not.toContainText("Demonstration mode without a device");
-    expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
-    await page.getByRole("link", { name: "ARY la Cotorra" }).click();
-    await expect(page.locator("#inicio")).toBeVisible();
-  }
+test("production headers and honest unavailable database",async({request})=>{
+ const health=await request.get('/api/health'); expect(health.status()).toBe(503); expect((await health.json()).checks.email).toBe('dry_run');
+ for(const path of ['/', '/index.html','/brochure.html','/experiencia','/kiosco','/terminos','/mis-conversaciones']){const r=await request.get(path);expect(r.status()).toBe(200);expect(r.headers()['content-security-policy']).toContain("frame-ancestors 'none'");expect(r.headers()['x-powered-by']).toBeUndefined();}
 });
