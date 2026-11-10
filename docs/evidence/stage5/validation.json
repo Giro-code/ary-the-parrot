@@ -1,0 +1,21 @@
+{
+  "stage": 5,
+  "date": "2026-11-10",
+  "scope": "local preparation only",
+  "runtime": { "executedNode": "26.2.0", "npm": "11.16.0", "targetNode": "24.x", "node24RuntimeVerified": false },
+  "deployment": { "vercelRegion": "iad1", "neonRegionToSelect": "us-east-1", "deployed": false, "realDatabaseVerified": false },
+  "commands": {
+    "deploy:secrets": { "exitCode": 0, "privateFileCreated": true, "overwriteRefusedOnRepeat": true },
+    "deploy:check": { "exitCode": 1, "expected": true, "missingRequiredNames": ["DATABASE_URL", "GEMINI_API_KEY"] },
+    "lint": { "exitCode": 0 },
+    "typecheck": { "exitCode": 0 },
+    "test": { "exitCode": 0, "filesPassed": 11, "testsPassed": 128 },
+    "build:empty-env": { "exitCode": 1, "normalBuildInvoked": true, "compiled": true, "completed": false, "error": "spawn EPERM", "phase": "Running TypeScript", "privateEnvFilesCopied": false },
+    "isolatedLocalMigrations": { "exitCode": 0, "runs": 2, "driver": "pglite" },
+    "isolatedLocalAdmin": { "exitCode": 0, "synthetic": true, "mailSent": false, "linkPrinted": false },
+    "productionDemoGuard": { "exitCode": 1, "expected": true, "databaseConnectionAttempted": false },
+    "capturedPrintLinkGuard": { "exitCode": 1, "expected": true, "databaseConnectionAttempted": false, "linkPrinted": false }
+  },
+  "constraints": { "commits": false, "push": false, "deployments": false, "realMail": false, "liveAi": false, "secretValuesLogged": false, "otherProjectMemoriesUsed": false, "protectedFilesChanged": false, "e2eFilesChanged": false },
+  "pending": ["owner credentials", "complete build outside spawn restriction", "Node 24 execution", "real Neon", "Vercel deployment and public health", "DNS and HTTPS", "owner admin login", "Resend and webhooks", "live AI prohibited", "release E2E and visual acceptance", "physical Pi and robot"]
+}

@@ -14,6 +14,8 @@ import { chat, chatHistory, chatInputSchema } from "../../../src/server/ai/chat"
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
+// Includes one AI request (12 s timeout) and immediate transactional mail.
+export const maxDuration = 180;
 const prefs = z.object({ locale: z.enum(["es", "en"]), countryDeclared: z.string().regex(/^[A-Z]{2}$/).nullable(), interests: z.array(z.enum(interests)).max(6).transform(value => [...new Set(value)]) }).strict();
 const empty = z.object({}).strict();
 async function handle(request: NextRequest) {

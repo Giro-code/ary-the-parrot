@@ -30,15 +30,15 @@ export async function checkSources(): Promise<SourceCheck[]> {
     } catch { return { url: entry.url, finalUrl: null, status: null, checkedAt, verified: false, error: "http_request_failed" }; }
   }));
 }
-export async function seedDatabase(db: Database, checks: SourceCheck[]) {
+export async function seedDatabase(db: Database, checks: SourceCheck[], options: { production?: boolean } = {}) {
   for (const entry of seedEntries) {
     const check = checks.find(row => row.url === entry.url && row.verified);
     for (const language of ["es", "en"] as const) {
       const values = {
         contentKey: entry.key, title: entry.title, type: "heritage", language, summary: entry[language], validatedDescription: entry[language], tags: entry.tags,
         sourceUrl: check ? entry.url : null, sourceCheckedAt: check ? new Date(check.checkedAt) : null,
-        license: "Original Ary demonstration summary; linked source copyright remains with its publisher. No source imagery reproduced.", editor: entry.editor,
-        lastReviewedAt: check ? new Date(check.checkedAt) : null, publishedAt: check ? new Date(check.checkedAt) : null, status: check ? "published" : "needs_source", demo: true,
+        license: "Original Ary cultural summary; linked source copyright remains with its publisher. No source imagery reproduced.", editor: entry.editor,
+        lastReviewedAt: check ? new Date(check.checkedAt) : null, publishedAt: check ? new Date(check.checkedAt) : null, status: check ? "published" : "needs_source", demo: !options.production,
       };
       const [item] = await db.insert(culturalItems).values({ id: randomUUID(), ...values }).onConflictDoUpdate({ target: [culturalItems.contentKey, culturalItems.language], set: values }).returning();
       // UNESCO explicitly describes merengue's reach in these countries; no scoring by country.

@@ -63,7 +63,7 @@ Referencias primarias consultadas: [Resend HTTP send](https://resend.com/docs/ap
 
 ## Personal, recibos y campa?as (4B)
 
-Plantilla staff_login ES/EN: enlace propio a /admin/entrar, quince minutos y un uso. Las invitaciones se confirman con la misma pantalla. Plantilla provider_receipt (plantilla 6): proveedor y nombres de campos, sin valores privados ni chat. Ambas se despachan despu?s de commit, inmediatamente por ID; dry-run no env?a. El bootstrap CLI siempre fuerza dry-run y no imprime enlaces ni secretos.
+Plantilla staff_login ES/EN: enlace propio a /admin/entrar, quince minutos y un uso. Las invitaciones se confirman con la misma pantalla. Plantilla provider_receipt (plantilla 6): proveedor y nombres de campos, sin valores privados ni chat. Ambas se despachan despu?s de commit, inmediatamente por ID; dry-run no env?a. El bootstrap CLI siempre fuerza dry-run. En etapa 5, producción exige `--print-link` en la terminal interactiva privada del propietario: genera allí un enlace de un uso y quince minutos sin encolar correo; nunca imprime claves de configuración. `/dev/outbox` sigue dando 404 en producción. No ejecutar esa opción en CI, chats o registros compartidos. [Lista de despliegue](DEPLOY_CHECKLIST.md).
 
 Campa?as: flag false por defecto, preview y recuento sin lista de direcciones, confirmaci?n e ID de idempotencia. Encola sin despachar incluso en dry-run. Exige suscripci?n activa, DOI, consentimiento, correo verificado, frecuencia y ausencia de supresi?n; el dispatcher vuelve a comprobarlo. Diez filas por invocaci?n: una campa?a mayor no queda entregada con un solo cron. Revocaci?n, baja y supresi?n bloquean env?os futuros.
 

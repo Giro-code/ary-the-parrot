@@ -1,10 +1,10 @@
 # Despliegue de Vercel y Raspberry Pi
 
-Guía de operación de etapa 4A. Codex trabajó localmente. Build/E2E se bloquean con `spawn EPERM`. Los pasos siguientes los ejecuta el operador en su entorno autorizado. Hardware, Neon y despliegue real requieren aceptación adicional.
+Guía de operación de etapa 4A, actualizada para la preparación de etapa 5. Sigue primero [DEPLOY_CHECKLIST](DEPLOY_CHECKLIST.md) para variables, migraciones y primer administrador. Los bloqueos históricos se conservan en sus informes; esta guía no acredita hardware, Neon ni despliegue real.
 
 ## 1. Preparar Vercel
 
-Node 26.2 o posterior compatible, Next.js 16.4.5 y PostgreSQL Neon mediante Pool WebSocket. Configurar Preview y Production por separado. Usar el origen HTTPS exacto en `APP_BASE_URL`, incluidas las previews.
+Node **24.x LTS**, Next.js 16.4.5 y PostgreSQL Neon mediante Pool WebSocket. `vercel.json` fija **iad1**: elegir Neon **us-east-1**. Preview usa BD y secretos separados; jamás la BD de producción. Usar el origen HTTPS exacto en `APP_BASE_URL`, incluidas las previews.
 
 | Variables | Configuración |
 | --- | --- |
@@ -30,15 +30,15 @@ npm ci
 npm run lint
 npm run typecheck
 npm test
-npm run db:migrate
+npm run db:migrate -- --env-file .env.production.local
 npm run build
 ```
 
-La migración 0002 añade `ai_usage`, `robot_events` y `robot_commands`. El migrador transaccional es idempotente. Revisar backups y recuperación antes de migrar una BD real. Los rollbacks son destructivos y exclusivos de pruebas autorizadas. El seed es contenido de demostración con fuentes verificadas por HTTP, pendiente de revisión editorial para producción.
+El journal incluye 0000–0003; 0002 añade `ai_usage`, `robot_events` y `robot_commands`, y 0003, personal/proveedores. El migrador transaccional es idempotente y se ejecuta desde el equipo del propietario, nunca en el build. Revisar backups y recuperación antes de migrar una BD real. Los rollbacks son destructivos y exclusivos de pruebas autorizadas. `db:seed -- --env-file .env.production.local` carga contenido cultural con fuentes verificadas por HTTP y `demo=false`; exige revisión editorial. El seed de identidades ficticias `demo:seed` está bloqueado fuera de local.
 
 Desplegar mediante el flujo autorizado del proyecto. Comprobar `/api/health` sobre el dominio publicado. Debe responder 200, `checks.database=connected` y poder leer la tabla nueva. Sin BD responde 503. `ai=configured_unverified` expresa configuración. `robot=simulator` mantiene la distinción respecto al hardware.
 
-Los correos `recovery`, `commercial_receipt`, `commercial_admin` y `marketing_confirmation` se intentan después del commit de su petición, con timeout HTTP de 10 s. El cron diario de `vercel.json`, `0 13 * * *` UTC, queda para reintentos y operaciones diferidas. Confirmar el plan y la duración de función. Enlaces de 15 minutos se descartan caducados. `CRON_SECRET` protege GET/POST. Asignar al operador un job periódico de `db:cleanup` y la política de backups. El cron de limpieza queda pendiente de configuración.
+Los correos inmediatos se intentan después del commit de su petición, con timeout HTTP de 10 s. `vercel.json` programa dispatcher a las 13 UTC y limpieza a las 14 UTC, diariamente; requieren despliegue y `CRON_SECRET`. Enlaces de 15 minutos se descartan caducados. El catch-all de IA/correo y el dispatcher permiten 180 s; webhook, 30 s. Confirmar plan/Fluid Compute y ejecución real de los crons antes de operar. La política de backups corresponde al propietario.
 
 ## 2. Preparar Raspberry Pi OS
 

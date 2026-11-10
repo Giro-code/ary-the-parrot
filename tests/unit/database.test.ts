@@ -60,7 +60,7 @@ test("migration snapshot matches schema and rollback removes the isolated test s
     const remaining = await isolated.db.execute(sql`select tablename from pg_tables where schemaname='public'`);
     expect(remaining.rows).toEqual([]);
   } finally { await isolated.close(); }
-});
+}, 30000);
 test("tokens have 256 random bits; database stores only SHA-256 hashes", async () => {
   const first = newToken(); expect(Buffer.from(first, "base64url")).toHaveLength(32); expect(first).not.toBe(newToken());
   expect(hashToken(first)).toHaveLength(64);

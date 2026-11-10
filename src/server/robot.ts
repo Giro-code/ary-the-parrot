@@ -6,19 +6,19 @@ import type { Database } from "../db/client.ts";
 import * as s from "../db/schema.ts";
 import { constantEqual } from "./crypto.ts";
 import { AppError } from "./errors.ts";
-import { baseUrl } from "./config.ts";
+import { baseUrl, validSecret } from "./config.ts";
 import { hashToken } from "./tokens.ts";
 import { rateLimit } from "./service.ts";
 import { robotStates } from "../robot/protocol.ts";
 
 export function robotSecret() {
   const secret = process.env.ROBOT_DEVICE_AUTH_SECRET?.trim();
-  if (!secret || secret.length < 32) throw new AppError("robot_not_configured", 503);
+  if (!secret || !validSecret(secret)) throw new AppError("robot_not_configured", 503);
   return secret;
 }
 export function bridgeToken(deviceId: string, now = Math.floor(Date.now() / 1000)) {
   const secret = process.env.ROBOT_BRIDGE_SECRET?.trim();
-  if (!secret || secret.length < 32) throw new AppError("bridge_not_configured", 503);
+  if (!secret || !validSecret(secret)) throw new AppError("bridge_not_configured", 503);
   const payload = Buffer.from(JSON.stringify({ aud: "ary-bridge", deviceId, origin: baseUrl(), iat: now, exp: now + 120, jti: randomUUID() })).toString("base64url");
   return { token: `${payload}.${createHmac("sha256", secret).update(payload).digest("base64url")}`, expiresAt: (now + 120) * 1000 };
 }

@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
+  "engines": { "node": "24.x" },
   "scripts": {
     "dev": "next dev --hostname 127.0.0.1",
     "build": "next build",
@@ -19,7 +20,10 @@
     "check:kiosk-budget": "node scripts/kiosk-budget.mjs",
     "admin:create": "node scripts/admin-demo.ts admin:create",
     "demo:seed": "node scripts/admin-demo.ts demo:seed",
-    "demo:reset": "node scripts/admin-demo.ts demo:reset"
+    "demo:reset": "node scripts/admin-demo.ts demo:reset",
+    "deploy:secrets": "node scripts/deploy-secrets.ts",
+    "deploy:check": "node scripts/deploy-check.ts",
+    "build:empty-env": "node scripts/build-empty-env.ts"
   },
   "dependencies": {
     "@electric-sql/pglite": "^0.5.15",

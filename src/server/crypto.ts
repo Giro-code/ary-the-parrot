@@ -1,10 +1,11 @@
 import { createCipheriv, createDecipheriv, createHash, createHmac, randomBytes, timingSafeEqual } from "node:crypto";
 import { AppError } from "./errors.ts";
+import { validSecret } from "./config.ts";
 
 // Explicitly labelled deterministic test/development keys; never a production fallback.
 function secret(name: "AUTH_SECRET" | "SESSION_ENCRYPTION_KEY") {
   const value = process.env[name];
-  if (process.env.NODE_ENV === "production" && (!value || value.length < 32)) throw new AppError("privacy_keys_not_configured", 503);
+  if (process.env.NODE_ENV === "production" && !validSecret(value)) throw new AppError("privacy_keys_not_configured", 503);
   return value || `ARY-DEVELOPMENT-TEST-KEY-ONLY:${name}`;
 }
 export function requirePrivacyKeys() { secret("AUTH_SECRET"); secret("SESSION_ENCRYPTION_KEY"); }

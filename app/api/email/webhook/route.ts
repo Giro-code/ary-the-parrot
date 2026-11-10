@@ -5,6 +5,7 @@ import { errorResponse, json } from "../../../../src/server/http";
 import { AppError } from "../../../../src/server/errors";
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
+export const maxDuration = 30;
 export async function POST(request: NextRequest) {
   try {
     if (!process.env.RESEND_WEBHOOK_SECRET) throw new AppError("webhook_not_configured", 503);

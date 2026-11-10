@@ -6,7 +6,7 @@ La etapa 3 usa **correo dry-run por defecto** y no envió correos reales durante
 
 ## Arranque local
 
-Usar Node **26.2 o posterior compatible**: los scripts TypeScript se ejecutan con el soporte nativo de Node, sin transpilador externo. Desde la raíz:
+Usar Node **24.x LTS**, fijado en `engines.node` y soportado por Vercel: los scripts TypeScript se ejecutan con type stripping nativo, sin transpilador externo. Desde la raíz:
 
 ```powershell
 npm i
@@ -95,7 +95,7 @@ npm run demo:seed
 npm run demo:reset
 ```
 
-El bootstrap fuerza dry-run y no imprime credenciales. No hay usuario predeterminado. El seed crea solo identidades ficticias @example.invalid y 129 eventos sint?ticos, claramente DEMO. Para un recorrido completo, seguir [el guion de cinco minutos](docs/ARY_WRO_DEMO_SCRIPT.md), que incluye contenido cultural, activaci?n y perfiles de navegador.
+El bootstrap fuerza dry-run. En producción exige `--print-link` en la terminal interactiva privada del propietario para obtener un enlace de un uso y quince minutos; nunca imprime claves de configuración. No hay usuario predeterminado. El seed de demo crea solo identidades ficticias @example.invalid y 129 eventos sint?ticos, claramente DEMO, y está bloqueado por defecto fuera de local. Para un recorrido completo, seguir [el guion de cinco minutos](docs/ARY_WRO_DEMO_SCRIPT.md), que incluye contenido cultural, activaci?n y perfiles de navegador.
 
 `FEATURE_ENABLE_PARTNER_SHARING=false` conserva ocultas las solicitudes. Con true, una oferta aprobada permite elegir proveedor/campos, confirmar y crear un lead cifrado, consentimiento y recibo transaccional. Revocar en `/cuenta/privacidad` bloquea accesos futuros; lo ya visto no se recupera. `PROVIDER_LEAD_RETENTION_DAYS=30` (m?ximo 90) es un plazo propuesto. Nunca se comparte chat o perfil completo.
 
@@ -104,3 +104,19 @@ El bootstrap fuerza dry-run y no imprime credenciales. No hay usuario predetermi
 Se a?ade `/api/internal/cleanup` a las 14 UTC diariamente; el dispatcher sigue a las 13 UTC. Ambos requieren `CRON_SECRET`; no se han desplegado. El l?mite diario de Hobby y sus l?mites de cantidad est?n documentados en [operaci?n](docs/ARY_OPERATOR_AND_PARTNER.md).
 
 [Arquitectura](docs/ARY_ARCHITECTURE.md), [permisos y operaci?n](docs/ARY_OPERATOR_AND_PARTNER.md), [diagrama WRO](docs/WRO_TECH_DIAGRAM.md), [hip?tesis B2B](docs/ARY_B2B_BUSINESS_MODEL.md), [tabla final](docs/FEATURE_MATRIX.md) e [informe de ejecuci?n](docs/ARY_STAGE4B_REPORT.md). La verificaci?n del revisor de 4A se conserva en su informe y no acredita las nuevas interfaces de 4B. Las dos pasadas visuales y E2E de 4B quedan pendientes del runtime fuera del sandbox; no se declara producci?n validada.
+
+## Etapa 5: preparación de producción
+
+Seguir [DEPLOY_CHECKLIST](docs/DEPLOY_CHECKLIST.md) antes de publicar. Incluye GitHub privado, Vercel web, Neon, dominio, Resend, acceso inicial, Pi, rollback y rotación. Esta etapa no hace commits, push, despliegues, envíos ni llamadas a Gemini.
+
+```powershell
+npm run deploy:secrets
+# Completar el archivo privado en un editor, sin imprimirlo.
+npm run deploy:check -- --env-file .env.production.local
+npm run build:empty-env
+# Solo el propietario, contra su BD de destino, fuera de esta ejecución:
+npm run db:migrate -- --env-file .env.production.local
+npm run db:seed -- --env-file .env.production.local
+```
+
+El generador conserva archivos existentes; `--force` guarda primero una copia privada ignorada y regenera todo el archivo. El comprobador muestra nombres y estados, falla si faltan variables obligatorias y no verifica proveedores por red. Resend es opcional mientras el correo esté en dry-run. `db:seed` publica solo fuentes culturales verificadas y usa `demo=false` en producción; `demo:seed`/`demo:reset` tienen un bloqueo separado antes de conectar. El primer acceso con `--print-link` se hace solo en la terminal del propietario, nunca en este chat. Región `iad1` con Neon `us-east-1`, sin el obsoleto `preferredRegion`. [Resultados y límites de etapa 5](docs/ARY_STAGE5_REPORT.md).
