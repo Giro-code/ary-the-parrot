@@ -131,7 +131,7 @@ Fuentes, archivos, comandos y límites: `FEATURE_MATRIX.md`. Seguridad: `ARY_QR_
 - [x] Comandos de aceptación ejecutados o error exacto de sandbox registrado.
 - [ ] Ejecución real de E2E y build completo fuera del bloqueo spawn EPERM.
 - [ ] Dos pasadas visuales reales y regresión 0 píxeles de la versión final.
-- [ ] Generación Gemini real validada, incluido el modelo final gemini-3.8-flash.
+- [ ] Generación Gemini real validada, incluido el modelo final gemini-3.5-flash-lite.
 - [ ] Validación en Pi/servos/sensor reales, Chromium y políticas de red local.
 - [ ] Conservación/transferencia de chat entre sesiones con autorización específica, voz y micrófono.
 

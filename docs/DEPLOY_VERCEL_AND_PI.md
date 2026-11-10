@@ -13,7 +13,7 @@ Node **24.x LTS**, Next.js 16.4.5 y PostgreSQL Neon mediante Pool WebSocket. `ve
 | `EMAIL_DRY_RUN` | Mantener `true` durante aceptación |
 | `RESEND_API_KEY`, `EMAIL_FROM`, `EMAIL_REPLY_TO` | Tras verificar remitente y autorizar correo real |
 | `RESEND_WEBHOOK_SECRET`, `ADMIN_NOTIFICATION_EMAIL`, `CRON_SECRET` | Webhook, aviso administrativo y dispatcher |
-| `GEMINI_API_KEY`, `AI_MODEL` | Clave exclusivamente de servidor y `gemini-3.8-flash` por defecto |
+| `GEMINI_API_KEY`, `AI_MODEL` | Clave exclusivamente de servidor y `gemini-3.5-flash-lite` por defecto |
 | `AI_SESSION_PER_MINUTE`, `AI_GLOBAL_PER_MINUTE` | 6 y 30 por defecto |
 | `ROBOT_DEVICE_AUTH_SECRET` | HMAC de telemetría, mínimo 32 caracteres |
 | `ROBOT_BRIDGE_SECRET` | HMAC distinto para tokens locales, mínimo 32 caracteres, compartido con la Pi |

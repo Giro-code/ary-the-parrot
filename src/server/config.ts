@@ -23,7 +23,7 @@ export const generatedSecrets = ["AUTH_SECRET", "SESSION_ENCRYPTION_KEY", "CRON_
 export const ownerVariables = ["DATABASE_URL", "RESEND_API_KEY", "RESEND_WEBHOOK_SECRET", "EMAIL_FROM", "EMAIL_REPLY_TO", "ADMIN_NOTIFICATION_EMAIL", "GEMINI_API_KEY"] as const;
 export const secretVariables = [...generatedSecrets, "DATABASE_URL", "RESEND_API_KEY", "RESEND_WEBHOOK_SECRET", "GEMINI_API_KEY"] as const;
 export const productionDefaults: Record<string, string> = {
-  APP_BASE_URL: "https://arytheparrot.app", EMAIL_DRY_RUN: "true", AI_MODEL: "gemini-3.8-flash",
+  APP_BASE_URL: "https://arytheparrot.app", EMAIL_DRY_RUN: "true", AI_MODEL: "gemini-3.5-flash-lite",
   AI_SESSION_PER_MINUTE: "6", AI_GLOBAL_PER_MINUTE: "30", ANALYTICS_RETENTION_DAYS: "90",
   PROVIDER_LEAD_RETENTION_DAYS: "30", VISITOR_SESSION_TTL_HOURS: "24", QR_HANDOFF_TTL_SECONDS: "120",
   FEATURE_ENABLE_MARKETING: "false", FEATURE_ENABLE_PARTNER_SHARING: "false",

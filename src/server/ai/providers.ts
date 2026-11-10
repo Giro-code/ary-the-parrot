@@ -2,7 +2,7 @@ import { z } from "zod";
 import type { CulturalItem } from "../service.ts";
 import type { Locale } from "../../i18n/index.ts";
 
-export const defaultModel = "gemini-3.8-flash";
+export const defaultModel = "gemini-3.5-flash-lite";
 export const answerSchema = z.object({
   answer: z.string().trim().min(1).max(1200),
   citedItemIds: z.array(z.uuid()).max(6),

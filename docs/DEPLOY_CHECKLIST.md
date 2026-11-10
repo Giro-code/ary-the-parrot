@@ -146,7 +146,7 @@ Verificación: health de correo pasa a `configured_unverified`, envío propio re
 
 ## 11. Verificar Gemini en producción
 
-El propietario autorizó usar Gemini como proveedor de IA de Ary. Durante la revisión de 4A, la clave y `gemini-3.8-flash` respondieron 200 en una prueba directa. El chat completo aún no se vio en vivo porque Google devolvía 503 por saturación.
+El propietario autorizó usar Gemini como proveedor de IA de Ary. Durante la revisión de 4A, la clave y `gemini-3.5-flash-lite` respondieron 200 en una prueba directa. El chat completo aún no se vio en vivo porque Google devolvía 503 por saturación.
 
 - [ ] Abre `https://arytheparrot.app/experiencia`, inicia, elige intereses y haz **una** pregunta cultural, por ejemplo «Cuéntame sobre el merengue».
 - [ ] Debe aparecer la etiqueta **«IA en línea · Gemini»** y fuentes enlazadas. Si aparece **«Respuestas de ejemplo»**, Gemini falló (503, timeout o clave): el chat sigue funcionando en demo.

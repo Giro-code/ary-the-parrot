@@ -14,7 +14,7 @@ Zod valida `{ answer, citedItemIds, followUps, confidence }`, longitud y cardina
 
 ## Modelo predeterminado
 
-El valor final es `gemini-3.8-flash`, sustituible mediante `AI_MODEL`. La consulta autenticada de modelos confirmó su disponibilidad y soporte `generateContent`. La ficha oficial lo identifica como estable, actualizado en septiembre de 2026. Se eligió después de contrastar esa ficha, al ser más reciente que la referencia inicial 3.6. No se eligió un alias móvil ni una preview. [Modelos disponibles](https://ai.google.dev/api/models), [Gemini 3.8 Flash](https://ai.google.dev/gemini-api/docs/models/gemini-3.8-flash).
+El valor final es `gemini-3.5-flash-lite`, sustituible mediante `AI_MODEL`. La consulta autenticada de modelos confirmó su disponibilidad y soporte `generateContent`. La ficha oficial lo identifica como estable, actualizado en septiembre de 2026. Se eligió después de contrastar esa ficha, al ser más reciente que la referencia inicial 3.6. No se eligió un alias móvil ni una preview. [Modelos disponibles](https://ai.google.dev/api/models), [Gemini 3.8 Flash](https://ai.google.dev/gemini-api/docs/models/gemini-3.5-flash-lite).
 
 El rótulo se asigna a cada respuesta efectiva. Una generación validada muestra «IA en línea · Gemini». Una plantilla o fallback muestra «Respuestas de ejemplo». La disponibilidad de una clave no acredita que el proveedor esté funcionando. Health informa `configured_unverified` y no llama a la API de IA.
 
@@ -42,3 +42,16 @@ Al preguntar en línea, Google procesa la pregunta cultural y el contexto acotad
 ## Siguiente etapa
 
 TTS y micrófono requieren activación visible, permisos específicos, indicación del uso real y reglas de conservación antes de implementarse. `speaking` en esta etapa significa respuesta de texto visible. No acredita audio, movimiento físico ni un modelo entrenado por el equipo.
+
+## Modelo en producción (2026-11-10)
+
+Primera prueba en `arytheparrot.app`: `gemini-3.8-flash` agotó el timeout de 12 s y Ary pasó a «Respuestas de ejemplo», como está diseñado. Mediciones directas ese día:
+
+| Modelo | Resultado |
+| --- | --- |
+| `gemini-3.8-flash` | 503 tras 171 s |
+| `gemini-3.7-flash` | 503 |
+| `gemini-3.1-flash-lite` | 503 |
+| `gemini-3.5-flash-lite` | 200 en 6–7,5 s, dos de dos |
+
+El predeterminado pasa a `gemini-3.5-flash-lite`. Si Google se estabiliza, se puede volver a un modelo mayor cambiando solo `AI_MODEL`.
