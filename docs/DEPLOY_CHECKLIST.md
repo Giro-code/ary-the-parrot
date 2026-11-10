@@ -42,6 +42,8 @@ Verificación: repositorio y rama Production `main` correctos, comandos normales
 - [ ] En Neon → **Connect**, selecciona la base/rol de producción y **Connection pooling**. Copia la cadena pooled al editor privado de `.env.production.local`, en `DATABASE_URL`. Debe usar `postgresql://`, el host pooled y `sslmode=require` (también se aceptan `verify-ca`/`verify-full`). No pongas la cadena en un comando de PowerShell.
 - [ ] Si usas integración: **Storage → tu base → Connect Project**, selecciona **solo Production**. La integración inyecta `DATABASE_URL` pooled y otras variables, como `DATABASE_URL_UNPOOLED` y `PG*`; esta app usa únicamente `DATABASE_URL`. No cambies esa variable por una vacía al importar el archivo. Con Neon directo, tendrás que añadirla tú.
 
+- [ ] En «Connect a Project», el **Custom Prefix** debe ser `DATABASE`; por defecto es `STORAGE` y crearía `STORAGE_URL`, que Ary no lee. Activa solo el entorno Production.
+
 Verificación: proyecto/BD/rol correctos, región coincidente y variable asignada únicamente al destino elegido. El cliente actual usa `@neondatabase/serverless` **Pool + WebSocket `ws`**, admite transacciones interactivas y los CLI cierran con `pool.end()` en `finally`. No se ha probado aquí contra Neon real. [Integración Neon](https://neon.com/docs/guides/vercel-managed-integration), [driver](https://neon.com/docs/serverless/serverless-driver), [regiones Vercel](https://vercel.com/docs/functions/configuring-functions/region).
 
 ## 4. Generar y completar el archivo privado
