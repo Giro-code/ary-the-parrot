@@ -1,6 +1,6 @@
 # Etapa 5: preparación local del despliegue
 
-Fecha: 10 de noviembre de 2026. Alcance: `docs/codex/STAGE5_DEPLOY.md`, respetando la prohibición vigente de commits, push, despliegues, correos reales y llamadas a Gemini. No se consultaron memorias de otros proyectos. No se leyó `.env.local` para mostrarlo ni se imprimieron valores privados.
+Fecha: 10 de noviembre de 2026. Alcance: `docs/codex/STAGE5_DEPLOY.md`, sin commits, push, despliegues, correos reales ni llamadas a Gemini en esta tarea. No se consultaron memorias de otros proyectos. No se leyó `.env.local` para mostrarlo ni se imprimieron valores privados.
 
 La preparación está implementada. **El despliegue y los servicios reales no están verificados.** El build normal sin credenciales compila, pero no termina por `spawn EPERM` durante el inicio del comprobador TypeScript. `tsc --noEmit` por separado pasa. La falta de credenciales aportadas por el propietario hace que `deploy:check` termine con código 1, como debe ocurrir.
 
@@ -71,7 +71,7 @@ Se consultaron las guías instaladas de Next sobre variables de entorno, desplie
 
 ## Trabajo manual del propietario
 
-Completar credenciales en editor privado y repetir `deploy:check`; ejecutar build fuera del bloqueo y con Node 24; preparar GitHub privado/Vercel y región; migrar/sembrar Neon desde su equipo; publicar/configurar DNS; comprobar health y crons; crear primer administrador en su terminal; verificar Resend antes de enviar a sí mismo; instalar/aceptar Pi. La IA real sigue pendiente mientras rija la prohibición. Revisar política de privacidad/retenciones, contenido, respaldos y recorrido visual/E2E antes de abrir a personas reales. Los clics y comandos están en [DEPLOY_CHECKLIST](DEPLOY_CHECKLIST.md).
+Completar credenciales en editor privado y repetir `deploy:check`; ejecutar build fuera del bloqueo y con Node 24; preparar GitHub privado/Vercel y región; migrar/sembrar Neon desde su equipo; publicar/configurar DNS; comprobar health y crons; crear primer administrador en su terminal; verificar Resend antes de enviar a sí mismo; instalar/aceptar Pi. Verificar una respuesta real de Gemini (paso 11 de la guía). Revisar política de privacidad/retenciones, contenido, respaldos y recorrido visual/E2E antes de abrir a personas reales. Los clics y comandos están en [DEPLOY_CHECKLIST](DEPLOY_CHECKLIST.md).
 
 
 ## Verificación del revisor (2026-11-10)
