@@ -1,0 +1,15 @@
+{
+  "measuredAt": "2026-11-10T14:41:55.808Z",
+  "scope": "Synthetic Spanish voice; server pipeline in memory; excludes capture/upload/browser playback/hardware",
+  "calls": 1,
+  "voice": "Sulafat",
+  "ttsModel": "gemini-3.8-flash-lite-tts",
+  "stages": [
+    {
+      "stage": "integration-stopped",
+      "ms": 0,
+      "ok": false,
+      "errorCode": "invalid_tts_audio"
+    }
+  ]
+}

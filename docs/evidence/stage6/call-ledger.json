@@ -1,0 +1,12 @@
+{
+  "stage": 6,
+  "limit": 4,
+  "priorRuns": [
+    { "evidence": "live-voice-attempt-1.json", "calls": 1 },
+    { "evidence": "live-voice.json", "calls": 3 }
+  ],
+  "callsDuringResume": 0,
+  "totalCalls": 4,
+  "remainingCalls": 0,
+  "note": "Prior evidence preserved. The integration script checks these original reports before loading credentials or making requests. No API key or provider payload is recorded here."
+}

@@ -9,6 +9,7 @@ const csp = [
   "style-src 'self' 'unsafe-inline'",
   "img-src 'self' data: blob:",
   "font-src 'self'",
+  "media-src 'self' blob:",
   `connect-src 'self'${development ? " ws: wss:" : ""}`,
   "object-src 'none'",
   "base-uri 'self'",
@@ -42,7 +43,10 @@ const config: NextConfig = {
       ],
     }, {
       source: "/kiosco",
-      headers: [{ key: "Content-Security-Policy", value: csp.replace(/connect-src [^;]+/, `connect-src 'self' http://127.0.0.1:8765 ws://127.0.0.1:8765${development ? " ws: wss:" : ""}`) }],
+      headers: [{ key: "Content-Security-Policy", value: csp.replace(/connect-src [^;]+/, `connect-src 'self' http://127.0.0.1:8765 ws://127.0.0.1:8765${development ? " ws: wss:" : ""}`) }, { key: "Permissions-Policy", value: "camera=(), microphone=(self), geolocation=()" }],
+    }, {
+      source: "/experiencia",
+      headers: [{ key: "Permissions-Policy", value: "camera=(), microphone=(self), geolocation=()" }],
     }, {
       source: "/q/:path*",
       headers: [

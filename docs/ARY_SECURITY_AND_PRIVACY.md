@@ -1,5 +1,19 @@
 # Seguridad y privacidad · etapa 3
 
+## Adición vigente · etapa 6: voz opcional
+
+La voz se usa únicamente para transcribir la pregunta y responderla, y para sintetizar la respuesta validada de Ary. La base propuesta es una elección previa, voluntaria e informada para esta finalidad opcional, más el permiso técnico del navegador; el responsable debe confirmar la base jurídica aplicable. Un permiso del navegador por sí solo no certifica consentimiento jurídico.
+
+Antes de solicitar micrófono hay explicación, enlace a Privacidad y opciones «Acepto · Grabar» / «Usar teclado». Se informa del envío a **Google Gemini**, del máximo 15 s y de no incluir datos personales. Presencia, carga y restauración de sesión no abren el micrófono. En el kiosco se muestra «Micrófono activo», tiempo y botón Parar. Teclado/cierre/offline detienen las pistas y descartan grabaciones canceladas. Silenciar solo afecta la salida de Ary.
+
+Grabaciones: buffers en memoria, máximo 1 MiB por solicitud; no BD, Blob, logs ni archivos. Google recibe audio, contexto publicado e historial cultural acotado; los temas sensibles hablados se reconocen después del envío. La transcripción y respuesta se cifran en el chat temporal hasta el TTL de sesión; cierre/canje/recuperación borran el chat y cleanup purga caducados. `ai_usage` solo guarda modelo, tokens, latencia, modo y código saneado, sin contenido/identidad. Caché de salida sintetizada: memoria, cinco minutos, máximo 12 MiB. No se promete retención cero ni borrado en Google.
+
+Ambas rutas exigen sesión y CSRF. Ask comparte límites/pipeline de chat y valida el cuerpo mientras lo lee, MIME y contenedor. La duración de cabecera es declarada por el cliente; el corte real de 15 s se impone en el grabador y no equivale a validación del tiempo del contenedor en servidor. Speak acepta solo UUID de mensaje assistant propio vigente y validado, nunca texto del cliente; límites propios por sesión/global, incluidos hits de caché. Sesiones cerradas rechazan respuestas tardías. Timeouts acotan proveedor/cliente; errores se muestran sin filtrar respuestas privadas del proveedor.
+
+`Permissions-Policy` permite micrófono exclusivamente en `/kiosco` y `/experiencia`; cámara/geolocalización permanecen bloqueadas. CSP permite salida local/blob y mantiene loopback del puente solo en kiosco. No se envían secretos al cliente. El robot y las ilustraciones usan el mismo `RobotState`; `speaking` depende del audio real.
+
+Menores en kiosco público: se pide usar teclado o ayuda de acompañante adulto; no se infieren edad, identidad vocal o biometría. El responsable debe definir edades, proceso de acompañamiento, base jurídica, contrato con Google, retención externa y transferencias antes de uso público. No hay verificación automática de edad ni se afirma cumplimiento legal. Las evidencias WAV de desarrollo son sintéticas y previas; no son grabaciones de visitantes. [Pipeline y límites](ARY_AI.md), [revisión pendiente](PRIVACY_COMPLIANCE_REVIEW.md).
+
 Modelo técnico implementado y probado con PostgreSQL PGlite. No equivale a aprobación jurídica ni a validación de Neon/Resend/Vercel reales. No se enviaron correos, no se hizo commit/push ni despliegue.
 
 ## Datos y propietarios

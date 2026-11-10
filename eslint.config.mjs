@@ -7,6 +7,6 @@ export default defineConfig([
   ...nextTypeScript,
   globalIgnores([
     ".next/**", ".cache/**", "legacy/**", "public/**", "next-env.d.ts",
-    "test-results/**", "playwright-report/**", "coverage/**",
+    "test-results/**", "playwright-report/**", "coverage/**", "outputs/**",
   ]),
 ]);

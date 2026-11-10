@@ -300,18 +300,18 @@ test("API, cabeceras, recursos y entradas de etapa 2", async ({ page, request },
     await expect(page.locator(".experience-entry")).toHaveCount(1);
     await page.locator(".experience-entry a").click();
     await expect(page).toHaveURL(/\/experiencia$/);
-    await expect(page.getByRole("heading", { name: "Empieza tu experiencia" })).toBeVisible();
+    await expect(page.getByRole("heading", { name: "Un pedacito de Dominicana" })).toBeVisible();
     // Next.js adds its own empty route-announcer alert; target the app notice.
-    await expect(page.getByRole("alert").filter({ hasText: "servicio no está disponible" })).toBeVisible();
+    await expect(page.getByRole("alert").filter({ hasText: "No pude completar" })).toBeVisible();
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
-    await page.getByRole("link", { name: "Conocer el acceso para kiosco" }).click();
+    await page.goto("/kiosco");
     await expect(page).toHaveURL(/\/kiosco$/);
     await expect(page.locator("main")).toContainText("Simulador");
     // This server runs production mode without a database: the kiosk must say so instead of claiming a device state it could not check.
     await expect(page.locator("main")).toContainText("Sin conexión al servicio");
     await expect(page.locator("main")).not.toContainText("Modo demostración sin dispositivo");
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
-    await page.getByRole("link", { name: "Volver a la web de Ary" }).click();
+    await page.getByRole("link", { name: "ARY la Cotorra" }).click();
     await expect(page.locator("#inicio")).toBeVisible();
   }
 });

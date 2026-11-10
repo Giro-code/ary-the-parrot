@@ -1,0 +1,22 @@
+{
+  "date": "2026-11-10",
+  "artifact": "Existing uncommitted stage6 working tree plus resume corrections",
+  "commands": [
+    { "command": "npm run lint", "exitCode": 0, "result": "PASS, zero warnings" },
+    { "command": "npm run typecheck", "exitCode": 0, "result": "PASS" },
+    { "command": "npm test", "exitCode": 0, "result": "147 tests passed in 12 files; all provider traffic mocked", "durationSeconds": 11.50 },
+    { "command": "npm run build", "exitCode": 1, "result": "Compiled successfully in 5.3s; then Running TypeScript: spawn EPERM", "status": "BLOCKED_BY_SANDBOX" },
+    { "command": "npm run check:kiosk-budget", "exitCode": 0, "result": "PASS, compiled chunks only", "gzipBytes": 25989, "budgetBytes": 204800 },
+    { "command": "npm run test:e2e -- --list --reporter=line", "exitCode": 0, "result": "102 tests discovered in 6 files, including 9 stage6 tests; discovery is not execution" },
+    { "command": "npm run test:e2e -- --project=stage6 --reporter=line --trace=off", "exitCode": 1, "result": "Error: spawn EPERM before tests started", "status": "BLOCKED_BY_SANDBOX" },
+    { "command": "npm run dev", "exitCode": 1, "result": "spawn EPERM, errno -4048, syscall spawn, next-dev.js:393:45", "status": "BLOCKED_BY_SANDBOX" },
+    { "command": "git diff --exit-code -- public legacy", "exitCode": 0, "result": "No source changes to protected landing/assets/legacy; zero-pixel browser comparison pending" },
+    { "command": "git -c core.whitespace=cr-at-eol diff --check", "exitCode": 0, "result": "PASS; original CRLF conventions preserved in four existing files" }
+  ],
+  "initialTestFailures": "Before explicit cold-PGlite startup timeout, deploy-bootstrap.test.ts first test intermittently exceeded 5000ms (two runs). One intermediate and both final runs passed. Its assertions were preserved; timeout is now 30000ms.",
+  "visualReview": { "pass1": "PENDING", "pass2": "PENDING", "newScreenshotsGenerated": false, "reason": "No authorized app runtime could start due to spawn EPERM" },
+  "realGeminiCallsDuringResume": 0,
+  "cumulativeStage6RealGeminiCalls": 4,
+  "commitPushDeployOrEmails": false,
+  "evidenceNote": "Small metadata summary only. Prior voice reports and synthetic WAVs were preserved; no new recordings, large logs, browser videos or traces were generated."
+}

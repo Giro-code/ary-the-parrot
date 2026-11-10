@@ -1,5 +1,7 @@
 import { test, expect, type Page } from "@playwright/test";
 import { mkdir, readFile, writeFile } from "node:fs/promises";
+import { randomUUID } from "node:crypto";
+import { askText, mockSpeech } from "./voice-helpers";
 const evidence = "docs/evidence/stage2";
 const origin = "http://127.0.0.1:3002";
 const headers = { Origin: origin, "X-Ary-Request": "1" };
@@ -16,13 +18,15 @@ async function activate(page: Page, index: number) {
 async function discover(page: Page) {
   await page.getByRole("button", { name: "Iniciar", exact: true }).click();
   await page.getByRole("button", { name: "Español", exact: true }).click();
-  await page.getByRole("button", { name: "Continuar", exact: true }).click();
-  await page.getByLabel("¿De qué país nos visitas?").selectOption("BO");
-  await page.getByRole("button", { name: "música", exact: true }).click();
-  await page.getByRole("button", { name: "Ver recomendaciones" }).click();
-  await expect(page.getByRole("heading", { name: "Un poco de lo nuestro" })).toBeVisible();
-  await expect(page.getByText("Recomendación por reglas · contenido de demostración", { exact: true })).toBeVisible();
+  await askText(page, "Soy de Bolivia");
+  await askText(page, "Cuéntame sobre el merengue");
+  await expect(page.locator(".chat-card").first()).toBeVisible();
+  await expect(page.getByText("Respuestas de ejemplo", { exact: true })).toBeVisible();
 }
+test.beforeEach(async ({ page, context }) => {
+  await context.setExtraHTTPHeaders({ "x-forwarded-for": `stage2-${randomUUID()}` });
+  await mockSpeech(page);
+});
 async function capture(page: Page, name: string) {
   await mkdir(evidence, { recursive: true });
   await page.screenshot({ path: `${evidence}/${name}.png`, fullPage: true, animations: "disabled" });
@@ -31,8 +35,8 @@ async function capture(page: Page, name: string) {
 test("A authorized kiosk → B mobile restores exactly → clean kiosk → C replay denied", async ({ page, browser }) => {
   test.setTimeout(90000);
   await page.setViewportSize({ width: 1280, height: 800 }); await activate(page, 0); await discover(page);
-  await page.getByRole("button", { name: "Guardar ficha", exact: true }).first().click();
-  await expect(page.getByRole("button", { name: "Ficha guardada", exact: true })).toHaveCount(1);
+  await page.getByRole("button", { name: "Guardar", exact: true }).first().click();
+  await expect(page.getByRole("button", { name: "Guardado", exact: true })).toHaveCount(1);
   await capture(page, "flow-kiosk-recommendations-1280");
   const responsePromise = page.waitForResponse(response => response.url().endsWith("/api/visitor/handoff") && response.request().method() === "POST");
   await page.getByRole("button", { name: "Continuar en mi teléfono", exact: true }).click();
@@ -52,7 +56,7 @@ test("A authorized kiosk → B mobile restores exactly → clean kiosk → C rep
     await capture(phone, "flow-confirmation-390");
     await phone.getByRole("button", { name: "Continuar mi experiencia", exact: true }).click();
     await expect(phone).toHaveURL(`${origin}/experiencia`);
-    await expect(phone.getByTestId("visitor-selections")).toHaveText("Idioma: ESBoliviamúsica");
+    await expect(phone.getByTestId("visitor-selections")).toHaveText("Idioma: ES · Bolivia · música");
     const restored = await mobile.request.get("/api/visitor/me");
     expect((await restored.json()).session).toMatchObject({ locale: "es", countryDeclared: "BO", interests: ["music"] });
     expect((await (await mobile.request.get("/api/saved")).json()).items).toHaveLength(1);
@@ -88,17 +92,17 @@ test("no email, keyboard navigation, optional preferences and demo permission bo
   await page.goto("/kiosco"); await expect(page.getByRole("button", { name: "Iniciar", exact: true })).toBeEnabled();
   await page.keyboard.press("Tab"); await expect(page.getByRole("link", { name: "Ir al contenido" })).toBeFocused();
   await page.getByRole("button", { name: "Iniciar", exact: true }).focus(); await page.keyboard.press("Enter");
-  await page.getByRole("button", { name: "Continuar", exact: true }).click();
-  await page.getByRole("button", { name: "Omitir", exact: true }).click();
+  await page.getByRole("button", { name: "Español", exact: true }).click();
+  await askText(page, "Sorpréndeme");
   await expect(page.getByRole("button", { name: "Continuar en mi teléfono" })).toBeDisabled();
   const denied = await page.context().request.post("/api/visitor/handoff", { headers, data: {} }); expect(denied.status()).toBe(403);
   await page.getByRole("button", { name: "Terminar sin continuar", exact: true }).click();
   await expect(page.locator('[data-state="idle"]')).toBeVisible({ timeout: 10000 });
   await page.goto("/experiencia"); await page.getByRole("button", { name: "Iniciar", exact: true }).click();
-  await page.getByRole("button", { name: "gastronomía", exact: true }).focus(); await page.keyboard.press("Space");
-  await expect(page.getByRole("button", { name: "gastronomía", exact: true })).toHaveAttribute("aria-pressed", "true");
-  await page.getByRole("button", { name: "Ver recomendaciones" }).click();
+  await page.getByRole("button", { name: "Español", exact: true }).click();
+  await askText(page, "Cuéntame del mangú");
   await expect(page.getByRole("heading", { name: "Mangú", exact: true })).toBeVisible();
+  await page.getByText("Más para tu viaje", { exact: true }).click();
   await page.getByRole("link", { name: "Guardar mi experiencia y recibir un enlace por correo" }).click();
   await expect(page.getByRole("heading", { name: "Guardar y recuperar Mi viaje", exact: true })).toBeVisible();
   await expect(page.locator('input[type="email"]')).toHaveCount(1);
@@ -112,7 +116,7 @@ test("kiosk cancels, resets on inactivity and reports actual offline state", asy
   await page.getByRole("button", { name: "Terminar sin continuar" }).click(); await expect(page.locator('[data-state="idle"]')).toBeVisible({ timeout: 10000 });
   await page.getByRole("button", { name: "Iniciar", exact: true }).click();
   // Wait until the session has started (two API calls) so the idle countdown begins before time jumps.
-  await expect(page.getByRole("heading", { name: "Elige tu idioma" })).toBeVisible();
+  await expect(page.getByRole("button", { name: "Español", exact: true })).toBeVisible();
   await page.clock.runFor(71000); await expect(page.getByRole("button", { name: "Seguir aquí" })).toBeVisible();
   await page.clock.runFor(20000); await expect(page.locator('[data-state="finished"]')).toBeVisible();
   await page.clock.runFor(5000); await expect(page.locator('[data-state="idle"]')).toBeVisible();

@@ -10,7 +10,7 @@ import { AppError } from "../../../src/server/errors";
 import { interests } from "../../../src/i18n";
 import { stage3Http } from "../../../src/server/stage3-http";
 import { stage4bHttp } from "../../../src/server/stage4b-http";
-import { chat, chatHistory, chatInputSchema } from "../../../src/server/ai/chat";
+import { chat, chatCue, chatHistory, chatInputSchema, cueSchema } from "../../../src/server/ai/chat";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -35,6 +35,7 @@ async function handle(request: NextRequest) {
     }
     if (path === "/api/kiosk/me" && method === "GET") return json({ authorized: !!await service.kioskDevice(db, deviceToken) });
     if (path === "/api/chat" && method === "POST") return json(await chat(db, visitorToken, await body(request, chatInputSchema)));
+    if (path === "/api/chat/cue" && method === "POST") return json(await chatCue(db, visitorToken, await body(request, cueSchema)));
     if (path === "/api/visitor/session" && method === "POST") {
       const { locale } = await body(request, z.object({ locale: z.enum(["es", "en"]).default("es") }).strict());
       let existing: service.Session | undefined;

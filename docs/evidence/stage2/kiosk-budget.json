@@ -1,8 +1,8 @@
 {
-  "measuredAt": "2026-11-08T01:03:01.574Z",
+  "measuredAt": "2026-11-10T15:05:54.339Z",
   "scope": "Compiled client-entry chunks (including shared dependencies); excludes Next bootstrap. Does not certify complete build or browser performance.",
   "budgetBytes": 204800,
-  "gzipBytes": 17317,
+  "gzipBytes": 25989,
   "passes": true,
   "chunks": [
     {
@@ -11,9 +11,14 @@
       "gzipBytes": 3515
     },
     {
-      "url": "/_next/static/chunks/3mfkeh5x1wiw8.js",
-      "bytes": 38383,
-      "gzipBytes": 13802
+      "url": "/_next/static/chunks/0sdj0dyc7ow3_.js",
+      "bytes": 9333,
+      "gzipBytes": 3622
+    },
+    {
+      "url": "/_next/static/chunks/3owjro0a51inx.js",
+      "bytes": 53936,
+      "gzipBytes": 18852
     }
   ]
 }

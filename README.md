@@ -1,5 +1,15 @@
 # Ary la Cotorra
 
+## Etapa 6 · conversación por voz (trabajo local)
+
+`/kiosco` y `/experiencia` comparten un chat con escenario de Ary, burbujas, fichas y QR dentro de la conversación, micrófono de hasta 15 segundos, teclado y control de voz. País opcional; no hay formulario por pasos. Se mantienen los endpoints de preferencias, guardados y canje seguro. La presencia no inicia sesión ni grabación. La landing y sus assets permanecen intactos.
+
+`POST /api/voice/ask` y `POST /api/voice/speak` reutilizan sesión, CSRF, límites y pipeline de IA. La grabación solo se procesa en memoria; transcripción e historial siguen cifrados y temporales. El TTS solo acepta el ID de un mensaje propio validado. [IA y voz](docs/ARY_AI.md), [informe de etapa 6](docs/ARY_STAGE6_REPORT.md), [revisión visual pendiente](docs/evidence/stage6/visual-review.md).
+
+Variables de servidor: `AI_TTS_MODEL=gemini-3.8-flash-lite-tts`, `AI_TTS_VOICE=Sulafat`, `AI_TTS_SESSION_PER_MINUTE=8`, `AI_TTS_GLOBAL_PER_MINUTE=30`. Se reutiliza `GEMINI_API_KEY`. Audio bloqueado fuera de `/kiosco` y `/experiencia`; si falla, se conserva el texto y se avisa. Falta añadir `public/assets/ary/ary-sin-conexion.webp` y elegir la voz definitiva.
+
+La evidencia heredada consumió **4/4 llamadas reales**: no volver a ejecutar `scripts/verify-voice.ts --live` en esta etapa. Unitarias y E2E usan mocks. La latencia histórica hasta WAV fue 11 736 ms, con respuesta al audio no validada y antes de corregir el estilo TTS; no acredita la latencia final en navegador/Pi. Las secciones anteriores a etapa 6 que siguen son historial y no describen las autorizaciones ni la interfaz actuales.
+
 Next.js 16, React y TypeScript. La web original y el brochure se conservan en `public/`; `legacy/` es la referencia de regresión. Las etapas 2/3 añaden sesión anónima, kiosco, QR privado, Mi viaje, recuperación opcional por correo verificado, privacidad y solicitudes B2B separadas. Explorar no requiere correo. La etapa 4A añade chat cultural fundamentado con Gemini y fallback de ejemplo, simulador y puente local de robot. La integración física queda pendiente.
 
 La etapa 3 usa **correo dry-run por defecto** y no envió correos reales durante su implementación. [Configuración de correo](docs/ARY_EMAIL_SETUP.md), [seguridad y privacidad](docs/ARY_SECURITY_AND_PRIVACY.md) y [cierre y bloqueos](docs/ARY_STAGE3_REPORT.md). No se hizo commit, push ni despliegue.

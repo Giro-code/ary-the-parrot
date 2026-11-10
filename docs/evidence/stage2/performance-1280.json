@@ -1,8 +1,8 @@
 {
   "viewport": 1280,
   "cpuRate": 4,
-  "loadMs": 3470,
-  "welcomeToRecommendationsMs": 2315,
-  "servedJsBytes": 3842393,
+  "loadMs": 5390,
+  "welcomeToRecommendationsMs": 5301,
+  "servedJsBytes": 3933471,
   "runtime": "Next dev; cold compilation included; production gzip measured separately"
 }

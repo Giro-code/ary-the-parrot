@@ -1,0 +1,35 @@
+{
+  "measuredAt": "2026-11-10T14:43:12.377Z",
+  "scope": "Synthetic Spanish voice; server pipeline in memory; excludes capture/upload/browser playback/hardware",
+  "calls": 3,
+  "voice": "Sulafat",
+  "ttsModel": "gemini-3.8-flash-lite-tts",
+  "stages": [
+    {
+      "stage": "tts-voice-sample",
+      "ms": 4677,
+      "ok": true
+    },
+    {
+      "stage": "audio-to-validated-reply",
+      "ms": 4158,
+      "ok": false
+    },
+    {
+      "stage": "reply-tts",
+      "ms": 7578,
+      "ok": true
+    }
+  ],
+  "formats": [
+    {
+      "mimeType": "audio/wav",
+      "encodedBytes": 1682400
+    },
+    {
+      "mimeType": "audio/wav",
+      "encodedBytes": 2045920
+    }
+  ],
+  "questionToWavMs": 11736
+}

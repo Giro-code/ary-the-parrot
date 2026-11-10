@@ -1,9 +1,11 @@
 import { test, expect, type Page } from "@playwright/test";
 import { mkdir, readFile } from "node:fs/promises";
 import { randomUUID } from "node:crypto";
+import { askText, mockSpeech } from "./voice-helpers";
 const evidence = "docs/screenshots/stage3";
 const address = () => `e2e-${randomUUID()}@example.invalid`;
-test.beforeEach(async ({ context }) => {
+test.beforeEach(async ({ context, page }) => {
+  await mockSpeech(page);
   // Isolate persistent client limits between synthetic test cases; no real client IPs.
   const suffix = randomUUID().replaceAll("-", "").slice(0, 8);
   await context.setExtraHTTPHeaders({ "x-forwarded-for": `2001:db8::${suffix.slice(0, 4)}:${suffix.slice(4)}` });
@@ -39,11 +41,11 @@ async function capture(page: Page, name: string) {
 }
 test("Flow B: save, dry-run outbox, confirm on a different device and recover My trip", async ({ page, browser }) => {
   await page.goto("/experiencia"); await page.getByRole("button", { name: "Iniciar", exact: true }).click();
-  await page.getByRole("button", { name: "gastronomía", exact: true }).click();
-  await page.getByRole("button", { name: "Ver recomendaciones" }).click();
+  await page.getByRole("button", { name: "Español", exact: true }).click();
+  await askText(page, "Cuéntame sobre el mangú");
   const mangu = page.locator("article").filter({ has: page.getByRole("heading", { name: "Mangú", exact: true }) });
-  await mangu.getByRole("button", { name: "Guardar ficha", exact: true }).click();
-  await expect(mangu.getByRole("button", { name: "Ficha guardada", exact: true })).toBeDisabled();
+  await mangu.getByRole("button", { name: "Guardar", exact: true }).click();
+  await expect(mangu.getByRole("button", { name: "Guardado", exact: true })).toBeDisabled();
   await page.getByRole("link", { name: "Mi viaje", exact: true }).first().click();
   await page.getByRole("link", { name: "Guardar mi experiencia y recibir un enlace por correo" }).click();
   const email = address();

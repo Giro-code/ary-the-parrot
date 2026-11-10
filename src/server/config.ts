@@ -25,6 +25,7 @@ export const secretVariables = [...generatedSecrets, "DATABASE_URL", "RESEND_API
 export const productionDefaults: Record<string, string> = {
   APP_BASE_URL: "https://arytheparrot.app", EMAIL_DRY_RUN: "true", AI_MODEL: "gemini-3.5-flash-lite",
   AI_SESSION_PER_MINUTE: "6", AI_GLOBAL_PER_MINUTE: "30", ANALYTICS_RETENTION_DAYS: "90",
+  AI_TTS_MODEL: "gemini-3.8-flash-lite-tts", AI_TTS_VOICE: "Sulafat", AI_TTS_SESSION_PER_MINUTE: "8", AI_TTS_GLOBAL_PER_MINUTE: "30",
   PROVIDER_LEAD_RETENTION_DAYS: "30", VISITOR_SESSION_TTL_HOURS: "24", QR_HANDOFF_TTL_SECONDS: "120",
   FEATURE_ENABLE_MARKETING: "false", FEATURE_ENABLE_PARTNER_SHARING: "false",
 };
@@ -58,6 +59,10 @@ export function validateProductionConfig(env: Record<string, string | undefined>
   check("ADMIN_NOTIFICATION_EMAIL", email, false);
   check("GEMINI_API_KEY", value => value.length >= 20);
   check("AI_MODEL", value => /^[\w.-]+$/.test(value));
+  check("AI_TTS_MODEL", value => /^gemini-[a-z0-9.-]{1,70}-tts$/.test(value), false);
+  check("AI_TTS_VOICE", value => /^[A-Za-z]{1,40}$/.test(value), false);
+  check("AI_TTS_SESSION_PER_MINUTE", value => /^\d+$/.test(value) && +value > 0 && +value <= 20, false);
+  check("AI_TTS_GLOBAL_PER_MINUTE", value => /^\d+$/.test(value) && +value > 0 && +value <= 120, false);
   for (const name of ["FEATURE_ENABLE_MARKETING", "FEATURE_ENABLE_PARTNER_SHARING"]) check(name, value => ["true", "false"].includes(value));
   for (const [name, max] of Object.entries({ AI_SESSION_PER_MINUTE: 20, AI_GLOBAL_PER_MINUTE: 120, ANALYTICS_RETENTION_DAYS: 365, PROVIDER_LEAD_RETENTION_DAYS: 90, VISITOR_SESSION_TTL_HOURS: 168, QR_HANDOFF_TTL_SECONDS: 300 })) {
     check(name, value => /^\d+$/.test(value) && Number(value) > 0 && Number(value) <= max);

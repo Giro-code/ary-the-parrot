@@ -30,7 +30,8 @@ test("production bootstrap: 15-minute hashed link, single use, expiry, no outbox
     await expect(verifyStaffLink(conn.db, new URL(expired!).searchParams.get("token")!)).rejects.toMatchObject({ code: "link_unavailable" });
     expect((await conn.db.select().from(emailOutbox)).length).toBe(0); expect(fetch).not.toHaveBeenCalled();
   } finally { await conn.close(); }
-});
+// Includes a cold PGlite/WASM startup alongside the other database suites.
+}, 30000);
 test("production cultural seed publishes verified sources only and carries no demo identities", async () => {
   const conn = await connectDatabase({ memory: true });
   try {

@@ -1,6 +1,23 @@
 # Funciones y evidencia
 
-## Etapa 4B · implementación local actual
+## Etapa 6 · estado local actual
+
+Esta sección sustituye el estado de chat/voz de las etapas anteriores. [Informe](ARY_STAGE6_REPORT.md).
+
+| Función | Estado y evidencia | Límite |
+| --- | --- | --- |
+| Chat compartido en kiosco/móvil, fichas/QR en burbujas | Implementado; endpoints y contratos existentes | E2E y aceptación visual pendientes |
+| Grabación explícita MediaRecorder, tope 15 s/1 MiB | Implementado; validación API y mocks | Micrófono/dispositivo real pendiente |
+| Una petición de audio para transcribir/responder | Pipeline compartido; Zod, citas, clasificación y métricas probados | Intento real heredado sin respuesta Gemini validada |
+| TTS propio, voz Sulafat y WAV/PCM 24 kHz | Propiedad, CSRF, cache/límites, formato y fallos probados | Estilo 3.8 corregido con metadata; nueva audición no realizada |
+| Privacidad de audio y textos temporales | Solo memoria para audio; cifrado/limpieza de chat probados | Retención de Google y base jurídica por confirmar |
+| Estado único para ilustración y puente | RobotState/ChatActivity; audio real gobierna speaking; mapa probado | Hardware y comportamiento visual pendientes |
+| Offline y recuperación | Micrófono cancelado; fallback pensar gris; sin TTS offline | Falta ilustración sin-conexion del propietario |
+| Calidad local | Lint/typecheck/tests y presupuesto de chunks | Build/E2E/dev: spawn EPERM; dos pasadas visuales pendientes |
+| Landing y recursos protegidos | Sin diff; pruebas unitarias de preservación | Cero píxeles de esta versión sin verificar |
+| Llamadas reales de etapa 6 | 4/4 heredadas; cero nuevas; registro acumulado | Sin cupo para nueva comprobación real |
+
+## Etapa 4B · historial de implementación
 
 Sin commits, push, despliegue, correo real ni uso de Gemini. [Informe, comandos e inventario](ARY_STAGE4B_REPORT.md). Los resultados de revisión de etapas anteriores no verifican estas interfaces.
 

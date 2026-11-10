@@ -1,40 +1,34 @@
 "use client";
-import { useEffect, useState } from "react";
-import { dictionaries, interestLabels, type Interest } from "../i18n";
+import { useEffect, useRef, useState } from "react";
+import { interestLabels } from "../i18n";
 import { api, ApiError } from "./api";
-import type { Recommendations, Saved, Visitor } from "./types";
-import { ErrorNotice, PreferenceForm, RecommendationList, Shell, useLocale } from "./shared";
+import type { Saved, Visitor } from "./types";
+import { useLocale } from "./shared";
+import { VoiceShell } from "./voice-shell";
 import { AryChat } from "./ary-chat";
 import { ProviderOffers } from "./provider-offers";
-export function Experience({ sharingEnabled = false }: { sharingEnabled?: boolean }) {
-  const [locale, setLocale] = useLocale(), t = dictionaries[locale];
-  const [visitor, setVisitor] = useState<Visitor | null>(null), [loading, setLoading] = useState(true), [editing, setEditing] = useState(false);
-  const [country, setCountry] = useState<string | null>(null), [selected, setSelected] = useState<Interest[]>([]), [data, setData] = useState<Recommendations | null>(null), [savedIds, setSavedIds] = useState<string[]>([]);
-  const [error, setError] = useState<unknown>(null), [busy, setBusy] = useState(false);
-  function restore(session: Visitor) { setVisitor(session); setLocale(session.locale); setCountry(session.countryDeclared); setSelected(session.interests); }
-  async function refresh() {
-    const [result, saved] = await Promise.all([api<Recommendations>("/api/recommendations", "POST", {}), api<{ items: Saved[] }>("/api/saved")]);
-    setData(result); setSavedIds(saved.items.map(row => row.item.id));
-  }
+import { conversationPreferences, type ConversationPreferences } from "../conversation";
+export function Experience({ sharingEnabled = false, offlineImageAvailable = false }: { sharingEnabled?: boolean; offlineImageAvailable?: boolean }) {
+  const [locale, setLocale] = useLocale(), [visitor, setVisitor] = useState<Visitor | null>(null), [loading, setLoading] = useState(true), [busy, setBusy] = useState(false);
+  const [online, setOnline] = useState(true), [error, setError] = useState(false), [savedIds, setSavedIds] = useState<string[]>([]), [savedItems, setSavedItems] = useState<Saved[]>([]), [celebrating, setCelebrating] = useState(false), [sessionKey, setSessionKey] = useState(0), [startedHere, setStartedHere] = useState(false);
+  const current = useRef<Visitor | null>(null), generation = useRef(0), celebration = useRef<ReturnType<typeof setTimeout> | null>(null);
+  function restore(session: Visitor) { current.current = session; setVisitor(session); setLocale(session.locale); }
   useEffect(() => {
-    let live = true;
-    void api<{ session: Visitor }>("/api/visitor/me").then(async result => { if (!live) return; restore(result.session); await refresh(); }).catch(error => { if (live && !(error instanceof ApiError && error.code === "session_required")) setError(error); }).finally(() => { if (live) setLoading(false); });
-    return () => { live = false; };
-    // Restoration runs once; locale changes are explicit form actions.
+    let live = true, timer: ReturnType<typeof setTimeout>;
+    const check = async () => { let available = false; try { available = navigator.onLine && (await fetch("/api/health", { cache: "no-store", signal: AbortSignal.timeout(4000) })).ok; } catch { /* retry below */ } if (live) { setOnline(available); timer = setTimeout(() => void check(), available ? 15000 : 2000); } };
+    const offline = () => setOnline(false), online = () => { clearTimeout(timer); void check(); }; void check(); window.addEventListener("offline", offline); window.addEventListener("online", online);
+    void api<{ session: Visitor }>("/api/visitor/me").then(async result => { if (!live) return; restore(result.session); const saved = await api<{ items: Saved[] }>("/api/saved"); if (live) { setSavedIds(saved.items.map(row => row.item.id)); setSavedItems(saved.items); } }).catch(error => { if (live && !(error instanceof ApiError && error.code === "session_required")) setError(true); }).finally(() => { if (live) setLoading(false); });
+    return () => { live = false; clearTimeout(timer); window.removeEventListener("offline", offline); window.removeEventListener("online", online); if (celebration.current) clearTimeout(celebration.current); };
+    // Restore once; explicit conversation actions update language and preferences.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  async function run(action: () => Promise<void>) { setBusy(true); setError(null); try { await action(); } catch (error) { setError(error); } finally { setBusy(false); } }
-  return <Shell locale={locale} setLocale={value => { setLocale(value); if (visitor) setEditing(true); }}>
-    {loading ? <p className="notice" role="status">{t.loading}</p> : !visitor ? <section className="flow-panel"><p className="eyebrow">Ary · {t.anonymous}</p><h1>{t.noSession}</h1><p>{t.noSessionHelp}</p><button disabled={busy} onClick={() => void run(async () => { const result = await api<{ session: Visitor }>("/api/visitor/session", "POST", { locale }); restore(result.session); setEditing(true); })}>{busy ? t.working : t.start}</button></section> : <>
-      <div className="page-intro"><p className="eyebrow">{visitor.accountVerified ? (locale === "en" ? "Verified account" : "Cuenta verificada") : t.anonymous}</p><h1>{t.hello}</h1><p>{t.restored}</p><p className="session-expiry">{t.sessionExpiry} <time dateTime={visitor.expiresAt}>{new Date(visitor.expiresAt).toLocaleString(locale)}</time>.</p></div>
-      <div className="visitor-summary" data-testid="visitor-selections"><span>{t.languageLabel}: {visitor.locale.toUpperCase()}</span>{visitor.countryDeclared && <span>{new Intl.DisplayNames([locale], { type: "region" }).of(visitor.countryDeclared)}</span>}<span>{visitor.interests.map(i => interestLabels[locale][i]).join(" · ") || t.noInterests}</span></div>
-      {editing ? <section><h2>{t.preferences}</h2><PreferenceForm locale={locale} country={country} selected={selected} onCountry={setCountry} onChange={setSelected} busy={busy} onSubmit={() => void run(async () => { const result = await api<{ session: Visitor }>("/api/visitor/preferences", "PATCH", { locale, countryDeclared: country, interests: selected }); restore(result.session); await refresh(); setEditing(false); })} /></section> : <button className="secondary" onClick={() => setEditing(true)}>{t.edit}</button>}
-      {data && <section className="recommendations"><h2 className="section-title">{t.recommendations}</h2><RecommendationList data={data} locale={locale} busy={busy} savedIds={savedIds} onSave={id => void run(async () => { await api("/api/saved", "POST", { itemId: id }); setSavedIds(ids => [...ids, id]); })} /></section>}
-      {data && <AryChat locale={locale} disabled={busy || editing} />}
-      {data && <ProviderOffers enabled={sharingEnabled} locale={locale} />}
-      <aside className="email-cta"><a className="button secondary" href={`/reingresar?lang=${locale}`}>{t.emailCta}</a><p><a href="/cuenta/privacidad">{locale === "en" ? "Manage my data and consents" : "Gestionar mis datos y consentimientos"}</a></p></aside>
-      <button className="secondary" disabled={busy} onClick={() => void run(async () => { await api("/api/visitor/session/end", "POST", {}); setVisitor(null); setData(null); setSelected([]); setCountry(null); setSavedIds([]); })}>{t.clearSession}</button>
-    </>}
-    {error !== null && <ErrorNotice error={error} locale={locale} retry={() => window.location.reload()} />}
-  </Shell>;
+  async function start() { setBusy(true); setError(false); try { const result = await api<{ session: Visitor }>("/api/visitor/session", "POST", { locale }); restore(result.session); setStartedHere(true); setSessionKey(key => key + 1); } catch { setError(true); } finally { setBusy(false); } }
+  async function updatePreferences(text: string, value?: ConversationPreferences) { if (!current.current) return; const version = generation.current, next = value || conversationPreferences(text, current.current); if (JSON.stringify(next) === JSON.stringify({ locale: current.current.locale, countryDeclared: current.current.countryDeclared, interests: current.current.interests })) return; const result = await api<{ session: Visitor }>("/api/visitor/preferences", "PATCH", next); if (version === generation.current) restore(result.session); }
+  async function save(id: string) { const version = generation.current; await api("/api/saved", "POST", { itemId: id }); if (version === generation.current) { setSavedIds(ids => [...new Set([...ids, id])]); setCelebrating(true); if (celebration.current) clearTimeout(celebration.current); celebration.current = setTimeout(() => setCelebrating(false), 2500); } }
+  async function finish() { setBusy(true); generation.current++; current.current = null; setVisitor(null); setSavedIds([]); setSavedItems([]); setCelebrating(false); setSessionKey(key => key + 1); try { await api("/api/visitor/session/end", "POST", {}); } catch { setError(true); } finally { setBusy(false); } }
+  return <VoiceShell locale={locale}><AryChat key={`${sessionKey}-${!!visitor}`} locale={locale} active={!!visitor} online={online} disabled={busy || loading} playWelcome={startedHere} onStart={() => void start()} onPreferences={updatePreferences} savedIds={savedIds} savedItems={savedItems} onSave={save} celebrating={celebrating} offlineImageAvailable={offlineImageAvailable}
+    status={<div className="voice-status">{loading ? <span role="status">{locale === "es" ? "Cargando…" : "Loading…"}</span> : visitor ? <span data-testid="visitor-selections">{locale === "es" ? "Idioma" : "Language"}: {visitor.locale.toUpperCase()}{visitor.countryDeclared && ` · ${new Intl.DisplayNames([locale], { type: "region" }).of(visitor.countryDeclared)}`}{visitor.interests.length > 0 && ` · ${visitor.interests.map(i => interestLabels[locale][i]).join(", ")}`}</span> : <span>{locale === "es" ? "Sin correo ni cuenta" : "No email or account needed"}</span>}{!online && <span role="status">{locale === "es" ? "Sin conexión al servicio" : "Service offline"}</span>}{error && <span role="alert">{locale === "es" ? "No pude completar la acción. Recarga para volver a intentar." : "I couldn't complete that. Reload to try again."}</span>}</div>}
+    endControls={visitor && <div className="experience-controls"><a href="/mi-viaje">{locale === "es" ? "Ver mis guardados" : "See saved places"}</a><button className="text-button finish-chat" onClick={() => void finish()}>{locale === "es" ? "Finalizar mi sesión" : "End my session"}</button></div>} />
+    {visitor && <details className="experience-more"><summary>{locale === "es" ? "Más para tu viaje" : "More for your trip"}</summary><a href={`/reingresar?lang=${locale}`}>{locale === "es" ? "Guardar mi experiencia y recibir un enlace por correo" : "Save my experience and receive an email link"}</a><p>{locale === "es" ? "Tu acceso temporal caduca el" : "Your temporary access expires on"} {new Date(visitor.expiresAt).toLocaleString(locale)}.</p><ProviderOffers enabled={sharingEnabled} locale={locale} /></details>}
+  </VoiceShell>;
 }
