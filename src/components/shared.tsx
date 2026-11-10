@@ -1,5 +1,8 @@
 "use client";
-import { useEffect, useState, type ReactNode } from "react";
+import { uiText } from "../i18n/ui";
+import { useEffect, type ReactNode } from "react";
+import { LanguageSelector } from "./locale-provider";
+export { useLocale } from "./locale-provider";
 import { dictionaries, interests, interestLabels, type Interest, type Locale } from "../i18n";
 import type { Item, Recommendations } from "./types";
 import { ApiError } from "./api";
@@ -13,7 +16,7 @@ export function Shell({ locale, setLocale, children, kiosk = false }: { locale: 
       <nav aria-label={t.navigation}>
         {!kiosk && <><a href="/experiencia">{t.experience}</a><a href="/mi-viaje">{t.trip}</a></>}
         <a href="/privacidad">{t.privacy}</a>
-        {setLocale && <div className="language" aria-label={t.chooseLanguage}>{(["es", "en"] as const).map(value => <button key={value} onClick={() => setLocale(value)} aria-pressed={locale === value} lang={value}>{value === "es" ? "Español" : "English"}</button>)}</div>}
+        {setLocale && <LanguageSelector locale={locale} onChange={setLocale} />}
       </nav>
     </header>
     <main id="main" tabIndex={-1}>{children}</main>
@@ -23,7 +26,7 @@ export function Shell({ locale, setLocale, children, kiosk = false }: { locale: 
 export function ErrorNotice({ error, locale, retry }: { error: unknown; locale: Locale; retry?: () => void }) {
   const t = dictionaries[locale];
   const code = error instanceof ApiError ? error.code : "service_unavailable";
-  const message = code === "session_required" ? t.sessionError : code === "rate_limited" ? t.rateError : code === "storage_consent_required" ? (locale === "en" ? "Authorize storage in your privacy settings to save new places." : "Autoriza la conservación en privacidad para guardar nuevos lugares.") : code === "notice_version_changed" ? (locale === "en" ? "The privacy notice changed. Reload and review it before trying again." : "El aviso de privacidad cambió. Recarga y revísalo antes de volver a intentarlo.") : t.serviceError;
+  const message = code === "session_required" ? t.sessionError : code === "rate_limited" ? t.rateError : code === "storage_consent_required" ? (uiText(locale, "authorizeStorageInYourPrivacySettingsTo")) : code === "notice_version_changed" ? (uiText(locale, "thePrivacyNoticeChangedReloadAndReview")) : t.serviceError;
   return <div className="notice error" role="alert"><p>{message}</p>{retry && <button className="secondary" onClick={retry}>{t.retry}</button>}</div>;
 }
 export function PreferenceForm({ locale, country, selected, onChange, onCountry, onSubmit, onSkip, busy }: { locale: Locale; country: string | null; selected: Interest[]; onChange: (value: Interest[]) => void; onCountry: (value: string | null) => void; onSubmit: () => void; onSkip?: () => void; busy: boolean }) {
@@ -51,4 +54,3 @@ export function RecommendationList({ data, locale, onSave, busy, savedIds }: { d
     <div className="card-grid">{data.recommendations.map(row => <CulturalCard key={row.item.id} item={row.item} locale={locale} rationale={row.rationale}><button className="secondary" disabled={busy || savedIds.includes(row.item.id)} onClick={() => onSave(row.item.id)}>{savedIds.includes(row.item.id) ? t.saved : t.save}</button></CulturalCard>)}</div>
   </>;
 }
-export function useLocale(initial: Locale = "es") { return useState<Locale>(initial); }

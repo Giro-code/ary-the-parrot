@@ -17,7 +17,7 @@ async function mockAsk(page: Page) {
 test("no automatic session or recording, explicit permission explanation, real recording and transcript bubble", async ({ page }) => {
   let sessions = 0, recordings = 0;
   page.on("request", request => { if (request.method() === "POST" && request.url().endsWith("/api/visitor/session")) sessions++; if (request.url().endsWith("/api/voice/ask")) recordings++; });
-  await page.goto("/kiosco"); expect(sessions).toBe(0); expect(recordings).toBe(0);
+  await page.goto("/kiosco"); await page.locator(".voice-header").getByRole("button", { name: "Español", exact: true }).click(); expect(sessions).toBe(0); expect(recordings).toBe(0);
   await mockAsk(page); await startChat(page);
   await page.getByRole("button", { name: "Hablar con Ary", exact: true }).click();
   await expect(page.getByRole("dialog")).toContainText("Google Gemini"); expect(recordings).toBe(0);
@@ -108,7 +108,7 @@ test("permissions policy restricts microphone to conversation routes; CSP suppor
 for (const pass of [1, 2]) test(`stage6 visual evidence pass ${pass}: character states and conversation`, async ({ page, context }) => {
   test.setTimeout(180000);
   for (const [width, height] of [[1280, 800], [1920, 1080], [390, 844], [360, 800]]) {
-    await page.setViewportSize({ width, height }); await page.goto("/kiosco");
+    await page.setViewportSize({ width, height }); await page.goto("/kiosco"); await page.locator(".voice-header").getByRole("button", { name: "Español", exact: true }).click();
     await page.reload(); await expect(page.locator('[data-state="idle"]')).toBeVisible();
     await capture(page, `pass-${pass}-presentar-${width}`);
     await startChat(page); await mockAsk(page);

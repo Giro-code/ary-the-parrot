@@ -11,7 +11,7 @@ export default defineConfig({
   timeout: 30_000,
   expect: { timeout: 5_000 },
   reporter: [["list"], ["html", { open: "never" }]],
-  use: { browserName: "chromium", trace: "retain-on-failure", screenshot: "only-on-failure", launchOptions: { args: ["--use-fake-device-for-media-stream", "--use-fake-ui-for-media-stream"] } },
+  use: { locale: "es-ES", browserName: "chromium", trace: "retain-on-failure", screenshot: "only-on-failure", launchOptions: { args: ["--use-fake-device-for-media-stream", "--use-fake-ui-for-media-stream"] } },
   projects: [
     { name: "legacy", testMatch: "legacy-regression.spec.ts", use: { baseURL: "http://127.0.0.1:3001" } },
     { name: "app", testMatch: "legacy-regression.spec.ts", use: { baseURL: "http://127.0.0.1:3000" } },
@@ -20,6 +20,7 @@ export default defineConfig({
     { name: "stage4a", testMatch: "stage4a.spec.ts", fullyParallel: false, use: { baseURL: "http://127.0.0.1:3002" } },
     { name: "stage4b", testMatch: "stage4b.spec.ts", fullyParallel: false, use: { baseURL: "http://127.0.0.1:3002" } },
     { name: "stage6", testMatch: "stage6.spec.ts", fullyParallel: false, use: { baseURL: "http://127.0.0.1:3002", permissions: ["microphone"] } },
+    { name: "stage7", testMatch: "stage7.spec.ts", fullyParallel: false, timeout: 45_000, use: { baseURL: "http://127.0.0.1:3002", permissions: ["microphone"] } },
   ],
   webServer: [
     {

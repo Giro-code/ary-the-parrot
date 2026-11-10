@@ -22,7 +22,7 @@ async function recoverVisitor(page: Page) {
 test.beforeAll(async ({ browser }) => {
   test.setTimeout(120000);
   for (const [email, assign] of [["admin.demo@example.invalid", (s: State) => { adminState = s; }], ["provider-a.demo@example.invalid", (s: State) => { aState = s; }], ["provider-b.demo@example.invalid", (s: State) => { bState = s; }]] as const) {
-    const context = await browser.newContext({ baseURL: base }); try { const page = await context.newPage(); await staffLogin(page, email); assign(await context.storageState()); } finally { await context.close(); }
+    const context = await browser.newContext({ locale: "es-ES", baseURL: base }); try { const page = await context.newPage(); await staffLogin(page, email); assign(await context.storageState()); } finally { await context.close(); }
   }
 });
 test("staff outbox login shows aggregate sample, suppression and CSV without PII", async ({ page, context }) => {
@@ -40,7 +40,7 @@ test("visitor chooses fields for P, P reads only them, revocation removes future
   await page.getByRole("button", { name: "Enviar mi solicitud a Demo Taller del Caribe (ficticio)", exact: true }).click();
   const form = page.locator("form").filter({ has: page.getByRole("heading", { name: "Confirma destinatario y campos" }) });
   await expect(form.getByRole("checkbox", { name: "Nombre", exact: true })).not.toBeChecked(); await form.getByRole("checkbox", { name: "Correo verificado", exact: false }).check(); await form.getByRole("checkbox", { name: "Mensaje", exact: true }).check(); await form.getByLabel("Mensaje", { exact: true }).last().fill("Consulta sintética elegida"); await form.getByRole("checkbox", { name: "Autorizo compartir", exact: false }).check(); await form.getByRole("button", { name: "Confirmar y enviar solicitud" }).click(); await expect(page.getByRole("status").filter({ hasText: "Solicitud registrada" })).toBeVisible();
-  const partner = await browser.newContext({ baseURL: base, storageState: aState });
+  const partner = await browser.newContext({ locale: "es-ES", baseURL: base, storageState: aState });
   try { const inbox = await partner.newPage(); await inbox.goto(`/partner/leads?organizationId=${ids.a}`); const lead = inbox.locator("article").filter({ hasText: "Consulta sintética elegida" }); await expect(lead).toContainText(email); await expect(lead.locator("dt")).toHaveText(["Correo verificado", "Mensaje"]); await page.goto("/cuenta/privacidad"); const shared = page.locator("article").filter({ hasText: "Demo Taller del Caribe (ficticio)" }).last(); await shared.getByRole("button", { name: "Revocar solicitud" }).click(); await expect(shared).toContainText("Revocada"); await inbox.reload(); await expect(inbox.getByText("Consulta sintética elegida")).toHaveCount(0); }
   finally { await partner.close(); }
 });

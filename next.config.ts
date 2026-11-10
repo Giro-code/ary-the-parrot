@@ -24,7 +24,6 @@ const config: NextConfig = {
   async rewrites() {
     return {
       beforeFiles: [
-        { source: "/", destination: "/index.html" },
         { source: "/favicon.ico", destination: "/site/favicon.svg" },
       ],
       afterFiles: [],

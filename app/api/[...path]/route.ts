@@ -1,3 +1,4 @@
+import { acceptedLanguages, phoneLocale, supportedLocale } from "../../../src/i18n";
 import { NextRequest } from "next/server";
 import { z } from "zod";
 import QRCode from "qrcode";
@@ -64,10 +65,10 @@ async function handle(request: NextRequest) {
       return json(await service.handoffStatus(db, session.id));
     }
     if (path === "/api/visitor/handoff/redeem" && method === "POST") {
-      const data = await body(request, z.object({ token: tokenSchema, confirmationCode: z.string().regex(/^\d{2}$/) }).strict());
+      const data = await body(request, z.object({ token: tokenSchema, confirmationCode: z.string().regex(/^\d{2}$/), browserLocale: z.enum(["en", "es"]).optional() }).strict());
       await service.rateLimit(db, clientHash(`redeem:${request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "local"}`), 15);
-      const redeemed = await service.redeemHandoff(db, data.token, data.confirmationCode);
-      const response = json({ session: service.publicSession(redeemed.session), redirect: "/experiencia" }); setCookie(response, "ary_sid", redeemed.token); return response;
+      const redeemed = await service.redeemHandoff(db, data.token, data.confirmationCode, undefined, supportedLocale(request.cookies.get("ary_lang")?.value) || data.browserLocale || phoneLocale(undefined, acceptedLanguages(request.headers.get("accept-language"))));
+      const response = json({ session: service.publicSession(redeemed.session), redirect: "/experiencia" }); setCookie(response, "ary_sid", redeemed.token); response.cookies.set("ary_phone", redeemed.session.locale, { httpOnly: true, sameSite: "lax", secure: process.env.NODE_ENV === "production", path: "/", maxAge: 86400 }); return response;
     }
     const session = await service.getSession(db, visitorToken);
     if (path === "/api/chat" && method === "GET") return json({ messages: await chatHistory(db, session) });
@@ -94,7 +95,7 @@ async function handle(request: NextRequest) {
     if (path === "/api/recommendations" && method === "POST") {
       await body(request, empty); return json(await service.recommend(db, session));
     }
-    if (path === "/api/saved" && method === "GET") return json({ items: await service.listSaved(db, session.id) });
+    if (path === "/api/saved" && method === "GET") { const rows = await service.listSaved(db, session.id); const items = await service.localizeItems(db, rows.map(row => row.item), session.locale as "en" | "es"); return json({ items: rows.map((row, index) => ({ ...row, item: items[index] })) }); }
     if (path === "/api/saved" && method === "POST") {
       const data = await body(request, z.object({ itemId: uuidSchema }).strict()); return json({ saved: await service.saveItem(db, session.id, data.itemId) }, 201);
     }

@@ -46,7 +46,7 @@ function mockGemini(transform: (value: Record<string, unknown>) => unknown = val
   vi.mocked(fetch).mockImplementation(async (_url, options) => {
     const body = JSON.parse(String(options?.body));
     const records = JSON.parse(body.contents[0].parts[0].text.split("\n")[1]);
-    const value = transform({ displayText: records[0].description.slice(0, 500), spokenText: records[0].description.slice(0, 500), intent: "culture", citedItemIds: [records[0].id], followUps: ["Cuéntame más del merengue"], confidence: 0.95 });
+    const value = transform({ detectedLanguage: "es", displayText: records[0].description.slice(0, 500), spokenText: records[0].description.slice(0, 500), intent: "culture", citedItemIds: [records[0].id], followUps: ["Cuéntame más del merengue"], confidence: 0.95 });
     return Response.json({ candidates: [{ finishReason: "STOP", content: { parts: [{ text: JSON.stringify(value) }] } }], usageMetadata: { promptTokenCount: 100, candidatesTokenCount: 40 } });
   });
 }
@@ -108,7 +108,7 @@ test("valid Gemini structured output with server-only header, delimiters and usa
 test.each([
   ["invalid JSON schema", () => ({ unexpected: true }), "invalid_output"],
   ["citation outside context", (value: Record<string, unknown>) => ({ ...value, citedItemIds: [randomUUID()] }), "invalid_citation"],
-  ["facts without citation", (value: Record<string, unknown>) => ({ ...value, displayText: "Es una tradición muy bonita.", spokenText: "Es una tradición muy bonita.", citedItemIds: [] }), "ungrounded_output"],
+  ["facts without citation", (value: Record<string, unknown>) => ({ ...value, detectedLanguage: "es", displayText: "Es una tradición muy bonita.", spokenText: "Es una tradición muy bonita.", citedItemIds: [] }), "ungrounded_output"],
   ["low confidence", (value: Record<string, unknown>) => ({ ...value, confidence: 0.2 }), "ungrounded_output"],
 ] as const)("%s falls back to labelled demo", async (_name, transform, code) => {
   mockGemini(transform); const visitor = await createSession(db());
@@ -116,7 +116,7 @@ test.each([
   expect((await db().select().from(s.aiUsage)).at(-1)?.errorCode).toBe(code);
 });
 test("uncited answer that names a published record is cited from its exact title", async () => {
-  mockGemini(value => ({ ...value, displayText: "¡El Merengue es pura alegría dominicana!", spokenText: "¡Merengue, merengue!", citedItemIds: [] }));
+  mockGemini(value => ({ ...value, detectedLanguage: "es", displayText: "¡El Merengue es pura alegría dominicana!", spokenText: "¡Merengue, merengue!", citedItemIds: [] }));
   const visitor = await createSession(db());
   const reply = await chat(db(), visitor.token, { message: "Merengue" });
   expect(reply.mode).toBe("gemini");
@@ -151,7 +151,7 @@ test("sensitive text stays out of the next cultural model request's history", as
 test.each(["¿Cuál es mi vuelo?", "Where is gate 4?", "migración", "aduanas", "seguridad", "emergencias", "salud", "leyes", "I have a medical emergency", "visa requirements"])("sensitive topic %s never reaches the model", async message => {
   mockGemini(); const visitor = await createSession(db());
   const reply = await chat(db(), visitor.token, { message });
-  expect(reply.handoff).toBe(true); expect(reply.answer).toContain("personal del aeropuerto"); expect(fetch).not.toHaveBeenCalled();
+  expect(reply.handoff).toBe(true); expect(reply.answer).toMatch(/personal del aeropuerto|airport staff/); expect(fetch).not.toHaveBeenCalled();
 });
 test("prompt injection from user is refused and poisoned records never reach the model", async () => {
   mockGemini(); const visitor = await createSession(db());

@@ -260,3 +260,9 @@ body { margin: 0; }
   .voice-chat .inline-handoff .qr-image { width: 160px; height: 160px; }
 }
 @media (max-height: 720px) { .ary-app .voice-chat { grid-template-rows: 172px auto minmax(150px, 1fr) auto; }.ary-portrait { height: 116px; min-height: 70px; }.ary-app .ary-stage h1 { font-size: 1.2rem; } }
+
+/* Language controls remain available during conversation, QR and offline states. */
+.voice-header { height: auto; min-height: 64px; padding-block: 8px; flex-wrap: wrap; }
+.voice-header nav { flex-wrap: wrap; justify-content: flex-end; gap: 6px 16px; }
+.voice-header .language button { min-height: 44px; }
+@media (max-width: 600px) { .voice-header { gap: 4px; }.voice-header nav { width: 100%; justify-content: space-between; }.voice-header .language { margin-left: auto; }.voice-header .language button { padding-inline: 10px; } }

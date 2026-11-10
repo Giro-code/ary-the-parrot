@@ -52,7 +52,7 @@ test("cold kiosk checks health and retries a failed check", async ({ page }) => 
   await page.clock.install(); let release!: () => void, releaseRetry!: () => void, attempts = 0;
   const first = new Promise<void>(done => { release = done; }), retry = new Promise<void>(done => { releaseRetry = done; });
   await page.route("**/api/health", async route => { attempts++; if (attempts === 1) { await first; await route.fulfill({ status: 503, json: { status: "degraded" } }); } else { await retry; await route.continue(); } });
-  await page.goto("/kiosco"); await expect(page.getByRole("status").filter({ hasText: "Comprobando conexión" })).toBeVisible();
+  await page.goto("/kiosco"); await page.locator(".voice-header").getByRole("button", { name: "Español", exact: true }).click(); await expect(page.getByRole("status").filter({ hasText: "Comprobando conexión" })).toBeVisible();
   await expect(page.getByText("Modo demostración sin dispositivo", { exact: true })).toHaveCount(0);
   release(); await expect(page.getByRole("status").filter({ hasText: "Sin conexión al servicio" })).toBeVisible();
   releaseRetry(); await page.clock.fastForward(1100); await expect(page.getByRole("status").filter({ hasText: "Servicio disponible" })).toBeVisible(); expect(attempts).toBeGreaterThanOrEqual(2);
@@ -96,7 +96,7 @@ test("simulated local SSE presence welcomes without creating a visitor session",
     await page.route("**/api/kiosk/bridge-token", route => route.fulfill({ json: { token: "synthetic-e2e-token" } }));
     let sessions = 0;
     page.on("request", request => { if (request.method() === "POST" && request.url().endsWith("/api/visitor/session")) sessions++; });
-    await page.goto("/kiosco"); await expect(page.getByRole("status").filter({ hasText: "Servicio disponible" })).toBeVisible();
+    await page.goto("/kiosco"); await page.locator(".voice-header").getByRole("button", { name: "Español", exact: true }).click(); await expect(page.getByRole("status").filter({ hasText: "Servicio disponible" })).toBeVisible();
     await expect.poll(() => !!stream).toBe(true);
     stream!.write('data: {"type":"sensor","sensor":"presence","value":true}\n\n');
     await expect(page.getByText("¡Bienvenido! Soy Ary.", { exact: false })).toBeVisible();

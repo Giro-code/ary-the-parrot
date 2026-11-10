@@ -4,7 +4,7 @@ import config from "../../next.config";
 
 test("rewrite de portada precede a los archivos y conserva la URL pública", async () => {
   expect(await config.rewrites!()).toMatchObject({
-    beforeFiles: [{ source: "/", destination: "/index.html" }, { source: "/favicon.ico", destination: "/site/favicon.svg" }],
+    beforeFiles: [{ source: "/favicon.ico", destination: "/site/favicon.svg" }],
     afterFiles: [], fallback: [],
   });
 });

@@ -41,7 +41,7 @@ async function capture(page: Page, name: string) {
 }
 test("Flow B: save, dry-run outbox, confirm on a different device and recover My trip", async ({ page, browser }) => {
   await page.goto("/experiencia"); await page.getByRole("button", { name: "Iniciar", exact: true }).click();
-  await page.getByRole("button", { name: "Español", exact: true }).click();
+  await page.locator(".chat-quick-replies").getByRole("button", { name: "Español", exact: true }).click();
   await askText(page, "Cuéntame sobre el mangú");
   const mangu = page.locator("article").filter({ has: page.getByRole("heading", { name: "Mangú", exact: true }) });
   await mangu.getByRole("button", { name: "Guardar", exact: true }).click();
@@ -51,7 +51,7 @@ test("Flow B: save, dry-run outbox, confirm on a different device and recover My
   const email = address();
   // requestRecovery navigates to the same recovery form but preserves the source cookie.
   const link = await requestRecovery(page, email);
-  const mobile = await browser.newContext({ viewport: { width: 390, height: 844 } });
+  const mobile = await browser.newContext({ locale: "es-ES", viewport: { width: 390, height: 844 } });
   try {
     const phone = await mobile.newPage(); await phone.goto(link);
     expect((await mobile.request.get("http://127.0.0.1:3002/api/visitor/me")).status()).toBe(401);
@@ -121,6 +121,8 @@ for (const pass of [1, 2]) test(`stage3 visual evidence ${pass}: desktop/mobile,
     await page.goto("/reingresar");
     await page.getByRole("button", { name: "English", exact: true }).click(); await expect(page.locator("h1")).toHaveText("Save and recover My trip");
     await capture(page, `pass-${pass}-recovery-en-${width}`);
+    // The language choice is remembered (ary_lang cookie); switch back before the Spanish landing steps.
+    await page.getByRole("button", { name: "Español", exact: true }).click(); await expect(page.locator("html")).toHaveAttribute("lang", "es");
     await fillInquiry(page); await page.route("**/api/commercial/inquiries", route => route.abort("failed"));
     await page.getByRole("button", { name: "Preparar solicitud" }).click();
   await page.getByLabel("Autorizo tratar estos datos", { exact: false }).check();

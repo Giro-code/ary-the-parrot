@@ -130,7 +130,7 @@ export async function previewHandoff(db: Database, token: string, now = new Date
   // Do not disclose preferences, country, counts or session identifiers before redemption.
   return { locale: source.locale as Locale, confirmationCode: qr.confirmationCode };
 }
-export async function redeemHandoff(db: Database, token: string, code: string, testClock?: Date) {
+export async function redeemHandoff(db: Database, token: string, code: string, testClock?: Date, mobileLocale?: Locale) {
   const now = testClock ?? new Date();
   const expiryClock = testClock ?? sql`now()`;
   if (!/^[\w-]{43}$/.test(token)) throw new AppError("handoff_unavailable", 400);
@@ -153,8 +153,8 @@ export async function redeemHandoff(db: Database, token: string, code: string, t
     // One conditional UPDATE is the single-use boundary, inside the same transaction as the copy.
     const [claimed] = await tx.update(s.qrHandoffs).set({ usedAt: now, status: "redeemed" }).where(and(eq(s.qrHandoffs.id, attempt.id), isNull(s.qrHandoffs.usedAt), isNull(s.qrHandoffs.invalidatedAt), gt(s.qrHandoffs.expiresAt, expiryClock))).returning();
     if (!claimed) return { error: "handoff_unavailable" } as const;
-    const mobile = await createSession(tx, source.locale as Locale, null, now);
-    const prefs: Preferences = { locale: source.locale as Locale, countryDeclared: source.countryDeclared, interests: source.interests as Interest[] };
+    const mobile = await createSession(tx, mobileLocale || source.locale as Locale, null, now);
+    const prefs: Preferences = { locale: mobileLocale || source.locale as Locale, countryDeclared: source.countryDeclared, interests: source.interests as Interest[] };
     const [session] = await tx.update(s.visitorSessions).set({ ...prefs, originKioskId: source.kioskDeviceId || source.originKioskId }).where(eq(s.visitorSessions.id, mobile.session.id)).returning();
     await tx.insert(s.visitorPreferences).values({ sessionId: session.id, ...prefs });
     const saved = await tx.select().from(s.savedExperiences).where(eq(s.savedExperiences.sessionId, source.id));
@@ -173,6 +173,12 @@ export async function handoffStatus(db: Database, sourceId: string, now = new Da
 }
 export async function listItems(db: Database, locale: Locale, offset = 0, limit = 12) {
   return db.select().from(s.culturalItems).where(and(eq(s.culturalItems.status, "published"), eq(s.culturalItems.language, locale))).orderBy(s.culturalItems.contentKey).limit(limit).offset(offset);
+}
+export async function localizeItems(db: Database, items: CulturalItem[], locale: Locale): Promise<CulturalItem[]> {
+  if (!items.length || items.every(item => item.language === locale)) return items;
+  const translations = await db.select().from(s.culturalItems).where(and(eq(s.culturalItems.status, "published"), eq(s.culturalItems.language, locale), inArray(s.culturalItems.contentKey, items.map(item => item.contentKey))));
+  // Keep IDs stable for saved records, citations and existing public links.
+  return items.map(item => ({ ...(translations.find(row => row.contentKey === item.contentKey) || item), id: item.id }));
 }
 export async function findItem(db: Database, id: string) {
   const [item] = await db.select().from(s.culturalItems).where(and(eq(s.culturalItems.id, id), eq(s.culturalItems.status, "published")));

@@ -3,6 +3,8 @@ import { mkdir, readFile, writeFile } from "node:fs/promises";
 import pixelmatch from "pixelmatch";
 import { PNG } from "pngjs";
 
+base.use({ extraHTTPHeaders: { "x-vercel-ip-country": "MX" } });
+
 const screenshots = "docs/screenshots";
 const views = ["inicio", "conoce", "historia", "nosotros", "brochure", "solicitar"];
 const widths = [390, 820, 1440, 1920];
@@ -306,10 +308,10 @@ test("API, cabeceras, recursos y entradas de etapa 2", async ({ page, request },
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
     await page.goto("/kiosco");
     await expect(page).toHaveURL(/\/kiosco$/);
-    await expect(page.locator("main")).toContainText("Simulador");
+    await expect(page.locator("main")).toContainText("Simulator");
     // This server runs production mode without a database: the kiosk must say so instead of claiming a device state it could not check.
-    await expect(page.locator("main")).toContainText("Sin conexión al servicio");
-    await expect(page.locator("main")).not.toContainText("Modo demostración sin dispositivo");
+    await expect(page.locator("main")).toContainText("Service offline");
+    await expect(page.locator("main")).not.toContainText("Demonstration mode without a device");
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
     await page.getByRole("link", { name: "ARY la Cotorra" }).click();
     await expect(page.locator("#inicio")).toBeVisible();

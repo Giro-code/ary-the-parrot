@@ -2,13 +2,15 @@
 import { useState } from "react";
 import { dictionaries, type Locale } from "../i18n";
 import { api, ApiError } from "./api";
-import { Shell } from "./shared";
+import { phoneLocale } from "../i18n";
+import { readLanguageCookie } from "./locale-provider";
+import { Shell, useLocale } from "./shared";
 export function Redeem({ token, code, initialError, initialLocale }: { token: string; code?: string; initialError?: string; initialLocale: Locale }) {
-  const [locale, setLocale] = useState(initialLocale), t = dictionaries[locale];
+  const [locale, setLocale] = useLocale(initialLocale), t = dictionaries[locale];
   const [error, setError] = useState(initialError), [busy, setBusy] = useState(false);
   async function redeem() {
     setBusy(true);
-    try { await api("/api/visitor/handoff/redeem", "POST", { token, confirmationCode: code }); window.location.replace("/experiencia"); }
+    try { await api("/api/visitor/handoff/redeem", "POST", { token, confirmationCode: code, browserLocale: phoneLocale(readLanguageCookie(), navigator.languages) }); window.location.replace("/experiencia"); }
     catch (error) { setError(error instanceof ApiError ? error.code : "service_unavailable"); setBusy(false); }
   }
   const expired = error === "handoff_expired";

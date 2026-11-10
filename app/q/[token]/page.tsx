@@ -1,3 +1,4 @@
+import { requestLocale } from "../../../src/server/locale";
 import { getConnection } from "../../../src/db/client";
 import { previewHandoff } from "../../../src/server/service";
 import { AppError } from "../../../src/server/errors";
@@ -11,5 +12,5 @@ export default async function RedeemPage({ params }: { params: Promise<{ token: 
     const { db } = await getConnection();
     preview = await previewHandoff(db, token);
   } catch (error) { initialError = error instanceof AppError ? error.code : "service_unavailable"; }
-  return <Redeem token={preview ? token : ""} code={preview?.confirmationCode} initialLocale={preview?.locale || "es"} initialError={initialError} />;
+  return <Redeem token={preview ? token : ""} code={preview?.confirmationCode} initialLocale={await requestLocale(true)} initialError={initialError} />;
 }

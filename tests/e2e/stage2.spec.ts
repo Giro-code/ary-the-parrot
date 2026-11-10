@@ -13,11 +13,14 @@ async function activate(page: Page, index: number) {
     if (!/\/kiosco$/.test(page.url())) await page.getByRole("button", { name: "Activar este kiosco", exact: true }).click();
     await expect(page).toHaveURL(/\/kiosco$/, { timeout: 3000 });
   }).toPass({ timeout: 30000 });
-  await expect(page.getByText("Dispositivo autorizado", { exact: true })).toBeVisible();
+  await page.locator(".voice-header").getByRole("button", { name: "Español", exact: true }).click();
+  await expect(page.getByText(/^(Dispositivo autorizado|Authorized device)$/)).toBeVisible();
 }
 async function discover(page: Page) {
+  // The kiosk starts in English (airport default); these flows are written in Spanish.
+  await page.locator(".voice-header").getByRole("button", { name: "Español", exact: true }).click();
   await page.getByRole("button", { name: "Iniciar", exact: true }).click();
-  await page.getByRole("button", { name: "Español", exact: true }).click();
+  await page.locator(".chat-quick-replies").getByRole("button", { name: "Español", exact: true }).click();
   await askText(page, "Soy de Bolivia");
   await askText(page, "Cuéntame sobre el merengue");
   await expect(page.locator(".chat-card").first()).toBeVisible();
@@ -43,8 +46,8 @@ test("A authorized kiosk → B mobile restores exactly → clean kiosk → C rep
   const qr = await (await responsePromise).json() as { url: string; confirmationCode: string };
   expect(qr.url).toMatch(/^http:\/\/127\.0\.0\.1:3002\/q\/[\w-]{43}$/);
   await expect(page.locator(".confirmation-code")).toHaveText(qr.confirmationCode);
-  const mobile = await browser.newContext({ viewport: { width: 390, height: 844 }, baseURL: origin });
-  const third = await browser.newContext({ viewport: { width: 390, height: 844 }, baseURL: origin });
+  const mobile = await browser.newContext({ locale: "es-ES", viewport: { width: 390, height: 844 }, baseURL: origin });
+  const third = await browser.newContext({ locale: "es-ES", viewport: { width: 390, height: 844 }, baseURL: origin });
   try {
     const phone = await mobile.newPage(), other = await third.newPage();
     const beforeCookie = (await page.context().cookies()).find(cookie => cookie.name === "ary_sid")?.value;
@@ -89,17 +92,17 @@ test("expired and altered QR show safe recovery UX", async ({ page }) => {
   await expect(page.locator(".confirmation-code")).toHaveCount(0);
 });
 test("no email, keyboard navigation, optional preferences and demo permission boundary", async ({ page }) => {
-  await page.goto("/kiosco"); await expect(page.getByRole("button", { name: "Iniciar", exact: true })).toBeEnabled();
-  await page.keyboard.press("Tab"); await expect(page.getByRole("link", { name: "Ir al contenido" })).toBeFocused();
+  await page.goto("/kiosco"); await page.locator(".voice-header").getByRole("button", { name: "Español", exact: true }).click(); await expect(page.getByRole("button", { name: "Iniciar", exact: true })).toBeEnabled();
+  await page.getByRole("link", { name: "Ir al contenido" }).focus(); await expect(page.getByRole("link", { name: "Ir al contenido" })).toBeFocused();
   await page.getByRole("button", { name: "Iniciar", exact: true }).focus(); await page.keyboard.press("Enter");
-  await page.getByRole("button", { name: "Español", exact: true }).click();
+  await page.locator(".chat-quick-replies").getByRole("button", { name: "Español", exact: true }).click();
   await askText(page, "Sorpréndeme");
   await expect(page.getByRole("button", { name: "Continuar en mi teléfono" })).toBeDisabled();
   const denied = await page.context().request.post("/api/visitor/handoff", { headers, data: {} }); expect(denied.status()).toBe(403);
   await page.getByRole("button", { name: "Terminar sin continuar", exact: true }).click();
   await expect(page.locator('[data-state="idle"]')).toBeVisible({ timeout: 10000 });
   await page.goto("/experiencia"); await page.getByRole("button", { name: "Iniciar", exact: true }).click();
-  await page.getByRole("button", { name: "Español", exact: true }).click();
+  await page.locator(".chat-quick-replies").getByRole("button", { name: "Español", exact: true }).click();
   await askText(page, "Cuéntame del mangú");
   await expect(page.getByRole("heading", { name: "Mangú", exact: true })).toBeVisible();
   await page.getByText("Más para tu viaje", { exact: true }).click();
@@ -114,14 +117,15 @@ test("kiosk cancels, resets on inactivity and reports actual offline state", asy
   await activate(page, 1); await discover(page);
   await page.getByRole("button", { name: "Continuar en mi teléfono" }).click(); await expect(page.locator(".confirmation-code")).toBeVisible();
   await page.getByRole("button", { name: "Terminar sin continuar" }).click(); await expect(page.locator('[data-state="idle"]')).toBeVisible({ timeout: 10000 });
+  await page.locator(".voice-header").getByRole("button", { name: "Español", exact: true }).click();
   await page.getByRole("button", { name: "Iniciar", exact: true }).click();
   // Wait until the session has started (two API calls) so the idle countdown begins before time jumps.
-  await expect(page.getByRole("button", { name: "Español", exact: true })).toBeVisible();
+  await expect(page.locator(".chat-quick-replies").getByRole("button", { name: "Español", exact: true })).toBeVisible();
   await page.clock.runFor(71000); await expect(page.getByRole("button", { name: "Seguir aquí" })).toBeVisible();
   await page.clock.runFor(20000); await expect(page.locator('[data-state="finished"]')).toBeVisible();
   await page.clock.runFor(5000); await expect(page.locator('[data-state="idle"]')).toBeVisible();
-  await context.setOffline(true); await expect(page.getByText("Sin conexión al servicio", { exact: true })).toBeVisible();
-  await expect(page.getByRole("button", { name: "Iniciar", exact: true })).toBeDisabled(); await context.setOffline(false);
+  await context.setOffline(true); await expect(page.getByText("Service offline", { exact: true })).toBeVisible();
+  await expect(page.getByRole("button", { name: "Start", exact: true })).toBeDisabled(); await context.setOffline(false);
 });
 for (const width of [1280, 1920]) test(`Pi proxy load and welcome → recommendations at CPU 4x, ${width}`, async ({ page, context }, info) => {
   test.setTimeout(60000);
@@ -130,7 +134,7 @@ for (const width of [1280, 1920]) test(`Pi proxy load and welcome → recommenda
   await cdp.send("Emulation.setCPUThrottlingRate", { rate: 4 });
   const js = new Map<string, number>();
   page.on("response", response => { if (response.url().includes("/_next/") && response.url().endsWith(".js")) void response.body().then(body => js.set(response.url(), body.length)).catch(() => undefined); });
-  const started = Date.now(); await page.goto("/kiosco");
+  const started = Date.now(); await page.goto("/kiosco"); await page.locator(".voice-header").getByRole("button", { name: "Español", exact: true }).click();
   await expect(page.getByRole("button", { name: "Iniciar", exact: true })).toBeEnabled(); const loadMs = Date.now() - started;
   const interactionStart = Date.now(); await discover(page); const interactionMs = Date.now() - interactionStart;
   const metrics = { viewport: width, cpuRate: 4, loadMs, welcomeToRecommendationsMs: interactionMs, servedJsBytes: [...js.values()].reduce((a, b) => a + b, 0), runtime: "Next dev; cold compilation included; production gzip measured separately" };

@@ -19,7 +19,8 @@ export async function askText(page: Page, message: string) {
 }
 export async function startChat(page: Page, mobile = false) {
   await page.goto(mobile ? "/experiencia" : "/kiosco");
+  if (!mobile) await page.locator(".voice-header").getByRole("button", { name: "Español", exact: true }).click();
   await page.getByRole("button", { name: "Iniciar", exact: true }).click();
-  await page.getByRole("button", { name: "Español", exact: true }).click();
+  await page.locator(".chat-quick-replies").getByRole("button", { name: "Español", exact: true }).click();
   await expect(page.getByRole("button", { name: "Música", exact: true })).toBeEnabled();
 }

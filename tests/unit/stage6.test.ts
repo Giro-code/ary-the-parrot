@@ -12,6 +12,7 @@ import { chat, chatCue, chatHistory } from "../../src/server/ai/chat";
 import { answerSchema, voiceAnswerSchema } from "../../src/server/ai/providers";
 import { maxAudioBytes, pcmToWav, validatedWav, defaultTtsModel, defaultTtsVoice } from "../../src/server/ai/voice";
 import { cleanSpokenText, spokenText } from "../../src/server/ai/safety";
+import { textLanguage } from "../../src/i18n";
 import { conversationPreferences } from "../../src/conversation";
 import { decrypt } from "../../src/server/crypto";
 import { aryImage } from "../../src/components/ary-stage";
@@ -38,13 +39,13 @@ function request(path: string, token?: string, data: unknown = {}, audio = false
 function mockAudio(transcript = "Cuéntame del merengue") {
   vi.mocked(fetch).mockImplementation(async (_url, options) => {
     const body = JSON.parse(String(options?.body)), items = JSON.parse(body.contents[0].parts[0].text.split("\n")[1]);
-    return Response.json({ candidates: [{ finishReason: "STOP", content: { parts: [{ text: JSON.stringify({ transcript, displayText: "Una tradición cultural dominicana.", spokenText: "¡rrrr! ¡rrrr! Una tradición cultural dominicana.", intent: "culture", citedItemIds: [items[0].id], followUps: [], confidence: .95 }) }] } }], usageMetadata: { promptTokenCount: 15, candidatesTokenCount: 30 } });
+    return Response.json({ candidates: [{ finishReason: "STOP", content: { parts: [{ text: JSON.stringify({ transcript, detectedLanguage: textLanguage(transcript, "es"), displayText: "Una tradición cultural dominicana.", spokenText: "¡rrrr! ¡rrrr! Una tradición cultural dominicana.", intent: "culture", citedItemIds: [items[0].id], followUps: [], confidence: .95 }) }] } }], usageMetadata: { promptTokenCount: 15, candidatesTokenCount: 30 } });
   });
 }
 const mockTts = () => vi.mocked(fetch).mockResolvedValue(Response.json({ candidates: [{ content: { parts: [{ inlineData: { mimeType: "audio/L16;rate=24000;channels=1", data: Buffer.alloc(4800).toString("base64") } }] } }], usageMetadata: { promptTokenCount: 20, candidatesTokenCount: 100 } }));
 
 test("voice schemas require captions, speech and a bounded genuine transcript", () => {
-  const value = { displayText: "Hola", spokenText: "Hola", intent: "culture", citedItemIds: [], followUps: [], confidence: 0 };
+  const value = { detectedLanguage: "es", displayText: "Hola", spokenText: "Hola", intent: "culture", citedItemIds: [], followUps: [], confidence: 0 };
   expect(answerSchema.safeParse(value).success).toBe(true);
   expect(answerSchema.safeParse({ ...value, spokenText: undefined }).success).toBe(false);
   expect(voiceAnswerSchema.safeParse({ ...value, transcript: "" }).success).toBe(false);
@@ -140,6 +141,28 @@ test("a spoken language choice receives the next prompt in that language", async
   const result = await (await ask(request("/api/voice/ask", visitor.token, webm(), true))).json();
   expect(result.preferences.locale).toBe("en"); expect(result.displayText).toContain("What would you like to discover?");
   expect(result.intent).toBe("preferences"); expect(result.sources).toHaveLength(0);
+});
+
+test.each(["es", "en", "other"] as const)("one mocked provider call detects %s in text AND audio and persists the response locale", async detectedLanguage => {
+  const transcript = detectedLanguage === "es" ? "Cuéntame del merengue" : detectedLanguage === "en" ? "Tell me about merengue" : "Bonjour, parle-moi du merengue";
+  const expectedLocale = detectedLanguage === "es" ? "es" : "en";
+  const caption = detectedLanguage === "es" ? "Una tradición cultural dominicana." : "A Dominican cultural tradition.";
+  vi.mocked(fetch).mockImplementation(async (_url, options) => {
+    const body = JSON.parse(String(options?.body)), records = JSON.parse(body.contents[0].parts[0].text.split("\n")[1]);
+    const voice = !!body.generationConfig.responseSchema.properties.transcript;
+    expect(body.systemInstruction.parts[0].text).toContain("language the visitor actually spoke or typed");
+    return Response.json({ candidates: [{ finishReason: "STOP", content: { parts: [{ text: JSON.stringify({ ...(voice ? { transcript } : {}), detectedLanguage, displayText: caption, spokenText: caption, intent: "culture", citedItemIds: [records[0].id], followUps: [], confidence: .95 }) }] } }] });
+  });
+  for (const audio of [false, true]) {
+    const visitor = await createSession(db(), expectedLocale === "es" ? "en" : "es");
+    const reply = audio ? await (await ask(request("/api/voice/ask", visitor.token, webm(), true))).json() : await chat(db(), visitor.token, { message: transcript });
+    expect(reply.detectedLanguage).toBe(detectedLanguage); expect(reply.preferences.locale).toBe(expectedLocale);
+    expect(reply.spokenText).toBe(reply.displayText);
+    expect(reply.displayText).toContain(detectedLanguage === "other" ? "English and Spanish" : caption);
+    const [stored] = await db().select().from(s.visitorSessions).where(eq(s.visitorSessions.id, visitor.session.id));
+    expect(stored.locale).toBe(expectedLocale);
+  }
+  expect(fetch).toHaveBeenCalledTimes(2);
 });
 
 test("silent or incomplete provider output never fabricates a visitor transcript", async () => {
