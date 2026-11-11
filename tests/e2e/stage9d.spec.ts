@@ -3,7 +3,7 @@ import { mkdir } from "node:fs/promises";
 import { randomUUID } from "node:crypto";
 import { emailStart, switchToChat } from "./stage8-helpers";
 import { mockSpeech, askText } from "./voice-helpers";
-import { questionField } from "./helpers";
+import { publishedItems, questionField } from "./helpers";
 
 test.beforeEach(async ({ page, context }) => {
   await context.setExtraHTTPHeaders({ "x-forwarded-for": `stage9d-${randomUUID()}` });
@@ -15,8 +15,8 @@ async function startVoice(page: Page, en = false) {
   await expect(page.locator(".voice-main-mic")).toHaveAttribute("aria-pressed", "true");
 }
 async function mockAnswer(page: Page, locale = "es") {
-  const { items } = await (await page.request.get(`/api/cultural/items?locale=${locale}`)).json();
-  const item = items.find((row: { title: string }) => /merengue/i.test(row.title)) || items[0];
+  const items = await publishedItems(page, locale);
+  const item = items.find(row => row.contentKey === "merengue")!;
   const reply = { messageId: randomUUID(), transcript: locale === "es" ? "Cuéntame del merengue" : "Tell me about merengue", displayText: item.summary, spokenText: item.summary, intent: "culture", citedItemIds: [item.id], sources: [{ id: item.id, title: item.title, summary: item.summary, image: item.image, url: item.sourceUrl, editor: item.editor, mapsUrl: item.mapsUrl }], followUps: [locale === "es" ? "Más música" : "More music"], confidence: .9, mode: "demo", handoff: false };
   await page.route("**/api/voice/ask", route => route.fulfill({ json: reply }));
   return reply;

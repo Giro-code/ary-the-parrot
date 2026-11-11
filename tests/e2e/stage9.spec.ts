@@ -3,7 +3,7 @@ import { mkdir, readFile } from "node:fs/promises";
 import { expect, test, type Page } from "@playwright/test";
 import { emailStart } from "./stage8-helpers";
 import { askText, mockSpeech, startChat } from "./voice-helpers";
-import type { Item } from "../../src/components/types";
+import { publishedItems } from "./helpers";
 import type { ChatSource } from "../../src/server/ai/chat";
 
 const origin = "http://127.0.0.1:3002", root = "docs/screenshots/stage9";
@@ -12,9 +12,7 @@ test.beforeEach(async ({ page, context }) => {
   await mockSpeech(page);
 });
 async function sources(page: Page) {
-  const response = await page.request.get("/api/cultural/items?locale=es&limit=50");
-  expect(response.ok()).toBe(true);
-  const { items } = await response.json() as { items: Item[] };
+  const items = await publishedItems(page);
   return ["Ballenas jorobadas de Samaná", "Parque Nacional Los Haitises"].map(title => {
     const item = items.find(row => row.title === title)!;
     expect(item?.image).toBeDefined(); expect(item?.mapsUrl).toBeDefined();

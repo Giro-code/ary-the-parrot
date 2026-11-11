@@ -88,7 +88,7 @@ test.each([["zona colonial", "Ciudad Colonial de Santo Domingo"], ["cuevas", "Pa
 });
 test("all twelve seed records retain bilingual search aliases after reseeding", async () => {
   const rows = await db().select().from(s.culturalItems);
-  for (const row of rows) expect(row.tags).toEqual(expect.arrayContaining(searchAliases[row.contentKey]));
+  for (const row of rows) expect(row.aliases).toEqual(expect.arrayContaining(searchAliases[row.contentKey]));
   expect(Object.keys(searchAliases)).toHaveLength(12);
 });
 test.each(["muéstrame imágenes", "enséñame fotografías", "quiero ver fotos", "muestrame iamgenes", "show me pictures", "see photos"])("%s is deterministic images intent", message => expect(classifyIntent(message)).toBe("images"));

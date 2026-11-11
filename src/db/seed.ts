@@ -51,7 +51,7 @@ export async function seedDatabase(db: Database, checks: SourceCheck[], options:
     const check = checks.find(row => row.url === entry.url && row.verified);
     for (const language of ["es", "en"] as const) {
       const values = {
-        contentKey: entry.key, title: entry.title, type: "heritage", language, summary: entry[language], validatedDescription: entry[language], tags: [...new Set([...entry.tags, ...searchAliases[entry.key]])],
+        contentKey: entry.key, title: entry.title, type: "heritage", language, summary: entry[language], validatedDescription: entry[language], tags: entry.tags, aliases: searchAliases[entry.key],
         sourceUrl: check ? entry.url : null, sourceCheckedAt: check ? new Date(check.checkedAt) : null,
         imageAsset: seedImages[entry.key] ? `/assets/items/${entry.key}.webp` : null,
         image: seedImages[entry.key] || null, location: seedLocations[entry.key] || null,

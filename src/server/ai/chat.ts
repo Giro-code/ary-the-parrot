@@ -1,4 +1,4 @@
-import { and, desc, eq, gt, inArray } from "drizzle-orm";
+import { and, desc, eq, gt, inArray, isNull } from "drizzle-orm";
 import { z } from "zod";
 import type { Database } from "../../db/client.ts";
 import * as s from "../../db/schema.ts";
@@ -15,7 +15,8 @@ import type { Locale } from "../../i18n/index.ts";
 import { archiveConversation } from "../conversations.ts";
 import { requestedDestination } from "../places.ts";
 import { itemImageSchema, itemMedia } from "../item-media.ts";
-import { hasSearchTerms, lexicalScore } from "./retrieval.ts";
+import { hasSearchTerms } from "./retrieval.ts";
+import { catalogSearch } from "./catalog-search.ts";
 
 // Card summaries end on a whole word with an ellipsis, never mid-word.
 function shortSummary(text: string, max = 180) {
@@ -28,13 +29,13 @@ export { classifyIntent } from "./safety.ts";
 export const chatInputSchema = z.object({ message: z.string().trim().min(1).max(500) }).strict();
 export const cueSchema = z.object({ cue: z.enum(["welcome", "interests", "idle"]) }).strict();
 export type ChatMode = "gemini" | "demo";
-const sourceSchema = z.object({ id: z.uuid(), title: z.string(), summary: z.string().default(""), url: z.url().refine(value => value.startsWith("https://")), editor: z.string(), location: z.string().max(280).optional(), image: itemImageSchema.optional(), mapsUrl: z.string().regex(/^https:\/\/www\.google\.com\/maps\/search\/\?api=1&query=-?[\d.]+,-?[\d.]+$/).optional() });
+const sourceSchema = z.object({ id: z.uuid(), title: z.string(), summary: z.string().default(""), url: z.url().refine(value => value.startsWith("https://")), editor: z.string(), location: z.string().max(280).optional(), image: itemImageSchema.optional(), gallery: z.array(itemImageSchema).max(6).optional(), mapsUrl: z.string().regex(/^https:\/\/www\.google\.com\/maps\/search\/\?api=1&query=-?[\d.]+,-?[\d.]+$/).optional() });
 export type ChatSource = z.infer<typeof sourceSchema>;
 export type ChatReply = Answer & { answer: string; messageId: string; transcript?: string; destination?: string; preferences?: ConversationPreferences; mode: ChatMode; sources: ChatSource[]; handoff: boolean };
 export const replySchema = answerSchema.extend({ answer: z.string(), messageId: z.uuid(), destination: z.string().max(160).optional(), mode: z.enum(["gemini", "demo"]), handoff: z.boolean(), sources: z.array(sourceSchema).max(6) });
 const historyPayloadSchema = z.object({ text: z.string().max(1200), reply: replySchema.optional() });
 function citedSources(items: CulturalItem[], ids: string[], locale: Locale): ChatSource[] {
-  return items.filter(item => ids.includes(item.id) && item.status === "published" && item.sourceUrl?.startsWith("https://") && item.sourceCheckedAt).map(item => ({ id: item.id, title: item.title, summary: shortSummary(item.summary), url: item.sourceUrl!, editor: item.editor, ...itemMedia(item, locale) }));
+  return items.filter(item => !item.hiddenAt && ids.includes(item.id) && item.status === "published" && item.sourceUrl?.startsWith("https://") && item.sourceCheckedAt).map(item => ({ id: item.id, title: item.title, summary: shortSummary(item.summary), url: item.sourceUrl!, editor: item.editor, ...itemMedia(item, locale) }));
 }
 export async function chatHistory(db: Database, session: Session) {
   const rows = await db.select().from(s.chatMessages).where(and(eq(s.chatMessages.sessionId, session.id), gt(s.chatMessages.retentionUntil, new Date()))).orderBy(desc(s.chatMessages.createdAt), desc(s.chatMessages.id)).limit(40);
@@ -51,7 +52,7 @@ export async function chatHistory(db: Database, session: Session) {
   });
   // Re-read citations so pre-stage9 history gains media and withdrawn records lose it.
   const ids = [...new Set(messages.flatMap(row => row.reply?.citedItemIds || []))];
-  const items = ids.length ? await db.select().from(s.culturalItems).where(and(inArray(s.culturalItems.id, ids), eq(s.culturalItems.status, "published"))) : [];
+  const items = ids.length ? await db.select().from(s.culturalItems).where(and(inArray(s.culturalItems.id, ids), isNull(s.culturalItems.hiddenAt), eq(s.culturalItems.status, "published"))) : [];
   for (const row of messages) if (row.reply) {
     const locale = detectedLocale(row.reply.detectedLanguage);
     row.reply.sources = citedSources(await localizeItems(db, items, locale), row.reply.citedItemIds, locale);
@@ -60,13 +61,13 @@ export async function chatHistory(db: Database, session: Session) {
   return messages;
 }
 async function retrieve(db: Database, session: Session, message: string, audio = false) {
-  const rows = await db.select().from(s.culturalItems).where(and(eq(s.culturalItems.status, "published"), eq(s.culturalItems.language, session.locale))).limit(100);
+  const search = await catalogSearch(db, session.locale);
   const voiceOrder = ["merengue", "bachata", "mangu", "ciudad-colonial", "haitises", "ballenas", "carnaval", "altos-chavon"];
-  const priority = (item: CulturalItem) => { const index = voiceOrder.indexOf(item.contentKey); return index < 0 ? voiceOrder.length : index; };
-  return rows.filter(searchableItem).map(item => {
-    const lexical = lexicalScore(item, message);
-    return { item, lexical, score: lexical + item.tags.filter(tag => session.interests.includes(tag)).length };
-  }).filter(row => audio || row.lexical > 0).sort((a, b) => b.score - a.score || (audio ? priority(a.item) - priority(b.item) : 0) || a.item.contentKey.localeCompare(b.item.contentKey)).slice(0, audio ? 8 : 4).map(row => ({ ...row.item, validatedDescription: row.item.validatedDescription.slice(0, 600) }));
+  if (audio && !message) {
+    const rows = await Promise.all(voiceOrder.map(key => search.search(key, 8).find(hit => hit.item.contentKey === key)?.item));
+    return rows.filter((item): item is CulturalItem => !!item).slice(0, 8);
+  }
+  return search.search(message, audio ? 8 : 4).map(hit => hit.item);
 }
 function searchableItem(item: CulturalItem) {
   try { return !!item.sourceCheckedAt && !!item.sourceUrl && new URL(item.sourceUrl).protocol === "https:" && !injection.test([item.title, item.summary, item.validatedDescription, ...item.tags].join(" ")); } catch { return false; }
@@ -85,6 +86,7 @@ async function persistReply(db: Database, token: string | undefined, session: Se
   const destination = answer.intent === "directions" && message ? requestedDestination(message) : undefined;
   const sensitive = answer.intent !== "culture" && answer.intent !== "preferences";
   const sources = citedSources(items, answer.citedItemIds, detectedLocale(answer.detectedLanguage));
+  if (photos && sources.length > 1) for (const source of sources) source.gallery = source.image ? [source.image] : [];
   const reply: ChatReply = { ...answer, citedItemIds: sources.map(source => source.id), spokenText: (photos && sources.some(source => source.image)) || (answer.intent === "directions" && sources.some(source => source.mapsUrl)) ? answer.spokenText : spokenText(answer.displayText, answer.spokenText, sensitive, greeting), answer: answer.displayText, messageId, mode, handoff: answer.intent === "sensitive", sources };
   const preferences = message ? { ...conversationPreferences(message, { locale: session.locale as Locale, countryDeclared: session.countryDeclared, interests: session.interests as ConversationPreferences["interests"] }), locale: detectedLocale(answer.detectedLanguage) } : undefined;
   if (destination) reply.destination = destination;
@@ -108,7 +110,7 @@ async function directionItems(db: Database, session: Session, message: string) {
   // Only use conversational context for a location-only question, never an unknown named place.
   const destination = requestedDestination(message);
   if (destination || !ids.length) return [];
-  return db.select().from(s.culturalItems).where(and(inArray(s.culturalItems.id, ids), eq(s.culturalItems.status, "published"))).limit(3);
+  return db.select().from(s.culturalItems).where(and(inArray(s.culturalItems.id, ids), isNull(s.culturalItems.hiddenAt), eq(s.culturalItems.status, "published"))).limit(3);
 }
 function directionsAnswer(items: CulturalItem[], locale: Locale, kiosk: boolean): Answer {
   const sources = citedSources(items, items.map(item => item.id), locale);
@@ -132,7 +134,7 @@ async function imageItems(db: Database, session: Session, message: string) {
   const history = await chatHistory(db, session);
   const ids = history.findLast(row => row.reply?.sources.some(source => source.image))?.reply?.sources.filter(source => source.image).map(source => source.id) || [];
   const featured = ["ciudad-colonial", "haitises", "altos-chavon"];
-  const rows = await db.select().from(s.culturalItems).where(and(eq(s.culturalItems.status, "published"), ids.length ? inArray(s.culturalItems.id, ids) : and(eq(s.culturalItems.language, session.locale), inArray(s.culturalItems.contentKey, featured))));
+  const rows = await db.select().from(s.culturalItems).where(and(eq(s.culturalItems.status, "published"), isNull(s.culturalItems.hiddenAt), ids.length ? inArray(s.culturalItems.id, ids) : and(eq(s.culturalItems.language, session.locale), inArray(s.culturalItems.contentKey, featured))));
   return (await localizeItems(db, rows, session.locale as Locale)).filter(item => searchableItem(item) && itemMedia(item, session.locale as Locale).image).sort((a, b) => ids.length ? ids.indexOf(a.id) - ids.indexOf(b.id) : featured.indexOf(a.contentKey) - featured.indexOf(b.contentKey)).slice(0, 3);
 }
 function imagesAnswer(items: CulturalItem[], locale: Locale): Answer {
@@ -180,19 +182,33 @@ export async function chat(db: Database, token: string | undefined, raw: unknown
     const input: AiInput = { message, locale, items, history, audio }, demo = new DemoAiProvider();
     if (session.retentionClass !== "kiosk_demo" && process.env.GEMINI_API_KEY?.trim() && (items.length || audio || intent === "general")) {
       model = defaultModel;
+      const provider = new GeminiProvider(), shortlist = items.map(item => item.contentKey);
+      let failed = false;
+      model = provider.model;
       try {
-        const provider = new GeminiProvider(); model = provider.model;
         const generated = await provider.generate(input);
         answer = generated.answer; detectedLanguage = answer.detectedLanguage; ({ inputTokens, outputTokens } = generated.usage); mode = "gemini";
         if (audio) message = generated.transcript!;
       } catch (error) {
-        errorCode = error instanceof AiError ? error.code : "provider_error";
+        failed = true; errorCode = error instanceof AiError ? error.code : "provider_error";
         if (error instanceof AiError) { ({ inputTokens, outputTokens } = error.usage); if (audio && error.transcript) { message = error.transcript; detectedLanguage = textLanguage(message, locale); } }
-        unavailable = !!audio && !message;
-        const responseLocale = detectedLocale(detectedLanguage);
-        if (audio && message) items = await retrieve(db, { ...session, locale: responseLocale }, message);
-        answer = (await demo.generate({ ...input, message, items, locale: responseLocale })).answer;
       }
+      // The audio call only sees a fixed shortlist. When the transcript matches a catalog
+      // entry outside it (or that call failed), answer once more from the transcript.
+      if (audio && message) {
+        const heard = detectedLocale(detectedLanguage);
+        const found = await retrieve(db, { ...session, locale: heard }, message);
+        if (found.length && ["culture", "general"].includes(classifyIntent(message)) && (failed || !shortlist.includes(found[0].contentKey))) {
+          try {
+            const second = await provider.generate({ message, locale: heard, items: found, history });
+            answer = second.answer; detectedLanguage = answer.detectedLanguage; mode = "gemini"; failed = false; errorCode = null;
+            inputTokens += second.usage.inputTokens; outputTokens += second.usage.outputTokens;
+          } catch (error) { failed = true; errorCode = error instanceof AiError ? error.code : "provider_error"; }
+        }
+        items = failed ? found : [...found, ...items.filter(item => !found.some(row => row.id === item.id))];
+      }
+      unavailable = !!audio && !message;
+      if (failed) answer = (await demo.generate({ ...input, message, items, locale: detectedLocale(detectedLanguage) })).answer;
     } else { model = "demo"; unavailable = !!audio; answer = (await demo.generate(input)).answer; if (audio) errorCode = "voice_not_configured"; }
     if (audio && message) {
       intent = classifyIntent(message);

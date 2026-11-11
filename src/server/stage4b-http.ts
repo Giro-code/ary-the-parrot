@@ -9,6 +9,7 @@ import { clientHash, hashToken } from "./tokens.ts";
 import { audit, inviteMember, operators, partners, readers, requestStaffLink, requireStaff, roles, staffMemberships, verifyStaffLink } from "./staff.ts";
 import { campaignRecipients, contentAction, contentSchema, deleteOffer, devices, offerSchema, partnerOffers, queueCampaign, saveContent, saveOffer, setLeadStatus } from "./admin.ts";
 import { overview, overviewCsv } from "./analytics.ts";
+import { catalogVisibility, staffCatalog } from "./catalog-admin.ts";
 import { leadSchema, partnerLeads, publicOffers, revokeLead, shareLead, sharingEnabled, visitorLeads } from "./leads.ts";
 import { enrollKiosk, getSession, rateLimit, recordEvent } from "./service.ts";
 import { dispatchImmediate } from "./email/outbox.ts";
@@ -93,6 +94,13 @@ export async function stage4bHttp(request: NextRequest, db: Database) {
       return json({ revoked: true, ...(result ? { activationUrl: `${baseUrl()}/kiosco/activar?code=${result.code}` } : {}) });
     });
   }
+  if (path === "/api/admin/catalog" && method === "GET") {
+    const filters = z.object({ query: z.string().max(500).optional(), type: z.string().max(80).optional(), region: z.string().max(200).optional(), origin: z.enum(["", "seed", "catalog"]).optional(), visibility: z.enum(["", "visible", "hidden"]).optional() }).strict().safeParse(Object.fromEntries(request.nextUrl.searchParams));
+    if (!filters.success) throw new AppError("invalid_query", 400);
+    return json(await staffCatalog(db, filters.data));
+  }
+  const catalog = path.match(/^\/api\/admin\/catalog\/([\w-]+)$/);
+  if (catalog && method === "PATCH") { const data = await body(request, z.object({ hidden: z.boolean() }).strict()); return json(await catalogVisibility(db, staff, parseUuid(catalog[1]), data.hidden)); }
   if (path === "/api/admin/contents" && method === "GET") return json({ items: await db.select().from(s.culturalItems).orderBy(s.culturalItems.contentKey, s.culturalItems.language), bridges: await db.select().from(s.culturalBridges) });
   if (path === "/api/admin/contents" && method === "POST") return json({ item: await saveContent(db, staff, await body(request, contentSchema)) }, 201);
   const content = path.match(/^\/api\/admin\/contents\/([\w-]+)$/);

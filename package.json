@@ -16,6 +16,7 @@
     "db:generate": "drizzle-kit generate",
     "db:migrate": "node scripts/database.ts migrate",
     "db:seed": "node scripts/database.ts seed",
+    "db:catalog": "node scripts/database.ts catalog",
     "kiosk:enroll": "node scripts/database.ts enroll",
     "db:cleanup": "node scripts/database.ts cleanup",
     "check:kiosk-budget": "node scripts/kiosk-budget.mjs",

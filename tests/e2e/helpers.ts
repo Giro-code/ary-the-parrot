@@ -1,4 +1,18 @@
 import { expect, type Page } from "@playwright/test";
+import type { Item } from "../../src/components/types";
+
+// The catalog is paginated; fixtures must not assume a named record is on page one.
+export async function publishedItems(page: Page, locale = "es") {
+  const items: (Item & { contentKey: string })[] = [];
+  for (let offset = 0; offset <= 10000; offset += 50) {
+    const response = await page.request.get(`/api/cultural/items?locale=${locale}&offset=${offset}&limit=50`);
+    expect(response.ok()).toBe(true);
+    const result = await response.json() as { items: (Item & { contentKey: string })[] };
+    items.push(...result.items);
+    if (result.items.length < 50) return items;
+  }
+  throw new Error("Catalog fixture pagination exceeded its bound");
+}
 
 export const recoveryTitle = {
   es: "¿Ya hablaste con Ary? Recupera tu conversación.",

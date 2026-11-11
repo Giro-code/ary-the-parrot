@@ -2,7 +2,7 @@ import { test, expect, type Page } from "@playwright/test";
 import { mkdir } from "node:fs/promises";
 import { randomUUID } from "node:crypto";
 import { askText, mockSpeech, startChat } from "./voice-helpers";
-import { questionField } from "./helpers";
+import { publishedItems, questionField } from "./helpers";
 const evidence = "docs/screenshots/stage6";
 test.beforeEach(async ({ page, context }) => { await context.setExtraHTTPHeaders({ "x-forwarded-for": `stage6-${randomUUID()}` }); await mockSpeech(page, 2); });
 async function capture(page: Page, name: string) {
@@ -11,8 +11,8 @@ async function capture(page: Page, name: string) {
   await page.screenshot({ path: `${evidence}/${name}.png`, fullPage: true, animations: "disabled" });
 }
 async function mockAsk(page: Page) {
-  const { items } = await (await page.request.get("/api/cultural/items?locale=es")).json();
-  const item = items.find((row: { title: string }) => /merengue/i.test(row.title)) || items[0];
+  const items = await publishedItems(page);
+  const item = items.find(row => row.contentKey === "merengue")!;
   expect(item.image).toBeDefined();
   await page.route("**/api/voice/ask", route => route.fulfill({ json: { messageId: randomUUID(), transcript: "Cuéntame sobre el merengue", displayText: "El merengue es música y baile de República Dominicana.", spokenText: "El merengue es música y baile de República Dominicana.", intent: "culture", citedItemIds: [item.id], followUps: [], confidence: .9, mode: "gemini", handoff: false, preferences: { locale: "es", countryDeclared: null, interests: ["music"] }, sources: [{ id: item.id, title: item.title, summary: item.summary, url: item.sourceUrl, editor: item.editor, image: item.image, mapsUrl: item.mapsUrl }] } }));
 }

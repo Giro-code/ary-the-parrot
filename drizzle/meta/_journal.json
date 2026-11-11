@@ -43,6 +43,7 @@
       "when": 1794366439358,
       "tag": "0005_stage9_places_media",
       "breakpoints": true
-    }
+    },
+    { "idx": 6, "version": "7", "when": 1794420000000, "tag": "0006_stage10b_catalog", "breakpoints": true }
   ]
 }

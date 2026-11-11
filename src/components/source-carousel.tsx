@@ -27,7 +27,7 @@ export function SourceCarousel({ sources, locale, kiosk, directions = false, fir
       if (node && multiple) setSelected(Math.round(node.scrollLeft / ((node.children[1] as HTMLElement).offsetLeft - (node.children[0] as HTMLElement).offsetLeft)));
     }}>
       {sources.map((source, index) => <article className="chat-card" key={source.id} aria-label={multiple ? `${index + 1} / ${sources.length} · ${source.title}` : undefined}>
-        <ItemPhoto image={source.image} locale={locale} kiosk={kiosk} first={first && index === 0} />
+        <ItemPhoto image={source.image} gallery={sources.length === 1 ? source.gallery : undefined} locale={locale} kiosk={kiosk} first={first && index === 0} />
         <h2>{source.title}</h2><p>{source.summary}</p>
         {directions && source.location && <p className="record-location"><Icon kind="pin" />{source.location}</p>}
         {directions && <MapsLink url={source.mapsUrl} locale={locale} kiosk={kiosk} />}

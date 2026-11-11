@@ -179,21 +179,22 @@ export async function handoffStatus(db: Database, sourceId: string, now = new Da
   return { status: !qr ? "none" : qr.usedAt ? "redeemed" : qr.invalidatedAt ? qr.status : +qr.expiresAt <= +now ? "expired" : "pending" };
 }
 export async function listItems(db: Database, locale: Locale, offset = 0, limit = 12) {
-  return db.select().from(s.culturalItems).where(and(eq(s.culturalItems.status, "published"), eq(s.culturalItems.language, locale))).orderBy(s.culturalItems.contentKey).limit(limit).offset(offset);
+  return db.select().from(s.culturalItems).where(and(eq(s.culturalItems.status, "published"), isNull(s.culturalItems.hiddenAt), eq(s.culturalItems.language, locale))).orderBy(s.culturalItems.contentKey).limit(limit).offset(offset);
 }
 export async function localizeItems(db: Database, items: CulturalItem[], locale: Locale): Promise<CulturalItem[]> {
   if (!items.length || items.every(item => item.language === locale)) return items;
-  const translations = await db.select().from(s.culturalItems).where(and(eq(s.culturalItems.status, "published"), eq(s.culturalItems.language, locale), inArray(s.culturalItems.contentKey, items.map(item => item.contentKey))));
+  items = items.filter(item => !item.hiddenAt);
+  const translations = await db.select().from(s.culturalItems).where(and(eq(s.culturalItems.status, "published"), isNull(s.culturalItems.hiddenAt), eq(s.culturalItems.language, locale), inArray(s.culturalItems.contentKey, items.map(item => item.contentKey))));
   // Keep IDs stable for saved records, citations and existing public links.
   return items.map(item => ({ ...(translations.find(row => row.contentKey === item.contentKey) || item), id: item.id }));
 }
 export async function findItem(db: Database, id: string) {
-  const [item] = await db.select().from(s.culturalItems).where(and(eq(s.culturalItems.id, id), eq(s.culturalItems.status, "published")));
+  const [item] = await db.select().from(s.culturalItems).where(and(eq(s.culturalItems.id, id), isNull(s.culturalItems.hiddenAt), eq(s.culturalItems.status, "published")));
   if (!item) throw new AppError("item_not_found", 404);
   return item;
 }
 export function rankItems(items: CulturalItem[], preferences: Pick<Preferences, "locale" | "interests">) {
-  return items.filter(item => item.language === preferences.locale).map(item => {
+  return items.filter(item => !item.hiddenAt && item.language === preferences.locale).map(item => {
     const matches = preferences.interests.filter(interest => item.tags.includes(interest));
     const rationale = recommendationRationale(preferences.locale, matches);
     return { item, score: matches.length * 10, rationale, evidenceIds: [item.id], sourceUrl: item.sourceUrl, sourceCheckedAt: item.sourceCheckedAt };
@@ -203,7 +204,7 @@ export async function recommend(db: Database, session: Session) {
   return db.transaction(async tx => {
   const [active] = await tx.update(s.visitorSessions).set({ lastActiveAt: new Date() }).where(and(eq(s.visitorSessions.id, session.id), eq(s.visitorSessions.status, "active"), gt(s.visitorSessions.expiresAt, new Date()))).returning();
   if (!active) throw new AppError("session_required", 401);
-  const ranked = rankItems(await listItems(tx, active.locale as Locale, 0, 100), { locale: active.locale as Locale, interests: active.interests as Interest[] });
+  const ranked = rankItems(await listItems(tx, active.locale as Locale, 0, 1000), { locale: active.locale as Locale, interests: active.interests as Interest[] });
   if (ranked.length) await tx.insert(s.recommendations).values(ranked.map(row => ({ sessionId: session.id, culturalItemId: row.item.id, rationale: row.rationale, evidenceIds: row.evidenceIds })));
   await recordEvent(tx, "recommendation_shown", { count: ranked.length, mode: "rules" }, session);
   // Bridges supply sourced context only. They never affect scores.
@@ -214,7 +215,7 @@ export async function recommend(db: Database, session: Session) {
 export async function listSaved(db: Database, sessionId: string) {
   const [session] = await db.select().from(s.visitorSessions).where(eq(s.visitorSessions.id, sessionId));
   const owner = session?.ownerUserId ? eq(s.savedExperiences.visitorId, session.ownerUserId) : eq(s.savedExperiences.sessionId, sessionId);
-  return db.select({ saved: s.savedExperiences, item: s.culturalItems }).from(s.savedExperiences).innerJoin(s.culturalItems, eq(s.savedExperiences.itemId, s.culturalItems.id)).where(and(owner, inArray(s.savedExperiences.state, ["saved", "visited"]))).orderBy(desc(s.savedExperiences.createdAt)).limit(100);
+  return db.select({ saved: s.savedExperiences, item: s.culturalItems }).from(s.savedExperiences).innerJoin(s.culturalItems, eq(s.savedExperiences.itemId, s.culturalItems.id)).where(and(owner, isNull(s.culturalItems.hiddenAt), inArray(s.savedExperiences.state, ["saved", "visited"]))).orderBy(desc(s.savedExperiences.createdAt)).limit(100);
 }
 export async function saveItem(db: Database, sessionId: string, itemId: string) {
   await findItem(db, itemId);

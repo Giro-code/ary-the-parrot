@@ -6,13 +6,15 @@ import { baseUrl } from "../src/server/config.ts";
 import { cleanupDatabase } from "../src/db/cleanup.ts";
 import { mkdir, writeFile } from "node:fs/promises";
 import { loadCliEnv } from "./cli-env.ts";
+import { importCatalog, readCatalog } from "../src/db/catalog-import.ts";
 let connection: Awaited<ReturnType<typeof connectDatabase>> | undefined;
 try {
   loadCliEnv();
   const command = process.argv[2];
-  if (!["migrate", "seed", "enroll", "cleanup"].includes(command)) throw new Error("Invalid command");
+  if (!["migrate", "seed", "catalog", "enroll", "cleanup"].includes(command)) throw new Error("Invalid command");
   connection = await connectDatabase();
   if (command === "migrate") { await migrateDatabase(connection.db); console.log(`Migrations applied (${connection.mode}).`); }
+  else if (command === "catalog") console.log(JSON.stringify(await importCatalog(connection.db, await readCatalog(), { production: process.env.NODE_ENV === "production" })));
   else if (command === "seed") {
     const checks = await checkSources();
     await seedDatabase(connection.db, checks, { production: process.env.NODE_ENV === "production" });
@@ -28,6 +30,6 @@ try {
     // Intentional operator output, never application logging. One use, ten minutes.
     console.log(`Device: ${result.deviceId}\nActivation (private, one use, 10 minutes): ${baseUrl()}/kiosco/activar?code=${result.code}`);
   } else if (command === "cleanup") { await cleanupDatabase(connection.db); console.log("Expired operational data cleaned."); }
-  else throw new Error("Use migrate, seed, enroll or cleanup");
+  else throw new Error("Use migrate, seed, catalog, enroll or cleanup");
 } catch { console.error("Database command failed. Check configuration and migrations; credentials omitted."); process.exitCode = 1; }
 finally { if (connection) { try { await connection.close(); } catch { console.error("Database close failed; credentials omitted."); process.exitCode = 1; } } }

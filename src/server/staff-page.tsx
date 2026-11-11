@@ -7,7 +7,7 @@ import { StaffShell } from "../components/staff-shared";
 import { StaffOverview } from "../components/staff-overview";
 import { AdminWorkspace } from "../components/admin-workspace";
 import { PartnerWorkspace } from "../components/partner-workspace";
-const titles: Record<string, string> = { "": "Analítica agregada", dispositivos: "Dispositivos", contenidos: "Contenidos culturales", organizaciones: "Organizaciones y membresías", campanas: "Campañas", solicitudes: "Solicitudes B2B", privacidad: "Solicitudes de borrado", ofertas: "Ofertas y experiencias", leads: "Solicitudes consentidas" };
+const titles: Record<string, string> = { "": "Analítica agregada", dispositivos: "Dispositivos", contenidos: "Contenidos culturales", catalogo: "Catálogo", organizaciones: "Organizaciones y membresías", campanas: "Campañas", solicitudes: "Solicitudes B2B", privacidad: "Solicitudes de borrado", ofertas: "Ofertas y experiencias", leads: "Solicitudes consentidas" };
 export async function StaffPage({ section, partner, organizationId }: { section: string; partner?: boolean; organizationId?: string }) {
   let staff: Staff | undefined, memberships: Awaited<ReturnType<typeof staffMemberships>> = [], failure: unknown;
   try {

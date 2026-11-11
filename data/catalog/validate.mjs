@@ -3,7 +3,7 @@ import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 
 const base=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'../..');
-const candidates=JSON.parse(await fs.readFile(path.join(base,'data/catalog/candidates.json'),'utf8'));
+export async function validateCatalog(candidates){
 const errors=[],keys=new Set(),qids=new Set(),tags=new Set(['history','music','food','nature','art','adventure']);
 const kinds=new Set(['place','food','music','tradition','craft','nature','museum','beach','region','species','experience','person']);
 const minimums={tradition:35,food:35,musicArt:20,beach:30,nature:45,place:45,museum:20,experience:20,person:12};
@@ -27,7 +27,7 @@ function webpDimensions(buf){
   offset=pos+size+(size%2);
  }return null;
 }
-let photoCount=0,locations=0,totalReferenced=0;
+let photoCount=0,locations=0,totalReferenced=0;const imageDimensions={};
 check(Array.isArray(candidates),'catalog','array required');
 for(const c of candidates){
  const k=c.key;check(typeof k==='string'&&/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(k),String(k),'invalid key');check(!keys.has(k),k,'duplicate key');keys.add(k);
@@ -57,7 +57,7 @@ for(const c of candidates){
  check(Array.isArray(c.images)&&c.images.length>=1&&c.images.length<=3,k,'1 to 3 licensed photos required');
  for(const im of c.images||[]){photoCount++;bilingual(im.alt,k+'.image.alt');text(im.author,k+'.image.author');check(/^(CC BY(?:-SA)? [1234]\.[05](?: [a-z]{2,})?|CC0 1.0|Public domain)$/i.test(im.license),k,'unsupported license');check(https(im.licenseUrl),k,'license URL must be HTTPS');check(/^https:\/\/commons\.wikimedia\.org\/wiki\/File:/.test(im.sourceUrl),k,'photo source must be Commons file page');
   for(const field of ['file','thumb']){const url=im[field];if(!/^\/assets\/catalog\/[a-z0-9-]+\.webp$/.test(url)){errors.push(k+': unsafe local image path');continue;}
-   try{const buf=await fs.readFile(path.join(base,'public',url));totalReferenced+=buf.length;check(buf.length>0&&buf.length<400000,k,'image must be under 400 KB');const d=webpDimensions(buf);check(d&&d.w<=(field==='thumb'?480:1200)&&d.h<=(field==='thumb'?480:1200),k,'invalid WebP dimensions');}catch{errors.push(k+': missing '+url);}
+   try{const buf=await fs.readFile(path.join(base,'public',url));totalReferenced+=buf.length;check(buf.length>0&&buf.length<400000,k,'image must be under 400 KB');const d=webpDimensions(buf);imageDimensions[url]=d;check(d&&d.w<=(field==='thumb'?480:1200)&&d.h<=(field==='thumb'?480:1200),k,'invalid WebP dimensions');}catch{errors.push(k+': missing '+url);}
   }
  }
  text(c.reviewNotes,k+'.reviewNotes');
@@ -73,5 +73,11 @@ for(const [category,min] of Object.entries(minimums))check(categoryCounts[catego
 check(candidates.filter(c=>c.kind==='region').length<=40,'catalog','more than 40 regions');
 check(candidates.filter(c=>c.kind==='species').length<=20,'catalog','more than 20 species');
 const result={result:errors.length?'FAIL':'PASS',checkedAt:new Date().toISOString(),entries:candidates.length,categoryCounts,minimums,photos:photoCount,locations,coveredProvinces:requiredProvinces.filter(p=>presentProvinces.has(p)).length,provinceValues:[...presentProvinces].sort(),imageDirectoryBytes:bytes,referencedImageBytes:totalReferenced,errors};
-await fs.writeFile(path.join(base,'data/catalog/validation.json'),JSON.stringify(result,null,2)+'\n','utf8');
-console.log(JSON.stringify(result,null,2));process.exitCode=errors.length?1:0;
+return {...result,imageDimensions};
+}
+if(process.argv[1]&&path.resolve(process.argv[1])===fileURLToPath(import.meta.url)){
+ const candidates=JSON.parse(await fs.readFile(path.join(base,'data/catalog/candidates.json'),'utf8'));
+ const result=await validateCatalog(candidates);
+ await fs.writeFile(path.join(base,'data/catalog/validation.json'),JSON.stringify(result,null,2)+'\n','utf8');
+ console.log(JSON.stringify(result,null,2));process.exitCode=result.errors.length?1:0;
+}

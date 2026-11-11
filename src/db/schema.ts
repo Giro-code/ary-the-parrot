@@ -56,6 +56,10 @@ export const qrHandoffs = pgTable("qr_handoffs", {
   createdAt: created(), attemptCount: integer("attempt_count").notNull().default(0), status: text().notNull().default("pending"),
 }, t => [index("handoff_session").on(t.sourceSessionId), index("handoff_expiry").on(t.expiresAt), check("handoff_attempts", sql`${t.attemptCount} >= 0`)]);
 export const culturalItems = pgTable("cultural_items", {
+  aliases: jsonb().$type<string[]>().notNull().default([]), facts: jsonb().$type<{ text: string; sourceUrl: string }[]>().notNull().default([]),
+  gallery: jsonb().$type<(ImageMetadata & { file: string; thumb: string; illustrative?: boolean })[]>().notNull().default([]),
+  sources: jsonb().$type<{ url: string; editor: string; checkedAt: string }[]>().notNull().default([]),
+  origin: text().$type<"seed" | "catalog">().notNull().default("seed"), hiddenAt: date("hidden_at"),
   id: id(), contentKey: text("content_key").notNull(), type: text().notNull(), title: text().notNull(), summary: text().notNull(),
   validatedDescription: text("validated_description").notNull(), tags: jsonb().$type<string[]>().notNull().default([]),
   language: text().notNull(), country: text().notNull().default("DO"), region: text(), location: jsonb(), imageAsset: text("image_asset"), image: jsonb().$type<ImageMetadata>(),

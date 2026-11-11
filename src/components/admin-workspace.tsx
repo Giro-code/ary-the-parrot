@@ -4,11 +4,13 @@ import { api } from "./api";
 import { DataTable, StaffError, time } from "./staff-shared";
 import { ContentManager } from "./content-manager";
 import type { Role } from "../server/staff";
+import { CatalogManager } from "./catalog-manager";
+export function AdminWorkspace(props: Parameters<typeof LegacyAdminWorkspace>[0]) { return props.section === "catalogo" ? <CatalogManager /> : <LegacyAdminWorkspace {...props} />; }
 type ContentProps = Parameters<typeof ContentManager>[0];
 type OfferRow = { offer: { id: string; title: string; approvedStatus: string; sponsored: boolean }; providerName: string };
 type Data = { items?: ContentProps["items"]; bridges?: ContentProps["bridges"]; devices?: { id: string; locationLabel: string; status: string; lastSeenAt: string | null; firmwareVersion: string | null; lastRobotEvent: { state: string; hardware: string; createdAt: string } | null }[]; organizations?: { id: string; name: string; kind: string; status: string; demo: boolean }[]; memberships?: { id: string; organizationId: string; role: string; status: string; email: string | null }[]; count?: number; campaigns?: { id: string; subject: string; status: string }[]; inquiries?: { id: string; reference: string; status: string; payload: Record<string, string> }[]; jobs?: { id: string; status: string; requestedAt: string; completedAt: string | null }[] };
 const endpoints: Record<string, string> = { dispositivos: "devices", contenidos: "contents", organizaciones: "organizations", campanas: "campaigns", solicitudes: "inquiries", privacidad: "deletions" };
-export function AdminWorkspace({ section, role, marketingEnabled }: { section: string; role: Role; marketingEnabled: boolean }) {
+function LegacyAdminWorkspace({ section, role, marketingEnabled }: { section: string; role: Role; marketingEnabled: boolean }) {
   const [data, setData] = useState<Data | null>(null), [offers, setOffers] = useState<OfferRow[]>([]), [error, setError] = useState<unknown>(null), [busy, setBusy] = useState(false), [loading, setLoading] = useState(true), [message, setMessage] = useState(""), [activation, setActivation] = useState("");
   const [subject, setSubject] = useState(""), [body, setBody] = useState(""), [confirm, setConfirm] = useState(false), [campaignId, setCampaignId] = useState("");
   const disabled = section === "campanas" && !marketingEnabled, canWrite = role !== "analyst";

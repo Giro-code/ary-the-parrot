@@ -32,6 +32,19 @@
 .photo-dialog figure { margin: 0; }
 .photo-dialog figure > img { display: block; width: 100%; height: auto; max-height: calc(100dvh - 190px); object-fit: contain; background: #e8ece3; }
 .photo-dialog .image-credit { font-size: .75rem; }
+.gallery-thumbnails { display: flex; gap: 8px; overflow-x: auto; padding: 4px 0; }
+.ary-app .gallery-thumbnails button { display: flex; flex-direction: column; min-width: 88px; padding: 4px; }
+.gallery-thumbnails img { width: 88px; height: 66px; object-fit: cover; }
+.catalog-filters { flex-wrap: wrap; align-items: end; }
+.catalog-filters label { min-width: 0; max-width: 100%; flex: 1 1 160px; }
+.catalog-filters input, .catalog-filters select { width: 100%; max-width: 100%; }
+.catalog-record { display: grid; grid-template-columns: minmax(140px, 220px) minmax(0, 1fr); gap: 20px; }
+.catalog-record .item-photo { align-self: start; min-width: 0; }
+.catalog-record h2, .catalog-record p, .catalog-record a { overflow-wrap: anywhere; }
+@media (max-width: 600px) {
+  .catalog-record { grid-template-columns: minmax(0, 1fr); gap: 12px; }
+  .catalog-filters label { flex-basis: 100%; }
+}
 @media (max-width: 600px) {
   .source-track .chat-card { padding: 10px; }
   .photo-dialog { padding: 12px; }
