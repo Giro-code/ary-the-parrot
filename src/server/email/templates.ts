@@ -9,7 +9,7 @@ interface Copy { subject: string; preheader: string; title: string; body: string
 // Short, warm copy. Retention and legal details live in the privacy notice, not in the email.
 const copy: Record<Locale, Record<Template, Copy>> = {
   es: {
-    recovery: { subject: "Tu enlace para seguir hablando con Ary", preheader: "Toca el botón y retomamos la conversación donde la dejamos.", title: "¡Hola de nuevo! 🦜", body: "Aquí tienes tu enlace para volver a tus conversaciones y a Mis viajes. Toca el botón y seguimos donde lo dejamos.", cta: "Seguir con Ary", mood: "presentar", expires: true },
+    recovery: { subject: "Tu enlace para seguir hablando con Ary", preheader: "Toca el botón y retomamos la conversación donde la dejamos.", title: "¡Hola de nuevo!", body: "Aquí tienes tu enlace para volver a tus conversaciones y a Mis viajes. Toca el botón y seguimos donde lo dejamos.", cta: "Seguir con Ary", mood: "presentar", expires: true },
     marketing_confirmation: { subject: "¿Confirmas que quieres novedades de Ary?", preheader: "Un toque y te contamos lo mejor de República Dominicana.", title: "¿Seguimos en contacto?", body: "Confirma que quieres recibir de vez en cuando novedades culturales de República Dominicana. Si no confirmas, no te enviaremos nada.", cta: "Sí, quiero novedades", mood: "celebrar", expires: true },
     staff_login: { subject: "Acceso del personal · Ary", preheader: "Tu enlace de acceso al panel de Ary.", title: "Acceso del personal", body: "Usa este enlace para entrar al panel de Ary. Si no lo pediste, ignora este correo.", cta: "Entrar al panel", mood: "presentar", expires: true },
     saved_places: { subject: "Tus lugares guardados con Ary", preheader: "Los rincones de República Dominicana que guardaste.", title: "Tus lugares te esperan", body: "Entra para ver los lugares que guardaste en Mis viajes.", cta: "Ver Mis viajes", mood: "mostrar", expires: true },
@@ -21,7 +21,7 @@ const copy: Record<Locale, Record<Template, Copy>> = {
     commercial_admin: { subject: "Nueva solicitud comercial · Ary", preheader: "Hay una nueva solicitud comercial.", title: "Nueva solicitud comercial", body: "Hay una nueva solicitud comercial registrada. Búscala en el panel con esta referencia.", mood: "presentar" },
   },
   en: {
-    recovery: { subject: "Your link to keep talking with Ary", preheader: "Tap the button and we'll pick up where we left off.", title: "Hello again! 🦜", body: "Here's your link back to your conversations and My trips. Tap the button and we'll pick up where we left off.", cta: "Continue with Ary", mood: "presentar", expires: true },
+    recovery: { subject: "Your link to keep talking with Ary", preheader: "Tap the button and we'll pick up where we left off.", title: "Hello again!", body: "Here's your link back to your conversations and My trips. Tap the button and we'll pick up where we left off.", cta: "Continue with Ary", mood: "presentar", expires: true },
     marketing_confirmation: { subject: "Confirm you want news from Ary?", preheader: "One tap and we'll share the best of the Dominican Republic.", title: "Shall we stay in touch?", body: "Confirm you'd like occasional cultural news from the Dominican Republic. If you don't confirm, we won't send anything.", cta: "Yes, send me news", mood: "celebrar", expires: true },
     staff_login: { subject: "Staff access · Ary", preheader: "Your sign-in link for the Ary panel.", title: "Staff access", body: "Use this link to open the Ary panel. If you didn't request it, ignore this email.", cta: "Open the panel", mood: "presentar", expires: true },
     saved_places: { subject: "Your places saved with Ary", preheader: "The corners of the Dominican Republic you saved.", title: "Your places are waiting", body: "Sign in to see the places you saved in My trips.", cta: "See My trips", mood: "mostrar", expires: true },
@@ -112,7 +112,12 @@ export function renderEmail(template: Template, locale: Locale, data: TemplateDa
         </td></tr>${detailRows}${button}
         ${expiry || notYou ? `<tr><td class="pad" style="padding:20px 32px 0;"><p style="margin:0;font-family:${font};font-size:13px;line-height:1.5;color:${C.muted};">🔒 ${escape([expiry, notYou].filter(Boolean).join(" "))}</p></td></tr>` : ""}
         <tr><td class="pad" style="padding:28px 32px 0;"><table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="border-top:1px solid ${C.line};font-size:0;line-height:0;">&nbsp;</td></tr></table></td></tr>
-        <tr><td class="pad" style="padding:16px 32px 28px;font-family:${font};font-size:14px;line-height:1.5;color:${C.ink};">${es ? "Con cariño," : "Warmly,"}<br><strong>Ary</strong> 🦜 <span style="color:${C.muted};">· ${es ? "tu cotorra guía de República Dominicana" : "your Dominican parrot guide"}</span></td></tr>
+        <tr><td class="pad" style="padding:16px 32px 28px;">
+          <table role="presentation" cellpadding="0" cellspacing="0" border="0"><tr>
+            <td valign="middle" style="padding-right:12px;"><img src="${escape(origin)}/assets/email/ary-celebrar.png" width="48" alt="" style="display:block;width:48px;height:auto;border:0;"></td>
+            <td valign="middle" style="font-family:${font};font-size:14px;line-height:1.5;color:${C.ink};">${es ? "Con cariño," : "Warmly,"}<br><strong>Ary</strong> <span style="color:${C.muted};">· ${es ? "tu cotorra guía de República Dominicana" : "your Dominican parrot guide"}</span></td>
+          </tr></table>
+        </td></tr>
       </table>
       <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="max-width:560px;">
         <tr><td align="center" style="padding:20px 16px 0;font-family:${font};font-size:12px;line-height:1.6;color:${C.muted};">
