@@ -11,12 +11,12 @@ export function aryImage(state: RobotState, cards = false, celebrating = false) 
   if (state === "handoff_qr" || cards) return "mostrar";
   return "presentar";
 }
-export function AryStage({ state, locale, cards, celebrating, offlineImageAvailable = false }: { state: RobotState; locale: Locale; cards?: boolean; celebrating?: boolean; offlineImageAvailable?: boolean }) {
+export function AryStage({ state, locale, cards, celebrating, offlineImageAvailable = false, large = false }: { state: RobotState; locale: Locale; cards?: boolean; celebrating?: boolean; offlineImageAvailable?: boolean; large?: boolean }) {
   const selected = aryImage(state, cards, celebrating);
   const images = ["presentar", "pensar", "mostrar", "celebrar", ...(offlineImageAvailable ? ["sin-conexion"] : [])];
   const visible = selected === "sin-conexion" && !offlineImageAvailable ? "pensar" : selected;
-  return <section className={`ary-stage ${state === "speaking" ? "is-speaking" : ""} ${selected === "sin-conexion" && !offlineImageAvailable ? "is-offline-fallback" : ""}`} data-ary-image={selected} aria-label={uiText(locale, "arySStage")}>
-    <div className="ary-portrait" aria-hidden="true">{images.map(name => <Image key={name} src={`/assets/ary/ary-${name}.webp`} alt="" width={160} height={160} sizes="(max-width: 600px) 64px, 96px" preload={name === "presentar"} className={`ary-illustration ${visible === name ? "is-visible" : ""}`} />)}</div>
+  return <section className={`ary-stage ${state === "speaking" ? "is-speaking" : ""} ${selected === "sin-conexion" && !offlineImageAvailable ? "is-offline-fallback" : ""}`} data-voice-state={state} data-ary-image={selected} aria-label={uiText(locale, "arySStage")}>
+    <div className="ary-portrait" aria-hidden="true">{images.map(name => <Image key={name} src={`/assets/ary/ary-${name}.webp`} alt="" width={240} height={240} sizes={large ? "(max-width: 600px) 180px, 240px" : "(max-width: 600px) 64px, 96px"} preload={name === "presentar"} className={`ary-illustration ${visible === name ? "is-visible" : ""}`} />)}</div>
     <p className="ary-stage-status" role="status">{state === "offline" ? uiText(locale, "oopsNoSignalGiveMeAMoment") : state === "error" ? uiText(locale, "letSTryAgainIMHere") : state === "listening" ? uiText(locale, "microphoneActiveIMListening") : state === "thinking" ? uiText(locale, "letMeThink") : state === "speaking" ? uiText(locale, "aryIsSpeaking") : celebrating ? uiText(locale, "lovelyItSYoursToExplore") : uiText(locale, "yourParrotGuideYourOwnPace")}</p>
   </section>;
 }

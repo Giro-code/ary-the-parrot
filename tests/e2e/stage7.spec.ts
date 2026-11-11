@@ -2,6 +2,7 @@ import { test, expect, type Page } from "@playwright/test";
 import { mkdir, readFile } from "node:fs/promises";
 import { randomUUID } from "node:crypto";
 import { mockSpeech } from "./voice-helpers";
+import { switchToChat } from "./stage8-helpers";
 const origin = "http://127.0.0.1:3002", evidence = "docs/screenshots/stage7";
 const headers = { Origin: origin, "X-Ary-Request": "1" };
 test.beforeEach(async ({ page, context }) => {
@@ -49,7 +50,8 @@ test("kiosk ignores MX/cookie/browser, changes language on one mocked voice answ
   await context.setExtraHTTPHeaders({ "x-vercel-ip-country": "MX" }); await context.addCookies([{ name: "ary_lang", value: "es", url: origin }]);
   await page.goto("/kiosco"); await expect(page.locator("html")).toHaveAttribute("lang", "en");
   await expect(page.locator(".voice-header").getByRole("button", { name: "Español" })).toBeVisible();
-  await page.getByRole("button", { name: "Start", exact: true }).click();
+  await switchToChat(page); await page.getByRole("button", { name: "Start", exact: true }).click();
+  await expect(page.locator('.kiosk-content[data-state="conversation"]')).toBeVisible(); await switchToChat(page);
   await expect(page.locator(".chat-message.assistant")).toContainText("¿o prefieres español?");
   await page.route("**/api/voice/ask", route => route.fulfill({ json: { messageId: randomUUID(), transcript: "Cuéntame sobre la música", detectedLanguage: "es", displayText: "Descubramos la música dominicana.", spokenText: "Descubramos la música dominicana.", intent: "preferences", citedItemIds: [], followUps: [], confidence: 1, mode: "demo", handoff: false, sources: [], preferences: { locale: "es", countryDeclared: null, interests: ["music"] } } }));
   await page.getByRole("button", { name: "Speak to Ary" }).click(); await page.getByRole("button", { name: "I agree · Record" }).click();
@@ -62,7 +64,7 @@ for (const phoneLanguage of ["es-ES", "en-US"]) test(`QR adopts ${phoneLanguage}
   const activation = await page.request.post("/api/kiosk/activate", { headers, data: { code: fixture.activationCodes[phoneLanguage === "es-ES" ? 6 : 7] } }); expect(activation.status(), await activation.text()).toBe(200);
   await page.goto("/kiosco");
   // The kiosk clears any previous session on load; create ours only after it is ready.
-  await expect(page.getByRole("button", { name: "Start", exact: true })).toBeEnabled({ timeout: 20000 });
+  await expect(page.getByRole("button", { name: "Talk to Ary", exact: true })).toBeEnabled({ timeout: 20000 });
   await page.request.post("/api/visitor/session", { headers, data: { locale: phoneLanguage === "es-ES" ? "en" : "es" } });
   await page.request.patch("/api/visitor/preferences", { headers, data: { locale: phoneLanguage === "es-ES" ? "en" : "es", countryDeclared: "BO", interests: ["music"] } });
   const { items } = await (await page.request.get("/api/cultural/items?locale=en")).json();

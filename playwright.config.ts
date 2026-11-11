@@ -10,6 +10,7 @@ export default defineConfig({
   reporter: [["list"], ["html", { open: "never" }]],
   use: { locale: "es-ES", browserName: "chromium", trace: "retain-on-failure", screenshot: "only-on-failure", launchOptions: { args: ["--use-fake-device-for-media-stream", "--use-fake-ui-for-media-stream"] } },
   projects: [
+    { name: "stage9d", testMatch: "stage9d.spec.ts", fullyParallel: false, timeout: 60000, use: { baseURL: "http://127.0.0.1:3002", permissions: ["microphone"] } },
     { name: "stage9c", testMatch: "stage9c.spec.ts", fullyParallel: false, timeout: 60000, use: { baseURL: "http://127.0.0.1:3002" } },
     { name: "stage9b", testMatch: "stage9b.spec.ts", fullyParallel: false, timeout: 180000, use: { baseURL: "http://127.0.0.1:3002" } },
     { name: "stage9", testMatch: "stage9.spec.ts", fullyParallel: false, timeout: 60000, use: { baseURL: "http://127.0.0.1:3002" } },

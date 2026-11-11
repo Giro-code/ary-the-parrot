@@ -103,7 +103,7 @@ test("simulated local SSE presence welcomes without creating a visitor session",
     stream!.write('data: {"type":"sensor","sensor":"presence","value":true}\n\n');
     await expect(page.getByText("¡Bienvenido! Soy Ary.", { exact: false })).toBeVisible();
     await expect.poll(() => received.some(value => JSON.stringify(value).includes('"welcome"'))).toBe(true);
-    expect(sessions).toBe(0); await expect(page.getByRole("button", { name: "Iniciar", exact: true })).toBeEnabled();
+    expect(sessions).toBe(0); await expect(page.getByRole("button", { name: "Hablar con Ary", exact: true })).toBeEnabled();
   } finally {
     await page.goto("about:blank"); stream?.end(); server.closeAllConnections(); await new Promise<void>(resolve => server.close(() => resolve()));
   }

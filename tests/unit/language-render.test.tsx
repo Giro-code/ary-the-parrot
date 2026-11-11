@@ -17,7 +17,7 @@ test("server-rendered app content is English immediately, with language controls
     [<AccountPrivacy key="account" marketingEnabled={false} sharingEnabled={false} />, "Privacy and your data"],
     [<Recovery key="recovery" initialLocale="en" marketingEnabled={false} />, "Pick up where you left off"],
     [<PublicCulture key="culture" items={{}} />, "This item is unavailable."],
-    [<Kiosk key="kiosk" />, "Start"],
+    [<Kiosk key="kiosk" />, "Talk to Ary"],
   ] as const;
   for (const [component, expected] of cases) {
     const html = renderToStaticMarkup(<LocaleProvider initialLocale="en">{component}</LocaleProvider>);

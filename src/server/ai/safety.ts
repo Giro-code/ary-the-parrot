@@ -16,6 +16,10 @@ export function cleanSpokenText(text: string) {
 }
 export function spokenText(display: string, suggested: string, sensitive: boolean, greeting = false) {
   const caption = cleanSpokenText(display), proposed = cleanSpokenText(suggested);
-  const clean = sensitive || normalize(proposed) !== normalize(caption) ? caption : proposed;
+  const selected = sensitive || normalize(proposed) !== normalize(caption) ? caption : proposed;
+  // Captions retain the complete answer; speech omits links and lengthy lists.
+  const withoutLinks = selected.replace(/https?:\/\/\S+|www\.\S+/giu, "").trim();
+  const preview = withoutLinks.split(/\n\s*(?:[-*•]|\d+[.)])\s+/u).slice(0, 2).join(" ").replace(/\s+/g, " ").trim();
+  const clean = preview.length <= 400 ? preview : (preview.slice(0, 397).match(/^.*[.!?](?=\s|$)/u)?.[0] || preview.slice(0, 397).replace(/\s+\S*$/, "")) + "…";
   return !sensitive && greeting ? `¡rrrr! ${clean}` : clean;
 }

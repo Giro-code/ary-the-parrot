@@ -80,7 +80,8 @@ for (const pass of [1,2]) test(`visual pass ${pass}: landing, email, chat, trips
     await page.context().clearCookies();
     const fixture=JSON.parse(await readFile('.cache/stage2-fixture.json','utf8'));
     const response=await page.request.post('/api/kiosk/activate',{headers:{Origin:origin,'X-Ary-Request':'1'},data:{code:fixture.activationCodes[8+(pass-1)*2+(width===1440?1:0)]}}); expect(response.status()).toBe(200);
-    await page.goto('/kiosco'); await page.locator('.voice-header').getByRole('button',{name:'Español',exact:true}).click(); await page.getByRole('button',{name:'Iniciar',exact:true}).click();
+    await page.goto('/kiosco'); await page.locator('.voice-header').getByRole('button',{name:'Español',exact:true}).click(); await page.getByRole('button',{name:'Escribir',exact:true}).click(); await page.getByRole('button',{name:'Iniciar',exact:true}).click();
+    await expect(page.locator('.kiosk-content[data-state="conversation"]')).toBeVisible();
     await askText(page,'¿Cómo llego a Altos de Chavón?',{ expectComposer: false }); await expect(page.locator('.inline-handoff')).toBeVisible(); await expect(page.locator('.confirmation-code')).toHaveText(/^\d{2}$/); await expect(page.locator('[data-ary-image="mostrar"]')).toBeVisible(); await capture(page,`pass${pass}-kiosk-qr-${width}`);
     await page.getByRole('button',{name:'Terminar sin continuar',exact:true}).click();
   }

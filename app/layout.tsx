@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import "./stage8.css";
 import "./stage9.css";
+import "./stage9d.css";
 import { requestLocale } from "../src/server/locale";
 import { LocaleProvider } from "../src/components/locale-provider";
 

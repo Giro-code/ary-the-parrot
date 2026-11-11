@@ -106,7 +106,7 @@ for (const pass of [1, 2]) test(`visual pass ${pass}: chat, dialog, Maps, public
     await page.goto("/mi-cultura"); await page.reload(); await expect(page.locator(".cultural-card .item-photo")).toBeVisible(); await capture(page, `pass${pass}-trips-${width}`);
     await page.goto(`/cultura/${cards[0].id}`); await page.reload(); await expect(page.locator(".photo-large")).toBeVisible(); await capture(page, `pass${pass}-public-${width}`);
     await page.context().clearCookies(); await page.goto("/kiosco"); await page.reload();
-    await expect(page.getByRole("button", { name: "Start", exact: true })).toBeVisible();
+    await expect(page.getByRole("button", { name: "Talk to Ary", exact: true })).toBeVisible();
     await startChat(page); await simulateAnswer(page, cards.slice(0, 1));
     await askText(page, "Samaná"); await expect(page.locator(".chat-card .item-photo img")).toBeVisible(); await expect(page.locator(".chat-card a")).toHaveCount(0); await capture(page, `pass${pass}-kiosk-${width}`);
     await page.unroute("**/api/chat");

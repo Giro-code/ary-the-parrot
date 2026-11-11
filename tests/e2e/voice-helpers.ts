@@ -1,5 +1,5 @@
 import { expect, type Page } from "@playwright/test";
-import { emailStart } from "./stage8-helpers";
+import { emailStart, switchToChat } from "./stage8-helpers";
 import { questionField } from "./helpers";
 
 export function wav(seconds = .15) {
@@ -12,6 +12,7 @@ export async function mockSpeech(page: Page, seconds = .15) {
   await page.route("**/api/voice/speak", route => route.fulfill({ contentType: "audio/wav", body: wav(seconds) }));
 }
 export async function askText(page: Page, message: string, { expectComposer = true } = {}) {
+  await switchToChat(page);
   const field = questionField(page);
   await expect(field).toBeVisible();
   await expect(field).toBeEnabled(); await field.fill(message);
@@ -27,7 +28,10 @@ export async function startChat(page: Page, mobile = false) {
   else {
   await page.goto(mobile ? "/experiencia" : "/kiosco");
   if (!mobile) await page.locator(".voice-header").getByRole("button", { name: "Español", exact: true }).click();
+  await switchToChat(page);
   await page.getByRole("button", { name: "Iniciar", exact: true }).click();
+  await expect(page.locator('.kiosk-content[data-state="conversation"]')).toBeVisible();
+  await switchToChat(page);
   }
   await page.locator(".chat-quick-replies").getByRole("button", { name: "Español", exact: true }).click();
   await expect(page.getByRole("button", { name: "Música", exact: true })).toBeEnabled();
