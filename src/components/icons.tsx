@@ -1,10 +1,11 @@
 import type { SVGProps } from "react";
-export type IconName = "trips" | "conversations" | "privacy" | "save" | "mic" | "keyboard" | "sound" | "mute" | "exit" | "globe" | "send" | "stop" | "open" | "mail" | "clock";
+export type IconName = "trips" | "conversations" | "privacy" | "save" | "mic" | "keyboard" | "sound" | "mute" | "exit" | "globe" | "send" | "stop" | "open" | "mail" | "clock" | "pin";
 export function Icon({ kind, label, ...props }: SVGProps<SVGSVGElement> & { kind: IconName; label?: string }) {
   const paths: Record<IconName, React.ReactNode> = {
+    pin: <><path d="M20 10c0 6-8 11-8 11S4 16 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="3"/></>,
     mail: <><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 6 9 7 9-7"/></>,
     clock: <><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></>,
-    trips: <><rect x="4" y="7" width="16" height="13" rx="2"/><path d="M9 7V4h6v3M8 10v7m8-7v7M7 20v2m10-2v2"/></>,
+    trips: <><rect x="3" y="3" width="18" height="18" rx="3" strokeDasharray="2 2"/><path d="M11 18q3-4 2-9M13 9Q8 5 6 11q4-2 7-2Zm0 0q2-5 5-2l1 4q-3-3-6-2ZM6 18q3-2 6 0t6 0"/></>,
     conversations: <><path d="M4 4h13v10H8l-4 3V4Z"/><path d="M8 18h8l4 3V9"/></>,
     privacy: <><path d="m12 3 8 3v6c0 4-4 7-8 9-4-2-8-5-8-9V6l8-3Z"/><path d="m8 12 3 3 5-6"/></>,
     save: <path d="M6 3h12v18l-6-4-6 4V3Z"/>,

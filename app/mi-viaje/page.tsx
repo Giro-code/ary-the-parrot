@@ -1,3 +1,5 @@
-export const dynamic = "force-dynamic";
-import { Trip } from "../../src/components/trip";
-export default function TripPage() { return <Trip sharingEnabled={process.env.FEATURE_ENABLE_PARTNER_SHARING === "true"} />; }
+import { permanentRedirect } from "next/navigation";
+
+export default function LegacyTripPage() {
+  permanentRedirect("/mi-cultura");
+}

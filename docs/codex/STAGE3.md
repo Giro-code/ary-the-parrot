@@ -73,7 +73,7 @@ Plantillas:
 
 ## Cuenta opcional y enlace mágico (Flujo B)
 
-Botón **«Guardar mi experiencia y recibir un enlace por correo»** en `/experiencia` y `/mi-viaje`. Lleva a un formulario en `/reingresar` (o en un modal) con:
+Botón **«Guardar mi experiencia y recibir un enlace por correo»** en `/experiencia` y `/mi-cultura`. Lleva a un formulario en `/reingresar` (o en un modal) con:
 
 - El email.
 - Una explicación clara de la finalidad, la conservación y la frecuencia.
@@ -91,7 +91,7 @@ Verificación y sesión:
 
 - `/auth/verify?token=…` muestra un botón de confirmación. El `POST` a `/api/auth/verify-link` consume el token de forma atómica y crea o vincula `visitor_accounts`. **Solo en ese momento** se considera propietario a quien controla el correo.
 - Al verificar: rota la sesión (cookie nueva), vincula la sesión anónima actual al `ownerUserId`, fusiona los guardados sin duplicados y redirige limpiando la URL.
-- Tras verificar, el visitante recupera Mi viaje desde **otro dispositivo**.
+- Tras verificar, el visitante recupera Mi cultura desde **otro dispositivo**.
 - Conocer el correo no da acceso. El enlace no incluye datos.
 
 ## Consentimientos y privacidad
@@ -150,7 +150,7 @@ Vitest con PGlite:
 
 Playwright:
 
-- Flujo B completo en dry-run: guardar → correo en `/dev/outbox` → abrir el enlace en otro contexto → recuperar Mi viaje.
+- Flujo B completo en dry-run: guardar → correo en `/dev/outbox` → abrir el enlace en otro contexto → recuperar Mi cultura.
 - Formulario corporativo:
   - Envío con referencia.
   - Error con el backend caído, con el TXT disponible.

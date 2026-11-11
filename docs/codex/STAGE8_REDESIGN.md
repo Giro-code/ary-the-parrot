@@ -38,9 +38,9 @@ Capturas resumidas:
    Al pedir el correo debe aparecer **Ary saludando** y un **SVG bonito de un sobre/correo**, explicando que el correo es para **dar seguimiento a las conversaciones**.
 6. **QR en el kiosco.** Si en la conversación se detecta una **solicitud de llegar a algún sitio** (cómo llego, dónde queda, quiero ir), Ary presenta el **QR** para seguir esa misma conversación en el teléfono.
    - Esto **no** debe pasar en la web, donde ya hay correo: el visitante ya está en su dispositivo.
-   - En la web, en su lugar, Ary ofrece guardar el lugar en «Mis viajes».
+   - En la web, en su lugar, Ary ofrece guardar el lugar en «Mi cultura».
 7. **Faltan iconos SVG** para identificar secciones:
-   - «Mi viaje» pasa a **«Mis viajes»**;
+   - La colección se presenta como **«Mi cultura»**;
    - «Mis datos» pasa a **«Mis conversaciones»**.
 8. **Landing:**
    - Cambiar las flechas (→ ↗) por **otros SVG**.
@@ -59,7 +59,7 @@ Capturas resumidas:
 
 **Estructura tipo app de mensajería.**
 
-- Cabecera compacta: logo, «Mis viajes», «Mis conversaciones» con sus iconos y el selector EN/ES discreto.
+- Cabecera compacta: logo, «Mi cultura», «Mis conversaciones» con sus iconos y el selector EN/ES discreto.
 - La lista de mensajes ocupa **todo el alto restante** con scroll de página o del contenedor principal, **nunca** una caja pequeña con scroll interno dentro de la página.
 - Barra de entrada fija abajo con el micrófono, que incluye `safe-area-inset-bottom` en iOS.
 - Usa `100dvh` y prueba Safari iOS y Chrome Android en las anchuras.
@@ -81,7 +81,7 @@ Capturas resumidas:
 
 - Ary saludando (`ary-presentar.webp`) y un **SVG propio de un sobre** con un detalle cultural sutil, por ejemplo un sello con la cotorra o el mar Caribe.
   - Hecho a mano en SVG inline, accesible (`role="img"` y `aria-label`) y con los colores de la marca.
-- Texto: Ary pide tu correo para **guardar y darte seguimiento a tus conversaciones y viajes**.
+- Texto: Ary pide tu correo para **guardar y darte seguimiento a tus conversaciones y colección cultural**.
 - Campo de correo y casillas:
   - **Obligatoria y desmarcada:** «Acepto los Términos y Condiciones y la Política de Privacidad», con enlaces.
   - **Opcional y desmarcada:** «Quiero recibir novedades y promociones de Ary por correo».
@@ -151,18 +151,18 @@ Hoy, si la pregunta no casa con una ficha publicada, Ary cae en «Respuestas de 
   - Ary responde brevemente y **presenta el QR dentro del chat** con el código de 2 dígitos: «Te paso esto a tu teléfono para que sigas la conversación y llegues fácil».
   - La conversación y el lugar viajan al teléfono con el mecanismo seguro existente.
   - Ary pone la imagen `ary-mostrar`.
-- **En la web**, sin QR: ofrece «Guardar en Mis viajes» y, si hay ficha, «Abrir».
+- **En la web**, sin QR: ofrece «Guardar en Mi cultura» y, si hay ficha, «Abrir».
 - Nunca des indicaciones de ruta inventadas ni enlaces de mapas generados por la IA. Si hay una ficha con ubicación, se muestra la de la ficha.
 
-## 5. «Mis viajes» y «Mis conversaciones»
+## 5. «Mi cultura» y «Mis conversaciones»
 
-- **«Mi viaje» → «Mis viajes»** (ES) / «My trips» (EN), con su icono SVG.
+- **«Mi cultura»** (ES) / «My culture» (EN), con su icono SVG.
 - **«Mis datos» → «Mis conversaciones»** / «My conversations», con su icono SVG.
   - Con correo verificado y consentimiento `conversation_history`, se guardan las conversaciones del visitante en la base de datos.
   - Cifradas con la clave existente, con retención configurable `CONVERSATION_RETENTION_DAYS` (por defecto 90) y borrado por el cron de limpieza.
   - La página lista las conversaciones (fecha y primer mensaje), permite abrir una, **continuarla** y borrarla.
   - Lo que hoy era «Mis datos» (exportar, borrar cuenta, consentimientos) queda como sección «Privacidad y datos» dentro, o accesible desde ahí.
-- **Iconos SVG propios**, coherentes, de trazo y en línea, accesibles: viajes (maleta o mapa con pin), conversaciones (burbujas), privacidad (escudo), guardar (marcador), micrófono, teclado, altavoz, salir, idioma (globo).
+- **Iconos SVG propios**, coherentes, de trazo y en línea, accesibles: cultura (sello caribeño con palma), conversaciones (burbujas), privacidad (escudo), guardar (marcador), micrófono, teclado, altavoz, salir, idioma (globo).
   - Créalos como componentes SVG en `src/components/icons.tsx`, sin librerías de iconos pesadas.
 - Actualiza `/privacidad`, `docs/ARY_SECURITY_AND_PRIVACY.md` y `docs/PRIVACY_COMPLIANCE_REVIEW.md`: ahora se guardan conversaciones con consentimiento; finalidad, retención y derechos.
 
@@ -233,7 +233,7 @@ Simplifica lo que sobre.
   - «Mis conversaciones» lista y continúa;
   - kiosco: «¿cómo llego a Altos de Chavón?» → QR en el chat;
   - landing nueva: «Habla con Ary» lleva a `/experiencia`, sin la palabra «kiosco» visible y con créditos de imágenes visibles.
-- **Capturas** en `docs/screenshots/stage8/` a 390 y 1440 px de: landing ES y EN, pantalla de correo, chat, Mis viajes, Mis conversaciones y kiosco con QR.
+- **Capturas** en `docs/screenshots/stage8/` a 390 y 1440 px de: landing ES y EN, pantalla de correo, chat, Mi cultura, Mis conversaciones y kiosco con QR.
 - **Comprobaciones:** `lint`, `typecheck`, `test` y `build` deben pasar, o documenta el error exacto del sandbox. Hay **dos** configuraciones de Playwright: `playwright.config.ts` y `playwright.stage7.config.ts`. Si puedes, integra la de stage7 como proyecto de la principal sin conflicto de puertos.
 
 ## Restricciones

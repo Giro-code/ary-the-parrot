@@ -2,6 +2,10 @@ import { readFileSync } from "node:fs";
 import { expect, test } from "vitest";
 import config from "../../next.config";
 
+test("legacy collection page redirects permanently to Mi cultura", async () => {
+  expect(await config.redirects!()).toContainEqual({ source: "/mi-viaje", destination: "/mi-cultura", permanent: true });
+});
+
 test("rewrite de portada precede a los archivos y conserva la URL pública", async () => {
   expect(await config.rewrites!()).toMatchObject({
     beforeFiles: [{ source: "/favicon.ico", destination: "/site/favicon.svg" }],

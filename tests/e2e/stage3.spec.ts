@@ -28,14 +28,14 @@ async function capture(page: Page, name: string) {
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
   await page.screenshot({ path: `${evidence}/${name}.png`, fullPage: true, animations: "disabled" });
 }
-test("Flow B: save, dry-run outbox, confirm on a different device and recover My trips", async ({ page, browser }) => {
+test("Flow B: save, dry-run outbox, confirm on a different device and recover My culture", async ({ page, browser }) => {
   await emailStart(page);
   await page.locator(".chat-quick-replies").getByRole("button", { name: "Español", exact: true }).click();
   await askText(page, "Cuéntame sobre el mangú");
   const mangu = page.locator("article").filter({ has: page.getByRole("heading", { name: "Mangú", exact: true }) });
-  await mangu.getByRole("button", { name: "Guardar", exact: true }).click();
+  await mangu.getByRole("button", { name: "Guardar en Mi cultura", exact: true }).click();
   await expect(mangu.getByRole("button", { name: "Guardado", exact: true })).toBeDisabled();
-  await page.getByRole("link", { name: "Mis viajes", exact: true }).first().click();
+  await page.getByRole("link", { name: "Mi cultura", exact: true }).first().click();
   await page.getByRole("link", { name: "Guardar mi experiencia y recibir un enlace por correo" }).click();
   const email = address();
   // requestRecovery navigates to the same recovery form but preserves the source cookie.
@@ -45,7 +45,7 @@ test("Flow B: save, dry-run outbox, confirm on a different device and recover My
     const phone = await mobile.newPage(); await phone.goto(link);
     expect((await mobile.request.get("http://127.0.0.1:3002/api/visitor/me")).status()).toBe(401);
     await phone.getByRole("button", { name: "Confirmar", exact: true }).click();
-    await expect(phone).toHaveURL("http://127.0.0.1:3002/experiencia"); await phone.goto("http://127.0.0.1:3002/mi-viaje");
+    await expect(phone).toHaveURL("http://127.0.0.1:3002/experiencia"); await phone.goto("http://127.0.0.1:3002/mi-cultura");
     await expect(phone.getByRole("heading", { name: "Mangú", exact: true })).toBeVisible();
     await capture(phone, "flow-b-mobile-recovered");
     expect((await page.request.get("/api/visitor/me")).status()).toBe(401);
@@ -87,7 +87,7 @@ test("privacy exports authenticated JSON and deletes account/session", async ({ 
   await page.getByRole("button", { name: "Borrar mis datos definitivamente" }).click();
   await expect(page.getByRole("status").filter({ hasText: "Tu cuenta y tus datos operativos se borraron" })).toBeVisible();
   expect((await page.request.get("/api/visitor/me")).status()).toBe(401);
-  await page.reload(); await expect(page.getByRole("link", { name: "Recuperar Mis viajes", exact: true })).toBeVisible();
+  await page.reload(); await expect(page.getByRole("link", { name: "Recuperar Mi cultura", exact: true })).toBeVisible();
 });
 test("production outbox is 404 and B2B without a database fails honestly", async ({ request }) => {
   expect((await request.get("http://127.0.0.1:3000/dev/outbox")).status()).toBe(404);

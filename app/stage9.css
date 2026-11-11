@@ -1,0 +1,40 @@
+.item-photo { margin: 0 0 14px; min-width: 0; }
+.ary-app .photo-open { position: relative; display: block; width: 100%; aspect-ratio: 16 / 9; min-height: 0; padding: 0; border: 0; border-radius: 5px; overflow: hidden; background: #e8ece3; }
+.photo-open img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.photo-contain .photo-open img { object-fit: contain; }
+.photo-enlarge { position: absolute; bottom: 8px; right: 8px; display: grid; place-items: center; width: 30px; height: 30px; color: var(--white); background: #183e32dc; border-radius: 4px; }
+.photo-open:hover .photo-enlarge { background: var(--ink); }
+.image-credit { margin-top: 6px; color: #405747; font-size: .66rem; line-height: 1.5; overflow-wrap: anywhere; }
+.image-credit span { display: block; }
+.ary-app .maps-link { gap: 8px; margin: 8px 0 12px; font-size: .85rem; padding: 9px 12px; min-height: 44px; }
+.maps-link svg { flex-shrink: 0; width: 20px; height: 20px; }
+.source-carousel { width: 100%; min-width: 0; max-width: 620px; margin-top: 10px; }
+.source-track { display: grid; grid-auto-flow: column; grid-auto-columns: 100%; gap: 12px; overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x mandatory; padding: 5px; scroll-padding: 5px; }
+.has-slides .source-track { grid-auto-columns: min(88%, 330px); }
+.source-track .chat-card { scroll-snap-align: start; }
+.voice-chat .chat-message:has(.source-carousel) { width: 100%; }
+.chat-message:has(.source-carousel) .bubble { flex: 1; min-width: 0; }
+.carousel-indicators { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-top: 8px; }
+.ary-app .carousel-indicators button { min-width: 40px; min-height: 40px; padding: 5px 8px; gap: 6px; font-size: .75rem; }
+.carousel-indicators button span { width: 6px; height: 6px; background: currentColor; border-radius: 50%; opacity: .35; }
+.ary-app .carousel-indicators button[aria-current="true"] { background: var(--lime); }
+.carousel-indicators button[aria-current="true"] span { opacity: 1; }
+.source-carousel .card-source { display: block; margin-top: 8px; font-size: .7rem; }
+.ary-app .location-chip { margin-top: 10px; min-height: 44px; padding: 8px 10px; gap: 6px; font-size: .8rem; }
+.location-chip svg { width: 18px; flex-shrink: 0; }
+.chat-card .record-location { display: flex; gap: 6px; align-items: center; font-weight: 600; }
+.record-location svg { width: 18px; height: 18px; flex-shrink: 0; }
+.photo-dialog { width: min(1160px, calc(100vw - 24px)); max-width: none; max-height: calc(100dvh - 24px); padding: 16px; color: var(--ink); background: var(--white); border: 1px solid var(--line); border-radius: 8px; }
+.photo-dialog::backdrop { background: #102a23d9; }
+.photo-dialog-header { display: flex; gap: 16px; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+.ary-app .photo-dialog h2 { margin: 0; font: 600 .95rem/1.4 Arial, sans-serif; }
+.photo-dialog-header button { flex-shrink: 0; }
+.photo-dialog figure { margin: 0; }
+.photo-dialog figure > img { display: block; width: 100%; height: auto; max-height: calc(100dvh - 190px); object-fit: contain; background: #e8ece3; }
+.photo-dialog .image-credit { font-size: .75rem; }
+@media (max-width: 600px) {
+  .source-track .chat-card { padding: 10px; }
+  .photo-dialog { padding: 12px; }
+  .photo-dialog-header { gap: 10px; align-items: flex-start; }
+  .ary-app .photo-dialog-header button { font-size: .8rem; padding: 8px 10px; min-height: 44px; }
+}

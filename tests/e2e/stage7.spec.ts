@@ -22,7 +22,7 @@ test("US English, MX Spanish, query cookie wins and initial app HTML is localize
   await context.setExtraHTTPHeaders({ "x-vercel-ip-country": "MX" }); await page.goto("/"); await expect(page.locator("html")).toHaveAttribute("lang", "es");
   await page.goto("/?lang=en"); await expect(page).toHaveURL(origin + "/"); await expect(page.locator("html")).toHaveAttribute("lang", "en");
   expect((await context.cookies()).find(row => row.name === "ary_lang")).toMatchObject({ value: "en", httpOnly: false, sameSite: "Lax", path: "/" });
-  for (const route of ["/experiencia", "/mi-viaje", "/privacidad", "/reingresar", "/cuenta/privacidad", "/cultura/00000000-0000-4000-8000-000000000000"]) {
+  for (const route of ["/experiencia", "/mi-cultura", "/privacidad", "/reingresar", "/cuenta/privacidad", "/cultura/00000000-0000-4000-8000-000000000000"]) {
     const response = await page.request.get(route); expect(await response.text()).toContain('<html lang="en"');
     await page.goto(route); await expect(page.getByRole("button", { name: "English", exact: true }).first()).toBeVisible();
   }

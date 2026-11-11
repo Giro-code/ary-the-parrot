@@ -89,7 +89,7 @@ Trabajo local del 7 de noviembre de 2026 (archivos de evidencia en UTC del 8). S
 
 **Verificación del revisor (7 nov 2026, fuera del sandbox de Codex) — sustituye a los `BLOCKED` por `spawn EPERM` de este documento:**
 - `lint`, `typecheck`, `test` (36), `build` y `test:e2e` pasan: **73 passed, 1 skipped** (regresión de la landing con 0 píxeles distintos + flujos de la etapa 2).
-- E2E verificados en navegador real: kiosco A → QR → móvil B restaura exactamente → kiosco limpio → C con el mismo enlace denegado; QR caducado; cancelar; inactividad 90 s con aviso; estado sin conexión; Mi viaje; visitante sin correo.
+- E2E verificados en navegador real: kiosco A → QR → móvil B restaura exactamente → kiosco limpio → C con el mismo enlace denegado; QR caducado; cancelar; inactividad 90 s con aviso; estado sin conexión; Mi cultura; visitante sin correo.
 - Prueba Pi (proxy de escritorio, CPU 4× por CDP, `next dev` en frío): carga 3,3 s y welcome → recomendaciones 1,2 s a 1280×800; 3,2 s y 1,2 s a 1920×1080. JS de entrada del kiosco: 17 KB gzip (presupuesto 200 KB). Falta medir en una Raspberry Pi 4 real.
 - Ajustes del revisor a las pruebas (no a la app): selector del aviso (Next añade un `role="alert"` propio), reloj simulado instalado antes de cargar el kiosco, espera a que la sesión arranque antes de adelantar el tiempo, y salto de 20 s en lugar de 25 s para observar el estado `finished` antes de volver a `idle`.
 - Sigue pendiente: validación con una instancia Neon real (`DATABASE_URL`) y en hardware Pi.
@@ -117,7 +117,7 @@ Trabajo local del 7 de noviembre de 2026 (archivos de evidencia en UTC del 8). S
 | Puentes culturales verificables | REAL_IMPLEMENTED | UNESCO/merengue con US/CO/VE; contexto con fuente, sin influencia en ranking |
 | Respuestas de ejemplo | SANDBOX_ONLY | Texto de la ficha; sin IA ni llamadas a modelos |
 | Guardados, realizado, favorito y quitar | REAL_IMPLEMENTED | Persistencia/API e IDOR probados; aceptación visual bloqueada |
-| Mi viaje y QR público separado | BLOCKED | Rutas implementadas, sin PII/sesión en QR público; caso E2E preparado, navegador pendiente |
+| Mi cultura y QR público separado | BLOCKED | Rutas implementadas, sin PII/sesión en QR público; caso E2E preparado, navegador pendiente |
 | Privacidad ES/EN | REAL_IMPLEMENTED | Aviso implementado con retención/caducidad honesta; revisión jurídica y visual pendientes |
 | Limpieza física de caducados | REAL_IMPLEMENTED | CLI manual y prueba de conservación de sesión móvil vigente; sin cron desplegado |
 | Eventos mínimos sin PII | REAL_IMPLEMENTED | Allowlist de claves y valores; no país, correo, IP, código ni token en analytics |
@@ -183,7 +183,7 @@ La evidencia con status, redirección final y fecha exacta está en `evidence/st
 
 - Datos: `src/db/{schema,client,migrate,seed,cleanup}.ts`, `drizzle.config.ts`, migración, snapshot, journal y rollback.
 - Servidor: `src/server/{config,errors,tokens,http,service}.ts`; `app/api/[...path]/route.ts` y health.
-- UI: `src/i18n/`, `src/components/`, `app/globals.css`, rutas kiosco/activación/experiencia/q/mi-viaje/cultura/privacidad/reingresar.
+- UI: `src/i18n/`, `src/components/`, `app/globals.css`, rutas kiosco/activación/experiencia/q/mi-cultura/cultura/privacidad/reingresar.
 - Herramientas: `scripts/{database,e2e-server,generate-migration}.ts`, `scripts/kiosk-budget.mjs`, package/lock, entorno y configuración de tipos/Playwright/Next.
 - Pruebas: `tests/unit/{api,database,health}.test.ts`, `tests/e2e/stage2.spec.ts` y adaptación documentada del contrato de app en la regresión existente.
 - Documentación: README, diseño, plan actualizado, QR, matriz, revisión visual, despliegue, privacidad y evidencia.

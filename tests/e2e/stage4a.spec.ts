@@ -13,7 +13,8 @@ test("kiosk demo chat cites published sources, speaks only during audio and rout
   await askText(page, "Cuéntame sobre el merengue");
   // The phone-handoff offer stays pinned at the end of the chat, so look for the answer itself.
   await expect(page.locator(".chat-message.assistant").filter({ hasText: "merengue" }).last()).toBeVisible();
-  await expect(page.locator(".card-source").first()).toHaveAttribute("href", /^https:\/\//);
+  await expect(page.locator(".card-source").first()).toContainText("UNESCO");
+  await expect(page.locator(".chat-card a")).toHaveCount(0);
   await expect(page.getByTestId("robot-status")).toHaveAttribute("data-gesture", "talk");
   await expect(page.getByTestId("robot-status")).toHaveAttribute("data-robot-state", "idle", { timeout: 5000 });
   await askText(page, "¿Cuál es la puerta de mi vuelo?");
@@ -31,7 +32,7 @@ test("mobile restores current-session history and renders untrusted text literal
   await page.route("**/api/chat", route => route.request().method() === "POST" ? route.fulfill({ json: { messageId: randomUUID(), displayText: '<img src=x onerror="window.__injected=true">', spokenText: "Test", intent: "culture", citedItemIds: [], followUps: [], confidence: 0, mode: "demo", handoff: false, sources: [] } }) : route.continue());
   await askText(page, "Otra pregunta");
   await expect(page.locator(".chat-message.assistant").last()).toContainText("<img");
-  await expect(page.locator(".bubble img")).toHaveCount(0);
+  await expect(page.locator(".chat-message.assistant").last().locator(".bubble img")).toHaveCount(0);
   expect(await page.evaluate(() => "__injected" in window)).toBe(false);
 });
 test("chat waiting, service failure and recoverable rate limits remain usable", async ({ page }) => {

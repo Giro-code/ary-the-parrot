@@ -12,7 +12,7 @@ Fecha de ejecución local 2026-11-10.
 | `tests/e2e/stage2.spec.ts` | Comprueba el título actual de recuperación. |
 | `tests/e2e/stage3.spec.ts` | Usa los helpers comunes y el título inglés actual. Conserva recuperación entre dispositivos, acceso privado, replay, exportación y borrado. |
 | `tests/e2e/stage4a.spec.ts` | Usa directamente el campo visible en la prueba de espera, error y límite recuperable. |
-| `tests/e2e/stage4b.spec.ts` | Usa los helpers comunes. Tras confirmar y llegar al chat, abre Mis viajes para continuar las comprobaciones de permisos y compartición. |
+| `tests/e2e/stage4b.spec.ts` | Usa los helpers comunes. Tras confirmar y llegar al chat, abre Mi cultura para continuar las comprobaciones de permisos y compartición. |
 | `tests/e2e/stage6.spec.ts` | Refuerza cancelación mediante Enter, tracks finalizados, ausencia de subidas y siguiente pregunta utilizable. Añade el estado cancelado a las dos series de capturas existentes. |
 | `tests/e2e/stage8.spec.ts` | Comprueba cinco respuestas HTTP 200, campo vacío con envío deshabilitado y sexta pregunta rechazada con HTTP 403 y `email_verification_required`. |
 | `src/components/ary-chat.tsx` | Restaura la cancelación durante la grabación con el botón localizado «Usar teclado». |
@@ -30,11 +30,11 @@ El gate del servidor permite cinco preguntas provisionales y devuelve `email_ver
 
 ### Recuperación
 
-Las suites conservaban la etiqueta «Correo electrónico», el consentimiento «Solicito conservar Mis viajes», el botón «Solicitar enlace de acceso» y títulos anteriores. El formulario actual usa «Tu correo», «Acepto el aviso de privacidad» y «Enviarme el enlace».
+Las suites conservaban la etiqueta «Correo electrónico», el consentimiento «Solicito conservar Mi cultura», el botón «Solicitar enlace de acceso» y títulos anteriores. El formulario actual usa «Tu correo», «Acepto el aviso de privacidad» y «Enviarme el enlace».
 
 Los helpers comunes comprueban consentimiento requerido inicialmente desmarcado, botón deshabilitado antes de aceptarlo, ausencia de marketing cuando la configuración E2E lo desactiva, título de éxito enfocado y mensaje honesto de modo prueba. Después abren directamente la bandeja local, evitando depender de un enlace retirado de la pantalla de éxito o competir con su redirección a los cuatro segundos.
 
-La confirmación de acceso termina en `/experiencia`. La suite de proveedores navega después explícitamente a `/mi-viaje`, donde realiza sus comprobaciones.
+La confirmación de acceso termina en `/experiencia`. La suite de proveedores navega después explícitamente a `/mi-cultura`, donde realiza sus comprobaciones.
 
 ### Campo de texto y cambios de idioma
 

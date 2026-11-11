@@ -174,7 +174,7 @@ body { margin: 0; }
 /* Stage 6: scoped to the two conversational routes. The static landing has its own CSS. */
 .ary-app.voice-app { max-width: none; padding: 0; min-height: 100dvh; }
 .voice-app main { padding: 0; min-height: 0; }
-.voice-header { height: 64px; padding: 0 28px; max-width: 1040px; margin: auto; display: flex; justify-content: space-between; align-items: center; gap: 16px; border-bottom: 1px solid var(--line); }
+.voice-header { height: 64px; padding: 0 28px; max-width: 1040px; margin: 0 auto; width: 100%; display: flex; justify-content: space-between; align-items: center; gap: 16px; border-bottom: 1px solid var(--line); }
 .voice-header .brand { font-size: 1.3rem; }
 .voice-header nav { display: flex; gap: 20px; align-items: center; font-size: .85rem; }
 .voice-header nav a { display: inline-flex; align-items: center; min-height: 44px; }
@@ -278,7 +278,7 @@ body { margin: 0; }
 
 /* Stage 8B: account and email screens — Ary small beside the content, short copy, visual steps. */
 .account-journey { display: grid; grid-template-columns: minmax(0, 1fr); gap: 20px; max-width: 980px; margin: 0 auto; padding-block: 20px 40px; }
-@media (min-width: 900px) { .account-journey { grid-template-columns: 300px minmax(0, 1fr); align-items: center; gap: 48px; padding-block: 48px; } }
+@media (min-width: 900px) { .account-journey { grid-template-columns: 320px minmax(420px, 1fr); align-items: center; gap: 40px; padding-block: 48px; } }
 .account-art { display: flex; flex-direction: column; align-items: center; gap: 10px; }
 .account-illustrations { display: flex; align-items: flex-end; justify-content: center; gap: 4px; }
 .account-illustrations img { width: 128px; height: auto; }
@@ -287,10 +287,19 @@ body { margin: 0; }
 .ary-speech { position: relative; margin: 0; padding: 10px 16px; background: var(--white); border: 1px solid var(--line); border-radius: 18px; font-size: .95rem; text-align: center; max-width: 260px; }
 .ary-speech::after { content: ""; position: absolute; left: 50%; bottom: -8px; width: 14px; height: 14px; background: var(--white); border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); transform: translateX(-50%) rotate(45deg); }
 .account-content h1 { margin-top: 0; }
+.account-content { min-width: 0; }
 .account-content > p { margin-block: 0 14px; }
 .email-steps { list-style: none; padding: 0; margin: 0 0 20px; display: flex; flex-wrap: wrap; gap: 8px; counter-reset: none; }
 .email-steps li { display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; border: 1px solid var(--line); border-radius: 999px; background: var(--white); font-size: .9rem; }
 .email-steps svg { width: 18px; height: 18px; flex: 0 0 18px; }
+@media (min-width: 900px) {
+  .email-steps { flex-wrap: nowrap; gap: 6px; }
+  .email-steps li { padding-inline: 8px; font-size: .75rem; white-space: nowrap; }
+  .account-form button { white-space: nowrap; }
+}
+.culture-empty { display: flex; align-items: center; gap: 24px; }
+.culture-empty > img { width: 120px; height: auto; flex-shrink: 0; }
+@media (max-width: 600px) { .culture-empty { flex-direction: column; align-items: flex-start; gap: 12px; } }
 .account-form { display: grid; gap: 14px; }
 .account-form input[type="email"] { width: 100%; min-height: 52px; font-size: 1.05rem; }
 .account-form .button, .account-form button { justify-self: start; gap: 8px; }

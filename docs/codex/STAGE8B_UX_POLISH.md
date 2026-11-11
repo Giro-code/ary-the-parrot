@@ -9,7 +9,7 @@ Continúas tras la etapa 8 (`docs/codex/STAGE8_REDESIGN.md`) en `D:\Ary The Parr
 Hoy `/reingresar` muestra:
 
 - «ARY · CUENTA OPCIONAL»;
-- el título «Guardar y recuperar Mi viaje»;
+- el título «Guardar y recuperar Mi cultura»;
 - tres párrafos técnicos (365 días, 15 minutos, una sola vez, correo de servicio…);
 - una casilla con texto largo;
 - el enlace «Finalidades y aviso de privacidad · 2026-11-07.v1»;
@@ -23,7 +23,7 @@ Hoy `/reingresar` muestra:
   - Ary a la izquierda en escritorio y arriba en móvil, saludando (`ary-presentar.webp`), con una burbuja de diálogo corta.
   - Junto a Ary, el SVG del sobre.
 - **Título humano**, por ejemplo: «¿Ya hablaste con Ary? Recupera tu conversación» / «Already talked to Ary? Pick up where you left off».
-- **Una sola línea de apoyo:** «Te enviamos un enlace a tu correo para volver a tus conversaciones y viajes.»
+- **Una sola línea de apoyo:** «Te enviamos un enlace a tu correo para volver a tus conversaciones y a Mi cultura.»
 - **Orientación visual.** Tres pasos con iconos SVG pequeños, sin párrafos: (1) escribe tu correo → (2) abre el enlace → (3) sigue la conversación.
 - **Formulario:** campo de correo grande y claro, y una casilla breve: «Acepto el aviso de privacidad». El enlace abre el aviso en un panel o diálogo accesible, o en su página.
 - **Texto técnico fuera de la pantalla.** Los 365 días, los 15 minutos, el uso único y las finalidades van al **aviso de privacidad** y a la página `/privacidad`, no aquí.

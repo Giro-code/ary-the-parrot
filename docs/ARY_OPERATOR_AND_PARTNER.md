@@ -38,7 +38,7 @@ Accesos y mutaciones quedan en `audit_logs`; no se registra el texto privado en 
 
 ## Consentimiento de leads
 
-`FEATURE_ENABLE_PARTNER_SHARING=false` por defecto. Activarlo permite mostrar ofertas aprobadas de proveedores/organizaciones activos en `/experiencia` y `/mi-viaje`. La etiqueta «Patrocinado» no altera ranking ni fichas culturales.
+`FEATURE_ENABLE_PARTNER_SHARING=false` por defecto. Activarlo permite mostrar ofertas aprobadas de proveedores/organizaciones activos en `/experiencia` y `/mi-cultura`. La etiqueta «Patrocinado» no altera ranking ni fichas culturales.
 
 La confirmación enumera proveedor, finalidad, contacto por correo verificado y campos elegidos entre nombre, correo, mensaje, fecha aproximada y número de personas. Todos empiezan desmarcados; el correo debe elegirse como método de contacto. Solo se acepta en un dispositivo personal con cuenta verificada. No se comparte chat, país/intereses, sesión ni perfil completo; nunca se distribuye a todos los proveedores.
 

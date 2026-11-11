@@ -79,7 +79,7 @@ Sigues en `D:\Ary The Parrot`. Las etapas 1–4A están hechas, verificadas por 
 
 ## 4. Leads consentidos del visitante (Flujo D, 4–6)
 
-- **Dónde.** Con `FEATURE_ENABLE_PARTNER_SHARING=true`, una oferta aprobada en `/experiencia` o `/mi-viaje` muestra «Enviar mi solicitud a [Proveedor]». Con `false`, esa opción no aparece.
+- **Dónde.** Con `FEATURE_ENABLE_PARTNER_SHARING=true`, una oferta aprobada en `/experiencia` o `/mi-cultura` muestra «Enviar mi solicitud a [Proveedor]». Con `false`, esa opción no aparece.
 - **Pantalla de confirmación.** Muestra el nombre del proveedor, la finalidad, el método de contacto y los campos que se compartirán. Los campos son elegibles y se limitan a:
   - nombre;
   - correo verificado;

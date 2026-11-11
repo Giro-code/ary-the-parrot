@@ -51,7 +51,7 @@ La navegación original usa secciones con `id` y hash (por ejemplo `/#inicio`). 
 La web existente es **web institucional/de presentación B2B**, no el producto de experiencia de viajero. No borrar la primera. Construir **dos experiencias conectadas que coexistan**:
 
 1. **Pública comercial existente:** landing con seis apartados, brochure, historia, casos de uso, solicitud de Ary.
-2. **Aplicación turística y de hardware NUEVA:** kiosco, charla con Ary, Puente Cultural, QR, continuación móvil, perfil opcional, Mi Viaje, mapas/contenidos, correos, CMS, proveedores, administración, robot.
+2. **Aplicación turística y de hardware NUEVA:** kiosco, charla con Ary, Puente Cultural, QR, continuación móvil, perfil opcional, Mi cultura, mapas/contenidos, correos, CMS, proveedores, administración, robot.
 
 Estas superficies **no deben mezclarse**. Un pasajero anónimo no verá el formulario «Solicitar tu Ary» como parte obligatoria de la experiencia, y un hotel interesado en instalar el robot no debe acabar creando un perfil turístico accidentalmente.
 
@@ -71,7 +71,7 @@ Se menciona **Arajet solamente como posible oportunidad de colaboración**, no c
 2. Tomar capturas reales del sitio actual o crear tests DOM de la versión estática para medir regresiones. Describir exactamente qué funciona antes de cambiar nada.
 3. **Opción preferida si el repositorio continúa siendo solo el ZIP**: migrar con cuidado a **Next.js App Router + TypeScript** para unificar páginas, endpoints, autenticación y formularios en Vercel; **pero** reaprovechar HTML, CSS, SVG, assets, textos y scripts adaptados a componentes, manteniendo el diseño visual pixel-conservativo y las URLs públicas. NO regenerar marketing desde un template. Si existe un proyecto Vercel real diferente del ZIP con stack ya establecido, primero inspeccionarlo y decidir la estrategia compatible sin reconstruir innecesariamente.
 4. Alternativa justificable: mantener HTML/CSS/JS estáticos y añadir Vercel Functions en `/api`, router/SPA ligera, tipado y herramientas de build; preferir esta vía si se demuestra menor riesgo y mantenimiento comparable. Justificar la elección en `docs/ARY_MIGRATION_DECISION.md`. **No implementar ambas arquitecturas a la vez**.
-5. Con Next.js, servir portada en `/`, añadir redirección o compatibilidad de hash (`/#inicio`, `/#conoce`, etc.), y proporcionar una ruta funcional a `brochure.html` (`/brochure.html` o redirección estable). Mantener páginas corporativas y añadir `/kiosco`, `/experiencia`, `/mi-viaje`, `/admin`, `/partner` y flujos `/q/...`. En cualquier migración, probar todos los enlaces y el uso de `window.location.hash`/`history` para no romper accesos directos.
+5. Con Next.js, servir portada en `/`, añadir redirección o compatibilidad de hash (`/#inicio`, `/#conoce`, etc.), y proporcionar una ruta funcional a `brochure.html` (`/brochure.html` o redirección estable). Mantener páginas corporativas y añadir `/kiosco`, `/experiencia`, `/mi-cultura`, `/admin`, `/partner` y flujos `/q/...`. En cualquier migración, probar todos los enlaces y el uso de `window.location.hash`/`history` para no romper accesos directos.
 6. Mover CSS/JS inline a archivos mantenibles **sin alterar el resultado visible**, separando lógica de pestañas, demo, presentación, lead form, routing y componentes de experiencia. Evitar añadir Tailwind/UI library por defecto si no aporta algo imprescindible. No duplicar código ni introducir dependencia de red para renderizar lo que actualmente funciona offline.
 7. **No usar archivos locales como base de datos en producción Vercel**, porque el sistema de ficheros de funciones no es persistente. Si no hay base de datos configurada, implementar capa typed repository + migraciones para PostgreSQL administrado compatible, con opción de desarrollo/test local; escoger un proveedor cuando las credenciales reales y restricciones estén claras. No marcarlo como «almacenado en producción» sin persistencia verificada.
 8. Distinguir **tres entornos**: desarrollo seguro con datos de prueba, preview de Vercel, producción con control de envíos y consentimiento. Nunca usar correo en producción como sandbox accidental ni publicar secretos.
@@ -103,7 +103,7 @@ La sección `#solicitar` tiene estos campos existentes: `name`, `org`, `email`, 
 - Experiencia de **Puente Cultural Inteligente**: pide país e intereses, consulta fichas culturales curatoriales, explica coincidencias/diferencias comprobadas y crea itinerario breve de contenido dominicano; debe poder explicar por qué recomienda cada tema.
 - Conversación por texto como fallback seguro; voz si micro y TTS funcionan realmente y con permisos; separar client recording de server processing y no grabar por defecto conversaciones de audio para analítica.
 - QR único, efímero, anticopia, confirmación en móvil y borrado de estado público del kiosco. En el teléfono se restaura la selección del visitante y una tarjeta cultural que puede abrir desde su teléfono.
-- `/mi-viaje`: actividades sugeridas, guardados, destinos y contenidos favoritos, progreso y QR de fichas compartibles (distintos del QR secreto de handoff).
+- `/mi-cultura`: actividades sugeridas, guardados, destinos y contenidos favoritos, progreso y QR de fichas compartibles (distintos del QR secreto de handoff).
 - **Cuenta opcional por correo verificado**: enviar enlace para volver al sitio desde otros dispositivos; correo de servicio solicitado ≠ consentimiento de marketing. Frecuencia, intereses, preferencias e interacciones retenidas solo en el alcance comunicado y aceptado.
 - **Correos opt-in** con textos profesionales en español/inglés, baja de un clic y soporte para supresión ante rebote/queja. Incorporar calendario de recordatorios programados solo si el usuario lo activa y configura. "Mantener siempre conectado" significa continuidad voluntaria, nunca vigilancia permanente ni rastreo de ubicación escondido.
 - **Analíticas agregadas e informes a quienes proveen el servicio**: mostrar al aeropuerto/operador temas solicitados, idioma general y conversiones de QR; NO vender ni ceder chats, correos o historial individual a todos los proveedores. Para enviar solicitud a proveedor particular, pedir autorización explícita para esos campos y ese receptor.
@@ -193,7 +193,7 @@ La sección `#solicitar` tiene estos campos existentes: `name`, `org`, `email`, 
 
 **Flujo C — recomendaciones durante el viaje**
 
-1. El usuario guarda lugares, rutas, historias o experiencias culturales en **“Mi viaje con Ary”** y marca realizados, pendientes o favoritos.
+1. El usuario guarda lugares, rutas, historias o experiencias culturales en **“Mi cultura con Ary”** y marca realizados, pendientes o favoritos.
 2. La IA explica **por qué** recomienda algo (intereses expresados, tiempo disponible, ubicación **solo si el usuario la comparte**, horarios y datos verificados), muestra fuente y fecha de actualización.
 3. Los servicios externos pueden presentar ofertas o actividades aprobadas; siempre etiqueta `Patrocinado` y no alteres información factual por patrocinio. Prioriza pertinencia, accesibilidad y confiabilidad.
 4. Permite recordatorios configurables por usuario: ninguna notificación por defecto, frecuencia (por ejemplo semanal/antes de experiencia), zona horaria elegida o capturada con permiso y pausa/baja inmediata.
@@ -217,7 +217,7 @@ Diseñar rutas teniendo en cuenta que el router **verificado** de la landing ori
 - `/kiosk`: interfaz pantalla grande, estado idle/welcome/conversation/QR/transfer.
 - `/q/[code]` o `/connect/[code]`: punto de **canje de QR** con acción confirmatoria POST, no sesión indiscriminada por GET.
 - `/experiencia`: móvil, chat cultural, contenidos, destinos, favoritos, progreso.
-- `/mi-viaje`: guardados, preferencias, recordatorios, exportación o eliminación.
+- `/mi-cultura`: guardados, preferencias, recordatorios, exportación o eliminación.
 - `/reingresar`: solicitud de enlace mágico de recuperación, estados antifiltración.
 - `/auth/verify`: consumición segura de magic link.
 - `/cuenta/privacidad`: consentimientos, datos guardados, descargar/eliminar.
@@ -438,7 +438,7 @@ Crear `docs/WRO_DEMO_SCRIPT.md`, `docs/WRO_TECH_DIAGRAM.md` y `docs/ARY_B2B_BUSI
 - Persistencia de sesiones y esquema seguro.
 - Página de kiosco + QR seguro + canje móvil + reseteo kiosco.
 - Perfil optativo (idioma/país/intereses) + contenido cultural aprobado.
-- Favoritos / `Mi viaje`.
+- Favoritos / `Mi cultura`.
 - Consentimiento granular y página de privacidad.
 - Recuperación por enlace mágico y adapter de emails con modo seguro.
 - Tests básicos y build Vercel.

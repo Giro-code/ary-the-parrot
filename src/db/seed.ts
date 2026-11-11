@@ -2,6 +2,7 @@ import { randomUUID } from "node:crypto";
 import type { Database } from "./client.ts";
 import { culturalItems, culturalBridges } from "./schema.ts";
 import type { Interest } from "../i18n/index.ts";
+import { seedImages, seedLocations } from "./seed-media.ts";
 type Entry = { key: string; title: string; tags: Interest[]; url: string; editor: string; es: string; en: string };
 export const seedEntries: Entry[] = [
   { key: "ciudad-colonial", title: "Ciudad Colonial de Santo Domingo", tags: ["history", "art"], url: "https://whc.unesco.org/en/list/526/", editor: "UNESCO World Heritage Centre", es: "La Ciudad Colonial conserva un trazado en cuadrícula y edificios históricos. Forma parte del Patrimonio Mundial de la UNESCO: una invitación a conocer la historia urbana de Santo Domingo.", en: "The Ciudad Colonial preserves a grid street plan and historic buildings. It is a UNESCO World Heritage site and an introduction to the urban history of Santo Domingo." },
@@ -37,7 +38,9 @@ export async function seedDatabase(db: Database, checks: SourceCheck[], options:
       const values = {
         contentKey: entry.key, title: entry.title, type: "heritage", language, summary: entry[language], validatedDescription: entry[language], tags: entry.tags,
         sourceUrl: check ? entry.url : null, sourceCheckedAt: check ? new Date(check.checkedAt) : null,
-        license: "Original Ary cultural summary; linked source copyright remains with its publisher. No source imagery reproduced.", editor: entry.editor,
+        imageAsset: seedImages[entry.key] ? `/assets/items/${entry.key}.webp` : null,
+        image: seedImages[entry.key] || null, location: seedLocations[entry.key] || null,
+        license: "Original Ary cultural summary; linked source copyright remains with its publisher. Photograph licensed separately in image metadata.", editor: entry.editor,
         lastReviewedAt: check ? new Date(check.checkedAt) : null, publishedAt: check ? new Date(check.checkedAt) : null, status: check ? "published" : "needs_source", demo: !options.production,
       };
       const [item] = await db.insert(culturalItems).values({ id: randomUUID(), ...values }).onConflictDoUpdate({ target: [culturalItems.contentKey, culturalItems.language], set: values }).returning();

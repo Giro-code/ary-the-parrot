@@ -21,6 +21,9 @@ const config: NextConfig = {
   poweredByHeader: false,
   // QR/activation paths contain temporary secrets. Never print incoming URLs.
   logging: { incomingRequests: false, browserToTerminal: false },
+  async redirects() {
+    return [{ source: "/mi-viaje", destination: "/mi-cultura", permanent: true }];
+  },
   async rewrites() {
     return {
       beforeFiles: [

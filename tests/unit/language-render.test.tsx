@@ -12,7 +12,7 @@ import { Kiosk } from "../../src/components/kiosk";
 test("server-rendered app content is English immediately, with language controls", () => {
   const cases = [
     [<Experience key="experience" />, "My conversations"],
-    [<Trip key="trip" />, "My trips with Ary"],
+    [<Trip key="trip" />, "Your cultural collection"],
     [<Information key="privacy" kind="privacy" />, "Your experience, your choices"],
     [<AccountPrivacy key="account" marketingEnabled={false} sharingEnabled={false} />, "Privacy and your data"],
     [<Recovery key="recovery" initialLocale="en" marketingEnabled={false} />, "Pick up where you left off"],

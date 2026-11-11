@@ -23,7 +23,7 @@ Inventario completo con SHA-256 en [files.json](evidence/stage4b/files.json). Gr
 - Datos: `src/db/{schema,cleanup,demo}.ts`, migración/snapshot/journal/rollback 0003 y pruebas de encadenamiento/rollback.
 - Servidor: `src/server/{staff,staff-page,admin,analytics,leads,source-check,stage4b-http}.ts[x]`; integración en `service`, `auth`, `consents`, `privacy`, chat y plantillas/outbox.
 - Rutas: `app/admin/entrar`, `app/admin/[[...section]]`, `app/partner/[[...section]]`, API catch-all y `/api/internal/cleanup`; cabeceras privadas en `next.config.ts`.
-- UI: shell/login/overview de staff, espacios admin y partner, gestor CMS, ofertas/confirmación y solicitudes/revocación en privacidad; integración en experiencia/Mi viaje y CSS propio.
+- UI: shell/login/overview de staff, espacios admin y partner, gestor CMS, ofertas/confirmación y solicitudes/revocación en privacidad; integración en experiencia/Mi cultura y CSS propio.
 - Herramientas: `scripts/{admin-demo,generate-stage4b-migration}.ts`, fixture E2E, package scripts y dos cron diarios.
 - Pruebas: `tests/unit/{stage4b,source-check}.test.ts`, actualización del test de snapshot/rollback y `tests/e2e/stage4b.spec.ts` con proyecto Playwright propio.
 - Documentación: arquitectura, operación/proveedores, guion WRO, diagrama, modelo B2B, diseño previo, matriz/plan/README, seguridad/correo y registro visual.

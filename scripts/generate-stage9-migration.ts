@@ -1,0 +1,13 @@
+import { generateDrizzleJson, generateMigration } from "drizzle-kit/api";
+import { readFile, writeFile } from "node:fs/promises";
+import * as schema from "../src/db/schema.ts";
+const journal = JSON.parse(await readFile("drizzle/meta/_journal.json", "utf8"));
+if (journal.entries.length !== 5) throw new Error("Stage 9 migration already exists.");
+const previous = JSON.parse(await readFile("drizzle/meta/0004_snapshot.json", "utf8"));
+const current = generateDrizzleJson(schema, previous.id);
+const statements = await generateMigration(previous, current);
+await writeFile("drizzle/0005_stage9_places_media.sql", statements.join("\n--> statement-breakpoint\n") + "\n", "utf8");
+await writeFile("drizzle/meta/0005_snapshot.json", JSON.stringify(current, null, 2) + "\n", "utf8");
+journal.entries.push({ idx: 5, version: "7", when: Math.max(Date.now(), journal.entries[4].when + 1), tag: "0005_stage9_places_media", breakpoints: true });
+await writeFile("drizzle/meta/_journal.json", JSON.stringify(journal, null, 2) + "\n", "utf8");
+console.log(`Stage 9: ${statements.length} SQL statements generated.`);

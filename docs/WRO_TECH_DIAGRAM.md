@@ -15,7 +15,7 @@ sequenceDiagram
   V-->>K: QR privado efímero
   M->>V: Confirmar canje
   V->>D: Consumir una vez, nueva sesión, copiar y limpiar kiosco
-  V-->>M: Cookie de visitante / Mi viaje
+  V-->>M: Cookie de visitante / Mi cultura
   M->>V: Solicitar recuperación opcional
   V->>D: Enlace de 15 min y outbox cifrada
   V->>E: Despachar después de commit

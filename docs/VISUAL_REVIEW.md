@@ -22,7 +22,7 @@ Para cerrar, ejecutar en un runtime autorizado, mirar la primera pasada, registr
 
 Artefacto: archivos locales de etapa 3; inventario en `ARY_STAGE3_REPORT.md`, sin commit. Revisión propia de código y unitarias; **no hay capturas nuevas de etapa 3 inspeccionadas ni se acredita paridad de píxeles de esta versión**.
 
-Superficies: `/reingresar` ES/EN, consentimiento obligatorio y marketing ausente con flag false, carga/resultado dry-run/error; `/auth/verify` confirmación/invalidación/replay; `/cuenta/privacidad` autenticado/no autenticado, datos, historial, exportación, baja y borrado; `/privacidad`; `/dev/outbox`; enlaces nuevos en experiencia/Mi viaje; B2B en reposo, resultado, error, reintento y TXT. Preparados anchos 360/390/820/1440; regresión original de seis vistas a 390/820/1440/1920 intacta.
+Superficies: `/reingresar` ES/EN, consentimiento obligatorio y marketing ausente con flag false, carga/resultado dry-run/error; `/auth/verify` confirmación/invalidación/replay; `/cuenta/privacidad` autenticado/no autenticado, datos, historial, exportación, baja y borrado; `/privacidad`; `/dev/outbox`; enlaces nuevos en experiencia/Mi cultura; B2B en reposo, resultado, error, reintento y TXT. Preparados anchos 360/390/820/1440; regresión original de seis vistas a 390/820/1440/1920 intacta.
 
 | Pasada | Estado real | Evidencia / bloqueo |
 | --- | --- | --- |
@@ -38,7 +38,7 @@ No se cerró el servidor ajeno en 3000, no se lanzó Chromium mediante otro meca
 
 Estado: **verificado por el revisor** (7 nov 2026): la suite E2E (73 passed) cubre los flujos y guarda capturas en `docs/evidence/stage2/`. El texto siguiente es el informe original de Codex, escrito sin acceso a navegador.
 
-Artefacto: cambios locales de etapa 2 sobre la rama existente; sin commit. Rutas previstas: `/kiosco` (idle, bienvenida, preferencias, recomendaciones, QR, transferencia, timeout, offline), `/q/[token]` (confirmación, usado, alterado y expirado), `/experiencia` (inicio, restauración, edición, guardado/error), `/mi-viaje` (vacío, progreso, favorito y QR público), activación, privacidad y Próximamente.
+Artefacto: cambios locales de etapa 2 sobre la rama existente; sin commit. Rutas previstas: `/kiosco` (idle, bienvenida, preferencias, recomendaciones, QR, transferencia, timeout, offline), `/q/[token]` (confirmación, usado, alterado y expirado), `/experiencia` (inicio, restauración, edición, guardado/error), `/mi-cultura` (vacío, progreso, favorito y QR público), activación, privacidad y Próximamente.
 
 Tamaños preparados: 360, 390, 820 y 1440 px; rendimiento de kiosco a 1280×800 y 1920×1080. Los tests capturan evidencia con nombres de ruta, estado y pasada en `docs/evidence/stage2/`. **Generar capturas no sustituye mirarlas.**
 

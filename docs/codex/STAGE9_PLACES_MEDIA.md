@@ -80,16 +80,16 @@ Formato y almacenamiento:
 
 - Al pulsarlo, o si el visitante pregunta «¿dónde queda?», «ubicación», «cómo llego» o «mapa» (la intención `directions` ya existe), Ary responde con el **nombre del lugar** y un botón **«Abrir en Google Maps»**, con icono SVG de pin.
 - Ary **no** da indicaciones de ruta en texto.
-- **En la web**, el botón abre Maps. Además siguen «Guardar en Mis viajes» y «Abrir ficha».
+- **En la web**, el botón abre Maps. Además siguen «Guardar en Mi cultura» y «Abrir ficha».
 - **En el kiosco** no se abren enlaces externos, porque es una pantalla pública. Se mantiene el comportamiento de la etapa 8: el QR para continuar en el teléfono. Una vez en el teléfono, la ficha muestra el botón de Maps.
 
 **Voz.** La respuesta hablada no lee la URL. Dice algo como «Te dejé la ubicación en pantalla».
 
 **Imagen de Ary.** Cuando se muestra un lugar con foto, Ary usa `ary-mostrar`.
 
-## 4. «Mis viajes», ficha pública `/cultura/[id]` y kiosco
+## 4. «Mi cultura», ficha pública `/cultura/[id]` y kiosco
 
-- «Mis viajes» muestra la foto en miniatura de cada guardado y el botón «Abrir en Google Maps» si hay ubicación.
+- «Mi cultura» muestra la foto en miniatura de cada guardado y el botón «Abrir en Google Maps» si hay ubicación.
 - `/cultura/[id]` muestra la foto grande, la atribución y el botón de Maps.
 - **Kiosco:** fotos sí, en el tamaño de la tarjeta; enlace de Maps no (va por QR).
 
@@ -117,7 +117,7 @@ Formato y almacenamiento:
 - carrusel con 2 fichas a 390 px, sin scroll horizontal;
 - diálogo de foto con `Esc`;
 - kiosco: foto sí y botón Maps no;
-- «Mis viajes» con miniatura y Maps.
+- «Mi cultura» con miniatura y Maps.
 
 **Capturas** en `docs/screenshots/stage9/` a 390 y 1440 px. Revísalas tú.
 

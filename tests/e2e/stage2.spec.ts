@@ -40,7 +40,7 @@ async function capture(page: Page, name: string) {
 test("A authorized kiosk → B mobile restores exactly → clean kiosk → C replay denied", async ({ page, browser }) => {
   test.setTimeout(90000);
   await page.setViewportSize({ width: 1280, height: 800 }); await activate(page, 0); await discover(page);
-  await page.getByRole("button", { name: "Guardar", exact: true }).first().click();
+  await page.getByRole("button", { name: "Guardar en Mi cultura", exact: true }).first().click();
   await expect(page.getByRole("button", { name: "Guardado", exact: true })).toHaveCount(1);
   await capture(page, "flow-kiosk-recommendations-1280");
   const responsePromise = page.waitForResponse(response => response.url().endsWith("/api/visitor/handoff") && response.request().method() === "POST");
@@ -73,7 +73,7 @@ test("A authorized kiosk → B mobile restores exactly → clean kiosk → C rep
     expect((await page.context().request.get("/api/visitor/me")).status()).toBe(401);
     await other.goto(qr.url); await expect(other.getByRole("heading", { name: "Este código no está disponible." })).toBeVisible();
     await expect(other.locator(".confirmation-code")).toHaveCount(0);
-    await phone.getByRole("link", { name: "Mis viajes", exact: true }).click();
+    await phone.getByRole("link", { name: "Mi cultura", exact: true }).click();
     await phone.locator(".saved-controls select").selectOption("visited");
     await expect(phone.getByText("1 / 1 realizadas", { exact: true })).toBeVisible();
     await phone.getByRole("button", { name: "Marcar favorito" }).click();

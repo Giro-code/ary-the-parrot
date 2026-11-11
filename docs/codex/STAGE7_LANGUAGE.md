@@ -63,7 +63,7 @@ La lógica de decisión debe ser una **función pura** con pruebas unitarias. No
   - Documenta esta limitación.
 - **`hreflang` y canonical** en la versión inglesa, y `<link rel="alternate" hreflang>` hacia ambas.
 
-## 3. Páginas de la app (`/experiencia`, `/mi-viaje`, `/privacidad`, `/reingresar`, `/cuenta/*`, `/cultura/*`)
+## 3. Páginas de la app (`/experiencia`, `/mi-cultura`, `/privacidad`, `/reingresar`, `/cuenta/*`, `/cultura/*`)
 
 - **Idioma inicial.** Lo decide el servidor (la misma función del punto 1) y se pasa al cliente para que el primer render ya salga en el idioma correcto, sin parpadeo de español a inglés.
 - **`useLocale`.** Respeta la cookie y actualiza la cookie al cambiar de idioma.

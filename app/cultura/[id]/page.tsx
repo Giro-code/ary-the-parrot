@@ -8,6 +8,7 @@ import { PublicCulture } from "../../../src/components/public-culture";
 import { culturalItems } from "../../../src/db/schema";
 import { and, eq } from "drizzle-orm";
 import type { Item } from "../../../src/components/types";
+import { presentItem } from "../../../src/server/item-media";
 export const dynamic = "force-dynamic";
 export default async function CulturalPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
@@ -21,6 +22,6 @@ export default async function CulturalPage({ params }: { params: Promise<{ id: s
   if (!item) return <PublicCulture items={{}} />;
   const { db } = await getConnection();
   const translations = await db.select().from(culturalItems).where(and(eq(culturalItems.contentKey, item.contentKey), eq(culturalItems.status, "published")));
-  const items = Object.fromEntries(translations.map(row => [row.language, JSON.parse(JSON.stringify(row))])) as Partial<Record<"en" | "es", Item>>;
+  const items = Object.fromEntries(translations.map(row => [row.language, JSON.parse(JSON.stringify(presentItem(row, row.language === "en" ? "en" : "es")))])) as Partial<Record<"en" | "es", Item>>;
   return <PublicCulture items={items} />;
 }

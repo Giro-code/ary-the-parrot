@@ -16,7 +16,7 @@ async function staffLogin(page: Page, email: string) {
 async function recoverVisitor(page: Page) {
   const email = `lead-${randomUUID()}@example.invalid`;
   await confirmRecovery(page, await requestRecovery(page, email));
-  await page.goto("/mi-viaje");
+  await page.goto("/mi-cultura");
   return email;
 }
 test.beforeAll(async ({ browser }) => {
@@ -57,7 +57,7 @@ for (const pass of [1, 2]) test(`stage4b visual evidence pass ${pass} desktop/mo
     }
     await context.addCookies(aState.cookies); for (const path of ["/partner", "/partner/ofertas", "/partner/leads"]) { await page.goto(`${path}?organizationId=${ids.a}`); await page.reload(); await expect(page.locator("h1")).toBeVisible(); expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true); await page.screenshot({ path: `${evidence}/pass-${pass}-${path.replaceAll("/", "-")}-${width}.png`, fullPage: true }); }
     await context.addCookies(bState.cookies); await page.goto("/admin/contenidos"); await expect(page.getByRole("heading", { name: "Acceso restringido" })).toBeVisible(); await page.screenshot({ path: `${evidence}/pass-${pass}-forbidden-${width}.png`, fullPage: true }); await context.addCookies(adminState.cookies);
-    await page.goto("/mi-viaje"); await page.getByRole("button", { name: "Enviar mi solicitud a Demo Taller del Caribe (ficticio)", exact: true }).click();
+    await page.goto("/mi-cultura"); await page.getByRole("button", { name: "Enviar mi solicitud a Demo Taller del Caribe (ficticio)", exact: true }).click();
     const confirmation = page.locator("form").filter({ has: page.getByRole("heading", { name: "Confirma destinatario y campos" }) }); await confirmation.getByRole("checkbox", { name: "Correo verificado", exact: false }).check(); await confirmation.getByRole("checkbox", { name: "Mensaje", exact: true }).check(); await confirmation.getByLabel("Mensaje", { exact: true }).last().fill(`DEMO visual ${pass}-${width}`); await confirmation.getByRole("checkbox", { name: "Autorizo compartir", exact: false }).check();
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true); await page.screenshot({ path: `${evidence}/pass-${pass}-lead-confirmation-${width}.png`, fullPage: true });
     await page.route("**/api/visitor/leads", route => route.abort("failed")); await confirmation.getByRole("button", { name: "Confirmar y enviar solicitud" }).click(); await expect(page.getByRole("alert").filter({ hasText: "No se pudo completar" })).toBeVisible(); await page.screenshot({ path: `${evidence}/pass-${pass}-lead-error-${width}.png`, fullPage: true }); await page.unroute("**/api/visitor/leads");

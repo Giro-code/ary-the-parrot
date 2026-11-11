@@ -9,7 +9,7 @@ Se aplicó [visual-review-loop](C:/Users/Atlas/.codex/skills/visual-review-loop/
 | Landing ES/EN | 390 / 1440; navegación, créditos, demo, B2B, móvil | Bloqueada | Bloqueada |
 | Bienvenida | ES/EN, casillas vacías, obligatorio/opcional, espera, error, dry-run | Bloqueada | Bloqueada |
 | Chat web | 360–1920; teclado, mensajes largos, offline, cuota, direcciones sin QR | Bloqueada | Bloqueada |
-| Mis viajes | Vacío, ficha, lugar sin ficha, quitar, fuente | Bloqueada | Bloqueada |
+| Mi cultura | Vacío, ficha, lugar sin ficha, quitar, fuente | Bloqueada | Bloqueada |
 | Mis conversaciones | Verificación, vacío, lista, detalle, continuar, borrar, consentimiento retirado | Bloqueada | Bloqueada |
 | Kiosco | 390 / 1280×800 / 1440; avatar, voz, QR, dos dígitos, fin/expiración | Bloqueada | Bloqueada |
 

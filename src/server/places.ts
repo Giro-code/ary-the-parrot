@@ -9,7 +9,7 @@ import { hasConsent } from "./consents.ts";
 export const placeSchema = z.object({ name: z.string().trim().min(1).max(160).refine(value => !/https?:|www\.|<|>/.test(value)) }).strict();
 const owner = (session: Session) => session.ownerUserId ? eq(s.savedPlaces.visitorId, session.ownerUserId) : eq(s.savedPlaces.sessionId, session.id);
 export function requestedDestination(text: string) {
-  const name = text.replace(/^[¿?\s]*/, "").replace(/^(?:c[oó]mo (?:llego|llegar|voy|ir)(?: a)?|d[oó]nde (?:queda|est[aá]n?)|quiero ir(?: a)?|how (?:do i |can i )?(?:get|go|reach)(?: to)?|where (?:is|are)|i (?:want|would like) to (?:go|visit)(?: to)?|directions to|take me to)\s*/i, "").replace(/[?¿!]+$/g, "").trim();
+  const name = text.replace(/^[¿?\s]*/, "").replace(/^(?:c[oó]mo (?:llego|llegar|voy|ir)(?: a)?|d[oó]nde (?:queda|est[aá]n?)|(?:ubicaci[oó]n|mapa)(?: de| para)?|(?:location|map)(?: of| for)?|quiero ir(?: a)?|how (?:do i |can i )?(?:get|go|reach)(?: to)?|where (?:is|are)|i (?:want|would like) to (?:go|visit)(?: to)?|directions to|take me to)\s*/i, "").replace(/[?¿!]+$/g, "").trim();
   return placeSchema.safeParse({ name }).success ? name : undefined;
 }
 export async function listPlaces(db: Database, session: Session) {

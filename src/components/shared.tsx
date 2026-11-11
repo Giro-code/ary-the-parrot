@@ -7,6 +7,8 @@ import { dictionaries, interests, interestLabels, type Interest, type Locale } f
 import type { Item, Recommendations } from "./types";
 import { ApiError } from "./api";
 import { Icon } from "./icons";
+import { ItemPhoto } from "./item-photo";
+import { MapsLink } from "./maps-link";
 
 export function Shell({ locale, setLocale, children, kiosk = false }: { locale: Locale; setLocale?: (value: Locale) => void; children: ReactNode; kiosk?: boolean }) {
   const t = dictionaries[locale];
@@ -15,7 +17,7 @@ export function Shell({ locale, setLocale, children, kiosk = false }: { locale: 
     <a className="skip" href="#main">{t.skipContent}</a>
     <header className="app-header"><a className="brand" href="/#inicio">ARY <span>la Cotorra</span></a>
       <nav aria-label={t.navigation}>
-        {!kiosk && <><a href="/experiencia">{t.experience}</a><a href="/mi-viaje"><Icon kind="trips"/>{t.trip}</a><a href="/mis-conversaciones"><Icon kind="conversations"/>{uiText(locale, "myData")}</a></>}
+        {!kiosk && <><a href="/experiencia">{t.experience}</a><a href="/mi-cultura"><Icon kind="trips"/>{t.trip}</a><a href="/mis-conversaciones"><Icon kind="conversations"/>{uiText(locale, "myData")}</a></>}
         <a href="/privacidad">{t.privacy}</a>
         {setLocale && <LanguageSelector locale={locale} onChange={setLocale} />}
       </nav>
@@ -41,9 +43,10 @@ export function PreferenceForm({ locale, country, selected, onChange, onCountry,
     <div className="actions"><button type="submit" disabled={busy}>{busy ? t.working : t.discover}</button>{onSkip && <button type="button" className="secondary" disabled={busy} onClick={onSkip}>{t.skip}</button>}</div>
   </form>;
 }
-export function CulturalCard({ item, locale, children, rationale }: { item: Item; locale: Locale; children?: ReactNode; rationale?: string }) {
+export function CulturalCard({ item, locale, children, rationale, first = false }: { item: Item; locale: Locale; children?: ReactNode; rationale?: string; first?: boolean }) {
   const t = dictionaries[locale];
-  return <article className="cultural-card"><p className="eyebrow">{t.demo}</p><h2><a href={`/cultura/${item.id}`}>{item.title}</a></h2><p>{item.summary}</p>{rationale && <p className="rationale">{rationale}</p>}
+  return <article className="cultural-card"><ItemPhoto image={item.image} locale={locale} first={first} /><p className="eyebrow">{t.demo}</p><h2><a href={`/cultura/${item.id}`}>{item.title}</a></h2><p>{item.summary}</p>{rationale && <p className="rationale">{rationale}</p>}
+    <MapsLink url={item.mapsUrl} locale={locale} />
     <p className="source">{item.sourceUrl && <a href={item.sourceUrl} target="_blank" rel="noreferrer">{t.source}: {item.editor}</a>}{item.sourceCheckedAt && <span>{t.reviewed}: {new Date(item.sourceCheckedAt).toLocaleDateString(locale, { timeZone: "UTC" })}</span>}</p>
     <details><summary>{t.question}</summary><p className="eyebrow">{t.example}</p><p>{item.validatedDescription}</p></details>{children}
   </article>;

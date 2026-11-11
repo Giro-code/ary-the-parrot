@@ -19,7 +19,7 @@ export function EmailWelcome({ locale, dryRun, onStarted }: { locale: Locale; dr
   return <section className="email-welcome account-journey" aria-labelledby="welcome-title">
     <AccountArt locale={locale} envelope mood={error ? "sin-conexion" : "presentar"} bubble={en ? "A little hello, a new adventure." : "Un saludo, una nueva aventura."}/>
     <div className="account-content"><h1 id="welcome-title">{en ? "Hello! Let's keep in touch." : "¡Hola! Sigamos conversando."}</h1>
-    <p>{en ? "Share your email to return to your conversations and trips." : "Déjame tu correo para volver a tus conversaciones y viajes."}</p><EmailSteps locale={locale}/>
+    <p>{en ? "Share your email to return to your conversations and My culture." : "Déjame tu correo para volver a tus conversaciones y a Mi cultura."}</p><EmailSteps locale={locale}/>
     <form className="account-form" onSubmit={event => { event.preventDefault(); void submit(); }}>
       <div><label htmlFor="welcome-email">{en ? "Your email" : "Tu correo"}</label><input id="welcome-email" type="email" autoComplete="email" maxLength={254} required disabled={busy} value={email} onChange={event => setEmail(event.target.value)}/></div>
       <label className="check-row"><input type="checkbox" required checked={terms} disabled={busy} onChange={event => setTerms(event.target.checked)}/><span>{en ? "I accept the " : "Acepto los "}<a href={`/terminos?lang=${locale}`} target="_blank" rel="noreferrer">{en ? "Terms and Conditions" : "Términos y Condiciones"}</a>{en ? " and the " : " y la "}<a href={`/privacidad?lang=${locale}`} target="_blank" rel="noreferrer">{en ? "Privacy Policy" : "Política de Privacidad"}</a>.</span></label>

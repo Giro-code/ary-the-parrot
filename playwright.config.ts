@@ -10,6 +10,8 @@ export default defineConfig({
   reporter: [["list"], ["html", { open: "never" }]],
   use: { locale: "es-ES", browserName: "chromium", trace: "retain-on-failure", screenshot: "only-on-failure", launchOptions: { args: ["--use-fake-device-for-media-stream", "--use-fake-ui-for-media-stream"] } },
   projects: [
+    { name: "stage9b", testMatch: "stage9b.spec.ts", fullyParallel: false, timeout: 180000, use: { baseURL: "http://127.0.0.1:3002" } },
+    { name: "stage9", testMatch: "stage9.spec.ts", fullyParallel: false, timeout: 60000, use: { baseURL: "http://127.0.0.1:3002" } },
     { name: "stage8", testMatch: "stage8.spec.ts", fullyParallel: false, timeout: 60000, use: {baseURL:"http://127.0.0.1:3002"} },
     { name: "stage8-webkit", testMatch: "stage8.spec.ts", grep: /iPhone WebKit/, use: {browserName:"webkit",baseURL:"http://127.0.0.1:3002",launchOptions:{args:[]}} },
     { name: "app", testMatch: "legacy-regression.spec.ts", use: { baseURL: "http://127.0.0.1:3000" } },

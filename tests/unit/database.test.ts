@@ -41,15 +41,18 @@ test("migration snapshot matches schema and rollback removes the isolated test s
   const stage3 = JSON.parse(await readFile("drizzle/meta/0001_snapshot.json", "utf8"));
   const stage4a = JSON.parse(await readFile("drizzle/meta/0002_snapshot.json", "utf8"));
   const stage4b = JSON.parse(await readFile("drizzle/meta/0003_snapshot.json", "utf8"));
-  const snapshot = JSON.parse(await readFile("drizzle/meta/0004_snapshot.json", "utf8"));
+  const stage8 = JSON.parse(await readFile("drizzle/meta/0004_snapshot.json", "utf8"));
+  const snapshot = JSON.parse(await readFile("drizzle/meta/0005_snapshot.json", "utf8"));
   expect(initial.prevId).toBe("00000000-0000-0000-0000-000000000000");
   expect(stage3.prevId).toBe(initial.id);
   expect(stage4a.prevId).toBe(stage3.id);
-  expect(stage4b.prevId).toBe(stage4a.id); expect(snapshot.prevId).toBe(stage4b.id);
+  expect(stage4b.prevId).toBe(stage4a.id); expect(stage8.prevId).toBe(stage4b.id); expect(snapshot.prevId).toBe(stage8.id);
   expect(await generateMigration(snapshot, generateDrizzleJson(s, snapshot.id))).toEqual([]);
   const isolated = await connectDatabase({ memory: true });
   try {
     await migrateDatabase(isolated.db);
+    const stage9Down = await readFile("drizzle/rollback/0005_stage9_places_media.sql", "utf8");
+    for (const statement of stage9Down.split(";").map(value => value.trim()).filter(Boolean)) await isolated.db.execute(sql.raw(statement));
     const stage8Down = await readFile("drizzle/rollback/0004_stage8_conversations.sql", "utf8");
     for (const statement of stage8Down.split(";").map(value => value.trim()).filter(Boolean)) await isolated.db.execute(sql.raw(statement));
     const stage4bDown = await readFile("drizzle/rollback/0003_stage4b_staff_leads.sql", "utf8");

@@ -5,6 +5,21 @@ import { AryStage } from "../../src/components/ary-stage";
 import { Icon, WelcomeEnvelope } from "../../src/components/icons";
 import { readFileSync } from "node:fs";
 import { parse } from "acorn";
+import { dictionaries } from "../../src/i18n";
+import { renderEmail } from "../../src/server/email/templates";
+
+test.each(["es", "en"] as const)("culture naming reaches navigation, collection and email copy in %s", locale => {
+  const t = dictionaries[locale], name = locale === "es" ? "Mi cultura" : "My culture";
+  expect(t.trip).toBe(name);
+  expect(t.tripTitle).toBe(locale === "es" ? "Tu colección cultural" : "Your cultural collection");
+  expect(t.tripSubtitle).toContain("Ary");
+  for (const template of ["recovery", "saved_places"] as const) {
+    const email = renderEmail(template, locale);
+    expect(email.text).toContain(name);
+    expect(email.html).toContain(name);
+    expect(email.text).not.toMatch(/Mis viajes|Mi viaje|My trips|My trip/i);
+  }
+});
 test.each(["es", "en"] as const)("email welcome %s has required unchecked terms, optional unchecked marketing and honest dry-run", locale => {
   const html = renderToStaticMarkup(<EmailWelcome locale={locale} dryRun onStarted={() => {}}/>);
   expect(html.match(/type="checkbox"/g)).toHaveLength(2); expect(html).not.toContain('checked=""');
@@ -16,7 +31,7 @@ test.each(["es", "en"] as const)("email welcome %s has required unchecked terms,
 test("compact mascot and named SVGs retain accessible markup", () => {
   const html = renderToStaticMarkup(<AryStage state="listening" locale="es"/>);
   expect(html).not.toContain('<h1'); expect(html).toContain('data-ary-image="pensar"'); expect(html).toContain('role="status"');
-  expect(renderToStaticMarkup(<Icon kind="trips" label="Mis viajes"/>)).toContain('aria-label="Mis viajes"');
+  expect(renderToStaticMarkup(<Icon kind="trips" label="Mi cultura"/>)).toContain('aria-label="Mi cultura"');
   expect(renderToStaticMarkup(<WelcomeEnvelope label="Sobre de Ary"/>)).toContain('role="img"');
 });
 test("translated landing JS has identical syntax, tags, selectors, identifiers and API payload keys", () => {

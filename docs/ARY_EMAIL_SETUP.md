@@ -75,7 +75,7 @@ Configurar `/api/email/webhook` con `email.delivered`, `email.bounced`, `email.c
 
 1. Mantener `EMAIL_DRY_RUN=true`, marketing desactivado y datos `@example.invalid`.
 2. Migrar una BD de desarrollo aislada: `npm run db:migrate`.
-3. Guardar una ficha → recuperación → bandeja de prueba → confirmar en otro contexto → Mi viaje.
+3. Guardar una ficha → recuperación → bandeja de prueba → confirmar en otro contexto → Mi cultura.
 4. Probar exportación, revocación y borrado en la cuenta sintética.
 5. Ejecutar unitarias y E2E. Las pruebas Resend/Svix usan respuestas y firmas locales; nunca envían correo real.
 

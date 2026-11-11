@@ -93,7 +93,7 @@ export class GeminiProvider implements AiProvider {
       if ([answer.data.displayText, answer.data.spokenText, ...answer.data.followUps].some(text => /\d|\b(?:dollars?|pesos?|dolares|euros?|gratis|free|a las|at noon|kilomet\w*|miles?|minut\w*|abierto|open daily)\b/i.test(text))) fail("specific_general_output");
     }
     if (intent === "culture" && (!answer.data.citedItemIds.length || answer.data.confidence < 0.6)) fail("ungrounded_output");
-    if ([answer.data.displayText, answer.data.spokenText, ...answer.data.followUps].some(text => /https?:\/\/|www\.|\b[\w-]+\.(?:com|org|net|app|do|io)\b|<[^>]+>|[$€£]|\b\d{1,2}:\d{2}\b/.test(text))) fail("ungrounded_output");
+    if ([answer.data.displayText, answer.data.spokenText, ...answer.data.followUps].some(text => /https?:\/\/|www\.|\b[\w-]+\.(?:com|org|net|app|do|io)\b|<[^>]+>|[$€£]|\b\d{1,2}:\d{2}\b|-?\b\d{1,3}(?:\.\d+)?\s*[,;]\s*-?\d{1,3}(?:\.\d+)?\b|-?\b\d{1,3}\.\d+\s+-?\d{1,3}\.\d+|\d{1,3}\s*[°º]|\b(?:lat(?:itude|itud)?|lng|lon(?:gitude|gitud)?)\s*[=:]?\s*-?\d/i.test(text))) fail("ungrounded_output");
     const value = answer.data;
     return { answer: answerSchema.parse({ detectedLanguage: value.detectedLanguage, displayText: value.displayText, spokenText: value.spokenText, citedItemIds: value.citedItemIds, followUps: value.followUps, confidence: value.confidence, intent: value.intent }), transcript, usage };
   }

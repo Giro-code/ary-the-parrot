@@ -13,7 +13,8 @@ async function capture(page: Page, name: string) {
 async function mockAsk(page: Page) {
   const { items } = await (await page.request.get("/api/cultural/items?locale=es")).json();
   const item = items.find((row: { title: string }) => /merengue/i.test(row.title)) || items[0];
-  await page.route("**/api/voice/ask", route => route.fulfill({ json: { messageId: randomUUID(), transcript: "Cuéntame sobre el merengue", displayText: "El merengue es música y baile de República Dominicana.", spokenText: "El merengue es música y baile de República Dominicana.", intent: "culture", citedItemIds: [item.id], followUps: [], confidence: .9, mode: "gemini", handoff: false, preferences: { locale: "es", countryDeclared: null, interests: ["music"] }, sources: [{ id: item.id, title: item.title, summary: item.summary, url: item.sourceUrl, editor: item.editor }] } }));
+  expect(item.image).toBeDefined();
+  await page.route("**/api/voice/ask", route => route.fulfill({ json: { messageId: randomUUID(), transcript: "Cuéntame sobre el merengue", displayText: "El merengue es música y baile de República Dominicana.", spokenText: "El merengue es música y baile de República Dominicana.", intent: "culture", citedItemIds: [item.id], followUps: [], confidence: .9, mode: "gemini", handoff: false, preferences: { locale: "es", countryDeclared: null, interests: ["music"] }, sources: [{ id: item.id, title: item.title, summary: item.summary, url: item.sourceUrl, editor: item.editor, image: item.image, mapsUrl: item.mapsUrl }] } }));
 }
 test("no automatic session or recording, explicit permission explanation, real recording and transcript bubble", async ({ page }) => {
   let sessions = 0, recordings = 0;
@@ -108,7 +109,7 @@ test("invalid playback reports the text fallback and never leaves Ary speaking",
   await expect(page.getByTestId("robot-status")).toHaveAttribute("data-robot-state", "idle");
 });
 test("permissions policy restricts microphone to conversation routes; CSP supports local audio", async ({ request }) => {
-  for (const path of ["/", "/privacidad", "/kiosco/activar", "/mi-viaje", "/kiosco", "/experiencia"]) {
+  for (const path of ["/", "/privacidad", "/kiosco/activar", "/mi-cultura", "/kiosco", "/experiencia"]) {
     const response = await request.get(path), policy = response.headers()["permissions-policy"];
     expect(policy).toContain(path === "/kiosco" || path === "/experiencia" ? "microphone=(self)" : "microphone=()");
     expect(response.headers()["content-security-policy"]).toContain("media-src 'self' blob:");
@@ -133,7 +134,7 @@ for (const pass of [1, 2]) test(`stage6 visual evidence pass ${pass}: character 
     await page.waitForTimeout(350);
     await page.getByRole("button", { name: "Parar grabación" }).click();
     await expect(page.locator(".chat-card")).toBeVisible(); await expect(page.locator('[data-ary-image="mostrar"]')).toBeVisible(); await capture(page, `pass-${pass}-hablando-fichas-${width}`);
-    await page.getByRole("button", { name: "Guardar", exact: true }).click();
+    await page.getByRole("button", { name: "Guardar en Mi cultura", exact: true }).click();
     await expect(page.locator('[data-ary-image="celebrar"]')).toBeVisible(); await capture(page, `pass-${pass}-celebrar-${width}`);
     await context.setOffline(true); await expect(page.locator('[data-ary-image="sin-conexion"]')).toBeVisible(); await capture(page, `pass-${pass}-offline-fallback-${width}`);
     await expect(page.getByRole("button", { name: "Hablar con Ary", exact: true })).toBeDisabled();

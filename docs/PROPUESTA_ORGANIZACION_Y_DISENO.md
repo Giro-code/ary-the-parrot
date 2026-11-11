@@ -4,13 +4,13 @@ Estado: **solo propuesta, sin implementar.** Preparada el 10-11-2026 para revisa
 
 ## El problema en una frase
 
-El sitio tiene muchas páginas útiles, pero el visitante solo puede llegar a una: el chat. Mis viajes, Mis conversaciones, Recuperar conversación, Privacidad y Términos existen, pero están escondidos o solo aparecen cuando ya estás dentro del chat.
+El sitio tiene muchas páginas útiles, pero el visitante solo puede llegar a una: el chat. Mi cultura, Mis conversaciones, Recuperar conversación, Privacidad y Términos existen, pero están escondidos o solo aparecen cuando ya estás dentro del chat.
 
 ## Lo que se ve hoy
 
 **Portada (`/`)**
 - El único camino es «Habla con Ary», repetido tres veces. Además lleva un icono de «enlace externo» que confunde, porque parece que abre otra web.
-- Quien ya habló con Ary no ve ninguna forma de volver: no hay «Mis conversaciones», «Mis viajes» ni «Recuperar».
+- Quien ya habló con Ary no ve ninguna forma de volver: no hay «Mis conversaciones», «Mi cultura» ni «Recuperar».
 - El pie casi no tiene enlaces: faltan Privacidad, Términos, idioma y contacto.
 - La marca no coincide con la del chat: en la portada es el logo «ary la cotorra» y en el chat es el texto «ARY *la Cotorra*».
 
@@ -37,7 +37,7 @@ PÚBLICO (cualquiera)
 
 MI ESPACIO (visitante con sesión o correo)
   Mis conversaciones /mis-conversaciones
-  Mis viajes /mi-viaje
+  Mi cultura /mi-cultura
   Mis datos y privacidad /cuenta/privacidad
   Recuperar mi conversación /reingresar   (si no hay sesión)
 
@@ -52,7 +52,7 @@ PERSONAL (oculto, con acceso)
 
 ### 1. Un encabezado y un pie iguales en todo el sitio (prioridad alta)
 - **Encabezado común** en la portada, el chat y Mi espacio: logo, «Hablar con Ary», «Lugares», «Mi espacio ▾» e idioma ES/EN.
-- **«Mi espacio ▾»** es un menú con Mis conversaciones, Mis viajes, Mis datos y, si no hay sesión, «Recuperar mi conversación».
+- **«Mi espacio ▾»** es un menú con Mis conversaciones, Mi cultura, Mis datos y, si no hay sesión, «Recuperar mi conversación».
 - En móvil todo va en un solo menú hamburguesa, con los mismos apartados.
 - **Pie común** con Privacidad, Términos, Para empresas, Créditos de imágenes, idioma y «Proyecto para la WRO».
 - Un solo logo (el del loro) en todas partes.
@@ -64,7 +64,7 @@ PERSONAL (oculto, con acceso)
 - Reducir a dos las tres repeticiones de «Habla con Ary».
 
 ### 3. Página «Mi espacio» (prioridad media)
-- Una portada personal sencilla (`/mi-espacio`, o reutilizando `/mi-viaje`) con tres tarjetas grandes con icono:
+- Una portada personal sencilla (`/mi-espacio`, o reutilizando `/mi-cultura`) con tres tarjetas grandes con icono:
   - «Seguir conversando», con la última conversación;
   - «Mis lugares guardados»;
   - «Mis datos y privacidad».

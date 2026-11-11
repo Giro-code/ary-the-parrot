@@ -1,6 +1,6 @@
 # Etapa 3 · diseño mínimo
 
-Objetivo: conservar voluntariamente Mi viaje mediante correo verificado, controlar los datos y registrar solicitudes B2B por separado. La acción principal es pedir un enlace; el control del correo se demuestra solo mediante POST de confirmación. La landing debe conservar sus píxeles en reposo; la regresión visual de esta etapa sigue pendiente.
+Objetivo: conservar voluntariamente Mi cultura mediante correo verificado, controlar los datos y registrar solicitudes B2B por separado. La acción principal es pedir un enlace; el control del correo se demuestra solo mediante POST de confirmación. La landing debe conservar sus píxeles en reposo; la regresión visual de esta etapa sigue pendiente.
 
 Árbol: Shell → RecoveryForm (correo, finalidad, recuperación obligatoria, marketing opcional); Shell → VerifyLink (confirmación, error, retorno); Shell → AccountPrivacy (datos, consentimientos, preferencias, exportación, confirmación de borrado); DevOutbox → mensajes de prueba renderizados. Experience y Trip añaden enlaces a recuperación y privacidad. Landing conserva formulario/TXT y añade resultado asíncrono.
 

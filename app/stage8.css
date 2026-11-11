@@ -41,7 +41,9 @@
 .inline-handoff h2 { margin: 0; }
 .voice-chat audio { display: none; }
 .welcome-loading { padding: 40px 24px; margin: auto; }
-.email-welcome { flex: 1; overflow-y: auto; max-width: 560px; width: 100%; margin: 0 auto; padding: 20px 24px 36px; }
+.ary-app.voice-app.account-app { height: auto; min-height: 100dvh; }
+.account-app main { flex: none; padding-inline: 24px; }
+.email-welcome { width: 100%; }
 .welcome-art { display: flex; align-items: center; justify-content: center; gap: 8px; height: 150px; }
 .welcome-art > img { width: 150px; height: 150px; object-fit: contain; }
 .welcome-envelope { width: 134px; height: 110px; transform: rotate(-5deg); }

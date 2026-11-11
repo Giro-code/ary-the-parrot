@@ -1,6 +1,6 @@
 # Revisión vigente · etapa 8
 
-La web ahora solicita correo, aceptación explícita de términos/privacidad e informa del historial; el dispositivo público conserva QR. Se almacenan conversaciones de cuentas verificadas con consentimiento `conversation_history`, cifradas, por 90 días por defecto configurables. Finalidad: dar seguimiento y continuar conversaciones y viajes. Se permiten apertura/continuación, exportación, borrado individual, retirada y borrado de cuenta. El cron existente purga caducadas. El audio no se guarda. Ver [contrato técnico actualizado](ARY_SECURITY_AND_PRIVACY.md).
+La web ahora solicita correo, aceptación explícita de términos/privacidad e informa del historial; el dispositivo público conserva QR. Se almacenan conversaciones de cuentas verificadas con consentimiento `conversation_history`, cifradas, por 90 días por defecto configurables. Finalidad: dar seguimiento y continuar conversaciones y descubrimientos culturales. Se permiten apertura/continuación, exportación, borrado individual, retirada y borrado de cuenta. El cron existente purga caducadas. El audio no se guarda. Ver [contrato técnico actualizado](ARY_SECURITY_AND_PRIVACY.md).
 
 `terms`, `conversation_history` y `marketing` son pruebas técnicas versionadas; no constituyen por sí mismas una conclusión de validez jurídica. Marketing no está premarcado y requiere DOI distinto de verificación de acceso. El correo provisional tiene cinco preguntas por HMAC durante 24 h y límites por IP; no se crea cuenta por conocer una dirección.
 

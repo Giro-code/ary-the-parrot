@@ -35,7 +35,7 @@ test("ES/EN email welcome requires terms, marketing is unchecked, dry-run honest
 });
 test("web directions offers saving and never creates a private QR; general label is distinct", async ({ page }) => {
   await emailStart(page); await askText(page,'¿Cómo llego a Altos de Chavón?');
-  await expect(page.getByRole('button',{name:'Guardar en Mis viajes',exact:true}).first()).toBeVisible();
+  await expect(page.getByRole('button',{name:'Guardar en Mi cultura',exact:true}).first()).toBeVisible();
   await expect(page.locator('.inline-handoff')).toHaveCount(0); await expect(page.locator('[data-ary-image="handoff_qr"]')).toHaveCount(0);
   await page.route('**/api/chat', route => route.request().method()==='POST' ? route.fulfill({json:{messageId:randomUUID(),detectedLanguage:'es',displayText:'¡Qué gusto! Podemos descubrir la isla a tu ritmo.',spokenText:'¡Qué gusto! Podemos descubrir la isla a tu ritmo.',intent:'general',citedItemIds:[],followUps:[],confidence:.8,mode:'gemini',handoff:false,sources:[]}}) : route.continue());
   await askText(page,'Hola, ¿cómo estás?'); await expect(page.locator('.reply-mode').last()).toHaveText('Respuesta general de IA');
@@ -74,7 +74,7 @@ for (const pass of [1,2]) test(`visual pass ${pass}: landing, email, chat, trips
     await page.context().clearCookies(); await page.goto('/experiencia?lang=es'); await page.reload(); await expect(page.locator('#welcome-email')).toBeVisible(); await capture(page,`pass${pass}-email-es-${width}`);
     await page.getByRole('button',{name:'English',exact:true}).click(); await capture(page,`pass${pass}-email-en-${width}`);
     const email=await emailStart(page); await askText(page,'Cuéntame del merengue'); await verifyEmail(page,email); await page.reload(); await expect(page.locator('.chat-card')).toBeVisible(); await capture(page,`pass${pass}-chat-${width}`);
-    await page.getByRole('button',{name:'Guardar',exact:true}).first().click(); await page.goto('/mi-viaje'); await expect(page.locator('.cultural-card')).toBeVisible(); await capture(page,`pass${pass}-trips-${width}`);
+    await page.getByRole('button',{name:'Guardar en Mi cultura',exact:true}).first().click(); await page.goto('/mi-cultura'); await expect(page.locator('.cultural-card')).toBeVisible(); await capture(page,`pass${pass}-trips-${width}`);
     await page.goto('/mis-conversaciones'); await expect(page.locator('.conversation-row')).toBeVisible(); await capture(page,`pass${pass}-conversations-${width}`);
     await page.locator('.conversation-row').click(); await capture(page,`pass${pass}-conversation-open-${width}`);
     await page.context().clearCookies();

@@ -10,10 +10,10 @@ En `D:\Ary The Parrot`. El revisor ejecutó la suite completa de Playwright fuer
 
 1. **`stage8-webkit`.** Falta el ejecutable de WebKit. El revisor lo instala (`npx playwright install webkit`): no toques nada por esto.
 2. **`stage8:10` (email welcome).** El botón «Enviar pregunta» está deshabilitado cuando la prueba espera habilitado. Comprueba si es la cuota provisional, el gate de correo o el estado del botón de enviar con el campo vacío. Si el producto es correcto, ajusta la prueba.
-3. **`stage3:43`, `stage3:92` y `stage4b:38/51`.** Usan `getByLabel("Correo electrónico")` y la casilla «Solicito conservar Mis viajes…» en `/reingresar`. Ahora la etiqueta es «Tu correo» y la casilla «Acepto el aviso de privacidad».
+3. **`stage3:43`, `stage3:92` y `stage4b:38/51`.** Usan `getByLabel("Correo electrónico")` y la casilla «Solicito conservar Mi cultura…» en `/reingresar`. Ahora la etiqueta es «Tu correo» y la casilla «Acepto el aviso de privacidad».
    - Centraliza los helpers de recuperación en un solo sitio, por ejemplo `tests/e2e/helpers.ts`, y úsalos en todas las suites.
    - El estado de éxito nuevo (pantalla completa y redirección a los 4 s) puede cambiar lo que esperan después del envío.
-4. **`stage2:95`.** Espera el encabezado «Guardar y recuperar Mis viajes»; ahora es el título nuevo de `/reingresar`.
+4. **`stage2:95`.** Espera el encabezado «Guardar y recuperar Mi cultura»; ahora es el título nuevo de `/reingresar`.
 5. **`stage4a:36`, `stage8:32` y `stage8:54` (visual).** Pulsan «Usar teclado», que ya no existe porque el campo «Escríbele a Ary…» está siempre visible. Actualiza `askText` y los helpers equivalentes.
 6. **`stage6:58`.** `robot-status` termina en `error` cuando se espera `idle` tras cancelar la grabación con el teclado. **Investiga**: puede ser un fallo real del producto al cancelar.
 7. **`stage3:110` (visual ×2).** Lo mismo que el punto 3 en las pasadas visuales.

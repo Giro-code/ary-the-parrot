@@ -4,10 +4,12 @@ import { useEffect, useRef, useState } from "react";
 import type { Locale } from "../i18n";
 import { Icon, WelcomeEnvelope } from "./icons";
 
+// The offline illustration ships later; until then, the thinking pose stands in.
+const offlineArt = false;
 export function AccountArt({ locale, mood = "presentar", envelope = false, bubble }: { locale: Locale; mood?: "presentar" | "pensar" | "celebrar" | "sin-conexion"; envelope?: boolean; bubble?: string }) {
   return <div className={`account-art account-art-${mood}`}>
     {bubble && <p className="ary-speech">{bubble}</p>}
-    <div className="account-illustrations"><Image src={`/assets/ary/ary-${mood}.webp`} width={280} height={280} sizes="(max-width: 899px) 160px, 280px" alt={locale === "es" ? mood === "celebrar" ? "Ary feliz y celebrando" : mood === "sin-conexion" ? "Ary espera a que vuelva la conexión" : mood === "pensar" ? "Ary pensando" : "Ary te saluda" : mood === "celebrar" ? "Ary happily celebrating" : mood === "sin-conexion" ? "Ary waiting for the connection" : mood === "pensar" ? "Ary thinking" : "Ary waving hello"} preload/>
+    <div className="account-illustrations"><Image src={`/assets/ary/ary-${mood === "sin-conexion" && !offlineArt ? "pensar" : mood}.webp`} width={280} height={280} sizes="(max-width: 899px) 160px, 280px" alt={locale === "es" ? mood === "celebrar" ? "Ary feliz y celebrando" : mood === "sin-conexion" ? "Ary espera a que vuelva la conexión" : mood === "pensar" ? "Ary pensando" : "Ary te saluda" : mood === "celebrar" ? "Ary happily celebrating" : mood === "sin-conexion" ? "Ary waiting for the connection" : mood === "pensar" ? "Ary thinking" : "Ary waving hello"} preload/>
       {envelope && <WelcomeEnvelope label={locale === "es" ? "Sobre con un sello de la cotorra y el Caribe" : "An envelope with a Caribbean parrot stamp"}/>}</div>
   </div>;
 }

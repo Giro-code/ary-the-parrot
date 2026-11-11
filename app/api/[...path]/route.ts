@@ -15,6 +15,7 @@ import { chat, chatCue, chatHistory, chatInputSchema, cueSchema } from "../../..
 import { consumeProvisionalQuestion, emailAdmission } from "../../../src/server/onboarding";
 import { eq } from "drizzle-orm";
 import { visitorSessions } from "../../../src/db/schema";
+import { presentItem } from "../../../src/server/item-media";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -62,12 +63,13 @@ async function handle(request: NextRequest) {
     if (path === "/api/cultural/items" && method === "GET") {
       const query = z.object({ locale: z.enum(["es", "en"]).default("es"), offset: z.coerce.number().int().min(0).max(10000).default(0), limit: z.coerce.number().int().min(1).max(50).default(12) }).safeParse(Object.fromEntries(request.nextUrl.searchParams));
       if (!query.success) throw new AppError("invalid_query", 400);
-      return json({ items: await service.listItems(db, query.data.locale, query.data.offset, query.data.limit) });
+      return json({ items: (await service.listItems(db, query.data.locale, query.data.offset, query.data.limit)).map(item => presentItem(item, query.data.locale)) });
     }
     const itemMatch = path.match(/^\/api\/cultural\/items\/([^/]+)$/);
     if (itemMatch && method === "GET") {
       const parsed = uuidSchema.safeParse(itemMatch[1]); if (!parsed.success) throw new AppError("item_not_found", 404);
-      return json({ item: await service.findItem(db, parsed.data) });
+      const item = await service.findItem(db, parsed.data);
+      return json({ item: presentItem(item, item.language === "en" ? "en" : "es") });
     }
     // Status can read the transferred source, but only from its authorized kiosk.
     if (path === "/api/visitor/handoff/status" && method === "GET") {
@@ -105,9 +107,11 @@ async function handle(request: NextRequest) {
       return json({ url, svg, confirmationCode: qr.confirmationCode, expiresAt: qr.expiresAt });
     }
     if (path === "/api/recommendations" && method === "POST") {
-      await body(request, empty); return json(await service.recommend(db, session));
+      await body(request, empty);
+      const result = await service.recommend(db, session);
+      return json({ ...result, recommendations: result.recommendations.map(row => ({ ...row, item: presentItem(row.item, session.locale as "en" | "es") })) });
     }
-    if (path === "/api/saved" && method === "GET") { const rows = await service.listSaved(db, session.id); const items = await service.localizeItems(db, rows.map(row => row.item), session.locale as "en" | "es"); return json({ items: rows.map((row, index) => ({ ...row, item: items[index] })) }); }
+    if (path === "/api/saved" && method === "GET") { const rows = await service.listSaved(db, session.id); const items = await service.localizeItems(db, rows.map(row => row.item), session.locale as "en" | "es"); return json({ items: rows.map((row, index) => ({ ...row, item: presentItem(items[index], session.locale as "en" | "es") })) }); }
     if (path === "/api/saved" && method === "POST") {
       const data = await body(request, z.object({ itemId: uuidSchema }).strict()); return json({ saved: await service.saveItem(db, session.id, data.itemId) }, 201);
     }

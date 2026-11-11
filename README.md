@@ -1,6 +1,6 @@
 # Etapa 8 · rediseño y conversaciones (local)
 
-Landing cultural ES/EN, bienvenida con correo/términos, cinco preguntas provisionales, chat compacto, intenciones general/directions, QR automático solo en dispositivo público activado, Mis viajes y conversaciones cifradas con retención/retirada. Nuevo: /terminos y /mis-conversaciones. Los lugares sin ficha se guardan como texto del visitante con ubicación sin verificar. Se conserva legacy intacto.
+Landing cultural ES/EN, bienvenida con correo/términos, cinco preguntas provisionales, chat compacto, intenciones general/directions, QR automático solo en dispositivo público activado, Mi cultura y conversaciones cifradas con retención/retirada. Nuevo: /terminos y /mis-conversaciones. Los lugares sin ficha se guardan como texto del visitante con ubicación sin verificar. Se conserva legacy intacto.
 
 Migración local nueva: `0004_stage8_conversations`. Variable: `CONVERSATION_RETENTION_DAYS=90`. Aviso `2026-11-10.v2`. Las descripciones de etapas anteriores más abajo son históricas donde contradicen estos cambios.
 
@@ -22,7 +22,7 @@ Variables de servidor: `AI_TTS_MODEL=gemini-3.8-flash-lite-tts`, `AI_TTS_VOICE=S
 
 La evidencia heredada consumió **4/4 llamadas reales**: no volver a ejecutar `scripts/verify-voice.ts --live` en esta etapa. Unitarias y E2E usan mocks. La latencia histórica hasta WAV fue 11 736 ms, con respuesta al audio no validada y antes de corregir el estilo TTS; no acredita la latencia final en navegador/Pi. Las secciones anteriores a etapa 6 que siguen son historial y no describen las autorizaciones ni la interfaz actuales.
 
-Next.js 16, React y TypeScript. La web original y el brochure se conservan en `public/`; `legacy/` es la referencia de regresión. Las etapas 2/3 añaden sesión anónima, kiosco, QR privado, Mi viaje, recuperación opcional por correo verificado, privacidad y solicitudes B2B separadas. Explorar no requiere correo. La etapa 4A añade chat cultural fundamentado con Gemini y fallback de ejemplo, simulador y puente local de robot. La integración física queda pendiente.
+Next.js 16, React y TypeScript. La web original y el brochure se conservan en `public/`; `legacy/` es la referencia de regresión. Las etapas 2/3 añaden sesión anónima, kiosco, QR privado, Mi cultura, recuperación opcional por correo verificado, privacidad y solicitudes B2B separadas. Explorar no requiere correo. La etapa 4A añade chat cultural fundamentado con Gemini y fallback de ejemplo, simulador y puente local de robot. La integración física queda pendiente.
 
 La etapa 3 usa **correo dry-run por defecto** y no envió correos reales durante su implementación. [Configuración de correo](docs/ARY_EMAIL_SETUP.md), [seguridad y privacidad](docs/ARY_SECURITY_AND_PRIVACY.md) y [cierre y bloqueos](docs/ARY_STAGE3_REPORT.md). No se hizo commit, push ni despliegue.
 
@@ -42,9 +42,9 @@ npm run dev
 
 Abrir la URL privada de activación impresa por `kiosk:enroll` **en el navegador del kiosco** y pulsar «Activar este kiosco». Caduca en diez minutos y solo se utiliza una vez. No copiarla en tickets o registros. Luego abrir `/kiosco`. Sin activación puede explorarse en modo demostración, sin generar QR privado.
 
-Rutas: `/kiosco`, `/experiencia`, `/mi-viaje`, `/privacidad`, `/reingresar`, `/cuenta/privacidad`, `/cultura/<id>` (ficha pública). El QR privado abre `/q/<token>`; el enlace de correo abre `/auth/verify?token=…`. Ambos requieren confirmación antes del canje. `/dev/outbox` muestra correos sintéticos locales y responde 404 en producción.
+Rutas: `/kiosco`, `/experiencia`, `/mi-cultura`, `/privacidad`, `/reingresar`, `/cuenta/privacidad`, `/cultura/<id>` (ficha pública). El QR privado abre `/q/<token>`; el enlace de correo abre `/auth/verify?token=…`. Ambos requieren confirmación antes del canje. `/dev/outbox` muestra correos sintéticos locales y responde 404 en producción.
 
-Para la demo de recuperación: guardar una ficha, pulsar «Guardar mi experiencia y recibir un enlace por correo», usar `@example.invalid`, aceptar la finalidad de recuperación y abrir el enlace desde `/dev/outbox` en otro contexto del navegador. Solo tras confirmar se crea/vincula la cuenta, se rota la cookie y se recupera Mi viaje. Marketing está desactivado; activarlo en una demo aislada muestra una casilla separada y exige un segundo opt-in. No hay campañas automáticas.
+Para la demo de recuperación: guardar una ficha, pulsar «Guardar mi experiencia y recibir un enlace por correo», usar `@example.invalid`, aceptar la finalidad de recuperación y abrir el enlace desde `/dev/outbox` en otro contexto del navegador. Solo tras confirmar se crea/vincula la cuenta, se rota la cookie y se recupera Mi cultura. Marketing está desactivado; activarlo en una demo aislada muestra una casilla separada y exige un segundo opt-in. No hay campañas automáticas.
 
 «Preparar solicitud» conserva el TXT y muestra un segundo paso con casilla de tratamiento desmarcada y «Enviar solicitud». La API exige aceptación explícita del aviso. El resultado muestra referencia/estado o error y reintento. El TXT permanece disponible durante el paso de consentimiento y ante errores. El resultado y aviso nuevo solo aparecen tras preparar la solicitud; el HTML/CSS de la landing en reposo se conserva.
 

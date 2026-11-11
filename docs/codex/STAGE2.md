@@ -1,4 +1,4 @@
-# Codex — Etapa 2: BD + sesión anónima + kiosco + QR seguro + móvil + Mi viaje
+# Codex — Etapa 2: BD + sesión anónima + kiosco + QR seguro + móvil + Mi cultura
 
 Sigues en `D:\Ary The Parrot`. La etapa 1 (Next.js + landing preservada + regresión) ya está hecha y commiteada; léela en `docs/ARY_IMPLEMENTATION_PLAN.md` y `docs/ARY_MIGRATION_DECISION.md`. Documento rector: `docs/ARY_PROMPT_MAESTRO.md` (aplican sobre todo 0C, 0D, 2 Flujo A y C, 3, 4, 5, 6, 7, 11, 12, 13). **No toques `legacy/`, ni `public/index.html`, ni `public/brochure.html`, ni `public/assets/`.** No hagas commits ni push. Los tests de regresión de la etapa 1 deben seguir pasando.
 
@@ -108,7 +108,7 @@ Registra en `analytics_events` (con lista blanca de metadatos y sin PII): `sessi
   - Mascota: usa `/assets/ary-la-cotorra.png`.
   - Estado del robot: «Simulador» (no finjas hardware).
 - **`/experiencia`** (móvil): saludo en el idioma restaurado, intereses editables, recomendaciones, guardar ficha y aviso de caducidad de la sesión anónima. Incluye un CTA separado «Guardar mi experiencia y recibir un enlace por correo», que en esta etapa solo lleva a `/reingresar` con el mensaje «Próximamente» honesto (la etapa 3 lo implementa).
-- **`/mi-viaje`:** guardados con estados (`pendiente` / `realizado` / `favorito` / quitar), progreso y fichas compartibles (QR público de la ficha, distinto del QR de handoff).
+- **`/mi-cultura`:** guardados con estados (`pendiente` / `realizado` / `favorito` / quitar), progreso y fichas compartibles (QR público de la ficha, distinto del QR de handoff).
 - **`/privacidad`:** aviso breve en ES/EN que explica qué se guarda, cuánto tiempo y que no hay marketing ni cesión a proveedores por defecto. Marca qué partes requieren revisión jurídica.
 
 ## Raspberry Pi 4 (requisito del kiosco)

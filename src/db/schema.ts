@@ -1,4 +1,5 @@
 import { sql } from "drizzle-orm";
+import type { ImageMetadata } from "./seed-media.ts";
 import { pgTable, uuid, text, timestamp, jsonb, integer, boolean, index, uniqueIndex, check } from "drizzle-orm/pg-core";
 
 const id = () => uuid("id").primaryKey().defaultRandom();
@@ -57,7 +58,7 @@ export const qrHandoffs = pgTable("qr_handoffs", {
 export const culturalItems = pgTable("cultural_items", {
   id: id(), contentKey: text("content_key").notNull(), type: text().notNull(), title: text().notNull(), summary: text().notNull(),
   validatedDescription: text("validated_description").notNull(), tags: jsonb().$type<string[]>().notNull().default([]),
-  language: text().notNull(), country: text().notNull().default("DO"), region: text(), location: jsonb(), imageAsset: text("image_asset"),
+  language: text().notNull(), country: text().notNull().default("DO"), region: text(), location: jsonb(), imageAsset: text("image_asset"), image: jsonb().$type<ImageMetadata>(),
   sourceUrl: text("source_url"), license: text().notNull(), editor: text().notNull(), sourceCheckedAt: date("source_checked_at"),
   publishedAt: date("published_at"), lastReviewedAt: date("last_reviewed_at"), status: text().notNull().default("needs_source"), demo: boolean().notNull().default(true),
 }, t => [uniqueIndex("content_language").on(t.contentKey, t.language), index("content_published_language").on(t.status, t.language), check("published_has_source", sql`${t.status} != 'published' or (${t.sourceUrl} is not null and ${t.sourceCheckedAt} is not null)`)]);

@@ -1,0 +1,182 @@
+[
+  {
+    "key": "ciudad-colonial",
+    "path": "public/assets/items/ciudad-colonial.webp",
+    "width": 1200,
+    "height": 656,
+    "bytes": 72514,
+    "sha256": "8e571ed420f846640eb2aebd9335f20392d8daa1430e636e9fd0bd19518abb88",
+    "source": "public/assets/places/catedral.webp"
+  },
+  {
+    "key": "ciudad-colonial",
+    "path": "public/assets/items/ciudad-colonial-480.webp",
+    "width": 480,
+    "height": 262,
+    "bytes": 20444,
+    "sha256": "6e2e63e573c9aa1125064b8076b809beee5c0c714a3c07071876ebfc3df6418a",
+    "source": "public/assets/places/catedral.webp"
+  },
+  {
+    "key": "haitises",
+    "path": "public/assets/items/haitises.webp",
+    "width": 1200,
+    "height": 797,
+    "bytes": 225304,
+    "sha256": "f2413f4608f8599b535b9771d335fc667efd5f83a97e62e0093953eccc23b7fe",
+    "source": "public/assets/places/haitises.webp"
+  },
+  {
+    "key": "haitises",
+    "path": "public/assets/items/haitises-480.webp",
+    "width": 480,
+    "height": 319,
+    "bytes": 46464,
+    "sha256": "cf53a1eca5120414ccc4a92b5dc41aaba18e436de5889f7f861c7c733e1e306c",
+    "source": "public/assets/places/haitises.webp"
+  },
+  {
+    "key": "altos-chavon",
+    "path": "public/assets/items/altos-chavon.webp",
+    "width": 1200,
+    "height": 900,
+    "bytes": 236572,
+    "sha256": "7eaa278dfca391773700a23e81394b931ed99ad2db45603ba9098c63735fad19",
+    "source": "public/assets/places/chavon.webp"
+  },
+  {
+    "key": "altos-chavon",
+    "path": "public/assets/items/altos-chavon-480.webp",
+    "width": 480,
+    "height": 360,
+    "bytes": 51516,
+    "sha256": "b9af3e27e89b283857eeaa6571a2435516c43c3abd96b8eef581df021cda3b78",
+    "source": "public/assets/places/chavon.webp"
+  },
+  {
+    "key": "merengue",
+    "path": "public/assets/items/merengue.webp",
+    "width": 1200,
+    "height": 800,
+    "bytes": 177096,
+    "sha256": "985b087634f8b808740981d11c41e28eb74177903ff7d07fffd9e6645fa15f07",
+    "source": "https://upload.wikimedia.org/wikipedia/commons/8/8b/Fallas2018_-_Cavalcada_Patrimoni_10_-_Merengue_Rep%C3%BAblica_Dominicana.jpg"
+  },
+  {
+    "key": "merengue",
+    "path": "public/assets/items/merengue-480.webp",
+    "width": 480,
+    "height": 320,
+    "bytes": 40540,
+    "sha256": "c35bb4777e0ddbdb4da7bd6b1b7507a5539b47ecc37770bb1a293f35f8db7405",
+    "source": "https://upload.wikimedia.org/wikipedia/commons/8/8b/Fallas2018_-_Cavalcada_Patrimoni_10_-_Merengue_Rep%C3%BAblica_Dominicana.jpg"
+  },
+  {
+    "key": "bachata",
+    "path": "public/assets/items/bachata.webp",
+    "width": 1200,
+    "height": 502,
+    "bytes": 95590,
+    "sha256": "58ad3f0aa8216d0b3d508990bd23c5850406e34d69568214611c30dd716f513c",
+    "source": "https://upload.wikimedia.org/wikipedia/commons/3/35/Amargue_Bachata_Quintet_with_Andre_Veloz_(22092585435).jpg"
+  },
+  {
+    "key": "bachata",
+    "path": "public/assets/items/bachata-480.webp",
+    "width": 480,
+    "height": 200,
+    "bytes": 23128,
+    "sha256": "780fe5f0e45b13d052e8ad220c1d0e572d1b83c329c3f9b0c0c82c996b162215",
+    "source": "https://upload.wikimedia.org/wikipedia/commons/3/35/Amargue_Bachata_Quintet_with_Andre_Veloz_(22092585435).jpg"
+  },
+  {
+    "key": "mangu",
+    "path": "public/assets/items/mangu.webp",
+    "width": 1200,
+    "height": 1031,
+    "bytes": 131022,
+    "sha256": "b24a3acc609b6a3ad420cfa7f506d2784cfe1890b28950994f7105a047942a00",
+    "source": "https://upload.wikimedia.org/wikipedia/commons/6/6f/Dominican_Mangu.jpg"
+  },
+  {
+    "key": "mangu",
+    "path": "public/assets/items/mangu-480.webp",
+    "width": 480,
+    "height": 412,
+    "bytes": 27196,
+    "sha256": "2f85551c9ed57e30ab25cbdf114db6ae561177cf3a71d33d2da3f3af62e8714c",
+    "source": "https://upload.wikimedia.org/wikipedia/commons/6/6f/Dominican_Mangu.jpg"
+  },
+  {
+    "key": "larimar",
+    "path": "public/assets/items/larimar.webp",
+    "width": 1018,
+    "height": 787,
+    "bytes": 50876,
+    "sha256": "259e6179a9ba08318d8fabdffd50ae7895d6351ec3cb0421b94d22d3840669b0",
+    "source": "https://upload.wikimedia.org/wikipedia/commons/4/4b/Larimar.jpg"
+  },
+  {
+    "key": "larimar",
+    "path": "public/assets/items/larimar-480.webp",
+    "width": 480,
+    "height": 371,
+    "bytes": 15068,
+    "sha256": "a0a91b5e2bcc3a2385171a4aa5f2175565966c1c388fc5ef4cc6a7135759a6e3",
+    "source": "https://upload.wikimedia.org/wikipedia/commons/4/4b/Larimar.jpg"
+  },
+  {
+    "key": "ambar",
+    "path": "public/assets/items/ambar.webp",
+    "width": 1200,
+    "height": 985,
+    "bytes": 141784,
+    "sha256": "a12ad6936a7236b086b6fbd58d1ce2a4085f39a7984cf71692d7574b7f2316a6",
+    "source": "https://upload.wikimedia.org/wikipedia/commons/7/79/Amber_1.jpg"
+  },
+  {
+    "key": "ambar",
+    "path": "public/assets/items/ambar-480.webp",
+    "width": 480,
+    "height": 394,
+    "bytes": 39656,
+    "sha256": "2b52b16f290fcc11594145674c646789653397146ab33d158f211bacd90c64a9",
+    "source": "https://upload.wikimedia.org/wikipedia/commons/7/79/Amber_1.jpg"
+  },
+  {
+    "key": "ballenas",
+    "path": "public/assets/items/ballenas.webp",
+    "width": 1200,
+    "height": 800,
+    "bytes": 116572,
+    "sha256": "8990f912874aff34e07735d52796ae9674b40801bd33a5a3e5638286854b40df",
+    "source": "https://upload.wikimedia.org/wikipedia/commons/5/58/View_of_Saman%C3%A1_Bay_from_the_top_2.jpg"
+  },
+  {
+    "key": "ballenas",
+    "path": "public/assets/items/ballenas-480.webp",
+    "width": 480,
+    "height": 320,
+    "bytes": 20280,
+    "sha256": "8bd92354e9e355efa10599626cc0d5c030ed70077d0f7d757360f426548ce37c",
+    "source": "https://upload.wikimedia.org/wikipedia/commons/5/58/View_of_Saman%C3%A1_Bay_from_the_top_2.jpg"
+  },
+  {
+    "key": "carnaval",
+    "path": "public/assets/items/carnaval.webp",
+    "width": 900,
+    "height": 1200,
+    "bytes": 280458,
+    "sha256": "fec861195d266dda304a41f4c84e04ca7fa833ebbb97488ffca6369bed448764",
+    "source": "https://upload.wikimedia.org/wikipedia/commons/d/db/CARNAVAL_VEGANO_2020.jpg"
+  },
+  {
+    "key": "carnaval",
+    "path": "public/assets/items/carnaval-480.webp",
+    "width": 360,
+    "height": 480,
+    "bytes": 60592,
+    "sha256": "8abd67f29d6bfa51e1d5bb63e7ca1664646c48e2e08f533de46dae2666219fdb",
+    "source": "https://upload.wikimedia.org/wikipedia/commons/d/db/CARNAVAL_VEGANO_2020.jpg"
+  }
+]

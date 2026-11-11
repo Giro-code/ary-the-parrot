@@ -1,4 +1,4 @@
-import { and, desc, eq, gt } from "drizzle-orm";
+import { and, desc, eq, gt, inArray } from "drizzle-orm";
 import { z } from "zod";
 import type { Database } from "../../db/client.ts";
 import * as s from "../../db/schema.ts";
@@ -14,7 +14,7 @@ import { detectedLocale, textLanguage } from "../../i18n/language.ts";
 import type { Locale } from "../../i18n/index.ts";
 import { archiveConversation } from "../conversations.ts";
 import { requestedDestination } from "../places.ts";
-import { locationText } from "../../location.ts";
+import { itemImageSchema, itemMedia } from "../item-media.ts";
 
 // Card summaries end on a whole word with an ellipsis, never mid-word.
 function shortSummary(text: string, max = 180) {
@@ -27,13 +27,17 @@ export { classifyIntent } from "./safety.ts";
 export const chatInputSchema = z.object({ message: z.string().trim().min(1).max(500) }).strict();
 export const cueSchema = z.object({ cue: z.enum(["welcome", "interests", "idle"]) }).strict();
 export type ChatMode = "gemini" | "demo";
-export type ChatReply = Answer & { answer: string; messageId: string; transcript?: string; destination?: string; preferences?: ConversationPreferences; mode: ChatMode; sources: { id: string; title: string; summary: string; url: string; editor: string; location?: string }[]; handoff: boolean };
-const sourceSchema = z.object({ id: z.uuid(), title: z.string(), summary: z.string().default(""), url: z.url().refine(value => value.startsWith("https://")), editor: z.string(), location: z.string().max(280).optional() });
+const sourceSchema = z.object({ id: z.uuid(), title: z.string(), summary: z.string().default(""), url: z.url().refine(value => value.startsWith("https://")), editor: z.string(), location: z.string().max(280).optional(), image: itemImageSchema.optional(), mapsUrl: z.string().regex(/^https:\/\/www\.google\.com\/maps\/search\/\?api=1&query=-?[\d.]+,-?[\d.]+$/).optional() });
+export type ChatSource = z.infer<typeof sourceSchema>;
+export type ChatReply = Answer & { answer: string; messageId: string; transcript?: string; destination?: string; preferences?: ConversationPreferences; mode: ChatMode; sources: ChatSource[]; handoff: boolean };
 export const replySchema = answerSchema.extend({ answer: z.string(), messageId: z.uuid(), destination: z.string().max(160).optional(), mode: z.enum(["gemini", "demo"]), handoff: z.boolean(), sources: z.array(sourceSchema).max(6) });
 const historyPayloadSchema = z.object({ text: z.string().max(1200), reply: replySchema.optional() });
+function citedSources(items: CulturalItem[], ids: string[], locale: Locale): ChatSource[] {
+  return items.filter(item => ids.includes(item.id) && item.status === "published" && item.sourceUrl?.startsWith("https://") && item.sourceCheckedAt).map(item => ({ id: item.id, title: item.title, summary: shortSummary(item.summary), url: item.sourceUrl!, editor: item.editor, ...itemMedia(item, locale) }));
+}
 export async function chatHistory(db: Database, session: Session) {
   const rows = await db.select().from(s.chatMessages).where(and(eq(s.chatMessages.sessionId, session.id), gt(s.chatMessages.retentionUntil, new Date()))).orderBy(desc(s.chatMessages.createdAt), desc(s.chatMessages.id)).limit(40);
-  return rows.reverse().flatMap(row => {
+  const messages = rows.reverse().flatMap(row => {
     if (!row.encryptedPayload || !["user", "assistant"].includes(row.role)) return [];
     try {
       const raw = JSON.parse(decrypt(row.encryptedPayload));
@@ -44,10 +48,19 @@ export async function chatHistory(db: Database, session: Session) {
       return payload.success ? [{ id: row.id, role: row.role as "user" | "assistant", ...payload.data }] : [];
     } catch { return []; }
   });
+  // Re-read citations so pre-stage9 history gains media and withdrawn records lose it.
+  const ids = [...new Set(messages.flatMap(row => row.reply?.citedItemIds || []))];
+  const items = ids.length ? await db.select().from(s.culturalItems).where(and(inArray(s.culturalItems.id, ids), eq(s.culturalItems.status, "published"))) : [];
+  for (const row of messages) if (row.reply) {
+    const locale = detectedLocale(row.reply.detectedLanguage);
+    row.reply.sources = citedSources(await localizeItems(db, items, locale), row.reply.citedItemIds, locale);
+    row.reply.citedItemIds = row.reply.sources.map(source => source.id);
+  }
+  return messages;
 }
 async function retrieve(db: Database, session: Session, message: string, audio = false) {
   const rows = await db.select().from(s.culturalItems).where(and(eq(s.culturalItems.status, "published"), eq(s.culturalItems.language, session.locale))).limit(100);
-  const words = normalize(message).split(/\W+/).filter(word => word.length >= 4 && !["como", "llego", "llegar", "quiero", "donde", "queda", "esta", "estan", "where", "want", "would", "like", "directions", "take", "visitar", "visit", "reach", "tell", "about", "cuentame", "sobre"].includes(word));
+  const words = normalize(message).split(/\W+/).filter(word => word.length >= 4 && !["como", "llego", "llegar", "quiero", "donde", "queda", "esta", "estan", "ubicacion", "mapa", "location", "want", "where", "would", "like", "directions", "take", "visitar", "visit", "reach", "tell", "about", "cuentame", "sobre"].includes(word));
   return rows.filter(item => { try { return item.sourceUrl && new URL(item.sourceUrl).protocol === "https:" && !injection.test([item.title, item.summary, item.validatedDescription].join(" ")); } catch { return false; } }).map(item => {
     const text = normalize(`${item.title} ${item.summary} ${item.tags.join(" ")}`);
     const lexical = words.reduce((score, word) => score + (text.includes(word) ? 3 : 0), 0);
@@ -67,10 +80,10 @@ async function persistReply(db: Database, token: string | undefined, session: Se
   const messageId = crypto.randomUUID();
   const destination = answer.intent === "directions" && message ? requestedDestination(message) : undefined;
   const sensitive = answer.intent !== "culture" && answer.intent !== "preferences";
-  const reply: ChatReply = { ...answer, spokenText: spokenText(answer.displayText, answer.spokenText, sensitive, greeting), answer: answer.displayText, messageId, mode, handoff: answer.intent === "sensitive", sources: items.filter(item => answer.citedItemIds.includes(item.id)).map(item => ({ id: item.id, title: item.title, summary: shortSummary(item.summary), url: item.sourceUrl!, editor: item.editor })) };
+  const sources = citedSources(items, answer.citedItemIds, detectedLocale(answer.detectedLanguage));
+  const reply: ChatReply = { ...answer, citedItemIds: sources.map(source => source.id), spokenText: answer.intent === "directions" && sources.some(source => source.mapsUrl) ? answer.spokenText : spokenText(answer.displayText, answer.spokenText, sensitive, greeting), answer: answer.displayText, messageId, mode, handoff: answer.intent === "sensitive", sources };
   const preferences = message ? { ...conversationPreferences(message, { locale: session.locale as Locale, countryDeclared: session.countryDeclared, interests: session.interests as ConversationPreferences["interests"] }), locale: detectedLocale(answer.detectedLanguage) } : undefined;
   if (destination) reply.destination = destination;
-  for (const source of reply.sources) { const location = locationText(items.find(item => item.id === source.id)?.location); if (location) source.location = location; }
   if (preferences) await setPreferences(db, session, preferences);
   await db.transaction(async tx => {
     const [active] = await tx.select().from(s.visitorSessions).where(and(eq(s.visitorSessions.id, session.id), eq(s.visitorSessions.status, "active"), gt(s.visitorSessions.expiresAt, new Date()))).for("update");
@@ -82,6 +95,32 @@ async function persistReply(db: Database, token: string | undefined, session: Se
   });
   await getSession(db, token);
   return { ...reply, ...(preferences ? { preferences } : {}), ...(transcript ? { transcript } : {}) };
+}
+async function directionItems(db: Database, session: Session, message: string) {
+  const items = await retrieve(db, session, message);
+  if (items.length) return items.slice(0, 1);
+  const history = await chatHistory(db, session);
+  const ids = history.findLast(row => row.reply?.citedItemIds.length)?.reply?.citedItemIds || [];
+  // Only use conversational context for a location-only question, never an unknown named place.
+  const destination = requestedDestination(message);
+  if (destination || !ids.length) return [];
+  return db.select().from(s.culturalItems).where(and(inArray(s.culturalItems.id, ids), eq(s.culturalItems.status, "published"))).limit(3);
+}
+function directionsAnswer(items: CulturalItem[], locale: Locale, kiosk: boolean): Answer {
+  const sources = citedSources(items, items.map(item => item.id), locale);
+  const places = sources.filter(source => source.mapsUrl).map(source => source.location).join(" · ");
+  const copy = locale === "es" ? {
+    screen: "Te dejé la ubicación en pantalla.",
+    phone: "Continúa en tu teléfono para abrir la ubicación.",
+    missing: "Puedes guardar el lugar en Mi cultura. La ficha aún no tiene una ubicación verificada.",
+  } : {
+    screen: "I've left the location on screen.",
+    phone: "Continue on your phone to open the location.",
+    missing: "You can save the place in My culture. The card has no verified location yet.",
+  };
+  const cue = kiosk ? copy.phone : copy.screen;
+  const text = places ? `${places}. ${cue}` : copy.missing;
+  return { ...fixedAnswer(text, "directions"), detectedLanguage: locale, citedItemIds: sources.map(source => source.id), spokenText: places ? cue : text };
 }
 export async function chatCue(db: Database, token: string | undefined, raw: unknown) {
   const parsed = cueSchema.safeParse(raw); if (!parsed.success) throw new AppError("invalid_body", 400);
@@ -109,8 +148,8 @@ export async function chat(db: Database, token: string | undefined, raw: unknown
   const conversational = !audio && /^(espanol|english|soy de |vengo de |visito desde |i am from |i'm from |prefiero no decirlo|prefer not to say)/.test(normalize(message)) ? conversationalAnswer(message, locale) : null;
   if (!audio && ["sensitive", "injection", "unverified"].includes(intent)) answer = redirect(locale, intent);
   else if (!audio && intent === "directions") {
-    items = await retrieve(db, session, message);
-    answer = { ...fixedAnswer(locale === "es" ? session.kioskDeviceId ? "Te paso esto a tu teléfono para que sigas la conversación y llegues fácil. Consulta la ubicación de la ficha; no puedo calcular una ruta." : "Podemos guardar el lugar en Mis viajes. Consulta la ficha para ver su ubicación; no puedo calcular una ruta." : session.kioskDeviceId ? "Let's take this to your phone so you can continue the conversation. Check the place card for its location; I can't calculate a route." : "You can save the place in My trips. Check its card for the location; I can't calculate a route.", "directions"), detectedLanguage, citedItemIds: items.slice(0, 1).map(item => item.id) };
+    items = await directionItems(db, session, message);
+    answer = directionsAnswer(items, locale, !!session.kioskDeviceId);
   }
   else if (conversational) answer = conversational;
   else {
@@ -136,12 +175,13 @@ export async function chat(db: Database, token: string | undefined, raw: unknown
       const responseLocale = detectedLocale(detectedLanguage);
       const fixed = conversationalAnswer(message, responseLocale);
       if (["sensitive", "injection", "unverified"].includes(intent)) { answer = redirect(responseLocale, intent); mode = "demo"; }
-      else if (intent === "directions") { items = await retrieve(db, { ...session, locale: responseLocale }, message); answer = { ...fixedAnswer(responseLocale === "es" ? "Continúa con este lugar en tu teléfono o guárdalo en Mis viajes. Consulta fuentes oficiales para la ubicación; no puedo calcular una ruta." : "Continue with this place on your phone or save it in My trips. Check official sources for its location; I can't calculate a route.", "directions"), citedItemIds: items.slice(0, 1).map(item => item.id) }; }
+      else if (intent === "directions") { items = await directionItems(db, { ...session, locale: responseLocale }, message); answer = directionsAnswer(items, responseLocale, !!session.kioskDeviceId); }
       else if (fixed && /^(espanol|english|soy de |vengo de |visito desde |i am from |i'm from |prefiero no decirlo|prefer not to say)/.test(normalize(message))) { answer = fixed; mode = "demo"; }
     }
   }
   await db.insert(s.aiUsage).values({ model, inputTokens, outputTokens, latencyMs: Date.now() - started, errorCode, mode });
   if (unavailable) throw new AppError("voice_unavailable", 503);
+  if (answer.intent === "directions") answer = directionsAnswer(items.filter(item => answer.citedItemIds.includes(item.id)), detectedLocale(detectedLanguage), !!session.kioskDeviceId);
   answer.detectedLanguage = detectedLanguage;
   if (detectedLanguage === "other") { const text = "I currently speak English and Spanish. Would you like to explore Dominican culture in English?"; answer = { ...fixedAnswer(text), detectedLanguage: "other" }; mode = "demo"; }
   return persistReply(db, token, session, message, answer, items, mode, audio ? message : undefined);

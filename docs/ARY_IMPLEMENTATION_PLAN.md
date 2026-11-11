@@ -62,7 +62,7 @@ Se usa CSS original para la landing y CSS local mínimo para los avisos. Sin Tai
 - [x] Esquema completo de 23 tablas y migración SQL, PGlite y driver Neon Pool transaccional.
 - [x] Sesión anónima, preferencias y contenido de demostración con fuentes comprobadas.
 - [x] APIs de kiosco autorizado y QR efímero con canje único, carrera y rollback probados.
-- [x] Código de kiosco/móvil/Mi viaje, favoritos y limpieza transaccional.
+- [x] Código de kiosco/móvil/Mi cultura, favoritos y limpieza transaccional.
 - [ ] Validación remota de Neon (sin instancia configurada).
 - [ ] Build completo, E2E y dos pasadas visuales reales (bloqueados por entorno).
 

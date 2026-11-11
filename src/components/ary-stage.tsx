@@ -8,7 +8,7 @@ export function aryImage(state: RobotState, cards = false, celebrating = false) 
   if (state === "offline" || state === "error") return "sin-conexion";
   if (celebrating) return "celebrar";
   if (state === "listening" || state === "thinking") return "pensar";
-  if (state === "handoff_qr" || (state === "speaking" && cards)) return "mostrar";
+  if (state === "handoff_qr" || cards) return "mostrar";
   return "presentar";
 }
 export function AryStage({ state, locale, cards, celebrating, offlineImageAvailable = false }: { state: RobotState; locale: Locale; cards?: boolean; celebrating?: boolean; offlineImageAvailable?: boolean }) {
