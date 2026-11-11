@@ -1,0 +1,54 @@
+{
+  "pedro-mir": {
+    "filename": "Pedro mir.jpg",
+    "reason": "Error: Thumbnail HTTP 400"
+  },
+  "mamajuana": {
+    "filename": "Mamajuana wiki.jpg",
+    "reason": "Error: Thumbnail HTTP 400"
+  },
+  "longaniza": {
+    "filename": "Ahumando longaniza.jpg",
+    "reason": "Error: No Commons metadata: Ahumando longaniza.jpg"
+  },
+  "pastelitos": {
+    "filename": "Empanadas argentinas de jamón y queso con orégano y tomate, pinceladas con huevo batido.jpg",
+    "reason": "Error: No Commons metadata: Empanadas argentinas de jamón y queso con orégano y tomate, pinceladas con huevo batido.jpg"
+  },
+  "dulce-de-coco": {
+    "filename": "Cocada de Muriqui 2.png",
+    "reason": "Error: No Commons metadata: Cocada de Muriqui 2.png"
+  },
+  "ron-dominicano": {
+    "filename": "Ron-Zacapa-XO.jpg",
+    "reason": "Error: No Commons metadata: Ron-Zacapa-XO.jpg"
+  },
+  "avena": {
+    "filename": "Atole de puscua Guanajuatense.jpg",
+    "reason": "Error: No Commons metadata: Atole de puscua Guanajuatense.jpg"
+  },
+  "manati-antillano": {
+    "filename": "Manatee with calf.PD - colour corrected.jpg",
+    "reason": "Error: No Commons metadata: Manatee with calf.PD - colour corrected.jpg"
+  },
+  "flamenco-americano": {
+    "filename": "Phoenicopterus ruber Bonaire 1.jpg",
+    "reason": "Error: No Commons metadata: Phoenicopterus ruber Bonaire 1.jpg"
+  },
+  "tortuga-carey": {
+    "filename": "Tortuga carey (Eretmochelys imbricata), parque nacional Ras Muhammad, Egipto, 2022-03-28, DD 56.jpg",
+    "reason": "Error: No Commons metadata: Tortuga carey (Eretmochelys imbricata), parque nacional Ras Muhammad, Egipto, 2022-03-28, DD 56.jpg"
+  },
+  "tortuga-verde": {
+    "filename": "Green sea turtle (Chelonia mydas) Moorea.jpg",
+    "reason": "Error: No Commons metadata: Green sea turtle (Chelonia mydas) Moorea.jpg"
+  },
+  "juan-bosch": {
+    "filename": "Juan Bosch (1963).jpg",
+    "reason": "Error: License template not confirmed on file page"
+  },
+  "feria-internacional-del-libro": {
+    "filename": "Inauguración de la XIV Feria Internacional del Libro Santo Domingo 2011.jpg",
+    "reason": "Error: License not allowed: FAL"
+  }
+}

@@ -1,0 +1,1587 @@
+[
+  {
+    "key": "cordillera-central",
+    "file": "public\\assets\\catalog\\cordillera-central-1.webp",
+    "sha256": "d44a441bb096773314990e03e36b01c998d730262e1e3938d4ca448756ec2b9f"
+  },
+  {
+    "key": "banco-de-la-plata",
+    "file": "public\\assets\\catalog\\banco-de-la-plata-1.webp",
+    "sha256": "fa05e765c5a88bb9c7cb3cbc3a807fd7454f83fc17d3fb1a470f26414adbde1a"
+  },
+  {
+    "key": "san-cristobal",
+    "file": "public\\assets\\catalog\\san-cristobal-1.webp",
+    "sha256": "14828015b50c0fac86b7211f3e456fa25181297d65ebc201038f298204233cae"
+  },
+  {
+    "key": "altos-chavon",
+    "file": "public\\assets\\catalog\\altos-chavon-1.webp",
+    "sha256": "9dff5e0795a9805851c47189e06f1f17051c6638e57d0035df566ddb5510271b"
+  },
+  {
+    "key": "cabarete",
+    "file": "public\\assets\\catalog\\cabarete-1.webp",
+    "sha256": "d9fb4b21c7a275f49e821d7f45e48c9e87ee0163d1ba1ff04d8fe2db03b3cd04"
+  },
+  {
+    "key": "isla-catalina",
+    "file": "public\\assets\\catalog\\isla-catalina-1.webp",
+    "sha256": "857f22bad10eb25baf16f493a29da915e2fcc17dcda32fb1e31f44790e9e1857"
+  },
+  {
+    "key": "la-vega",
+    "file": "public\\assets\\catalog\\la-vega-1.webp",
+    "sha256": "3d1697176220aad1d7478c3d65e8e929071871b2369ea7e3c5f56e1e84656bb1"
+  },
+  {
+    "key": "samana",
+    "file": "public\\assets\\catalog\\samana-1.webp",
+    "sha256": "cea426385854726eec016df8a997ae8b9982830304c8a9bac2fe0ce60e5426e5"
+  },
+  {
+    "key": "parque-nacional-cotubanama",
+    "file": "public\\assets\\catalog\\parque-nacional-cotubanama-1.webp",
+    "sha256": "45e766ca889138a8827cd036357b91344956c0cdbd99b4cb4b1baad7d9cbfcee"
+  },
+  {
+    "key": "alcazar-de-colon",
+    "file": "public\\assets\\catalog\\alcazar-de-colon-1.webp",
+    "sha256": "518c825251516b8146535f9a337e9a4abaaaa6678ff1cb48442e10290a481468"
+  },
+  {
+    "key": "san-pedro-de-macoris",
+    "file": "public\\assets\\catalog\\san-pedro-de-macoris-1.webp",
+    "sha256": "90a013ea3595dfdc6323e366d1ee19e1b9762e1a25ae9fe2d8c3930160dda825"
+  },
+  {
+    "key": "estadio-olimpico-felix-sanchez",
+    "file": "public\\assets\\catalog\\estadio-olimpico-felix-sanchez-1.webp",
+    "sha256": "2a150be8e552f7ff847b6042d3db12dced4df908db10a8c5b68fb45e28a15d28"
+  },
+  {
+    "key": "rio-yaque-del-norte",
+    "file": "public\\assets\\catalog\\rio-yaque-del-norte-1.webp",
+    "sha256": "4e6d33a0b723cc71e58b776c3b99ea39a3474354e08470c5093e32a282dd917a"
+  },
+  {
+    "key": "boca-chica",
+    "file": "public\\assets\\catalog\\boca-chica-1.webp",
+    "sha256": "92567e24d805be0ec6c67c0fe6fc6f6a7241b30e6dd277064caf86c81aa8a7c7"
+  },
+  {
+    "key": "cementerio-de-la-avenida-independencia",
+    "file": "public\\assets\\catalog\\cementerio-de-la-avenida-independencia-1.webp",
+    "sha256": "14c92a6bd34de9df8aeb9fee4dbc8278a22a03cca8748636991cb46ad66a7969"
+  },
+  {
+    "key": "parque-nacional-submarino-la-caleta",
+    "file": "public\\assets\\catalog\\playa-la-caleta-1.webp",
+    "sha256": "24a03647f3f600123966c40d211750acf9a4c9185f40cf0fab45096452021451"
+  },
+  {
+    "key": "rio-jimenoa",
+    "file": "public\\assets\\catalog\\rio-jimenoa-1.webp",
+    "sha256": "738221e6851ed6e592b7bb8cc1f70c846a57cf3cfc3b702ebb51bc43085695c3"
+  },
+  {
+    "key": "rio-chavon",
+    "file": "public\\assets\\catalog\\rio-chavon-1.webp",
+    "sha256": "a6980f27ae71462dd0de51d402f6c4065d8d6ca120dfa3505fd68fc952edc7d3"
+  },
+  {
+    "key": "palacio-nacional",
+    "file": "public\\assets\\catalog\\palacio-nacional-1.webp",
+    "sha256": "bf05983e8754008e977ca871deb391704eb3cb7dba5986d16d772ce6973b54fc"
+  },
+  {
+    "key": "rio-yaque-del-sur",
+    "file": "public\\assets\\catalog\\rio-yaque-del-sur-1.webp",
+    "sha256": "2e92ac052ebc9be4075555e8398995267fda5905e151bfbb00890f73b71c408c"
+  },
+  {
+    "key": "constanza-republica-dominicana",
+    "file": "public\\assets\\catalog\\constanza-republica-dominicana-1.webp",
+    "sha256": "e9ff9906a52aba4bb634052e278fd76cd345b52e0e842435863e06f8319e9701"
+  },
+  {
+    "key": "san-francisco-de-macoris",
+    "file": "public\\assets\\catalog\\san-francisco-de-macoris-1.webp",
+    "sha256": "2a8a458b49fbd0ed01ec9208500b51ed6575eadeefad1df15fd2cd8d484f1554"
+  },
+  {
+    "key": "valle-nuevo",
+    "file": "public\\assets\\catalog\\valle-nuevo-1.webp",
+    "sha256": "ef28f28b66d1ee7f8251e656fc06887f9670d229829655e0d5be22b9c4164cd8"
+  },
+  {
+    "key": "mangu",
+    "file": "public\\assets\\catalog\\mangu-1.webp",
+    "sha256": "8ec60d7d3d41ba94dbe681fbc664d32bf2b3c2aee921cffd328b5397bdc812ee"
+  },
+  {
+    "key": "sancocho",
+    "file": "public\\assets\\catalog\\sancocho-1.webp",
+    "sha256": "8dde9934431f7c43d0129f3defedc5396e4a4bcf0ff44af624a1fe9c31f0e049"
+  },
+  {
+    "key": "chicharron",
+    "file": "public\\assets\\catalog\\chicharron-1.webp",
+    "sha256": "bbccda7a6da8879405b70076b4a9a87fe40c5bd385098447607a665f45f2c3ab"
+  },
+  {
+    "key": "habichuelas-con-dulce",
+    "file": "public\\assets\\catalog\\habichuelas-con-dulce-1.webp",
+    "sha256": "578e67d35c08fa0661b4c4fa0fcf4e0f33bc1002b9246fad97e17d2f5a985967"
+  },
+  {
+    "key": "tostones",
+    "file": "public\\assets\\catalog\\tostones-1.webp",
+    "sha256": "879a4d121f273834cfd55b310288c8bd2051a17c77636eb152d49013d358fd4f"
+  },
+  {
+    "key": "mofongo",
+    "file": "public\\assets\\catalog\\mofongo-1.webp",
+    "sha256": "a346c475b7cc0ecab6e5a86dd09e9c8fc8ba041caf7b797b31ea7da447cf8fb7"
+  },
+  {
+    "key": "casabe",
+    "file": "public\\assets\\catalog\\casabe-1.webp",
+    "sha256": "19a469dda2f23eeca7ce203855d377f4ae2c3072ce39f58b20b3d2154fb3892e"
+  },
+  {
+    "key": "moro-de-guandules",
+    "file": "public\\assets\\catalog\\moro-de-guandules-1.webp",
+    "sha256": "122ab9e11b74a8dcb7bfc95803627bdab8ffdede2ae272574c701a04d450b603"
+  },
+  {
+    "key": "dulce-de-leche",
+    "file": "public\\assets\\catalog\\dulce-de-leche-1.webp",
+    "sha256": "87cf420234321517d3c1f5d17814f6212d331337acf151cf5246eb03323cd74d"
+  },
+  {
+    "key": "bahia-de-las-aguilas",
+    "file": "public\\assets\\catalog\\bahia-de-las-aguilas-1.webp",
+    "sha256": "a4909d676d27748133180e7eb4980d296a82b539fd2020db02ad8f9590917055"
+  },
+  {
+    "key": "catedral-primada-de-america",
+    "file": "public\\assets\\catalog\\catedral-primada-de-america-1.webp",
+    "sha256": "adf8f587b5c6ba19309caff19b8203ddb77f3a52bc203c96119c0c289638d788"
+  },
+  {
+    "key": "basilica-catedral-y-santuario-nacional-de-nuestra-senora-de-la-altagracia",
+    "file": "public\\assets\\catalog\\basilica-catedral-y-santuario-nacional-de-nuestra-senora-de-la-altagracia-1.webp",
+    "sha256": "5ba9de010fcb6b7aa7bd081af1eea053386e2de883198911690adc3bc79a0824"
+  },
+  {
+    "key": "centro-olimpico-juan-pablo-duarte",
+    "file": "public\\assets\\catalog\\centro-olimpico-juan-pablo-duarte-1.webp",
+    "sha256": "2a150be8e552f7ff847b6042d3db12dced4df908db10a8c5b68fb45e28a15d28"
+  },
+  {
+    "key": "jardin-botanico-nacional-de-santo-domingo",
+    "file": "public\\assets\\catalog\\jardin-botanico-nacional-de-santo-domingo-1.webp",
+    "sha256": "e87e3ae770881259b546b2af0dfb51ec73614f0d0d7cee7d6d9ec31e25e63dc6"
+  },
+  {
+    "key": "hospital-san-nicolas-de-bari",
+    "file": "public\\assets\\catalog\\hospital-san-nicolas-de-bari-1.webp",
+    "sha256": "8d3c55582616ae17a3096e7eb8e77088ce3ab9c1549718d1c989c8eb528b3d84"
+  },
+  {
+    "key": "iglesia-del-convento-dominico-santo-domingo-de-guzman",
+    "file": "public\\assets\\catalog\\iglesia-del-convento-dominico-santo-domingo-de-guzman-1.webp",
+    "sha256": "f4cd7e86a2163578a64fddfea32cb0a4396192b222fb6efa00c279697237f737"
+  },
+  {
+    "key": "reserva-cientifica-natural-lagunas-redonda-y-limon",
+    "file": "public\\assets\\catalog\\reserva-cientifica-natural-lagunas-redonda-y-limon-1.webp",
+    "sha256": "9d3b3432e3c716670f2a08a3663b2c72e4e673b6a8d4f8da8e25ff68d6007fb5"
+  },
+  {
+    "key": "locrio",
+    "file": "public\\assets\\catalog\\locrio-1.webp",
+    "sha256": "12543f15c86eac73ab74e7767167767814f0a33eee0a01a044ce42f3faa40b2f"
+  },
+  {
+    "key": "pastelon",
+    "file": "public\\assets\\catalog\\pastelon-1.webp",
+    "sha256": "b4b8dc8791401a12db7d8b8826e65553afe8ef91dc85b1b1043a1d7a13750c87"
+  },
+  {
+    "key": "chimichurri-dominicano",
+    "file": "public\\assets\\catalog\\chimichurri-dominicano-1.webp",
+    "sha256": "c403cf5c5c6cfcb06ef9c76f8fceddff69eb4d5e694b35fecf84fe0328147bc1"
+  },
+  {
+    "key": "gastronomia-dominicana",
+    "file": "public\\assets\\catalog\\gastronomia-dominicana-1.webp",
+    "sha256": "0d4bb4c363245238bb074f5ee2aa145bbd711ef942fd62ba335dff9f7cd0036b"
+  },
+  {
+    "key": "merengue",
+    "file": "public\\assets\\catalog\\merengue-1.webp",
+    "sha256": "94d8cdea789363fa2056ed72f468b5ecc9faa4c322bf52cb37633f976b67ef98"
+  },
+  {
+    "key": "bachata",
+    "file": "public\\assets\\catalog\\bachata-1.webp",
+    "sha256": "3d583c8d02418b3d1b51d935ee59a4e02a7744c5de0b7d36e045a43a972fe2e6"
+  },
+  {
+    "key": "merengue-tipico",
+    "file": "public\\assets\\catalog\\merengue-tipico-1.webp",
+    "sha256": "36ac6d015df96e197d1c33d2456cbc546a56b77fe763b18c0f85a8ea193e1d95"
+  },
+  {
+    "key": "guira",
+    "file": "public\\assets\\catalog\\guira-1.webp",
+    "sha256": "36ac6d015df96e197d1c33d2456cbc546a56b77fe763b18c0f85a8ea193e1d95"
+  },
+  {
+    "key": "tambora-dominicana",
+    "file": "public\\assets\\catalog\\tambora-dominicana-1.webp",
+    "sha256": "b61adb7ce57599f0fcecdb0966678206dd492eeaa1dff8b5fbb6942c4e0d29a1"
+  },
+  {
+    "key": "parque-nacional-cueva-de-las-maravillas",
+    "file": "public\\assets\\catalog\\parque-nacional-cueva-de-las-maravillas-1.webp",
+    "sha256": "dca9bcc87fdcf9cd2efc1e22d3011f2dd8e3ce57696f6202a7a5c2b901847fc4"
+  },
+  {
+    "key": "parque-nacional-isla-cabritos",
+    "file": "public\\assets\\catalog\\parque-nacional-isla-cabritos-1.webp",
+    "sha256": "de858f55ada55e380504a0f21afefb208ba3eb910e50b431c1b0e447fe45e83c"
+  },
+  {
+    "key": "plaza-de-la-bandera",
+    "file": "public\\assets\\catalog\\plaza-de-la-bandera-1.webp",
+    "sha256": "5bda4ba268df10bbf5c77a23668e5bcbac2bb0b92db1381e8ec2fd719721ef0c"
+  },
+  {
+    "key": "santa-cruz-de-barahona",
+    "file": "public\\assets\\catalog\\santa-cruz-de-barahona-1.webp",
+    "sha256": "f92e956ded896faa7e20be3c5e2758e8b03def28e01046180c1a51fd2f83ef35"
+  },
+  {
+    "key": "higuey",
+    "file": "public\\assets\\catalog\\higuey-1.webp",
+    "sha256": "5ba9de010fcb6b7aa7bd081af1eea053386e2de883198911690adc3bc79a0824"
+  },
+  {
+    "key": "salcedo",
+    "file": "public\\assets\\catalog\\salcedo-1.webp",
+    "sha256": "2deb62e5c62aba8f41153f2acdf6ac8125aeca684e768f1d924b4293396866c0"
+  },
+  {
+    "key": "cocolo",
+    "file": "public\\assets\\catalog\\cocolo-1.webp",
+    "sha256": "e5c2dd1a3dd5fb79af29dbd0e56b053950d93530e4d0ee03f998d86a7106e560"
+  },
+  {
+    "key": "independencia-dominicana",
+    "file": "public\\assets\\catalog\\independencia-dominicana-1.webp",
+    "sha256": "b04a4a394436122c20bc508f2652ae1c95450b579ccfbf3715724f1f4fb61385"
+  },
+  {
+    "key": "restauracion-dominicana",
+    "file": "public\\assets\\catalog\\restauracion-dominicana-1.webp",
+    "sha256": "ea684b9f3d4555929182d75c147c60e70c472123b7b01d6056ba4b00d3096dca"
+  },
+  {
+    "key": "tradicion-de-la-altagracia",
+    "file": "public\\assets\\catalog\\tradicion-de-la-altagracia-1.webp",
+    "sha256": "5ba9de010fcb6b7aa7bd081af1eea053386e2de883198911690adc3bc79a0824"
+  },
+  {
+    "key": "beisbol-dominicano",
+    "file": "public\\assets\\catalog\\beisbol-dominicano-1.webp",
+    "sha256": "1260fcb86c26c5c3ae067e206d83736fc9aa622891aa42cd6e6241896fffe0e4"
+  },
+  {
+    "key": "lidom",
+    "file": "public\\assets\\catalog\\lidom-1.webp",
+    "sha256": "1260fcb86c26c5c3ae067e206d83736fc9aa622891aa42cd6e6241896fffe0e4"
+  },
+  {
+    "key": "larimar",
+    "file": "public\\assets\\catalog\\larimar-1.webp",
+    "sha256": "73203132cbf7bc5d314fea6efbd75ed38abd49217a29785f23195ac53d453f68"
+  },
+  {
+    "key": "ambar",
+    "file": "public\\assets\\catalog\\ambar-1.webp",
+    "sha256": "f79d1fa47b219215af82fae0e3ed4dd9399c56337714360429f9f74ad5a306ea"
+  },
+  {
+    "key": "bayahibe",
+    "file": "public\\assets\\catalog\\bayahibe-1.webp",
+    "sha256": "f39fab3ade9e659bd40c587cffcd7253704e7abdeb01060d5c68659349b003db"
+  },
+  {
+    "key": "moca",
+    "file": "public\\assets\\catalog\\moca-1.webp",
+    "sha256": "9dc9d6a3a3c9e3049a23b5ee81463a277c48fb02e8aead5486242dd8cd280e2e"
+  },
+  {
+    "key": "playa-encuentro",
+    "file": "public\\assets\\catalog\\playa-encuentro-1.webp",
+    "sha256": "6350ab9c93edc045565fe362560e2ba59fc3e445a7447ccc9e6653a748988c0d"
+  },
+  {
+    "key": "isla-saona",
+    "file": "public\\assets\\catalog\\isla-saona-1.webp",
+    "sha256": "8e005411bbb85b4de385d2575d3cd460a3a060cb73b45f52f08aefbf85bfbf68"
+  },
+  {
+    "key": "cotorra-de-la-espanola",
+    "file": "public\\assets\\catalog\\cotorra-de-la-espanola-1.webp",
+    "sha256": "75ffdd512fbe63fbb53d5ba97fe87fcaa0308feb80fa8daaf691242298f3595f"
+  },
+  {
+    "key": "solenodonte-de-la-espanola",
+    "file": "public\\assets\\catalog\\solenodonte-de-la-espanola-1.webp",
+    "sha256": "516f964d13e8f37af27089c7994205dfb0926bae13fdad62d662025643268023"
+  },
+  {
+    "key": "priotelus-roseigaster",
+    "file": "public\\assets\\catalog\\priotelus-roseigaster-1.webp",
+    "sha256": "acc0c903316a589ce8e7c0ffab4dbc93591d7da23931d5ac6065984779c066e6"
+  },
+  {
+    "key": "todus-subulatus",
+    "file": "public\\assets\\catalog\\todus-subulatus-1.webp",
+    "sha256": "f4e5ed47ca73cc06d88c19d79a80c6d9d7cb071ed1c4b62725842949083c306d"
+  },
+  {
+    "key": "melanerpes-striatus",
+    "file": "public\\assets\\catalog\\melanerpes-striatus-1.webp",
+    "sha256": "9d28fd023f3f416b4645a9b4a8724501ce984f250fd7174e7a6d10823aa4b6ee"
+  },
+  {
+    "key": "aratinga-de-la-espanola",
+    "file": "public\\assets\\catalog\\aratinga-de-la-espanola-1.webp",
+    "sha256": "969ed77c6a251fee9786fc114a92ab4419ed195962a9e1d872ceac59a341a29f"
+  },
+  {
+    "key": "canal-de-la-mona",
+    "file": "public\\assets\\catalog\\canal-de-la-mona-1.webp",
+    "sha256": "03f5378e8f80ed9ac115ada875b75c15134f269108749a88ac5a78345f9c104d"
+  },
+  {
+    "key": "la-isabela",
+    "file": "public\\assets\\catalog\\la-isabela-1.webp",
+    "sha256": "2bf737d70da7603f5a72f44b47b84de5be98a68a005020b87926b672515d00b9"
+  },
+  {
+    "key": "punta-cana",
+    "file": "public\\assets\\catalog\\punta-cana-1.webp",
+    "sha256": "25fe3eae9c2d413d1536ee24252d92ba22e85c359d6128df84a89b278be5064a"
+  },
+  {
+    "key": "templo-de-santo-domingo",
+    "file": "public\\assets\\catalog\\templo-de-santo-domingo-1.webp",
+    "sha256": "1aac40e5b482d57ffdb43e21106977484bee5c87c5bc81d2bf9f8b0928f0d88f"
+  },
+  {
+    "key": "laguna-de-oviedo",
+    "file": "public\\assets\\catalog\\parque-nacional-jaragua-1.webp",
+    "sha256": "3b832dbc52a4083d8d8afdf9050b28915f39834ffa36941c0ef2d3bd4b1694dd"
+  },
+  {
+    "key": "sabana-de-la-mar",
+    "file": "public\\assets\\catalog\\sabana-de-la-mar-1.webp",
+    "sha256": "15086001359da2253d735bc2280e7063317894bb574b006d219a1525efdc342f"
+  },
+  {
+    "key": "salto-el-limon",
+    "file": "public\\assets\\catalog\\salto-el-limon-1.webp",
+    "sha256": "1edd4c896f0967586cdf862f8064ba20d21387d69552683521c05de0fce8dd5b"
+  },
+  {
+    "key": "playa-rincon",
+    "file": "public\\assets\\catalog\\playa-rincon-1.webp",
+    "sha256": "afb5d8686017c01e71472e2b831c48dde1eb65f609171333d189fabc818dc146"
+  },
+  {
+    "key": "playa-punta-rucia",
+    "file": "public\\assets\\catalog\\playa-punta-rucia-1.webp",
+    "sha256": "f6f6e8ff9fa4c1a58f71784b324d680cd994dfaeeabdc8f40f9e50812a41e3b5"
+  },
+  {
+    "key": "cyclura-cornuta",
+    "file": "public\\assets\\catalog\\cyclura-cornuta-1.webp",
+    "sha256": "28c232f527782632ca3e5e0b69d898eb7269af77b293bad60c3929a5bd717248"
+  },
+  {
+    "key": "cyclura-ricordii",
+    "file": "public\\assets\\catalog\\cyclura-ricordii-1.webp",
+    "sha256": "d048e48825ac974c0a1d30adaf09da0ecdae259345534e7e5464445b0c554278"
+  },
+  {
+    "key": "pinus-occidentalis",
+    "file": "public\\assets\\catalog\\pinus-occidentalis-1.webp",
+    "sha256": "666c750cfc1a30d30bc7dc221ab7dbfbbe6dc6f9c07be3861f8a1e7c21e16822"
+  },
+  {
+    "key": "leuenbergeria-quisqueyana",
+    "file": "public\\assets\\catalog\\leuenbergeria-quisqueyana-1.webp",
+    "sha256": "76e9fd6ef4bae4afe47a8475b5d6d6690b2750b02b1c1c76ae2a38a76e830694"
+  },
+  {
+    "key": "playa-dorada",
+    "file": "public\\assets\\catalog\\playa-dorada-1.webp",
+    "sha256": "6ee02bd0c67beec1060e140193af498bcd462b39d8d637f0a05928c9ae817978"
+  },
+  {
+    "key": "las-caritas",
+    "file": "public\\assets\\catalog\\las-caritas-1.webp",
+    "sha256": "073536a7740a428dc8f84f6ad69b160eaf6d06d84714a478e1cf69d10339a4af"
+  },
+  {
+    "key": "museo-del-hombre-dominicano",
+    "file": "public\\assets\\catalog\\museo-del-hombre-dominicano-1.webp",
+    "sha256": "d060eb3e18c4fe105ba9a4e6a3bb3facdaf3afb7a261e8b642aa8d256d697eac"
+  },
+  {
+    "key": "catedral-inmaculada-concepcion",
+    "file": "public\\assets\\catalog\\catedral-inmaculada-concepcion-1.webp",
+    "sha256": "3d1697176220aad1d7478c3d65e8e929071871b2369ea7e3c5f56e1e84656bb1"
+  },
+  {
+    "key": "archivo-general-de-la-nacion",
+    "file": "public\\assets\\catalog\\archivo-general-de-la-nacion-1.webp",
+    "sha256": "0257e7e0710a3583022bf0a278b4699a32f2eed6583e883fc917e4e0d954397d"
+  },
+  {
+    "key": "gran-teatro-del-cibao",
+    "file": "public\\assets\\catalog\\gran-teatro-del-cibao-1.webp",
+    "sha256": "f132ad5912077b6a2a0535828438f2fac482c78fda712087384cc672658149e2"
+  },
+  {
+    "key": "swietenia-mahagoni",
+    "file": "public\\assets\\catalog\\swietenia-mahagoni-1.webp",
+    "sha256": "0251a24a10b6190eef8a6d65eb7f7c75bd1d344e211fe8e42c6b23c9655b20ba"
+  },
+  {
+    "key": "haitises",
+    "file": "public\\assets\\catalog\\haitises-1.webp",
+    "sha256": "a4d03bc2ed511af46295287be64202ba9e2e1f6bfbad50a17f07ef8e8dbad167"
+  },
+  {
+    "key": "centro-cultural-eduardo-leon-jimenes",
+    "file": "public\\assets\\catalog\\centro-cultural-eduardo-leon-jimenes-1.webp",
+    "sha256": "80c4533b8304d5c21f69220e8f0631a81a6749df05bd4d70ec0cf741a335a2c6"
+  },
+  {
+    "key": "las-terrenas",
+    "file": "public\\assets\\catalog\\las-terrenas-1.webp",
+    "sha256": "00c0ccd95494c6c8d48894af63bf002e9d9f7d6311af06b29a6e0fb510305eb4"
+  },
+  {
+    "key": "municipio-de-azua",
+    "file": "public\\assets\\catalog\\municipio-de-azua-1.webp",
+    "sha256": "20cd654b5422e9e4d76e62966d503f849cad4a9f64f9e35158390b97ac6d3b77"
+  },
+  {
+    "key": "rio-yuna",
+    "file": "public\\assets\\catalog\\rio-yuna-1.webp",
+    "sha256": "89350f06bef96c688dac94829d09f5375affb44af5a0dfdfda09096fb28a0aaa"
+  },
+  {
+    "key": "bani",
+    "file": "public\\assets\\catalog\\bani-1.webp",
+    "sha256": "ee00956ebe2fcd5edceaad2b66af70180ef45c447bde184300af332667b51faa"
+  },
+  {
+    "key": "dajabon",
+    "file": "public\\assets\\catalog\\dajabon-1.webp",
+    "sha256": "db44e6199b36dfb0ac24d4fd4885a7d459d56d85b4bd4b73de3e6c12d96960cd"
+  },
+  {
+    "key": "baluarte-del-conde",
+    "file": "public\\assets\\catalog\\baluarte-del-conde-1.webp",
+    "sha256": "b04a4a394436122c20bc508f2652ae1c95450b579ccfbf3715724f1f4fb61385"
+  },
+  {
+    "key": "bahia-de-samana",
+    "file": "public\\assets\\catalog\\bahia-de-samana-1.webp",
+    "sha256": "2f45f09a8791c106ef97eb08c3673d3947ddb1793071fa6658f136609ea68327"
+  },
+  {
+    "key": "san-jose-de-ocoa",
+    "file": "public\\assets\\catalog\\san-jose-de-ocoa-1.webp",
+    "sha256": "e6039ff8d9cb7df982678be1029f7925f3e4d3afb33393f72189f622817a33cc"
+  },
+  {
+    "key": "monte-cristi",
+    "file": "public\\assets\\catalog\\parque-nacional-monte-cristi-1.webp",
+    "sha256": "99cadcdc40f18b5f274b4bc5c08264c03bf7799b2d0d92a5fd7f6491ae3da430"
+  },
+  {
+    "key": "altar-de-la-patria",
+    "file": "public\\assets\\catalog\\altar-de-la-patria-1.webp",
+    "sha256": "f384259aaa90262256ae63d88854e14dcf24d6c7fb3e59641c7d0e621638dfd1"
+  },
+  {
+    "key": "peninsula-de-samana",
+    "file": "public\\assets\\catalog\\peninsula-de-samana-1.webp",
+    "sha256": "0268762086f5f0b243f77f130c5e107948e3f2d031eb6fbe4f539405fdc80710"
+  },
+  {
+    "key": "sierra-de-neiba",
+    "file": "public\\assets\\catalog\\sierra-de-neiba-1.webp",
+    "sha256": "3db1568e5e74c092fb1abac8a3e1e3e1471dfaef4ef37c25c43511f92460d565"
+  },
+  {
+    "key": "nagua",
+    "file": "public\\assets\\catalog\\nagua-1.webp",
+    "sha256": "01b337a0b528c565a643c720e241533a36c1a7a6ed7377a1e9a5701086fc2ef3"
+  },
+  {
+    "key": "sierra-de-bahoruco",
+    "file": "public\\assets\\catalog\\sierra-de-bahoruco-1.webp",
+    "sha256": "0e7f3cb4fc7cad2989aa21b00f6c3affccd747378a0d08e222ff2e61017b0101"
+  },
+  {
+    "key": "hato-mayor",
+    "file": "public\\assets\\catalog\\hato-mayor-1.webp",
+    "sha256": "2b59ccc4f119f66891cb23069b9acfa093e1055b997618769a87ce7b5b889a40"
+  },
+  {
+    "key": "san-juan",
+    "file": "public\\assets\\catalog\\san-juan-1.webp",
+    "sha256": "540dc8b9a0b41a4dbbaf63d56d5fc0181be6a8dd1b7024ac0c543fce85ec9ae2"
+  },
+  {
+    "key": "ciudad-colonial",
+    "file": "public\\assets\\catalog\\ciudad-colonial-1.webp",
+    "sha256": "e2dfabbdf47251cc65a7504883b48aeeb8c9563f049d9be3b0e854d722ba824f"
+  },
+  {
+    "key": "fortaleza-ozama",
+    "file": "public\\assets\\catalog\\fortaleza-ozama-1.webp",
+    "sha256": "fe32c3afe189c23c7675d7acf5645ee3c004b15b1553e74f98f0df44cfcd1aec"
+  },
+  {
+    "key": "pedernales",
+    "file": "public\\assets\\catalog\\pedernales-1.webp",
+    "sha256": "c4ae81b763ca79a656169af4c998124c1b6244777b9739b494e84790bc88baa7"
+  },
+  {
+    "key": "estadio-julian-javier",
+    "file": "public\\assets\\catalog\\estadio-julian-javier-1.webp",
+    "sha256": "076c48b4b6bde12499874469d2e82a39c9fe6bfa690de964a7ff0af83ec562d5"
+  },
+  {
+    "key": "estadio-quisqueya-juan-marichal",
+    "file": "public\\assets\\catalog\\estadio-quisqueya-juan-marichal-1.webp",
+    "sha256": "1260fcb86c26c5c3ae067e206d83736fc9aa622891aa42cd6e6241896fffe0e4"
+  },
+  {
+    "key": "estadio-tetelo-vargas",
+    "file": "public\\assets\\catalog\\estadio-tetelo-vargas-1.webp",
+    "sha256": "188772bda1f39031536081789965c400df8d8715b4016dd23d91c461f1b110c9"
+  },
+  {
+    "key": "fortaleza-de-san-felipe",
+    "file": "public\\assets\\catalog\\fortaleza-de-san-felipe-1.webp",
+    "sha256": "eca1067a08c76be66ed3b0460998d950c867159d1f4c57f20fd74129cd4881d9"
+  },
+  {
+    "key": "fortaleza-san-luis",
+    "file": "public\\assets\\catalog\\fortaleza-san-luis-1.webp",
+    "sha256": "ff2da45c405ce80b1991297d655d2c783e0270fba0bdba9efa868a1f08c11bcc"
+  },
+  {
+    "key": "casa-del-cordon",
+    "file": "public\\assets\\catalog\\casa-del-cordon-1.webp",
+    "sha256": "9f35462d29acdaa42f5c28c61d08ca0261b956b3265dc0f1d0569e945846ed4a"
+  },
+  {
+    "key": "monasterio-de-san-francisco",
+    "file": "public\\assets\\catalog\\monasterio-de-san-francisco-1.webp",
+    "sha256": "12d4c89b28913cc45ad3c72fa273b0769af5ad65a789b904d90a39b70f9c7109"
+  },
+  {
+    "key": "parque-nacional-monte-cristi",
+    "file": "public\\assets\\catalog\\parque-nacional-monte-cristi-1.webp",
+    "sha256": "99cadcdc40f18b5f274b4bc5c08264c03bf7799b2d0d92a5fd7f6491ae3da430"
+  },
+  {
+    "key": "monumento-de-santiago",
+    "file": "public\\assets\\catalog\\monumento-de-santiago-1.webp",
+    "sha256": "ea684b9f3d4555929182d75c147c60e70c472123b7b01d6056ba4b00d3096dca"
+  },
+  {
+    "key": "panteon-de-la-patria",
+    "file": "public\\assets\\catalog\\panteon-de-la-patria-1.webp",
+    "sha256": "cbabb2f4e9e3ca39949b1639f28a9d41378f7467450191a7708ec35acacd3b07"
+  },
+  {
+    "key": "casona-de-palave",
+    "file": "public\\assets\\catalog\\casona-de-palave-1.webp",
+    "sha256": "b18d8fe582f3ff029a9f1175851d0703eee48fad689a5e8769b64fcca613f31a"
+  },
+  {
+    "key": "parque-colon-santo-domingo",
+    "file": "public\\assets\\catalog\\parque-colon-santo-domingo-1.webp",
+    "sha256": "c5f31b124ab4da876532689400fdbd93a84e66c6faa9f82a99186cd55dad26bc"
+  },
+  {
+    "key": "reales-atarazanas-de-santo-domingo",
+    "file": "public\\assets\\catalog\\reales-atarazanas-de-santo-domingo-1.webp",
+    "sha256": "6e055488242317530d1b698cfc046ce208a17e3467a67a2f9f00104c3ca6f354"
+  },
+  {
+    "key": "congos",
+    "file": "public\\assets\\catalog\\congos-1.webp",
+    "sha256": "0b7d9d9f8ef457bf9baebb3e1f9de192a724bff596d8bfb07be3dde5497c789e"
+  },
+  {
+    "key": "ballenas",
+    "file": "public\\assets\\catalog\\ballenas-1.webp",
+    "sha256": "4975aa7b6b9f38c4b45f1a56315e4aea4592af2037035d9d209bc3df456ec286"
+  },
+  {
+    "key": "carnaval",
+    "file": "public\\assets\\catalog\\carnaval-1.webp",
+    "sha256": "0b8e70c39a7fcd05278f593b2beafe9fa9b59483b2644aaf9500aaf582e941b0"
+  },
+  {
+    "key": "teatro-nacional-eduardo-brito",
+    "file": "public\\assets\\catalog\\teatro-nacional-eduardo-brito-1.webp",
+    "sha256": "7656f75f78e3dc40a4521a3b5fded18d28f3865d26111fe7b6820882d483c214"
+  },
+  {
+    "key": "museo-casa-duarte",
+    "file": "public\\assets\\catalog\\museo-casa-duarte-1.webp",
+    "sha256": "78a823048d79dd0dbdadc8a25f13514274cc57cbe7117412133580753012570a"
+  },
+  {
+    "key": "parque-nacional-jaragua",
+    "file": "public\\assets\\catalog\\parque-nacional-jaragua-1.webp",
+    "sha256": "3b832dbc52a4083d8d8afdf9050b28915f39834ffa36941c0ef2d3bd4b1694dd"
+  },
+  {
+    "key": "la-vega-vieja",
+    "file": "public\\assets\\catalog\\la-vega-vieja-1.webp",
+    "sha256": "dc598b27a01a72e315aa33bc3041cf67db732aa5353a6aa32d32e2ad686e8e09"
+  },
+  {
+    "key": "rio-el-limon",
+    "file": "public\\assets\\catalog\\rio-el-limon-1.webp",
+    "sha256": "35b1d7ba490480f146869ac3297f05db8437fda85452895a0545f97618b6aff3"
+  },
+  {
+    "key": "quipe-y-kibbeh",
+    "file": "public\\assets\\catalog\\quipe-y-kibbeh-1.webp",
+    "sha256": "ef940c07df362aced8770cab36d638d81926503b50619ecbf7c801ed0781e662"
+  },
+  {
+    "key": "cocodrilo-de-tumbes",
+    "file": "public\\assets\\catalog\\cocodrilo-de-tumbes-1.webp",
+    "sha256": "d2a7379ade0cc3334eace1c9496b4b72abe95b8878857c6d9fbb21a09f8ac394"
+  },
+  {
+    "key": "parque-nacional-sierra-de-bahoruco",
+    "file": "public\\assets\\catalog\\parque-nacional-sierra-de-bahoruco-1.webp",
+    "sha256": "0e7f3cb4fc7cad2989aa21b00f6c3affccd747378a0d08e222ff2e61017b0101"
+  },
+  {
+    "key": "catedral-san-pedro-apostol",
+    "file": "public\\assets\\catalog\\catedral-san-pedro-apostol-1.webp",
+    "sha256": "b623b5daeffb8bffa3bae9009d1df11165ec21f6cf902ed309184112c0e74e8b"
+  },
+  {
+    "key": "hoyo-azul",
+    "file": "public\\assets\\catalog\\hoyo-azul-1.webp",
+    "sha256": "e613cf6d179ff76e45622d4136c8fe537c121a23c4fe6fe416f729999509bed9"
+  },
+  {
+    "key": "la-espanola",
+    "file": "public\\assets\\catalog\\la-espanola-1.webp",
+    "sha256": "d89b3923d4984d24df87448f6f00579c3c8919a2d40aaa46c35c6e0cb23cf984"
+  },
+  {
+    "key": "las-galeras",
+    "file": "public\\assets\\catalog\\las-galeras-1.webp",
+    "sha256": "cfc0a55920a6553df9c1b3cf950c3d06bdf6ba23ea75285e8515d78cfb198909"
+  },
+  {
+    "key": "monte-plata",
+    "file": "public\\assets\\catalog\\monte-plata-1.webp",
+    "sha256": "d4904275940972723a79f8363f0f7038cef64b5175eea6c6c028adf76005749c"
+  },
+  {
+    "key": "cotui",
+    "file": "public\\assets\\catalog\\cotui-1.webp",
+    "sha256": "804c1c6e2c9b1072dc182516f76bca2a66752e672b4ac088e9def3d48e798b0c"
+  },
+  {
+    "key": "neiba",
+    "file": "public\\assets\\catalog\\neiba-1.webp",
+    "sha256": "a9bcc533e73ecb1e7a368c77099cf3a69d5981f282f1153e2ba1f8c008977478"
+  },
+  {
+    "key": "san-jose-de-las-matas",
+    "file": "public\\assets\\catalog\\san-jose-de-las-matas-1.webp",
+    "sha256": "57350ea3d0f0de5d8860658986d0acbb3cde40c7f682add77475c8be1c18c443"
+  },
+  {
+    "key": "la-romana",
+    "file": "public\\assets\\catalog\\la-romana-1.webp",
+    "sha256": "eb07c54e9c325fb6f6022b0417a67b664fd25898fd5f97da4e86f5a026734d1e"
+  },
+  {
+    "key": "santiago-de-los-caballeros",
+    "file": "public\\assets\\catalog\\santiago-de-los-caballeros-1.webp",
+    "sha256": "1d8734eec96031628c9b32335fc856bf833780298e8cbb1b08741a047a00c2bd"
+  },
+  {
+    "key": "monumento-natural-lagunas-cabarete-y-goleta",
+    "file": "public\\assets\\catalog\\monumento-natural-lagunas-cabarete-y-goleta-1.webp",
+    "sha256": "7edbc14b37b214e803b6b003582ccfb0188cc0951db9becb57185517335960da"
+  },
+  {
+    "key": "playa-macao",
+    "file": "public\\assets\\catalog\\playa-macao-1.webp",
+    "sha256": "3fae92d436cb317298830a7e53a72a9ae7b7b1bcdf23488632c32b8833330594"
+  },
+  {
+    "key": "parque-mirador-sur-santo-domingo",
+    "file": "public\\assets\\catalog\\parque-mirador-sur-santo-domingo-1.webp",
+    "sha256": "6063745d82bfa664fc97a8a518b0b9335f0f7a1be1eefa3f571e319ed381945a"
+  },
+  {
+    "key": "catedral-de-santiago-apostol-santiago-de-los-caballeros",
+    "file": "public\\assets\\catalog\\catedral-de-santiago-apostol-santiago-de-los-caballeros-1.webp",
+    "sha256": "9b20cede247f8792dfe91c2b65a116acc1f4a039cfda40e9f189ecbb115404b0"
+  },
+  {
+    "key": "catedral-de-san-felipe-apostol-puerto-plata",
+    "file": "public\\assets\\catalog\\catedral-de-san-felipe-apostol-puerto-plata-1.webp",
+    "sha256": "20f1239b4275ad9850fe9deef8b046cd9e5e9d6b7716298496b6ad05be4a32f6"
+  },
+  {
+    "key": "museo-nacional-de-historia-natural-prof-eugenio-de-jesus-marcano",
+    "file": "public\\assets\\catalog\\museo-nacional-de-historia-natural-prof-eugenio-de-jesus-marcano-1.webp",
+    "sha256": "e12509ee2ffebe748c5859a76e7b90c0d4bc234e5fb6fb8d9ad8288ccd9ae687"
+  },
+  {
+    "key": "catedral-castrense-santa-barbara",
+    "file": "public\\assets\\catalog\\catedral-castrense-santa-barbara-1.webp",
+    "sha256": "bd20bd875fc63ebd5d13e02779b78b4562402c6ce4eee37d3cb0635648a57f1c"
+  },
+  {
+    "key": "pico-duarte",
+    "file": "public\\assets\\catalog\\pico-duarte-1.webp",
+    "sha256": "1184d07af8fcb61184e5353aa885fb75d9ab9ebf384cc42056ecc5e5298e5f7c"
+  },
+  {
+    "key": "museo-memorial-de-la-resistencia-dominicana",
+    "file": "public\\assets\\catalog\\museo-memorial-de-la-resistencia-dominicana-1.webp",
+    "sha256": "83e36a16220d8230c1e5f29280070884e2b69bd63059a3fac7604cfe0fd2ef13"
+  },
+  {
+    "key": "puente-matias-ramon-mella",
+    "file": "public\\assets\\catalog\\puente-matias-ramon-mella-1.webp",
+    "sha256": "10fb53c9aa8ea9823eb4f268607a7847877603d923a2446cce829aa746cc9ac1"
+  },
+  {
+    "key": "faro-a-colon",
+    "file": "public\\assets\\catalog\\faro-a-colon-1.webp",
+    "sha256": "550aa5430f7cd5bf195e24d17afe7d848ce939a9ea6f15d39ba760663a9cf26e"
+  },
+  {
+    "key": "puerto-plata",
+    "file": "public\\assets\\catalog\\puerto-plata-1.webp",
+    "sha256": "e1a4f647aeb96e0bb45d75f334b4f3b4f269c3255d9a4157509a588bbdb8facb"
+  },
+  {
+    "key": "jarabacoa",
+    "file": "public\\assets\\catalog\\jarabacoa-1.webp",
+    "sha256": "d44a441bb096773314990e03e36b01c998d730262e1e3938d4ca448756ec2b9f"
+  },
+  {
+    "key": "metro-de-santo-domingo",
+    "file": "public\\assets\\catalog\\metro-de-santo-domingo-1.webp",
+    "sha256": "eaf3b6d8fac9fb1b28162ad30ae678041a128f1317f860c9a69dccd2a2e23662"
+  },
+  {
+    "key": "lago-enriquillo",
+    "file": "public\\assets\\catalog\\lago-enriquillo-1.webp",
+    "sha256": "fe8946c94cbcd1ed6951093f21fd76b054d67a6a649bd1f47e8a992e6c1823b0"
+  },
+  {
+    "key": "cayo-levantado",
+    "file": "public\\assets\\catalog\\cayo-levantado-1.webp",
+    "sha256": "036a93fec0920e716a50509f1c125147fafec266acd25e35f27dbfa748713be5"
+  },
+  {
+    "key": "jiguey-dam",
+    "file": "public\\assets\\catalog\\jiguey-dam-1.webp",
+    "sha256": "1782cba96cb8527208232083f5a3040a74b22c06ac70d3b2d0b16d01f6136f88"
+  },
+  {
+    "key": "museo-de-las-casas-reales",
+    "file": "public\\assets\\catalog\\museo-de-las-casas-reales-1.webp",
+    "sha256": "1716c5446efb73625fa103062bb6cb23dff694c4e6e12eb10afb63d28384e2bb"
+  },
+  {
+    "key": "bonao",
+    "file": "public\\assets\\catalog\\bonao-1.webp",
+    "sha256": "4d7b426318d826db95b5a7677efd8006b62915ea228444c288c3e6f68676e874"
+  },
+  {
+    "key": "cordillera-oriental",
+    "file": "public\\assets\\catalog\\cordillera-oriental-1.webp",
+    "sha256": "b0d2f7464d0ba7db9a06325d370d209c365724dbec621a553199fef8d857d75e"
+  },
+  {
+    "key": "estadio-cibao",
+    "file": "public\\assets\\catalog\\estadio-cibao-1.webp",
+    "sha256": "c0c8561d7683e93c9b122d2ee5470d185198df814edf5c3100ead5e7802253a2"
+  },
+  {
+    "key": "puente-mauricio-baez",
+    "file": "public\\assets\\catalog\\puente-mauricio-baez-1.webp",
+    "sha256": "63e3b24ac8e8f3c1e0b2193d95b4a3caf93f7b3e4d912c203ac8c04d46a2679b"
+  },
+  {
+    "key": "puente-juan-bosch",
+    "file": "public\\assets\\catalog\\puente-juan-bosch-1.webp",
+    "sha256": "c0d7386fda9535310c343e1733ea91f7a343e39ec59a105d4780639ade40dd16"
+  },
+  {
+    "key": "teleferico-de-santo-domingo",
+    "file": "public\\assets\\catalog\\teleferico-de-santo-domingo-1.webp",
+    "sha256": "e3dab2c0432576d6fc035f33f024cc85269adb2231e36b2f63a86ae44a2ba194"
+  },
+  {
+    "key": "isla-beata",
+    "file": "public\\assets\\catalog\\isla-beata-1.webp",
+    "sha256": "f70fa1a50315a4b4d89c79f3610505215381d3f09e65c1aa9c03ffc9ad6d8d2d"
+  },
+  {
+    "key": "santo-domingo",
+    "file": "public\\assets\\catalog\\santo-domingo-1.webp",
+    "sha256": "80d73d03ae0f183288907f3220183afb67b26673d8c327416f3abdeda17c5ca0"
+  },
+  {
+    "key": "puente-juan-pablo-duarte",
+    "file": "public\\assets\\catalog\\puente-juan-pablo-duarte-1.webp",
+    "sha256": "925f09b90e545e43f5b8c6d5f99bdf913948c63b2e6f4c124eb695a1e5840fe2"
+  },
+  {
+    "key": "museo-de-ambar",
+    "file": "public\\assets\\catalog\\museo-de-ambar-1.webp",
+    "sha256": "c2c1ec9334674174af54ddb92830147ae88de35fb43543aa9a0a8bdbb07ab8fc"
+  },
+  {
+    "key": "plaza-de-espana",
+    "file": "public\\assets\\catalog\\plaza-de-espana-1.webp",
+    "sha256": "78920f7a35092a11c5071b338e24e3ae01134f387c3b6b640cef7dd4badc2211"
+  },
+  {
+    "key": "museo-de-las-atarazanas-reales",
+    "file": "public\\assets\\catalog\\museo-de-las-atarazanas-reales-1.webp",
+    "sha256": "1374dc2e745bcb88ad3be7f59ed277e3567f884991d5a69c2c46ed286bfbe38c"
+  },
+  {
+    "key": "playa-alicia",
+    "file": "public\\assets\\catalog\\playa-alicia-1.webp",
+    "sha256": "2d4d7d8b26afe023c890f060ed5d1d7a3ebcf50eb37ff96c5cf60003c26641c2"
+  },
+  {
+    "key": "playa-sosua",
+    "file": "public\\assets\\catalog\\playa-sosua-1.webp",
+    "sha256": "45b41b232d0006a95fe60a3e4f835597b71ba7abe00c88ad5a57b8e562ac0c3f"
+  },
+  {
+    "key": "casa-de-tostado",
+    "file": "public\\assets\\catalog\\casa-de-tostado-1.webp",
+    "sha256": "b38b33df65e6350517405bf0a40dfc21214dbd2a6dc65307f185cff6fc19076a"
+  },
+  {
+    "key": "iglesia-regina-angelorum",
+    "file": "public\\assets\\catalog\\iglesia-regina-angelorum-1.webp",
+    "sha256": "78c77c577cca794f51b818d31b6c55465c51d0312c5766b5dc2a9fd0a42571cc"
+  },
+  {
+    "key": "27-charcos-de-damajagua",
+    "file": "public\\assets\\catalog\\27-charcos-de-damajagua-1.webp",
+    "sha256": "d7aa44240d0e7c169a7359334e27d037144221e4b648baa00af4c0bd0d92408d"
+  },
+  {
+    "key": "playa-fronton",
+    "file": "public\\assets\\catalog\\playa-fronton-1.webp",
+    "sha256": "092bc89b70bde4790eda636181eabbe9072fe6fca2070d4c18dedfd88c5916d8"
+  },
+  {
+    "key": "playa-cabarete",
+    "file": "public\\assets\\catalog\\playa-cabarete-1.webp",
+    "sha256": "b6545a1b58cc32c22f0d8b1664b2ec8f2d4eba15b07d08a3583a70bf825d5845"
+  },
+  {
+    "key": "playa-coson",
+    "file": "public\\assets\\catalog\\playa-coson-1.webp",
+    "sha256": "c57fd1290d6cccdf5f57407f6ce2fc84bc4679d05434d8426ef95b3a15d1e4ac"
+  },
+  {
+    "key": "playa-bayahibe",
+    "file": "public\\assets\\catalog\\playa-bayahibe-1.webp",
+    "sha256": "ebbaaac2ac518b96da082fd536d1e1ca47aced33ab2c3086c1723754fc0bf8ce"
+  },
+  {
+    "key": "laguna-el-dudu",
+    "file": "public\\assets\\catalog\\laguna-el-dudu-1.webp",
+    "sha256": "cc5a85bcf3446665e95c02730ac859f3840e19ddb9634dd6a601de11a6e10d4d"
+  },
+  {
+    "key": "playa-bavaro",
+    "file": "public\\assets\\catalog\\playa-bavaro-1.webp",
+    "sha256": "e7d482e7fb9759b20128af364e1fcea41a832f995095dfe6f08b51542902a8d4"
+  },
+  {
+    "key": "cigua-palmera",
+    "file": "public\\assets\\catalog\\cigua-palmera-1.webp",
+    "sha256": "94f8811b9a188e7d5ddf210cec22aa651898083ae3197898936770ad8a6e8b3f"
+  },
+  {
+    "key": "dunas-de-bani",
+    "file": "public\\assets\\catalog\\dunas-de-bani-1.webp",
+    "sha256": "6af95e77c084875448717da580bd20bb023cb3d0595fb2ff22f916476f925529"
+  },
+  {
+    "key": "luperon",
+    "file": "public\\assets\\catalog\\luperon-1.webp",
+    "sha256": "3a6e988887d7d01de77cfdd81f39a16a3e5594e545b9478ff1f2635c10926b1b"
+  },
+  {
+    "key": "juan-pablo-duarte",
+    "file": "public\\assets\\catalog\\juan-pablo-duarte-1.webp",
+    "sha256": "7a27137a59d13264b5cf962b13046d660c296e5b52116dde199ffe9608114139"
+  },
+  {
+    "key": "francisco-del-rosario-sanchez",
+    "file": "public\\assets\\catalog\\francisco-del-rosario-sanchez-1.webp",
+    "sha256": "640fe49ac0f23611e52d08dde68cba44cf3569412eb9b606d2188904d7b3c88d"
+  },
+  {
+    "key": "matias-ramon-mella",
+    "file": "public\\assets\\catalog\\matias-ramon-mella-1.webp",
+    "sha256": "975ebc13da9efd82fccfe0ec48f1991229a0b9778355bfc8ab82cddf27d12aaa"
+  },
+  {
+    "key": "gregorio-luperon",
+    "file": "public\\assets\\catalog\\gregorio-luperon-1.webp",
+    "sha256": "d84f01a37df8fce4dd28a7055112e06184cea070ecb8880dc42f56a542fc5894"
+  },
+  {
+    "key": "hermanas-mirabal",
+    "file": "public\\assets\\catalog\\hermanas-mirabal-1.webp",
+    "sha256": "c3574d3ca0ad0f6ff9e4f5dc9f6bdabd56877de1b86e6d25502c2bdfc0abebdf"
+  },
+  {
+    "key": "salome-urena",
+    "file": "public\\assets\\catalog\\salome-urena-1.webp",
+    "sha256": "6400a4369433c86bd8b872d1ee5b0a91a74f33a26723efb4f0ba80874df00563"
+  },
+  {
+    "key": "pedro-henriquez-urena",
+    "file": "public\\assets\\catalog\\pedro-henriquez-urena-1.webp",
+    "sha256": "876d271300c45a3fdf781613958e263475761315d6ac50d29606249036853830"
+  },
+  {
+    "key": "juan-luis-guerra",
+    "file": "public\\assets\\catalog\\juan-luis-guerra-1.webp",
+    "sha256": "1832d8d0b9b3dc7f06ff9301a7232d11e81a41119c8080ef39a2cd4217d64de9"
+  },
+  {
+    "key": "johnny-ventura",
+    "file": "public\\assets\\catalog\\johnny-ventura-1.webp",
+    "sha256": "e47e11df73c58c6475b1080d20390af5b73b2ef458fc200d22133dfd440bc310"
+  },
+  {
+    "key": "carnaval-santiago",
+    "file": "public\\assets\\catalog\\santiago-de-los-caballeros-1.webp",
+    "sha256": "1d8734eec96031628c9b32335fc856bf833780298e8cbb1b08741a047a00c2bd"
+  },
+  {
+    "key": "carnaval-bonao",
+    "file": "public\\assets\\catalog\\bonao-1.webp",
+    "sha256": "4d7b426318d826db95b5a7677efd8006b62915ea228444c288c3e6f68676e874"
+  },
+  {
+    "key": "carnaval-montecristi",
+    "file": "public\\assets\\catalog\\parque-nacional-monte-cristi-1.webp",
+    "sha256": "99cadcdc40f18b5f274b4bc5c08264c03bf7799b2d0d92a5fd7f6491ae3da430"
+  },
+  {
+    "key": "carnaval-santo-domingo",
+    "file": "public\\assets\\catalog\\santo-domingo-1.webp",
+    "sha256": "80d73d03ae0f183288907f3220183afb67b26673d8c327416f3abdeda17c5ca0"
+  },
+  {
+    "key": "carnaval-cotui",
+    "file": "public\\assets\\catalog\\cotui-1.webp",
+    "sha256": "804c1c6e2c9b1072dc182516f76bca2a66752e672b4ac088e9def3d48e798b0c"
+  },
+  {
+    "key": "carnaval-guabay",
+    "file": "public\\assets\\catalog\\laguna-salada-1.webp",
+    "sha256": "6e92cf6bd03457d73627f71fe167cf74c279b69aad3e6e019c0f864f2f221c30"
+  },
+  {
+    "key": "carnaval-cimarron",
+    "file": "public\\assets\\catalog\\comendador-1.webp",
+    "sha256": "d3dde41aebda3679d698aef583317d849f04eebc1c5d85358b8f29c4779b49be"
+  },
+  {
+    "key": "gaga-comendador",
+    "file": "public\\assets\\catalog\\comendador-1.webp",
+    "sha256": "d3dde41aebda3679d698aef583317d849f04eebc1c5d85358b8f29c4779b49be"
+  },
+  {
+    "key": "diablo-cojuelo",
+    "file": "public\\assets\\catalog\\carnaval-1.webp",
+    "sha256": "0b8e70c39a7fcd05278f593b2beafe9fa9b59483b2644aaf9500aaf582e941b0"
+  },
+  {
+    "key": "roba-la-gallina",
+    "file": "public\\assets\\catalog\\carnaval-1.webp",
+    "sha256": "0b8e70c39a7fcd05278f593b2beafe9fa9b59483b2644aaf9500aaf582e941b0"
+  },
+  {
+    "key": "ciguapa",
+    "file": "public\\assets\\catalog\\carnaval-1.webp",
+    "sha256": "0b8e70c39a7fcd05278f593b2beafe9fa9b59483b2644aaf9500aaf582e941b0"
+  },
+  {
+    "key": "festival-merengue",
+    "file": "public\\assets\\catalog\\merengue-1.webp",
+    "sha256": "94d8cdea789363fa2056ed72f468b5ecc9faa4c322bf52cb37633f976b67ef98"
+  },
+  {
+    "key": "festival-flores-jarabacoa",
+    "file": "public\\assets\\catalog\\jarabacoa-1.webp",
+    "sha256": "d44a441bb096773314990e03e36b01c998d730262e1e3938d4ca448756ec2b9f"
+  },
+  {
+    "key": "feria-internacional-del-libro",
+    "file": "public\\assets\\catalog\\teatro-nacional-eduardo-brito-1.webp",
+    "sha256": "7656f75f78e3dc40a4521a3b5fded18d28f3865d26111fe7b6820882d483c214"
+  },
+  {
+    "key": "semana-santa-dominicana",
+    "file": "public\\assets\\catalog\\catedral-primada-de-america-1.webp",
+    "sha256": "adf8f587b5c6ba19309caff19b8203ddb77f3a52bc203c96119c0c289638d788"
+  },
+  {
+    "key": "fiesta-espiritu-santo-cotui",
+    "file": "public\\assets\\catalog\\cotui-1.webp",
+    "sha256": "804c1c6e2c9b1072dc182516f76bca2a66752e672b4ac088e9def3d48e798b0c"
+  },
+  {
+    "key": "velaciones",
+    "file": "public\\assets\\catalog\\guira-1.webp",
+    "sha256": "36ac6d015df96e197d1c33d2456cbc546a56b77fe763b18c0f85a8ea193e1d95"
+  },
+  {
+    "key": "fiestas-patronales",
+    "file": "public\\assets\\catalog\\basilica-catedral-y-santuario-nacional-de-nuestra-senora-de-la-altagracia-1.webp",
+    "sha256": "5ba9de010fcb6b7aa7bd081af1eea053386e2de883198911690adc3bc79a0824"
+  },
+  {
+    "key": "patronales-laguna-salada",
+    "file": "public\\assets\\catalog\\laguna-salada-1.webp",
+    "sha256": "6e92cf6bd03457d73627f71fe167cf74c279b69aad3e6e019c0f864f2f221c30"
+  },
+  {
+    "key": "fiestas-mercedes-sabaneta",
+    "file": "public\\assets\\catalog\\provincia-de-santiago-rodriguez-1.webp",
+    "sha256": "1bfd622750a0b74df009aef46b69517f04d8097b5aac8148946da625ebf5b0b1"
+  },
+  {
+    "key": "feria-sabaneta",
+    "file": "public\\assets\\catalog\\provincia-de-santiago-rodriguez-1.webp",
+    "sha256": "1bfd622750a0b74df009aef46b69517f04d8097b5aac8148946da625ebf5b0b1"
+  },
+  {
+    "key": "patronales-comendador",
+    "file": "public\\assets\\catalog\\comendador-1.webp",
+    "sha256": "d3dde41aebda3679d698aef583317d849f04eebc1c5d85358b8f29c4779b49be"
+  },
+  {
+    "key": "patronales-monte-plata",
+    "file": "public\\assets\\catalog\\monte-plata-1.webp",
+    "sha256": "d4904275940972723a79f8363f0f7038cef64b5175eea6c6c028adf76005749c"
+  },
+  {
+    "key": "patronales-san-antonio-monte-plata",
+    "file": "public\\assets\\catalog\\monte-plata-1.webp",
+    "sha256": "d4904275940972723a79f8363f0f7038cef64b5175eea6c6c028adf76005749c"
+  },
+  {
+    "key": "patronales-bonao",
+    "file": "public\\assets\\catalog\\bonao-1.webp",
+    "sha256": "4d7b426318d826db95b5a7677efd8006b62915ea228444c288c3e6f68676e874"
+  },
+  {
+    "key": "patronales-cotui",
+    "file": "public\\assets\\catalog\\cotui-1.webp",
+    "sha256": "804c1c6e2c9b1072dc182516f76bca2a66752e672b4ac088e9def3d48e798b0c"
+  },
+  {
+    "key": "fiesta-carmen-jarabacoa",
+    "file": "public\\assets\\catalog\\jarabacoa-1.webp",
+    "sha256": "d44a441bb096773314990e03e36b01c998d730262e1e3938d4ca448756ec2b9f"
+  },
+  {
+    "key": "dia-de-la-constitucion",
+    "file": "public\\assets\\catalog\\san-cristobal-1.webp",
+    "sha256": "14828015b50c0fac86b7211f3e456fa25181297d65ebc201038f298204233cae"
+  },
+  {
+    "key": "mamajuana",
+    "file": "public\\assets\\catalog\\mamajuana-1.webp",
+    "sha256": "9ff754110f867ae363b51e98729c42bdce5ea1ad441d689f3763455a57675556"
+  },
+  {
+    "key": "morir-sonando",
+    "file": "public\\assets\\catalog\\ingredient-orange-juice-1.webp",
+    "sha256": "fc7647b4feccc9403ec7066b709b179ab6202a54bc840c3a1699c3dfeb862dc4"
+  },
+  {
+    "key": "catibias",
+    "file": "public\\assets\\catalog\\ingredient-yuca-1.webp",
+    "sha256": "796143380ceae6742601aa75578a496da279d7e1fb5ebce35031cdf25d4011fb"
+  },
+  {
+    "key": "majarete",
+    "file": "public\\assets\\catalog\\majarete-1.webp",
+    "sha256": "82e6a7350aa3c9d110b8b1770462c8a4f51c28d357dcc0a45c5ea8ec1e5a2227"
+  },
+  {
+    "key": "longaniza",
+    "file": "public\\assets\\catalog\\longaniza-1.webp",
+    "sha256": "064633dac7ba1f937643561cbccc6a17306dbd44afffc8e3b3c8767d50ea2931"
+  },
+  {
+    "key": "bizcocho-dominicano",
+    "file": "public\\assets\\catalog\\bizcocho-dominicano-1.webp",
+    "sha256": "fdd2987cef4a234d99b5a722b30de1ce6ce0a92409295e4367ce0eb9d3efc409"
+  },
+  {
+    "key": "asopao",
+    "file": "public\\assets\\catalog\\asopao-1.webp",
+    "sha256": "5b390b1b091e1ddedc7f37ae56aaea98bc78eef1660c148f7672057edb00a07a"
+  },
+  {
+    "key": "pastelitos",
+    "file": "public\\assets\\catalog\\pastelitos-1.webp",
+    "sha256": "527f177aa70b7c754181c8f4a34d3b61572042d16279e1f5bd77a695e0f41135"
+  },
+  {
+    "key": "dulce-de-coco",
+    "file": "public\\assets\\catalog\\dulce-de-coco-1.webp",
+    "sha256": "47b08955ff299594e0b47edc90079568f05cbab434077dd8b1dcb280c505ca02"
+  },
+  {
+    "key": "yaniqueque",
+    "file": "public\\assets\\catalog\\boca-chica-1.webp",
+    "sha256": "92567e24d805be0ec6c67c0fe6fc6f6a7241b30e6dd277064caf86c81aa8a7c7"
+  },
+  {
+    "key": "cafe-dominicano",
+    "file": "public\\assets\\catalog\\ingredient-coffee-1.webp",
+    "sha256": "734f30658a0e963b75f4a635841f92ef967552122bf468294e2d7fde1f955e9f"
+  },
+  {
+    "key": "arepa-dominicana",
+    "file": "public\\assets\\catalog\\ingredient-corn-1.webp",
+    "sha256": "73fd23473b2562a8eca97673a0b08f4786df1ce404252c870e148ff67d6dae86"
+  },
+  {
+    "key": "jalao",
+    "file": "public\\assets\\catalog\\ingredient-coconut-1.webp",
+    "sha256": "d7c992df651986c4ba5118374cfe01c7f79113bb523e849bef6debf8ea0f7b46"
+  },
+  {
+    "key": "arepitas-yuca",
+    "file": "public\\assets\\catalog\\ingredient-yuca-1.webp",
+    "sha256": "796143380ceae6742601aa75578a496da279d7e1fb5ebce35031cdf25d4011fb"
+  },
+  {
+    "key": "chulitos",
+    "file": "public\\assets\\catalog\\ingredient-yuca-1.webp",
+    "sha256": "796143380ceae6742601aa75578a496da279d7e1fb5ebce35031cdf25d4011fb"
+  },
+  {
+    "key": "moro-habichuelas",
+    "file": "public\\assets\\catalog\\ingredient-rice-1.webp",
+    "sha256": "a9bd89d3c446306ca15916f462b1b30f538ca8b4dc463ad369b1480237a8de9c"
+  },
+  {
+    "key": "concon",
+    "file": "public\\assets\\catalog\\ingredient-rice-1.webp",
+    "sha256": "a9bd89d3c446306ca15916f462b1b30f538ca8b4dc463ad369b1480237a8de9c"
+  },
+  {
+    "key": "arroz-con-leche",
+    "file": "public\\assets\\catalog\\ingredient-rice-1.webp",
+    "sha256": "a9bd89d3c446306ca15916f462b1b30f538ca8b4dc463ad369b1480237a8de9c"
+  },
+  {
+    "key": "pasteles-en-hoja",
+    "file": "public\\assets\\catalog\\ingredient-yuca-1.webp",
+    "sha256": "796143380ceae6742601aa75578a496da279d7e1fb5ebce35031cdf25d4011fb"
+  },
+  {
+    "key": "ron-dominicano",
+    "file": "public\\assets\\catalog\\ron-dominicano-1.webp",
+    "sha256": "f6c70abefc808d04771e109749f59b2b0f3b2252ff52c9c1915862e2974167fb"
+  },
+  {
+    "key": "juan-bosch",
+    "file": "public\\assets\\catalog\\juan-bosch-1.webp",
+    "sha256": "32cebd446b73c53285550ec608b1a8aa82bbd26bc76249a20d2894237cd0c89e"
+  },
+  {
+    "key": "pedro-mir",
+    "file": "public\\assets\\catalog\\pedro-mir-1.webp",
+    "sha256": "5fdf55b08630ff56bd7495e5d55edeb2f071c9bf4715cb91fb26769afc1457e2"
+  },
+  {
+    "key": "mabi",
+    "file": "public\\assets\\catalog\\mabi-1.webp",
+    "sha256": "66abcc18b1addd21e4c0d496684c9099d059db6365957dc3059f4822ec40783f"
+  },
+  {
+    "key": "palos-dominicanos",
+    "file": "public\\assets\\catalog\\tambora-dominicana-1.webp",
+    "sha256": "b61adb7ce57599f0fcecdb0966678206dd492eeaa1dff8b5fbb6942c4e0d29a1"
+  },
+  {
+    "key": "salves",
+    "file": "public\\assets\\catalog\\guira-1.webp",
+    "sha256": "36ac6d015df96e197d1c33d2456cbc546a56b77fe763b18c0f85a8ea193e1d95"
+  },
+  {
+    "key": "dembow-dominicano",
+    "file": "public\\assets\\catalog\\santo-domingo-1.webp",
+    "sha256": "80d73d03ae0f183288907f3220183afb67b26673d8c327416f3abdeda17c5ca0"
+  },
+  {
+    "key": "son-dominicano",
+    "file": "public\\assets\\catalog\\son-dominicano-1.webp",
+    "sha256": "5ed3d35a05a0b66f252673c9e18aca12b0d5e8982613bb49e0fed243739e5150"
+  },
+  {
+    "key": "acordeon",
+    "file": "public\\assets\\catalog\\acordeon-1.webp",
+    "sha256": "dd0bdb6045e2c4edbf60de1dad418d8f8973087aa691f00350ff1c2c056bff93"
+  },
+  {
+    "key": "bolero",
+    "file": "public\\assets\\catalog\\bolero-1.webp",
+    "sha256": "aed6c7664a0e1cd62f903893815357cbd773c9021d294cf59533a145cdadeea2"
+  },
+  {
+    "key": "rock-dominicano",
+    "file": "public\\assets\\catalog\\santo-domingo-1.webp",
+    "sha256": "80d73d03ae0f183288907f3220183afb67b26673d8c327416f3abdeda17c5ca0"
+  },
+  {
+    "key": "hip-hop-dominicano",
+    "file": "public\\assets\\catalog\\santo-domingo-1.webp",
+    "sha256": "80d73d03ae0f183288907f3220183afb67b26673d8c327416f3abdeda17c5ca0"
+  },
+  {
+    "key": "pintura-dominicana",
+    "file": "public\\assets\\catalog\\museo-del-hombre-dominicano-1.webp",
+    "sha256": "d060eb3e18c4fe105ba9a4e6a3bb3facdaf3afb7a261e8b642aa8d256d697eac"
+  },
+  {
+    "key": "mascaras-carnaval",
+    "file": "public\\assets\\catalog\\carnaval-1.webp",
+    "sha256": "0b8e70c39a7fcd05278f593b2beafe9fa9b59483b2644aaf9500aaf582e941b0"
+  },
+  {
+    "key": "ceramica-taina",
+    "file": "public\\assets\\catalog\\museo-del-hombre-dominicano-1.webp",
+    "sha256": "d060eb3e18c4fe105ba9a4e6a3bb3facdaf3afb7a261e8b642aa8d256d697eac"
+  },
+  {
+    "key": "artesania-miches",
+    "file": "public\\assets\\catalog\\reserva-cientifica-natural-lagunas-redonda-y-limon-1.webp",
+    "sha256": "9d3b3432e3c716670f2a08a3663b2c72e4e673b6a8d4f8da8e25ff68d6007fb5"
+  },
+  {
+    "key": "tabaco-santiago",
+    "file": "public\\assets\\catalog\\santiago-de-los-caballeros-1.webp",
+    "sha256": "1d8734eec96031628c9b32335fc856bf833780298e8cbb1b08741a047a00c2bd"
+  },
+  {
+    "key": "eduardo-brito",
+    "file": "public\\assets\\catalog\\teatro-nacional-eduardo-brito-1.webp",
+    "sha256": "7656f75f78e3dc40a4521a3b5fded18d28f3865d26111fe7b6820882d483c214"
+  },
+  {
+    "key": "playa-grande",
+    "file": "public\\assets\\catalog\\playa-grande-1.webp",
+    "sha256": "574e7d80bd981c79ff1311aba7a7efa942192cf5ee1a40f388b71b75d4aeea09"
+  },
+  {
+    "key": "playa-san-rafael",
+    "file": "public\\assets\\catalog\\bahia-de-las-aguilas-1.webp",
+    "sha256": "a4909d676d27748133180e7eb4980d296a82b539fd2020db02ad8f9590917055"
+  },
+  {
+    "key": "playa-los-patos",
+    "file": "public\\assets\\catalog\\bahia-de-las-aguilas-1.webp",
+    "sha256": "a4909d676d27748133180e7eb4980d296a82b539fd2020db02ad8f9590917055"
+  },
+  {
+    "key": "playa-minitas",
+    "file": "public\\assets\\catalog\\isla-catalina-1.webp",
+    "sha256": "857f22bad10eb25baf16f493a29da915e2fcc17dcda32fb1e31f44790e9e1857"
+  },
+  {
+    "key": "playa-moron",
+    "file": "public\\assets\\catalog\\playa-moron-1.webp",
+    "sha256": "946af672474ca09404db719a39494cf693d06dd8c406daab111284beaed7bc07"
+  },
+  {
+    "key": "playa-el-limon",
+    "file": "public\\assets\\catalog\\playa-moron-1.webp",
+    "sha256": "946af672474ca09404db719a39494cf693d06dd8c406daab111284beaed7bc07"
+  },
+  {
+    "key": "playa-dominicus",
+    "file": "public\\assets\\catalog\\playa-dominicus-1.webp",
+    "sha256": "58fc8697bd32b64c0c7effd2afa5d51433d40838d033c9be7692b09ed8a4f7db"
+  },
+  {
+    "key": "playa-juan-dolio",
+    "file": "public\\assets\\catalog\\playa-juan-dolio-1.webp",
+    "sha256": "262a55dc40b8f16b44894f2cf8679b5664afda813638884711df6f7cd2aa2fb0"
+  },
+  {
+    "key": "playa-las-ballenas",
+    "file": "public\\assets\\catalog\\playa-las-ballenas-1.webp",
+    "sha256": "a9b6f8557b51305b98446240db2e905dcc85a268da7a56bdabc1727357b26579"
+  },
+  {
+    "key": "playa-cofresi",
+    "file": "public\\assets\\catalog\\playa-dorada-1.webp",
+    "sha256": "6ee02bd0c67beec1060e140193af498bcd462b39d8d637f0a05928c9ae817978"
+  },
+  {
+    "key": "playa-el-valle",
+    "file": "public\\assets\\catalog\\playa-rincon-1.webp",
+    "sha256": "afb5d8686017c01e71472e2b831c48dde1eb65f609171333d189fabc818dc146"
+  },
+  {
+    "key": "playa-punta-popy",
+    "file": "public\\assets\\catalog\\playa-punta-popy-1.webp",
+    "sha256": "af72da781983c1a8b70083acd542e1e2bd921951456e47ae77b7649cc246b17e"
+  },
+  {
+    "key": "playa-guayacanes",
+    "file": "public\\assets\\catalog\\playa-juan-dolio-1.webp",
+    "sha256": "262a55dc40b8f16b44894f2cf8679b5664afda813638884711df6f7cd2aa2fb0"
+  },
+  {
+    "key": "playa-punta-cana",
+    "file": "public\\assets\\catalog\\playa-bavaro-1.webp",
+    "sha256": "e7d482e7fb9759b20128af364e1fcea41a832f995095dfe6f08b51542902a8d4"
+  },
+  {
+    "key": "playa-uvero-alto",
+    "file": "public\\assets\\catalog\\playa-uvero-alto-1.webp",
+    "sha256": "ac52df42af1ecdf6c1f2efd8031b2bb823fa49fcc070a1cf9683c2b27ae9cbea"
+  },
+  {
+    "key": "playa-bergantin",
+    "file": "public\\assets\\catalog\\playa-dorada-1.webp",
+    "sha256": "6ee02bd0c67beec1060e140193af498bcd462b39d8d637f0a05928c9ae817978"
+  },
+  {
+    "key": "playa-esmeralda",
+    "file": "public\\assets\\catalog\\reserva-cientifica-natural-lagunas-redonda-y-limon-1.webp",
+    "sha256": "9d3b3432e3c716670f2a08a3663b2c72e4e673b6a8d4f8da8e25ff68d6007fb5"
+  },
+  {
+    "key": "museo-judio-sosua",
+    "file": "public\\assets\\catalog\\museo-judio-sosua-1.webp",
+    "sha256": "5ad129f4dbfabe040f632f480f91deabbabffc199951ca04d1937b1c2ff4f7d5"
+  },
+  {
+    "key": "museo-de-las-ballenas",
+    "file": "public\\assets\\catalog\\museo-de-las-ballenas-1.webp",
+    "sha256": "8b6c6bb4e2e537f43b5d9e857c824661877214e5a7764ade13559d95a0738128"
+  },
+  {
+    "key": "museo-del-larimar",
+    "file": "public\\assets\\catalog\\larimar-1.webp",
+    "sha256": "73203132cbf7bc5d314fea6efbd75ed38abd49217a29785f23195ac53d453f68"
+  },
+  {
+    "key": "casa-de-la-cultura",
+    "file": "public\\assets\\catalog\\puerto-plata-1.webp",
+    "sha256": "e1a4f647aeb96e0bb45d75f334b4f3b4f269c3255d9a4157509a588bbdb8facb"
+  },
+  {
+    "key": "museo-gregorio-luperon",
+    "file": "public\\assets\\catalog\\puerto-plata-1.webp",
+    "sha256": "e1a4f647aeb96e0bb45d75f334b4f3b4f269c3255d9a4157509a588bbdb8facb"
+  },
+  {
+    "key": "museo-regional-altos-chavon",
+    "file": "public\\assets\\catalog\\altos-chavon-1.webp",
+    "sha256": "9dff5e0795a9805851c47189e06f1f17051c6638e57d0035df566ddb5510271b"
+  },
+  {
+    "key": "museo-telecomunicaciones",
+    "file": "public\\assets\\catalog\\museo-telecomunicaciones-1.webp",
+    "sha256": "2e9a41b79e0c946503aceacb04a5606cd7434cbf383bfaa3acc5df4255a7d130"
+  },
+  {
+    "key": "museo-infantil-trampolin",
+    "file": "public\\assets\\catalog\\ciudad-colonial-1.webp",
+    "sha256": "e2dfabbdf47251cc65a7504883b48aeeb8c9563f049d9be3b0e854d722ba824f"
+  },
+  {
+    "key": "museo-numismatico",
+    "file": "public\\assets\\catalog\\santo-domingo-1.webp",
+    "sha256": "80d73d03ae0f183288907f3220183afb67b26673d8c327416f3abdeda17c5ca0"
+  },
+  {
+    "key": "parque-armando-bermudez",
+    "file": "public\\assets\\catalog\\pico-duarte-1.webp",
+    "sha256": "1184d07af8fcb61184e5353aa885fb75d9ab9ebf384cc42056ecc5e5298e5f7c"
+  },
+  {
+    "key": "parque-jose-del-carmen-ramirez",
+    "file": "public\\assets\\catalog\\pico-duarte-1.webp",
+    "sha256": "1184d07af8fcb61184e5353aa885fb75d9ab9ebf384cc42056ecc5e5298e5f7c"
+  },
+  {
+    "key": "los-tres-ojos",
+    "file": "public\\assets\\catalog\\los-tres-ojos-1.webp",
+    "sha256": "a58a119357a8632617634b3c120302b11b1ded9e68077c68c1ef88e7b81da73d"
+  },
+  {
+    "key": "laguna-gri-gri",
+    "file": "public\\assets\\catalog\\reserva-cientifica-natural-lagunas-redonda-y-limon-1.webp",
+    "sha256": "9d3b3432e3c716670f2a08a3663b2c72e4e673b6a8d4f8da8e25ff68d6007fb5"
+  },
+  {
+    "key": "hoyo-de-pelempito",
+    "file": "public\\assets\\catalog\\hoyo-de-pelempito-1.webp",
+    "sha256": "0e7f3cb4fc7cad2989aa21b00f6c3affccd747378a0d08e222ff2e61017b0101"
+  },
+  {
+    "key": "experiencia-ballenas-miches",
+    "file": "public\\assets\\catalog\\ballenas-1.webp",
+    "sha256": "4975aa7b6b9f38c4b45f1a56315e4aea4592af2037035d9d209bc3df456ec286"
+  },
+  {
+    "key": "experiencia-kitesurf-cabarete",
+    "file": "public\\assets\\catalog\\playa-cabarete-1.webp",
+    "sha256": "b6545a1b58cc32c22f0d8b1664b2ec8f2d4eba15b07d08a3583a70bf825d5845"
+  },
+  {
+    "key": "experiencia-surf-macao",
+    "file": "public\\assets\\catalog\\playa-macao-1.webp",
+    "sha256": "3fae92d436cb317298830a7e53a72a9ae7b7b1bcdf23488632c32b8833330594"
+  },
+  {
+    "key": "experiencia-surf-encuentro",
+    "file": "public\\assets\\catalog\\playa-encuentro-1.webp",
+    "sha256": "6350ab9c93edc045565fe362560e2ba59fc3e445a7447ccc9e6653a748988c0d"
+  },
+  {
+    "key": "experiencia-buceo-atlantic-princess",
+    "file": "public\\assets\\catalog\\bayahibe-1.webp",
+    "sha256": "f39fab3ade9e659bd40c587cffcd7253704e7abdeb01060d5c68659349b003db"
+  },
+  {
+    "key": "experiencia-buceo-airport-wall",
+    "file": "public\\assets\\catalog\\playa-sosua-1.webp",
+    "sha256": "45b41b232d0006a95fe60a3e4f835597b71ba7abe00c88ad5a57b8e562ac0c3f"
+  },
+  {
+    "key": "experiencia-buceo-creole-reef",
+    "file": "public\\assets\\catalog\\las-terrenas-1.webp",
+    "sha256": "00c0ccd95494c6c8d48894af63bf002e9d9f7d6311af06b29a6e0fb510305eb4"
+  },
+  {
+    "key": "experiencia-sendero-cangrejo",
+    "file": "public\\assets\\catalog\\parque-nacional-monte-cristi-1.webp",
+    "sha256": "99cadcdc40f18b5f274b4bc5c08264c03bf7799b2d0d92a5fd7f6491ae3da430"
+  },
+  {
+    "key": "experiencia-padre-nuestro",
+    "file": "public\\assets\\catalog\\parque-nacional-cotubanama-1.webp",
+    "sha256": "45e766ca889138a8827cd036357b91344956c0cdbd99b4cb4b1baad7d9cbfcee"
+  },
+  {
+    "key": "experiencia-talleres-miches",
+    "file": "public\\assets\\catalog\\reserva-cientifica-natural-lagunas-redonda-y-limon-1.webp",
+    "sha256": "9d3b3432e3c716670f2a08a3663b2c72e4e673b6a8d4f8da8e25ff68d6007fb5"
+  },
+  {
+    "key": "experiencia-chocolate-punta-cana",
+    "file": "public\\assets\\catalog\\punta-cana-1.webp",
+    "sha256": "25fe3eae9c2d413d1536ee24252d92ba22e85c359d6128df84a89b278be5064a"
+  },
+  {
+    "key": "experiencia-ruta-tabaco-santiago",
+    "file": "public\\assets\\catalog\\santiago-de-los-caballeros-1.webp",
+    "sha256": "1d8734eec96031628c9b32335fc856bf833780298e8cbb1b08741a047a00c2bd"
+  },
+  {
+    "key": "experiencia-kayak-juanillo",
+    "file": "public\\assets\\catalog\\playa-bavaro-1.webp",
+    "sha256": "e7d482e7fb9759b20128af364e1fcea41a832f995095dfe6f08b51542902a8d4"
+  },
+  {
+    "key": "experiencia-arrecife-dominicus",
+    "file": "public\\assets\\catalog\\playa-dominicus-1.webp",
+    "sha256": "58fc8697bd32b64c0c7effd2afa5d51433d40838d033c9be7692b09ed8a4f7db"
+  },
+  {
+    "key": "experiencia-cueva-chicho",
+    "file": "public\\assets\\catalog\\parque-nacional-cotubanama-1.webp",
+    "sha256": "45e766ca889138a8827cd036357b91344956c0cdbd99b4cb4b1baad7d9cbfcee"
+  },
+  {
+    "key": "experiencia-cueva-fun-fun",
+    "file": "public\\assets\\catalog\\haitises-1.webp",
+    "sha256": "a4d03bc2ed511af46295287be64202ba9e2e1f6bfbad50a17f07ef8e8dbad167"
+  },
+  {
+    "key": "experiencia-canonismo-baiguate",
+    "file": "public\\assets\\catalog\\rio-jimenoa-1.webp",
+    "sha256": "738221e6851ed6e592b7bb8cc1f70c846a57cf3cfc3b702ebb51bc43085695c3"
+  },
+  {
+    "key": "experiencia-paseo-gri-gri",
+    "file": "public\\assets\\catalog\\reserva-cientifica-natural-lagunas-redonda-y-limon-1.webp",
+    "sha256": "9d3b3432e3c716670f2a08a3663b2c72e4e673b6a8d4f8da8e25ff68d6007fb5"
+  },
+  {
+    "key": "experiencia-mirador-pelempito",
+    "file": "public\\assets\\catalog\\hoyo-de-pelempito-1.webp",
+    "sha256": "0e7f3cb4fc7cad2989aa21b00f6c3affccd747378a0d08e222ff2e61017b0101"
+  },
+  {
+    "key": "experiencia-aves-oviedo",
+    "file": "public\\assets\\catalog\\parque-nacional-jaragua-1.webp",
+    "sha256": "3b832dbc52a4083d8d8afdf9050b28915f39834ffa36941c0ef2d3bd4b1694dd"
+  }
+]

@@ -1,0 +1,202 @@
+[
+  {
+    "key": "juan-pablo-duarte",
+    "file": "public\\assets\\catalog\\juan-pablo-duarte-1.webp",
+    "sha256": "7a27137a59d13264b5cf962b13046d660c296e5b52116dde199ffe9608114139"
+  },
+  {
+    "key": "francisco-del-rosario-sanchez",
+    "file": "public\\assets\\catalog\\francisco-del-rosario-sanchez-1.webp",
+    "sha256": "640fe49ac0f23611e52d08dde68cba44cf3569412eb9b606d2188904d7b3c88d"
+  },
+  {
+    "key": "matias-ramon-mella",
+    "file": "public\\assets\\catalog\\matias-ramon-mella-1.webp",
+    "sha256": "975ebc13da9efd82fccfe0ec48f1991229a0b9778355bfc8ab82cddf27d12aaa"
+  },
+  {
+    "key": "gregorio-luperon",
+    "file": "public\\assets\\catalog\\gregorio-luperon-1.webp",
+    "sha256": "d84f01a37df8fce4dd28a7055112e06184cea070ecb8880dc42f56a542fc5894"
+  },
+  {
+    "key": "hermanas-mirabal",
+    "file": "public\\assets\\catalog\\hermanas-mirabal-1.webp",
+    "sha256": "c3574d3ca0ad0f6ff9e4f5dc9f6bdabd56877de1b86e6d25502c2bdfc0abebdf"
+  },
+  {
+    "key": "salome-urena",
+    "file": "public\\assets\\catalog\\salome-urena-1.webp",
+    "sha256": "6400a4369433c86bd8b872d1ee5b0a91a74f33a26723efb4f0ba80874df00563"
+  },
+  {
+    "key": "pedro-henriquez-urena",
+    "file": "public\\assets\\catalog\\pedro-henriquez-urena-1.webp",
+    "sha256": "876d271300c45a3fdf781613958e263475761315d6ac50d29606249036853830"
+  },
+  {
+    "key": "juan-luis-guerra",
+    "file": "public\\assets\\catalog\\juan-luis-guerra-1.webp",
+    "sha256": "1832d8d0b9b3dc7f06ff9301a7232d11e81a41119c8080ef39a2cd4217d64de9"
+  },
+  {
+    "key": "johnny-ventura",
+    "file": "public\\assets\\catalog\\johnny-ventura-1.webp",
+    "sha256": "e47e11df73c58c6475b1080d20390af5b73b2ef458fc200d22133dfd440bc310"
+  },
+  {
+    "key": "semana-santa",
+    "file": "public\\assets\\catalog\\semana-santa-1.webp",
+    "sha256": "5bd802519098070b7f16544482e5442b955720cb28ceb5aaf4d96747ca4d2704"
+  },
+  {
+    "key": "son-dominicano",
+    "file": "public\\assets\\catalog\\son-dominicano-1.webp",
+    "sha256": "5ed3d35a05a0b66f252673c9e18aca12b0d5e8982613bb49e0fed243739e5150"
+  },
+  {
+    "key": "acordeon",
+    "file": "public\\assets\\catalog\\acordeon-1.webp",
+    "sha256": "dd0bdb6045e2c4edbf60de1dad418d8f8973087aa691f00350ff1c2c056bff93"
+  },
+  {
+    "key": "bolero",
+    "file": "public\\assets\\catalog\\bolero-1.webp",
+    "sha256": "aed6c7664a0e1cd62f903893815357cbd773c9021d294cf59533a145cdadeea2"
+  },
+  {
+    "key": "yaniqueque",
+    "file": "public\\assets\\catalog\\yaniqueque-1.webp",
+    "sha256": "3f364f453337029cd404bcffc104163d37e94f0f16708b8cd40a53e9fcdfe98c"
+  },
+  {
+    "key": "cuevas-del-pomier",
+    "file": "public\\assets\\catalog\\cuevas-del-pomier-1.webp",
+    "sha256": "4c8101317cfd9025ce03b6d3d961a1e7e9d9ad1407890999f547bbca6a67cabc"
+  },
+  {
+    "key": "longaniza",
+    "file": "public\\assets\\catalog\\longaniza-1.webp",
+    "sha256": "064633dac7ba1f937643561cbccc6a17306dbd44afffc8e3b3c8767d50ea2931"
+  },
+  {
+    "key": "pastelitos",
+    "file": "public\\assets\\catalog\\pastelitos-1.webp",
+    "sha256": "527f177aa70b7c754181c8f4a34d3b61572042d16279e1f5bd77a695e0f41135"
+  },
+  {
+    "key": "dulce-de-coco",
+    "file": "public\\assets\\catalog\\dulce-de-coco-1.webp",
+    "sha256": "47b08955ff299594e0b47edc90079568f05cbab434077dd8b1dcb280c505ca02"
+  },
+  {
+    "key": "ron-dominicano",
+    "file": "public\\assets\\catalog\\ron-dominicano-1.webp",
+    "sha256": "c464542b38aba9f25424db5a33492cfd6310699b3f3eb6adb5ea9676669a3e84"
+  },
+  {
+    "key": "avena",
+    "file": "public\\assets\\catalog\\avena-1.webp",
+    "sha256": "91f1298f98cabfdaabc856bca57741b8704aa6252fa893c3019af8dec2a62a02"
+  },
+  {
+    "key": "manati-antillano",
+    "file": "public\\assets\\catalog\\manati-antillano-1.webp",
+    "sha256": "8c6d25e272e1f60e1e6e92953dca1da3a3470734829859e0eabac1db709d9b0d"
+  },
+  {
+    "key": "flamenco-americano",
+    "file": "public\\assets\\catalog\\flamenco-americano-1.webp",
+    "sha256": "5da62c9bbe25f570a349b9aca86a4beee11c1294516cd1f6d4aa0ec521696081"
+  },
+  {
+    "key": "tortuga-carey",
+    "file": "public\\assets\\catalog\\tortuga-carey-1.webp",
+    "sha256": "65a1f772f3f0413e5be2fb50469321a4d8709b1ad3567c5e70c9a0b0093509e6"
+  },
+  {
+    "key": "tortuga-verde",
+    "file": "public\\assets\\catalog\\tortuga-verde-1.webp",
+    "sha256": "0071b59c59c549d91c4b3437e673511c359aebf8e0691934f992ce7092be145b"
+  },
+  {
+    "key": "majarete",
+    "file": "public\\assets\\catalog\\majarete-1.webp",
+    "sha256": "82e6a7350aa3c9d110b8b1770462c8a4f51c28d357dcc0a45c5ea8ec1e5a2227"
+  },
+  {
+    "key": "playa-grande",
+    "file": "public\\assets\\catalog\\playa-grande-1.webp",
+    "sha256": "574e7d80bd981c79ff1311aba7a7efa942192cf5ee1a40f388b71b75d4aeea09"
+  },
+  {
+    "key": "cayo-arena",
+    "file": "public\\assets\\catalog\\cayo-arena-1.webp",
+    "sha256": "356dad9dedcddadf272c020ad1247121b8ddddbd7058c91de9351153bfa4db67"
+  },
+  {
+    "key": "playa-moron",
+    "file": "public\\assets\\catalog\\playa-moron-1.webp",
+    "sha256": "946af672474ca09404db719a39494cf693d06dd8c406daab111284beaed7bc07"
+  },
+  {
+    "key": "playa-portillo",
+    "file": "public\\assets\\catalog\\playa-portillo-1.webp",
+    "sha256": "8688750918a1a7e990fa200e1cee5ad81b5893eb5d3ca364439b73ba45469133"
+  },
+  {
+    "key": "playa-caleton",
+    "file": "public\\assets\\catalog\\playa-caleton-1.webp",
+    "sha256": "35c066720cb2a32518171a98cc06eeff9375b138a576e11c5907398920f26c07"
+  },
+  {
+    "key": "playa-juan-dolio",
+    "file": "public\\assets\\catalog\\playa-juan-dolio-1.webp",
+    "sha256": "262a55dc40b8f16b44894f2cf8679b5664afda813638884711df6f7cd2aa2fb0"
+  },
+  {
+    "key": "playa-las-ballenas",
+    "file": "public\\assets\\catalog\\playa-las-ballenas-1.webp",
+    "sha256": "a9b6f8557b51305b98446240db2e905dcc85a268da7a56bdabc1727357b26579"
+  },
+  {
+    "key": "playa-uvero-alto",
+    "file": "public\\assets\\catalog\\playa-uvero-alto-1.webp",
+    "sha256": "ac52df42af1ecdf6c1f2efd8031b2bb823fa49fcc070a1cf9683c2b27ae9cbea"
+  },
+  {
+    "key": "playa-dominicus",
+    "file": "public\\assets\\catalog\\playa-dominicus-1.webp",
+    "sha256": "58fc8697bd32b64c0c7effd2afa5d51433d40838d033c9be7692b09ed8a4f7db"
+  },
+  {
+    "key": "playa-buen-hombre",
+    "file": "public\\assets\\catalog\\playa-buen-hombre-1.webp",
+    "sha256": "4381236bdd50c6e53b10f9e11918e8b86b759aea4c07cb1808132f9d5f128529"
+  },
+  {
+    "key": "playa-monte-rio",
+    "file": "public\\assets\\catalog\\playa-monte-rio-1.webp",
+    "sha256": "fd87ff289531cb46b8ad9a6a4a3f36d633bffe0c8f99ac6a72557659dc2b3750"
+  },
+  {
+    "key": "playa-la-caleta",
+    "file": "public\\assets\\catalog\\playa-la-caleta-1.webp",
+    "sha256": "24a03647f3f600123966c40d211750acf9a4c9185f40cf0fab45096452021451"
+  },
+  {
+    "key": "playa-salinas",
+    "file": "public\\assets\\catalog\\playa-salinas-1.webp",
+    "sha256": "641de525cb4a87cd2690d0548e72708f1a1e76f333f54f102c19b8433d9b29ae"
+  },
+  {
+    "key": "museo-hermanas-mirabal",
+    "file": "public\\assets\\catalog\\museo-hermanas-mirabal-1.webp",
+    "sha256": "7669d8dfa12720fe98b65f8f2613775ecfd7b0ea35f30b8c240668dd715c57ab"
+  },
+  {
+    "key": "museo-judio-sosua",
+    "file": "public\\assets\\catalog\\museo-judio-sosua-1.webp",
+    "sha256": "5ad129f4dbfabe040f632f480f91deabbabffc199951ca04d1937b1c2ff4f7d5"
+  }
+]

@@ -1,0 +1,1022 @@
+[
+  {
+    "kind": "food",
+    "title": "Mangú",
+    "id": "Q9027405"
+  },
+  {
+    "kind": "food",
+    "title": "Sancocho",
+    "id": "Q4891863"
+  },
+  {
+    "kind": "food",
+    "title": "Chicharrón",
+    "id": "Q3667736"
+  },
+  {
+    "kind": "food",
+    "title": "Habichuelas con dulce",
+    "id": "Q5636855"
+  },
+  {
+    "kind": "food",
+    "title": "Tostones",
+    "id": "Q2412544"
+  },
+  {
+    "kind": "food",
+    "title": "Mofongo",
+    "id": "Q908963"
+  },
+  {
+    "kind": "food",
+    "title": "Casabe",
+    "id": "Q9185291"
+  },
+  {
+    "kind": "food",
+    "title": "Moro de guandules",
+    "id": "Q16910822"
+  },
+  {
+    "kind": "food",
+    "title": "Dulce de leche",
+    "id": "Q917761"
+  },
+  {
+    "kind": "food",
+    "title": "Mamajuana",
+    "id": "Q1428432"
+  },
+  {
+    "kind": "food",
+    "title": "Yaniqueque",
+    "id": "Q426103"
+  },
+  {
+    "kind": "food",
+    "title": "Chenchén",
+    "id": null
+  },
+  {
+    "kind": "food",
+    "title": "Kibbeh",
+    "id": "Q1644022"
+  },
+  {
+    "kind": "food",
+    "title": "Catibía",
+    "id": null
+  },
+  {
+    "kind": "food",
+    "title": "Asopao",
+    "id": "Q16948114"
+  },
+  {
+    "kind": "food",
+    "title": "Locrio",
+    "id": "Q9023478"
+  },
+  {
+    "kind": "food",
+    "title": "Pastelón",
+    "id": "Q17084248"
+  },
+  {
+    "kind": "food",
+    "title": "Jalao",
+    "id": null
+  },
+  {
+    "kind": "food",
+    "title": "Morir soñando",
+    "id": "Q6912307"
+  },
+  {
+    "kind": "food",
+    "title": "Mabí",
+    "id": null
+  },
+  {
+    "kind": "food",
+    "title": "Arepa",
+    "id": "Q642702"
+  },
+  {
+    "kind": "food",
+    "title": "Pasteles",
+    "id": "Q104840853"
+  },
+  {
+    "kind": "food",
+    "title": "Chimichurri burger",
+    "id": "Q5099374"
+  },
+  {
+    "kind": "food",
+    "title": "Dominican Republic cuisine",
+    "id": "Q3444032"
+  },
+  {
+    "kind": "food",
+    "title": "Coconut rice",
+    "id": "Q5139863"
+  },
+  {
+    "kind": "food",
+    "title": "Rice and beans",
+    "id": "Q2916401"
+  },
+  {
+    "kind": "food",
+    "title": "Guanimes",
+    "id": "Q11682049"
+  },
+  {
+    "kind": "food",
+    "title": "Guineos",
+    "id": "Q5616549"
+  },
+  {
+    "kind": "food",
+    "title": "Avocado",
+    "id": "Q37153"
+  },
+  {
+    "kind": "food",
+    "title": "Pigeon pea",
+    "id": "Q632559"
+  },
+  {
+    "kind": "music",
+    "title": "Merengue music",
+    "id": "Q282131"
+  },
+  {
+    "kind": "music",
+    "title": "Bachata (music)",
+    "id": "Q40461"
+  },
+  {
+    "kind": "music",
+    "title": "Son music",
+    "id": "Q4428744"
+  },
+  {
+    "kind": "music",
+    "title": "Palo (religion)",
+    "id": "Q2529896"
+  },
+  {
+    "kind": "music",
+    "title": "Merengue típico",
+    "id": "Q6819034"
+  },
+  {
+    "kind": "music",
+    "title": "Güira",
+    "id": "Q1540998"
+  },
+  {
+    "kind": "music",
+    "title": "Tambora (Dominican drum)",
+    "id": "Q1458221"
+  },
+  {
+    "kind": "music",
+    "title": "Dominican rock",
+    "id": "Q5290881"
+  },
+  {
+    "kind": "music",
+    "title": "Dominican jazz",
+    "id": null
+  },
+  {
+    "kind": "music",
+    "title": "Salve (Dominican music)",
+    "id": null
+  },
+  {
+    "kind": "tradition",
+    "title": "Cocolo",
+    "id": "Q5139799"
+  },
+  {
+    "kind": "tradition",
+    "title": "Congos of Villa Mella",
+    "id": "Q2993007"
+  },
+  {
+    "kind": "tradition",
+    "title": "Carnival in the Dominican Republic",
+    "id": "Q2939730"
+  },
+  {
+    "kind": "tradition",
+    "title": "Guloyas",
+    "id": null
+  },
+  {
+    "kind": "tradition",
+    "title": "Dominican Republic Jazz Festival",
+    "id": null
+  },
+  {
+    "kind": "tradition",
+    "title": "Santo Domingo International Book Fair",
+    "id": null
+  },
+  {
+    "kind": "tradition",
+    "title": "Dominican War of Independence",
+    "id": "Q3439047"
+  },
+  {
+    "kind": "tradition",
+    "title": "Dominican Restoration War",
+    "id": "Q3815421"
+  },
+  {
+    "kind": "tradition",
+    "title": "Our Lady of Altagracia",
+    "id": "Q3346061"
+  },
+  {
+    "kind": "tradition",
+    "title": "Baseball in the Dominican Republic",
+    "id": "Q5736469"
+  },
+  {
+    "kind": "tradition",
+    "title": "Dominican Professional Baseball League",
+    "id": "Q681711"
+  },
+  {
+    "kind": "tradition",
+    "title": "Caribbean Series",
+    "id": "Q1188403"
+  },
+  {
+    "kind": "tradition",
+    "title": "Semana Santa",
+    "id": "Q136556338"
+  },
+  {
+    "kind": "tradition",
+    "title": "Dominican Carnival",
+    "id": "Q2939730"
+  },
+  {
+    "kind": "tradition",
+    "title": "La Trinitaria",
+    "id": "Q7842514"
+  },
+  {
+    "kind": "craft",
+    "title": "Larimar",
+    "id": "Q2502146"
+  },
+  {
+    "kind": "craft",
+    "title": "Dominican amber",
+    "id": "Q898798"
+  },
+  {
+    "kind": "craft",
+    "title": "Faceless dolls",
+    "id": null
+  },
+  {
+    "kind": "craft",
+    "title": "Cigar",
+    "id": "Q1576"
+  },
+  {
+    "kind": "craft",
+    "title": "Taíno",
+    "id": "Q210623"
+  },
+  {
+    "kind": "species",
+    "title": "Hispaniolan amazon",
+    "id": "Q882965"
+  },
+  {
+    "kind": "species",
+    "title": "Hispaniolan solenodon",
+    "id": "Q754041"
+  },
+  {
+    "kind": "species",
+    "title": "Hispaniolan hutia",
+    "id": "Q549103"
+  },
+  {
+    "kind": "species",
+    "title": "Palmchat",
+    "id": "Q845457"
+  },
+  {
+    "kind": "species",
+    "title": "Hispaniolan trogon",
+    "id": "Q1276050"
+  },
+  {
+    "kind": "species",
+    "title": "Broad-billed tody",
+    "id": "Q671913"
+  },
+  {
+    "kind": "species",
+    "title": "Narrow-billed tody",
+    "id": "Q640693"
+  },
+  {
+    "kind": "species",
+    "title": "Hispaniolan woodpecker",
+    "id": "Q1569617"
+  },
+  {
+    "kind": "species",
+    "title": "Hispaniolan parakeet",
+    "id": "Q27075010"
+  },
+  {
+    "kind": "species",
+    "title": "Hispaniolan lizard cuckoo",
+    "id": "Q1274623"
+  },
+  {
+    "kind": "species",
+    "title": "Ashy-faced owl",
+    "id": "Q1259972"
+  },
+  {
+    "kind": "species",
+    "title": "Hispaniolan nightjar",
+    "id": "Q3054308"
+  },
+  {
+    "kind": "species",
+    "title": "Hispaniolan mango",
+    "id": "Q580094"
+  },
+  {
+    "kind": "species",
+    "title": "Hispaniolan emerald",
+    "id": "Q1269795"
+  },
+  {
+    "kind": "species",
+    "title": "Antillean piculet",
+    "id": "Q547920"
+  },
+  {
+    "kind": "species",
+    "title": "White-necked crow",
+    "id": "Q1584524"
+  },
+  {
+    "kind": "species",
+    "title": "White-fronted quail-dove",
+    "id": "Q2984142"
+  },
+  {
+    "kind": "species",
+    "title": "Bay-breasted cuckoo",
+    "id": "Q865409"
+  },
+  {
+    "kind": "species",
+    "title": "Hispaniolan oriole",
+    "id": "Q2668923"
+  },
+  {
+    "kind": "species",
+    "title": "Black-crowned palm-tanager",
+    "id": "Q1588281"
+  },
+  {
+    "kind": "species",
+    "title": "White-winged warbler",
+    "id": "Q529238"
+  },
+  {
+    "kind": "species",
+    "title": "Green-tailed warbler",
+    "id": "Q1092562"
+  },
+  {
+    "kind": "species",
+    "title": "Western chat-tanager",
+    "id": "Q2226608"
+  },
+  {
+    "kind": "species",
+    "title": "Eastern chat-tanager",
+    "id": "Q2226567"
+  },
+  {
+    "kind": "species",
+    "title": "Hispaniolan spindalis",
+    "id": "Q2226378"
+  },
+  {
+    "kind": "species",
+    "title": "Hispaniolan crossbill",
+    "id": "Q1304533"
+  },
+  {
+    "kind": "species",
+    "title": "La Selle thrush",
+    "id": "Q843301"
+  },
+  {
+    "kind": "species",
+    "title": "Ridgeway’s hawk",
+    "id": null
+  },
+  {
+    "kind": "species",
+    "title": "Ridgway's hawk",
+    "id": "Q1273226"
+  },
+  {
+    "kind": "species",
+    "title": "Rufous-throated solitaire",
+    "id": "Q3321742"
+  },
+  {
+    "kind": "species",
+    "title": "Golden swallow",
+    "id": "Q775394"
+  },
+  {
+    "kind": "species",
+    "title": "Hispaniolan pewee",
+    "id": "Q1261787"
+  },
+  {
+    "kind": "species",
+    "title": "Flat-billed vireo",
+    "id": "Q2667695"
+  },
+  {
+    "kind": "species",
+    "title": "Hispaniolan palm crow",
+    "id": "Q1586680"
+  },
+  {
+    "kind": "species",
+    "title": "Hispaniolan euphonia",
+    "id": "Q1315499"
+  },
+  {
+    "kind": "species",
+    "title": "Hispaniolan elaenia",
+    "id": "Q55112062"
+  },
+  {
+    "kind": "species",
+    "title": "Hispaniolan sharp-shinned hawk",
+    "id": null
+  },
+  {
+    "kind": "species",
+    "title": "Rhinoceros iguana",
+    "id": "Q907252"
+  },
+  {
+    "kind": "species",
+    "title": "Ricord's iguana",
+    "id": "Q1586682"
+  },
+  {
+    "kind": "species",
+    "title": "American crocodile",
+    "id": "Q207836"
+  },
+  {
+    "kind": "species",
+    "title": "West Indian manatee",
+    "id": "Q40261"
+  },
+  {
+    "kind": "species",
+    "title": "Humpback whale",
+    "id": "Q132905"
+  },
+  {
+    "kind": "species",
+    "title": "American flamingo",
+    "id": "Q208004"
+  },
+  {
+    "kind": "species",
+    "title": "Hawksbill sea turtle",
+    "id": "Q203538"
+  },
+  {
+    "kind": "species",
+    "title": "Leatherback sea turtle",
+    "id": "Q120043"
+  },
+  {
+    "kind": "species",
+    "title": "Hispaniolan boa",
+    "id": "Q2713653"
+  },
+  {
+    "kind": "species",
+    "title": "Sphaerodactylus ariasae",
+    "id": "Q1938610"
+  },
+  {
+    "kind": "species",
+    "title": "Anolis cybotes",
+    "id": "Q1192302"
+  },
+  {
+    "kind": "species",
+    "title": "Hispaniolan pine",
+    "id": "Q3388586"
+  },
+  {
+    "kind": "species",
+    "title": "Pereskia quisqueyana",
+    "id": "Q64056624"
+  },
+  {
+    "kind": "species",
+    "title": "Swietenia mahagoni",
+    "id": "Q1247582"
+  },
+  {
+    "kind": "species",
+    "title": "Coccothrinax argentea",
+    "id": "Q5139209"
+  },
+  {
+    "kind": "species",
+    "title": "Roystonea hispaniolana",
+    "id": null
+  },
+  {
+    "kind": "species",
+    "title": "Magnolia pallescens",
+    "id": "Q15493564"
+  },
+  {
+    "kind": "species",
+    "title": "Magnolia domingensis",
+    "id": null
+  },
+  {
+    "kind": "species",
+    "title": "Solenodon paradoxus",
+    "id": "Q754041"
+  },
+  {
+    "kind": "species",
+    "title": "Trachemys decorata",
+    "id": "Q1032577"
+  },
+  {
+    "kind": "species",
+    "title": "Trachemys stejnegeri",
+    "id": "Q1049305"
+  },
+  {
+    "kind": "species",
+    "title": "Haitiophis anomalus",
+    "id": "Q15148345"
+  },
+  {
+    "kind": "species",
+    "title": "Chlorostilbon swainsonii",
+    "id": "Q1269795"
+  },
+  {
+    "kind": "nature",
+    "title": "Armando Bermúdez National Park",
+    "id": null
+  },
+  {
+    "kind": "nature",
+    "title": "José del Carmen Ramírez National Park",
+    "id": null
+  },
+  {
+    "kind": "nature",
+    "title": "Sierra de Bahoruco National Park",
+    "id": "Q17624527"
+  },
+  {
+    "kind": "nature",
+    "title": "Los Haitises National Park",
+    "id": "Q42090"
+  },
+  {
+    "kind": "nature",
+    "title": "Cabo Cabrón National Park",
+    "id": null
+  },
+  {
+    "kind": "nature",
+    "title": "El Choco National Park",
+    "id": null
+  },
+  {
+    "kind": "nature",
+    "title": "Loma Quita Espuela",
+    "id": null
+  },
+  {
+    "kind": "nature",
+    "title": "Loma Guaconejo Scientific Reserve",
+    "id": null
+  },
+  {
+    "kind": "nature",
+    "title": "Loma Isabel de Torres",
+    "id": null
+  },
+  {
+    "kind": "nature",
+    "title": "Cayo Arena",
+    "id": null
+  },
+  {
+    "kind": "nature",
+    "title": "Cayos Siete Hermanos",
+    "id": null
+  },
+  {
+    "kind": "nature",
+    "title": "Cachón de la Rubia",
+    "id": null
+  },
+  {
+    "kind": "nature",
+    "title": "Salto de la Jalda",
+    "id": null
+  },
+  {
+    "kind": "nature",
+    "title": "Salto de Baiguate",
+    "id": null
+  },
+  {
+    "kind": "nature",
+    "title": "Fun Fun Cave",
+    "id": null
+  },
+  {
+    "kind": "nature",
+    "title": "Cueva del Puente",
+    "id": null
+  },
+  {
+    "kind": "nature",
+    "title": "Dunas de Baní",
+    "id": null
+  },
+  {
+    "kind": "nature",
+    "title": "Las Calderas Bay",
+    "id": null
+  },
+  {
+    "kind": "nature",
+    "title": "Laguna Bávaro",
+    "id": null
+  },
+  {
+    "kind": "nature",
+    "title": "Laguna Limón",
+    "id": null
+  },
+  {
+    "kind": "nature",
+    "title": "Laguna Redonda",
+    "id": "Q5969128"
+  },
+  {
+    "kind": "nature",
+    "title": "Nizao River",
+    "id": "Q7042165"
+  },
+  {
+    "kind": "nature",
+    "title": "Camú River",
+    "id": "Q4211765"
+  },
+  {
+    "kind": "nature",
+    "title": "Bajabonico River",
+    "id": null
+  },
+  {
+    "kind": "nature",
+    "title": "Yásica River",
+    "id": null
+  },
+  {
+    "kind": "nature",
+    "title": "Nigua River",
+    "id": "Q20811931"
+  },
+  {
+    "kind": "nature",
+    "title": "Ocoa River",
+    "id": "Q9072006"
+  },
+  {
+    "kind": "nature",
+    "title": "Cordillera Septentrional",
+    "id": "Q2049917"
+  },
+  {
+    "kind": "nature",
+    "title": "Loma Alto de la Bandera",
+    "id": "Q23778944"
+  },
+  {
+    "kind": "nature",
+    "title": "Nalga de Maco",
+    "id": null
+  },
+  {
+    "kind": "nature",
+    "title": "Loma Gajo en Medio",
+    "id": "Q23773714"
+  },
+  {
+    "kind": "nature",
+    "title": "Pico Diego de Ocampo",
+    "id": "Q288021"
+  },
+  {
+    "kind": "nature",
+    "title": "Presa de Hatillo",
+    "id": null
+  },
+  {
+    "kind": "nature",
+    "title": "Rincón Dam",
+    "id": null
+  },
+  {
+    "kind": "nature",
+    "title": "Monción Dam",
+    "id": "Q16895353"
+  },
+  {
+    "kind": "nature",
+    "title": "Pinalito Dam",
+    "id": null
+  },
+  {
+    "kind": "nature",
+    "title": "Bao Dam",
+    "id": "Q17002125"
+  },
+  {
+    "kind": "nature",
+    "title": "Tavera Dam",
+    "id": "Q17002125"
+  },
+  {
+    "kind": "nature",
+    "title": "Sabana Yegua Dam",
+    "id": null
+  },
+  {
+    "kind": "nature",
+    "title": "Valdesia Dam",
+    "id": null
+  },
+  {
+    "kind": "region",
+    "title": "Las Galeras",
+    "id": "Q3308366"
+  },
+  {
+    "kind": "region",
+    "title": "Río San Juan, Dominican Republic",
+    "id": "Q3943218"
+  },
+  {
+    "kind": "region",
+    "title": "Monte Plata",
+    "id": "Q634487"
+  },
+  {
+    "kind": "region",
+    "title": "Cotuí",
+    "id": "Q2087489"
+  },
+  {
+    "kind": "region",
+    "title": "San Ignacio de Sabaneta",
+    "id": "Q2021983"
+  },
+  {
+    "kind": "region",
+    "title": "Neiba",
+    "id": "Q2107258"
+  },
+  {
+    "kind": "region",
+    "title": "Duvergé",
+    "id": "Q3716731"
+  },
+  {
+    "kind": "region",
+    "title": "Villa Altagracia",
+    "id": "Q4011765"
+  },
+  {
+    "kind": "region",
+    "title": "Miches",
+    "id": "Q1770668"
+  },
+  {
+    "kind": "region",
+    "title": "El Valle, Dominican Republic",
+    "id": "Q1770328"
+  },
+  {
+    "kind": "region",
+    "title": "Villa Tapia",
+    "id": "Q1770889"
+  },
+  {
+    "kind": "region",
+    "title": "Tenares",
+    "id": "Q1770877"
+  },
+  {
+    "kind": "region",
+    "title": "Luperón",
+    "id": "Q1877591"
+  },
+  {
+    "kind": "region",
+    "title": "Villa Isabela",
+    "id": "Q4012142"
+  },
+  {
+    "kind": "region",
+    "title": "Loma de Cabrera",
+    "id": "Q1771467"
+  },
+  {
+    "kind": "region",
+    "title": "San José de las Matas",
+    "id": "Q3947426"
+  },
+  {
+    "kind": "region",
+    "title": "Jánico",
+    "id": "Q1770660"
+  },
+  {
+    "kind": "region",
+    "title": "San José de Los Llanos",
+    "id": null
+  },
+  {
+    "kind": "region",
+    "title": "Polo, Dominican Republic",
+    "id": "Q1770610"
+  },
+  {
+    "kind": "region",
+    "title": "Cibao",
+    "id": "Q2257629"
+  },
+  {
+    "kind": "region",
+    "title": "San Cristóbal Province",
+    "id": "Q1366107"
+  },
+  {
+    "kind": "region",
+    "title": "Santo Domingo Province",
+    "id": "Q1352536"
+  },
+  {
+    "kind": "region",
+    "title": "Distrito Nacional",
+    "id": "Q2499228"
+  },
+  {
+    "kind": "region",
+    "title": "Monte Plata Province",
+    "id": "Q1772745"
+  },
+  {
+    "kind": "region",
+    "title": "El Seibo Province",
+    "id": "Q1774831"
+  },
+  {
+    "kind": "region",
+    "title": "Hato Mayor Province",
+    "id": "Q937217"
+  },
+  {
+    "kind": "region",
+    "title": "Hermanas Mirabal Province",
+    "id": "Q549386"
+  },
+  {
+    "kind": "region",
+    "title": "La Altagracia Province",
+    "id": "Q1323353"
+  },
+  {
+    "kind": "region",
+    "title": "Elías Piña Province",
+    "id": "Q1137545"
+  },
+  {
+    "kind": "region",
+    "title": "Monte Cristi Province",
+    "id": "Q592624"
+  },
+  {
+    "kind": "region",
+    "title": "Santiago Rodríguez Province",
+    "id": "Q2021942"
+  },
+  {
+    "kind": "museum",
+    "title": "Museo de Arte Moderno (Santo Domingo)",
+    "id": null
+  },
+  {
+    "kind": "museum",
+    "title": "Museo Bellapart",
+    "id": "Q6940459"
+  },
+  {
+    "kind": "museum",
+    "title": "Museo Hermanas Mirabal",
+    "id": null
+  },
+  {
+    "kind": "museum",
+    "title": "Museo del Larimar",
+    "id": null
+  },
+  {
+    "kind": "museum",
+    "title": "Museo del Ámbar",
+    "id": null
+  },
+  {
+    "kind": "museum",
+    "title": "Museo Gregorio Luperón",
+    "id": null
+  },
+  {
+    "kind": "place",
+    "title": "Mercado Modelo (Santo Domingo)",
+    "id": null
+  },
+  {
+    "kind": "place",
+    "title": "Plaza de la Cultura",
+    "id": null
+  },
+  {
+    "kind": "place",
+    "title": "Sanctuary of Santo Cerro",
+    "id": null
+  },
+  {
+    "kind": "place",
+    "title": "Palacio de Bellas Artes (Santo Domingo)",
+    "id": null
+  },
+  {
+    "kind": "place",
+    "title": "Parque Independencia",
+    "id": null
+  },
+  {
+    "kind": "place",
+    "title": "National Aquarium of the Dominican Republic",
+    "id": null
+  },
+  {
+    "kind": "place",
+    "title": "National Zoological Park (Dominican Republic)",
+    "id": null
+  }
+]

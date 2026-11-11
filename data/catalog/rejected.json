@@ -1,0 +1,1581 @@
+[
+  {
+    "key": "el-seibo",
+    "wikidata": "Q2420339",
+    "title": "El Seibo",
+    "reason": "Error: License template not confirmed on file page",
+    "sourceUrl": "https://www.wikidata.org/wiki/Q2420339",
+    "checkedAt": "2026-11-11"
+  },
+  {
+    "key": "los-tres-ojos",
+    "wikidata": "Q6683320",
+    "title": "Los Tres Ojos",
+    "reason": "No reproducible entity source or approved content type",
+    "checkedAt": "2026-11-11"
+  },
+  {
+    "key": "cuevas-del-pomier",
+    "wikidata": "Q7227322",
+    "title": "Cuevas del Pomier",
+    "reason": "No reproducible entity source or approved content type",
+    "checkedAt": "2026-11-11"
+  },
+  {
+    "key": "cueva-arena",
+    "wikidata": "Q23779196",
+    "title": "Cueva Arena",
+    "reason": "No reproducible entity source or approved content type",
+    "checkedAt": "2026-11-11"
+  },
+  {
+    "key": "calle-el-conde",
+    "wikidata": "Q3236933",
+    "title": "Calle El Conde",
+    "reason": "Error: License not allowed: GPL",
+    "sourceUrl": "https://www.wikidata.org/wiki/Q3236933",
+    "checkedAt": "2026-11-11"
+  },
+  {
+    "key": "san-carlos",
+    "wikidata": "Q6118516",
+    "title": "San Carlos",
+    "reason": "Error: Thumbnail HTTP 400",
+    "sourceUrl": "https://www.wikidata.org/wiki/Q6118516",
+    "checkedAt": "2026-11-11"
+  },
+  {
+    "key": "provincia-de-la-romana",
+    "wikidata": "Q1140742",
+    "title": "Provincia de La Romana",
+    "reason": "Error: No author in Commons metadata",
+    "sourceUrl": "https://www.wikidata.org/wiki/Q1140742",
+    "checkedAt": "2026-11-11"
+  },
+  {
+    "key": "rio-ozama",
+    "wikidata": "Q1634730",
+    "title": "Río Ozama",
+    "reason": "Error: License not allowed: GPL",
+    "sourceUrl": "https://www.wikidata.org/wiki/Q1634730",
+    "checkedAt": "2026-11-11"
+  },
+  {
+    "key": "paraiso",
+    "wikidata": "Q1988637",
+    "title": "Paraíso",
+    "reason": "Error: No author in Commons metadata",
+    "sourceUrl": "https://www.wikidata.org/wiki/Q1988637",
+    "checkedAt": "2026-11-11"
+  },
+  {
+    "key": "las-colinas",
+    "reason": "La única fotografía seleccionada es un retrato privado de personas identificables; el barrio no se cuenta como ficha válida sin una alternativa documental.",
+    "checkedAt": "2026-11-11",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Casa_original_las_colinas2.jpg",
+    "blockedForReview": true
+  },
+  {
+    "key": "audantia-cybotes",
+    "reason": "El resumen taxonómico consultado limita Anolis cybotes a la península de Tiburón, Haití. No acredita presencia dominicana tras la separación de especies.",
+    "checkedAt": "2026-11-11",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Anolis_cybotes_head.jpg",
+    "blockedForReview": true
+  },
+  {
+    "key": "museo-bellapart",
+    "reason": "La imagen disponible es una reproducción pictórica y no una fotografía del museo o de una pieza documentada como fotografiada en él.",
+    "checkedAt": "2026-11-11",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Goletaseparacion.jpg",
+    "blockedForReview": true
+  },
+  {
+    "key": "el-seibo",
+    "reason": "La fotografía muestra personas identificables en primer plano sin documentación de un evento público; falta una alternativa válida del municipio.",
+    "checkedAt": "2026-11-11",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:El_Seibo.jpg",
+    "blockedForReview": true
+  },
+  {
+    "key": "gran-arena-del-cibao",
+    "reason": "La única imagen seleccionada es una captura cartográfica cuya procedencia fotográfica y derechos no quedan suficientemente documentados.",
+    "checkedAt": "2026-11-11",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Gran_Arena_del_Cibao.png",
+    "blockedForReview": true
+  },
+  {
+    "key": "villa-tapia",
+    "reason": "El resumen remitía a una fotografía genérica de un desfile dominicano sin identificar Villa Tapia. La imagen no acredita el municipio.",
+    "checkedAt": "2026-11-11",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Dominican_Republic_People.JPG",
+    "blockedForReview": true
+  },
+  {
+    "key": "rio-camu",
+    "reason": "La única imagen seleccionada es un mapa, no una fotografía del río.",
+    "checkedAt": "2026-11-11",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Yuna_River_Map.png",
+    "blockedForReview": true
+  },
+  {
+    "key": "cibao",
+    "reason": "La imagen seleccionada es un mapa regional. Se conserva el tema como pendiente hasta contar con una fotografía contextual documentada.",
+    "checkedAt": "2026-11-11",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:ELCIBAO.png",
+    "blockedForReview": true
+  },
+  {
+    "key": "jutia-de-la-espanola",
+    "reason": "Commons solo proporcionó una ilustración histórica y un mapa de distribución entre las alternativas verificadas; no se cuenta sin fotografía válida.",
+    "checkedAt": "2026-11-11",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Plagiodontia_aedium.jpg",
+    "blockedForReview": true
+  },
+  {
+    "key": "elaenia-cherriei",
+    "reason": "La foto de República Dominicana conserva la identificación del antiguo complejo Elaenia fallax; queda fuera hasta verificar documentalmente el taxón actual tras la separación de especies.",
+    "checkedAt": "2026-11-11",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Greater_Antillean_Elaenia_(Elaenia_fallax)_(8082788028)_(cropped).jpg",
+    "blockedForReview": true
+  },
+  {
+    "key": "pasteles-en-hoja",
+    "wikidata": "Q104840853",
+    "title": "Pasteles en hoja",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Pasteles",
+    "reason": "Error: Thumbnail HTTP 400",
+    "checkedAt": "2026-11-11"
+  },
+  {
+    "key": "carnaval-dominicano",
+    "wikidata": "Q2939730",
+    "title": "Carnaval dominicano",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Carnival_in_the_Dominican_Republic",
+    "reason": "Error: No author in Commons metadata",
+    "checkedAt": "2026-11-11"
+  },
+  {
+    "key": "provincia-de-santo-domingo",
+    "wikidata": "Q1352536",
+    "title": "Provincia de Santo Domingo",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Santo_Domingo_Province",
+    "reason": "Error: Not a raster photograph: image/svg+xml",
+    "checkedAt": "2026-11-11"
+  },
+  {
+    "key": "provincia-de-distrito-nacional",
+    "wikidata": "Q2499228",
+    "title": "Provincia de Distrito Nacional",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Distrito_Nacional",
+    "reason": "Error: Not a raster photograph: image/svg+xml",
+    "checkedAt": "2026-11-11"
+  },
+  {
+    "key": "provincia-de-hermanas-mirabal",
+    "wikidata": "Q549386",
+    "title": "Provincia de Hermanas Mirabal",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Hermanas_Mirabal_Province",
+    "reason": "Error: Not a raster photograph: image/svg+xml",
+    "checkedAt": "2026-11-11"
+  },
+  {
+    "key": "feria-internacional-del-libro-de-santo-domingo",
+    "wikidata": "Q5858765",
+    "title": "Feria Internacional del Libro de Santo Domingo",
+    "reason": "La fotografía encontrada usa FAL, fuera de las licencias autorizadas para esta entrega.",
+    "checkedAt": "2026-11-11"
+  },
+  {
+    "key": "duverge",
+    "reason": "La segunda revisión encontró personas identificables en primer plano en la única fotografía seleccionada del municipio; falta una alternativa válida.",
+    "checkedAt": "2026-11-11",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Duverge_Dominican_Republic.jpg"
+  },
+  {
+    "key": "sanchez",
+    "wikidata": "Q516965",
+    "title": "Sánchez",
+    "reason": "no_clear_tourist_interest",
+    "stage": "10A2",
+    "detail": "Ficha administrativa sin atractivo turístico concreto acreditado en el texto existente.",
+    "checkedAt": "2026-11-11T16:30:38.673Z"
+  },
+  {
+    "key": "provincia-de-espaillat",
+    "wikidata": "Q530231",
+    "title": "Provincia de Espaillat",
+    "reason": "no_clear_tourist_interest",
+    "stage": "10A2",
+    "detail": "Ficha administrativa sin atractivo turístico concreto acreditado en el texto existente.",
+    "checkedAt": "2026-11-11T16:30:38.673Z"
+  },
+  {
+    "key": "provincia-de-la-vega",
+    "wikidata": "Q594405",
+    "title": "Provincia de La Vega",
+    "reason": "merged_duplicate",
+    "stage": "10A2",
+    "mergedInto": "la-vega",
+    "detail": "Se conserva el destino urbano homónimo.",
+    "checkedAt": "2026-11-11T16:30:38.673Z"
+  },
+  {
+    "key": "san-rafael-del-yuma",
+    "wikidata": "Q649483",
+    "title": "San Rafael del Yuma",
+    "reason": "no_clear_tourist_interest",
+    "stage": "10A2",
+    "detail": "Ficha administrativa sin atractivo turístico concreto acreditado en el texto existente.",
+    "checkedAt": "2026-11-11T16:30:38.673Z"
+  },
+  {
+    "key": "mao",
+    "wikidata": "Q692560",
+    "title": "Mao",
+    "reason": "no_clear_tourist_interest",
+    "stage": "10A2",
+    "detail": "Ficha administrativa sin atractivo turístico concreto acreditado en el texto existente.",
+    "checkedAt": "2026-11-11T16:30:38.673Z"
+  },
+  {
+    "key": "provincia-de-puerto-plata",
+    "wikidata": "Q693487",
+    "title": "Provincia de Puerto Plata",
+    "reason": "merged_duplicate",
+    "stage": "10A2",
+    "mergedInto": "puerto-plata",
+    "detail": "Se conserva el destino urbano homónimo.",
+    "checkedAt": "2026-11-11T16:30:38.673Z"
+  },
+  {
+    "key": "provincia-de-azua",
+    "wikidata": "Q794239",
+    "title": "Provincia de Azua",
+    "reason": "merged_duplicate",
+    "stage": "10A2",
+    "mergedInto": "municipio-de-azua",
+    "detail": "Se conserva el destino urbano homónimo.",
+    "checkedAt": "2026-11-11T16:30:38.673Z"
+  },
+  {
+    "key": "provincia-de-bahoruco",
+    "wikidata": "Q807079",
+    "title": "Provincia de Bahoruco",
+    "reason": "no_clear_tourist_interest",
+    "stage": "10A2",
+    "detail": "Ficha administrativa sin atractivo turístico concreto acreditado en el texto existente.",
+    "checkedAt": "2026-11-11T16:30:38.674Z"
+  },
+  {
+    "key": "santo-domingo-este",
+    "wikidata": "Q2713354",
+    "title": "Santo Domingo Este",
+    "reason": "no_clear_tourist_interest",
+    "stage": "10A2",
+    "detail": "Ficha administrativa sin atractivo turístico concreto acreditado en el texto existente.",
+    "checkedAt": "2026-11-11T16:30:38.674Z"
+  },
+  {
+    "key": "el-limon",
+    "wikidata": "Q3306488",
+    "title": "El Limón",
+    "reason": "no_clear_tourist_interest",
+    "stage": "10A2",
+    "detail": "Ficha administrativa sin atractivo turístico concreto acreditado en el texto existente.",
+    "checkedAt": "2026-11-11T16:30:38.674Z"
+  },
+  {
+    "key": "cabrera",
+    "wikidata": "Q3649225",
+    "title": "Cabrera",
+    "reason": "no_clear_tourist_interest",
+    "stage": "10A2",
+    "detail": "Ficha administrativa sin atractivo turístico concreto acreditado en el texto existente.",
+    "checkedAt": "2026-11-11T16:30:38.674Z"
+  },
+  {
+    "key": "cambita-garabitos",
+    "wikidata": "Q3651189",
+    "title": "Cambita Garabitos",
+    "reason": "no_clear_tourist_interest",
+    "stage": "10A2",
+    "detail": "Ficha administrativa sin atractivo turístico concreto acreditado en el texto existente.",
+    "checkedAt": "2026-11-11T16:30:38.674Z"
+  },
+  {
+    "key": "comendador",
+    "wikidata": "Q617647",
+    "title": "Comendador",
+    "reason": "no_clear_tourist_interest",
+    "stage": "10A2",
+    "detail": "Ficha administrativa sin atractivo turístico concreto acreditado en el texto existente.",
+    "checkedAt": "2026-11-11T16:30:38.674Z"
+  },
+  {
+    "key": "don-gregorio",
+    "wikidata": "Q2840772",
+    "title": "Don Gregorio",
+    "reason": "no_clear_tourist_interest",
+    "stage": "10A2",
+    "detail": "Ficha administrativa sin atractivo turístico concreto acreditado en el texto existente.",
+    "checkedAt": "2026-11-11T16:30:38.674Z"
+  },
+  {
+    "key": "centro-de-los-heroes",
+    "wikidata": "Q5062928",
+    "title": "Centro de los Héroes",
+    "reason": "no_clear_tourist_interest",
+    "stage": "10A2",
+    "detail": "Ficha administrativa sin atractivo turístico concreto acreditado en el texto existente.",
+    "checkedAt": "2026-11-11T16:30:38.674Z"
+  },
+  {
+    "key": "juan-dolio",
+    "wikidata": "Q984141",
+    "title": "Juan Dolio",
+    "reason": "no_clear_tourist_interest",
+    "stage": "10A2",
+    "detail": "Ficha administrativa sin atractivo turístico concreto acreditado en el texto existente.",
+    "checkedAt": "2026-11-11T16:30:38.674Z"
+  },
+  {
+    "key": "provincia-de-barahona",
+    "wikidata": "Q1137551",
+    "title": "Provincia de Barahona",
+    "reason": "no_clear_tourist_interest",
+    "stage": "10A2",
+    "detail": "Ficha administrativa sin atractivo turístico concreto acreditado en el texto existente.",
+    "checkedAt": "2026-11-11T16:30:38.674Z"
+  },
+  {
+    "key": "provincia-de-samana",
+    "wikidata": "Q1145487",
+    "title": "Provincia de Samaná",
+    "reason": "merged_duplicate",
+    "stage": "10A2",
+    "mergedInto": "samana",
+    "detail": "Se conserva el destino urbano homónimo.",
+    "checkedAt": "2026-11-11T16:30:38.674Z"
+  },
+  {
+    "key": "provincia-de-duarte",
+    "wikidata": "Q1262745",
+    "title": "Provincia de Duarte",
+    "reason": "no_clear_tourist_interest",
+    "stage": "10A2",
+    "detail": "Ficha administrativa sin atractivo turístico concreto acreditado en el texto existente.",
+    "checkedAt": "2026-11-11T16:30:38.674Z"
+  },
+  {
+    "key": "provincia-de-monsenor-nouel",
+    "wikidata": "Q1295496",
+    "title": "Provincia de Monseñor Nouel",
+    "reason": "no_clear_tourist_interest",
+    "stage": "10A2",
+    "detail": "Ficha administrativa sin atractivo turístico concreto acreditado en el texto existente.",
+    "checkedAt": "2026-11-11T16:30:38.674Z"
+  },
+  {
+    "key": "provincia-de-peravia",
+    "wikidata": "Q1331932",
+    "title": "Provincia de Peravia",
+    "reason": "no_clear_tourist_interest",
+    "stage": "10A2",
+    "detail": "Ficha administrativa sin atractivo turístico concreto acreditado en el texto existente.",
+    "checkedAt": "2026-11-11T16:30:38.674Z"
+  },
+  {
+    "key": "todus-angustirostris",
+    "wikidata": "Q640693",
+    "title": "Todus angustirostris",
+    "reason": "species_balance",
+    "stage": "10A2",
+    "detail": "Selección limitada de especies emblemáticas para equilibrar el catálogo.",
+    "checkedAt": "2026-11-11T16:30:38.674Z"
+  },
+  {
+    "key": "coccyzus-longirostris",
+    "wikidata": "Q1274623",
+    "title": "Coccyzus longirostris",
+    "reason": "species_balance",
+    "stage": "10A2",
+    "detail": "Selección limitada de especies emblemáticas para equilibrar el catálogo.",
+    "checkedAt": "2026-11-11T16:30:38.674Z"
+  },
+  {
+    "key": "provincia-de-pedernales",
+    "wikidata": "Q1352533",
+    "title": "Provincia de Pedernales",
+    "reason": "merged_duplicate",
+    "stage": "10A2",
+    "mergedInto": "pedernales",
+    "detail": "Se conserva el destino urbano homónimo.",
+    "checkedAt": "2026-11-11T16:30:38.674Z"
+  },
+  {
+    "key": "provincia-de-san-pedro-de-macoris",
+    "wikidata": "Q1366119",
+    "title": "Provincia de San Pedro de Macorís",
+    "reason": "merged_duplicate",
+    "stage": "10A2",
+    "mergedInto": "san-pedro-de-macoris",
+    "detail": "Se conserva el destino urbano homónimo.",
+    "checkedAt": "2026-11-11T16:30:38.674Z"
+  },
+  {
+    "key": "jimani",
+    "wikidata": "Q1409818",
+    "title": "Jimaní",
+    "reason": "no_clear_tourist_interest",
+    "stage": "10A2",
+    "detail": "Ficha administrativa sin atractivo turístico concreto acreditado en el texto existente.",
+    "checkedAt": "2026-11-11T16:30:38.674Z"
+  },
+  {
+    "key": "provincia-de-san-jose-de-ocoa",
+    "wikidata": "Q1424391",
+    "title": "Provincia de San José de Ocoa",
+    "reason": "merged_duplicate",
+    "stage": "10A2",
+    "mergedInto": "san-jose-de-ocoa",
+    "detail": "Se conserva el destino urbano homónimo.",
+    "checkedAt": "2026-11-11T16:30:38.675Z"
+  },
+  {
+    "key": "provincia-de-independencia",
+    "wikidata": "Q1424401",
+    "title": "Provincia de Independencia",
+    "reason": "no_clear_tourist_interest",
+    "stage": "10A2",
+    "detail": "Ficha administrativa sin atractivo turístico concreto acreditado en el texto existente.",
+    "checkedAt": "2026-11-11T16:30:38.675Z"
+  },
+  {
+    "key": "tyto-glaucops",
+    "wikidata": "Q1259972",
+    "title": "Tyto glaucops",
+    "reason": "species_balance",
+    "stage": "10A2",
+    "detail": "Selección limitada de especies emblemáticas para equilibrar el catálogo.",
+    "checkedAt": "2026-11-11T16:30:38.675Z"
+  },
+  {
+    "key": "antrostomus-ekmani",
+    "wikidata": "Q3054308",
+    "title": "Antrostomus ekmani",
+    "reason": "species_balance",
+    "stage": "10A2",
+    "detail": "Selección limitada de especies emblemáticas para equilibrar el catálogo.",
+    "checkedAt": "2026-11-11T16:30:38.675Z"
+  },
+  {
+    "key": "anthracothorax-dominicus",
+    "wikidata": "Q580094",
+    "title": "Anthracothorax dominicus",
+    "reason": "species_balance",
+    "stage": "10A2",
+    "detail": "Selección limitada de especies emblemáticas para equilibrar el catálogo.",
+    "checkedAt": "2026-11-11T16:30:38.675Z"
+  },
+  {
+    "key": "riccordia-swainsoni",
+    "wikidata": "Q1269795",
+    "title": "Riccordia swainsoni",
+    "reason": "species_balance",
+    "stage": "10A2",
+    "detail": "Selección limitada de especies emblemáticas para equilibrar el catálogo.",
+    "checkedAt": "2026-11-11T16:30:38.675Z"
+  },
+  {
+    "key": "nesoctites-micromegas",
+    "wikidata": "Q547920",
+    "title": "Nesoctites micromegas",
+    "reason": "species_balance",
+    "stage": "10A2",
+    "detail": "Selección limitada de especies emblemáticas para equilibrar el catálogo.",
+    "checkedAt": "2026-11-11T16:30:38.675Z"
+  },
+  {
+    "key": "corvus-leucognaphalus",
+    "wikidata": "Q1584524",
+    "title": "Corvus leucognaphalus",
+    "reason": "species_balance",
+    "stage": "10A2",
+    "detail": "Selección limitada de especies emblemáticas para equilibrar el catálogo.",
+    "checkedAt": "2026-11-11T16:30:38.675Z"
+  },
+  {
+    "key": "geotrygon-leucometopia",
+    "wikidata": "Q2984142",
+    "title": "Geotrygon leucometopia",
+    "reason": "species_balance",
+    "stage": "10A2",
+    "detail": "Selección limitada de especies emblemáticas para equilibrar el catálogo.",
+    "checkedAt": "2026-11-11T16:30:38.675Z"
+  },
+  {
+    "key": "coccyzus-rufigularis",
+    "wikidata": "Q865409",
+    "title": "Coccyzus rufigularis",
+    "reason": "species_balance",
+    "stage": "10A2",
+    "detail": "Selección limitada de especies emblemáticas para equilibrar el catálogo.",
+    "checkedAt": "2026-11-11T16:30:38.675Z"
+  },
+  {
+    "key": "icterus-dominicensis",
+    "wikidata": "Q2668923",
+    "title": "Icterus dominicensis",
+    "reason": "species_balance",
+    "stage": "10A2",
+    "detail": "Selección limitada de especies emblemáticas para equilibrar el catálogo.",
+    "checkedAt": "2026-11-11T16:30:38.675Z"
+  },
+  {
+    "key": "laguna-salada",
+    "wikidata": "Q1770074",
+    "title": "Laguna Salada",
+    "reason": "no_clear_tourist_interest",
+    "stage": "10A2",
+    "detail": "Ficha administrativa sin atractivo turístico concreto acreditado en el texto existente.",
+    "checkedAt": "2026-11-11T16:30:38.675Z"
+  },
+  {
+    "key": "bayaguana",
+    "wikidata": "Q1770505",
+    "title": "Bayaguana",
+    "reason": "no_clear_tourist_interest",
+    "stage": "10A2",
+    "detail": "Ficha administrativa sin atractivo turístico concreto acreditado en el texto existente.",
+    "checkedAt": "2026-11-11T16:30:38.675Z"
+  },
+  {
+    "key": "san-antonio-de-guerra",
+    "wikidata": "Q1770873",
+    "title": "San Antonio de Guerra",
+    "reason": "no_clear_tourist_interest",
+    "stage": "10A2",
+    "detail": "Ficha administrativa sin atractivo turístico concreto acreditado en el texto existente.",
+    "checkedAt": "2026-11-11T16:30:38.675Z"
+  },
+  {
+    "key": "las-guaranas",
+    "wikidata": "Q3827243",
+    "title": "Las Guáranas",
+    "reason": "no_clear_tourist_interest",
+    "stage": "10A2",
+    "detail": "Ficha administrativa sin atractivo turístico concreto acreditado en el texto existente.",
+    "checkedAt": "2026-11-11T16:30:38.675Z"
+  },
+  {
+    "key": "peralta",
+    "wikidata": "Q3899640",
+    "title": "Peralta",
+    "reason": "no_clear_tourist_interest",
+    "stage": "10A2",
+    "detail": "Ficha administrativa sin atractivo turístico concreto acreditado en el texto existente.",
+    "checkedAt": "2026-11-11T16:30:38.675Z"
+  },
+  {
+    "key": "quisqueya",
+    "wikidata": "Q3928010",
+    "title": "Quisqueya",
+    "reason": "no_clear_tourist_interest",
+    "stage": "10A2",
+    "detail": "Ficha administrativa sin atractivo turístico concreto acreditado en el texto existente.",
+    "checkedAt": "2026-11-11T16:30:38.676Z"
+  },
+  {
+    "key": "vallejuelo",
+    "wikidata": "Q4008204",
+    "title": "Vallejuelo",
+    "reason": "no_clear_tourist_interest",
+    "stage": "10A2",
+    "detail": "Ficha administrativa sin atractivo turístico concreto acreditado en el texto existente.",
+    "checkedAt": "2026-11-11T16:30:38.676Z"
+  },
+  {
+    "key": "villa-vasquez",
+    "wikidata": "Q1770880",
+    "title": "Villa Vásquez",
+    "reason": "no_clear_tourist_interest",
+    "stage": "10A2",
+    "detail": "Ficha administrativa sin atractivo turístico concreto acreditado en el texto existente.",
+    "checkedAt": "2026-11-11T16:30:38.676Z"
+  },
+  {
+    "key": "tabara-arriba",
+    "wikidata": "Q1770884",
+    "title": "Tábara Arriba",
+    "reason": "no_clear_tourist_interest",
+    "stage": "10A2",
+    "detail": "Ficha administrativa sin atractivo turístico concreto acreditado en el texto existente.",
+    "checkedAt": "2026-11-11T16:30:38.676Z"
+  },
+  {
+    "key": "banica",
+    "wikidata": "Q1771472",
+    "title": "Bánica",
+    "reason": "no_clear_tourist_interest",
+    "stage": "10A2",
+    "detail": "Ficha administrativa sin atractivo turístico concreto acreditado en el texto existente.",
+    "checkedAt": "2026-11-11T16:30:38.676Z"
+  },
+  {
+    "key": "xenoligea-montana",
+    "wikidata": "Q529238",
+    "title": "Xenoligea montana",
+    "reason": "species_balance",
+    "stage": "10A2",
+    "detail": "Selección limitada de especies emblemáticas para equilibrar el catálogo.",
+    "checkedAt": "2026-11-11T16:30:38.676Z"
+  },
+  {
+    "key": "microligea-palustris",
+    "wikidata": "Q1092562",
+    "title": "Microligea palustris",
+    "reason": "species_balance",
+    "stage": "10A2",
+    "detail": "Selección limitada de especies emblemáticas para equilibrar el catálogo.",
+    "checkedAt": "2026-11-11T16:30:38.676Z"
+  },
+  {
+    "key": "tangara-haitiana",
+    "wikidata": "Q2226608",
+    "title": "Tangara haitiana",
+    "reason": "species_balance",
+    "stage": "10A2",
+    "detail": "Selección limitada de especies emblemáticas para equilibrar el catálogo.",
+    "checkedAt": "2026-11-11T16:30:38.676Z"
+  },
+  {
+    "key": "spindalis-dominicensis",
+    "wikidata": "Q2226378",
+    "title": "Spindalis dominicensis",
+    "reason": "species_balance",
+    "stage": "10A2",
+    "detail": "Selección limitada de especies emblemáticas para equilibrar el catálogo.",
+    "checkedAt": "2026-11-11T16:30:38.676Z"
+  },
+  {
+    "key": "loxia-megaplaga",
+    "wikidata": "Q1304533",
+    "title": "Loxia megaplaga",
+    "reason": "species_balance",
+    "stage": "10A2",
+    "detail": "Selección limitada de especies emblemáticas para equilibrar el catálogo.",
+    "checkedAt": "2026-11-11T16:30:38.676Z"
+  },
+  {
+    "key": "turdus-swalesi",
+    "wikidata": "Q843301",
+    "title": "Turdus swalesi",
+    "reason": "species_balance",
+    "stage": "10A2",
+    "detail": "Selección limitada de especies emblemáticas para equilibrar el catálogo.",
+    "checkedAt": "2026-11-11T16:30:38.676Z"
+  },
+  {
+    "key": "solitario-gorgirrufo",
+    "wikidata": "Q3321742",
+    "title": "Solitario gorgirrufo",
+    "reason": "species_balance",
+    "stage": "10A2",
+    "detail": "Selección limitada de especies emblemáticas para equilibrar el catálogo.",
+    "checkedAt": "2026-11-11T16:30:38.676Z"
+  },
+  {
+    "key": "tachycineta-euchrysea",
+    "wikidata": "Q775394",
+    "title": "Tachycineta euchrysea",
+    "reason": "species_balance",
+    "stage": "10A2",
+    "detail": "Selección limitada de especies emblemáticas para equilibrar el catálogo.",
+    "checkedAt": "2026-11-11T16:30:38.676Z"
+  },
+  {
+    "key": "contopus-hispaniolensis",
+    "wikidata": "Q1261787",
+    "title": "Contopus hispaniolensis",
+    "reason": "species_balance",
+    "stage": "10A2",
+    "detail": "Selección limitada de especies emblemáticas para equilibrar el catálogo.",
+    "checkedAt": "2026-11-11T16:30:38.676Z"
+  },
+  {
+    "key": "vireo-nanus",
+    "wikidata": "Q2667695",
+    "title": "Vireo nanus",
+    "reason": "species_balance",
+    "stage": "10A2",
+    "detail": "Selección limitada de especies emblemáticas para equilibrar el catálogo.",
+    "checkedAt": "2026-11-11T16:30:38.676Z"
+  },
+  {
+    "key": "corvus-palmarum",
+    "wikidata": "Q1586680",
+    "title": "Corvus palmarum",
+    "reason": "species_balance",
+    "stage": "10A2",
+    "detail": "Selección limitada de especies emblemáticas para equilibrar el catálogo.",
+    "checkedAt": "2026-11-11T16:30:38.676Z"
+  },
+  {
+    "key": "eufonia-antillana",
+    "wikidata": "Q1315499",
+    "title": "Eufonia antillana",
+    "reason": "species_balance",
+    "stage": "10A2",
+    "detail": "Selección limitada de especies emblemáticas para equilibrar el catálogo.",
+    "checkedAt": "2026-11-11T16:30:38.676Z"
+  },
+  {
+    "key": "chilabothrus-striatus",
+    "wikidata": "Q2713653",
+    "title": "Chilabothrus striatus",
+    "reason": "species_balance",
+    "stage": "10A2",
+    "detail": "Selección limitada de especies emblemáticas para equilibrar el catálogo.",
+    "checkedAt": "2026-11-11T16:30:38.676Z"
+  },
+  {
+    "key": "coccothrinax-argentea",
+    "wikidata": "Q5139209",
+    "title": "Coccothrinax argentea",
+    "reason": "species_balance",
+    "stage": "10A2",
+    "detail": "Selección limitada de especies emblemáticas para equilibrar el catálogo.",
+    "checkedAt": "2026-11-11T16:30:38.676Z"
+  },
+  {
+    "key": "magnolia-pallescens",
+    "wikidata": "Q15493564",
+    "title": "Magnolia pallescens",
+    "reason": "species_balance",
+    "stage": "10A2",
+    "detail": "Selección limitada de especies emblemáticas para equilibrar el catálogo.",
+    "checkedAt": "2026-11-11T16:30:38.676Z"
+  },
+  {
+    "key": "hispaniolan-slider",
+    "wikidata": "Q1032577",
+    "title": "Hispaniolan slider",
+    "reason": "species_balance",
+    "stage": "10A2",
+    "detail": "Selección limitada de especies emblemáticas para equilibrar el catálogo.",
+    "checkedAt": "2026-11-11T16:30:38.676Z"
+  },
+  {
+    "key": "provincia-de-santiago",
+    "wikidata": "Q1772983",
+    "title": "Provincia de Santiago",
+    "reason": "no_clear_tourist_interest",
+    "stage": "10A2",
+    "detail": "Ficha administrativa sin atractivo turístico concreto acreditado en el texto existente.",
+    "checkedAt": "2026-11-11T16:30:38.676Z"
+  },
+  {
+    "key": "provincia-de-valverde",
+    "wikidata": "Q1774848",
+    "title": "Provincia de Valverde",
+    "reason": "no_clear_tourist_interest",
+    "stage": "10A2",
+    "detail": "Ficha administrativa sin atractivo turístico concreto acreditado en el texto existente.",
+    "checkedAt": "2026-11-11T16:30:38.676Z"
+  },
+  {
+    "key": "provincia-de-sanchez-ramirez",
+    "wikidata": "Q1836903",
+    "title": "Provincia de Sánchez Ramírez",
+    "reason": "no_clear_tourist_interest",
+    "stage": "10A2",
+    "detail": "Ficha administrativa sin atractivo turístico concreto acreditado en el texto existente.",
+    "checkedAt": "2026-11-11T16:30:38.676Z"
+  },
+  {
+    "key": "provincia-de-maria-trinidad-sanchez",
+    "wikidata": "Q1949656",
+    "title": "Provincia de María Trinidad Sánchez",
+    "reason": "no_clear_tourist_interest",
+    "stage": "10A2",
+    "detail": "Ficha administrativa sin atractivo turístico concreto acreditado en el texto existente.",
+    "checkedAt": "2026-11-11T16:30:38.676Z"
+  },
+  {
+    "key": "provincia-de-san-juan",
+    "wikidata": "Q2001793",
+    "title": "Provincia de San Juan",
+    "reason": "merged_duplicate",
+    "stage": "10A2",
+    "mergedInto": "san-juan",
+    "detail": "Se conserva el destino urbano homónimo.",
+    "checkedAt": "2026-11-11T16:30:38.676Z"
+  },
+  {
+    "key": "provincia-de-santiago-rodriguez",
+    "wikidata": "Q2021942",
+    "title": "Provincia de Santiago Rodríguez",
+    "reason": "no_clear_tourist_interest",
+    "stage": "10A2",
+    "detail": "Ficha administrativa sin atractivo turístico concreto acreditado en el texto existente.",
+    "checkedAt": "2026-11-11T16:30:38.676Z"
+  },
+  {
+    "key": "la-caleta",
+    "wikidata": "Q6461454",
+    "title": "La Caleta",
+    "reason": "no_clear_tourist_interest",
+    "stage": "10A2",
+    "detail": "Ficha administrativa sin atractivo turístico concreto acreditado en el texto existente.",
+    "checkedAt": "2026-11-11T16:30:38.676Z"
+  },
+  {
+    "key": "sabana-buey",
+    "wikidata": "Q7395869",
+    "title": "Sabana Buey",
+    "reason": "no_clear_tourist_interest",
+    "stage": "10A2",
+    "detail": "Ficha administrativa sin atractivo turístico concreto acreditado en el texto existente.",
+    "checkedAt": "2026-11-11T16:30:38.676Z"
+  },
+  {
+    "key": "centro-historico-de-puerto-plata",
+    "wikidata": "Q65123142",
+    "title": "Centro histórico de Puerto Plata",
+    "reason": "no_clear_tourist_interest",
+    "stage": "10A2",
+    "detail": "Ficha administrativa sin atractivo turístico concreto acreditado en el texto existente.",
+    "checkedAt": "2026-11-11T16:30:38.676Z"
+  },
+  {
+    "key": "phaenicophilus-palmarum",
+    "wikidata": "Q1588281",
+    "title": "Phaenicophilus palmarum",
+    "reason": "species_balance",
+    "stage": "10A2",
+    "detail": "Selección limitada de especies emblemáticas para equilibrar el catálogo.",
+    "checkedAt": "2026-11-11T16:30:38.676Z"
+  },
+  {
+    "key": "trachemys-stejnegeri",
+    "wikidata": "Q1049305",
+    "title": "Trachemys stejnegeri",
+    "reason": "species_balance",
+    "stage": "10A2",
+    "detail": "Selección limitada de especies emblemáticas para equilibrar el catálogo.",
+    "checkedAt": "2026-11-11T16:30:38.676Z"
+  },
+  {
+    "key": "platanal-cotui",
+    "wikidata": "Q121177100",
+    "title": "Platanal Cotuí",
+    "reason": "no_clear_tourist_interest",
+    "stage": "10A2",
+    "detail": "Ficha administrativa sin atractivo turístico concreto acreditado en el texto existente.",
+    "checkedAt": "2026-11-11T16:30:38.676Z"
+  },
+  {
+    "key": "zambrana-abajo",
+    "wikidata": "Q121177569",
+    "title": "Zambrana Abajo",
+    "reason": "no_clear_tourist_interest",
+    "stage": "10A2",
+    "detail": "Ficha administrativa sin atractivo turístico concreto acreditado en el texto existente.",
+    "checkedAt": "2026-11-11T16:30:38.676Z"
+  },
+  {
+    "key": "quitasueno",
+    "wikidata": "Q121215198",
+    "title": "Quitasueño",
+    "reason": "no_clear_tourist_interest",
+    "stage": "10A2",
+    "detail": "Ficha administrativa sin atractivo turístico concreto acreditado en el texto existente.",
+    "checkedAt": "2026-11-11T16:30:38.676Z"
+  },
+  {
+    "key": "loma-de-cabrera",
+    "wikidata": "Q1771467",
+    "title": "Loma de Cabrera",
+    "reason": "no_clear_tourist_interest",
+    "stage": "10A2",
+    "detail": "Ficha administrativa sin atractivo turístico concreto acreditado en el texto existente.",
+    "checkedAt": "2026-11-11T16:30:38.676Z"
+  },
+  {
+    "key": "janico",
+    "wikidata": "Q1770660",
+    "title": "Jánico",
+    "reason": "no_clear_tourist_interest",
+    "stage": "10A2",
+    "detail": "Ficha administrativa sin atractivo turístico concreto acreditado en el texto existente.",
+    "checkedAt": "2026-11-11T16:30:38.677Z"
+  },
+  {
+    "key": "provincia-de-san-cristobal",
+    "wikidata": "Q1366107",
+    "title": "Provincia de San Cristóbal",
+    "reason": "merged_duplicate",
+    "stage": "10A2",
+    "mergedInto": "san-cristobal",
+    "detail": "Se conserva el destino urbano homónimo.",
+    "checkedAt": "2026-11-11T16:30:38.677Z"
+  },
+  {
+    "key": "provincia-de-el-seibo",
+    "wikidata": "Q1774831",
+    "title": "Provincia de El Seibo",
+    "reason": "no_clear_tourist_interest",
+    "stage": "10A2",
+    "detail": "Ficha administrativa sin atractivo turístico concreto acreditado en el texto existente.",
+    "checkedAt": "2026-11-11T16:30:38.677Z"
+  },
+  {
+    "key": "provincia-de-hato-mayor",
+    "wikidata": "Q937217",
+    "title": "Provincia de Hato Mayor",
+    "reason": "merged_duplicate",
+    "stage": "10A2",
+    "mergedInto": "hato-mayor",
+    "detail": "Se conserva el destino urbano homónimo.",
+    "checkedAt": "2026-11-11T16:30:38.677Z"
+  },
+  {
+    "key": "provincia-de-la-altagracia",
+    "wikidata": "Q1323353",
+    "title": "Provincia de La Altagracia",
+    "reason": "no_clear_tourist_interest",
+    "stage": "10A2",
+    "detail": "Ficha administrativa sin atractivo turístico concreto acreditado en el texto existente.",
+    "checkedAt": "2026-11-11T16:30:38.677Z"
+  },
+  {
+    "key": "provincia-de-elias-pina",
+    "wikidata": "Q1137545",
+    "title": "Provincia de Elías Piña",
+    "reason": "no_clear_tourist_interest",
+    "stage": "10A2",
+    "detail": "Ficha administrativa sin atractivo turístico concreto acreditado en el texto existente.",
+    "checkedAt": "2026-11-11T16:30:38.677Z"
+  },
+  {
+    "key": "provincia-de-monte-cristi",
+    "wikidata": "Q592624",
+    "title": "Provincia de Monte Cristi",
+    "reason": "merged_duplicate",
+    "stage": "10A2",
+    "mergedInto": "monte-cristi",
+    "detail": "Se conserva el destino urbano homónimo.",
+    "checkedAt": "2026-11-11T16:30:38.677Z"
+  },
+  {
+    "key": "municipio-consuelo",
+    "wikidata": "Q3687664",
+    "title": "Municipio Consuelo",
+    "reason": "no_clear_tourist_interest",
+    "stage": "10A2",
+    "detail": "Ficha administrativa sin atractivo turístico concreto acreditado en el texto existente.",
+    "checkedAt": "2026-11-11T16:30:38.677Z"
+  },
+  {
+    "key": "provincia-de-dajabon",
+    "wikidata": "Q1138575",
+    "title": "Provincia de Dajabón",
+    "reason": "merged_duplicate",
+    "stage": "10A2",
+    "mergedInto": "dajabon",
+    "detail": "Se conserva el destino urbano homónimo.",
+    "checkedAt": "2026-11-11T16:30:38.677Z"
+  },
+  {
+    "key": "sosua",
+    "wikidata": "Q1639488",
+    "title": "Sosúa",
+    "reason": "no_clear_tourist_interest",
+    "stage": "10A2",
+    "detail": "Ficha administrativa sin atractivo turístico concreto acreditado en el texto existente.",
+    "checkedAt": "2026-11-11T16:30:38.677Z"
+  },
+  {
+    "key": "esperanza",
+    "wikidata": "Q1770079",
+    "title": "Esperanza",
+    "reason": "no_clear_tourist_interest",
+    "stage": "10A2",
+    "detail": "Ficha administrativa sin atractivo turístico concreto acreditado en el texto existente.",
+    "checkedAt": "2026-11-11T16:30:38.677Z"
+  },
+  {
+    "key": "oviedo",
+    "wikidata": "Q1770802",
+    "title": "Oviedo",
+    "reason": "no_clear_tourist_interest",
+    "stage": "10A2",
+    "detail": "Ficha administrativa sin atractivo turístico concreto acreditado en el texto existente.",
+    "checkedAt": "2026-11-11T16:30:38.677Z"
+  },
+  {
+    "key": "nizao",
+    "wikidata": "Q3877399",
+    "title": "Nizao",
+    "reason": "no_clear_tourist_interest",
+    "stage": "10A2",
+    "detail": "Ficha administrativa sin atractivo turístico concreto acreditado en el texto existente.",
+    "checkedAt": "2026-11-11T16:30:38.677Z"
+  },
+  {
+    "key": "bohechio",
+    "wikidata": "Q4490010",
+    "title": "Bohechío",
+    "reason": "no_clear_tourist_interest",
+    "stage": "10A2",
+    "detail": "Ficha administrativa sin atractivo turístico concreto acreditado en el texto existente.",
+    "checkedAt": "2026-11-11T16:30:38.677Z"
+  },
+  {
+    "key": "bavaro",
+    "wikidata": "Q2425675",
+    "title": "Bávaro",
+    "reason": "no_clear_tourist_interest",
+    "stage": "10A2",
+    "detail": "Ficha administrativa sin atractivo turístico concreto acreditado en el texto existente.",
+    "checkedAt": "2026-11-11T16:30:38.677Z"
+  },
+  {
+    "key": "puerta-de-la-misericordia-santo-domingo",
+    "title": {
+      "es": "Puerta de la Misericordia, Santo Domingo",
+      "en": "Puerta de la Misericordia, Santo Domingo"
+    },
+    "wikidata": "Q14228726",
+    "stage": "10A2",
+    "reason": "thin_source",
+    "detail": "La fuente disponible es breve, inespecífica o redirige a un índice; no permite dos frases útiles verificadas sobre esta entidad.",
+    "previousSources": [
+      {
+        "url": "https://www.wikidata.org/w/api.php?action=wbgetentities&ids=Q693487%7CQ737856%7CQ766356%7CQ770641%7CQ776071%7CQ783742%7CQ794239%7CQ807079%7CQ866223%7CQ866989%7CQ870896%7CQ873254%7CQ874624%7CQ875760%7CQ875841%7CQ875917%7CQ888935%7CQ11704970%7CQ12414569%7CQ13562566%7CQ13619956%7CQ13740059%7CQ14228726%7CQ15145340%7CQ16490562%7CQ16616247%7CQ16620069%7CQ16623036%7CQ16627237%7CQ23585825%7CQ23640829%7CQ2713354%7CQ2719799%7CQ2722327%7CQ2840772%7CQ2841778%7CQ2875806%7CQ2883437%7CQ2893419%7CQ2955101&props=labels%7Cdescriptions%7Caliases%7Cclaims%7Csitelinks&languages=es%7Cen&format=json",
+        "editor": "Wikidata contributors · entity API",
+        "checkedAt": "2026-11-11",
+        "httpStatus": 200
+      }
+    ]
+  },
+  {
+    "key": "laguna-salada-q23762354",
+    "title": {
+      "es": "Laguna Salada",
+      "en": "Laguna Salada"
+    },
+    "wikidata": "Q23762354",
+    "stage": "10A2",
+    "reason": "thin_source",
+    "detail": "La fuente disponible es breve, inespecífica o redirige a un índice; no permite dos frases útiles verificadas sobre esta entidad.",
+    "previousSources": [
+      {
+        "url": "https://www.wikidata.org/w/api.php?action=wbgetentities&ids=Q1464758%7CQ1543031%7CQ1568095%7CQ1634730%7CQ1639488%7CQ1756207%7CQ1770074%7CQ1770079%7CQ1770505%7CQ1770802%7CQ1770873%7CQ23758427%7CQ3827243%7CQ3834936%7CQ3844709%7CQ3847778%7CQ3877399%7CQ3885380%7CQ3899640%7CQ3928010%7CQ3944208%7CQ4008204%7CQ4126487%7CQ4208698%7CQ4413211%7CQ4490010%7CQ4531381%7CQ1770880%7CQ1770884%7CQ1771472%7CQ23763428%7CQ23763763%7CQ23762354%7CQ23764406%7CQ23765458%7CQ23765504%7CQ23766999%7CQ23770795%7CQ23775715%7CQ23778538&props=labels%7Cdescriptions%7Caliases%7Cclaims%7Csitelinks&languages=es%7Cen&format=json",
+        "editor": "Wikidata contributors · entity API",
+        "checkedAt": "2026-11-11",
+        "httpStatus": 200
+      }
+    ]
+  },
+  {
+    "key": "playa-madama",
+    "title": {
+      "es": "Playa Madama",
+      "en": "Playa Madama"
+    },
+    "wikidata": "Q23765458",
+    "stage": "10A2",
+    "reason": "thin_source",
+    "detail": "La fuente disponible es breve, inespecífica o redirige a un índice; no permite dos frases útiles verificadas sobre esta entidad.",
+    "previousSources": [
+      {
+        "url": "https://www.wikidata.org/w/api.php?action=wbgetentities&ids=Q1464758%7CQ1543031%7CQ1568095%7CQ1634730%7CQ1639488%7CQ1756207%7CQ1770074%7CQ1770079%7CQ1770505%7CQ1770802%7CQ1770873%7CQ23758427%7CQ3827243%7CQ3834936%7CQ3844709%7CQ3847778%7CQ3877399%7CQ3885380%7CQ3899640%7CQ3928010%7CQ3944208%7CQ4008204%7CQ4126487%7CQ4208698%7CQ4413211%7CQ4490010%7CQ4531381%7CQ1770880%7CQ1770884%7CQ1771472%7CQ23763428%7CQ23763763%7CQ23762354%7CQ23764406%7CQ23765458%7CQ23765504%7CQ23766999%7CQ23770795%7CQ23775715%7CQ23778538&props=labels%7Cdescriptions%7Caliases%7Cclaims%7Csitelinks&languages=es%7Cen&format=json",
+        "editor": "Wikidata contributors · entity API",
+        "checkedAt": "2026-11-11",
+        "httpStatus": 200
+      }
+    ]
+  },
+  {
+    "key": "rio-maimon",
+    "title": {
+      "es": "Río Maimón",
+      "en": "Río Maimón"
+    },
+    "wikidata": "Q23765504",
+    "stage": "10A2",
+    "reason": "thin_source",
+    "detail": "La fuente disponible es breve, inespecífica o redirige a un índice; no permite dos frases útiles verificadas sobre esta entidad.",
+    "previousSources": [
+      {
+        "url": "https://www.wikidata.org/w/api.php?action=wbgetentities&ids=Q1464758%7CQ1543031%7CQ1568095%7CQ1634730%7CQ1639488%7CQ1756207%7CQ1770074%7CQ1770079%7CQ1770505%7CQ1770802%7CQ1770873%7CQ23758427%7CQ3827243%7CQ3834936%7CQ3844709%7CQ3847778%7CQ3877399%7CQ3885380%7CQ3899640%7CQ3928010%7CQ3944208%7CQ4008204%7CQ4126487%7CQ4208698%7CQ4413211%7CQ4490010%7CQ4531381%7CQ1770880%7CQ1770884%7CQ1771472%7CQ23763428%7CQ23763763%7CQ23762354%7CQ23764406%7CQ23765458%7CQ23765504%7CQ23766999%7CQ23770795%7CQ23775715%7CQ23778538&props=labels%7Cdescriptions%7Caliases%7Cclaims%7Csitelinks&languages=es%7Cen&format=json",
+        "editor": "Wikidata contributors · entity API",
+        "checkedAt": "2026-11-11",
+        "httpStatus": 200
+      }
+    ]
+  },
+  {
+    "key": "salto-de-jimenoa-uno",
+    "title": {
+      "es": "Salto de Jimenoa Uno",
+      "en": "Salto de Jimenoa Uno"
+    },
+    "wikidata": "Q23770795",
+    "stage": "10A2",
+    "reason": "thin_source",
+    "detail": "La fuente disponible es breve, inespecífica o redirige a un índice; no permite dos frases útiles verificadas sobre esta entidad.",
+    "previousSources": [
+      {
+        "url": "https://www.wikidata.org/w/api.php?action=wbgetentities&ids=Q1464758%7CQ1543031%7CQ1568095%7CQ1634730%7CQ1639488%7CQ1756207%7CQ1770074%7CQ1770079%7CQ1770505%7CQ1770802%7CQ1770873%7CQ23758427%7CQ3827243%7CQ3834936%7CQ3844709%7CQ3847778%7CQ3877399%7CQ3885380%7CQ3899640%7CQ3928010%7CQ3944208%7CQ4008204%7CQ4126487%7CQ4208698%7CQ4413211%7CQ4490010%7CQ4531381%7CQ1770880%7CQ1770884%7CQ1771472%7CQ23763428%7CQ23763763%7CQ23762354%7CQ23764406%7CQ23765458%7CQ23765504%7CQ23766999%7CQ23770795%7CQ23775715%7CQ23778538&props=labels%7Cdescriptions%7Caliases%7Cclaims%7Csitelinks&languages=es%7Cen&format=json",
+        "editor": "Wikidata contributors · entity API",
+        "checkedAt": "2026-11-11",
+        "httpStatus": 200
+      }
+    ]
+  },
+  {
+    "key": "playa-bonita",
+    "title": {
+      "es": "Playa Bonita",
+      "en": "Playa Bonita"
+    },
+    "wikidata": "Q23778538",
+    "stage": "10A2",
+    "reason": "thin_source",
+    "detail": "La fuente disponible es breve, inespecífica o redirige a un índice; no permite dos frases útiles verificadas sobre esta entidad.",
+    "previousSources": [
+      {
+        "url": "https://www.wikidata.org/w/api.php?action=wbgetentities&ids=Q1464758%7CQ1543031%7CQ1568095%7CQ1634730%7CQ1639488%7CQ1756207%7CQ1770074%7CQ1770079%7CQ1770505%7CQ1770802%7CQ1770873%7CQ23758427%7CQ3827243%7CQ3834936%7CQ3844709%7CQ3847778%7CQ3877399%7CQ3885380%7CQ3899640%7CQ3928010%7CQ3944208%7CQ4008204%7CQ4126487%7CQ4208698%7CQ4413211%7CQ4490010%7CQ4531381%7CQ1770880%7CQ1770884%7CQ1771472%7CQ23763428%7CQ23763763%7CQ23762354%7CQ23764406%7CQ23765458%7CQ23765504%7CQ23766999%7CQ23770795%7CQ23775715%7CQ23778538&props=labels%7Cdescriptions%7Caliases%7Cclaims%7Csitelinks&languages=es%7Cen&format=json",
+        "editor": "Wikidata contributors · entity API",
+        "checkedAt": "2026-11-11",
+        "httpStatus": 200
+      }
+    ]
+  },
+  {
+    "key": "rio-jayaco",
+    "title": {
+      "es": "Río Jayaco",
+      "en": "Jayaco River"
+    },
+    "wikidata": "Q6167460",
+    "stage": "10A2",
+    "reason": "thin_source",
+    "detail": "La fuente disponible es breve, inespecífica o redirige a un índice; no permite dos frases útiles verificadas sobre esta entidad.",
+    "previousSources": [
+      {
+        "url": "https://www.wikidata.org/w/api.php?action=wbgetentities&ids=Q2306136%7CQ2306984%7CQ2403979%7CQ2420339%7CQ2425675%7CQ2425957%7CQ2427660%7CQ2430320%7CQ2438383%7CQ2470834%7CQ2516819%7CQ2558708%7CQ2560011%7CQ2628384%7CQ2643893%7CQ2665026%7CQ5400137%7CQ5400308%7CQ5400466%7CQ5400511%7CQ5429970%7CQ5472510%7CQ5472508%7CQ5593976%7CQ5637746%7CQ5681730%7CQ5720377%7CQ5720546%7CQ5723209%7CQ5732841%7CQ5740585%7CQ5740588%7CQ5755447%7CQ5772811%7CQ5772822%7CQ6167460%7CQ6169009%7CQ6461454%7CQ6683320%7CQ6742956&props=labels%7Cdescriptions%7Caliases%7Cclaims%7Csitelinks&languages=es%7Cen&format=json",
+        "editor": "Wikidata contributors · entity API",
+        "checkedAt": "2026-11-11",
+        "httpStatus": 200
+      }
+    ]
+  },
+  {
+    "key": "rio-soco",
+    "title": {
+      "es": "Río Soco",
+      "en": "Soco River"
+    },
+    "wikidata": "Q7553040",
+    "stage": "10A2",
+    "reason": "thin_source",
+    "detail": "La fuente disponible es breve, inespecífica o redirige a un índice; no permite dos frases útiles verificadas sobre esta entidad.",
+    "previousSources": [
+      {
+        "url": "https://www.wikidata.org/w/api.php?action=wbgetentities&ids=Q6793592%7CQ6898286%7CQ6904743%7CQ6906955%7CQ6974727%7CQ7065415%7CQ7118299%7CQ7126925%7CQ7139633%7CQ7227322%7CQ7231088%7CQ7231259%7CQ7258505%7CQ7301193%7CQ7395869%7CQ7455871%7CQ7510378%7CQ7553040%7CQ7579920%7CQ7691935%7CQ7723001%7CQ8061044%7CQ8462033%7CQ9046796%7CQ9055961%7CQ64866728%7CQ65069863%7CQ65123094%7CQ65123142%7CQ65276412%7CQ108141536%7CQ108807777%7CQ110754843%7CQ23779196%7CQ23779385%7CQ60967713%7CQ62620342%7CQ63071056%7CQ63565816%7CQ139380449&props=labels%7Cdescriptions%7Caliases%7Cclaims%7Csitelinks&languages=es%7Cen&format=json",
+        "editor": "Wikidata contributors · entity API",
+        "checkedAt": "2026-11-11",
+        "httpStatus": 200
+      }
+    ]
+  },
+  {
+    "key": "rio-yuma",
+    "title": {
+      "es": "Río Yuma",
+      "en": "Yuma River"
+    },
+    "wikidata": "Q8061044",
+    "stage": "10A2",
+    "reason": "thin_source",
+    "detail": "La fuente disponible es breve, inespecífica o redirige a un índice; no permite dos frases útiles verificadas sobre esta entidad.",
+    "previousSources": [
+      {
+        "url": "https://www.wikidata.org/w/api.php?action=wbgetentities&ids=Q6793592%7CQ6898286%7CQ6904743%7CQ6906955%7CQ6974727%7CQ7065415%7CQ7118299%7CQ7126925%7CQ7139633%7CQ7227322%7CQ7231088%7CQ7231259%7CQ7258505%7CQ7301193%7CQ7395869%7CQ7455871%7CQ7510378%7CQ7553040%7CQ7579920%7CQ7691935%7CQ7723001%7CQ8061044%7CQ8462033%7CQ9046796%7CQ9055961%7CQ64866728%7CQ65069863%7CQ65123094%7CQ65123142%7CQ65276412%7CQ108141536%7CQ108807777%7CQ110754843%7CQ23779196%7CQ23779385%7CQ60967713%7CQ62620342%7CQ63071056%7CQ63565816%7CQ139380449&props=labels%7Cdescriptions%7Caliases%7Cclaims%7Csitelinks&languages=es%7Cen&format=json",
+        "editor": "Wikidata contributors · entity API",
+        "checkedAt": "2026-11-11",
+        "httpStatus": 200
+      }
+    ]
+  },
+  {
+    "key": "catedral-nuestra-senora-de-regla",
+    "title": {
+      "es": "Catedral Nuestra Señora de Regla",
+      "en": "Cathedral of Our Lady of the Rule"
+    },
+    "wikidata": "Q122222880",
+    "stage": "10A2",
+    "reason": "thin_source",
+    "detail": "La fuente disponible es breve, inespecífica o redirige a un índice; no permite dos frases útiles verificadas sobre esta entidad.",
+    "previousSources": [
+      {
+        "url": "https://www.wikidata.org/w/api.php?action=wbgetentities&ids=Q139997043%7CQ139997044%7CQ140136741%7CQ119688126%7CQ121177100%7CQ121177569%7CQ121215198%7CQ121743571%7CQ122222880%7CQ123048464%7CQ123048468%7CQ123048480%7CQ123651741%7CQ123693015%7CQ123764073%7CQ136101810%7CQ136457449%7CQ136748242%7CQ141340825%7CQ141610750%7CQ141950913%7CQ142093994%7CQ1247%7CQ1321%7CQ25277%7CQ34765%7CQ34820%7CQ40508%7CQ42090%7CQ42763%7CQ48245%7CQ62790%7CQ24238501%7CQ24663964%7CQ24717239%7CQ24936584%7CQ25061038%7CQ25404685%7CQ25406051%7CQ25421569&props=labels%7Cdescriptions%7Caliases%7Cclaims%7Csitelinks&languages=es%7Cen&format=json",
+        "editor": "Wikidata contributors · entity API",
+        "checkedAt": "2026-11-11",
+        "httpStatus": 200
+      }
+    ]
+  },
+  {
+    "key": "catedral-san-juan-bautista",
+    "title": {
+      "es": "Catedral San Juan Bautista",
+      "en": "Cathedral of St. John the Baptist"
+    },
+    "wikidata": "Q123048464",
+    "stage": "10A2",
+    "reason": "thin_source",
+    "detail": "La fuente disponible es breve, inespecífica o redirige a un índice; no permite dos frases útiles verificadas sobre esta entidad.",
+    "previousSources": [
+      {
+        "url": "https://www.wikidata.org/w/api.php?action=wbgetentities&ids=Q139997043%7CQ139997044%7CQ140136741%7CQ119688126%7CQ121177100%7CQ121177569%7CQ121215198%7CQ121743571%7CQ122222880%7CQ123048464%7CQ123048468%7CQ123048480%7CQ123651741%7CQ123693015%7CQ123764073%7CQ136101810%7CQ136457449%7CQ136748242%7CQ141340825%7CQ141610750%7CQ141950913%7CQ142093994%7CQ1247%7CQ1321%7CQ25277%7CQ34765%7CQ34820%7CQ40508%7CQ42090%7CQ42763%7CQ48245%7CQ62790%7CQ24238501%7CQ24663964%7CQ24717239%7CQ24936584%7CQ25061038%7CQ25404685%7CQ25406051%7CQ25421569&props=labels%7Cdescriptions%7Caliases%7Cclaims%7Csitelinks&languages=es%7Cen&format=json",
+        "editor": "Wikidata contributors · entity API",
+        "checkedAt": "2026-11-11",
+        "httpStatus": 200
+      }
+    ]
+  },
+  {
+    "key": "catedral-santa-ana",
+    "title": {
+      "es": "Catedral Santa Ana",
+      "en": "Cathedral of St. Ann"
+    },
+    "wikidata": "Q123048480",
+    "stage": "10A2",
+    "reason": "thin_source",
+    "detail": "La fuente disponible es breve, inespecífica o redirige a un índice; no permite dos frases útiles verificadas sobre esta entidad.",
+    "previousSources": [
+      {
+        "url": "https://www.wikidata.org/w/api.php?action=wbgetentities&ids=Q139997043%7CQ139997044%7CQ140136741%7CQ119688126%7CQ121177100%7CQ121177569%7CQ121215198%7CQ121743571%7CQ122222880%7CQ123048464%7CQ123048468%7CQ123048480%7CQ123651741%7CQ123693015%7CQ123764073%7CQ136101810%7CQ136457449%7CQ136748242%7CQ141340825%7CQ141610750%7CQ141950913%7CQ142093994%7CQ1247%7CQ1321%7CQ25277%7CQ34765%7CQ34820%7CQ40508%7CQ42090%7CQ42763%7CQ48245%7CQ62790%7CQ24238501%7CQ24663964%7CQ24717239%7CQ24936584%7CQ25061038%7CQ25404685%7CQ25406051%7CQ25421569&props=labels%7Cdescriptions%7Caliases%7Cclaims%7Csitelinks&languages=es%7Cen&format=json",
+        "editor": "Wikidata contributors · entity API",
+        "checkedAt": "2026-11-11",
+        "httpStatus": 200
+      }
+    ]
+  },
+  {
+    "key": "sinagoga-de-santo-domingo",
+    "title": {
+      "es": "Sinagoga de Santo Domingo",
+      "en": "Centro Israelita de República Dominicana"
+    },
+    "wikidata": "Q5062847",
+    "stage": "10A2",
+    "reason": "thin_source",
+    "detail": "La fuente disponible es breve, inespecífica o redirige a un índice; no permite dos frases útiles verificadas sobre esta entidad.",
+    "previousSources": [
+      {
+        "url": "https://www.wikidata.org/w/api.php?action=wbgetentities&ids=Q2983646%7CQ3088651%7CQ3236933%7CQ3247924%7CQ3291594%7CQ3305377%7CQ3306488%7CQ3346061%7CQ3444032%7CQ3649225%7CQ3651189%7CQ3687664%7CQ4653218%7CQ4688316%7CQ4708408%7CQ4842570%7CQ4868419%7CQ4868422%7CQ4872123%7CQ4936128%7CQ5062847%7CQ5062863%7CQ5062928%7CQ5205991%7CQ5290808%7CQ5290887%7CQ5290891%7CQ5304337%7CQ5858765%7CQ5908446%7CQ5908594%7CQ5912738%7CQ5964855%7CQ5969340%7CQ5970349%7CQ5994389%7CQ6038750%7CQ6041446%7CQ6062972%7CQ6062992&props=labels%7Cdescriptions%7Caliases%7Cclaims%7Csitelinks&languages=es%7Cen&format=json",
+        "editor": "Wikidata contributors · entity API",
+        "checkedAt": "2026-11-11",
+        "httpStatus": 200
+      }
+    ]
+  },
+  {
+    "key": "rio-higuamo",
+    "title": {
+      "es": "Río Higuamo",
+      "en": "Higuamo River"
+    },
+    "wikidata": "Q5994389",
+    "stage": "10A2",
+    "reason": "thin_source",
+    "detail": "La fuente disponible es breve, inespecífica o redirige a un índice; no permite dos frases útiles verificadas sobre esta entidad.",
+    "previousSources": [
+      {
+        "url": "https://www.wikidata.org/w/api.php?action=wbgetentities&ids=Q2983646%7CQ3088651%7CQ3236933%7CQ3247924%7CQ3291594%7CQ3305377%7CQ3306488%7CQ3346061%7CQ3444032%7CQ3649225%7CQ3651189%7CQ3687664%7CQ4653218%7CQ4688316%7CQ4708408%7CQ4842570%7CQ4868419%7CQ4868422%7CQ4872123%7CQ4936128%7CQ5062847%7CQ5062863%7CQ5062928%7CQ5205991%7CQ5290808%7CQ5290887%7CQ5290891%7CQ5304337%7CQ5858765%7CQ5908446%7CQ5908594%7CQ5912738%7CQ5964855%7CQ5969340%7CQ5970349%7CQ5994389%7CQ6038750%7CQ6041446%7CQ6062972%7CQ6062992&props=labels%7Cdescriptions%7Caliases%7Cclaims%7Csitelinks&languages=es%7Cen&format=json",
+        "editor": "Wikidata contributors · entity API",
+        "checkedAt": "2026-11-11",
+        "httpStatus": 200
+      }
+    ]
+  },
+  {
+    "key": "rio-baiguate",
+    "title": {
+      "es": "Río Baiguate",
+      "en": "Baiguate"
+    },
+    "wikidata": "Q23779385",
+    "stage": "10A2",
+    "reason": "thin_source",
+    "detail": "La fuente disponible es breve, inespecífica o redirige a un índice; no permite dos frases útiles verificadas sobre esta entidad.",
+    "previousSources": [
+      {
+        "url": "https://www.wikidata.org/w/api.php?action=wbgetentities&ids=Q6793592%7CQ6898286%7CQ6904743%7CQ6906955%7CQ6974727%7CQ7065415%7CQ7118299%7CQ7126925%7CQ7139633%7CQ7227322%7CQ7231088%7CQ7231259%7CQ7258505%7CQ7301193%7CQ7395869%7CQ7455871%7CQ7510378%7CQ7553040%7CQ7579920%7CQ7691935%7CQ7723001%7CQ8061044%7CQ8462033%7CQ9046796%7CQ9055961%7CQ64866728%7CQ65069863%7CQ65123094%7CQ65123142%7CQ65276412%7CQ108141536%7CQ108807777%7CQ110754843%7CQ23779196%7CQ23779385%7CQ60967713%7CQ62620342%7CQ63071056%7CQ63565816%7CQ139380449&props=labels%7Cdescriptions%7Caliases%7Cclaims%7Csitelinks&languages=es%7Cen&format=json",
+        "editor": "Wikidata contributors · entity API",
+        "checkedAt": "2026-11-11",
+        "httpStatus": 200
+      }
+    ]
+  },
+  {
+    "key": "casa-de-la-moneda",
+    "title": {
+      "es": "Casa de la Moneda",
+      "en": "Casa de la Moneda"
+    },
+    "wikidata": "Q106936978",
+    "stage": "10A2",
+    "reason": "thin_source",
+    "detail": "La fuente disponible es breve, inespecífica o redirige a un índice; no permite dos frases útiles verificadas sobre esta entidad.",
+    "previousSources": [
+      {
+        "url": "https://www.wikidata.org/w/api.php?action=wbgetentities&ids=Q100507890%7CQ104184947%7CQ106921160%7CQ106921205%7CQ106936978%7CQ106959367%7CQ106959591%7CQ106959726%7CQ106959788%7CQ106959814%7CQ106959858%7CQ106959875%7CQ106959925%7CQ106960254%7CQ107040881%7CQ107041036%7CQ107041447%7CQ107043982%7CQ107044033%7CQ123906931%7CQ125071301%7CQ125071518%7CQ125072226%7CQ125072833%7CQ125081397%7CQ125131312%7CQ125131946%7CQ125131988%7CQ125469279%7CQ133838226%7CQ135109080%7CQ135193263%7CQ135494553%7CQ115430915&props=labels%7Cdescriptions%7Caliases%7Cclaims%7Csitelinks&languages=es%7Cen&format=json",
+        "editor": "Wikidata contributors · entity API",
+        "checkedAt": "2026-11-11",
+        "httpStatus": 200
+      }
+    ]
+  },
+  {
+    "key": "iglesia-nuestra-senora-de-la-altagracia",
+    "title": {
+      "es": "iglesia Nuestra Señora de la Altagracia",
+      "en": "Nuestra Señora de la Altagracia church"
+    },
+    "wikidata": "Q106959591",
+    "stage": "10A2",
+    "reason": "thin_source",
+    "detail": "La fuente disponible es breve, inespecífica o redirige a un índice; no permite dos frases útiles verificadas sobre esta entidad.",
+    "previousSources": [
+      {
+        "url": "https://www.wikidata.org/w/api.php?action=wbgetentities&ids=Q100507890%7CQ104184947%7CQ106921160%7CQ106921205%7CQ106936978%7CQ106959367%7CQ106959591%7CQ106959726%7CQ106959788%7CQ106959814%7CQ106959858%7CQ106959875%7CQ106959925%7CQ106960254%7CQ107040881%7CQ107041036%7CQ107041447%7CQ107043982%7CQ107044033%7CQ123906931%7CQ125071301%7CQ125071518%7CQ125072226%7CQ125072833%7CQ125081397%7CQ125131312%7CQ125131946%7CQ125131988%7CQ125469279%7CQ133838226%7CQ135109080%7CQ135193263%7CQ135494553%7CQ115430915&props=labels%7Cdescriptions%7Caliases%7Cclaims%7Csitelinks&languages=es%7Cen&format=json",
+        "editor": "Wikidata contributors · entity API",
+        "checkedAt": "2026-11-11",
+        "httpStatus": 200
+      }
+    ]
+  },
+  {
+    "key": "casa-del-pudin",
+    "title": {
+      "es": "Casa del Pudín",
+      "en": "Casa del Pudín"
+    },
+    "wikidata": "Q106959726",
+    "stage": "10A2",
+    "reason": "thin_source",
+    "detail": "La fuente disponible es breve, inespecífica o redirige a un índice; no permite dos frases útiles verificadas sobre esta entidad.",
+    "previousSources": [
+      {
+        "url": "https://www.wikidata.org/w/api.php?action=wbgetentities&ids=Q100507890%7CQ104184947%7CQ106921160%7CQ106921205%7CQ106936978%7CQ106959367%7CQ106959591%7CQ106959726%7CQ106959788%7CQ106959814%7CQ106959858%7CQ106959875%7CQ106959925%7CQ106960254%7CQ107040881%7CQ107041036%7CQ107041447%7CQ107043982%7CQ107044033%7CQ123906931%7CQ125071301%7CQ125071518%7CQ125072226%7CQ125072833%7CQ125081397%7CQ125131312%7CQ125131946%7CQ125131988%7CQ125469279%7CQ133838226%7CQ135109080%7CQ135193263%7CQ135494553%7CQ115430915&props=labels%7Cdescriptions%7Caliases%7Cclaims%7Csitelinks&languages=es%7Cen&format=json",
+        "editor": "Wikidata contributors · entity API",
+        "checkedAt": "2026-11-11",
+        "httpStatus": 200
+      }
+    ]
+  },
+  {
+    "key": "edificio-savinon",
+    "title": {
+      "es": "Edificio Saviñón",
+      "en": "Edificio Saviñón"
+    },
+    "wikidata": "Q106959788",
+    "stage": "10A2",
+    "reason": "thin_source",
+    "detail": "La fuente disponible es breve, inespecífica o redirige a un índice; no permite dos frases útiles verificadas sobre esta entidad.",
+    "previousSources": [
+      {
+        "url": "https://www.wikidata.org/w/api.php?action=wbgetentities&ids=Q100507890%7CQ104184947%7CQ106921160%7CQ106921205%7CQ106936978%7CQ106959367%7CQ106959591%7CQ106959726%7CQ106959788%7CQ106959814%7CQ106959858%7CQ106959875%7CQ106959925%7CQ106960254%7CQ107040881%7CQ107041036%7CQ107041447%7CQ107043982%7CQ107044033%7CQ123906931%7CQ125071301%7CQ125071518%7CQ125072226%7CQ125072833%7CQ125081397%7CQ125131312%7CQ125131946%7CQ125131988%7CQ125469279%7CQ133838226%7CQ135109080%7CQ135193263%7CQ135494553%7CQ115430915&props=labels%7Cdescriptions%7Caliases%7Cclaims%7Csitelinks&languages=es%7Cen&format=json",
+        "editor": "Wikidata contributors · entity API",
+        "checkedAt": "2026-11-11",
+        "httpStatus": 200
+      }
+    ]
+  },
+  {
+    "key": "edificio-diez",
+    "title": {
+      "es": "Edificio Diez",
+      "en": "Edificio Diez"
+    },
+    "wikidata": "Q106959814",
+    "stage": "10A2",
+    "reason": "thin_source",
+    "detail": "La fuente disponible es breve, inespecífica o redirige a un índice; no permite dos frases útiles verificadas sobre esta entidad.",
+    "previousSources": [
+      {
+        "url": "https://www.wikidata.org/w/api.php?action=wbgetentities&ids=Q100507890%7CQ104184947%7CQ106921160%7CQ106921205%7CQ106936978%7CQ106959367%7CQ106959591%7CQ106959726%7CQ106959788%7CQ106959814%7CQ106959858%7CQ106959875%7CQ106959925%7CQ106960254%7CQ107040881%7CQ107041036%7CQ107041447%7CQ107043982%7CQ107044033%7CQ123906931%7CQ125071301%7CQ125071518%7CQ125072226%7CQ125072833%7CQ125081397%7CQ125131312%7CQ125131946%7CQ125131988%7CQ125469279%7CQ133838226%7CQ135109080%7CQ135193263%7CQ135494553%7CQ115430915&props=labels%7Cdescriptions%7Caliases%7Cclaims%7Csitelinks&languages=es%7Cen&format=json",
+        "editor": "Wikidata contributors · entity API",
+        "checkedAt": "2026-11-11",
+        "httpStatus": 200
+      }
+    ]
+  },
+  {
+    "key": "edificio-baquero",
+    "title": {
+      "es": "Edificio Baquero",
+      "en": "Edificio Baquero"
+    },
+    "wikidata": "Q106959858",
+    "stage": "10A2",
+    "reason": "thin_source",
+    "detail": "La fuente disponible es breve, inespecífica o redirige a un índice; no permite dos frases útiles verificadas sobre esta entidad.",
+    "previousSources": [
+      {
+        "url": "https://www.wikidata.org/w/api.php?action=wbgetentities&ids=Q100507890%7CQ104184947%7CQ106921160%7CQ106921205%7CQ106936978%7CQ106959367%7CQ106959591%7CQ106959726%7CQ106959788%7CQ106959814%7CQ106959858%7CQ106959875%7CQ106959925%7CQ106960254%7CQ107040881%7CQ107041036%7CQ107041447%7CQ107043982%7CQ107044033%7CQ123906931%7CQ125071301%7CQ125071518%7CQ125072226%7CQ125072833%7CQ125081397%7CQ125131312%7CQ125131946%7CQ125131988%7CQ125469279%7CQ133838226%7CQ135109080%7CQ135193263%7CQ135494553%7CQ115430915&props=labels%7Cdescriptions%7Caliases%7Cclaims%7Csitelinks&languages=es%7Cen&format=json",
+        "editor": "Wikidata contributors · entity API",
+        "checkedAt": "2026-11-11",
+        "httpStatus": 200
+      }
+    ]
+  },
+  {
+    "key": "edificio-cerame",
+    "title": {
+      "es": "Edificio Cerame",
+      "en": "Edificio Cerame"
+    },
+    "wikidata": "Q106959875",
+    "stage": "10A2",
+    "reason": "thin_source",
+    "detail": "La fuente disponible es breve, inespecífica o redirige a un índice; no permite dos frases útiles verificadas sobre esta entidad.",
+    "previousSources": [
+      {
+        "url": "https://www.wikidata.org/w/api.php?action=wbgetentities&ids=Q100507890%7CQ104184947%7CQ106921160%7CQ106921205%7CQ106936978%7CQ106959367%7CQ106959591%7CQ106959726%7CQ106959788%7CQ106959814%7CQ106959858%7CQ106959875%7CQ106959925%7CQ106960254%7CQ107040881%7CQ107041036%7CQ107041447%7CQ107043982%7CQ107044033%7CQ123906931%7CQ125071301%7CQ125071518%7CQ125072226%7CQ125072833%7CQ125081397%7CQ125131312%7CQ125131946%7CQ125131988%7CQ125469279%7CQ133838226%7CQ135109080%7CQ135193263%7CQ135494553%7CQ115430915&props=labels%7Cdescriptions%7Caliases%7Cclaims%7Csitelinks&languages=es%7Cen&format=json",
+        "editor": "Wikidata contributors · entity API",
+        "checkedAt": "2026-11-11",
+        "httpStatus": 200
+      }
+    ]
+  },
+  {
+    "key": "edificio-elmudesi",
+    "title": {
+      "es": "Edificio Elmúdesi",
+      "en": "Edificio Elmúdesi"
+    },
+    "wikidata": "Q106959925",
+    "stage": "10A2",
+    "reason": "thin_source",
+    "detail": "La fuente disponible es breve, inespecífica o redirige a un índice; no permite dos frases útiles verificadas sobre esta entidad.",
+    "previousSources": [
+      {
+        "url": "https://www.wikidata.org/w/api.php?action=wbgetentities&ids=Q100507890%7CQ104184947%7CQ106921160%7CQ106921205%7CQ106936978%7CQ106959367%7CQ106959591%7CQ106959726%7CQ106959788%7CQ106959814%7CQ106959858%7CQ106959875%7CQ106959925%7CQ106960254%7CQ107040881%7CQ107041036%7CQ107041447%7CQ107043982%7CQ107044033%7CQ123906931%7CQ125071301%7CQ125071518%7CQ125072226%7CQ125072833%7CQ125081397%7CQ125131312%7CQ125131946%7CQ125131988%7CQ125469279%7CQ133838226%7CQ135109080%7CQ135193263%7CQ135494553%7CQ115430915&props=labels%7Cdescriptions%7Caliases%7Cclaims%7Csitelinks&languages=es%7Cen&format=json",
+        "editor": "Wikidata contributors · entity API",
+        "checkedAt": "2026-11-11",
+        "httpStatus": 200
+      }
+    ]
+  },
+  {
+    "key": "palacio-consistorial",
+    "title": {
+      "es": "Palacio Consistorial",
+      "en": "Palacio Consistorial"
+    },
+    "wikidata": "Q107041036",
+    "stage": "10A2",
+    "reason": "thin_source",
+    "detail": "La fuente disponible es breve, inespecífica o redirige a un índice; no permite dos frases útiles verificadas sobre esta entidad.",
+    "previousSources": [
+      {
+        "url": "https://www.wikidata.org/w/api.php?action=wbgetentities&ids=Q100507890%7CQ104184947%7CQ106921160%7CQ106921205%7CQ106936978%7CQ106959367%7CQ106959591%7CQ106959726%7CQ106959788%7CQ106959814%7CQ106959858%7CQ106959875%7CQ106959925%7CQ106960254%7CQ107040881%7CQ107041036%7CQ107041447%7CQ107043982%7CQ107044033%7CQ123906931%7CQ125071301%7CQ125071518%7CQ125072226%7CQ125072833%7CQ125081397%7CQ125131312%7CQ125131946%7CQ125131988%7CQ125469279%7CQ133838226%7CQ135109080%7CQ135193263%7CQ135494553%7CQ115430915&props=labels%7Cdescriptions%7Caliases%7Cclaims%7Csitelinks&languages=es%7Cen&format=json",
+        "editor": "Wikidata contributors · entity API",
+        "checkedAt": "2026-11-11",
+        "httpStatus": 200
+      }
+    ]
+  },
+  {
+    "key": "puerta-de-las-atarazanas-reales",
+    "title": {
+      "es": "Puerta de las Atarazanas Reales",
+      "en": "Puerta de las Atarazanas Reales"
+    },
+    "wikidata": "Q107041447",
+    "stage": "10A2",
+    "reason": "thin_source",
+    "detail": "La fuente disponible es breve, inespecífica o redirige a un índice; no permite dos frases útiles verificadas sobre esta entidad.",
+    "previousSources": [
+      {
+        "url": "https://www.wikidata.org/w/api.php?action=wbgetentities&ids=Q100507890%7CQ104184947%7CQ106921160%7CQ106921205%7CQ106936978%7CQ106959367%7CQ106959591%7CQ106959726%7CQ106959788%7CQ106959814%7CQ106959858%7CQ106959875%7CQ106959925%7CQ106960254%7CQ107040881%7CQ107041036%7CQ107041447%7CQ107043982%7CQ107044033%7CQ123906931%7CQ125071301%7CQ125071518%7CQ125072226%7CQ125072833%7CQ125081397%7CQ125131312%7CQ125131946%7CQ125131988%7CQ125469279%7CQ133838226%7CQ135109080%7CQ135193263%7CQ135494553%7CQ115430915&props=labels%7Cdescriptions%7Caliases%7Cclaims%7Csitelinks&languages=es%7Cen&format=json",
+        "editor": "Wikidata contributors · entity API",
+        "checkedAt": "2026-11-11",
+        "httpStatus": 200
+      }
+    ]
+  },
+  {
+    "key": "capilla-de-nuestra-senora-de-los-remedios",
+    "title": {
+      "es": "Capilla de Nuestra Señora de los Remedios",
+      "en": "Capilla de Nuestra Señora de los Remedios"
+    },
+    "wikidata": "Q107043982",
+    "stage": "10A2",
+    "reason": "thin_source",
+    "detail": "La fuente disponible es breve, inespecífica o redirige a un índice; no permite dos frases útiles verificadas sobre esta entidad.",
+    "previousSources": [
+      {
+        "url": "https://www.wikidata.org/w/api.php?action=wbgetentities&ids=Q100507890%7CQ104184947%7CQ106921160%7CQ106921205%7CQ106936978%7CQ106959367%7CQ106959591%7CQ106959726%7CQ106959788%7CQ106959814%7CQ106959858%7CQ106959875%7CQ106959925%7CQ106960254%7CQ107040881%7CQ107041036%7CQ107041447%7CQ107043982%7CQ107044033%7CQ123906931%7CQ125071301%7CQ125071518%7CQ125072226%7CQ125072833%7CQ125081397%7CQ125131312%7CQ125131946%7CQ125131988%7CQ125469279%7CQ133838226%7CQ135109080%7CQ135193263%7CQ135494553%7CQ115430915&props=labels%7Cdescriptions%7Caliases%7Cclaims%7Csitelinks&languages=es%7Cen&format=json",
+        "editor": "Wikidata contributors · entity API",
+        "checkedAt": "2026-11-11",
+        "httpStatus": 200
+      }
+    ]
+  },
+  {
+    "key": "obelisco-de-santo-domingo",
+    "title": {
+      "es": "Obelisco de Santo Domingo",
+      "en": "Santo Domingo Obelisk"
+    },
+    "wikidata": "Q115430915",
+    "stage": "10A2",
+    "reason": "thin_source",
+    "detail": "La fuente disponible es breve, inespecífica o redirige a un índice; no permite dos frases útiles verificadas sobre esta entidad.",
+    "previousSources": [
+      {
+        "url": "https://www.wikidata.org/w/api.php?action=wbgetentities&ids=Q100507890%7CQ104184947%7CQ106921160%7CQ106921205%7CQ106936978%7CQ106959367%7CQ106959591%7CQ106959726%7CQ106959788%7CQ106959814%7CQ106959858%7CQ106959875%7CQ106959925%7CQ106960254%7CQ107040881%7CQ107041036%7CQ107041447%7CQ107043982%7CQ107044033%7CQ123906931%7CQ125071301%7CQ125071518%7CQ125072226%7CQ125072833%7CQ125081397%7CQ125131312%7CQ125131946%7CQ125131988%7CQ125469279%7CQ133838226%7CQ135109080%7CQ135193263%7CQ135494553%7CQ115430915&props=labels%7Cdescriptions%7Caliases%7Cclaims%7Csitelinks&languages=es%7Cen&format=json",
+        "editor": "Wikidata contributors · entity API",
+        "checkedAt": "2026-11-11",
+        "httpStatus": 200
+      }
+    ]
+  },
+  {
+    "key": "playa-arena-gorda",
+    "title": {
+      "es": "Playa Arena Gorda",
+      "en": "Arena Gorda Beach"
+    },
+    "wikidata": "Q125071301",
+    "stage": "10A2",
+    "reason": "thin_source",
+    "detail": "La fuente disponible es breve, inespecífica o redirige a un índice; no permite dos frases útiles verificadas sobre esta entidad.",
+    "previousSources": [
+      {
+        "url": "https://www.wikidata.org/w/api.php?action=wbgetentities&ids=Q100507890%7CQ104184947%7CQ106921160%7CQ106921205%7CQ106936978%7CQ106959367%7CQ106959591%7CQ106959726%7CQ106959788%7CQ106959814%7CQ106959858%7CQ106959875%7CQ106959925%7CQ106960254%7CQ107040881%7CQ107041036%7CQ107041447%7CQ107043982%7CQ107044033%7CQ123906931%7CQ125071301%7CQ125071518%7CQ125072226%7CQ125072833%7CQ125081397%7CQ125131312%7CQ125131946%7CQ125131988%7CQ125469279%7CQ133838226%7CQ135109080%7CQ135193263%7CQ135494553%7CQ115430915&props=labels%7Cdescriptions%7Caliases%7Cclaims%7Csitelinks&languages=es%7Cen&format=json",
+        "editor": "Wikidata contributors · entity API",
+        "checkedAt": "2026-11-11",
+        "httpStatus": 200
+      }
+    ]
+  },
+  {
+    "key": "image-playa-san-rafael-uruguay",
+    "stage": "10A2",
+    "reason": "wrong_location",
+    "detail": "Playa San Rafael.jpg corresponde a Punta del Este, Maldonado, Uruguay; no se utiliza en el catálogo dominicano."
+  }
+]

@@ -1,0 +1,62 @@
+[
+  {
+    "from": "provincia-de-la-vega",
+    "to": "la-vega",
+    "reason": "Ciudad y provincia homónimas: conservar una ficha de destino."
+  },
+  {
+    "from": "provincia-de-puerto-plata",
+    "to": "puerto-plata",
+    "reason": "Ciudad y provincia homónimas: conservar una ficha de destino."
+  },
+  {
+    "from": "provincia-de-azua",
+    "to": "municipio-de-azua",
+    "reason": "Ciudad y provincia homónimas: conservar una ficha de destino."
+  },
+  {
+    "from": "provincia-de-samana",
+    "to": "samana",
+    "reason": "Ciudad y provincia homónimas: conservar una ficha de destino."
+  },
+  {
+    "from": "provincia-de-pedernales",
+    "to": "pedernales",
+    "reason": "Ciudad y provincia homónimas: conservar una ficha de destino."
+  },
+  {
+    "from": "provincia-de-san-pedro-de-macoris",
+    "to": "san-pedro-de-macoris",
+    "reason": "Ciudad y provincia homónimas: conservar una ficha de destino."
+  },
+  {
+    "from": "provincia-de-san-jose-de-ocoa",
+    "to": "san-jose-de-ocoa",
+    "reason": "Ciudad y provincia homónimas: conservar una ficha de destino."
+  },
+  {
+    "from": "provincia-de-san-juan",
+    "to": "san-juan",
+    "reason": "Ciudad y provincia homónimas: conservar una ficha de destino."
+  },
+  {
+    "from": "provincia-de-san-cristobal",
+    "to": "san-cristobal",
+    "reason": "Ciudad y provincia homónimas: conservar una ficha de destino."
+  },
+  {
+    "from": "provincia-de-hato-mayor",
+    "to": "hato-mayor",
+    "reason": "Ciudad y provincia homónimas: conservar una ficha de destino."
+  },
+  {
+    "from": "provincia-de-monte-cristi",
+    "to": "monte-cristi",
+    "reason": "Ciudad y provincia homónimas: conservar una ficha de destino."
+  },
+  {
+    "from": "provincia-de-dajabon",
+    "to": "dajabon",
+    "reason": "Ciudad y provincia homónimas: conservar una ficha de destino."
+  }
+]

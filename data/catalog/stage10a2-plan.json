@@ -1,0 +1,1059 @@
+[
+  {
+    "key": "cordillera-central",
+    "lang": "en",
+    "title": "Cordillera Central, Dominican Republic"
+  },
+  {
+    "key": "banco-de-la-plata",
+    "lang": "en",
+    "title": "Silver Bank"
+  },
+  {
+    "key": "san-cristobal",
+    "lang": "en",
+    "title": "San Cristóbal, Dominican Republic"
+  },
+  {
+    "key": "altos-chavon",
+    "lang": "en",
+    "title": "Altos de Chavón"
+  },
+  {
+    "key": "cabarete",
+    "lang": "en",
+    "title": "Cabarete"
+  },
+  {
+    "key": "isla-catalina",
+    "lang": "en",
+    "title": "Catalina Island (Dominican Republic)"
+  },
+  {
+    "key": "la-vega",
+    "lang": "en",
+    "title": "La Vega, Dominican Republic"
+  },
+  {
+    "key": "samana",
+    "lang": "en",
+    "title": "Samaná (town)"
+  },
+  {
+    "key": "parque-nacional-cotubanama",
+    "lang": "en",
+    "title": "Cotubanamá National Park"
+  },
+  {
+    "key": "alcazar-de-colon",
+    "lang": "en",
+    "title": "Alcázar de Colón"
+  },
+  {
+    "key": "san-pedro-de-macoris",
+    "lang": "en",
+    "title": "San Pedro de Macorís"
+  },
+  {
+    "key": "estadio-olimpico-felix-sanchez",
+    "lang": "en",
+    "title": "Estadio Olímpico Félix Sánchez"
+  },
+  {
+    "key": "rio-yaque-del-norte",
+    "lang": "en",
+    "title": "Yaque del Norte River"
+  },
+  {
+    "key": "boca-chica",
+    "lang": "en",
+    "title": "Boca Chica"
+  },
+  {
+    "key": "puerta-de-la-misericordia-santo-domingo",
+    "lang": "es"
+  },
+  {
+    "key": "cementerio-de-la-avenida-independencia",
+    "lang": "es",
+    "title": "Cementerio de la Avenida Independencia"
+  },
+  {
+    "key": "parque-nacional-submarino-la-caleta",
+    "lang": "en",
+    "title": "Parque Nacional Submarino La Caleta"
+  },
+  {
+    "key": "rio-jimenoa",
+    "lang": "es",
+    "title": "Río Jimenoa"
+  },
+  {
+    "key": "rio-chavon",
+    "lang": "en",
+    "title": "Chavón River"
+  },
+  {
+    "key": "palacio-nacional",
+    "lang": "en",
+    "title": "National Palace (Dominican Republic)"
+  },
+  {
+    "key": "rio-yaque-del-sur",
+    "lang": "en",
+    "title": "Yaque del Sur River"
+  },
+  {
+    "key": "constanza-republica-dominicana",
+    "lang": "en",
+    "title": "Constanza, Dominican Republic"
+  },
+  {
+    "key": "san-francisco-de-macoris",
+    "lang": "en",
+    "title": "San Francisco de Macorís"
+  },
+  {
+    "key": "valle-nuevo",
+    "lang": "en",
+    "title": "Valle Nuevo National Park"
+  },
+  {
+    "key": "mangu",
+    "lang": "en",
+    "title": "Mangú"
+  },
+  {
+    "key": "sancocho",
+    "lang": "en",
+    "title": "Sancocho"
+  },
+  {
+    "key": "chicharron",
+    "lang": "en",
+    "title": "Chicharrón"
+  },
+  {
+    "key": "habichuelas-con-dulce",
+    "lang": "en",
+    "title": "Habichuelas con dulce"
+  },
+  {
+    "key": "tostones",
+    "lang": "en",
+    "title": "Tostones"
+  },
+  {
+    "key": "mofongo",
+    "lang": "en",
+    "title": "Mofongo"
+  },
+  {
+    "key": "casabe",
+    "lang": "en",
+    "title": "Casabe"
+  },
+  {
+    "key": "moro-de-guandules",
+    "lang": "en",
+    "title": "Moro de guandules"
+  },
+  {
+    "key": "dulce-de-leche",
+    "lang": "en",
+    "title": "Dulce de leche"
+  },
+  {
+    "key": "bahia-de-las-aguilas",
+    "lang": "en",
+    "title": "Bahía de las Águilas"
+  },
+  {
+    "key": "catedral-primada-de-america",
+    "lang": "en",
+    "title": "Cathedral of Santo Domingo"
+  },
+  {
+    "key": "basilica-catedral-y-santuario-nacional-de-nuestra-senora-de-la-altagracia",
+    "lang": "en",
+    "title": "Basilica-Cathedral of Our Lady of Altagracia"
+  },
+  {
+    "key": "centro-olimpico-juan-pablo-duarte",
+    "lang": "en",
+    "title": "Centro Olímpico Juan Pablo Duarte"
+  },
+  {
+    "key": "jardin-botanico-nacional-de-santo-domingo",
+    "lang": "en",
+    "title": "Dr. Rafael Ma. Moscoso National Botanical Garden"
+  },
+  {
+    "key": "hospital-san-nicolas-de-bari",
+    "lang": "en",
+    "title": "Hospital San Nicolás de Bari"
+  },
+  {
+    "key": "iglesia-del-convento-dominico-santo-domingo-de-guzman",
+    "lang": "es",
+    "title": "Iglesia y Convento de los Dominicos (Santo Domingo)"
+  },
+  {
+    "key": "reserva-cientifica-natural-lagunas-redonda-y-limon",
+    "lang": "es",
+    "title": "Reserva científica natural lagunas Redonda y Limón"
+  },
+  {
+    "key": "locrio",
+    "lang": "en",
+    "title": "Locrio"
+  },
+  {
+    "key": "pastelon",
+    "lang": "en",
+    "title": "Pastelón"
+  },
+  {
+    "key": "chimichurri-dominicano",
+    "lang": "en",
+    "title": "Chimichurri burger"
+  },
+  {
+    "key": "gastronomia-dominicana",
+    "lang": "en",
+    "title": "Dominican Republic cuisine"
+  },
+  {
+    "key": "merengue",
+    "lang": "en",
+    "title": "Merengue music"
+  },
+  {
+    "key": "bachata",
+    "lang": "en",
+    "title": "Bachata (music)"
+  },
+  {
+    "key": "merengue-tipico",
+    "lang": "en",
+    "title": "Merengue típico"
+  },
+  {
+    "key": "guira",
+    "lang": "en",
+    "title": "Güira"
+  },
+  {
+    "key": "tambora-dominicana",
+    "lang": "en",
+    "title": "Tambora (Dominican drum)"
+  },
+  {
+    "key": "parque-nacional-cueva-de-las-maravillas",
+    "lang": "en",
+    "title": "Cueva de las Maravillas National Park"
+  },
+  {
+    "key": "parque-nacional-isla-cabritos",
+    "lang": "es",
+    "title": "Parque nacional lago Enriquillo e isla Cabritos"
+  },
+  {
+    "key": "plaza-de-la-bandera",
+    "lang": "en",
+    "title": "Flag Square of Santo Domingo"
+  },
+  {
+    "key": "santa-cruz-de-barahona",
+    "lang": "en",
+    "title": "Barahona, Dominican Republic"
+  },
+  {
+    "key": "higuey",
+    "lang": "en",
+    "title": "Higüey"
+  },
+  {
+    "key": "salcedo",
+    "lang": "en",
+    "title": "Salcedo, Dominican Republic"
+  },
+  {
+    "key": "cocolo",
+    "lang": "en",
+    "title": "Cocolo"
+  },
+  {
+    "key": "independencia-dominicana",
+    "lang": "en",
+    "title": "Dominican War of Independence"
+  },
+  {
+    "key": "restauracion-dominicana",
+    "lang": "en",
+    "title": "Dominican Restoration War"
+  },
+  {
+    "key": "tradicion-de-la-altagracia",
+    "lang": "en",
+    "title": "Our Lady of Altagracia"
+  },
+  {
+    "key": "beisbol-dominicano",
+    "lang": "en",
+    "title": "Baseball in the Dominican Republic"
+  },
+  {
+    "key": "lidom",
+    "lang": "en",
+    "title": "Dominican Professional Baseball League"
+  },
+  {
+    "key": "larimar",
+    "lang": "en",
+    "title": "Larimar"
+  },
+  {
+    "key": "ambar",
+    "lang": "en",
+    "title": "Dominican amber"
+  },
+  {
+    "key": "bayahibe",
+    "lang": "en",
+    "title": "Bayahíbe"
+  },
+  {
+    "key": "moca",
+    "lang": "en",
+    "title": "Moca, Dominican Republic"
+  },
+  {
+    "key": "playa-encuentro",
+    "lang": "en",
+    "title": "Encuentro Beach"
+  },
+  {
+    "key": "isla-saona",
+    "lang": "en",
+    "title": "Saona Island"
+  },
+  {
+    "key": "cotorra-de-la-espanola",
+    "lang": "en",
+    "title": "Hispaniolan amazon"
+  },
+  {
+    "key": "solenodonte-de-la-espanola",
+    "lang": "en",
+    "title": "Hispaniolan solenodon"
+  },
+  {
+    "key": "priotelus-roseigaster",
+    "lang": "en",
+    "title": "Hispaniolan trogon"
+  },
+  {
+    "key": "todus-subulatus",
+    "lang": "en",
+    "title": "Broad-billed tody"
+  },
+  {
+    "key": "melanerpes-striatus",
+    "lang": "en",
+    "title": "Hispaniolan woodpecker"
+  },
+  {
+    "key": "aratinga-de-la-espanola",
+    "lang": "en",
+    "title": "Hispaniolan parakeet"
+  },
+  {
+    "key": "canal-de-la-mona",
+    "lang": "en",
+    "title": "Mona Passage"
+  },
+  {
+    "key": "la-isabela",
+    "lang": "en",
+    "title": "La Isabela"
+  },
+  {
+    "key": "punta-cana",
+    "lang": "en",
+    "title": "Punta Cana"
+  },
+  {
+    "key": "templo-de-santo-domingo",
+    "lang": "en",
+    "title": "Santo Domingo Dominican Republic Temple"
+  },
+  {
+    "key": "laguna-de-oviedo",
+    "lang": "en",
+    "title": "Lago de Oviedo"
+  },
+  {
+    "key": "sabana-de-la-mar",
+    "lang": "en",
+    "title": "Sabana de la Mar"
+  },
+  {
+    "key": "salto-el-limon",
+    "lang": "es"
+  },
+  {
+    "key": "playa-rincon",
+    "lang": "es",
+    "title": "Playa Rincón"
+  },
+  {
+    "key": "playa-punta-rucia",
+    "lang": "es"
+  },
+  {
+    "key": "laguna-salada-q23762354",
+    "lang": "es"
+  },
+  {
+    "key": "cyclura-cornuta",
+    "lang": "en",
+    "title": "Rhinoceros iguana"
+  },
+  {
+    "key": "cyclura-ricordii",
+    "lang": "en",
+    "title": "Cyclura ricordii"
+  },
+  {
+    "key": "pinus-occidentalis",
+    "lang": "en",
+    "title": "Pinus occidentalis"
+  },
+  {
+    "key": "leuenbergeria-quisqueyana",
+    "lang": "en",
+    "title": "Leuenbergeria quisqueyana"
+  },
+  {
+    "key": "playa-madama",
+    "lang": "es"
+  },
+  {
+    "key": "rio-maimon",
+    "lang": "es"
+  },
+  {
+    "key": "salto-de-jimenoa-uno",
+    "lang": "es"
+  },
+  {
+    "key": "playa-dorada",
+    "lang": "es",
+    "title": "Playa Dorada (Puerto Plata)"
+  },
+  {
+    "key": "playa-bonita",
+    "lang": "es"
+  },
+  {
+    "key": "las-caritas",
+    "lang": "en",
+    "title": "Las Caritas"
+  },
+  {
+    "key": "museo-del-hombre-dominicano",
+    "lang": "es",
+    "title": "Museo del Hombre Dominicano"
+  },
+  {
+    "key": "catedral-inmaculada-concepcion",
+    "lang": "en",
+    "title": "Immaculate Conception Cathedral, La Vega"
+  },
+  {
+    "key": "archivo-general-de-la-nacion",
+    "lang": "en",
+    "title": "Archivo General de la Nación de República Dominicana"
+  },
+  {
+    "key": "gran-teatro-del-cibao",
+    "lang": "es",
+    "title": "Gran Teatro del Cibao"
+  },
+  {
+    "key": "swietenia-mahagoni",
+    "lang": "en",
+    "title": "Swietenia mahagoni"
+  },
+  {
+    "key": "haitises",
+    "lang": "en",
+    "title": "Los Haitises National Park"
+  },
+  {
+    "key": "centro-cultural-eduardo-leon-jimenes",
+    "lang": "es",
+    "title": "Centro Cultural Eduardo León Jimenes"
+  },
+  {
+    "key": "las-terrenas",
+    "lang": "en",
+    "title": "Las Terrenas"
+  },
+  {
+    "key": "municipio-de-azua",
+    "lang": "en",
+    "title": "Azua, Dominican Republic"
+  },
+  {
+    "key": "rio-yuna",
+    "lang": "en",
+    "title": "Yuna River"
+  },
+  {
+    "key": "bani",
+    "lang": "en",
+    "title": "Baní"
+  },
+  {
+    "key": "dajabon",
+    "lang": "en",
+    "title": "Dajabón"
+  },
+  {
+    "key": "baluarte-del-conde",
+    "lang": "en",
+    "title": "Puerta del Conde"
+  },
+  {
+    "key": "bahia-de-samana",
+    "lang": "en",
+    "title": "Samaná Bay"
+  },
+  {
+    "key": "san-jose-de-ocoa",
+    "lang": "en",
+    "title": "San José de Ocoa"
+  },
+  {
+    "key": "monte-cristi",
+    "lang": "en",
+    "title": "Monte Cristi, Dominican Republic"
+  },
+  {
+    "key": "altar-de-la-patria",
+    "lang": "en",
+    "title": "Altar de la Patria"
+  },
+  {
+    "key": "peninsula-de-samana",
+    "lang": "en",
+    "title": "Samaná Peninsula"
+  },
+  {
+    "key": "sierra-de-neiba",
+    "lang": "es",
+    "title": "Sierra de Neiba"
+  },
+  {
+    "key": "nagua",
+    "lang": "en",
+    "title": "Nagua"
+  },
+  {
+    "key": "sierra-de-bahoruco",
+    "lang": "en",
+    "title": "Baoruco Mountain Range"
+  },
+  {
+    "key": "hato-mayor",
+    "lang": "en",
+    "title": "Hato Mayor del Rey"
+  },
+  {
+    "key": "san-juan",
+    "lang": "en",
+    "title": "San Juan de la Maguana"
+  },
+  {
+    "key": "ciudad-colonial",
+    "lang": "en",
+    "title": "Ciudad Colonial (Santo Domingo)"
+  },
+  {
+    "key": "fortaleza-ozama",
+    "lang": "en",
+    "title": "Fortaleza Ozama"
+  },
+  {
+    "key": "pedernales",
+    "lang": "en",
+    "title": "Pedernales, Dominican Republic"
+  },
+  {
+    "key": "estadio-julian-javier",
+    "lang": "en",
+    "title": "Estadio Julian Javier"
+  },
+  {
+    "key": "estadio-quisqueya-juan-marichal",
+    "lang": "en",
+    "title": "Estadio Quisqueya Juan Marichal"
+  },
+  {
+    "key": "estadio-tetelo-vargas",
+    "lang": "en",
+    "title": "Estadio Tetelo Vargas"
+  },
+  {
+    "key": "fortaleza-de-san-felipe",
+    "lang": "en",
+    "title": "Fortaleza San Felipe"
+  },
+  {
+    "key": "fortaleza-san-luis",
+    "lang": "en",
+    "title": "Fortaleza San Luis"
+  },
+  {
+    "key": "casa-del-cordon",
+    "lang": "es",
+    "title": "Casa del Cordón (Santo Domingo)"
+  },
+  {
+    "key": "rio-jayaco",
+    "lang": "en",
+    "title": "Jayaco River"
+  },
+  {
+    "key": "monasterio-de-san-francisco",
+    "lang": "en",
+    "title": "Monastery of San Francisco, Santo Domingo"
+  },
+  {
+    "key": "parque-nacional-monte-cristi",
+    "lang": "en",
+    "title": "Monte Cristi National Park"
+  },
+  {
+    "key": "monumento-de-santiago",
+    "lang": "en",
+    "title": "Monumento de Santiago"
+  },
+  {
+    "key": "panteon-de-la-patria",
+    "lang": "en",
+    "title": "National Pantheon of the Dominican Republic"
+  },
+  {
+    "key": "casona-de-palave",
+    "lang": "en",
+    "title": "Palavé"
+  },
+  {
+    "key": "parque-colon-santo-domingo",
+    "lang": "en",
+    "title": "Parque Colón"
+  },
+  {
+    "key": "reales-atarazanas-de-santo-domingo",
+    "lang": "en",
+    "title": "Atarazanas Reales, Santo Domingo"
+  },
+  {
+    "key": "congos",
+    "lang": "en",
+    "title": "Congos of Villa Mella"
+  },
+  {
+    "key": "ballenas",
+    "lang": "en",
+    "title": "Humpback whale"
+  },
+  {
+    "key": "carnaval",
+    "lang": "es"
+  },
+  {
+    "key": "rio-soco",
+    "lang": "en",
+    "title": "Soco River"
+  },
+  {
+    "key": "teatro-nacional-eduardo-brito",
+    "lang": "en",
+    "title": "Eduardo Brito National Theater"
+  },
+  {
+    "key": "rio-yuma",
+    "lang": "en",
+    "title": "Yuma River (Dominican Republic)"
+  },
+  {
+    "key": "museo-casa-duarte",
+    "lang": "es",
+    "title": "Museo Casa Duarte"
+  },
+  {
+    "key": "parque-nacional-jaragua",
+    "lang": "en",
+    "title": "Jaragua National Park"
+  },
+  {
+    "key": "la-vega-vieja",
+    "lang": "es"
+  },
+  {
+    "key": "rio-el-limon",
+    "lang": "es",
+    "title": "Río El Limón (Samaná)"
+  },
+  {
+    "key": "quipe-y-kibbeh",
+    "lang": "en",
+    "title": "Kibbeh"
+  },
+  {
+    "key": "cocodrilo-de-tumbes",
+    "lang": "en",
+    "title": "American crocodile"
+  },
+  {
+    "key": "parque-nacional-sierra-de-bahoruco",
+    "lang": "en",
+    "title": "Sierra de Bahoruco National Park"
+  },
+  {
+    "key": "catedral-nuestra-senora-de-regla",
+    "lang": "es"
+  },
+  {
+    "key": "catedral-san-juan-bautista",
+    "lang": "es"
+  },
+  {
+    "key": "catedral-san-pedro-apostol",
+    "lang": "es"
+  },
+  {
+    "key": "catedral-santa-ana",
+    "lang": "es"
+  },
+  {
+    "key": "hoyo-azul",
+    "lang": "es"
+  },
+  {
+    "key": "la-espanola",
+    "lang": "en",
+    "title": "Hispaniola"
+  },
+  {
+    "key": "las-galeras",
+    "lang": "en",
+    "title": "Las Galeras"
+  },
+  {
+    "key": "monte-plata",
+    "lang": "en",
+    "title": "Monte Plata"
+  },
+  {
+    "key": "cotui",
+    "lang": "en",
+    "title": "Cotuí"
+  },
+  {
+    "key": "neiba",
+    "lang": "en",
+    "title": "Neiba"
+  },
+  {
+    "key": "san-jose-de-las-matas",
+    "lang": "en",
+    "title": "San José de las Matas"
+  },
+  {
+    "key": "la-romana",
+    "lang": "en",
+    "title": "La Romana, Dominican Republic"
+  },
+  {
+    "key": "santiago-de-los-caballeros",
+    "lang": "en",
+    "title": "Santiago de los Caballeros"
+  },
+  {
+    "key": "monumento-natural-lagunas-cabarete-y-goleta",
+    "lang": "es",
+    "title": "Monumento Natural Lagunas Cabarete y Goleta"
+  },
+  {
+    "key": "playa-macao",
+    "lang": "en",
+    "title": "Macao Beach"
+  },
+  {
+    "key": "parque-mirador-sur-santo-domingo",
+    "lang": "es"
+  },
+  {
+    "key": "catedral-de-santiago-apostol-santiago-de-los-caballeros",
+    "lang": "en",
+    "title": "St. James the Apostle Cathedral, Santiago de los Caballeros"
+  },
+  {
+    "key": "catedral-de-san-felipe-apostol-puerto-plata",
+    "lang": "en",
+    "title": "St. Philip the Apostle Cathedral, Puerto Plata"
+  },
+  {
+    "key": "museo-nacional-de-historia-natural-prof-eugenio-de-jesus-marcano",
+    "lang": "es",
+    "title": "Museo Nacional de Historia Natural Prof. Eugenio de Jesús Marcano"
+  },
+  {
+    "key": "catedral-castrense-santa-barbara",
+    "lang": "es",
+    "title": "Catedral castrense Santa Bárbara"
+  },
+  {
+    "key": "pico-duarte",
+    "lang": "en",
+    "title": "Pico Duarte"
+  },
+  {
+    "key": "museo-memorial-de-la-resistencia-dominicana",
+    "lang": "en",
+    "title": "Memorial Museum of Dominican Resistance"
+  },
+  {
+    "key": "puente-matias-ramon-mella",
+    "lang": "es",
+    "title": "Puente Ramón Matías Mella"
+  },
+  {
+    "key": "faro-a-colon",
+    "lang": "en",
+    "title": "Columbus Lighthouse"
+  },
+  {
+    "key": "sinagoga-de-santo-domingo",
+    "lang": "en",
+    "title": "Centro Israelita de República Dominicana"
+  },
+  {
+    "key": "rio-higuamo",
+    "lang": "en",
+    "title": "Iguamo River"
+  },
+  {
+    "key": "puerto-plata",
+    "lang": "en",
+    "title": "Puerto Plata"
+  },
+  {
+    "key": "jarabacoa",
+    "lang": "en",
+    "title": "Jarabacoa"
+  },
+  {
+    "key": "metro-de-santo-domingo",
+    "lang": "en",
+    "title": "Santo Domingo Metro"
+  },
+  {
+    "key": "lago-enriquillo",
+    "lang": "en",
+    "title": "Lake Enriquillo"
+  },
+  {
+    "key": "cayo-levantado",
+    "lang": "en",
+    "title": "Cayo Levantado"
+  },
+  {
+    "key": "jiguey-dam",
+    "lang": "en",
+    "title": "Jigüey Dam"
+  },
+  {
+    "key": "museo-de-las-casas-reales",
+    "lang": "en",
+    "title": "Museo de las Casas Reales"
+  },
+  {
+    "key": "bonao",
+    "lang": "en",
+    "title": "Bonao"
+  },
+  {
+    "key": "cordillera-oriental",
+    "lang": "es",
+    "title": "Cordillera Oriental (República Dominicana)"
+  },
+  {
+    "key": "estadio-cibao",
+    "lang": "en",
+    "title": "Estadio Cibao"
+  },
+  {
+    "key": "puente-mauricio-baez",
+    "lang": "en",
+    "title": "Mauricio Báez Bridge"
+  },
+  {
+    "key": "puente-juan-bosch",
+    "lang": "en",
+    "title": "Juan Bosch Bridge"
+  },
+  {
+    "key": "rio-baiguate",
+    "lang": "es"
+  },
+  {
+    "key": "teleferico-de-santo-domingo",
+    "lang": "en",
+    "title": "Santo Domingo cable car"
+  },
+  {
+    "key": "isla-beata",
+    "lang": "en",
+    "title": "Beata Island"
+  },
+  {
+    "key": "santo-domingo",
+    "lang": "en",
+    "title": "Santo Domingo"
+  },
+  {
+    "key": "puente-juan-pablo-duarte",
+    "lang": "en",
+    "title": "Duarte Bridge"
+  },
+  {
+    "key": "museo-de-ambar",
+    "lang": "es"
+  },
+  {
+    "key": "plaza-de-espana",
+    "lang": "en",
+    "title": "Plaza de España (Santo Domingo)"
+  },
+  {
+    "key": "museo-de-las-atarazanas-reales",
+    "lang": "es"
+  },
+  {
+    "key": "playa-alicia",
+    "lang": "es"
+  },
+  {
+    "key": "playa-sosua",
+    "lang": "es"
+  },
+  {
+    "key": "casa-de-la-moneda",
+    "lang": "es"
+  },
+  {
+    "key": "iglesia-nuestra-senora-de-la-altagracia",
+    "lang": "es"
+  },
+  {
+    "key": "casa-del-pudin",
+    "lang": "es"
+  },
+  {
+    "key": "edificio-savinon",
+    "lang": "es"
+  },
+  {
+    "key": "edificio-diez",
+    "lang": "es"
+  },
+  {
+    "key": "edificio-baquero",
+    "lang": "es"
+  },
+  {
+    "key": "edificio-cerame",
+    "lang": "es"
+  },
+  {
+    "key": "edificio-elmudesi",
+    "lang": "es"
+  },
+  {
+    "key": "casa-de-tostado",
+    "lang": "es"
+  },
+  {
+    "key": "palacio-consistorial",
+    "lang": "es"
+  },
+  {
+    "key": "puerta-de-las-atarazanas-reales",
+    "lang": "es"
+  },
+  {
+    "key": "capilla-de-nuestra-senora-de-los-remedios",
+    "lang": "es"
+  },
+  {
+    "key": "iglesia-regina-angelorum",
+    "lang": "es"
+  },
+  {
+    "key": "obelisco-de-santo-domingo",
+    "lang": "es"
+  },
+  {
+    "key": "playa-arena-gorda",
+    "lang": "es"
+  },
+  {
+    "key": "27-charcos-de-damajagua",
+    "lang": "es"
+  },
+  {
+    "key": "playa-fronton",
+    "lang": "es"
+  },
+  {
+    "key": "playa-cabarete",
+    "lang": "es"
+  },
+  {
+    "key": "playa-coson",
+    "lang": "es"
+  },
+  {
+    "key": "playa-bayahibe",
+    "lang": "es"
+  },
+  {
+    "key": "laguna-el-dudu",
+    "lang": "es"
+  },
+  {
+    "key": "playa-bavaro",
+    "lang": "es"
+  },
+  {
+    "key": "cigua-palmera",
+    "lang": "en",
+    "title": "Palmchat"
+  },
+  {
+    "key": "dunas-de-bani",
+    "lang": "es",
+    "title": "Dunas de Baní"
+  },
+  {
+    "key": "luperon",
+    "lang": "en",
+    "title": "Luperón, Dominican Republic"
+  }
+]

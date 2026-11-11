@@ -1,0 +1,1275 @@
+[
+  [
+    "juan-pablo-duarte",
+    "person",
+    "Juan Pablo Duarte",
+    "Juan Pablo Duarte",
+    null,
+    "Ámbito nacional",
+    "Retrato histórico, no fotografía contemporánea."
+  ],
+  [
+    "francisco-del-rosario-sanchez",
+    "person",
+    "Francisco del Rosario Sánchez",
+    "Francisco del Rosario Sánchez",
+    null,
+    "Ámbito nacional",
+    "Reproducción de retrato histórico, no foto de un lugar."
+  ],
+  [
+    "matias-ramon-mella",
+    "person",
+    "Ramón Matías Mella",
+    "Ramón Matías Mella",
+    null,
+    "Ámbito nacional",
+    "Retrato histórico, no fotografía contemporánea."
+  ],
+  [
+    "gregorio-luperon",
+    "person",
+    "Gregorio Luperón",
+    "Gregorio Luperón",
+    null,
+    "Ámbito nacional",
+    "Retrato histórico."
+  ],
+  [
+    "hermanas-mirabal",
+    "person",
+    "Hermanas Mirabal",
+    "Mirabal sisters",
+    null,
+    "Hermanas Mirabal",
+    "Fotografía histórica."
+  ],
+  [
+    "salome-urena",
+    "person",
+    "Salomé Ureña",
+    "Salomé Ureña",
+    null,
+    "Ámbito nacional",
+    "Retrato histórico."
+  ],
+  [
+    "pedro-henriquez-urena",
+    "person",
+    "Pedro Henríquez Ureña",
+    "Pedro Henríquez Ureña",
+    null,
+    "Ámbito nacional",
+    "Fotografía histórica."
+  ],
+  [
+    "juan-luis-guerra",
+    "person",
+    "Juan Luis Guerra",
+    "Juan Luis Guerra",
+    null,
+    "Ámbito nacional",
+    "Revisar que la imagen corresponde a un evento público."
+  ],
+  [
+    "johnny-ventura",
+    "person",
+    "Johnny Ventura",
+    "Johnny Ventura",
+    null,
+    "Ámbito nacional",
+    "Revisar evento público de la fotografía."
+  ],
+  [
+    "eduardo-brito",
+    "person",
+    "Eduardo Brito",
+    "Eduardo Brito",
+    "teatro-nacional-eduardo-brito",
+    "Ámbito nacional",
+    "Imagen contextual del Teatro Nacional que lleva su nombre; no es un retrato del cantante."
+  ],
+  [
+    "juan-bosch",
+    "person",
+    "Juan Bosch",
+    "Juan Bosch",
+    null,
+    "Ámbito nacional",
+    "Imagen biográfica histórica."
+  ],
+  [
+    "pedro-mir",
+    "person",
+    "Pedro Mir",
+    "Pedro Mir",
+    null,
+    "Ámbito nacional",
+    "Imagen biográfica histórica."
+  ],
+  [
+    "carnaval-santiago",
+    "tradition",
+    "Carnaval de Santiago",
+    "Santiago Carnival",
+    "santiago-de-los-caballeros",
+    "Santiago",
+    "Foto contextual de la ciudad; no muestra el carnaval.",
+    "carnival-reference"
+  ],
+  [
+    "carnaval-bonao",
+    "tradition",
+    "Carnaval de Bonao",
+    "Bonao Carnival",
+    "bonao",
+    "Monseñor Nouel",
+    "Foto contextual de Bonao; no muestra la celebración."
+  ],
+  [
+    "carnaval-montecristi",
+    "tradition",
+    "Carnaval de Montecristi",
+    "Montecristi Carnival",
+    "monte-cristi",
+    "Monte Cristi",
+    "Foto histórica contextual de la localidad; no muestra el evento."
+  ],
+  [
+    "carnaval-cabral",
+    "tradition",
+    "Cachúas de Cabral",
+    "Cabral Cachúas",
+    "santa-cruz-de-barahona",
+    "Barahona",
+    "Imagen contextual de la región de Barahona; no retrata los Cachúas."
+  ],
+  [
+    "carnaval-santo-domingo",
+    "tradition",
+    "Desfile de carnaval de Santo Domingo",
+    "Santo Domingo carnival parade",
+    "santo-domingo",
+    "Distrito Nacional",
+    "Foto contextual de Santo Domingo; no muestra el desfile.",
+    "carnival-reference"
+  ],
+  [
+    "carnaval-cotui",
+    "tradition",
+    "Carnaval de Cotuí",
+    "Cotuí Carnival",
+    "cotui",
+    "Sánchez Ramírez",
+    "Foto contextual de Cotuí; no muestra el carnaval.",
+    "cotui"
+  ],
+  [
+    "carnaval-guabay",
+    "tradition",
+    "Carnaval El Guabay",
+    "El Guabay Carnival",
+    "laguna-salada",
+    "Valverde",
+    "Foto contextual de Laguna Salada; no muestra el carnaval.",
+    "patronales-laguna-salada"
+  ],
+  [
+    "carnaval-cimarron",
+    "tradition",
+    "Carnaval Cimarrón de Elías Piña",
+    "Elías Piña Cimarrón Carnival",
+    "comendador",
+    "Elías Piña",
+    "Foto contextual de Comendador; no muestra la celebración.",
+    "patronales-comendador"
+  ],
+  [
+    "gaga-comendador",
+    "tradition",
+    "Gagá de Comendador",
+    "Comendador Gagá",
+    "comendador",
+    "Elías Piña",
+    "Foto contextual de Comendador; no muestra los ritos.",
+    "patronales-comendador"
+  ],
+  [
+    "diablo-cojuelo",
+    "tradition",
+    "Diablo Cojuelo",
+    "Diablo Cojuelo",
+    "carnaval",
+    "La Vega",
+    "Foto contextual del carnaval vegano; revisar personaje visible.",
+    "carnival-reference"
+  ],
+  [
+    "roba-la-gallina",
+    "tradition",
+    "Roba la Gallina",
+    "Roba la Gallina",
+    "carnaval",
+    "Ámbito nacional",
+    "Foto contextual de carnaval; no identifica este personaje.",
+    "carnival-reference"
+  ],
+  [
+    "ciguapa",
+    "tradition",
+    "La Ciguapa",
+    "La Ciguapa",
+    "carnaval",
+    "Ámbito nacional",
+    "Foto contextual de carnaval; no representa literalmente la leyenda.",
+    "carnival-reference"
+  ],
+  [
+    "festival-merengue",
+    "tradition",
+    "Festival del Merengue",
+    "Merengue Festival",
+    "merengue",
+    "Distrito Nacional",
+    "Foto de un desfile público fuera del país; ilustra el baile, no el festival.",
+    "culture-reference"
+  ],
+  [
+    "festival-flores-jarabacoa",
+    "tradition",
+    "Festival de las Flores de Jarabacoa",
+    "Jarabacoa Flower Festival",
+    "jarabacoa",
+    "La Vega",
+    "Foto contextual de Jarabacoa; no muestra la feria.",
+    "jarabacoa"
+  ],
+  [
+    "feria-internacional-del-libro",
+    "tradition",
+    "Feria Internacional del Libro de Santo Domingo",
+    "Santo Domingo International Book Fair",
+    "teatro-nacional-eduardo-brito",
+    "Distrito Nacional",
+    "Foto contextual de la Plaza de la Cultura; no es una fotografía de una edición concreta."
+  ],
+  [
+    "semana-santa-dominicana",
+    "tradition",
+    "Semana Santa dominicana",
+    "Dominican Holy Week",
+    "catedral-primada-de-america",
+    "Ámbito nacional",
+    "Catedral como contexto religioso; no acredita una procesión concreta.",
+    "culture-reference"
+  ],
+  [
+    "fiesta-espiritu-santo-cotui",
+    "tradition",
+    "Fiesta del Espíritu Santo de Cotuí",
+    "Cotuí Holy Spirit festival",
+    "cotui",
+    "Sánchez Ramírez",
+    "Foto contextual de Cotuí; no muestra la fiesta.",
+    "cotui"
+  ],
+  [
+    "velaciones",
+    "tradition",
+    "Velaciones de santos",
+    "Saints’ vigils",
+    "guira",
+    "Ámbito nacional",
+    "Güira como instrumento contextual; no foto de una ceremonia.",
+    "music-reference"
+  ],
+  [
+    "fiestas-patronales",
+    "tradition",
+    "Fiestas patronales dominicanas",
+    "Dominican patron saint festivals",
+    "basilica-catedral-y-santuario-nacional-de-nuestra-senora-de-la-altagracia",
+    "Ámbito nacional",
+    "Basílica como contexto religioso; no muestra todas las patronales.",
+    "patronales-reference"
+  ],
+  [
+    "patronales-laguna-salada",
+    "tradition",
+    "Fiestas de San Antonio en Laguna Salada",
+    "Laguna Salada Saint Anthony festivities",
+    "laguna-salada",
+    "Valverde",
+    "Foto contextual de la localidad; no muestra la fiesta."
+  ],
+  [
+    "fiestas-mercedes-sabaneta",
+    "tradition",
+    "Devoción a Las Mercedes en Sabaneta",
+    "Our Lady of Mercy tradition in Sabaneta",
+    "provincia-de-santiago-rodriguez",
+    "Santiago Rodríguez",
+    "Paisaje provincial como contexto; no retrata la celebración.",
+    "patronales-sabaneta"
+  ],
+  [
+    "feria-sabaneta",
+    "tradition",
+    "Feria tradicional de Sabaneta",
+    "Traditional Sabaneta fair",
+    "provincia-de-santiago-rodriguez",
+    "Santiago Rodríguez",
+    "Paisaje provincial como contexto; no retrata el mercado.",
+    "patronales-sabaneta"
+  ],
+  [
+    "patronales-comendador",
+    "tradition",
+    "Fiestas de Santa Teresa en Comendador",
+    "Comendador Saint Teresa festivities",
+    "comendador",
+    "Elías Piña",
+    "Foto contextual de Comendador; no muestra las patronales."
+  ],
+  [
+    "patronales-monte-plata",
+    "tradition",
+    "Patronales de la Altagracia en Monte Plata",
+    "Monte Plata Altagracia festivities",
+    "monte-plata",
+    "Monte Plata",
+    "Foto contextual de la localidad; no muestra la fiesta."
+  ],
+  [
+    "patronales-san-antonio-monte-plata",
+    "tradition",
+    "Fiestas de San Antonio en Monte Plata",
+    "Monte Plata Saint Anthony festivities",
+    "monte-plata",
+    "Monte Plata",
+    "Foto contextual de la localidad; no muestra la fiesta.",
+    "patronales-monte-plata"
+  ],
+  [
+    "patronales-bonao",
+    "tradition",
+    "Fiestas de San Antonio en Bonao",
+    "Bonao Saint Anthony festivities",
+    "bonao",
+    "Monseñor Nouel",
+    "Foto contextual de Bonao; no muestra las patronales.",
+    "carnaval-bonao"
+  ],
+  [
+    "patronales-cotui",
+    "tradition",
+    "Patronales de la Inmaculada en Cotuí",
+    "Cotuí Immaculate Conception festivities",
+    "cotui",
+    "Sánchez Ramírez",
+    "Foto contextual de Cotuí; no muestra la celebración.",
+    "cotui"
+  ],
+  [
+    "fiesta-carmen-jarabacoa",
+    "tradition",
+    "Fiesta del Carmen en Jarabacoa",
+    "Jarabacoa Our Lady of Mount Carmel feast",
+    "jarabacoa",
+    "La Vega",
+    "Foto contextual de Jarabacoa; no muestra la celebración.",
+    "jarabacoa"
+  ],
+  [
+    "dia-de-la-constitucion",
+    "tradition",
+    "Día de la Constitución dominicana",
+    "Dominican Constitution Day",
+    "san-cristobal",
+    "San Cristóbal",
+    "Foto contextual de San Cristóbal; no muestra una conmemoración."
+  ],
+  [
+    "mamajuana",
+    "food",
+    "Mamajuana",
+    "Mamajuana",
+    null,
+    "Ámbito nacional",
+    "Bebida descrita como tradición, sin recomendación de consumo."
+  ],
+  [
+    "mabi",
+    "food",
+    "Mabí",
+    "Mabí",
+    null,
+    "Ámbito nacional",
+    "Botellas de maví puertorriqueño; imagen ilustrativa de la bebida caribeña, no de una receta dominicana exacta."
+  ],
+  [
+    "morir-sonando",
+    "food",
+    "Morir soñando",
+    "Morir soñando",
+    "ingredient-orange-juice",
+    "Ámbito nacional",
+    "Imagen de jugo de naranja: ingrediente ilustrativo; no es fotografía del preparado."
+  ],
+  [
+    "catibias",
+    "food",
+    "Catibías",
+    "Catibías",
+    "ingredient-yuca",
+    "Ámbito nacional",
+    "Foto ilustrativa de la yuca, ingrediente de la masa; no muestra empanadas terminadas."
+  ],
+  [
+    "majarete",
+    "food",
+    "Majarete",
+    "Majarete",
+    null,
+    "Ámbito nacional",
+    "Foto ilustrativa de una variante caribeña de majarete."
+  ],
+  [
+    "longaniza",
+    "food",
+    "Longaniza",
+    "Longaniza",
+    null,
+    "Ámbito nacional",
+    "Foto ilustrativa de longaniza durante el ahumado; sin atribuirla a una receta dominicana específica."
+  ],
+  [
+    "bizcocho-dominicano",
+    "food",
+    "Bizcocho dominicano",
+    "Dominican cake",
+    null,
+    "Ámbito nacional",
+    "Foto de bizcocho dominicano."
+  ],
+  [
+    "asopao",
+    "food",
+    "Asopao",
+    "Asopao",
+    null,
+    "Ámbito nacional",
+    "Foto ilustrativa de esta familia de guisos caribeños."
+  ],
+  [
+    "pastelitos",
+    "food",
+    "Pastelitos y empanadas",
+    "Pastelitos and empanadas",
+    null,
+    "Ámbito nacional",
+    "La foto muestra empanadas argentinas horneadas; ilustra la familia, no una receta dominicana exacta."
+  ],
+  [
+    "dulce-de-coco",
+    "food",
+    "Dulce de coco",
+    "Coconut sweets",
+    null,
+    "Ámbito nacional",
+    "Foto ilustrativa de una cocada brasileña; no acredita origen dominicano del ejemplar."
+  ],
+  [
+    "yaniqueque",
+    "food",
+    "Yaniqueque",
+    "Yaniqueque",
+    "boca-chica",
+    "Ámbito nacional",
+    "Foto contextual de Boca Chica, donde se asocia a la comida de playa; no muestra el alimento."
+  ],
+  [
+    "cafe-dominicano",
+    "food",
+    "Café dominicano",
+    "Dominican coffee",
+    "ingredient-coffee",
+    "Ámbito nacional",
+    "Granos tostados como imagen ilustrativa; no acredita finca ni procedencia dominicana de esos granos."
+  ],
+  [
+    "jugo-de-chinola",
+    "food",
+    "Jugo de chinola",
+    "Passion fruit juice",
+    null,
+    "Ámbito nacional",
+    "Foto ilustrativa del jugo de esta fruta; no acredita receta ni procedencia dominicana.",
+    "cuisine-reference"
+  ],
+  [
+    "arepa-dominicana",
+    "food",
+    "Arepa dominicana",
+    "Dominican cornmeal cake",
+    "ingredient-corn",
+    "Ámbito nacional",
+    "Foto ilustrativa de harina de maíz, ingrediente del pastel; no muestra la arepa terminada.",
+    "cuisine-reference"
+  ],
+  [
+    "jalao",
+    "food",
+    "Jalao",
+    "Jalao",
+    "ingredient-coconut",
+    "Ámbito nacional",
+    "Foto ilustrativa de coco rallado; no muestra el dulce terminado.",
+    "cuisine-reference"
+  ],
+  [
+    "arepitas-yuca",
+    "food",
+    "Arepitas de yuca",
+    "Cassava fritters",
+    "ingredient-yuca",
+    "Ámbito nacional",
+    "Foto ilustrativa de yuca, ingrediente principal.",
+    "cuisine-reference"
+  ],
+  [
+    "chulitos",
+    "food",
+    "Chulitos",
+    "Chulitos",
+    "ingredient-yuca",
+    "Ámbito nacional",
+    "Foto ilustrativa de yuca, ingrediente de la masa; no muestra el preparado.",
+    "cuisine-reference"
+  ],
+  [
+    "moro-habichuelas",
+    "food",
+    "Moro de habichuelas",
+    "Rice and beans moro",
+    "ingredient-rice",
+    "Ámbito nacional",
+    "Foto ilustrativa de arroz; no muestra el moro terminado.",
+    "cuisine-reference"
+  ],
+  [
+    "concon",
+    "food",
+    "Concón",
+    "Concón rice crust",
+    "ingredient-rice",
+    "Ámbito nacional",
+    "Foto ilustrativa de arroz; no representa la costra de concón.",
+    "cuisine-reference"
+  ],
+  [
+    "arroz-con-leche",
+    "food",
+    "Arroz con leche",
+    "Rice pudding",
+    "ingredient-rice",
+    "Ámbito nacional",
+    "Foto ilustrativa de arroz, no del postre terminado.",
+    "cuisine-reference"
+  ],
+  [
+    "pasteles-en-hoja",
+    "food",
+    "Pasteles en hoja",
+    "Leaf-wrapped pasteles",
+    "ingredient-yuca",
+    "Ámbito nacional",
+    "Foto de un ingrediente de la masa; no muestra el pastel terminado.",
+    "cuisine-reference"
+  ],
+  [
+    "ron-dominicano",
+    "food",
+    "Ron dominicano",
+    "Dominican rum",
+    null,
+    "Ámbito nacional",
+    "La fotografía debe mostrar ron dominicano; descartar la selección guatemalteca."
+  ],
+  [
+    "pica-pollo",
+    "food",
+    "Pica pollo",
+    "Dominican fried chicken",
+    "chicharron",
+    "Ámbito nacional",
+    "Sustituir imagen provisional; la foto de chicharrón de cerdo no es válida.",
+    "cuisine-reference"
+  ],
+  [
+    "guandules-con-coco",
+    "food",
+    "Guandules con coco",
+    "Pigeon peas in coconut milk",
+    "ingredient-coconut",
+    "Ámbito nacional",
+    "Foto ilustrativa de coco, ingrediente de la preparación.",
+    "cuisine-reference"
+  ],
+  [
+    "palos-dominicanos",
+    "music",
+    "Palos o atabales",
+    "Dominican palo music",
+    "tambora-dominicana",
+    "Ámbito nacional",
+    "Tambora como contexto de percusión dominicana; no es un palo largo.",
+    "music-reference"
+  ],
+  [
+    "salves",
+    "music",
+    "Salves dominicanas",
+    "Dominican salves",
+    "guira",
+    "Ámbito nacional",
+    "Güira como instrumento de acompañamiento; no representa una ceremonia.",
+    "music-reference"
+  ],
+  [
+    "dembow-dominicano",
+    "music",
+    "Dembow dominicano",
+    "Dominican dembow",
+    "santo-domingo",
+    "Ámbito nacional",
+    "Paisaje urbano como contexto cultural; no representa un concierto.",
+    "music-reference"
+  ],
+  [
+    "son-dominicano",
+    "music",
+    "Son dominicano",
+    "Dominican son",
+    null,
+    "Ámbito nacional",
+    "La fotografía histórica muestra un conjunto cubano; revisar relación contextual del género."
+  ],
+  [
+    "acordeon",
+    "music",
+    "Acordeón",
+    "Accordion",
+    null,
+    "Ámbito nacional",
+    "Muestra dos tipos de acordeón; no implica que ambos pertenezcan al conjunto típico dominicano."
+  ],
+  [
+    "bolero",
+    "music",
+    "Bolero",
+    "Bolero",
+    null,
+    "Ámbito nacional",
+    "Fotografía histórica ilustrativa del género, sin atribuir nacionalidad dominicana al conjunto."
+  ],
+  [
+    "rock-dominicano",
+    "music",
+    "Rock dominicano",
+    "Dominican rock",
+    "santo-domingo",
+    "Ámbito nacional",
+    "Foto urbana contextual; no muestra una banda."
+  ],
+  [
+    "hip-hop-dominicano",
+    "music",
+    "Hip-hop dominicano",
+    "Dominican hip-hop",
+    "santo-domingo",
+    "Ámbito nacional",
+    "Foto urbana contextual, no de un concierto.",
+    "music-reference"
+  ],
+  [
+    "jazz-dominicano",
+    "music",
+    "Jazz dominicano",
+    "Dominican jazz",
+    "teatro-nacional-eduardo-brito",
+    "Ámbito nacional",
+    "Imagen contextual de una sala artística; no muestra una interpretación de jazz.",
+    "music-reference"
+  ],
+  [
+    "musica-clasica-dominicana",
+    "music",
+    "Música clásica dominicana",
+    "Dominican classical music",
+    "teatro-nacional-eduardo-brito",
+    "Ámbito nacional",
+    "Foto contextual de un recinto dedicado también a música clásica.",
+    "music-reference"
+  ],
+  [
+    "pintura-dominicana",
+    "craft",
+    "Pintura dominicana",
+    "Dominican painting",
+    "museo-del-hombre-dominicano",
+    "Ámbito nacional",
+    "Imagen contextual de un recinto cultural de la Plaza de la Cultura; no reproduce una pintura.",
+    "art-reference"
+  ],
+  [
+    "mascaras-carnaval",
+    "craft",
+    "Máscaras de carnaval dominicanas",
+    "Dominican carnival masks",
+    "carnaval",
+    "Ámbito nacional",
+    "Máscaras y trajes como contexto de elaboración artesanal.",
+    "carnival-reference"
+  ],
+  [
+    "ceramica-taina",
+    "craft",
+    "Cerámica taína",
+    "Taíno pottery",
+    "museo-del-hombre-dominicano",
+    "Ámbito nacional",
+    "Foto contextual del museo que conserva patrimonio taíno; no muestra una pieza específica.",
+    "art-reference"
+  ],
+  [
+    "artesania-miches",
+    "craft",
+    "Artesanía de Miches",
+    "Miches crafts",
+    "reserva-cientifica-natural-lagunas-redonda-y-limon",
+    "El Seibo",
+    "Foto contextual de las lagunas de la región de Miches; no muestra un taller ni una pieza artesanal.",
+    "workshop-miches-reference"
+  ],
+  [
+    "tabaco-santiago",
+    "craft",
+    "Artesanía del tabaco de Santiago",
+    "Santiago cigar craftsmanship",
+    "santiago-de-los-caballeros",
+    "Santiago",
+    "Foto contextual de Santiago; no muestra una fábrica ni promueve el consumo.",
+    "cigar-reference"
+  ],
+  [
+    "playa-grande",
+    "beach",
+    "Playa Grande",
+    "Playa Grande",
+    null,
+    "María Trinidad Sánchez",
+    "Imagen identificada de la entidad; crédito y licencia conservados.",
+    "playa-grande"
+  ],
+  [
+    "playa-san-rafael",
+    "beach",
+    "Playa San Rafael",
+    "San Rafael Beach",
+    null,
+    "Barahona",
+    "Imagen identificada de la entidad; crédito y licencia conservados.",
+    "playa-san-rafael"
+  ],
+  [
+    "playa-los-patos",
+    "beach",
+    "Playa Los Patos",
+    "Los Patos Beach",
+    "laguna-de-oviedo",
+    "Barahona",
+    "Imagen contextual: Laguna de Oviedo; no representa necesariamente el lugar o la actividad exactos.",
+    "playa-los-patos"
+  ],
+  [
+    "playa-minitas",
+    "beach",
+    "Playa Minitas",
+    "Minitas Beach",
+    "isla-catalina",
+    "La Romana",
+    "Imagen contextual: Isla Catalina; no representa necesariamente el lugar o la actividad exactos.",
+    "playa-minitas"
+  ],
+  [
+    "playa-moron",
+    "beach",
+    "Playa Morón",
+    "Morón Beach",
+    null,
+    "Samaná",
+    "Imagen identificada de la entidad; crédito y licencia conservados.",
+    "playa-moron"
+  ],
+  [
+    "playa-el-limon",
+    "beach",
+    "Playa El Limón",
+    "El Limón Beach",
+    "playa-moron",
+    "Samaná",
+    "Imagen contextual: playa-moron; no representa necesariamente el lugar o la actividad exactos.",
+    "playa-el-limon"
+  ],
+  [
+    "playa-dominicus",
+    "beach",
+    "Playa Dominicus",
+    "Dominicus Beach",
+    null,
+    "La Altagracia",
+    "Imagen identificada de la entidad; crédito y licencia conservados.",
+    "playa-dominicus"
+  ],
+  [
+    "playa-juan-dolio",
+    "beach",
+    "Playa Juan Dolio",
+    "Juan Dolio Beach",
+    null,
+    "San Pedro de Macorís",
+    "Imagen identificada de la entidad; crédito y licencia conservados.",
+    "playa-juan-dolio"
+  ],
+  [
+    "playa-las-ballenas",
+    "beach",
+    "Playa Las Ballenas",
+    "Las Ballenas Beach",
+    null,
+    "Samaná",
+    "Imagen identificada de la entidad; crédito y licencia conservados.",
+    "playa-las-ballenas"
+  ],
+  [
+    "playa-cofresi",
+    "beach",
+    "Playa Cofresí",
+    "Cofresí Beach",
+    "playa-dorada",
+    "Puerto Plata",
+    "Imagen contextual: Playa Dorada; no representa necesariamente el lugar o la actividad exactos.",
+    "playa-cofresi"
+  ],
+  [
+    "playa-el-valle",
+    "beach",
+    "Playa El Valle",
+    "El Valle Beach",
+    "playa-rincon",
+    "Samaná",
+    "Imagen contextual: Playa Rincón; no representa necesariamente el lugar o la actividad exactos.",
+    "playa-el-valle"
+  ],
+  [
+    "playa-punta-popy",
+    "beach",
+    "Playa Punta Popy",
+    "Punta Popy Beach",
+    null,
+    "Samaná",
+    "Imagen identificada de la entidad; crédito y licencia conservados.",
+    "playa-punta-popy"
+  ],
+  [
+    "playa-guayacanes",
+    "beach",
+    "Playa Guayacanes",
+    "Guayacanes Beach",
+    "playa-juan-dolio",
+    "San Pedro de Macorís",
+    "Imagen contextual: playa-juan-dolio; no representa necesariamente el lugar o la actividad exactos.",
+    "playa-guayacanes"
+  ],
+  [
+    "playa-punta-cana",
+    "beach",
+    "Playa Punta Cana",
+    "Punta Cana Beach",
+    "playa-bavaro",
+    "La Altagracia",
+    "Imagen contextual: Playa Bávaro; no representa necesariamente el lugar o la actividad exactos.",
+    "playa-punta-cana"
+  ],
+  [
+    "playa-uvero-alto",
+    "beach",
+    "Playa Uvero Alto",
+    "Uvero Alto Beach",
+    null,
+    "La Altagracia",
+    "Imagen identificada de la entidad; crédito y licencia conservados.",
+    "playa-uvero-alto"
+  ],
+  [
+    "playa-bergantin",
+    "beach",
+    "Playa Bergantín",
+    "Bergantín Beach",
+    "playa-dorada",
+    "Puerto Plata",
+    "Imagen contextual: Playa Dorada; no representa necesariamente el lugar o la actividad exactos.",
+    "playa-bergantin"
+  ],
+  [
+    "playa-esmeralda",
+    "beach",
+    "Playa Esmeralda",
+    "Esmeralda Beach",
+    "reserva-cientifica-natural-lagunas-redonda-y-limon",
+    "El Seibo",
+    "Imagen contextual: reserva científica natural lagunas Redonda y Limón; no representa necesariamente el lugar o la actividad exactos.",
+    "playa-esmeralda"
+  ],
+  [
+    "museo-judio-sosua",
+    "museum",
+    "Museo Judío de Sosúa",
+    "Sosúa Jewish Museum",
+    null,
+    "Puerto Plata",
+    "Imagen identificada de la entidad; crédito y licencia conservados.",
+    "museo-judio-sosua"
+  ],
+  [
+    "museo-de-las-ballenas",
+    "museum",
+    "Museo de las Ballenas de Samaná",
+    "Samaná Whale Museum",
+    null,
+    "Samaná",
+    "Imagen identificada de la entidad; crédito y licencia conservados.",
+    "museo-de-las-ballenas"
+  ],
+  [
+    "museo-del-larimar",
+    "museum",
+    "Museo del Larimar",
+    "Larimar Museum",
+    "larimar",
+    "Distrito Nacional",
+    "Imagen contextual: Larimar; no representa necesariamente el lugar o la actividad exactos.",
+    "museo-del-larimar"
+  ],
+  [
+    "casa-de-la-cultura",
+    "museum",
+    "Casa de la Cultura de Puerto Plata",
+    "Puerto Plata House of Culture",
+    "puerto-plata",
+    "Puerto Plata",
+    "Imagen contextual: Puerto Plata; no representa necesariamente el lugar o la actividad exactos.",
+    "casa-de-la-cultura"
+  ],
+  [
+    "museo-gregorio-luperon",
+    "museum",
+    "Museo Gregorio Luperón",
+    "Gregorio Luperón Museum",
+    "gregorio-luperon",
+    "Puerto Plata",
+    "Imagen contextual: Gregorio Luperón; no representa necesariamente el lugar o la actividad exactos.",
+    "museo-gregorio-luperon"
+  ],
+  [
+    "museo-regional-altos-chavon",
+    "museum",
+    "Museo Arqueológico Regional Altos de Chavón",
+    "Altos de Chavón Regional Archaeological Museum",
+    "altos-chavon",
+    "La Romana",
+    "Imagen contextual: Altos de Chavón; no representa necesariamente el lugar o la actividad exactos.",
+    "museo-regional-altos-chavon"
+  ],
+  [
+    "museo-telecomunicaciones",
+    "museum",
+    "Museo de las Telecomunicaciones",
+    "Telecommunications Museum",
+    null,
+    "Distrito Nacional",
+    "Imagen identificada de la entidad; crédito y licencia conservados.",
+    "museo-telecomunicaciones"
+  ],
+  [
+    "museo-infantil-trampolin",
+    "museum",
+    "Museo Infantil Trampolín",
+    "Trampolín Children’s Museum",
+    "ciudad-colonial",
+    "Distrito Nacional",
+    "Imagen contextual: Ciudad Colonial de Santo Domingo; no representa necesariamente el lugar o la actividad exactos.",
+    "museo-infantil-trampolin"
+  ],
+  [
+    "museo-numismatico",
+    "museum",
+    "Museo Numismático y Filatélico",
+    "Numismatic and Philatelic Museum",
+    "santo-domingo",
+    "Distrito Nacional",
+    "Imagen contextual: Santo Domingo; no representa necesariamente el lugar o la actividad exactos.",
+    "museo-numismatico"
+  ],
+  [
+    "parque-armando-bermudez",
+    "nature",
+    "Parque Nacional José Armando Bermúdez",
+    "José Armando Bermúdez National Park",
+    "pico-duarte",
+    "Santiago",
+    "Imagen contextual: Pico Duarte; no representa necesariamente el lugar o la actividad exactos.",
+    "parque-armando-bermudez"
+  ],
+  [
+    "parque-jose-del-carmen-ramirez",
+    "nature",
+    "Parque Nacional José del Carmen Ramírez",
+    "José del Carmen Ramírez National Park",
+    "pico-duarte",
+    "San Juan",
+    "Imagen contextual: Pico Duarte; no representa necesariamente el lugar o la actividad exactos.",
+    "parque-jose-del-carmen-ramirez"
+  ],
+  [
+    "los-tres-ojos",
+    "nature",
+    "Los Tres Ojos",
+    "Los Tres Ojos",
+    null,
+    "Santo Domingo",
+    "Imagen identificada de la entidad; crédito y licencia conservados.",
+    "los-tres-ojos"
+  ],
+  [
+    "laguna-gri-gri",
+    "nature",
+    "Laguna Gri-Gri",
+    "Gri-Gri Lagoon",
+    "laguna-de-oviedo",
+    "María Trinidad Sánchez",
+    "Imagen contextual: Laguna de Oviedo; no representa necesariamente el lugar o la actividad exactos.",
+    "laguna-gri-gri"
+  ],
+  [
+    "hoyo-de-pelempito",
+    "nature",
+    "Hoyo de Pelempito",
+    "Hoyo de Pelempito",
+    null,
+    "Pedernales",
+    "Imagen identificada de la entidad; crédito y licencia conservados.",
+    "hoyo-de-pelempito"
+  ],
+  [
+    "experiencia-ballenas-miches",
+    "experience",
+    "Observación de ballenas desde Miches",
+    "Whale watching from Miches",
+    "ballenas",
+    "El Seibo",
+    "Imagen contextual: Ballenas jorobadas de Samaná; no representa necesariamente el lugar o la actividad exactos.",
+    "humpback-whales-reference"
+  ],
+  [
+    "experiencia-kitesurf-cabarete",
+    "experience",
+    "Kitesurf en Cabarete",
+    "Kitesurfing in Cabarete",
+    "playa-cabarete",
+    "Puerto Plata",
+    "Imagen contextual: Playa Cabarete; no representa necesariamente el lugar o la actividad exactos.",
+    "playa-cabarete"
+  ],
+  [
+    "experiencia-surf-macao",
+    "experience",
+    "Surf en Macao",
+    "Surfing at Macao",
+    "playa-macao",
+    "La Altagracia",
+    "Imagen contextual: Playa Macao; no representa necesariamente el lugar o la actividad exactos.",
+    "surf-macao-reference"
+  ],
+  [
+    "experiencia-surf-encuentro",
+    "experience",
+    "Surf en Encuentro",
+    "Surfing at Encuentro",
+    "playa-encuentro",
+    "Puerto Plata",
+    "Imagen contextual: Playa Encuentro; no representa necesariamente el lugar o la actividad exactos.",
+    "surf-encuentro-reference"
+  ],
+  [
+    "experiencia-buceo-atlantic-princess",
+    "experience",
+    "Buceo en el Atlantic Princess",
+    "Diving at the Atlantic Princess",
+    "bayahibe",
+    "La Altagracia",
+    "Imagen contextual: Bayahíbe; no representa necesariamente el lugar o la actividad exactos.",
+    "atlantic-princess"
+  ],
+  [
+    "experiencia-buceo-airport-wall",
+    "experience",
+    "Buceo en Airport Wall",
+    "Diving at Airport Wall",
+    "playa-sosua",
+    "Puerto Plata",
+    "Imagen contextual: Playa Sosúa; no representa necesariamente el lugar o la actividad exactos.",
+    "airport-wall"
+  ],
+  [
+    "experiencia-buceo-creole-reef",
+    "experience",
+    "Buceo en Creole Reef",
+    "Diving at Creole Reef",
+    "las-terrenas",
+    "Samaná",
+    "Imagen contextual: Las Terrenas; no representa necesariamente el lugar o la actividad exactos.",
+    "creole-reef"
+  ],
+  [
+    "experiencia-sendero-cangrejo",
+    "experience",
+    "Senderismo por el Sendero del Cangrejo",
+    "Hiking the Crab Trail",
+    "monte-cristi",
+    "Monte Cristi",
+    "Imagen contextual: Monte Cristi; no representa necesariamente el lugar o la actividad exactos.",
+    "sendero-del-cangrejo"
+  ],
+  [
+    "experiencia-padre-nuestro",
+    "experience",
+    "Senderismo por Padre Nuestro",
+    "Hiking the Padre Nuestro Trail",
+    "parque-nacional-cotubanama",
+    "La Altagracia",
+    "Imagen contextual: Parque nacional Cotubanamá; no representa necesariamente el lugar o la actividad exactos.",
+    "padre-nuestro-reference"
+  ],
+  [
+    "experiencia-talleres-miches",
+    "experience",
+    "Talleres con artesanos de Miches",
+    "Workshops with Miches artisans",
+    "reserva-cientifica-natural-lagunas-redonda-y-limon",
+    "El Seibo",
+    "Imagen contextual: reserva científica natural lagunas Redonda y Limón; no representa necesariamente el lugar o la actividad exactos.",
+    "workshop-miches-reference"
+  ],
+  [
+    "experiencia-chocolate-punta-cana",
+    "experience",
+    "Elaboración de chocolate en Punta Cana",
+    "Chocolate making in Punta Cana",
+    "punta-cana",
+    "La Altagracia",
+    "Imagen contextual: Punta Cana; no representa necesariamente el lugar o la actividad exactos.",
+    "chocomuseo-reference"
+  ],
+  [
+    "experiencia-ruta-tabaco-santiago",
+    "experience",
+    "Visitas culturales del tabaco en Santiago",
+    "Tobacco heritage visits in Santiago",
+    "santiago-de-los-caballeros",
+    "Santiago",
+    "Imagen contextual: Santiago de los Caballeros; no representa necesariamente el lugar o la actividad exactos.",
+    "cigar-reference"
+  ],
+  [
+    "experiencia-kayak-juanillo",
+    "experience",
+    "Kayak en Juanillo",
+    "Kayaking at Juanillo",
+    "playa-bavaro",
+    "La Altagracia",
+    "Imagen contextual: Playa Bávaro; no representa necesariamente el lugar o la actividad exactos.",
+    "playa-juanillo"
+  ],
+  [
+    "experiencia-arrecife-dominicus",
+    "experience",
+    "Exploración del arrecife de Dominicus",
+    "Exploring the Dominicus reef",
+    "playa-dominicus",
+    "La Altagracia",
+    "Imagen contextual: Playa Dominicus; no representa necesariamente el lugar o la actividad exactos.",
+    "playa-dominicus"
+  ],
+  [
+    "experiencia-cueva-chicho",
+    "experience",
+    "Exploración de la Cueva del Chicho",
+    "Exploring Chicho Cave",
+    "parque-nacional-cotubanama",
+    "La Altagracia",
+    "Imagen contextual: Parque nacional Cotubanamá; no representa necesariamente el lugar o la actividad exactos.",
+    "cueva-del-chicho"
+  ],
+  [
+    "experiencia-cueva-fun-fun",
+    "experience",
+    "Espeleología en Cueva Fun Fun",
+    "Caving at Fun Fun Cave",
+    "haitises",
+    "Hato Mayor",
+    "Imagen contextual: Parque Nacional Los Haitises; no representa necesariamente el lugar o la actividad exactos.",
+    "cueva-fun-fun"
+  ],
+  [
+    "experiencia-canonismo-baiguate",
+    "experience",
+    "Barranquismo en Baiguate",
+    "Canyoning at Baiguate",
+    "rio-jimenoa",
+    "La Vega",
+    "Imagen contextual: Río Jimenoa; no representa necesariamente el lugar o la actividad exactos.",
+    "salto-de-baiguate"
+  ],
+  [
+    "experiencia-paseo-gri-gri",
+    "experience",
+    "Paseo por los manglares de Gri-Gri",
+    "Boating through Gri-Gri mangroves",
+    "laguna-gri-gri",
+    "María Trinidad Sánchez",
+    "Imagen contextual: Laguna Gri-Gri; no representa necesariamente el lugar o la actividad exactos.",
+    "laguna-gri-gri"
+  ],
+  [
+    "experiencia-mirador-pelempito",
+    "experience",
+    "Paisaje de altura en Pelempito",
+    "Highland scenery at Pelempito",
+    "hoyo-de-pelempito",
+    "Pedernales",
+    "Imagen contextual: Hoyo de Pelempito; no representa necesariamente el lugar o la actividad exactos.",
+    "hoyo-de-pelempito"
+  ],
+  [
+    "experiencia-aves-oviedo",
+    "experience",
+    "Observación de aves en Oviedo",
+    "Birdwatching at Oviedo",
+    "laguna-de-oviedo",
+    "Pedernales",
+    "Imagen contextual: Laguna de Oviedo; no representa necesariamente el lugar o la actividad exactos.",
+    "laguna-de-oviedo"
+  ]
+]

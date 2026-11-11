@@ -20,3 +20,6 @@ docs/screenshots/*.png
 docs/screenshots/*-comparison.json
 !docs/screenshots/inicio-390-app.png
 !docs/screenshots/inicio-1440-app.png
+
+# Catalog research cache (raw fetched pages, large; third-party content)
+/data/catalog/evidence/

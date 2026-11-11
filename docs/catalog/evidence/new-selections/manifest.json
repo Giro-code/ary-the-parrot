@@ -1,0 +1,170 @@
+[
+  {
+    "index": 1,
+    "key": "la-vega",
+    "filename": "La vega 01.JPG",
+    "sha256": "3d1697176220aad1d7478c3d65e8e929071871b2369ea7e3c5f56e1e84656bb1"
+  },
+  {
+    "index": 2,
+    "key": "chicharron",
+    "filename": "Chicharrón de Cerdo.jpg",
+    "sha256": "bbccda7a6da8879405b70076b4a9a87fe40c5bd385098447607a665f45f2c3ab"
+  },
+  {
+    "index": 3,
+    "key": "habichuelas-con-dulce",
+    "filename": "Habichuelas con dulce dominicana.jpg",
+    "sha256": "578e67d35c08fa0661b4c4fa0fcf4e0f33bc1002b9246fad97e17d2f5a985967"
+  },
+  {
+    "index": 4,
+    "key": "casabe",
+    "filename": "Pemona realizando casabe.jpg",
+    "sha256": "19a469dda2f23eeca7ce203855d377f4ae2c3072ce39f58b20b3d2154fb3892e"
+  },
+  {
+    "index": 5,
+    "key": "centro-olimpico-juan-pablo-duarte",
+    "filename": "Estadio Olimpico Drone.jpg",
+    "sha256": "2a150be8e552f7ff847b6042d3db12dced4df908db10a8c5b68fb45e28a15d28"
+  },
+  {
+    "index": 6,
+    "key": "chimichurri-dominicano",
+    "filename": "Chimmichurri vendor republica dominicana.jpg",
+    "sha256": "c403cf5c5c6cfcb06ef9c76f8fceddff69eb4d5e694b35fecf84fe0328147bc1"
+  },
+  {
+    "index": 7,
+    "key": "santa-cruz-de-barahona",
+    "filename": "Barahona 71.16445W 18.21020N.jpg",
+    "sha256": "f92e956ded896faa7e20be3c5e2758e8b03def28e01046180c1a51fd2f83ef35"
+  },
+  {
+    "index": 8,
+    "key": "independencia-dominicana",
+    "filename": "Puerta del Conde CCSD 09 2018 1629.jpg",
+    "sha256": "b04a4a394436122c20bc508f2652ae1c95450b579ccfbf3715724f1f4fb61385"
+  },
+  {
+    "index": 9,
+    "key": "restauracion-dominicana",
+    "filename": "Monument to the Heroes of the Restoration1.JPG",
+    "sha256": "ea684b9f3d4555929182d75c147c60e70c472123b7b01d6056ba4b00d3096dca"
+  },
+  {
+    "index": 10,
+    "key": "tradicion-de-la-altagracia",
+    "filename": "BasílicaHigüey.jpg",
+    "sha256": "5ba9de010fcb6b7aa7bd081af1eea053386e2de883198911690adc3bc79a0824"
+  },
+  {
+    "index": 11,
+    "key": "lidom",
+    "filename": "Estadio quisqueya santo domingo dominican republic 1.jpg",
+    "sha256": "1260fcb86c26c5c3ae067e206d83736fc9aa622891aa42cd6e6241896fffe0e4"
+  },
+  {
+    "index": 12,
+    "key": "playa-encuentro",
+    "filename": "Playa Encuentro.jpg",
+    "sha256": "6350ab9c93edc045565fe362560e2ba59fc3e445a7447ccc9e6653a748988c0d"
+  },
+  {
+    "index": 13,
+    "key": "cotorra-de-la-espanola",
+    "filename": "Amazona ventralis -two captive-8a.jpg",
+    "sha256": "75ffdd512fbe63fbb53d5ba97fe87fcaa0308feb80fa8daaf691242298f3595f"
+  },
+  {
+    "index": 14,
+    "key": "jutia-de-la-espanola",
+    "filename": "Plagiodontia aedium.jpg",
+    "sha256": "416dba55236d0003825bb6dfaf9164d6ca0f4fb2ad6e7b269a55b8ac976ca213"
+  },
+  {
+    "index": 15,
+    "key": "salto-el-limon",
+    "filename": "Salto de Limon waterfall in Samana, Dominican Republic.jpg",
+    "sha256": "1edd4c896f0967586cdf862f8064ba20d21387d69552683521c05de0fce8dd5b"
+  },
+  {
+    "index": 16,
+    "key": "loxia-megaplaga",
+    "filename": "Loxia megaplaga Smithsonian.jpg",
+    "sha256": "bbb27ebd53ccc44478659d02ace70f76d9cdd952f19a8f1fa72c9a7b0ffa2f92"
+  },
+  {
+    "index": 17,
+    "key": "tachycineta-euchrysea",
+    "filename": "Adult Hispaniolan Golden Swallow perched on artificial nest-box.jpg",
+    "sha256": "a576a7b45489e55b9dd1307163e190199b7e0e852e17ddb097431d2ef2bd85c4"
+  },
+  {
+    "index": 18,
+    "key": "eufonia-antillana",
+    "filename": "Hispaniolan Euphonia (Chlorophonia musica) male in the Dominican Republic.jpg",
+    "sha256": "0ea693f35cef92950bee7e30b4a1d40494537a3f86e2a30491490c3ef6f668db"
+  },
+  {
+    "index": 19,
+    "key": "catedral-inmaculada-concepcion",
+    "filename": "La vega 01.JPG",
+    "sha256": "3d1697176220aad1d7478c3d65e8e929071871b2369ea7e3c5f56e1e84656bb1"
+  },
+  {
+    "index": 20,
+    "key": "gran-teatro-del-cibao",
+    "filename": "Lope de Vega GTC.JPG",
+    "sha256": "f132ad5912077b6a2a0535828438f2fac482c78fda712087384cc672658149e2"
+  },
+  {
+    "index": 21,
+    "key": "monte-cristi",
+    "filename": "Montecriti, Dominican Republic 1900s.jpg",
+    "sha256": "504ec1a2f8a9dc85ff2ba5dfca2f6b511171eed9ef6c137cceba8abe03a3ba70"
+  },
+  {
+    "index": 22,
+    "key": "sierra-de-bahoruco",
+    "filename": "Hoyo de Pelempito.jpg",
+    "sha256": "0e7f3cb4fc7cad2989aa21b00f6c3affccd747378a0d08e222ff2e61017b0101"
+  },
+  {
+    "index": 23,
+    "key": "parque-nacional-sierra-de-bahoruco",
+    "filename": "Hoyo de Pelempito.jpg",
+    "sha256": "0e7f3cb4fc7cad2989aa21b00f6c3affccd747378a0d08e222ff2e61017b0101"
+  },
+  {
+    "index": 24,
+    "key": "playa-sosua",
+    "filename": "Sosua Beach Dominican Republic.jpg",
+    "sha256": "45b41b232d0006a95fe60a3e4f835597b71ba7abe00c88ad5a57b8e562ac0c3f"
+  },
+  {
+    "index": 25,
+    "key": "27-charcos-de-damajagua",
+    "filename": "27 Charcas rio Damajagua - panoramio.jpg",
+    "sha256": "d7aa44240d0e7c169a7359334e27d037144221e4b648baa00af4c0bd0d92408d"
+  },
+  {
+    "index": 26,
+    "key": "cigua-palmera",
+    "filename": "Dulus dominicus.JPG",
+    "sha256": "94f8811b9a188e7d5ddf210cec22aa651898083ae3197898936770ad8a6e8b3f"
+  },
+  {
+    "index": 27,
+    "key": "dunas-de-bani",
+    "filename": "Dunas de Baní 3.jpg",
+    "sha256": "6af95e77c084875448717da580bd20bb023cb3d0595fb2ff22f916476f925529"
+  },
+  {
+    "index": 28,
+    "key": "luperon",
+    "filename": "Playa grande en luperon - panoramio - Luis A. González Hde….jpg",
+    "sha256": "3a6e988887d7d01de77cfdd81f39a16a3e5594e545b9478ff1f2635c10926b1b"
+  }
+]

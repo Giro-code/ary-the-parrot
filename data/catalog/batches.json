@@ -1,0 +1,563 @@
+[
+  {
+    "batch": "geo-1",
+    "checkedAt": "2026-11-11T15:05:31.006Z",
+    "added": 8,
+    "total": 8
+  },
+  {
+    "batch": "geo-1",
+    "checkedAt": "2026-11-11T15:10:10.681Z",
+    "added": 0,
+    "total": 8
+  },
+  {
+    "batch": "geo-2",
+    "checkedAt": "2026-11-11T15:11:10.926Z",
+    "added": 8,
+    "total": 16
+  },
+  {
+    "batch": "geo-3",
+    "checkedAt": "2026-11-11T15:12:51.067Z",
+    "added": 9,
+    "total": 25
+  },
+  {
+    "batch": "geo-4",
+    "checkedAt": "2026-11-11T15:14:07.232Z",
+    "added": 7,
+    "total": 32
+  },
+  {
+    "batch": "geo-1",
+    "checkedAt": "2026-11-11T15:15:22.321Z",
+    "added": 2,
+    "total": 34
+  },
+  {
+    "batch": "geo-2",
+    "checkedAt": "2026-11-11T15:15:34.439Z",
+    "added": 2,
+    "total": 36
+  },
+  {
+    "batch": "geo-3",
+    "checkedAt": "2026-11-11T15:15:50.331Z",
+    "added": 1,
+    "total": 37
+  },
+  {
+    "batch": "geo-4",
+    "checkedAt": "2026-11-11T15:15:58.592Z",
+    "added": 1,
+    "total": 38
+  },
+  {
+    "batch": "topics-1",
+    "checkedAt": "2026-11-11T15:17:50.767Z",
+    "total": 47
+  },
+  {
+    "batch": "geo-5",
+    "checkedAt": "2026-11-11T15:18:22.742Z",
+    "added": 9,
+    "total": 56
+  },
+  {
+    "batch": "topics-2",
+    "checkedAt": "2026-11-11T15:19:46.810Z",
+    "total": 65
+  },
+  {
+    "batch": "geo-6",
+    "checkedAt": "2026-11-11T15:20:47.135Z",
+    "added": 9,
+    "total": 74
+  },
+  {
+    "batch": "topics-3",
+    "checkedAt": "2026-11-11T15:22:15.271Z",
+    "total": 82
+  },
+  {
+    "batch": "geo-7",
+    "checkedAt": "2026-11-11T15:22:31.281Z",
+    "added": 8,
+    "total": 90
+  },
+  {
+    "batch": "topics-4",
+    "checkedAt": "2026-11-11T15:24:11.656Z",
+    "total": 99
+  },
+  {
+    "batch": "geo-8",
+    "checkedAt": "2026-11-11T15:24:23.446Z",
+    "added": 8,
+    "total": 107
+  },
+  {
+    "batch": "topics-5",
+    "checkedAt": "2026-11-11T15:26:11.918Z",
+    "total": 116
+  },
+  {
+    "batch": "geo-9",
+    "checkedAt": "2026-11-11T15:26:35.676Z",
+    "added": 8,
+    "total": 124
+  },
+  {
+    "batch": "geo-10",
+    "checkedAt": "2026-11-11T15:28:52.625Z",
+    "added": 9,
+    "total": 133
+  },
+  {
+    "batch": "topics-6",
+    "checkedAt": "2026-11-11T15:28:56.316Z",
+    "total": 143
+  },
+  {
+    "batch": "topics-7",
+    "checkedAt": "2026-11-11T15:31:08.575Z",
+    "total": 152
+  },
+  {
+    "batch": "geo-11",
+    "checkedAt": "2026-11-11T15:31:20.387Z",
+    "added": 10,
+    "total": 162
+  },
+  {
+    "batch": "topics-8",
+    "checkedAt": "2026-11-11T15:32:32.688Z",
+    "total": 167
+  },
+  {
+    "batch": "geo-12",
+    "checkedAt": "2026-11-11T15:32:48.940Z",
+    "added": 10,
+    "total": 177
+  },
+  {
+    "batch": "geo-13",
+    "checkedAt": "2026-11-11T15:33:32.731Z",
+    "added": 9,
+    "total": 186
+  },
+  {
+    "batch": "geo-14",
+    "checkedAt": "2026-11-11T15:34:00.831Z",
+    "added": 7,
+    "total": 193
+  },
+  {
+    "batch": "geo-15",
+    "checkedAt": "2026-11-11T15:34:32.857Z",
+    "added": 8,
+    "total": 201
+  },
+  {
+    "batch": "geo-16",
+    "checkedAt": "2026-11-11T15:35:05.344Z",
+    "added": 8,
+    "total": 209
+  },
+  {
+    "batch": "geo-17",
+    "checkedAt": "2026-11-11T15:36:33.082Z",
+    "added": 8,
+    "total": 220
+  },
+  {
+    "batch": "topics-1",
+    "checkedAt": "2026-11-11T15:36:45.478Z",
+    "total": 225
+  },
+  {
+    "batch": "geo-18",
+    "checkedAt": "2026-11-11T15:37:25.219Z",
+    "added": 9,
+    "total": 234
+  },
+  {
+    "batch": "topics-2",
+    "checkedAt": "2026-11-11T15:38:45.273Z",
+    "total": 244
+  },
+  {
+    "batch": "geo-19",
+    "checkedAt": "2026-11-11T15:39:05.522Z",
+    "added": 9,
+    "total": 253
+  },
+  {
+    "batch": "geo-1",
+    "checkedAt": "2026-11-11T15:39:33.562Z",
+    "added": 0,
+    "total": 253
+  },
+  {
+    "batch": "geo-2",
+    "checkedAt": "2026-11-11T15:39:33.588Z",
+    "added": 0,
+    "total": 253
+  },
+  {
+    "batch": "geo-3",
+    "checkedAt": "2026-11-11T15:39:45.505Z",
+    "added": 2,
+    "total": 255
+  },
+  {
+    "batch": "topics-3",
+    "checkedAt": "2026-11-11T15:39:49.570Z",
+    "total": 261
+  },
+  {
+    "batch": "geo-4",
+    "checkedAt": "2026-11-11T15:39:57.629Z",
+    "added": 2,
+    "total": 263
+  },
+  {
+    "batch": "topics-4",
+    "checkedAt": "2026-11-11T15:40:09.437Z",
+    "total": 265
+  },
+  {
+    "batch": "geo-5",
+    "checkedAt": "2026-11-11T15:40:13.611Z",
+    "added": 2,
+    "total": 267
+  },
+  {
+    "batch": "geo-6",
+    "checkedAt": "2026-11-11T15:40:21.414Z",
+    "added": 1,
+    "total": 268
+  },
+  {
+    "batch": "geo-7",
+    "checkedAt": "2026-11-11T15:40:33.745Z",
+    "added": 3,
+    "total": 271
+  },
+  {
+    "batch": "geo-8",
+    "checkedAt": "2026-11-11T15:40:37.543Z",
+    "added": 1,
+    "total": 272
+  },
+  {
+    "batch": "geo-9",
+    "checkedAt": "2026-11-11T15:40:45.685Z",
+    "added": 2,
+    "total": 274
+  },
+  {
+    "batch": "geo-10",
+    "checkedAt": "2026-11-11T15:40:57.734Z",
+    "added": 3,
+    "total": 277
+  },
+  {
+    "batch": "geo-11",
+    "checkedAt": "2026-11-11T15:41:05.759Z",
+    "added": 2,
+    "total": 279
+  },
+  {
+    "batch": "geo-12",
+    "checkedAt": "2026-11-11T15:41:09.764Z",
+    "added": 1,
+    "total": 280
+  },
+  {
+    "batch": "geo-13",
+    "checkedAt": "2026-11-11T15:41:09.803Z",
+    "added": 0,
+    "total": 280
+  },
+  {
+    "batch": "geo-14",
+    "checkedAt": "2026-11-11T15:41:13.653Z",
+    "added": 1,
+    "total": 281
+  },
+  {
+    "batch": "geo-15",
+    "checkedAt": "2026-11-11T15:41:25.627Z",
+    "added": 3,
+    "total": 284
+  },
+  {
+    "batch": "geo-16",
+    "checkedAt": "2026-11-11T15:41:33.658Z",
+    "added": 2,
+    "total": 286
+  },
+  {
+    "batch": "geo-17",
+    "checkedAt": "2026-11-11T15:41:41.713Z",
+    "added": 2,
+    "total": 288
+  },
+  {
+    "batch": "geo-18",
+    "checkedAt": "2026-11-11T15:41:45.678Z",
+    "added": 1,
+    "total": 289
+  },
+  {
+    "batch": "geo-19",
+    "checkedAt": "2026-11-11T15:41:53.759Z",
+    "added": 2,
+    "total": 291
+  },
+  {
+    "batch": "geo-20",
+    "checkedAt": "2026-11-11T15:42:01.929Z",
+    "added": 2,
+    "total": 293
+  },
+  {
+    "batch": "geo-21",
+    "checkedAt": "2026-11-11T15:42:26.611Z",
+    "added": 2,
+    "total": 295
+  },
+  {
+    "batch": "geo-22",
+    "checkedAt": "2026-11-11T15:43:14.139Z",
+    "added": 10,
+    "total": 305
+  },
+  {
+    "batch": "geo-23",
+    "checkedAt": "2026-11-11T15:43:54.033Z",
+    "added": 10,
+    "total": 315
+  },
+  {
+    "batch": "geo-24",
+    "checkedAt": "2026-11-11T15:44:18.191Z",
+    "added": 6,
+    "total": 321
+  },
+  {
+    "batch": "final-curation",
+    "checkedAt": "2026-11-11T16:02:37.235Z",
+    "total": 314
+  },
+  {
+    "batch": "final-visual-corrections",
+    "checkedAt": "2026-11-11T16:12:05.829Z",
+    "total": 313
+  },
+  {
+    "batch": "stage10a2-batch01.json",
+    "stage": "10A2",
+    "checkedAt": "2026-11-11T16:22:09.979Z",
+    "enriched": 10,
+    "total": 313
+  },
+  {
+    "batch": "stage10a2-batch02.json",
+    "stage": "10A2",
+    "checkedAt": "2026-11-11T16:23:29.959Z",
+    "enriched": 12,
+    "total": 313
+  },
+  {
+    "batch": "stage10a2-batch03.json",
+    "stage": "10A2",
+    "checkedAt": "2026-11-11T16:26:13.926Z",
+    "enriched": 14,
+    "total": 313
+  },
+  {
+    "batch": "stage10a2-batch04.json",
+    "stage": "10A2",
+    "checkedAt": "2026-11-11T16:27:17.405Z",
+    "enriched": 7,
+    "total": 313
+  },
+  {
+    "batch": "stage10a2-batch05.json",
+    "stage": "10A2",
+    "checkedAt": "2026-11-11T16:29:30.251Z",
+    "enriched": 15,
+    "total": 313
+  },
+  {
+    "batch": "stage10a2-batch06.json",
+    "stage": "10A2",
+    "checkedAt": "2026-11-11T16:30:15.466Z",
+    "enriched": 8,
+    "total": 313
+  },
+  {
+    "batch": "10A2-balance",
+    "total": 220,
+    "removed": 93,
+    "checkedAt": "2026-11-11T16:30:38.690Z"
+  },
+  {
+    "batch": "stage10a2-batch07.json",
+    "stage": "10A2",
+    "checkedAt": "2026-11-11T16:32:34.998Z",
+    "enriched": 20,
+    "total": 220
+  },
+  {
+    "batch": "stage10a2-batch08.json",
+    "stage": "10A2",
+    "checkedAt": "2026-11-11T16:33:37.774Z",
+    "enriched": 20,
+    "total": 220
+  },
+  {
+    "batch": "stage10a2-batch09.json",
+    "stage": "10A2",
+    "checkedAt": "2026-11-11T16:35:08.729Z",
+    "enriched": 20,
+    "total": 220
+  },
+  {
+    "batch": "stage10a2-batch10.json",
+    "stage": "10A2",
+    "checkedAt": "2026-11-11T16:38:08.882Z",
+    "enriched": 25,
+    "total": 220
+  },
+  {
+    "batch": "stage10a2-batch11.json",
+    "stage": "10A2",
+    "checkedAt": "2026-11-11T16:40:25.927Z",
+    "enriched": 9,
+    "total": 229
+  },
+  {
+    "batch": "stage10a2-batch12.json",
+    "stage": "10A2",
+    "checkedAt": "2026-11-11T16:44:13.142Z",
+    "enriched": 18,
+    "total": 229
+  },
+  {
+    "batch": "stage10a2-batch13.json",
+    "stage": "10A2",
+    "checkedAt": "2026-11-11T16:45:37.027Z",
+    "enriched": 5,
+    "total": 229
+  },
+  {
+    "batch": "stage10a2-batch14.json",
+    "stage": "10A2",
+    "checkedAt": "2026-11-11T16:54:35.376Z",
+    "enriched": 20,
+    "total": 247
+  },
+  {
+    "batch": "stage10a2-batch15.json",
+    "stage": "10A2",
+    "checkedAt": "2026-11-11T16:56:22.456Z",
+    "enriched": 10,
+    "total": 257
+  },
+  {
+    "batch": "stage10a2-batch16.json",
+    "stage": "10A2",
+    "checkedAt": "2026-11-11T16:59:33.035Z",
+    "enriched": 20,
+    "total": 277
+  },
+  {
+    "batch": "stage10a2-resume-source-triage",
+    "stage": "10A2",
+    "checkedAt": "2026-11-11T18:00:03.593Z",
+    "rejected": [
+      "puerta-de-la-misericordia-santo-domingo",
+      "laguna-salada-q23762354",
+      "playa-madama",
+      "rio-maimon",
+      "salto-de-jimenoa-uno",
+      "playa-bonita",
+      "rio-jayaco",
+      "rio-soco",
+      "rio-yuma",
+      "catedral-nuestra-senora-de-regla",
+      "catedral-san-juan-bautista",
+      "catedral-santa-ana",
+      "sinagoga-de-santo-domingo",
+      "rio-higuamo",
+      "rio-baiguate",
+      "casa-de-la-moneda",
+      "iglesia-nuestra-senora-de-la-altagracia",
+      "casa-del-pudin",
+      "edificio-savinon",
+      "edificio-diez",
+      "edificio-baquero",
+      "edificio-cerame",
+      "edificio-elmudesi",
+      "palacio-consistorial",
+      "puerta-de-las-atarazanas-reales",
+      "capilla-de-nuestra-senora-de-los-remedios",
+      "obelisco-de-santo-domingo",
+      "playa-arena-gorda"
+    ],
+    "total": 249
+  },
+  {
+    "batch": "stage10a2-batch17.json",
+    "stage": "10A2",
+    "checkedAt": "2026-11-11T18:00:03.750Z",
+    "enriched": 17,
+    "total": 252
+  },
+  {
+    "batch": "stage10a2-batch18.json",
+    "stage": "10A2",
+    "checkedAt": "2026-11-11T18:01:14.859Z",
+    "enriched": 16,
+    "total": 266
+  },
+  {
+    "batch": "stage10a2-batch19.json",
+    "stage": "10A2",
+    "checkedAt": "2026-11-11T18:05:02.330Z",
+    "enriched": 17,
+    "total": 283
+  },
+  {
+    "batch": "stage10a2-batch20.json",
+    "stage": "10A2",
+    "checkedAt": "2026-11-11T18:05:02.506Z",
+    "enriched": 9,
+    "total": 292
+  },
+  {
+    "batch": "stage10a2-batch21.json",
+    "stage": "10A2",
+    "checkedAt": "2026-11-11T18:05:02.683Z",
+    "enriched": 5,
+    "total": 297
+  },
+  {
+    "batch": "stage10a2-batch22.json",
+    "stage": "10A2",
+    "checkedAt": "2026-11-11T18:06:35.961Z",
+    "enriched": 20,
+    "total": 317
+  },
+  {
+    "batch": "stage10a2-final-photo-corrections",
+    "stage": "10A2",
+    "checkedAt": "2026-11-11T18:09:53.788Z",
+    "corrections": 11,
+    "total": 317
+  }
+]

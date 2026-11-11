@@ -1,0 +1,2825 @@
+{
+  "result": "PASS",
+  "checkedAt": "2026-11-11T16:12:08.577Z",
+  "entries": 313,
+  "errors": [],
+  "checks": [
+    {
+      "key": "cordillera-central",
+      "file": "/assets/catalog/cordillera-central-1.webp",
+      "sha256": "d44a441bb096773314990e03e36b01c998d730262e1e3938d4ca448756ec2b9f",
+      "source": "https://commons.wikimedia.org/wiki/File:Cordillera_Central,_RD.JPG",
+      "revision": 1018385861,
+      "license": "Public domain",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "banco-de-la-plata",
+      "file": "/assets/catalog/banco-de-la-plata-1.webp",
+      "sha256": "fa05e765c5a88bb9c7cb3cbc3a807fd7454f83fc17d3fb1a470f26414adbde1a",
+      "source": "https://commons.wikimedia.org/wiki/File:Shipwreck_Polyexni_-_Flickr_-_Christopher.Michel.jpg",
+      "revision": 1137444418,
+      "license": "CC BY 2.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "san-cristobal",
+      "file": "/assets/catalog/san-cristobal-1.webp",
+      "sha256": "14828015b50c0fac86b7211f3e456fa25181297d65ebc201038f298204233cae",
+      "source": "https://commons.wikimedia.org/wiki/File:Sancristobal-Santo_Domingo.jpg",
+      "revision": 1250411719,
+      "license": "CC BY-SA 4.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "altos-chavon",
+      "file": "/assets/catalog/altos-chavon-1.webp",
+      "sha256": "9dff5e0795a9805851c47189e06f1f17051c6638e57d0035df566ddb5510271b",
+      "source": "https://commons.wikimedia.org/wiki/File:Dominicana-Altos_de_Chavon.jpg",
+      "revision": 1208813796,
+      "license": "CC BY-SA 3.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "cabarete",
+      "file": "/assets/catalog/cabarete-1.webp",
+      "sha256": "d9fb4b21c7a275f49e821d7f45e48c9e87ee0163d1ba1ff04d8fe2db03b3cd04",
+      "source": "https://commons.wikimedia.org/wiki/File:Cabarete,_Dominican_Republic_(8644953576).jpg",
+      "revision": 1158580096,
+      "license": "CC BY 2.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "isla-catalina",
+      "file": "/assets/catalog/isla-catalina-1.webp",
+      "sha256": "857f22bad10eb25baf16f493a29da915e2fcc17dcda32fb1e31f44790e9e1857",
+      "source": "https://commons.wikimedia.org/wiki/File:Dominicana-Isla_Catalina2.jpg",
+      "revision": 1208813811,
+      "license": "CC BY-SA 3.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "sanchez",
+      "file": "/assets/catalog/sanchez-1.webp",
+      "sha256": "b01e70657e6d7b9303b0422b7776b00660f4668688ac1f2d206347fc32060856",
+      "source": "https://commons.wikimedia.org/wiki/File:S%C3%A1nchez_(Saman%C3%A1)_Iglesia_Nuestra_Se%C3%B1ora_de_Lourdes.jpg",
+      "revision": 1176141691,
+      "license": "CC BY-SA 4.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "provincia-de-espaillat",
+      "file": "/assets/catalog/provincia-de-espaillat-1.webp",
+      "sha256": "08119702938fa74246429f468829a15907158dd13333ed9c12579b2680568d61",
+      "source": "https://commons.wikimedia.org/wiki/File:Amapolas-jobanas.jpg",
+      "revision": 1133553293,
+      "license": "CC BY-SA 3.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "la-vega",
+      "file": "/assets/catalog/la-vega-1.webp",
+      "sha256": "3d1697176220aad1d7478c3d65e8e929071871b2369ea7e3c5f56e1e84656bb1",
+      "source": "https://commons.wikimedia.org/wiki/File:La_vega_01.JPG",
+      "revision": 1034103142,
+      "license": "CC BY-SA 3.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "samana",
+      "file": "/assets/catalog/samana-1.webp",
+      "sha256": "cea426385854726eec016df8a997ae8b9982830304c8a9bac2fe0ce60e5426e5",
+      "source": "https://commons.wikimedia.org/wiki/File:Santa_Barbara_de_Saman%C3%A1_(Dominican_Republic).jpeg",
+      "revision": 1143199966,
+      "license": "CC BY-SA 3.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "parque-nacional-cotubanama",
+      "file": "/assets/catalog/parque-nacional-cotubanama-1.webp",
+      "sha256": "45e766ca889138a8827cd036357b91344956c0cdbd99b4cb4b1baad7d9cbfcee",
+      "source": "https://commons.wikimedia.org/wiki/File:Isla_Saona_III.jpg",
+      "revision": 1211764668,
+      "license": "CC BY-SA 4.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "provincia-de-la-vega",
+      "file": "/assets/catalog/provincia-de-la-vega-1.webp",
+      "sha256": "7836d7fb2fc10a1c1f710686feb0c2c0cb3e8e7b16c53efccfe52365d5ee21cf",
+      "source": "https://commons.wikimedia.org/wiki/File:SANTUARIO_DEL_SANTO_CERRO._IMG_0032.JPG",
+      "revision": 972143818,
+      "license": "CC BY-SA 3.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "san-rafael-del-yuma",
+      "file": "/assets/catalog/san-rafael-del-yuma-1.webp",
+      "sha256": "e22436c6b59cb8801933e58ca29280dd52abaafcbd491ddd7b601dbb95dc5efb",
+      "source": "https://commons.wikimedia.org/wiki/File:Boca_de_Yuma_-_Beach.JPG",
+      "revision": 1251886442,
+      "license": "CC BY-SA 3.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "alcazar-de-colon",
+      "file": "/assets/catalog/alcazar-de-colon-1.webp",
+      "sha256": "518c825251516b8146535f9a337e9a4abaaaa6678ff1cb48442e10290a481468",
+      "source": "https://commons.wikimedia.org/wiki/File:Santo_Domingo_-_Alcazar_de_Colon_02.JPG",
+      "revision": 1161615902,
+      "license": "CC BY-SA 4.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "san-pedro-de-macoris",
+      "file": "/assets/catalog/san-pedro-de-macoris-1.webp",
+      "sha256": "90a013ea3595dfdc6323e366d1ee19e1b9762e1a25ae9fe2d8c3930160dda825",
+      "source": "https://commons.wikimedia.org/wiki/File:Catedral_San_Pedro.jpg",
+      "revision": 1118282903,
+      "license": "CC BY-SA 4.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "mao",
+      "file": "/assets/catalog/mao-1.webp",
+      "sha256": "683bd7ebc17eed68059d8af45e67581f5791fd6ac9fdb131c923a4aae80c3f23",
+      "source": "https://commons.wikimedia.org/wiki/File:Mao_Valverde_Dominican_Republic_city_3.jpg",
+      "revision": 904749091,
+      "license": "CC BY-SA 4.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "provincia-de-puerto-plata",
+      "file": "/assets/catalog/provincia-de-puerto-plata-1.webp",
+      "sha256": "59457d4bc5b2f4f51b10e731fa24a949fd7ee6192a4bee978dfce6fdc356e9aa",
+      "source": "https://commons.wikimedia.org/wiki/File:Flickr_-_ronsaunders47_-_DOMINICAN_REPUBLIC_(2).jpg",
+      "revision": 1284439100,
+      "license": "CC BY-SA 2.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "estadio-olimpico-felix-sanchez",
+      "file": "/assets/catalog/estadio-olimpico-felix-sanchez-1.webp",
+      "sha256": "2a150be8e552f7ff847b6042d3db12dced4df908db10a8c5b68fb45e28a15d28",
+      "source": "https://commons.wikimedia.org/wiki/File:Estadio_Olimpico_Drone.jpg",
+      "revision": 1110208921,
+      "license": "CC BY-SA 4.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "rio-yaque-del-norte",
+      "file": "/assets/catalog/rio-yaque-del-norte-1.webp",
+      "sha256": "4e6d33a0b723cc71e58b776c3b99ea39a3474354e08470c5093e32a282dd917a",
+      "source": "https://commons.wikimedia.org/wiki/File:Rio_Yaque_del_Norte_-_Jarabacoa.JPG",
+      "revision": 1280464304,
+      "license": "CC BY-SA 3.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "provincia-de-azua",
+      "file": "/assets/catalog/provincia-de-azua-1.webp",
+      "sha256": "fd87ff289531cb46b8ad9a6a4a3f36d633bffe0c8f99ac6a72557659dc2b3750",
+      "source": "https://commons.wikimedia.org/wiki/File:Playa_Monte_R%C3%ADo_en_Azua.jpg",
+      "revision": 1037379822,
+      "license": "CC BY-SA 4.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "provincia-de-bahoruco",
+      "file": "/assets/catalog/provincia-de-bahoruco-1.webp",
+      "sha256": "f77ff08f2db4173e4bbd4571c4079065330b6fef578590af1a9335a6f1c6e60b",
+      "source": "https://commons.wikimedia.org/wiki/File:Bahoruco.jpg",
+      "revision": 1073062392,
+      "license": "CC BY-SA 4.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "boca-chica",
+      "file": "/assets/catalog/boca-chica-1.webp",
+      "sha256": "92567e24d805be0ec6c67c0fe6fc6f6a7241b30e6dd277064caf86c81aa8a7c7",
+      "source": "https://commons.wikimedia.org/wiki/File:Boca_Chica,_Dominican_Republic_2004.jpg",
+      "revision": 827355692,
+      "license": "CC BY 2.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "puerta-de-la-misericordia-santo-domingo",
+      "file": "/assets/catalog/puerta-de-la-misericordia-santo-domingo-1.webp",
+      "sha256": "af8304656523dd6515732b7a191c509acbba87460138e974c55e1e6d2f98647a",
+      "source": "https://commons.wikimedia.org/wiki/File:Puerta_de_la_Misericordia_CCSD_09_2018_1195.jpg",
+      "revision": 1186313302,
+      "license": "CC BY-SA 4.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "cementerio-de-la-avenida-independencia",
+      "file": "/assets/catalog/cementerio-de-la-avenida-independencia-1.webp",
+      "sha256": "14c92a6bd34de9df8aeb9fee4dbc8278a22a03cca8748636991cb46ad66a7969",
+      "source": "https://commons.wikimedia.org/wiki/File:Cementerio_de_la_Avenida_Independetia_89.jpg",
+      "revision": 1119129491,
+      "license": "CC BY-SA 4.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "parque-nacional-submarino-la-caleta",
+      "file": "/assets/catalog/parque-nacional-submarino-la-caleta-1.webp",
+      "sha256": "80e8568bf2a1ac7d8ae2e3ebee7c5748e3b6c607fa09cd0ecc7e1084cc7a48cf",
+      "source": "https://commons.wikimedia.org/wiki/File:Pelicanos_en_la_caleta.jpg",
+      "revision": 1269289431,
+      "license": "CC BY-SA 4.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "rio-jimenoa",
+      "file": "/assets/catalog/rio-jimenoa-1.webp",
+      "sha256": "738221e6851ed6e592b7bb8cc1f70c846a57cf3cfc3b702ebb51bc43085695c3",
+      "source": "https://commons.wikimedia.org/wiki/File:The_Rio_Jimenoa_looking_west_downstream,_June_2010_-_panoramio.jpg",
+      "revision": 1055507900,
+      "license": "CC BY-SA 3.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "santo-domingo-este",
+      "file": "/assets/catalog/santo-domingo-este-1.webp",
+      "sha256": "5bbf41cbff330e95538c4158de48a7020447539e3391599e08b7c5a87556351a",
+      "source": "https://commons.wikimedia.org/wiki/File:Santo_Domingo_Este,_Dominican_Republic_-_panoramio_(69).jpg",
+      "revision": 1286135350,
+      "license": "CC BY 3.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "rio-chavon",
+      "file": "/assets/catalog/rio-chavon-1.webp",
+      "sha256": "a6980f27ae71462dd0de51d402f6c4065d8d6ca120dfa3505fd68fc952edc7d3",
+      "source": "https://commons.wikimedia.org/wiki/File:Alto_de_Chavon_-_Dominican_Republic.jpg",
+      "revision": 1073434556,
+      "license": "CC BY-SA 2.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "palacio-nacional",
+      "file": "/assets/catalog/palacio-nacional-1.webp",
+      "sha256": "bf05983e8754008e977ca871deb391704eb3cb7dba5986d16d772ce6973b54fc",
+      "source": "https://commons.wikimedia.org/wiki/File:Santo_Domingo_National_Palace.jpg",
+      "revision": 1184091301,
+      "license": "CC BY-SA 2.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "el-limon",
+      "file": "/assets/catalog/el-limon-1.webp",
+      "sha256": "d10ad836655a034dfeff9de3bc3db3f21a3d81d83716ced5158bd2a1d5b14c5e",
+      "source": "https://commons.wikimedia.org/wiki/File:DOM_Santa_B%C3%A1rbara_de_Saman%C3%A1,_El_Lim%C3%B3n,_Monumento_Natural_Salto_El_Lim%C3%B3n_0035.jpg",
+      "revision": 1275623710,
+      "license": "CC BY 4.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "cabrera",
+      "file": "/assets/catalog/cabrera-1.webp",
+      "sha256": "0a27b641d79f698612e55eee27a4ec7ecf4e5db933571c0d53839645ecfe3b7f",
+      "source": "https://commons.wikimedia.org/wiki/File:Municipio_de_Cabrera.jpg",
+      "revision": 1267846468,
+      "license": "CC BY-SA 4.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "cambita-garabitos",
+      "file": "/assets/catalog/cambita-garabitos-1.webp",
+      "sha256": "5d0389f3f216707d2831e0ca6d8e30748a9c6c058d402307ad902d3ff1e45e64",
+      "source": "https://commons.wikimedia.org/wiki/File:Cambita_Garabitos.jpg",
+      "revision": 846353612,
+      "license": "CC BY-SA 4.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "rio-yaque-del-sur",
+      "file": "/assets/catalog/rio-yaque-del-sur-1.webp",
+      "sha256": "2e92ac052ebc9be4075555e8398995267fda5905e151bfbb00890f73b71c408c",
+      "source": "https://commons.wikimedia.org/wiki/File:R%C3%ADo_Yaque_del_Sur,_RD.jpg",
+      "revision": 983333862,
+      "license": "CC BY 4.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "constanza-republica-dominicana",
+      "file": "/assets/catalog/constanza-republica-dominicana-1.webp",
+      "sha256": "e9ff9906a52aba4bb634052e278fd76cd345b52e0e842435863e06f8319e9701",
+      "source": "https://commons.wikimedia.org/wiki/File:Constanza.jpeg",
+      "revision": 867640470,
+      "license": "Public domain",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "comendador",
+      "file": "/assets/catalog/comendador-1.webp",
+      "sha256": "d3dde41aebda3679d698aef583317d849f04eebc1c5d85358b8f29c4779b49be",
+      "source": "https://commons.wikimedia.org/wiki/File:Comendador,_Elias_Pi%C3%B1a.jpg",
+      "revision": 865523531,
+      "license": "CC BY-SA 4.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "san-francisco-de-macoris",
+      "file": "/assets/catalog/san-francisco-de-macoris-1.webp",
+      "sha256": "2a8a458b49fbd0ed01ec9208500b51ed6575eadeefad1df15fd2cd8d484f1554",
+      "source": "https://commons.wikimedia.org/wiki/File:Ayuntamiento-sfm.png",
+      "revision": 809513937,
+      "license": "CC BY-SA 4.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "valle-nuevo",
+      "file": "/assets/catalog/valle-nuevo-1.webp",
+      "sha256": "ef28f28b66d1ee7f8251e656fc06887f9670d229829655e0d5be22b9c4164cd8",
+      "source": "https://commons.wikimedia.org/wiki/File:Piramide_vallenuevo.jpg",
+      "revision": 1183742330,
+      "license": "Public domain",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "don-gregorio",
+      "file": "/assets/catalog/don-gregorio-1.webp",
+      "sha256": "b79aaf65656ee36e0445edc9bfff2ee182e62783c3a524bb86b2dee37e4b6a5d",
+      "source": "https://commons.wikimedia.org/wiki/File:Dongregorio.jpg",
+      "revision": 1209219819,
+      "license": "Public domain",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "mangu",
+      "file": "/assets/catalog/mangu-1.webp",
+      "sha256": "8ec60d7d3d41ba94dbe681fbc664d32bf2b3c2aee921cffd328b5397bdc812ee",
+      "source": "https://commons.wikimedia.org/wiki/File:Dominican_Mangu.jpg",
+      "revision": 1208807055,
+      "license": "CC0 1.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "sancocho",
+      "file": "/assets/catalog/sancocho-1.webp",
+      "sha256": "8dde9934431f7c43d0129f3defedc5396e4a4bcf0ff44af624a1fe9c31f0e049",
+      "source": "https://commons.wikimedia.org/wiki/File:Sancocho-hueso.JPG",
+      "revision": 899799172,
+      "license": "CC BY-SA 4.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "chicharron",
+      "file": "/assets/catalog/chicharron-1.webp",
+      "sha256": "bbccda7a6da8879405b70076b4a9a87fe40c5bd385098447607a665f45f2c3ab",
+      "source": "https://commons.wikimedia.org/wiki/File:Chicharr%C3%B3n_de_Cerdo.jpg",
+      "revision": 855972385,
+      "license": "CC BY-SA 4.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "habichuelas-con-dulce",
+      "file": "/assets/catalog/habichuelas-con-dulce-1.webp",
+      "sha256": "578e67d35c08fa0661b4c4fa0fcf4e0f33bc1002b9246fad97e17d2f5a985967",
+      "source": "https://commons.wikimedia.org/wiki/File:Habichuelas_con_dulce_dominicana.jpg",
+      "revision": 1060490352,
+      "license": "CC BY-SA 4.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "tostones",
+      "file": "/assets/catalog/tostones-1.webp",
+      "sha256": "879a4d121f273834cfd55b310288c8bd2051a17c77636eb152d49013d358fd4f",
+      "source": "https://commons.wikimedia.org/wiki/File:Patacones.JPG",
+      "revision": 1268477651,
+      "license": "CC BY-SA 3.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "mofongo",
+      "file": "/assets/catalog/mofongo-1.webp",
+      "sha256": "a346c475b7cc0ecab6e5a86dd09e9c8fc8ba041caf7b797b31ea7da447cf8fb7",
+      "source": "https://commons.wikimedia.org/wiki/File:Mofongo.jpg",
+      "revision": 1090572655,
+      "license": "CC BY 2.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "casabe",
+      "file": "/assets/catalog/casabe-1.webp",
+      "sha256": "19a469dda2f23eeca7ce203855d377f4ae2c3072ce39f58b20b3d2154fb3892e",
+      "source": "https://commons.wikimedia.org/wiki/File:Pemona_realizando_casabe.jpg",
+      "revision": 1239709459,
+      "license": "CC BY-SA 4.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "moro-de-guandules",
+      "file": "/assets/catalog/moro-de-guandules-1.webp",
+      "sha256": "122ab9e11b74a8dcb7bfc95803627bdab8ffdede2ae272574c701a04d450b603",
+      "source": "https://commons.wikimedia.org/wiki/File:Moro_de_guandules.jpg",
+      "revision": 1198375083,
+      "license": "CC BY-SA 2.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "dulce-de-leche",
+      "file": "/assets/catalog/dulce-de-leche-1.webp",
+      "sha256": "87cf420234321517d3c1f5d17814f6212d331337acf151cf5246eb03323cd74d",
+      "source": "https://commons.wikimedia.org/wiki/File:DulceDeLeche.jpg",
+      "revision": 1247524467,
+      "license": "CC BY 2.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "bahia-de-las-aguilas",
+      "file": "/assets/catalog/bahia-de-las-aguilas-1.webp",
+      "sha256": "a4909d676d27748133180e7eb4980d296a82b539fd2020db02ad8f9590917055",
+      "source": "https://commons.wikimedia.org/wiki/File:Bahia_de_las_Aguilas.jpg",
+      "revision": 1248247881,
+      "license": "CC BY-SA 3.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "catedral-primada-de-america",
+      "file": "/assets/catalog/catedral-primada-de-america-1.webp",
+      "sha256": "adf8f587b5c6ba19309caff19b8203ddb77f3a52bc203c96119c0c289638d788",
+      "source": "https://commons.wikimedia.org/wiki/File:Dominikanische_Republik_Santo_Domingo_Basilica_Catedral_Menor_de_Santa_Maria_02.jpg",
+      "revision": 1208825169,
+      "license": "CC BY-SA 4.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "basilica-catedral-y-santuario-nacional-de-nuestra-senora-de-la-altagracia",
+      "file": "/assets/catalog/basilica-catedral-y-santuario-nacional-de-nuestra-senora-de-la-altagracia-1.webp",
+      "sha256": "5ba9de010fcb6b7aa7bd081af1eea053386e2de883198911690adc3bc79a0824",
+      "source": "https://commons.wikimedia.org/wiki/File:Bas%C3%ADlicaHig%C3%BCey.jpg",
+      "revision": 987376674,
+      "license": "CC BY-SA 3.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "centro-olimpico-juan-pablo-duarte",
+      "file": "/assets/catalog/centro-olimpico-juan-pablo-duarte-1.webp",
+      "sha256": "2a150be8e552f7ff847b6042d3db12dced4df908db10a8c5b68fb45e28a15d28",
+      "source": "https://commons.wikimedia.org/wiki/File:Estadio_Olimpico_Drone.jpg",
+      "revision": 1110208921,
+      "license": "CC BY-SA 4.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "centro-de-los-heroes",
+      "file": "/assets/catalog/centro-de-los-heroes-1.webp",
+      "sha256": "181278a7c88d70c5c32377c0eca6b9dbd7d05b6cba61c2b56ba79b5d8564611e",
+      "source": "https://commons.wikimedia.org/wiki/File:Centro_de_los_H%C3%A9roes.jpg",
+      "revision": 1119664002,
+      "license": "CC BY-SA 4.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "jardin-botanico-nacional-de-santo-domingo",
+      "file": "/assets/catalog/jardin-botanico-nacional-de-santo-domingo-1.webp",
+      "sha256": "e87e3ae770881259b546b2af0dfb51ec73614f0d0d7cee7d6d9ec31e25e63dc6",
+      "source": "https://commons.wikimedia.org/wiki/File:Coccothrinax_argentea.jpg",
+      "revision": 1130656027,
+      "license": "CC BY 2.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "hospital-san-nicolas-de-bari",
+      "file": "/assets/catalog/hospital-san-nicolas-de-bari-1.webp",
+      "sha256": "8d3c55582616ae17a3096e7eb8e77088ce3ab9c1549718d1c989c8eb528b3d84",
+      "source": "https://commons.wikimedia.org/wiki/File:Ruinas_San_Nicolas_de_Bari_CCSD_09_2018_1414.jpg",
+      "revision": 1218160885,
+      "license": "CC BY-SA 4.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "iglesia-del-convento-dominico-santo-domingo-de-guzman",
+      "file": "/assets/catalog/iglesia-del-convento-dominico-santo-domingo-de-guzman-1.webp",
+      "sha256": "f4cd7e86a2163578a64fddfea32cb0a4396192b222fb6efa00c279697237f737",
+      "source": "https://commons.wikimedia.org/wiki/File:Convento_De_Los_Dominicos,_Santo_Domingo,_Dominican_Republic.jpg",
+      "revision": 1162038454,
+      "license": "CC BY-SA 2.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "reserva-cientifica-natural-lagunas-redonda-y-limon",
+      "file": "/assets/catalog/reserva-cientifica-natural-lagunas-redonda-y-limon-1.webp",
+      "sha256": "9d3b3432e3c716670f2a08a3663b2c72e4e673b6a8d4f8da8e25ff68d6007fb5",
+      "source": "https://commons.wikimedia.org/wiki/File:Miches,_24000,_Dominican_Republic_-_panoramio_(10).jpg",
+      "revision": 1152293383,
+      "license": "CC BY 3.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "locrio",
+      "file": "/assets/catalog/locrio-1.webp",
+      "sha256": "12543f15c86eac73ab74e7767167767814f0a33eee0a01a044ce42f3faa40b2f",
+      "source": "https://commons.wikimedia.org/wiki/File:Locrio_de_Pollo_(Dominicano).jpg",
+      "revision": 1268321712,
+      "license": "CC0 1.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "pastelon",
+      "file": "/assets/catalog/pastelon-1.webp",
+      "sha256": "b4b8dc8791401a12db7d8b8826e65553afe8ef91dc85b1b1043a1d7a13750c87",
+      "source": "https://commons.wikimedia.org/wiki/File:Puerto_Rican_Lasagna.jpg",
+      "revision": 1183213205,
+      "license": "CC BY-SA 3.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "chimichurri-dominicano",
+      "file": "/assets/catalog/chimichurri-dominicano-1.webp",
+      "sha256": "c403cf5c5c6cfcb06ef9c76f8fceddff69eb4d5e694b35fecf84fe0328147bc1",
+      "source": "https://commons.wikimedia.org/wiki/File:Chimmichurri_vendor_republica_dominicana.jpg",
+      "revision": 856310417,
+      "license": "Public domain",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "gastronomia-dominicana",
+      "file": "/assets/catalog/gastronomia-dominicana-1.webp",
+      "sha256": "0d4bb4c363245238bb074f5ee2aa145bbd711ef942fd62ba335dff9f7cd0036b",
+      "source": "https://commons.wikimedia.org/wiki/File:BanderaDominicana01.jpg",
+      "revision": 1076571643,
+      "license": "CC BY-SA 4.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "merengue",
+      "file": "/assets/catalog/merengue-1.webp",
+      "sha256": "94d8cdea789363fa2056ed72f468b5ecc9faa4c322bf52cb37633f976b67ef98",
+      "source": "https://commons.wikimedia.org/wiki/File:Fallas2018_-_Cavalcada_Patrimoni_10_-_Merengue_Rep%C3%BAblica_Dominicana.jpg",
+      "revision": 1287413572,
+      "license": "CC BY-SA 4.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "bachata",
+      "file": "/assets/catalog/bachata-1.webp",
+      "sha256": "3d583c8d02418b3d1b51d935ee59a4e02a7744c5de0b7d36e045a43a972fe2e6",
+      "source": "https://commons.wikimedia.org/wiki/File:Amargue_Bachata_Quintet_with_Andre_Veloz_(22092585435).jpg",
+      "revision": 875460003,
+      "license": "CC BY-SA 2.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "merengue-tipico",
+      "file": "/assets/catalog/merengue-tipico-1.webp",
+      "sha256": "36ac6d015df96e197d1c33d2456cbc546a56b77fe763b18c0f85a8ea193e1d95",
+      "source": "https://commons.wikimedia.org/wiki/File:Guira_from_Dominican_Repub.jpg",
+      "revision": 1297296086,
+      "license": "Public domain",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "guira",
+      "file": "/assets/catalog/guira-1.webp",
+      "sha256": "36ac6d015df96e197d1c33d2456cbc546a56b77fe763b18c0f85a8ea193e1d95",
+      "source": "https://commons.wikimedia.org/wiki/File:Guira_from_Dominican_Repub.jpg",
+      "revision": 1297296086,
+      "license": "Public domain",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "tambora-dominicana",
+      "file": "/assets/catalog/tambora-dominicana-1.webp",
+      "sha256": "b61adb7ce57599f0fcecdb0966678206dd492eeaa1dff8b5fbb6942c4e0d29a1",
+      "source": "https://commons.wikimedia.org/wiki/File:Tambora_dominicana.jpg",
+      "revision": 1179940641,
+      "license": "CC BY-SA 3.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "parque-nacional-cueva-de-las-maravillas",
+      "file": "/assets/catalog/parque-nacional-cueva-de-las-maravillas-1.webp",
+      "sha256": "dca9bcc87fdcf9cd2efc1e22d3011f2dd8e3ce57696f6202a7a5c2b901847fc4",
+      "source": "https://commons.wikimedia.org/wiki/File:Cuevas_de_las_Maravillas.jpg",
+      "revision": 1155904694,
+      "license": "CC BY-SA 4.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "parque-nacional-isla-cabritos",
+      "file": "/assets/catalog/parque-nacional-isla-cabritos-1.webp",
+      "sha256": "de858f55ada55e380504a0f21afefb208ba3eb910e50b431c1b0e447fe45e83c",
+      "source": "https://commons.wikimedia.org/wiki/File:Lake_enriquillo-b.jpg",
+      "revision": 1173161531,
+      "license": "Public domain",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "plaza-de-la-bandera",
+      "file": "/assets/catalog/plaza-de-la-bandera-1.webp",
+      "sha256": "5bda4ba268df10bbf5c77a23668e5bcbac2bb0b92db1381e8ec2fd719721ef0c",
+      "source": "https://commons.wikimedia.org/wiki/File:Arco_de_la_plaza_de_la_bandera.jpg",
+      "revision": 1159491473,
+      "license": "CC BY-SA 3.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "santa-cruz-de-barahona",
+      "file": "/assets/catalog/santa-cruz-de-barahona-1.webp",
+      "sha256": "f92e956ded896faa7e20be3c5e2758e8b03def28e01046180c1a51fd2f83ef35",
+      "source": "https://commons.wikimedia.org/wiki/File:Barahona_71.16445W_18.21020N.jpg",
+      "revision": 816795513,
+      "license": "Public domain",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "juan-dolio",
+      "file": "/assets/catalog/juan-dolio-1.webp",
+      "sha256": "262a55dc40b8f16b44894f2cf8679b5664afda813638884711df6f7cd2aa2fb0",
+      "source": "https://commons.wikimedia.org/wiki/File:Juan_Dolio_Beach_2.jpg",
+      "revision": 1147254736,
+      "license": "CC BY-SA 3.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "higuey",
+      "file": "/assets/catalog/higuey-1.webp",
+      "sha256": "5ba9de010fcb6b7aa7bd081af1eea053386e2de883198911690adc3bc79a0824",
+      "source": "https://commons.wikimedia.org/wiki/File:Bas%C3%ADlicaHig%C3%BCey.jpg",
+      "revision": 987376674,
+      "license": "CC BY-SA 3.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "salcedo",
+      "file": "/assets/catalog/salcedo-1.webp",
+      "sha256": "2deb62e5c62aba8f41153f2acdf6ac8125aeca684e768f1d924b4293396866c0",
+      "source": "https://commons.wikimedia.org/wiki/File:Mirabal_house.jpg",
+      "revision": 1185408205,
+      "license": "CC BY-SA 3.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "provincia-de-barahona",
+      "file": "/assets/catalog/provincia-de-barahona-1.webp",
+      "sha256": "75297af0bbc6623921b8d5c35f44d068d28ea1e698c1cc3eb63c8a1087397a5f",
+      "source": "https://commons.wikimedia.org/wiki/File:Barahona_Dominican_Republic_Town.jpg",
+      "revision": 816795529,
+      "license": "CC BY-SA 4.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "cocolo",
+      "file": "/assets/catalog/cocolo-1.webp",
+      "sha256": "e5c2dd1a3dd5fb79af29dbd0e56b053950d93530e4d0ee03f998d86a7106e560",
+      "source": "https://commons.wikimedia.org/wiki/File:Guloyas_de_SPM.png",
+      "revision": 1287061341,
+      "license": "CC BY-SA 4.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "independencia-dominicana",
+      "file": "/assets/catalog/independencia-dominicana-1.webp",
+      "sha256": "b04a4a394436122c20bc508f2652ae1c95450b579ccfbf3715724f1f4fb61385",
+      "source": "https://commons.wikimedia.org/wiki/File:Puerta_del_Conde_CCSD_09_2018_1629.jpg",
+      "revision": 1181907573,
+      "license": "CC BY-SA 4.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "restauracion-dominicana",
+      "file": "/assets/catalog/restauracion-dominicana-1.webp",
+      "sha256": "ea684b9f3d4555929182d75c147c60e70c472123b7b01d6056ba4b00d3096dca",
+      "source": "https://commons.wikimedia.org/wiki/File:Monument_to_the_Heroes_of_the_Restoration1.JPG",
+      "revision": 1120172193,
+      "license": "Public domain",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "tradicion-de-la-altagracia",
+      "file": "/assets/catalog/tradicion-de-la-altagracia-1.webp",
+      "sha256": "5ba9de010fcb6b7aa7bd081af1eea053386e2de883198911690adc3bc79a0824",
+      "source": "https://commons.wikimedia.org/wiki/File:Bas%C3%ADlicaHig%C3%BCey.jpg",
+      "revision": 987376674,
+      "license": "CC BY-SA 3.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "beisbol-dominicano",
+      "file": "/assets/catalog/beisbol-dominicano-1.webp",
+      "sha256": "1260fcb86c26c5c3ae067e206d83736fc9aa622891aa42cd6e6241896fffe0e4",
+      "source": "https://commons.wikimedia.org/wiki/File:Estadio_quisqueya_santo_domingo_dominican_republic_1.jpg",
+      "revision": 1233483624,
+      "license": "CC0 1.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "lidom",
+      "file": "/assets/catalog/lidom-1.webp",
+      "sha256": "1260fcb86c26c5c3ae067e206d83736fc9aa622891aa42cd6e6241896fffe0e4",
+      "source": "https://commons.wikimedia.org/wiki/File:Estadio_quisqueya_santo_domingo_dominican_republic_1.jpg",
+      "revision": 1233483624,
+      "license": "CC0 1.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "larimar",
+      "file": "/assets/catalog/larimar-1.webp",
+      "sha256": "73203132cbf7bc5d314fea6efbd75ed38abd49217a29785f23195ac53d453f68",
+      "source": "https://commons.wikimedia.org/wiki/File:Larimar.jpg",
+      "revision": 1026254433,
+      "license": "Public domain",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "ambar",
+      "file": "/assets/catalog/ambar-1.webp",
+      "sha256": "f79d1fa47b219215af82fae0e3ed4dd9399c56337714360429f9f74ad5a306ea",
+      "source": "https://commons.wikimedia.org/wiki/File:Amber_1.jpg",
+      "revision": 1133108835,
+      "license": "CC BY-SA 3.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "provincia-de-samana",
+      "file": "/assets/catalog/provincia-de-samana-1.webp",
+      "sha256": "aa84f0ebf3a0ea8da2d89ae88e0d6e39f392a813cc08144c3c60c8589574acd2",
+      "source": "https://commons.wikimedia.org/wiki/File:Cabo_Cabr%C3%B3n,_(Rinc%C3%B3n_Beach)_Saman%C3%A1,_DR.JPG",
+      "revision": 1248247285,
+      "license": "CC BY-SA 4.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "bayahibe",
+      "file": "/assets/catalog/bayahibe-1.webp",
+      "sha256": "f39fab3ade9e659bd40c587cffcd7253704e7abdeb01060d5c68659349b003db",
+      "source": "https://commons.wikimedia.org/wiki/File:Atardecer_bayahibe.jpg",
+      "revision": 864326496,
+      "license": "CC BY-SA 4.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "moca",
+      "file": "/assets/catalog/moca-1.webp",
+      "sha256": "9dc9d6a3a3c9e3049a23b5ee81463a277c48fb02e8aead5486242dd8cd280e2e",
+      "source": "https://commons.wikimedia.org/wiki/File:IglesiaSagradoCorazondeJesusMoca.jpg",
+      "revision": 1265704501,
+      "license": "Public domain",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "provincia-de-duarte",
+      "file": "/assets/catalog/provincia-de-duarte-1.webp",
+      "sha256": "2a8a458b49fbd0ed01ec9208500b51ed6575eadeefad1df15fd2cd8d484f1554",
+      "source": "https://commons.wikimedia.org/wiki/File:Ayuntamiento-sfm.png",
+      "revision": 809513937,
+      "license": "CC BY-SA 4.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "provincia-de-monsenor-nouel",
+      "file": "/assets/catalog/provincia-de-monsenor-nouel-1.webp",
+      "sha256": "12f7d1022d1f5a3964cf6f14f1b3c3a0e57790920dd8e24b68c1b46541cfec26",
+      "source": "https://commons.wikimedia.org/wiki/File:Monse%C3%B1or_Nouel_Province,_42000,_Dominican_Republic_-_panoramio_(1).jpg",
+      "revision": 549227799,
+      "license": "CC BY-SA 3.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "playa-encuentro",
+      "file": "/assets/catalog/playa-encuentro-1.webp",
+      "sha256": "6350ab9c93edc045565fe362560e2ba59fc3e445a7447ccc9e6653a748988c0d",
+      "source": "https://commons.wikimedia.org/wiki/File:Playa_Encuentro.jpg",
+      "revision": 1210511299,
+      "license": "CC BY-SA 2.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "provincia-de-peravia",
+      "file": "/assets/catalog/provincia-de-peravia-1.webp",
+      "sha256": "d0e84dfa1ee2e213fc7b2a894ec23ca4b12525eb1f853d91b731de7dbe63dc61",
+      "source": "https://commons.wikimedia.org/wiki/File:Desde_el_manaclar.jpg",
+      "revision": 1184413752,
+      "license": "CC BY 4.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "isla-saona",
+      "file": "/assets/catalog/isla-saona-1.webp",
+      "sha256": "8e005411bbb85b4de385d2575d3cd460a3a060cb73b45f52f08aefbf85bfbf68",
+      "source": "https://commons.wikimedia.org/wiki/File:Saona-playa.JPG",
+      "revision": 1281013839,
+      "license": "CC BY-SA 3.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "cotorra-de-la-espanola",
+      "file": "/assets/catalog/cotorra-de-la-espanola-1.webp",
+      "sha256": "75ffdd512fbe63fbb53d5ba97fe87fcaa0308feb80fa8daaf691242298f3595f",
+      "source": "https://commons.wikimedia.org/wiki/File:Amazona_ventralis_-two_captive-8a.jpg",
+      "revision": 1047668926,
+      "license": "CC BY-SA 2.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "solenodonte-de-la-espanola",
+      "file": "/assets/catalog/solenodonte-de-la-espanola-1.webp",
+      "sha256": "516f964d13e8f37af27089c7994205dfb0926bae13fdad62d662025643268023",
+      "source": "https://commons.wikimedia.org/wiki/File:Hispaniolan_Solenodon_crop.jpg",
+      "revision": 1299179929,
+      "license": "CC BY-SA 3.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "priotelus-roseigaster",
+      "file": "/assets/catalog/priotelus-roseigaster-1.webp",
+      "sha256": "acc0c903316a589ce8e7c0ffab4dbc93591d7da23931d5ac6065984779c066e6",
+      "source": "https://commons.wikimedia.org/wiki/File:Hispaniolan_Trogon_(Priotelus_roseigaster)_(8082775371).jpg",
+      "revision": 1229890307,
+      "license": "CC BY 2.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "todus-subulatus",
+      "file": "/assets/catalog/todus-subulatus-1.webp",
+      "sha256": "f4e5ed47ca73cc06d88c19d79a80c6d9d7cb071ed1c4b62725842949083c306d",
+      "source": "https://commons.wikimedia.org/wiki/File:Broad-billed_Tody_2017-12-13_(cropped).jpg",
+      "revision": 834578486,
+      "license": "CC BY-SA 4.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "todus-angustirostris",
+      "file": "/assets/catalog/todus-angustirostris-1.webp",
+      "sha256": "9d574c3af9b159246850a5a239ff25479c14a512614d39877c5020cffefafac6",
+      "source": "https://commons.wikimedia.org/wiki/File:Narrow_billed_tody_6.jpg",
+      "revision": 1154544914,
+      "license": "CC BY 2.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "melanerpes-striatus",
+      "file": "/assets/catalog/melanerpes-striatus-1.webp",
+      "sha256": "9d28fd023f3f416b4645a9b4a8724501ce984f250fd7174e7a6d10823aa4b6ee",
+      "source": "https://commons.wikimedia.org/wiki/File:Melanerpes_striatus001.jpg",
+      "revision": 1274907059,
+      "license": "CC BY-SA 3.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "aratinga-de-la-espanola",
+      "file": "/assets/catalog/aratinga-de-la-espanola-1.webp",
+      "sha256": "969ed77c6a251fee9786fc114a92ab4419ed195962a9e1d872ceac59a341a29f",
+      "source": "https://commons.wikimedia.org/wiki/File:Haitisittich_Psittacara_chloropterus_Aufnahme_Punta_Cana.JPG",
+      "revision": 1290879638,
+      "license": "CC BY-SA 4.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "coccyzus-longirostris",
+      "file": "/assets/catalog/coccyzus-longirostris-1.webp",
+      "sha256": "e98c6c4e8363e548529a7373cd3f488bf4b9503edf6883ad5076010b1db04059",
+      "source": "https://commons.wikimedia.org/wiki/File:DRbirds_Hispaniolan-Lizard_Cuckoo_2c.jpg",
+      "revision": 1141738780,
+      "license": "CC BY-SA 3.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "provincia-de-pedernales",
+      "file": "/assets/catalog/provincia-de-pedernales-1.webp",
+      "sha256": "7771596e4a54352474acb06dfe3d45206a12e1ea3dc8017b3d03f3fb46a19170",
+      "source": "https://commons.wikimedia.org/wiki/File:Jaragua_National_Park_(Road2).JPG",
+      "revision": 1195729383,
+      "license": "CC BY-SA 3.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "provincia-de-san-pedro-de-macoris",
+      "file": "/assets/catalog/provincia-de-san-pedro-de-macoris-1.webp",
+      "sha256": "44da26f26655ad2f3e3d119df49895129dea502751dec5e2b0cdfeeef24776ef",
+      "source": "https://commons.wikimedia.org/wiki/File:Park_in_SanPedroMacoris_Dominican_Republic.jpg",
+      "revision": 1171075723,
+      "license": "Public domain",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "jimani",
+      "file": "/assets/catalog/jimani-1.webp",
+      "sha256": "5dbf68925936da53ec0d547ca45a97ab012a02adc5adb0bacad7e6d5a562c1cb",
+      "source": "https://commons.wikimedia.org/wiki/File:Jimani_Dominican_Republic_2.jpg",
+      "revision": 743830404,
+      "license": "CC BY-SA 4.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "canal-de-la-mona",
+      "file": "/assets/catalog/canal-de-la-mona-1.webp",
+      "sha256": "03f5378e8f80ed9ac115ada875b75c15134f269108749a88ac5a78345f9c104d",
+      "source": "https://commons.wikimedia.org/wiki/File:Mona_Passage_NOAA.jpg",
+      "revision": 1028281338,
+      "license": "Public domain",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "provincia-de-san-jose-de-ocoa",
+      "file": "/assets/catalog/provincia-de-san-jose-de-ocoa-1.webp",
+      "sha256": "556bd441cae923003f49f4d3576aa45bfae984512b024022fc6ad0984e90dba3",
+      "source": "https://commons.wikimedia.org/wiki/File:San_Jos%C3%A9,_DR.jpg",
+      "revision": 1277915718,
+      "license": "CC BY 4.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "provincia-de-independencia",
+      "file": "/assets/catalog/provincia-de-independencia-1.webp",
+      "sha256": "6df06666ab513b90a606b6b0603f4c7a80d63ec7a16dd9f328936775b5d513db",
+      "source": "https://commons.wikimedia.org/wiki/File:Enriquillo-IMG184.JPG",
+      "revision": 1230533075,
+      "license": "CC BY-SA 4.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "la-isabela",
+      "file": "/assets/catalog/la-isabela-1.webp",
+      "sha256": "2bf737d70da7603f5a72f44b47b84de5be98a68a005020b87926b672515d00b9",
+      "source": "https://commons.wikimedia.org/wiki/File:La_Isabela_SDQ_10_2019_1144.jpg",
+      "revision": 1043257857,
+      "license": "CC BY-SA 4.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "punta-cana",
+      "file": "/assets/catalog/punta-cana-1.webp",
+      "sha256": "25fe3eae9c2d413d1536ee24252d92ba22e85c359d6128df84a89b278be5064a",
+      "source": "https://commons.wikimedia.org/wiki/File:Punta_Cana_29_april_2012.jpg",
+      "revision": 1250002852,
+      "license": "CC BY-SA 3.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "tyto-glaucops",
+      "file": "/assets/catalog/tyto-glaucops-1.webp",
+      "sha256": "e5a8414ee7800ec8783f995c491b984a8a4566b6398956b930f3422a1cb7bcfa",
+      "source": "https://commons.wikimedia.org/wiki/File:Tyto_glaucops.jpg",
+      "revision": 1281196194,
+      "license": "CC BY-SA 2.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "antrostomus-ekmani",
+      "file": "/assets/catalog/antrostomus-ekmani-1.webp",
+      "sha256": "81c0646913cbd56b1c2e2d3a0bdbec219596ef861be6d729bb2bce3b02d72cb8",
+      "source": "https://commons.wikimedia.org/wiki/File:Antrostomus_ekmani_-_Esteban_Pelaez_-_390241090.jpeg",
+      "revision": 1156477783,
+      "license": "CC BY 4.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "anthracothorax-dominicus",
+      "file": "/assets/catalog/anthracothorax-dominicus-1.webp",
+      "sha256": "9890433ab1c5673997acc5831f8392303ee73364e101446e13e99cc1b8d86a68",
+      "source": "https://commons.wikimedia.org/wiki/File:Antillean_Mango_2017-12-15.jpg",
+      "revision": 1106773450,
+      "license": "CC BY-SA 4.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "riccordia-swainsoni",
+      "file": "/assets/catalog/riccordia-swainsoni-1.webp",
+      "sha256": "bcb5a4791db0e537d6c7c14e60d27391a2dd1781518267a634877e3b1e465cfd",
+      "source": "https://commons.wikimedia.org/wiki/File:DR_Hispaniolan_Emerald1.jpg",
+      "revision": 1178680556,
+      "license": "CC BY-SA 3.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "nesoctites-micromegas",
+      "file": "/assets/catalog/nesoctites-micromegas-1.webp",
+      "sha256": "e203bb05173e709fe88822232c626115845ac44015dd9a7f2f9712b016cda17d",
+      "source": "https://commons.wikimedia.org/wiki/File:Antillean_Piculet_(Nesoctites_micromegas)_(8082816234).jpg",
+      "revision": 950997195,
+      "license": "CC BY 2.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "corvus-leucognaphalus",
+      "file": "/assets/catalog/corvus-leucognaphalus-1.webp",
+      "sha256": "1c8598c9361d529e913660184944d24d8cfb15869dc0c141a05592d9b245deaf",
+      "source": "https://commons.wikimedia.org/wiki/File:DR_White-necked_Crow_ed2_1.JPG",
+      "revision": 1161199065,
+      "license": "CC BY-SA 3.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "geotrygon-leucometopia",
+      "file": "/assets/catalog/geotrygon-leucometopia-1.webp",
+      "sha256": "588b2b5256b90f68733f194ff3948483a7145c71ce04a390f4da332831ac5415",
+      "source": "https://commons.wikimedia.org/wiki/File:Geotrygon_leucometopia,_Hoyo_De_Pelempito,_Dominican_Republic_1.jpg",
+      "revision": 1033679001,
+      "license": "CC BY 4.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "coccyzus-rufigularis",
+      "file": "/assets/catalog/coccyzus-rufigularis-1.webp",
+      "sha256": "4f0e19a9b53d6f7fd958a930ef3c80a9c23716db3880beb5d423e3a7a7ede10d",
+      "source": "https://commons.wikimedia.org/wiki/File:Coccyzus_rufigularis_1199518_(cropped).jpg",
+      "revision": 862913352,
+      "license": "CC BY 4.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "icterus-dominicensis",
+      "file": "/assets/catalog/icterus-dominicensis-1.webp",
+      "sha256": "a11887c58edd82575bb60ae13c925673e8b9f38c8fc968355aec463f0e0db441",
+      "source": "https://commons.wikimedia.org/wiki/File:Hispaniolan_Oriole_(Icterus_dominicensis)_(cropped).jpg",
+      "revision": 1189635674,
+      "license": "CC BY 4.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "laguna-salada",
+      "file": "/assets/catalog/laguna-salada-1.webp",
+      "sha256": "6e92cf6bd03457d73627f71fe167cf74c279b69aad3e6e019c0f864f2f221c30",
+      "source": "https://commons.wikimedia.org/wiki/File:Parque_de_La_Caya.JPG",
+      "revision": 1202919848,
+      "license": "CC BY-SA 3.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "bayaguana",
+      "file": "/assets/catalog/bayaguana-1.webp",
+      "sha256": "554cac02c2409cb48ae29a207d305b98ac44ab064ff6901b7233b2ee96a505b9",
+      "source": "https://commons.wikimedia.org/wiki/File:Bayaguana,_Republica_Dominicana,_santuario.jpg",
+      "revision": 818894622,
+      "license": "CC0 1.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "san-antonio-de-guerra",
+      "file": "/assets/catalog/san-antonio-de-guerra-1.webp",
+      "sha256": "27b3afd3fb28ed66e29308850ed0958d127369cf1bd0487252971aec8144f98e",
+      "source": "https://commons.wikimedia.org/wiki/File:Parque_Central_del_municipio_San_Antonio_de_Guerra.jpg",
+      "revision": 1048267002,
+      "license": "Public domain",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "las-guaranas",
+      "file": "/assets/catalog/las-guaranas-1.webp",
+      "sha256": "0c13cfd8465d80043c20b905761b9bdd48d444db5248c4b340520668683af71a",
+      "source": "https://commons.wikimedia.org/wiki/File:Parroquia_del_carmen.jpg",
+      "revision": 1182261834,
+      "license": "CC BY-SA 3.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "templo-de-santo-domingo",
+      "file": "/assets/catalog/templo-de-santo-domingo-1.webp",
+      "sha256": "1aac40e5b482d57ffdb43e21106977484bee5c87c5bc81d2bf9f8b0928f0d88f",
+      "source": "https://commons.wikimedia.org/wiki/File:Santo_Domingo_Temple_by_Jairo_Hern%C3%A1ndez.jpg",
+      "revision": 884218514,
+      "license": "CC BY-SA 3.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "laguna-de-oviedo",
+      "file": "/assets/catalog/laguna-de-oviedo-1.webp",
+      "sha256": "ac4997967e682e648317183e11a002194ba0655ab1a99877ffa076c617bcae67",
+      "source": "https://commons.wikimedia.org/wiki/File:Lago_de_OviedoWW.jpg",
+      "revision": 814753957,
+      "license": "Public domain",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "peralta",
+      "file": "/assets/catalog/peralta-1.webp",
+      "sha256": "686435ff37b88a5c765630398615d9738848b74b78a45236cace43a4adfdf82b",
+      "source": "https://commons.wikimedia.org/wiki/File:Peralta_Azua_Dominican_Republic_rural_countryside.jpg",
+      "revision": 820426423,
+      "license": "CC BY-SA 4.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "quisqueya",
+      "file": "/assets/catalog/quisqueya-1.webp",
+      "sha256": "164c4ce13b91d939b83cb92fcfe194beb274cd201322b3bf6c3e6cbbe4d80f9f",
+      "source": "https://commons.wikimedia.org/wiki/File:Palacio_Municipal_Quisqueya.jpg",
+      "revision": 1152601869,
+      "license": "CC BY-SA 4.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "sabana-de-la-mar",
+      "file": "/assets/catalog/sabana-de-la-mar-1.webp",
+      "sha256": "15086001359da2253d735bc2280e7063317894bb574b006d219a1525efdc342f",
+      "source": "https://commons.wikimedia.org/wiki/File:Sabana_de_la_Mae.jpg",
+      "revision": 1222211244,
+      "license": "CC BY-SA 4.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "vallejuelo",
+      "file": "/assets/catalog/vallejuelo-1.webp",
+      "sha256": "339021e2dac0b825caf9832d536e2989849d0285efff3e60318083a46bda798b",
+      "source": "https://commons.wikimedia.org/wiki/File:Iglesia_Catolica,_Vallejuelo,_Republica_Dominicana..jpg",
+      "revision": 1275742937,
+      "license": "CC BY-SA 3.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "salto-el-limon",
+      "file": "/assets/catalog/salto-el-limon-1.webp",
+      "sha256": "1edd4c896f0967586cdf862f8064ba20d21387d69552683521c05de0fce8dd5b",
+      "source": "https://commons.wikimedia.org/wiki/File:Salto_de_Limon_waterfall_in_Samana,_Dominican_Republic.jpg",
+      "revision": 1124380952,
+      "license": "CC BY-SA 2.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "villa-vasquez",
+      "file": "/assets/catalog/villa-vasquez-1.webp",
+      "sha256": "4381236bdd50c6e53b10f9e11918e8b86b759aea4c07cb1808132f9d5f128529",
+      "source": "https://commons.wikimedia.org/wiki/File:Playa_Buen_Hombre.jpg",
+      "revision": 1171790065,
+      "license": "CC BY-SA 4.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "tabara-arriba",
+      "file": "/assets/catalog/tabara-arriba-1.webp",
+      "sha256": "3a74985d2bf959ee38227a932cbebc4d899f71a8017c4e99421c3fc54deed278",
+      "source": "https://commons.wikimedia.org/wiki/File:Valle_de_t%C3%A1bara_arriba.png",
+      "revision": 975674950,
+      "license": "CC BY-SA 4.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "banica",
+      "file": "/assets/catalog/banica-1.webp",
+      "sha256": "6b17ef80f04fbaf42be6b5870218c93d53fecdc18f13a71399a9661320d14a78",
+      "source": "https://commons.wikimedia.org/wiki/File:Banica_Dominican_Republic_2.jpg",
+      "revision": 858121202,
+      "license": "CC BY-SA 4.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "playa-rincon",
+      "file": "/assets/catalog/playa-rincon-1.webp",
+      "sha256": "afb5d8686017c01e71472e2b831c48dde1eb65f609171333d189fabc818dc146",
+      "source": "https://commons.wikimedia.org/wiki/File:Playa_Rinc%C3%B3n_December_2020_2.jpg",
+      "revision": 1202818955,
+      "license": "CC BY-SA 4.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "playa-punta-rucia",
+      "file": "/assets/catalog/playa-punta-rucia-1.webp",
+      "sha256": "f6f6e8ff9fa4c1a58f71784b324d680cd994dfaeeabdc8f40f9e50812a41e3b5",
+      "source": "https://commons.wikimedia.org/wiki/File:Playa_Punta_Rucia,_Puerto_Plata_Province.jpg",
+      "revision": 1242247025,
+      "license": "CC BY-SA 4.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "laguna-salada-q23762354",
+      "file": "/assets/catalog/laguna-salada-q23762354-1.webp",
+      "sha256": "fb2422331317d76cf5c048ad537b94abe7c4df7c7e63d5b9a31625f4ebda3de6",
+      "source": "https://commons.wikimedia.org/wiki/File:Laguna_Salada_(DomRep)_01.jpg",
+      "revision": 1253790970,
+      "license": "CC BY-SA 4.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "xenoligea-montana",
+      "file": "/assets/catalog/xenoligea-montana-1.webp",
+      "sha256": "808d9738bcee184c5e39d4dd4a15d3a8abd384f9f4ae9f18c5068107e5d01305",
+      "source": "https://commons.wikimedia.org/wiki/File:White-winged_Warbler_(Xenoligea_montana)_(8082795709).jpg",
+      "revision": 1249303727,
+      "license": "CC BY 2.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "microligea-palustris",
+      "file": "/assets/catalog/microligea-palustris-1.webp",
+      "sha256": "7ff7771fa399c6caf1df10c37128eb7485e7d0bc651efd3f2bb9fb8a0637dd94",
+      "source": "https://commons.wikimedia.org/wiki/File:Green-tailed_Warbler(Microligea_palustris)_(8082776636).jpg",
+      "revision": 933128716,
+      "license": "CC BY 2.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "tangara-haitiana",
+      "file": "/assets/catalog/tangara-haitiana-1.webp",
+      "sha256": "ffe29068e01f392f0b6586a6b2a565c45ce716d10bdcceeabf18631f5696c12e",
+      "source": "https://commons.wikimedia.org/wiki/File:Calyptophilus_tertius_-_Zac_Peterson_-_290434710.jpeg",
+      "revision": 1272686937,
+      "license": "CC BY 4.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "spindalis-dominicensis",
+      "file": "/assets/catalog/spindalis-dominicensis-1.webp",
+      "sha256": "25f6e31c5277151d5eeb73eb21dbc2846aadd42ad364a23e0d4f6ef89e31e44c",
+      "source": "https://commons.wikimedia.org/wiki/File:Hispaniolan_Spindalis,_Kenscoff,_Haiti_1.jpg",
+      "revision": 1299179941,
+      "license": "CC0 1.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "loxia-megaplaga",
+      "file": "/assets/catalog/loxia-megaplaga-1.webp",
+      "sha256": "bbb27ebd53ccc44478659d02ace70f76d9cdd952f19a8f1fa72c9a7b0ffa2f92",
+      "source": "https://commons.wikimedia.org/wiki/File:Loxia_megaplaga_Smithsonian.jpg",
+      "revision": 860248419,
+      "license": "Public domain",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "turdus-swalesi",
+      "file": "/assets/catalog/turdus-swalesi-1.webp",
+      "sha256": "8604d8a644ef85c041e284a2b57379deae33f2c99c7a14e59c3c935b0cf065d6",
+      "source": "https://commons.wikimedia.org/wiki/File:La_Selle_Thrush.jpg",
+      "revision": 1155731900,
+      "license": "CC BY 2.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "solitario-gorgirrufo",
+      "file": "/assets/catalog/solitario-gorgirrufo-1.webp",
+      "sha256": "718d7d4a62ad5c4a1fde2a50965fb57288ac3973b77b62d540ab5b0e678e25c5",
+      "source": "https://commons.wikimedia.org/wiki/File:Myadestes_genibarbis_genibarbis_411075095.jpg",
+      "revision": 1093192497,
+      "license": "CC BY-SA 4.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "tachycineta-euchrysea",
+      "file": "/assets/catalog/tachycineta-euchrysea-1.webp",
+      "sha256": "a576a7b45489e55b9dd1307163e190199b7e0e852e17ddb097431d2ef2bd85c4",
+      "source": "https://commons.wikimedia.org/wiki/File:Adult_Hispaniolan_Golden_Swallow_perched_on_artificial_nest-box.jpg",
+      "revision": 782452112,
+      "license": "CC BY-SA 4.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "contopus-hispaniolensis",
+      "file": "/assets/catalog/contopus-hispaniolensis-1.webp",
+      "sha256": "e1ebe33e0f2c49faf2930112c04d65ff9fe7aa4a600af27f8389b57241c0e428",
+      "source": "https://commons.wikimedia.org/wiki/File:Hispaniolan_Pewee_(Contopus_hispaniolensis)_(8082765935).jpg",
+      "revision": 1299179817,
+      "license": "CC BY 2.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "vireo-nanus",
+      "file": "/assets/catalog/vireo-nanus-1.webp",
+      "sha256": "7ba62f166bc5d17bdd2b13c3b7ef8955e7922dcf473177a452b11409b87a0310",
+      "source": "https://commons.wikimedia.org/wiki/File:Vireo_nanus_imported_from_iNaturalist_photo_58199583_on_3_April_2021.jpg",
+      "revision": 1036566314,
+      "license": "CC BY 4.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "corvus-palmarum",
+      "file": "/assets/catalog/corvus-palmarum-1.webp",
+      "sha256": "3a1810fb3d89803275d8c397d365a9ada5688d22b326d44346c4e9ff6e05b2d2",
+      "source": "https://commons.wikimedia.org/wiki/File:Corvus_palmarum,_Duverge,_Dominican_Republic_1.jpg",
+      "revision": 1032295782,
+      "license": "CC BY 4.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "eufonia-antillana",
+      "file": "/assets/catalog/eufonia-antillana-1.webp",
+      "sha256": "0ea693f35cef92950bee7e30b4a1d40494537a3f86e2a30491490c3ef6f668db",
+      "source": "https://commons.wikimedia.org/wiki/File:Hispaniolan_Euphonia_(Chlorophonia_musica)_male_in_the_Dominican_Republic.jpg",
+      "revision": 1236586525,
+      "license": "CC BY 4.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "cyclura-cornuta",
+      "file": "/assets/catalog/cyclura-cornuta-1.webp",
+      "sha256": "28c232f527782632ca3e5e0b69d898eb7269af77b293bad60c3929a5bd717248",
+      "source": "https://commons.wikimedia.org/wiki/File:RhinoIguanaMay07Pedernales.jpg",
+      "revision": 718236183,
+      "license": "Public domain",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "cyclura-ricordii",
+      "file": "/assets/catalog/cyclura-ricordii-1.webp",
+      "sha256": "d048e48825ac974c0a1d30adaf09da0ecdae259345534e7e5464445b0c554278",
+      "source": "https://commons.wikimedia.org/wiki/File:Cabritos_2011_12_13Feb_221.JPG",
+      "revision": 1166097654,
+      "license": "CC BY 3.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "chilabothrus-striatus",
+      "file": "/assets/catalog/chilabothrus-striatus-1.webp",
+      "sha256": "70b8f51fc2387b58b80e80efe40dc5adbabd480cff31ff02f378799fafd12054",
+      "source": "https://commons.wikimedia.org/wiki/File:%D0%A1%D1%82%D1%80%D0%BE%D0%B9%D0%BD%D1%8B%D0%B9_%D1%83%D0%B4%D0%B0%D0%B2_%D0%93%D1%80%D0%BE%D0%B4%D0%BD%D0%BE.JPG",
+      "revision": 1140815168,
+      "license": "CC BY-SA 3.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "pinus-occidentalis",
+      "file": "/assets/catalog/pinus-occidentalis-1.webp",
+      "sha256": "666c750cfc1a30d30bc7dc221ab7dbfbbe6dc6f9c07be3861f8a1e7c21e16822",
+      "source": "https://commons.wikimedia.org/wiki/File:Pinus_occidentalis_Jarabacoa.jpg",
+      "revision": 1084354841,
+      "license": "CC BY 2.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "leuenbergeria-quisqueyana",
+      "file": "/assets/catalog/leuenbergeria-quisqueyana-1.webp",
+      "sha256": "76e9fd6ef4bae4afe47a8475b5d6d6690b2750b02b1c1c76ae2a38a76e830694",
+      "source": "https://commons.wikimedia.org/wiki/File:Pereskia_quisqueyana.JPG",
+      "revision": 1274411762,
+      "license": "Public domain",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "playa-madama",
+      "file": "/assets/catalog/playa-madama-1.webp",
+      "sha256": "618cb7c98e43fe09c1089618b56a34317a640fc367c1c8d242726611f349b7ea",
+      "source": "https://commons.wikimedia.org/wiki/File:Playa_Madama.jpg",
+      "revision": 1242268022,
+      "license": "CC BY-SA 4.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "rio-maimon",
+      "file": "/assets/catalog/rio-maimon-1.webp",
+      "sha256": "a8a79220560ca82bcd2f957f4b56044f35d190f28454784524ad5faa2c519271",
+      "source": "https://commons.wikimedia.org/wiki/File:Las_Lagunas_de_Nisib%C3%B3n,_Dominican_Republic_-_panoramio_(1).jpg",
+      "revision": 1254168338,
+      "license": "CC BY 3.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "salto-de-jimenoa-uno",
+      "file": "/assets/catalog/salto-de-jimenoa-uno-1.webp",
+      "sha256": "b3a4d21697bcf62cb09d24ff864c3c3f8029f960e7f49888def5ead801e04706",
+      "source": "https://commons.wikimedia.org/wiki/File:Salto_Jimenoa_300.jpg",
+      "revision": 1169349521,
+      "license": "CC BY-SA 4.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "playa-dorada",
+      "file": "/assets/catalog/playa-dorada-1.webp",
+      "sha256": "6ee02bd0c67beec1060e140193af498bcd462b39d8d637f0a05928c9ae817978",
+      "source": "https://commons.wikimedia.org/wiki/File:Playa_Dorada,_Provincia_Puerto_Plata_-_panoramio.jpg",
+      "revision": 719161258,
+      "license": "CC BY 3.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "playa-bonita",
+      "file": "/assets/catalog/playa-bonita-1.webp",
+      "sha256": "2f7928acaff24667a9ae708ed25205d5a8520acc9ae69c4b8462fdbd0ba5bfe4",
+      "source": "https://commons.wikimedia.org/wiki/File:Playa_Bonita_Beach,_Las_Terrenas,_Samana_Peninsula,_Dominican_Republic_(52757385491).jpg",
+      "revision": 1170569355,
+      "license": "CC BY 2.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "las-caritas",
+      "file": "/assets/catalog/las-caritas-1.webp",
+      "sha256": "073536a7740a428dc8f84f6ad69b160eaf6d06d84714a478e1cf69d10339a4af",
+      "source": "https://commons.wikimedia.org/wiki/File:Las_caritas_de_los_Indios.jpg",
+      "revision": 816209163,
+      "license": "CC BY-SA 4.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "museo-del-hombre-dominicano",
+      "file": "/assets/catalog/museo-del-hombre-dominicano-1.webp",
+      "sha256": "d060eb3e18c4fe105ba9a4e6a3bb3facdaf3afb7a261e8b642aa8d256d697eac",
+      "source": "https://commons.wikimedia.org/wiki/File:MUSEUM_OF_THE_DOMINICAN_MAN,_SANTO_DOMINGO,_DOMINICAN_REPUBLIC.jpg",
+      "revision": 1291398049,
+      "license": "CC BY-SA 3.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "catedral-inmaculada-concepcion",
+      "file": "/assets/catalog/catedral-inmaculada-concepcion-1.webp",
+      "sha256": "3d1697176220aad1d7478c3d65e8e929071871b2369ea7e3c5f56e1e84656bb1",
+      "source": "https://commons.wikimedia.org/wiki/File:La_vega_01.JPG",
+      "revision": 1034103142,
+      "license": "CC BY-SA 3.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "archivo-general-de-la-nacion",
+      "file": "/assets/catalog/archivo-general-de-la-nacion-1.webp",
+      "sha256": "0257e7e0710a3583022bf0a278b4699a32f2eed6583e883fc917e4e0d954397d",
+      "source": "https://commons.wikimedia.org/wiki/File:DO_AGN_Mural_inside_of_the_General_National_Archive_in_Santo_Domingo,_Dominican_Republic.jpg",
+      "revision": 1161109831,
+      "license": "CC BY-SA 4.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "gran-teatro-del-cibao",
+      "file": "/assets/catalog/gran-teatro-del-cibao-1.webp",
+      "sha256": "f132ad5912077b6a2a0535828438f2fac482c78fda712087384cc672658149e2",
+      "source": "https://commons.wikimedia.org/wiki/File:Lope_de_Vega_GTC.JPG",
+      "revision": 1282260084,
+      "license": "CC BY-SA 3.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "swietenia-mahagoni",
+      "file": "/assets/catalog/swietenia-mahagoni-1.webp",
+      "sha256": "0251a24a10b6190eef8a6d65eb7f7c75bd1d344e211fe8e42c6b23c9655b20ba",
+      "source": "https://commons.wikimedia.org/wiki/File:Tree_in_new_leaves_I_IMG_6222.jpg",
+      "revision": 1298705695,
+      "license": "CC BY-SA 3.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "coccothrinax-argentea",
+      "file": "/assets/catalog/coccothrinax-argentea-1.webp",
+      "sha256": "e87e3ae770881259b546b2af0dfb51ec73614f0d0d7cee7d6d9ec31e25e63dc6",
+      "source": "https://commons.wikimedia.org/wiki/File:Coccothrinax_argentea.jpg",
+      "revision": 1130656027,
+      "license": "CC BY 2.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "magnolia-pallescens",
+      "file": "/assets/catalog/magnolia-pallescens-1.webp",
+      "sha256": "32b8e5cf56ba5b80e5afa23bf43a31d0aba2c03723d1ff665c1e016538cb350b",
+      "source": "https://commons.wikimedia.org/wiki/File:Magnolia_pallescens.jpg",
+      "revision": 1122983031,
+      "license": "CC BY 2.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "hispaniolan-slider",
+      "file": "/assets/catalog/hispaniolan-slider-1.webp",
+      "sha256": "5755cd15e537834a825f4d59a4ebb916cc40207188df8f3a1d9e698831ccc8d4",
+      "source": "https://commons.wikimedia.org/wiki/File:Trachemys_decorata.jpg",
+      "revision": 1126817450,
+      "license": "CC BY 2.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "haitises",
+      "file": "/assets/catalog/haitises-1.webp",
+      "sha256": "a4d03bc2ed511af46295287be64202ba9e2e1f6bfbad50a17f07ef8e8dbad167",
+      "source": "https://commons.wikimedia.org/wiki/File:Los_Haitises_Park.jpeg",
+      "revision": 1143200572,
+      "license": "CC BY-SA 3.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "centro-cultural-eduardo-leon-jimenes",
+      "file": "/assets/catalog/centro-cultural-eduardo-leon-jimenes-1.webp",
+      "sha256": "80c4533b8304d5c21f69220e8f0631a81a6749df05bd4d70ec0cf741a335a2c6",
+      "source": "https://commons.wikimedia.org/wiki/File:Centroleon.jpg",
+      "revision": 1282678183,
+      "license": "CC BY-SA 3.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "provincia-de-santiago",
+      "file": "/assets/catalog/provincia-de-santiago-1.webp",
+      "sha256": "ea684b9f3d4555929182d75c147c60e70c472123b7b01d6056ba4b00d3096dca",
+      "source": "https://commons.wikimedia.org/wiki/File:Monument_to_the_Heroes_of_the_Restoration1.JPG",
+      "revision": 1120172193,
+      "license": "Public domain",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "provincia-de-valverde",
+      "file": "/assets/catalog/provincia-de-valverde-1.webp",
+      "sha256": "cf6814a22e5e04f805631b4dceaf4e0c7f38d9620b5fc10f140b4156298e3284",
+      "source": "https://commons.wikimedia.org/wiki/File:4ta_brigada_ERD.jpg",
+      "revision": 769544561,
+      "license": "CC BY-SA 4.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "las-terrenas",
+      "file": "/assets/catalog/las-terrenas-1.webp",
+      "sha256": "00c0ccd95494c6c8d48894af63bf002e9d9f7d6311af06b29a6e0fb510305eb4",
+      "source": "https://commons.wikimedia.org/wiki/File:Las-Terrenas.jpg",
+      "revision": 1267539429,
+      "license": "CC BY-SA 3.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "municipio-de-azua",
+      "file": "/assets/catalog/municipio-de-azua-1.webp",
+      "sha256": "20cd654b5422e9e4d76e62966d503f849cad4a9f64f9e35158390b97ac6d3b77",
+      "source": "https://commons.wikimedia.org/wiki/File:Ayuntamiento_Azua.jpg",
+      "revision": 1041594698,
+      "license": "CC BY-SA 4.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "provincia-de-sanchez-ramirez",
+      "file": "/assets/catalog/provincia-de-sanchez-ramirez-1.webp",
+      "sha256": "66a1138424923d004b4dd5e203e915d32122850f030a9a2d491dad5810b53754",
+      "source": "https://commons.wikimedia.org/wiki/File:Mogote_P1010178.jpg",
+      "revision": 1184895231,
+      "license": "CC BY-SA 4.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "rio-yuna",
+      "file": "/assets/catalog/rio-yuna-1.webp",
+      "sha256": "89350f06bef96c688dac94829d09f5375affb44af5a0dfdfda09096fb28a0aaa",
+      "source": "https://commons.wikimedia.org/wiki/File:R%C3%ADo_Yuna.JPG",
+      "revision": 1154317276,
+      "license": "CC BY-SA 3.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "bani",
+      "file": "/assets/catalog/bani-1.webp",
+      "sha256": "ee00956ebe2fcd5edceaad2b66af70180ef45c447bde184300af332667b51faa",
+      "source": "https://commons.wikimedia.org/wiki/File:Ayuntamiento_Ban%C3%AD.jpg",
+      "revision": 809514709,
+      "license": "CC BY-SA 4.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "provincia-de-maria-trinidad-sanchez",
+      "file": "/assets/catalog/provincia-de-maria-trinidad-sanchez-1.webp",
+      "sha256": "eb554788b16b714668901a1932320becfff038c8987a4cf0ab3fce8d48a46e94",
+      "source": "https://commons.wikimedia.org/wiki/File:%D0%94%D0%BE%D0%BC%D0%B8%D0%BD%D0%B8%D0%BA%D0%B0%D0%BD%D1%81%D0%BA%D0%B0%D1%8F_%D0%A0%D0%B5%D1%81%D0%BF%D1%83%D0%B1%D0%BB%D0%B8%D0%BA%D0%B0_-_panoramio_(70).jpg",
+      "revision": 1090826943,
+      "license": "CC BY 3.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "dajabon",
+      "file": "/assets/catalog/dajabon-1.webp",
+      "sha256": "db44e6199b36dfb0ac24d4fd4885a7d459d56d85b4bd4b73de3e6c12d96960cd",
+      "source": "https://commons.wikimedia.org/wiki/File:Dajabon_Dominican_Republic_Church.jpg",
+      "revision": 883299370,
+      "license": "CC BY-SA 4.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "baluarte-del-conde",
+      "file": "/assets/catalog/baluarte-del-conde-1.webp",
+      "sha256": "b04a4a394436122c20bc508f2652ae1c95450b579ccfbf3715724f1f4fb61385",
+      "source": "https://commons.wikimedia.org/wiki/File:Puerta_del_Conde_CCSD_09_2018_1629.jpg",
+      "revision": 1181907573,
+      "license": "CC BY-SA 4.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "provincia-de-san-juan",
+      "file": "/assets/catalog/provincia-de-san-juan-1.webp",
+      "sha256": "bb3d09d95d26502ce2291120ee1f6a12601b6fe53dc9ea7f50956097040913ae",
+      "source": "https://commons.wikimedia.org/wiki/File:Triumphbogen(Arco_del_triunfo).jpg",
+      "revision": 915564922,
+      "license": "CC BY-SA 4.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "provincia-de-santiago-rodriguez",
+      "file": "/assets/catalog/provincia-de-santiago-rodriguez-1.webp",
+      "sha256": "1bfd622750a0b74df009aef46b69517f04d8097b5aac8148946da625ebf5b0b1",
+      "source": "https://commons.wikimedia.org/wiki/File:Presa_de_Monci%C3%B3n.jpg",
+      "revision": 633076466,
+      "license": "CC BY-SA 4.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "bahia-de-samana",
+      "file": "/assets/catalog/bahia-de-samana-1.webp",
+      "sha256": "2f45f09a8791c106ef97eb08c3673d3947ddb1793071fa6658f136609ea68327",
+      "source": "https://commons.wikimedia.org/wiki/File:DOM_Santa_B%C3%A1rbara_de_Saman%C3%A1,_Bah%C3%ADa_de_Saman%C3%A1_0009.jpg",
+      "revision": 1287306870,
+      "license": "CC BY 4.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "san-jose-de-ocoa",
+      "file": "/assets/catalog/san-jose-de-ocoa-1.webp",
+      "sha256": "e6039ff8d9cb7df982678be1029f7925f3e4d3afb33393f72189f622817a33cc",
+      "source": "https://commons.wikimedia.org/wiki/File:San_Jos%C3%A9_View,_DR.jpg",
+      "revision": 927301813,
+      "license": "CC BY 4.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "monte-cristi",
+      "file": "/assets/catalog/monte-cristi-1.webp",
+      "sha256": "504ec1a2f8a9dc85ff2ba5dfca2f6b511171eed9ef6c137cceba8abe03a3ba70",
+      "source": "https://commons.wikimedia.org/wiki/File:Montecriti,_Dominican_Republic_1900s.jpg",
+      "revision": 1175295950,
+      "license": "Public domain",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "altar-de-la-patria",
+      "file": "/assets/catalog/altar-de-la-patria-1.webp",
+      "sha256": "f384259aaa90262256ae63d88854e14dcf24d6c7fb3e59641c7d0e621638dfd1",
+      "source": "https://commons.wikimedia.org/wiki/File:Altar_de_la_Patria_CCSD_09_2018_1606.jpg",
+      "revision": 1046980781,
+      "license": "CC BY-SA 4.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "peninsula-de-samana",
+      "file": "/assets/catalog/peninsula-de-samana-1.webp",
+      "sha256": "0268762086f5f0b243f77f130c5e107948e3f2d031eb6fbe4f539405fdc80710",
+      "source": "https://commons.wikimedia.org/wiki/File:Playa_Front%C3%B3n_December_2020_3.jpg",
+      "revision": 1259421018,
+      "license": "CC BY-SA 4.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "sierra-de-neiba",
+      "file": "/assets/catalog/sierra-de-neiba-1.webp",
+      "sha256": "3db1568e5e74c092fb1abac8a3e1e3e1471dfaef4ef37c25c43511f92460d565",
+      "source": "https://commons.wikimedia.org/wiki/File:07-05-11LagoEnriquilloDR.jpg",
+      "revision": 737618259,
+      "license": "Public domain",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "nagua",
+      "file": "/assets/catalog/nagua-1.webp",
+      "sha256": "01b337a0b528c565a643c720e241533a36c1a7a6ed7377a1e9a5701086fc2ef3",
+      "source": "https://commons.wikimedia.org/wiki/File:Area_de_desembocadura,_Rio_Nagua,_Sector_Rio_Mar.jpg",
+      "revision": 1064869195,
+      "license": "CC BY-SA 4.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "sierra-de-bahoruco",
+      "file": "/assets/catalog/sierra-de-bahoruco-1.webp",
+      "sha256": "0e7f3cb4fc7cad2989aa21b00f6c3affccd747378a0d08e222ff2e61017b0101",
+      "source": "https://commons.wikimedia.org/wiki/File:Hoyo_de_Pelempito.jpg",
+      "revision": 1286911243,
+      "license": "CC BY-SA 4.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "hato-mayor",
+      "file": "/assets/catalog/hato-mayor-1.webp",
+      "sha256": "2b59ccc4f119f66891cb23069b9acfa093e1055b997618769a87ce7b5b889a40",
+      "source": "https://commons.wikimedia.org/wiki/File:Parque_y_Parroquia_Hato_Mayor.jpg",
+      "revision": 1171324268,
+      "license": "CC BY-SA 4.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "san-juan",
+      "file": "/assets/catalog/san-juan-1.webp",
+      "sha256": "540dc8b9a0b41a4dbbaf63d56d5fc0181be6a8dd1b7024ac0c543fce85ec9ae2",
+      "source": "https://commons.wikimedia.org/wiki/File:Extensi%C3%B3n_UCE_en_San_Juan_de_la_Maguana.jpg",
+      "revision": 1237783182,
+      "license": "Public domain",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "ciudad-colonial",
+      "file": "/assets/catalog/ciudad-colonial-1.webp",
+      "sha256": "e2dfabbdf47251cc65a7504883b48aeeb8c9563f049d9be3b0e854d722ba824f",
+      "source": "https://commons.wikimedia.org/wiki/File:Aerial_view_Ciudad_Colonial_Santo_Domingo_09_2019_0067.jpg",
+      "revision": 1034663175,
+      "license": "CC BY-SA 4.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "fortaleza-ozama",
+      "file": "/assets/catalog/fortaleza-ozama-1.webp",
+      "sha256": "fe32c3afe189c23c7675d7acf5645ee3c004b15b1553e74f98f0df44cfcd1aec",
+      "source": "https://commons.wikimedia.org/wiki/File:Fortaleza_Ozama_RD_11_2017_6493.jpg",
+      "revision": 1258203867,
+      "license": "CC BY-SA 4.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "pedernales",
+      "file": "/assets/catalog/pedernales-1.webp",
+      "sha256": "c4ae81b763ca79a656169af4c998124c1b6244777b9739b494e84790bc88baa7",
+      "source": "https://commons.wikimedia.org/wiki/File:07-05-10PedernalesDR.jpg",
+      "revision": 737618254,
+      "license": "Public domain",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "estadio-julian-javier",
+      "file": "/assets/catalog/estadio-julian-javier-1.webp",
+      "sha256": "076c48b4b6bde12499874469d2e82a39c9fe6bfa690de964a7ff0af83ec562d5",
+      "source": "https://commons.wikimedia.org/wiki/File:Estadio_Julian_Javier.jpg",
+      "revision": 1233471830,
+      "license": "CC BY-SA 3.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "estadio-quisqueya-juan-marichal",
+      "file": "/assets/catalog/estadio-quisqueya-juan-marichal-1.webp",
+      "sha256": "1260fcb86c26c5c3ae067e206d83736fc9aa622891aa42cd6e6241896fffe0e4",
+      "source": "https://commons.wikimedia.org/wiki/File:Estadio_quisqueya_santo_domingo_dominican_republic_1.jpg",
+      "revision": 1233483624,
+      "license": "CC0 1.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "estadio-tetelo-vargas",
+      "file": "/assets/catalog/estadio-tetelo-vargas-1.webp",
+      "sha256": "188772bda1f39031536081789965c400df8d8715b4016dd23d91c461f1b110c9",
+      "source": "https://commons.wikimedia.org/wiki/File:Estadio_Tetelo_Vargas.png",
+      "revision": 1233479426,
+      "license": "CC BY-SA 4.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "fortaleza-de-san-felipe",
+      "file": "/assets/catalog/fortaleza-de-san-felipe-1.webp",
+      "sha256": "eca1067a08c76be66ed3b0460998d950c867159d1f4c57f20fd74129cd4881d9",
+      "source": "https://commons.wikimedia.org/wiki/File:The_ppfort.JPG",
+      "revision": 450947983,
+      "license": "CC BY-SA 3.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "fortaleza-san-luis",
+      "file": "/assets/catalog/fortaleza-san-luis-1.webp",
+      "sha256": "ff2da45c405ce80b1991297d655d2c783e0270fba0bdba9efa868a1f08c11bcc",
+      "source": "https://commons.wikimedia.org/wiki/File:Fortaleza_San_Luis.jpg",
+      "revision": 1178302486,
+      "license": "CC0 1.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "casa-del-cordon",
+      "file": "/assets/catalog/casa-del-cordon-1.webp",
+      "sha256": "9f35462d29acdaa42f5c28c61d08ca0261b956b3265dc0f1d0569e945846ed4a",
+      "source": "https://commons.wikimedia.org/wiki/File:Casa_del_Cordon_CCSD_RD_11_2017_6568.jpg",
+      "revision": 1162046583,
+      "license": "CC BY-SA 4.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "rio-jayaco",
+      "file": "/assets/catalog/rio-jayaco-1.webp",
+      "sha256": "692b56e25d66274e18c63b4cf38d166cb3f5d42902dc882eb2f56ae191fb17b5",
+      "source": "https://commons.wikimedia.org/wiki/File:Jayaco_River_in_Fula.jpg",
+      "revision": 1241617555,
+      "license": "CC BY-SA 3.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "la-caleta",
+      "file": "/assets/catalog/la-caleta-1.webp",
+      "sha256": "24a03647f3f600123966c40d211750acf9a4c9185f40cf0fab45096452021451",
+      "source": "https://commons.wikimedia.org/wiki/File:Playa_de_La_Caleta.jpg",
+      "revision": 1235562718,
+      "license": "CC BY 3.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "monasterio-de-san-francisco",
+      "file": "/assets/catalog/monasterio-de-san-francisco-1.webp",
+      "sha256": "12d4c89b28913cc45ad3c72fa273b0769af5ad65a789b904d90a39b70f9c7109",
+      "source": "https://commons.wikimedia.org/wiki/File:CCSD_RD_12_2017_7541.jpg",
+      "revision": 842347449,
+      "license": "CC BY-SA 4.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "parque-nacional-monte-cristi",
+      "file": "/assets/catalog/parque-nacional-monte-cristi-1.webp",
+      "sha256": "99cadcdc40f18b5f274b4bc5c08264c03bf7799b2d0d92a5fd7f6491ae3da430",
+      "source": "https://commons.wikimedia.org/wiki/File:Unnamed_Road,_Dominican_Republic_-_panoramio_(9).jpg",
+      "revision": 1248248870,
+      "license": "CC BY 3.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "monumento-de-santiago",
+      "file": "/assets/catalog/monumento-de-santiago-1.webp",
+      "sha256": "ea684b9f3d4555929182d75c147c60e70c472123b7b01d6056ba4b00d3096dca",
+      "source": "https://commons.wikimedia.org/wiki/File:Monument_to_the_Heroes_of_the_Restoration1.JPG",
+      "revision": 1120172193,
+      "license": "Public domain",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "panteon-de-la-patria",
+      "file": "/assets/catalog/panteon-de-la-patria-1.webp",
+      "sha256": "cbabb2f4e9e3ca39949b1639f28a9d41378f7467450191a7708ec35acacd3b07",
+      "source": "https://commons.wikimedia.org/wiki/File:DOM_Santo_Domingo,_Ciudad_Colonial,_Pant%C3%A9on_de_la_Patria_0008.jpg",
+      "revision": 1287308248,
+      "license": "CC BY 4.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "casona-de-palave",
+      "file": "/assets/catalog/casona-de-palave-1.webp",
+      "sha256": "b18d8fe582f3ff029a9f1175851d0703eee48fad689a5e8769b64fcca613f31a",
+      "source": "https://commons.wikimedia.org/wiki/File:Ruinas_de_Palav%C3%A92.jpg",
+      "revision": 1019252089,
+      "license": "CC BY-SA 4.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "parque-colon-santo-domingo",
+      "file": "/assets/catalog/parque-colon-santo-domingo-1.webp",
+      "sha256": "c5f31b124ab4da876532689400fdbd93a84e66c6faa9f82a99186cd55dad26bc",
+      "source": "https://commons.wikimedia.org/wiki/File:Parque_Colon.JPG",
+      "revision": 1223872301,
+      "license": "Public domain",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "reales-atarazanas-de-santo-domingo",
+      "file": "/assets/catalog/reales-atarazanas-de-santo-domingo-1.webp",
+      "sha256": "6e055488242317530d1b698cfc046ce208a17e3467a67a2f9f00104c3ca6f354",
+      "source": "https://commons.wikimedia.org/wiki/File:Museo_Atarazanas_Reales_CCSD_01_2020_2342.jpg",
+      "revision": 719561283,
+      "license": "CC BY-SA 4.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "sabana-buey",
+      "file": "/assets/catalog/sabana-buey-1.webp",
+      "sha256": "f2739a9cc7fb8a13aa82d42e3f1c36f93cee33b2d380554a84b9675c5ce6b2f7",
+      "source": "https://commons.wikimedia.org/wiki/File:Guatapan%C3%A1.jpg",
+      "revision": 1254166169,
+      "license": "CC BY-SA 4.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "congos",
+      "file": "/assets/catalog/congos-1.webp",
+      "sha256": "0b7d9d9f8ef457bf9baebb3e1f9de192a724bff596d8bfb07be3dde5497c789e",
+      "source": "https://commons.wikimedia.org/wiki/File:Estatua_de_Sixto_Minier.jpg",
+      "revision": 1026828125,
+      "license": "CC BY-SA 4.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "ballenas",
+      "file": "/assets/catalog/ballenas-1.webp",
+      "sha256": "4975aa7b6b9f38c4b45f1a56315e4aea4592af2037035d9d209bc3df456ec286",
+      "source": "https://commons.wikimedia.org/wiki/File:View_of_Saman%C3%A1_Bay_from_the_top_2.jpg",
+      "revision": 1036369648,
+      "license": "CC BY-SA 4.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "carnaval",
+      "file": "/assets/catalog/carnaval-1.webp",
+      "sha256": "0b8e70c39a7fcd05278f593b2beafe9fa9b59483b2644aaf9500aaf582e941b0",
+      "source": "https://commons.wikimedia.org/wiki/File:CARNAVAL_VEGANO_2020.jpg",
+      "revision": 842094203,
+      "license": "CC BY-SA 4.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "rio-soco",
+      "file": "/assets/catalog/rio-soco-1.webp",
+      "sha256": "9d3326bf7eb6afbefbd4b9bf36ec7a883cff902f3aa9fca45aeae323cd52982a",
+      "source": "https://commons.wikimedia.org/wiki/File:R%C3%ADo_Soco.png",
+      "revision": 668601656,
+      "license": "CC BY-SA 4.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "teatro-nacional-eduardo-brito",
+      "file": "/assets/catalog/teatro-nacional-eduardo-brito-1.webp",
+      "sha256": "7656f75f78e3dc40a4521a3b5fded18d28f3865d26111fe7b6820882d483c214",
+      "source": "https://commons.wikimedia.org/wiki/File:Sala_Carlos_Piantini.JPG",
+      "revision": 1097095916,
+      "license": "CC BY-SA 4.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "rio-yuma",
+      "file": "/assets/catalog/rio-yuma-1.webp",
+      "sha256": "0b6cd620c7148b74e2cec494508a30d42d74f61bf1af0c669909bed5ac125838",
+      "source": "https://commons.wikimedia.org/wiki/File:Yuma_River.jpg",
+      "revision": 1176510979,
+      "license": "CC BY-SA 2.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "museo-casa-duarte",
+      "file": "/assets/catalog/museo-casa-duarte-1.webp",
+      "sha256": "78a823048d79dd0dbdadc8a25f13514274cc57cbe7117412133580753012570a",
+      "source": "https://commons.wikimedia.org/wiki/File:DOM_Santo_Domingo,_Ciudad_Colonial,_Calle_Isabel_La_Cat%C3%B3lica_0017.jpg",
+      "revision": 1287307660,
+      "license": "CC BY 4.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "parque-nacional-jaragua",
+      "file": "/assets/catalog/parque-nacional-jaragua-1.webp",
+      "sha256": "3b832dbc52a4083d8d8afdf9050b28915f39834ffa36941c0ef2d3bd4b1694dd",
+      "source": "https://commons.wikimedia.org/wiki/File:CaribFlamingosLOviedo2.jpg",
+      "revision": 848496314,
+      "license": "Public domain",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "la-vega-vieja",
+      "file": "/assets/catalog/la-vega-vieja-1.webp",
+      "sha256": "dc598b27a01a72e315aa33bc3041cf67db732aa5353a6aa32d32e2ad686e8e09",
+      "source": "https://commons.wikimedia.org/wiki/File:La_Vega_Vieja_138.jpg",
+      "revision": 1186749348,
+      "license": "CC BY-SA 4.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "centro-historico-de-puerto-plata",
+      "file": "/assets/catalog/centro-historico-de-puerto-plata-1.webp",
+      "sha256": "eca1067a08c76be66ed3b0460998d950c867159d1f4c57f20fd74129cd4881d9",
+      "source": "https://commons.wikimedia.org/wiki/File:The_ppfort.JPG",
+      "revision": 450947983,
+      "license": "CC BY-SA 3.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "rio-el-limon",
+      "file": "/assets/catalog/rio-el-limon-1.webp",
+      "sha256": "35b1d7ba490480f146869ac3297f05db8437fda85452895a0545f97618b6aff3",
+      "source": "https://commons.wikimedia.org/wiki/File:Corriente_Agua_Poza_de_los_Indios.jpg",
+      "revision": 868708775,
+      "license": "CC BY-SA 4.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "quipe-y-kibbeh",
+      "file": "/assets/catalog/quipe-y-kibbeh-1.webp",
+      "sha256": "ef940c07df362aced8770cab36d638d81926503b50619ecbf7c801ed0781e662",
+      "source": "https://commons.wikimedia.org/wiki/File:Kibbeh3.jpg",
+      "revision": 1053507380,
+      "license": "CC BY-SA 3.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "phaenicophilus-palmarum",
+      "file": "/assets/catalog/phaenicophilus-palmarum-1.webp",
+      "sha256": "75ec8e9114d1f7e03d3d78730ddfb5af7cb90f76bbbc0f51e222a5b001aaa11f",
+      "source": "https://commons.wikimedia.org/wiki/File:Black-crowned_Palm_Warbler.jpg",
+      "revision": 1087629635,
+      "license": "CC BY-SA 3.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "cocodrilo-de-tumbes",
+      "file": "/assets/catalog/cocodrilo-de-tumbes-1.webp",
+      "sha256": "d2a7379ade0cc3334eace1c9496b4b72abe95b8878857c6d9fbb21a09f8ac394",
+      "source": "https://commons.wikimedia.org/wiki/File:Crocodylus_acutus_mexico_02-edit1.jpg",
+      "revision": 871177449,
+      "license": "CC BY-SA 2.5",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "trachemys-stejnegeri",
+      "file": "/assets/catalog/trachemys-stejnegeri-1.webp",
+      "sha256": "0d7790619e296f45b791b7fb1a52b5bbb2376e8f18cda64007fcf7260fa6b57f",
+      "source": "https://commons.wikimedia.org/wiki/File:Trachemys_stejnegeri01.jpg",
+      "revision": 1236619905,
+      "license": "CC BY 2.5",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "parque-nacional-sierra-de-bahoruco",
+      "file": "/assets/catalog/parque-nacional-sierra-de-bahoruco-1.webp",
+      "sha256": "0e7f3cb4fc7cad2989aa21b00f6c3affccd747378a0d08e222ff2e61017b0101",
+      "source": "https://commons.wikimedia.org/wiki/File:Hoyo_de_Pelempito.jpg",
+      "revision": 1286911243,
+      "license": "CC BY-SA 4.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "platanal-cotui",
+      "file": "/assets/catalog/platanal-cotui-1.webp",
+      "sha256": "5529f301f4e5e016103c8dc1772427720cf46f0f5b27eeea1964e595e1a8dbd3",
+      "source": "https://commons.wikimedia.org/wiki/File:Parque_central_de_Platanal_Cotu%C3%AD.jpg",
+      "revision": 1045902662,
+      "license": "CC BY-SA 4.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "zambrana-abajo",
+      "file": "/assets/catalog/zambrana-abajo-1.webp",
+      "sha256": "5dd3c0e930d66eba4f0e4700c1ae775301f3f9b4812f34696c6b8d1b8a9a171c",
+      "source": "https://commons.wikimedia.org/wiki/File:Zambrana_Abajo.jpg",
+      "revision": 816653414,
+      "license": "CC BY-SA 4.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "quitasueno",
+      "file": "/assets/catalog/quitasueno-1.webp",
+      "sha256": "56b9f4b77b748193ccb89391f83f7d4ce52d48d4262a977513cb0fc431083db4",
+      "source": "https://commons.wikimedia.org/wiki/File:Palacio_distrital_quitasue%C3%B1o.jpg",
+      "revision": 1256805434,
+      "license": "CC BY-SA 4.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "catedral-nuestra-senora-de-regla",
+      "file": "/assets/catalog/catedral-nuestra-senora-de-regla-1.webp",
+      "sha256": "03bd46125789d0734d0f3f0ac8bc5a66508d5d56ecc6c164fcb4698e91c2584e",
+      "source": "https://commons.wikimedia.org/wiki/File:Catedral_Ban%C3%AD_RD.jpg",
+      "revision": 851405912,
+      "license": "CC BY-SA 4.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "catedral-san-juan-bautista",
+      "file": "/assets/catalog/catedral-san-juan-bautista-1.webp",
+      "sha256": "147c1754da70d169785ac344efcb228139a473f11315b2be9453a71bb2ce441f",
+      "source": "https://commons.wikimedia.org/wiki/File:Die_Kathedrale_von_San_Juan_Bautista.jpg",
+      "revision": 1153815467,
+      "license": "CC BY-SA 4.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "catedral-san-pedro-apostol",
+      "file": "/assets/catalog/catedral-san-pedro-apostol-1.webp",
+      "sha256": "b623b5daeffb8bffa3bae9009d1df11165ec21f6cf902ed309184112c0e74e8b",
+      "source": "https://commons.wikimedia.org/wiki/File:Catedral_San_Pedro_de_Macoris_04_2019_4325.jpg",
+      "revision": 1118282936,
+      "license": "CC BY-SA 4.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "catedral-santa-ana",
+      "file": "/assets/catalog/catedral-santa-ana-1.webp",
+      "sha256": "d4e59bc9248fc3e92d38c16abfc16ee71345310908832c0e302d978bfc3440c8",
+      "source": "https://commons.wikimedia.org/wiki/File:CatedralSantaAna2006.jpg",
+      "revision": 899848987,
+      "license": "Public domain",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "hoyo-azul",
+      "file": "/assets/catalog/hoyo-azul-1.webp",
+      "sha256": "e613cf6d179ff76e45622d4136c8fe537c121a23c4fe6fe416f729999509bed9",
+      "source": "https://commons.wikimedia.org/wiki/File:Dominican_Republic_Blue_Hole.jpg",
+      "revision": 1208809136,
+      "license": "CC BY 2.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "la-espanola",
+      "file": "/assets/catalog/la-espanola-1.webp",
+      "sha256": "d89b3923d4984d24df87448f6f00579c3c8919a2d40aaa46c35c6e0cb23cf984",
+      "source": "https://commons.wikimedia.org/wiki/File:ISS-20_Caribbean_island_of_Hispaniola_from_the_ISS.jpg",
+      "revision": 1146236337,
+      "license": "Public domain",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "las-galeras",
+      "file": "/assets/catalog/las-galeras-1.webp",
+      "sha256": "cfc0a55920a6553df9c1b3cf950c3d06bdf6ba23ea75285e8515d78cfb198909",
+      "source": "https://commons.wikimedia.org/wiki/File:Playa_Front%C3%B3n_December_2020.jpg",
+      "revision": 1206594136,
+      "license": "CC BY-SA 4.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "monte-plata",
+      "file": "/assets/catalog/monte-plata-1.webp",
+      "sha256": "d4904275940972723a79f8363f0f7038cef64b5175eea6c6c028adf76005749c",
+      "source": "https://commons.wikimedia.org/wiki/File:Monte_Plata_Dominican_Republic.jpg",
+      "revision": 899838860,
+      "license": "CC BY-SA 4.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "cotui",
+      "file": "/assets/catalog/cotui-1.webp",
+      "sha256": "804c1c6e2c9b1072dc182516f76bca2a66752e672b4ac088e9def3d48e798b0c",
+      "source": "https://commons.wikimedia.org/wiki/File:Cotui_Dominican_Republic_church.jpg",
+      "revision": 869086136,
+      "license": "CC BY-SA 4.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "neiba",
+      "file": "/assets/catalog/neiba-1.webp",
+      "sha256": "a9bcc533e73ecb1e7a368c77099cf3a69d5981f282f1153e2ba1f8c008977478",
+      "source": "https://commons.wikimedia.org/wiki/File:Neiba.jpg",
+      "revision": 1180478837,
+      "license": "CC BY-SA 4.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "loma-de-cabrera",
+      "file": "/assets/catalog/loma-de-cabrera-1.webp",
+      "sha256": "74a8f21be0c619c9eae11f8bddb2c1d31ac65f971b8478f75914a9cf2adbfe02",
+      "source": "https://commons.wikimedia.org/wiki/File:BalnearioElSalto.jpg",
+      "revision": 815991621,
+      "license": "CC BY-SA 4.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "san-jose-de-las-matas",
+      "file": "/assets/catalog/san-jose-de-las-matas-1.webp",
+      "sha256": "57350ea3d0f0de5d8860658986d0acbb3cde40c7f682add77475c8be1c18c443",
+      "source": "https://commons.wikimedia.org/wiki/File:Desde_la_mansion.jpg",
+      "revision": 1201928034,
+      "license": "CC BY-SA 3.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "janico",
+      "file": "/assets/catalog/janico-1.webp",
+      "sha256": "39bda50f1fec44c7ad0f6fbc73d1f51c2d18e698c29fbf985a8ba1c06abd2feb",
+      "source": "https://commons.wikimedia.org/wiki/File:Janico_Dominican_Republic_countryside_town_2.jpg",
+      "revision": 901813601,
+      "license": "CC0 1.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "la-romana",
+      "file": "/assets/catalog/la-romana-1.webp",
+      "sha256": "eb07c54e9c325fb6f6022b0417a67b664fd25898fd5f97da4e86f5a026734d1e",
+      "source": "https://commons.wikimedia.org/wiki/File:LaRomanaSkyline08.jpg",
+      "revision": 1269578307,
+      "license": "Public domain",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "santiago-de-los-caballeros",
+      "file": "/assets/catalog/santiago-de-los-caballeros-1.webp",
+      "sha256": "1d8734eec96031628c9b32335fc856bf833780298e8cbb1b08741a047a00c2bd",
+      "source": "https://commons.wikimedia.org/wiki/File:SantiagoCityDominicanRep.JPG",
+      "revision": 1179397641,
+      "license": "CC BY-SA 3.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "monumento-natural-lagunas-cabarete-y-goleta",
+      "file": "/assets/catalog/monumento-natural-lagunas-cabarete-y-goleta-1.webp",
+      "sha256": "7edbc14b37b214e803b6b003582ccfb0188cc0951db9becb57185517335960da",
+      "source": "https://commons.wikimedia.org/wiki/File:Cuevascabarete.jpg",
+      "revision": 871824741,
+      "license": "CC BY-SA 4.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "playa-macao",
+      "file": "/assets/catalog/playa-macao-1.webp",
+      "sha256": "3fae92d436cb317298830a7e53a72a9ae7b7b1bcdf23488632c32b8833330594",
+      "source": "https://commons.wikimedia.org/wiki/File:Playa_Macao_Dominican_Republic.jpg",
+      "revision": 1186980330,
+      "license": "CC BY 2.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "parque-mirador-sur-santo-domingo",
+      "file": "/assets/catalog/parque-mirador-sur-santo-domingo-1.webp",
+      "sha256": "6063745d82bfa664fc97a8a518b0b9335f0f7a1be1eefa3f571e319ed381945a",
+      "source": "https://commons.wikimedia.org/wiki/File:Avenida_del_Parque_Mirador_Sur_-_Santo_Domingo.jpg",
+      "revision": 809033772,
+      "license": "CC BY-SA 4.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "catedral-de-santiago-apostol-santiago-de-los-caballeros",
+      "file": "/assets/catalog/catedral-de-santiago-apostol-santiago-de-los-caballeros-1.webp",
+      "sha256": "9b20cede247f8792dfe91c2b65a116acc1f4a039cfda40e9f189ecbb115404b0",
+      "source": "https://commons.wikimedia.org/wiki/File:Catedral_Santiago_Ap%C3%B3stol-IMG_0136.JPG",
+      "revision": 1036209997,
+      "license": "CC BY-SA 3.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "catedral-de-san-felipe-apostol-puerto-plata",
+      "file": "/assets/catalog/catedral-de-san-felipe-apostol-puerto-plata-1.webp",
+      "sha256": "20f1239b4275ad9850fe9deef8b046cd9e5e9d6b7716298496b6ad05be4a32f6",
+      "source": "https://commons.wikimedia.org/wiki/File:Puerto_Plata_Cathedrale.JPG",
+      "revision": 1267883134,
+      "license": "CC BY-SA 3.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "museo-nacional-de-historia-natural-prof-eugenio-de-jesus-marcano",
+      "file": "/assets/catalog/museo-nacional-de-historia-natural-prof-eugenio-de-jesus-marcano-1.webp",
+      "sha256": "e12509ee2ffebe748c5859a76e7b90c0d4bc234e5fb6fb8d9ad8288ccd9ae687",
+      "source": "https://commons.wikimedia.org/wiki/File:MuseoHistoriaNatural.jpg",
+      "revision": 1194752963,
+      "license": "CC BY-SA 4.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "catedral-castrense-santa-barbara",
+      "file": "/assets/catalog/catedral-castrense-santa-barbara-1.webp",
+      "sha256": "bd20bd875fc63ebd5d13e02779b78b4562402c6ce4eee37d3cb0635648a57f1c",
+      "source": "https://commons.wikimedia.org/wiki/File:Iglesia_Santa_Barbara_restaurada_CCSD_06_2019_6090.jpg",
+      "revision": 1212963691,
+      "license": "CC BY-SA 4.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "pico-duarte",
+      "file": "/assets/catalog/pico-duarte-1.webp",
+      "sha256": "1184d07af8fcb61184e5353aa885fb75d9ab9ebf384cc42056ecc5e5298e5f7c",
+      "source": "https://commons.wikimedia.org/wiki/File:Pico_Duarte.jpg",
+      "revision": 701678462,
+      "license": "CC BY-SA 3.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "museo-memorial-de-la-resistencia-dominicana",
+      "file": "/assets/catalog/museo-memorial-de-la-resistencia-dominicana-1.webp",
+      "sha256": "83e36a16220d8230c1e5f29280070884e2b69bd63059a3fac7604cfe0fd2ef13",
+      "source": "https://commons.wikimedia.org/wiki/File:Museo_00-b.jpg",
+      "revision": 633872463,
+      "license": "CC BY-SA 4.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "provincia-de-san-cristobal",
+      "file": "/assets/catalog/provincia-de-san-cristobal-1.webp",
+      "sha256": "bfdbdeba6ab8dc99926737c6c66b7f8db190d32f7eac25b8f49c53d994da0c66",
+      "source": "https://commons.wikimedia.org/wiki/File:San_Cristobal_Dominican_Republic_landscape.jpg",
+      "revision": 964560405,
+      "license": "CC BY-SA 4.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "provincia-de-el-seibo",
+      "file": "/assets/catalog/provincia-de-el-seibo-1.webp",
+      "sha256": "efa7defe9631651f7198938eef00e9347c40caa968f7adf99f91fb301aa0faee",
+      "source": "https://commons.wikimedia.org/wiki/File:Miches,_El_Seibo,_Dominican_Republic_4.jpg",
+      "revision": 1071237552,
+      "license": "CC BY-SA 4.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "provincia-de-hato-mayor",
+      "file": "/assets/catalog/provincia-de-hato-mayor-1.webp",
+      "sha256": "ff45efe26361f4dbfc9e09494e7db9151ab091adf620828c33ab0ab851a9f4a0",
+      "source": "https://commons.wikimedia.org/wiki/File:Hato_mayor,_dominican_republic_waterfall.jpg",
+      "revision": 1294333607,
+      "license": "CC BY-SA 4.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "provincia-de-la-altagracia",
+      "file": "/assets/catalog/provincia-de-la-altagracia-1.webp",
+      "sha256": "b31b08c7ee0d768f9082f3b1151668a2c6724182696e5971e6605cd045a695cc",
+      "source": "https://commons.wikimedia.org/wiki/File:Higuey_Dominican_Republic_statue.jpg",
+      "revision": 1298252684,
+      "license": "CC BY-SA 4.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "provincia-de-elias-pina",
+      "file": "/assets/catalog/provincia-de-elias-pina-1.webp",
+      "sha256": "aca617ee97f851d33c52326a4f8870d1f8f7f27714586a268452cec5b3dda70b",
+      "source": "https://commons.wikimedia.org/wiki/File:Comendador,_Elias_Pina_Dominican_Republic.jpg",
+      "revision": 865523528,
+      "license": "CC BY-SA 4.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "puente-matias-ramon-mella",
+      "file": "/assets/catalog/puente-matias-ramon-mella-1.webp",
+      "sha256": "10fb53c9aa8ea9823eb4f268607a7847877603d923a2446cce829aa746cc9ac1",
+      "source": "https://commons.wikimedia.org/wiki/File:Santo_Domingo_-_Puente_Mat%C3%ADas_Ram%C3%B3n_Mella_0907.JPG",
+      "revision": 1160023462,
+      "license": "CC BY-SA 4.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "faro-a-colon",
+      "file": "/assets/catalog/faro-a-colon-1.webp",
+      "sha256": "550aa5430f7cd5bf195e24d17afe7d848ce939a9ea6f15d39ba760663a9cf26e",
+      "source": "https://commons.wikimedia.org/wiki/File:Dominican_Republic,_Santo_Domingo,_Columbus_Lighthouse.jpg",
+      "revision": 1208807967,
+      "license": "CC BY-SA 4.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "provincia-de-monte-cristi",
+      "file": "/assets/catalog/provincia-de-monte-cristi-1.webp",
+      "sha256": "fe0858df2c1a286459c79038321e3686c1666c1b6777b6cba94f6f7a798f2028",
+      "source": "https://commons.wikimedia.org/wiki/File:Monte_Cristi,_Coastline.JPG",
+      "revision": 1248248962,
+      "license": "Public domain",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "municipio-consuelo",
+      "file": "/assets/catalog/municipio-consuelo-1.webp",
+      "sha256": "d3bcd517c04bf6fc007a2a948b87dd3aa90eebb7a72ff2bd86310f40d3b10e87",
+      "source": "https://commons.wikimedia.org/wiki/File:Palacio_Municipal_de_Consuelo.JPG",
+      "revision": 1171075384,
+      "license": "CC BY-SA 4.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "sinagoga-de-santo-domingo",
+      "file": "/assets/catalog/sinagoga-de-santo-domingo-1.webp",
+      "sha256": "d24c91f0563ec042c041a9804ddf289939243271cf0b7212dde0fa82429a8a6a",
+      "source": "https://commons.wikimedia.org/wiki/File:Centro_Israelita_de_Republica_Dominicana.JPG",
+      "revision": 1249762070,
+      "license": "CC BY-SA 4.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "rio-higuamo",
+      "file": "/assets/catalog/rio-higuamo-1.webp",
+      "sha256": "7acfd8859f4c49a6c19b129765e5d26bc95383f02a90973db88b594158d6ed78",
+      "source": "https://commons.wikimedia.org/wiki/File:Rio_Higuamo.JPG",
+      "revision": 1278743032,
+      "license": "CC BY-SA 4.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "puerto-plata",
+      "file": "/assets/catalog/puerto-plata-1.webp",
+      "sha256": "e1a4f647aeb96e0bb45d75f334b4f3b4f269c3255d9a4157509a588bbdb8facb",
+      "source": "https://commons.wikimedia.org/wiki/File:Puertoplatafromtheair.JPG",
+      "revision": 1247626995,
+      "license": "CC BY 2.5",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "jarabacoa",
+      "file": "/assets/catalog/jarabacoa-1.webp",
+      "sha256": "d44a441bb096773314990e03e36b01c998d730262e1e3938d4ca448756ec2b9f",
+      "source": "https://commons.wikimedia.org/wiki/File:Cordillera_Central,_RD.JPG",
+      "revision": 1018385861,
+      "license": "Public domain",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "provincia-de-dajabon",
+      "file": "/assets/catalog/provincia-de-dajabon-1.webp",
+      "sha256": "bc0114463dff1b6ca60ce6f1d6e4e20a6dd8d7e2eaff91dfd14dcc935ce4b6fa",
+      "source": "https://commons.wikimedia.org/wiki/File:CIndios.JPG",
+      "revision": 1253003999,
+      "license": "CC BY-SA 4.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "metro-de-santo-domingo",
+      "file": "/assets/catalog/metro-de-santo-domingo-1.webp",
+      "sha256": "eaf3b6d8fac9fb1b28162ad30ae678041a128f1317f860c9a69dccd2a2e23662",
+      "source": "https://commons.wikimedia.org/wiki/File:Metro-santo-domingo1.jpg",
+      "revision": 1295233510,
+      "license": "CC BY-SA 3.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "lago-enriquillo",
+      "file": "/assets/catalog/lago-enriquillo-1.webp",
+      "sha256": "fe8946c94cbcd1ed6951093f21fd76b054d67a6a649bd1f47e8a992e6c1823b0",
+      "source": "https://commons.wikimedia.org/wiki/File:Lago_Enriquillo.jpg",
+      "revision": 449202243,
+      "license": "CC BY-SA 4.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "sosua",
+      "file": "/assets/catalog/sosua-1.webp",
+      "sha256": "def9ce71b330335772e527380f4e1c9dd096b0b5e010421833ac981a84056c42",
+      "source": "https://commons.wikimedia.org/wiki/File:City_of_Sosua,_Dominican_Republic,_Aerial_View.jpg",
+      "revision": 1177831382,
+      "license": "CC BY-SA 3.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "esperanza",
+      "file": "/assets/catalog/esperanza-1.webp",
+      "sha256": "2b0741f0957cc2d4f42a02c8262c797080cc548f37efc1479eb06993c72b1574",
+      "source": "https://commons.wikimedia.org/wiki/File:Esperanza_weeshuis.jpg",
+      "revision": 1233058155,
+      "license": "CC BY-SA 3.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "oviedo",
+      "file": "/assets/catalog/oviedo-1.webp",
+      "sha256": "d09f340bc056620b59c0349e22c2a58d37199e20e21b9fa9e347f1a5f812af2f",
+      "source": "https://commons.wikimedia.org/wiki/File:Ayuntamiento_de_Oviedo_(Rep%C3%BAblica_Dominicana).jpg",
+      "revision": 809520393,
+      "license": "CC BY-SA 4.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "nizao",
+      "file": "/assets/catalog/nizao-1.webp",
+      "sha256": "8c3d4e91e5b9a80d498c1dd48e3ae75dfdf032314f2b95dc7f8d838fd5218205",
+      "source": "https://commons.wikimedia.org/wiki/File:Nizao.jpg",
+      "revision": 1179985182,
+      "license": "Public domain",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "cayo-levantado",
+      "file": "/assets/catalog/cayo-levantado-1.webp",
+      "sha256": "036a93fec0920e716a50509f1c125147fafec266acd25e35f27dbfa748713be5",
+      "source": "https://commons.wikimedia.org/wiki/File:DomRep_Bacardi_Insel.jpg",
+      "revision": 1208596841,
+      "license": "CC BY-SA 2.5",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "bohechio",
+      "file": "/assets/catalog/bohechio-1.webp",
+      "sha256": "b06a5da8f347b718ba680382dd82944f0f8c1578c081fd1d5bfc8da02e9fab5e",
+      "source": "https://commons.wikimedia.org/wiki/File:Pueblo_de_Bohechio.jpg",
+      "revision": 1158318021,
+      "license": "CC BY-SA 4.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "jiguey-dam",
+      "file": "/assets/catalog/jiguey-dam-1.webp",
+      "sha256": "1782cba96cb8527208232083f5a3040a74b22c06ac70d3b2d0b16d01f6136f88",
+      "source": "https://commons.wikimedia.org/wiki/File:San_Jose_de_Ocoa.jpg",
+      "revision": 1171856892,
+      "license": "CC BY 2.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "museo-de-las-casas-reales",
+      "file": "/assets/catalog/museo-de-las-casas-reales-1.webp",
+      "sha256": "1716c5446efb73625fa103062bb6cb23dff694c4e6e12eb10afb63d28384e2bb",
+      "source": "https://commons.wikimedia.org/wiki/File:Museo_de_las_Casas_Reales01.jpg",
+      "revision": 1277574100,
+      "license": "CC BY 2.0 de",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "bonao",
+      "file": "/assets/catalog/bonao-1.webp",
+      "sha256": "4d7b426318d826db95b5a7677efd8006b62915ea228444c288c3e6f68676e874",
+      "source": "https://commons.wikimedia.org/wiki/File:Plazabonao.jpg",
+      "revision": 1121122485,
+      "license": "CC BY-SA 4.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "bavaro",
+      "file": "/assets/catalog/bavaro-1.webp",
+      "sha256": "2d657c2ec9f1870e0a29f725310f4e0e1b5fae53083e2da1f5b8c186fdb359ae",
+      "source": "https://commons.wikimedia.org/wiki/File:Bavaro.jpg",
+      "revision": 1013580776,
+      "license": "CC BY-SA 2.5",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "cordillera-oriental",
+      "file": "/assets/catalog/cordillera-oriental-1.webp",
+      "sha256": "b0d2f7464d0ba7db9a06325d370d209c365724dbec621a553199fef8d857d75e",
+      "source": "https://commons.wikimedia.org/wiki/File:Cordillera_Oriental_RD.JPG",
+      "revision": 868326956,
+      "license": "CC BY-SA 4.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "estadio-cibao",
+      "file": "/assets/catalog/estadio-cibao-1.webp",
+      "sha256": "c0c8561d7683e93c9b122d2ee5470d185198df814edf5c3100ead5e7802253a2",
+      "source": "https://commons.wikimedia.org/wiki/File:Estadiocibao.jpg",
+      "revision": 1176328624,
+      "license": "CC BY-SA 4.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "puente-mauricio-baez",
+      "file": "/assets/catalog/puente-mauricio-baez-1.webp",
+      "sha256": "63e3b24ac8e8f3c1e0b2193d95b4a3caf93f7b3e4d912c203ac8c04d46a2679b",
+      "source": "https://commons.wikimedia.org/wiki/File:Mauricio_B%C3%A1ez_Bridge.jpg",
+      "revision": 670195916,
+      "license": "CC BY 3.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "puente-juan-bosch",
+      "file": "/assets/catalog/puente-juan-bosch-1.webp",
+      "sha256": "c0d7386fda9535310c343e1733ea91f7a343e39ec59a105d4780639ade40dd16",
+      "source": "https://commons.wikimedia.org/wiki/File:Puente_Juan_Bosch_recortado.jpg",
+      "revision": 1181273763,
+      "license": "CC BY 3.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "rio-baiguate",
+      "file": "/assets/catalog/rio-baiguate-1.webp",
+      "sha256": "4f9ecb73f7d0ed8dcb636ea7bd1a9ce3a8b49e1300c977b36154bce86ca9832e",
+      "source": "https://commons.wikimedia.org/wiki/File:Jarabacoa_-_R%C3%ADo_Baiguate_0216.JPG",
+      "revision": 1232109592,
+      "license": "CC BY-SA 4.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "teleferico-de-santo-domingo",
+      "file": "/assets/catalog/teleferico-de-santo-domingo-1.webp",
+      "sha256": "e3dab2c0432576d6fc035f33f024cc85269adb2231e36b2f63a86ae44a2ba194",
+      "source": "https://commons.wikimedia.org/wiki/File:Telef%C3%A9rico_1.jpg",
+      "revision": 1271671968,
+      "license": "CC BY 4.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "isla-beata",
+      "file": "/assets/catalog/isla-beata-1.webp",
+      "sha256": "f70fa1a50315a4b4d89c79f3610505215381d3f09e65c1aa9c03ffc9ad6d8d2d",
+      "source": "https://commons.wikimedia.org/wiki/File:Isla_Beata.jpg",
+      "revision": 1248247732,
+      "license": "CC BY-SA 3.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "santo-domingo",
+      "file": "/assets/catalog/santo-domingo-1.webp",
+      "sha256": "80d73d03ae0f183288907f3220183afb67b26673d8c327416f3abdeda17c5ca0",
+      "source": "https://commons.wikimedia.org/wiki/File:Santo_Domingo_(Dominican_Republic)_taken_atop_Novocentro_tower_viewing_the_city_to_the_southwest_2010.jpg",
+      "revision": 1266952621,
+      "license": "Public domain",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "puente-juan-pablo-duarte",
+      "file": "/assets/catalog/puente-juan-pablo-duarte-1.webp",
+      "sha256": "925f09b90e545e43f5b8c6d5f99bdf913948c63b2e6f4c124eb695a1e5840fe2",
+      "source": "https://commons.wikimedia.org/wiki/File:Missione_del_Guaricano-il_ponte_nuovo.jpg",
+      "revision": 1154997222,
+      "license": "CC BY-SA 2.5",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "museo-de-ambar",
+      "file": "/assets/catalog/museo-de-ambar-1.webp",
+      "sha256": "c2c1ec9334674174af54ddb92830147ae88de35fb43543aa9a0a8bdbb07ab8fc",
+      "source": "https://commons.wikimedia.org/wiki/File:Santo_Domingo_-_Museo_de_%C3%81mbar_0632.JPG",
+      "revision": 932617562,
+      "license": "CC BY-SA 4.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "plaza-de-espana",
+      "file": "/assets/catalog/plaza-de-espana-1.webp",
+      "sha256": "78920f7a35092a11c5071b338e24e3ae01134f387c3b6b640cef7dd4badc2211",
+      "source": "https://commons.wikimedia.org/wiki/File:CCSD_Plaza_Espa%C3%B1a_07_2017_4671.jpg",
+      "revision": 842347377,
+      "license": "CC BY-SA 4.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "museo-de-las-atarazanas-reales",
+      "file": "/assets/catalog/museo-de-las-atarazanas-reales-1.webp",
+      "sha256": "1374dc2e745bcb88ad3be7f59ed277e3567f884991d5a69c2c46ed286bfbe38c",
+      "source": "https://commons.wikimedia.org/wiki/File:MAR_-_Museo_Atarazanas_Reales_CCSD_12_2019_0699.jpg",
+      "revision": 1180950603,
+      "license": "CC BY-SA 4.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "playa-alicia",
+      "file": "/assets/catalog/playa-alicia-1.webp",
+      "sha256": "2d4d7d8b26afe023c890f060ed5d1d7a3ebcf50eb37ff96c5cf60003c26641c2",
+      "source": "https://commons.wikimedia.org/wiki/File:Sos%C3%BAa_-_Playa_Alicia_0413.JPG",
+      "revision": 981298354,
+      "license": "CC BY-SA 4.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "playa-sosua",
+      "file": "/assets/catalog/playa-sosua-1.webp",
+      "sha256": "45b41b232d0006a95fe60a3e4f835597b71ba7abe00c88ad5a57b8e562ac0c3f",
+      "source": "https://commons.wikimedia.org/wiki/File:Sosua_Beach_Dominican_Republic.jpg",
+      "revision": 1189473308,
+      "license": "CC BY 2.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "casa-de-la-moneda",
+      "file": "/assets/catalog/casa-de-la-moneda-1.webp",
+      "sha256": "eac420495e3e3dc54f0729ab35399fd5c9dec198c62873c77d5bd57fa2c04ea1",
+      "source": "https://commons.wikimedia.org/wiki/File:Santo_Domingo_-_Casa_de_la_Moneda_0505.jpg",
+      "revision": 1162357836,
+      "license": "CC BY-SA 4.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "iglesia-nuestra-senora-de-la-altagracia",
+      "file": "/assets/catalog/iglesia-nuestra-senora-de-la-altagracia-1.webp",
+      "sha256": "9e651f766f6ac82436565b5eefc413c6977b3fae396ff7f856caef0421cb17a1",
+      "source": "https://commons.wikimedia.org/wiki/File:Iglesia_Altagracia_CCSD_09_2018_1429.jpg",
+      "revision": 1048468223,
+      "license": "CC BY-SA 4.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "casa-del-pudin",
+      "file": "/assets/catalog/casa-del-pudin-1.webp",
+      "sha256": "0f2e0f2a9a51b3a585d2328c81d51ce53e79d711ca8dd937ffc12ae35565ee75",
+      "source": "https://commons.wikimedia.org/wiki/File:Santo_Domingo_-_Casa_del_Pud%C3%ADn_0756.JPG",
+      "revision": 1085340065,
+      "license": "CC BY-SA 4.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "edificio-savinon",
+      "file": "/assets/catalog/edificio-savinon-1.webp",
+      "sha256": "29cb609c815da027ee01d5f024fe302b08beee25307b43682332a78f774e7bfe",
+      "source": "https://commons.wikimedia.org/wiki/File:Calle_El_Conde_CCSD_RD_06_2017_2530.jpg",
+      "revision": 1110850004,
+      "license": "CC BY-SA 4.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "edificio-diez",
+      "file": "/assets/catalog/edificio-diez-1.webp",
+      "sha256": "e24de8a49a6e50712801e651414e030ec6308e1c87e164bf2887f35d3f95e6da",
+      "source": "https://commons.wikimedia.org/wiki/File:Santo_Domingo_-_Edificio_Diez_0591.JPG",
+      "revision": 735309649,
+      "license": "CC BY-SA 4.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "edificio-baquero",
+      "file": "/assets/catalog/edificio-baquero-1.webp",
+      "sha256": "d09f6e937f1b835d0b0ccc50e6e9e72e7c6317d473bb55fa95ed64cff508cb53",
+      "source": "https://commons.wikimedia.org/wiki/File:Santo_Domingo_-_Edificio_Baquero_0604.JPG",
+      "revision": 633935924,
+      "license": "CC BY-SA 4.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "edificio-cerame",
+      "file": "/assets/catalog/edificio-cerame-1.webp",
+      "sha256": "bb347da47c1f5d33cdbf0e1f417c41d534cc5c13bf7cd02e669c42924326504d",
+      "source": "https://commons.wikimedia.org/wiki/File:Santo_Domingo_-_Edificio_Cerame_0254.JPG",
+      "revision": 1004726512,
+      "license": "CC BY-SA 4.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "edificio-elmudesi",
+      "file": "/assets/catalog/edificio-elmudesi-1.webp",
+      "sha256": "d03499f7917931b75597390876be326c98318f724c8678a98de7d21083b6e055",
+      "source": "https://commons.wikimedia.org/wiki/File:Santo_Domingo_-_Edificio_Elm%C3%BAdesi_0791.JPG",
+      "revision": 735309145,
+      "license": "CC BY-SA 4.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "casa-de-tostado",
+      "file": "/assets/catalog/casa-de-tostado-1.webp",
+      "sha256": "b38b33df65e6350517405bf0a40dfc21214dbd2a6dc65307f185cff6fc19076a",
+      "source": "https://commons.wikimedia.org/wiki/File:Santo_Domingo_-_Casa_de_Tostado_0553.JPG",
+      "revision": 1162358145,
+      "license": "CC BY-SA 4.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "palacio-consistorial",
+      "file": "/assets/catalog/palacio-consistorial-1.webp",
+      "sha256": "ea6ff548708f60b5c86247bfeac11003e6d526be05878e885e6ef90ee372fe99",
+      "source": "https://commons.wikimedia.org/wiki/File:Palacio_Consistorial_CCSD_03_2020_2952.jpg",
+      "revision": 1152490564,
+      "license": "CC BY-SA 4.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "puerta-de-las-atarazanas-reales",
+      "file": "/assets/catalog/puerta-de-las-atarazanas-reales-1.webp",
+      "sha256": "b55ff6a762ce1222120af39447a09b128d3d89f6cf1ebf9fd609f3e21b643752",
+      "source": "https://commons.wikimedia.org/wiki/File:Museo_Naval_Atarazanas_Reales_CCSD_08_10_2018_800.jpg",
+      "revision": 1251178621,
+      "license": "CC BY-SA 4.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "capilla-de-nuestra-senora-de-los-remedios",
+      "file": "/assets/catalog/capilla-de-nuestra-senora-de-los-remedios-1.webp",
+      "sha256": "e39aa09c57fb158eb039f2e7f3ba0a0a0e977a6cd969187ec969f3bec5edeb8c",
+      "source": "https://commons.wikimedia.org/wiki/File:Capilla_Sra_de_los_Remedios_CCSD_11_2018_4344.jpg",
+      "revision": 1113361891,
+      "license": "CC BY-SA 4.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "iglesia-regina-angelorum",
+      "file": "/assets/catalog/iglesia-regina-angelorum-1.webp",
+      "sha256": "78c77c577cca794f51b818d31b6c55465c51d0312c5766b5dc2a9fd0a42571cc",
+      "source": "https://commons.wikimedia.org/wiki/File:Church_and_Convent_Regina_Angelorum_CCSD_07_2018_0766.jpg",
+      "revision": 933206695,
+      "license": "CC BY-SA 4.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "obelisco-de-santo-domingo",
+      "file": "/assets/catalog/obelisco-de-santo-domingo-1.webp",
+      "sha256": "9e3ea2c0ef8443959302bc75c1043894c64cc9ac79711147d0431ccf3d47db2a",
+      "source": "https://commons.wikimedia.org/wiki/File:Obelisco_Santo_Domingo.jpg",
+      "revision": 1263130577,
+      "license": "CC BY 2.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "playa-arena-gorda",
+      "file": "/assets/catalog/playa-arena-gorda-1.webp",
+      "sha256": "586d10399398f80e25af6b8ac9b9ddf971280b8aec3ce83e7bcdea1aa8a2d2ee",
+      "source": "https://commons.wikimedia.org/wiki/File:Playa_arena_gorda_La_Sabana_Vargas_2.JPG",
+      "revision": 1184025325,
+      "license": "CC BY-SA 3.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "27-charcos-de-damajagua",
+      "file": "/assets/catalog/27-charcos-de-damajagua-1.webp",
+      "sha256": "d7aa44240d0e7c169a7359334e27d037144221e4b648baa00af4c0bd0d92408d",
+      "source": "https://commons.wikimedia.org/wiki/File:27_Charcas_rio_Damajagua_-_panoramio.jpg",
+      "revision": 766934179,
+      "license": "CC BY-SA 3.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "playa-fronton",
+      "file": "/assets/catalog/playa-fronton-1.webp",
+      "sha256": "092bc89b70bde4790eda636181eabbe9072fe6fca2070d4c18dedfd88c5916d8",
+      "source": "https://commons.wikimedia.org/wiki/File:Playa_Front%C3%B3n_December_2020_4.jpg",
+      "revision": 1186711298,
+      "license": "CC BY-SA 4.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "playa-cabarete",
+      "file": "/assets/catalog/playa-cabarete-1.webp",
+      "sha256": "b6545a1b58cc32c22f0d8b1664b2ec8f2d4eba15b07d08a3583a70bf825d5845",
+      "source": "https://commons.wikimedia.org/wiki/File:Island_by_Camille_Kleinman.jpg",
+      "revision": 1183575185,
+      "license": "CC BY-SA 4.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "playa-coson",
+      "file": "/assets/catalog/playa-coson-1.webp",
+      "sha256": "c57fd1290d6cccdf5f57407f6ce2fc84bc4679d05434d8426ef95b3a15d1e4ac",
+      "source": "https://commons.wikimedia.org/wiki/File:Dominican_balance_beam_(olympics_2016)_(27767602345).jpg",
+      "revision": 1208811389,
+      "license": "CC BY 2.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "playa-bayahibe",
+      "file": "/assets/catalog/playa-bayahibe-1.webp",
+      "sha256": "ebbaaac2ac518b96da082fd536d1e1ca47aced33ab2c3086c1723754fc0bf8ce",
+      "source": "https://commons.wikimedia.org/wiki/File:Dominican-Republic_-_Bayahibe_(16639402539).jpg",
+      "revision": 1153177003,
+      "license": "CC BY-SA 2.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "laguna-el-dudu",
+      "file": "/assets/catalog/laguna-el-dudu-1.webp",
+      "sha256": "cc5a85bcf3446665e95c02730ac859f3840e19ddb9634dd6a601de11a6e10d4d",
+      "source": "https://commons.wikimedia.org/wiki/File:Dudu_lagoon_(2359528937).jpg",
+      "revision": 901661486,
+      "license": "CC BY 2.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "playa-bavaro",
+      "file": "/assets/catalog/playa-bavaro-1.webp",
+      "sha256": "e7d482e7fb9759b20128af364e1fcea41a832f995095dfe6f08b51542902a8d4",
+      "source": "https://commons.wikimedia.org/wiki/File:Bavaro_Beach_045.jpg",
+      "revision": 1250266709,
+      "license": "Public domain",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "cigua-palmera",
+      "file": "/assets/catalog/cigua-palmera-1.webp",
+      "sha256": "94f8811b9a188e7d5ddf210cec22aa651898083ae3197898936770ad8a6e8b3f",
+      "source": "https://commons.wikimedia.org/wiki/File:Dulus_dominicus.JPG",
+      "revision": 1214824335,
+      "license": "CC BY-SA 4.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "dunas-de-bani",
+      "file": "/assets/catalog/dunas-de-bani-1.webp",
+      "sha256": "6af95e77c084875448717da580bd20bb023cb3d0595fb2ff22f916476f925529",
+      "source": "https://commons.wikimedia.org/wiki/File:Dunas_de_Ban%C3%AD_3.jpg",
+      "revision": 1214927752,
+      "license": "CC BY 4.0",
+      "sourceResponseStatus": 200
+    },
+    {
+      "key": "luperon",
+      "file": "/assets/catalog/luperon-1.webp",
+      "sha256": "3a6e988887d7d01de77cfdd81f39a16a3e5594e545b9478ff1f2635c10926b1b",
+      "source": "https://commons.wikimedia.org/wiki/File:Playa_grande_en_luperon_-_panoramio_-_Luis_A._Gonz%C3%A1lez_Hde%E2%80%A6.jpg",
+      "revision": 719146486,
+      "license": "CC BY-SA 3.0",
+      "sourceResponseStatus": 200
+    }
+  ]
+}

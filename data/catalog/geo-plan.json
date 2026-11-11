@@ -1,0 +1,946 @@
+[
+  {
+    "id": "Q83788",
+    "type": "mountain"
+  },
+  {
+    "id": "Q147326",
+    "type": "river"
+  },
+  {
+    "id": "Q286837",
+    "type": "lake"
+  },
+  {
+    "id": "Q373759",
+    "type": "town"
+  },
+  {
+    "id": "Q444485",
+    "type": "building"
+  },
+  {
+    "id": "Q459801",
+    "type": "town"
+  },
+  {
+    "id": "Q459919",
+    "type": "town"
+  },
+  {
+    "id": "Q477915",
+    "type": "island"
+  },
+  {
+    "id": "Q516965",
+    "type": "town"
+  },
+  {
+    "id": "Q530231",
+    "type": "province"
+  },
+  {
+    "id": "Q538953",
+    "type": "town"
+  },
+  {
+    "id": "Q579950",
+    "type": "town"
+  },
+  {
+    "id": "Q585251",
+    "type": "park"
+  },
+  {
+    "id": "Q594405",
+    "type": "province"
+  },
+  {
+    "id": "Q617647",
+    "type": "town"
+  },
+  {
+    "id": "Q649483",
+    "type": "town"
+  },
+  {
+    "id": "Q668772",
+    "type": "building"
+  },
+  {
+    "id": "Q680596",
+    "type": "town"
+  },
+  {
+    "id": "Q681999",
+    "type": "town"
+  },
+  {
+    "id": "Q692560",
+    "type": "town"
+  },
+  {
+    "id": "Q693487",
+    "type": "province"
+  },
+  {
+    "id": "Q770641",
+    "type": "building"
+  },
+  {
+    "id": "Q776071",
+    "type": "river"
+  },
+  {
+    "id": "Q783742",
+    "type": "mountain"
+  },
+  {
+    "id": "Q794239",
+    "type": "province"
+  },
+  {
+    "id": "Q807079",
+    "type": "province"
+  },
+  {
+    "id": "Q888935",
+    "type": "town"
+  },
+  {
+    "id": "Q11704970",
+    "type": "park"
+  },
+  {
+    "id": "Q13619956",
+    "type": "museum"
+  },
+  {
+    "id": "Q14228726",
+    "type": "fort"
+  },
+  {
+    "id": "Q16490562",
+    "type": "monument"
+  },
+  {
+    "id": "Q16616247",
+    "type": "park"
+  },
+  {
+    "id": "Q16623036",
+    "type": "bridge"
+  },
+  {
+    "id": "Q16627237",
+    "type": "river"
+  },
+  {
+    "id": "Q2713354",
+    "type": "town"
+  },
+  {
+    "id": "Q2840772",
+    "type": "town"
+  },
+  {
+    "id": "Q2983646",
+    "type": "museum"
+  },
+  {
+    "id": "Q3236933",
+    "type": "street"
+  },
+  {
+    "id": "Q3291594",
+    "type": "river"
+  },
+  {
+    "id": "Q3305377",
+    "type": "building"
+  },
+  {
+    "id": "Q3306488",
+    "type": "town"
+  },
+  {
+    "id": "Q3649225",
+    "type": "town"
+  },
+  {
+    "id": "Q3651189",
+    "type": "town"
+  },
+  {
+    "id": "Q3687664",
+    "type": "town"
+  },
+  {
+    "id": "Q4842570",
+    "type": "beach"
+  },
+  {
+    "id": "Q4868419",
+    "type": "church"
+  },
+  {
+    "id": "Q4868422",
+    "type": "church"
+  },
+  {
+    "id": "Q5062847",
+    "type": "church"
+  },
+  {
+    "id": "Q5062863",
+    "type": "building"
+  },
+  {
+    "id": "Q5062928",
+    "type": "town"
+  },
+  {
+    "id": "Q5304337",
+    "type": "park"
+  },
+  {
+    "id": "Q5908594",
+    "type": "monument"
+  },
+  {
+    "id": "Q5912738",
+    "type": "church"
+  },
+  {
+    "id": "Q5969340",
+    "type": "lake"
+  },
+  {
+    "id": "Q5970349",
+    "type": "town"
+  },
+  {
+    "id": "Q5994389",
+    "type": "river"
+  },
+  {
+    "id": "Q6062972",
+    "type": "cave"
+  },
+  {
+    "id": "Q6062992",
+    "type": "park"
+  },
+  {
+    "id": "Q6080161",
+    "type": "monument"
+  },
+  {
+    "id": "Q6118516",
+    "type": "town"
+  },
+  {
+    "id": "Q958586",
+    "type": "town"
+  },
+  {
+    "id": "Q984141",
+    "type": "town"
+  },
+  {
+    "id": "Q988413",
+    "type": "town"
+  },
+  {
+    "id": "Q990182",
+    "type": "town"
+  },
+  {
+    "id": "Q1020261",
+    "type": "town"
+  },
+  {
+    "id": "Q1023951",
+    "type": "town"
+  },
+  {
+    "id": "Q1137551",
+    "type": "province"
+  },
+  {
+    "id": "Q1138575",
+    "type": "province"
+  },
+  {
+    "id": "Q1140742",
+    "type": "province"
+  },
+  {
+    "id": "Q1145487",
+    "type": "province"
+  },
+  {
+    "id": "Q1159235",
+    "type": "town"
+  },
+  {
+    "id": "Q1241374",
+    "type": "town"
+  },
+  {
+    "id": "Q1262745",
+    "type": "province"
+  },
+  {
+    "id": "Q1295496",
+    "type": "province"
+  },
+  {
+    "id": "Q1321816",
+    "type": "beach"
+  },
+  {
+    "id": "Q1331932",
+    "type": "province"
+  },
+  {
+    "id": "Q1339113",
+    "type": "island"
+  },
+  {
+    "id": "Q1345375",
+    "type": "transport"
+  },
+  {
+    "id": "Q1352533",
+    "type": "province"
+  },
+  {
+    "id": "Q1366119",
+    "type": "province"
+  },
+  {
+    "id": "Q1409818",
+    "type": "town"
+  },
+  {
+    "id": "Q1418401",
+    "type": "lake"
+  },
+  {
+    "id": "Q1424391",
+    "type": "province"
+  },
+  {
+    "id": "Q1424401",
+    "type": "province"
+  },
+  {
+    "id": "Q1464758",
+    "type": "lake"
+  },
+  {
+    "id": "Q1543031",
+    "type": "monument"
+  },
+  {
+    "id": "Q1568095",
+    "type": "town"
+  },
+  {
+    "id": "Q1634730",
+    "type": "river"
+  },
+  {
+    "id": "Q1639488",
+    "type": "town"
+  },
+  {
+    "id": "Q1770074",
+    "type": "town"
+  },
+  {
+    "id": "Q1770079",
+    "type": "town"
+  },
+  {
+    "id": "Q1770505",
+    "type": "town"
+  },
+  {
+    "id": "Q1770802",
+    "type": "town"
+  },
+  {
+    "id": "Q1770873",
+    "type": "town"
+  },
+  {
+    "id": "Q3827243",
+    "type": "town"
+  },
+  {
+    "id": "Q3844709",
+    "type": "church"
+  },
+  {
+    "id": "Q3847778",
+    "type": "lake"
+  },
+  {
+    "id": "Q3877399",
+    "type": "town"
+  },
+  {
+    "id": "Q3899640",
+    "type": "town"
+  },
+  {
+    "id": "Q3928010",
+    "type": "town"
+  },
+  {
+    "id": "Q3944208",
+    "type": "town"
+  },
+  {
+    "id": "Q4008204",
+    "type": "town"
+  },
+  {
+    "id": "Q4208698",
+    "type": "island"
+  },
+  {
+    "id": "Q4490010",
+    "type": "town"
+  },
+  {
+    "id": "Q4531381",
+    "type": "waterfall"
+  },
+  {
+    "id": "Q1770880",
+    "type": "town"
+  },
+  {
+    "id": "Q1770884",
+    "type": "town"
+  },
+  {
+    "id": "Q1771472",
+    "type": "town"
+  },
+  {
+    "id": "Q23763428",
+    "type": "beach"
+  },
+  {
+    "id": "Q23763763",
+    "type": "beach"
+  },
+  {
+    "id": "Q23762354",
+    "type": "lake"
+  },
+  {
+    "id": "Q23765458",
+    "type": "beach"
+  },
+  {
+    "id": "Q23765504",
+    "type": "river"
+  },
+  {
+    "id": "Q23770795",
+    "type": "waterfall"
+  },
+  {
+    "id": "Q23775715",
+    "type": "beach"
+  },
+  {
+    "id": "Q23778538",
+    "type": "beach"
+  },
+  {
+    "id": "Q16892919",
+    "type": "dam"
+  },
+  {
+    "id": "Q16938420",
+    "type": "monument"
+  },
+  {
+    "id": "Q20018970",
+    "type": "museum"
+  },
+  {
+    "id": "Q20921731",
+    "type": "church"
+  },
+  {
+    "id": "Q20922039",
+    "type": "building"
+  },
+  {
+    "id": "Q21002920",
+    "type": "theatre"
+  },
+  {
+    "id": "Q21856534",
+    "type": "museum"
+  },
+  {
+    "id": "Q1772983",
+    "type": "province"
+  },
+  {
+    "id": "Q1774848",
+    "type": "province"
+  },
+  {
+    "id": "Q1806486",
+    "type": "town"
+  },
+  {
+    "id": "Q1836680",
+    "type": "town"
+  },
+  {
+    "id": "Q1836903",
+    "type": "province"
+  },
+  {
+    "id": "Q1850466",
+    "type": "river"
+  },
+  {
+    "id": "Q1902349",
+    "type": "town"
+  },
+  {
+    "id": "Q1949656",
+    "type": "province"
+  },
+  {
+    "id": "Q1954296",
+    "type": "museum"
+  },
+  {
+    "id": "Q1969407",
+    "type": "town"
+  },
+  {
+    "id": "Q1981524",
+    "type": "fort"
+  },
+  {
+    "id": "Q1988637",
+    "type": "town"
+  },
+  {
+    "id": "Q2001793",
+    "type": "province"
+  },
+  {
+    "id": "Q2021942",
+    "type": "province"
+  },
+  {
+    "id": "Q2037402",
+    "type": "lake"
+  },
+  {
+    "id": "Q2119082",
+    "type": "town"
+  },
+  {
+    "id": "Q2130701",
+    "type": "town"
+  },
+  {
+    "id": "Q2218981",
+    "type": "monument"
+  },
+  {
+    "id": "Q2279055",
+    "type": "mountain"
+  },
+  {
+    "id": "Q2284502",
+    "type": "mountain"
+  },
+  {
+    "id": "Q2306136",
+    "type": "town"
+  },
+  {
+    "id": "Q2306984",
+    "type": "town"
+  },
+  {
+    "id": "Q2403979",
+    "type": "mountain"
+  },
+  {
+    "id": "Q2420339",
+    "type": "town"
+  },
+  {
+    "id": "Q2425675",
+    "type": "town"
+  },
+  {
+    "id": "Q2427660",
+    "type": "town"
+  },
+  {
+    "id": "Q2430320",
+    "type": "town"
+  },
+  {
+    "id": "Q2470834",
+    "type": "town"
+  },
+  {
+    "id": "Q2516819",
+    "type": "fort"
+  },
+  {
+    "id": "Q2628384",
+    "type": "town"
+  },
+  {
+    "id": "Q2643893",
+    "type": "mountain"
+  },
+  {
+    "id": "Q5400137",
+    "type": "building"
+  },
+  {
+    "id": "Q5400308",
+    "type": "building"
+  },
+  {
+    "id": "Q5400466",
+    "type": "building"
+  },
+  {
+    "id": "Q5400511",
+    "type": "building"
+  },
+  {
+    "id": "Q5472510",
+    "type": "fort"
+  },
+  {
+    "id": "Q5472508",
+    "type": "museum"
+  },
+  {
+    "id": "Q5593976",
+    "type": "building"
+  },
+  {
+    "id": "Q5755447",
+    "type": "building"
+  },
+  {
+    "id": "Q6167460",
+    "type": "river"
+  },
+  {
+    "id": "Q6461454",
+    "type": "town"
+  },
+  {
+    "id": "Q6683320",
+    "type": "cave"
+  },
+  {
+    "id": "Q6793592",
+    "type": "bridge"
+  },
+  {
+    "id": "Q6898286",
+    "type": "monument"
+  },
+  {
+    "id": "Q6904743",
+    "type": "park"
+  },
+  {
+    "id": "Q6906955",
+    "type": "monument"
+  },
+  {
+    "id": "Q6974727",
+    "type": "monument"
+  },
+  {
+    "id": "Q7126925",
+    "type": "monument"
+  },
+  {
+    "id": "Q7139633",
+    "type": "square"
+  },
+  {
+    "id": "Q7227322",
+    "type": "cave"
+  },
+  {
+    "id": "Q7258505",
+    "type": "bridge"
+  },
+  {
+    "id": "Q7301193",
+    "type": "building"
+  },
+  {
+    "id": "Q7395869",
+    "type": "town"
+  },
+  {
+    "id": "Q7553040",
+    "type": "river"
+  },
+  {
+    "id": "Q7691935",
+    "type": "theatre"
+  },
+  {
+    "id": "Q8061044",
+    "type": "river"
+  },
+  {
+    "id": "Q9046796",
+    "type": "museum"
+  },
+  {
+    "id": "Q9055961",
+    "type": "park"
+  },
+  {
+    "id": "Q65123094",
+    "type": "park"
+  },
+  {
+    "id": "Q65123142",
+    "type": "town"
+  },
+  {
+    "id": "Q23779196",
+    "type": "cave"
+  },
+  {
+    "id": "Q23779385",
+    "type": "river"
+  },
+  {
+    "id": "Q60967713",
+    "type": "river"
+  },
+  {
+    "id": "Q63071056",
+    "type": "transport"
+  },
+  {
+    "id": "Q121177100",
+    "type": "town"
+  },
+  {
+    "id": "Q121177569",
+    "type": "town"
+  },
+  {
+    "id": "Q121215198",
+    "type": "town"
+  },
+  {
+    "id": "Q122222880",
+    "type": "church"
+  },
+  {
+    "id": "Q123048464",
+    "type": "church"
+  },
+  {
+    "id": "Q123048468",
+    "type": "church"
+  },
+  {
+    "id": "Q123048480",
+    "type": "church"
+  },
+  {
+    "id": "Q123693015",
+    "type": "lake"
+  },
+  {
+    "id": "Q25277",
+    "type": "island"
+  },
+  {
+    "id": "Q34765",
+    "type": "island"
+  },
+  {
+    "id": "Q34820",
+    "type": "town"
+  },
+  {
+    "id": "Q40508",
+    "type": "town"
+  },
+  {
+    "id": "Q42090",
+    "type": "park"
+  },
+  {
+    "id": "Q42763",
+    "type": "town"
+  },
+  {
+    "id": "Q24238501",
+    "type": "park"
+  },
+  {
+    "id": "Q24663964",
+    "type": "beach"
+  },
+  {
+    "id": "Q25404685",
+    "type": "park"
+  },
+  {
+    "id": "Q27961519",
+    "type": "bridge"
+  },
+  {
+    "id": "Q28586259",
+    "type": "church"
+  },
+  {
+    "id": "Q28586664",
+    "type": "church"
+  },
+  {
+    "id": "Q66363867",
+    "type": "museum"
+  },
+  {
+    "id": "Q83489574",
+    "type": "church"
+  },
+  {
+    "id": "Q93147461",
+    "type": "museum"
+  },
+  {
+    "id": "Q100507890",
+    "type": "square"
+  },
+  {
+    "id": "Q104184947",
+    "type": "museum"
+  },
+  {
+    "id": "Q106921160",
+    "type": "beach"
+  },
+  {
+    "id": "Q106921205",
+    "type": "beach"
+  },
+  {
+    "id": "Q106936978",
+    "type": "building"
+  },
+  {
+    "id": "Q106959591",
+    "type": "church"
+  },
+  {
+    "id": "Q106959726",
+    "type": "building"
+  },
+  {
+    "id": "Q106959788",
+    "type": "building"
+  },
+  {
+    "id": "Q106959814",
+    "type": "building"
+  },
+  {
+    "id": "Q106959858",
+    "type": "building"
+  },
+  {
+    "id": "Q106959875",
+    "type": "building"
+  },
+  {
+    "id": "Q106959925",
+    "type": "building"
+  },
+  {
+    "id": "Q106960254",
+    "type": "building"
+  },
+  {
+    "id": "Q107041036",
+    "type": "building"
+  },
+  {
+    "id": "Q107041447",
+    "type": "fort"
+  },
+  {
+    "id": "Q107043982",
+    "type": "church"
+  },
+  {
+    "id": "Q107044033",
+    "type": "church"
+  },
+  {
+    "id": "Q115430915",
+    "type": "monument"
+  },
+  {
+    "id": "Q125071301",
+    "type": "beach"
+  },
+  {
+    "id": "Q125071518",
+    "type": "waterfall"
+  },
+  {
+    "id": "Q125072226",
+    "type": "beach"
+  },
+  {
+    "id": "Q125072833",
+    "type": "beach"
+  },
+  {
+    "id": "Q125081397",
+    "type": "beach"
+  },
+  {
+    "id": "Q125131312",
+    "type": "beach"
+  },
+  {
+    "id": "Q125131946",
+    "type": "lake"
+  },
+  {
+    "id": "Q125131988",
+    "type": "beach"
+  }
+]

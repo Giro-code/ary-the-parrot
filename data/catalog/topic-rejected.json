@@ -1,0 +1,90 @@
+[
+  {
+    "key": "quipe-y-kibbeh",
+    "wikidata": "Q1644022",
+    "title": "Quipe y kibbeh",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Kibbeh",
+    "reason": "Error: License template not confirmed on file page",
+    "checkedAt": "2026-11-11"
+  },
+  {
+    "key": "phaenicophilus-palmarum",
+    "wikidata": "Q1588281",
+    "title": "Phaenicophilus palmarum",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Black-crowned_palm-tanager",
+    "reason": "Error: License template not confirmed on file page",
+    "checkedAt": "2026-11-11"
+  },
+  {
+    "key": "cocodrilo-de-tumbes",
+    "wikidata": "Q207836",
+    "title": "cocodrilo de Tumbes",
+    "sourceUrl": "https://en.wikipedia.org/wiki/American_crocodile",
+    "reason": "Error: License not allowed: CC BY-SA 2.5",
+    "checkedAt": "2026-11-11"
+  },
+  {
+    "key": "central-antillean-slider",
+    "wikidata": "Q1049305",
+    "title": "Central Antillean slider",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Central_Antillean_slider",
+    "reason": "Error: License not allowed: CC BY 2.5",
+    "checkedAt": "2026-11-11"
+  },
+  {
+    "key": "sierra-de-bahoruco-national-park",
+    "wikidata": "Q17624527",
+    "title": "Sierra de Bahoruco National Park",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Sierra_de_Bahoruco_National_Park",
+    "reason": "Error: No Commons metadata: 3840px-Brunellia comocladifolia 3.JPG",
+    "checkedAt": "2026-11-11"
+  },
+  {
+    "key": "pasteles-en-hoja",
+    "wikidata": "Q104840853",
+    "title": "Pasteles en hoja",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Pasteles",
+    "reason": "Error: Thumbnail HTTP 400",
+    "checkedAt": "2026-11-11"
+  },
+  {
+    "key": "carnaval-dominicano",
+    "wikidata": "Q2939730",
+    "title": "Carnaval dominicano",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Carnival_in_the_Dominican_Republic",
+    "reason": "Error: No author in Commons metadata",
+    "checkedAt": "2026-11-11"
+  },
+  {
+    "key": "cigua-palmera",
+    "wikidata": "Q845457",
+    "title": "Cigua palmera",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Palmchat",
+    "reason": "Error: License template not confirmed on file page",
+    "checkedAt": "2026-11-11"
+  },
+  {
+    "key": "provincia-de-santo-domingo",
+    "wikidata": "Q1352536",
+    "title": "Provincia de Santo Domingo",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Santo_Domingo_Province",
+    "reason": "Error: Not a raster photograph: image/svg+xml",
+    "checkedAt": "2026-11-11"
+  },
+  {
+    "key": "provincia-de-distrito-nacional",
+    "wikidata": "Q2499228",
+    "title": "Provincia de Distrito Nacional",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Distrito_Nacional",
+    "reason": "Error: Not a raster photograph: image/svg+xml",
+    "checkedAt": "2026-11-11"
+  },
+  {
+    "key": "provincia-de-hermanas-mirabal",
+    "wikidata": "Q549386",
+    "title": "Provincia de Hermanas Mirabal",
+    "sourceUrl": "https://en.wikipedia.org/wiki/Hermanas_Mirabal_Province",
+    "reason": "Error: Not a raster photograph: image/svg+xml",
+    "checkedAt": "2026-11-11"
+  }
+]

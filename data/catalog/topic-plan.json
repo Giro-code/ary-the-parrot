@@ -1,0 +1,2068 @@
+[
+  {
+    "entry": {
+      "key": "quipe-y-kibbeh",
+      "status": "draft",
+      "kind": "food",
+      "tags": [
+        "food"
+      ],
+      "wikidata": "Q1644022",
+      "province": "Ámbito nacional",
+      "title": {
+        "es": "Quipe y kibbeh",
+        "en": "Quipe and kibbeh"
+      },
+      "aliases": {
+        "es": [
+          "quipe y kibbeh",
+          "kubba",
+          "kibbee",
+          "kipe",
+          "quibe",
+          "kibe",
+          "quipe"
+        ],
+        "en": [
+          "quipe and kibbeh",
+          "kebbeh"
+        ]
+      },
+      "summary": {
+        "es": "El kibbeh tiene raíces en la cocina de Oriente Próximo.",
+        "en": "Kibbeh has roots in Middle Eastern cooking."
+      },
+      "description": {
+        "es": "El kibbeh tiene raíces en la cocina de Oriente Próximo. Sus preparaciones combinan trigo bulgur y carne sazonada.",
+        "en": "Kibbeh has roots in Middle Eastern cooking. Its preparations combine bulgur wheat with seasoned meat."
+      },
+      "facts": [
+        {
+          "text": {
+            "es": "El kibbeh tiene raíces en la cocina de Oriente Próximo. Sus preparaciones combinan trigo bulgur y carne sazonada.",
+            "en": "Kibbeh has roots in Middle Eastern cooking. Its preparations combine bulgur wheat with seasoned meat."
+          },
+          "sourceUrl": "https://en.wikipedia.org/wiki/Kibbeh"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Kibbeh",
+          "editor": "Wikipedia contributors · English edition",
+          "checkedAt": "2026-11-11",
+          "httpStatus": 200,
+          "checkedVia": "https://en.wikipedia.org/api/rest_v1/page/summary/Kibbeh",
+          "representation": "REST summary of this Wikipedia page"
+        },
+        {
+          "url": "https://www.wikidata.org/w/api.php?action=wbgetentities&sites=enwiki&titles=Mang%C3%BA%7CSancocho%7CChicharr%C3%B3n%7CHabichuelas+con+dulce%7CTostones%7CMofongo%7CCasabe%7CMoro+de+guandules%7CDulce+de+leche%7CMamajuana%7CYaniqueque%7CChench%C3%A9n%7CKibbeh%7CCatib%C3%ADa%7CAsopao%7CLocrio%7CPastel%C3%B3n%7CJalao%7CMorir+so%C3%B1ando%7CMab%C3%AD%7CArepa%7CPasteles%7CChimichurri+burger%7CDominican+Republic+cuisine%7CCoconut+rice%7CRice+and+beans%7CGuanimes%7CGuineos%7CAvocado%7CPigeon+pea&props=labels%7Cdescriptions%7Caliases%7Cclaims%7Csitelinks&languages=es%7Cen&format=json",
+          "editor": "Wikidata contributors · entity API",
+          "checkedAt": "2026-11-11",
+          "httpStatus": 200
+        }
+      ],
+      "images": [],
+      "reviewNotes": "Borrador. Texto redactado a partir del resumen citado. Revisar nombre habitual, relación regional y foto antes de aprobar; las imágenes de especies o alimentos pueden ser ilustrativas y no estar tomadas en la República Dominicana."
+    },
+    "filename": "Kibbeh3.jpg"
+  },
+  {
+    "entry": {
+      "key": "pasteles-en-hoja",
+      "status": "draft",
+      "kind": "food",
+      "tags": [
+        "food"
+      ],
+      "wikidata": "Q104840853",
+      "province": "Ámbito nacional",
+      "title": {
+        "es": "Pasteles en hoja",
+        "en": "Pasteles"
+      },
+      "aliases": {
+        "es": [
+          "pasteles en hoja",
+          "pasteles"
+        ],
+        "en": [
+          "pasteles",
+          "pastel",
+          "pastelles"
+        ]
+      },
+      "summary": {
+        "es": "Los pasteles forman parte de varias cocinas latinoamericanas y caribeñas, incluida la dominicana.",
+        "en": "Pasteles are found in several Latin American and Caribbean cuisines, including Dominican cooking."
+      },
+      "description": {
+        "es": "Los pasteles forman parte de varias cocinas latinoamericanas y caribeñas, incluida la dominicana. Su presentación se relaciona con la familia de los tamales.",
+        "en": "Pasteles are found in several Latin American and Caribbean cuisines, including Dominican cooking. Their form is related to the tamale family of dishes."
+      },
+      "facts": [
+        {
+          "text": {
+            "es": "Los pasteles forman parte de varias cocinas latinoamericanas y caribeñas, incluida la dominicana. Su presentación se relaciona con la familia de los tamales.",
+            "en": "Pasteles are found in several Latin American and Caribbean cuisines, including Dominican cooking. Their form is related to the tamale family of dishes."
+          },
+          "sourceUrl": "https://en.wikipedia.org/wiki/Pasteles"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Pasteles",
+          "editor": "Wikipedia contributors · English edition",
+          "checkedAt": "2026-11-11",
+          "httpStatus": 200,
+          "checkedVia": "https://en.wikipedia.org/api/rest_v1/page/summary/Pasteles",
+          "representation": "REST summary of this Wikipedia page"
+        },
+        {
+          "url": "https://www.wikidata.org/w/api.php?action=wbgetentities&sites=enwiki&titles=Mang%C3%BA%7CSancocho%7CChicharr%C3%B3n%7CHabichuelas+con+dulce%7CTostones%7CMofongo%7CCasabe%7CMoro+de+guandules%7CDulce+de+leche%7CMamajuana%7CYaniqueque%7CChench%C3%A9n%7CKibbeh%7CCatib%C3%ADa%7CAsopao%7CLocrio%7CPastel%C3%B3n%7CJalao%7CMorir+so%C3%B1ando%7CMab%C3%AD%7CArepa%7CPasteles%7CChimichurri+burger%7CDominican+Republic+cuisine%7CCoconut+rice%7CRice+and+beans%7CGuanimes%7CGuineos%7CAvocado%7CPigeon+pea&props=labels%7Cdescriptions%7Caliases%7Cclaims%7Csitelinks&languages=es%7Cen&format=json",
+          "editor": "Wikidata contributors · entity API",
+          "checkedAt": "2026-11-11",
+          "httpStatus": 200
+        }
+      ],
+      "images": [],
+      "reviewNotes": "Borrador. Texto redactado a partir del resumen citado. Revisar nombre habitual, relación regional y foto antes de aprobar; las imágenes de especies o alimentos pueden ser ilustrativas y no estar tomadas en la República Dominicana."
+    },
+    "filename": "Pasteles.jpg"
+  },
+  {
+    "entry": {
+      "key": "congos",
+      "status": "draft",
+      "kind": "tradition",
+      "tags": [
+        "history"
+      ],
+      "wikidata": "Q2993007",
+      "province": "Ámbito nacional",
+      "title": {
+        "es": "Congos de Villa Mella",
+        "en": "Congos of Villa Mella"
+      },
+      "aliases": {
+        "es": [
+          "congos de villa mella"
+        ],
+        "en": [
+          "congos of villa mella"
+        ]
+      },
+      "summary": {
+        "es": "Los Congos de Villa Mella mantienen una tradición comunitaria de música, danza y celebraciones.",
+        "en": "The Congos of Villa Mella maintain a community tradition of music, dance and celebrations."
+      },
+      "description": {
+        "es": "Los Congos de Villa Mella mantienen una tradición comunitaria de música, danza y celebraciones. Su espacio cultural está reconocido por la UNESCO.",
+        "en": "The Congos of Villa Mella maintain a community tradition of music, dance and celebrations. Their cultural space is recognized by UNESCO."
+      },
+      "facts": [
+        {
+          "text": {
+            "es": "Los Congos de Villa Mella mantienen una tradición comunitaria de música, danza y celebraciones. Su espacio cultural está reconocido por la UNESCO.",
+            "en": "The Congos of Villa Mella maintain a community tradition of music, dance and celebrations. Their cultural space is recognized by UNESCO."
+          },
+          "sourceUrl": "https://en.wikipedia.org/wiki/Congos_of_Villa_Mella"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Congos_of_Villa_Mella",
+          "editor": "Wikipedia contributors · English edition",
+          "checkedAt": "2026-11-11",
+          "httpStatus": 200,
+          "checkedVia": "https://en.wikipedia.org/api/rest_v1/page/summary/Congos%20of%20Villa%20Mella",
+          "representation": "REST summary of this Wikipedia page"
+        },
+        {
+          "url": "https://www.wikidata.org/w/api.php?action=wbgetentities&sites=enwiki&titles=Merengue+music%7CBachata+%28music%29%7CSon+music%7CPalo+%28religion%29%7CMerengue+t%C3%ADpico%7CG%C3%BCira%7CTambora+%28Dominican+drum%29%7CDominican+rock%7CDominican+jazz%7CSalve+%28Dominican+music%29%7CCocolo%7CCongos+of+Villa+Mella%7CCarnival+in+the+Dominican+Republic%7CGuloyas%7CDominican+Republic+Jazz+Festival%7CSanto+Domingo+International+Book+Fair%7CDominican+War+of+Independence%7CDominican+Restoration+War%7COur+Lady+of+Altagracia%7CBaseball+in+the+Dominican+Republic%7CDominican+Professional+Baseball+League%7CCaribbean+Series%7CSemana+Santa%7CDominican+Carnival%7CLa+Trinitaria%7CLarimar%7CDominican+amber%7CFaceless+dolls%7CCigar%7CTa%C3%ADno&props=labels%7Cdescriptions%7Caliases%7Cclaims%7Csitelinks&languages=es%7Cen&format=json",
+          "editor": "Wikidata contributors · entity API",
+          "checkedAt": "2026-11-11",
+          "httpStatus": 200
+        }
+      ],
+      "images": [],
+      "reviewNotes": "Borrador. Texto redactado a partir del resumen citado. Revisar nombre habitual, relación regional y foto antes de aprobar; las imágenes de especies o alimentos pueden ser ilustrativas y no estar tomadas en la República Dominicana."
+    },
+    "filename": "Estatua de Sixto Minier.jpg"
+  },
+  {
+    "entry": {
+      "key": "carnaval-dominicano",
+      "status": "draft",
+      "kind": "tradition",
+      "tags": [
+        "history"
+      ],
+      "wikidata": "Q2939730",
+      "province": "Ámbito nacional",
+      "title": {
+        "es": "Carnaval dominicano",
+        "en": "Dominican carnival"
+      },
+      "aliases": {
+        "es": [
+          "carnaval dominicano",
+          "carnaval en republica dominicana",
+          "carnaval en república dominicana",
+          "carnaval en la republica dominicana"
+        ],
+        "en": [
+          "dominican carnival",
+          "carnival in the dominican republic"
+        ]
+      },
+      "summary": {
+        "es": "Los carnavales dominicanos reúnen disfraces elaborados y máscaras tradicionales.",
+        "en": "Dominican carnivals bring together elaborate costumes and traditional masks."
+      },
+      "description": {
+        "es": "Los carnavales dominicanos reúnen disfraces elaborados y máscaras tradicionales. La Vega y Santo Domingo son dos de sus escenarios destacados.",
+        "en": "Dominican carnivals bring together elaborate costumes and traditional masks. La Vega and Santo Domingo are two of their notable settings."
+      },
+      "facts": [
+        {
+          "text": {
+            "es": "Los carnavales dominicanos reúnen disfraces elaborados y máscaras tradicionales. La Vega y Santo Domingo son dos de sus escenarios destacados.",
+            "en": "Dominican carnivals bring together elaborate costumes and traditional masks. La Vega and Santo Domingo are two of their notable settings."
+          },
+          "sourceUrl": "https://en.wikipedia.org/wiki/Carnival_in_the_Dominican_Republic"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Carnival_in_the_Dominican_Republic",
+          "editor": "Wikipedia contributors · English edition",
+          "checkedAt": "2026-11-11",
+          "httpStatus": 200,
+          "checkedVia": "https://en.wikipedia.org/api/rest_v1/page/summary/Carnival%20in%20the%20Dominican%20Republic",
+          "representation": "REST summary of this Wikipedia page"
+        },
+        {
+          "url": "https://www.wikidata.org/w/api.php?action=wbgetentities&sites=enwiki&titles=Merengue+music%7CBachata+%28music%29%7CSon+music%7CPalo+%28religion%29%7CMerengue+t%C3%ADpico%7CG%C3%BCira%7CTambora+%28Dominican+drum%29%7CDominican+rock%7CDominican+jazz%7CSalve+%28Dominican+music%29%7CCocolo%7CCongos+of+Villa+Mella%7CCarnival+in+the+Dominican+Republic%7CGuloyas%7CDominican+Republic+Jazz+Festival%7CSanto+Domingo+International+Book+Fair%7CDominican+War+of+Independence%7CDominican+Restoration+War%7COur+Lady+of+Altagracia%7CBaseball+in+the+Dominican+Republic%7CDominican+Professional+Baseball+League%7CCaribbean+Series%7CSemana+Santa%7CDominican+Carnival%7CLa+Trinitaria%7CLarimar%7CDominican+amber%7CFaceless+dolls%7CCigar%7CTa%C3%ADno&props=labels%7Cdescriptions%7Caliases%7Cclaims%7Csitelinks&languages=es%7Cen&format=json",
+          "editor": "Wikidata contributors · entity API",
+          "checkedAt": "2026-11-11",
+          "httpStatus": 200
+        }
+      ],
+      "images": [],
+      "reviewNotes": "Borrador. Texto redactado a partir del resumen citado. Revisar nombre habitual, relación regional y foto antes de aprobar; las imágenes de especies o alimentos pueden ser ilustrativas y no estar tomadas en la República Dominicana."
+    },
+    "filename": "Carnival 002 4585.JPG"
+  },
+  {
+    "entry": {
+      "key": "carnaval-dominicano",
+      "status": "draft",
+      "kind": "tradition",
+      "tags": [
+        "history"
+      ],
+      "wikidata": "Q2939730",
+      "province": "Ámbito nacional",
+      "title": {
+        "es": "Carnaval dominicano",
+        "en": "Dominican carnival"
+      },
+      "aliases": {
+        "es": [
+          "carnaval dominicano",
+          "carnaval en republica dominicana",
+          "carnaval en república dominicana",
+          "carnaval en la republica dominicana"
+        ],
+        "en": [
+          "dominican carnival",
+          "carnival in the dominican republic"
+        ]
+      },
+      "summary": {
+        "es": "Los carnavales dominicanos reúnen disfraces elaborados y máscaras tradicionales.",
+        "en": "Dominican carnivals bring together elaborate costumes and traditional masks."
+      },
+      "description": {
+        "es": "Los carnavales dominicanos reúnen disfraces elaborados y máscaras tradicionales. La Vega y Santo Domingo son dos de sus escenarios destacados.",
+        "en": "Dominican carnivals bring together elaborate costumes and traditional masks. La Vega and Santo Domingo are two of their notable settings."
+      },
+      "facts": [
+        {
+          "text": {
+            "es": "Los carnavales dominicanos reúnen disfraces elaborados y máscaras tradicionales. La Vega y Santo Domingo son dos de sus escenarios destacados.",
+            "en": "Dominican carnivals bring together elaborate costumes and traditional masks. La Vega and Santo Domingo are two of their notable settings."
+          },
+          "sourceUrl": "https://en.wikipedia.org/wiki/Carnival_in_the_Dominican_Republic"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Carnival_in_the_Dominican_Republic",
+          "editor": "Wikipedia contributors · English edition",
+          "checkedAt": "2026-11-11",
+          "httpStatus": 200,
+          "checkedVia": "https://en.wikipedia.org/api/rest_v1/page/summary/Dominican%20Carnival",
+          "representation": "REST summary of this Wikipedia page"
+        },
+        {
+          "url": "https://www.wikidata.org/w/api.php?action=wbgetentities&sites=enwiki&titles=Merengue+music%7CBachata+%28music%29%7CSon+music%7CPalo+%28religion%29%7CMerengue+t%C3%ADpico%7CG%C3%BCira%7CTambora+%28Dominican+drum%29%7CDominican+rock%7CDominican+jazz%7CSalve+%28Dominican+music%29%7CCocolo%7CCongos+of+Villa+Mella%7CCarnival+in+the+Dominican+Republic%7CGuloyas%7CDominican+Republic+Jazz+Festival%7CSanto+Domingo+International+Book+Fair%7CDominican+War+of+Independence%7CDominican+Restoration+War%7COur+Lady+of+Altagracia%7CBaseball+in+the+Dominican+Republic%7CDominican+Professional+Baseball+League%7CCaribbean+Series%7CSemana+Santa%7CDominican+Carnival%7CLa+Trinitaria%7CLarimar%7CDominican+amber%7CFaceless+dolls%7CCigar%7CTa%C3%ADno&props=labels%7Cdescriptions%7Caliases%7Cclaims%7Csitelinks&languages=es%7Cen&format=json",
+          "editor": "Wikidata contributors · entity API",
+          "checkedAt": "2026-11-11",
+          "httpStatus": 200
+        }
+      ],
+      "images": [],
+      "reviewNotes": "Borrador. Texto redactado a partir del resumen citado. Revisar nombre habitual, relación regional y foto antes de aprobar; las imágenes de especies o alimentos pueden ser ilustrativas y no estar tomadas en la República Dominicana."
+    },
+    "filename": "Carnival 002 4585.JPG"
+  },
+  {
+    "entry": {
+      "key": "cigua-palmera",
+      "status": "draft",
+      "kind": "species",
+      "tags": [
+        "nature"
+      ],
+      "wikidata": "Q845457",
+      "province": "Ámbito nacional",
+      "title": {
+        "es": "Cigua palmera",
+        "en": "Palmchat"
+      },
+      "aliases": {
+        "es": [
+          "cigua palmera",
+          "sigua palmera",
+          "sigua de palma"
+        ],
+        "en": [
+          "palmchat"
+        ]
+      },
+      "summary": {
+        "es": "La cigua palmera es un ave propia de La Española.",
+        "en": "The palmchat is a bird native to Hispaniola."
+      },
+      "description": {
+        "es": "La cigua palmera es un ave propia de La Española. Las palmeras forman parte de sus espacios de alimentación, descanso y nidificación.",
+        "en": "The palmchat is a bird native to Hispaniola. Palms form part of its feeding, resting and nesting habitat."
+      },
+      "facts": [
+        {
+          "text": {
+            "es": "La cigua palmera es un ave propia de La Española. Las palmeras forman parte de sus espacios de alimentación, descanso y nidificación.",
+            "en": "The palmchat is a bird native to Hispaniola. Palms form part of its feeding, resting and nesting habitat."
+          },
+          "sourceUrl": "https://en.wikipedia.org/wiki/Palmchat"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Palmchat",
+          "editor": "Wikipedia contributors · English edition",
+          "checkedAt": "2026-11-11",
+          "httpStatus": 200,
+          "checkedVia": "https://en.wikipedia.org/api/rest_v1/page/summary/Palmchat",
+          "representation": "REST summary of this Wikipedia page"
+        },
+        {
+          "url": "https://www.wikidata.org/w/api.php?action=wbgetentities&sites=enwiki&titles=Hispaniolan+amazon%7CHispaniolan+solenodon%7CHispaniolan+hutia%7CPalmchat%7CHispaniolan+trogon%7CBroad-billed+tody%7CNarrow-billed+tody%7CHispaniolan+woodpecker%7CHispaniolan+parakeet%7CHispaniolan+lizard+cuckoo%7CAshy-faced+owl%7CHispaniolan+nightjar%7CHispaniolan+mango%7CHispaniolan+emerald%7CAntillean+piculet%7CWhite-necked+crow%7CWhite-fronted+quail-dove%7CBay-breasted+cuckoo%7CHispaniolan+oriole%7CBlack-crowned+palm-tanager%7CWhite-winged+warbler%7CGreen-tailed+warbler%7CWestern+chat-tanager%7CEastern+chat-tanager%7CHispaniolan+spindalis%7CHispaniolan+crossbill%7CLa+Selle+thrush%7CRidgeway%E2%80%99s+hawk%7CRidgway%27s+hawk%7CRufous-throated+solitaire&props=labels%7Cdescriptions%7Caliases%7Cclaims%7Csitelinks&languages=es%7Cen&format=json",
+          "editor": "Wikidata contributors · entity API",
+          "checkedAt": "2026-11-11",
+          "httpStatus": 200
+        }
+      ],
+      "images": [],
+      "reviewNotes": "Borrador. Texto redactado a partir del resumen citado. Revisar nombre habitual, relación regional y foto antes de aprobar; las imágenes de especies o alimentos pueden ser ilustrativas y no estar tomadas en la República Dominicana."
+    },
+    "filename": "Dulus dominicus.JPG"
+  },
+  {
+    "entry": {
+      "key": "phaenicophilus-palmarum",
+      "status": "draft",
+      "kind": "species",
+      "tags": [
+        "nature"
+      ],
+      "wikidata": "Q1588281",
+      "province": "Ámbito nacional",
+      "title": {
+        "es": "Phaenicophilus palmarum",
+        "en": "Black-crowned palm-tanager"
+      },
+      "aliases": {
+        "es": [
+          "phaenicophilus palmarum",
+          "cuatro-ojos coroninegro",
+          "cuatroojos coroninegro"
+        ],
+        "en": [
+          "black-crowned palm-tanager",
+          "phaenicophilus palmarum"
+        ]
+      },
+      "summary": {
+        "es": "Phaenicophilus palmarum es un ave documentada en La Española.",
+        "en": "Black-crowned palm-tanager is a bird documented on Hispaniola."
+      },
+      "description": {
+        "es": "Phaenicophilus palmarum es un ave documentada en La Española.",
+        "en": "Black-crowned palm-tanager is a bird documented on Hispaniola."
+      },
+      "facts": [
+        {
+          "text": {
+            "es": "Phaenicophilus palmarum es un ave documentada en La Española.",
+            "en": "Black-crowned palm-tanager is a bird documented on Hispaniola."
+          },
+          "sourceUrl": "https://en.wikipedia.org/wiki/Black-crowned_palm-tanager"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Black-crowned_palm-tanager",
+          "editor": "Wikipedia contributors · English edition",
+          "checkedAt": "2026-11-11",
+          "httpStatus": 200,
+          "checkedVia": "https://en.wikipedia.org/api/rest_v1/page/summary/Black-crowned%20palm-tanager",
+          "representation": "REST summary of this Wikipedia page"
+        },
+        {
+          "url": "https://www.wikidata.org/w/api.php?action=wbgetentities&sites=enwiki&titles=Hispaniolan+amazon%7CHispaniolan+solenodon%7CHispaniolan+hutia%7CPalmchat%7CHispaniolan+trogon%7CBroad-billed+tody%7CNarrow-billed+tody%7CHispaniolan+woodpecker%7CHispaniolan+parakeet%7CHispaniolan+lizard+cuckoo%7CAshy-faced+owl%7CHispaniolan+nightjar%7CHispaniolan+mango%7CHispaniolan+emerald%7CAntillean+piculet%7CWhite-necked+crow%7CWhite-fronted+quail-dove%7CBay-breasted+cuckoo%7CHispaniolan+oriole%7CBlack-crowned+palm-tanager%7CWhite-winged+warbler%7CGreen-tailed+warbler%7CWestern+chat-tanager%7CEastern+chat-tanager%7CHispaniolan+spindalis%7CHispaniolan+crossbill%7CLa+Selle+thrush%7CRidgeway%E2%80%99s+hawk%7CRidgway%27s+hawk%7CRufous-throated+solitaire&props=labels%7Cdescriptions%7Caliases%7Cclaims%7Csitelinks&languages=es%7Cen&format=json",
+          "editor": "Wikidata contributors · entity API",
+          "checkedAt": "2026-11-11",
+          "httpStatus": 200
+        }
+      ],
+      "images": [],
+      "reviewNotes": "Borrador. Texto redactado a partir del resumen citado. Revisar nombre habitual, relación regional y foto antes de aprobar; las imágenes de especies o alimentos pueden ser ilustrativas y no estar tomadas en la República Dominicana."
+    },
+    "filename": "Black-crowned Palm Warbler.jpg"
+  },
+  {
+    "entry": {
+      "key": "cocodrilo-de-tumbes",
+      "status": "draft",
+      "kind": "species",
+      "tags": [
+        "nature"
+      ],
+      "wikidata": "Q207836",
+      "province": "Ámbito nacional",
+      "title": {
+        "es": "cocodrilo de Tumbes",
+        "en": "American crocodile"
+      },
+      "aliases": {
+        "es": [
+          "cocodrilo de tumbes",
+          "cocodrilo americano",
+          "cocodrilo narigudo",
+          "lagarto real",
+          "caiman, caiman de costa, caiman aguja",
+          "cocodrilo de río",
+          "cocodrilo de rio"
+        ],
+        "en": [
+          "american crocodile",
+          "crocodylus acutus"
+        ]
+      },
+      "summary": {
+        "es": "cocodrilo de Tumbes es una especie de especie documentada en La Española.",
+        "en": "American crocodile is a species documented on Hispaniola."
+      },
+      "description": {
+        "es": "cocodrilo de Tumbes es una especie de especie documentada en La Española.",
+        "en": "American crocodile is a species documented on Hispaniola."
+      },
+      "facts": [
+        {
+          "text": {
+            "es": "cocodrilo de Tumbes es una especie de especie documentada en La Española.",
+            "en": "American crocodile is a species documented on Hispaniola."
+          },
+          "sourceUrl": "https://en.wikipedia.org/wiki/American_crocodile"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/American_crocodile",
+          "editor": "Wikipedia contributors · English edition",
+          "checkedAt": "2026-11-11",
+          "httpStatus": 200,
+          "checkedVia": "https://en.wikipedia.org/api/rest_v1/page/summary/American%20crocodile",
+          "representation": "REST summary of this Wikipedia page"
+        },
+        {
+          "url": "https://www.wikidata.org/w/api.php?action=wbgetentities&sites=enwiki&titles=Golden+swallow%7CHispaniolan+pewee%7CFlat-billed+vireo%7CHispaniolan+palm+crow%7CHispaniolan+euphonia%7CHispaniolan+elaenia%7CHispaniolan+sharp-shinned+hawk%7CRhinoceros+iguana%7CRicord%27s+iguana%7CAmerican+crocodile%7CWest+Indian+manatee%7CHumpback+whale%7CAmerican+flamingo%7CHawksbill+sea+turtle%7CLeatherback+sea+turtle%7CHispaniolan+boa%7CSphaerodactylus+ariasae%7CAnolis+cybotes%7CHispaniolan+pine%7CPereskia+quisqueyana%7CSwietenia+mahagoni%7CCoccothrinax+argentea%7CRoystonea+hispaniolana%7CMagnolia+pallescens%7CMagnolia+domingensis%7CSolenodon+paradoxus%7CTrachemys+decorata%7CTrachemys+stejnegeri%7CHaitiophis+anomalus%7CChlorostilbon+swainsonii&props=labels%7Cdescriptions%7Caliases%7Cclaims%7Csitelinks&languages=es%7Cen&format=json",
+          "editor": "Wikidata contributors · entity API",
+          "checkedAt": "2026-11-11",
+          "httpStatus": 200
+        }
+      ],
+      "images": [],
+      "reviewNotes": "Borrador. Texto redactado a partir del resumen citado. Revisar nombre habitual, relación regional y foto antes de aprobar; las imágenes de especies o alimentos pueden ser ilustrativas y no estar tomadas en la República Dominicana."
+    },
+    "filename": "Crocodylus acutus mexico 02-edit1.jpg"
+  },
+  {
+    "entry": {
+      "key": "trachemys-stejnegeri",
+      "status": "draft",
+      "kind": "species",
+      "tags": [
+        "nature"
+      ],
+      "wikidata": "Q1049305",
+      "province": "Ámbito nacional",
+      "title": {
+        "es": "Trachemys stejnegeri",
+        "en": "Trachemys stejnegeri"
+      },
+      "aliases": {
+        "es": [
+          "trachemys stejnegeri"
+        ],
+        "en": [
+          "trachemys stejnegeri"
+        ]
+      },
+      "summary": {
+        "es": "Trachemys stejnegeri es una especie de reptil documentada en La Española.",
+        "en": "Trachemys stejnegeri is a reptile documented on Hispaniola."
+      },
+      "description": {
+        "es": "Trachemys stejnegeri es una especie de reptil documentada en La Española.",
+        "en": "Trachemys stejnegeri is a reptile documented on Hispaniola."
+      },
+      "facts": [
+        {
+          "text": {
+            "es": "Trachemys stejnegeri es una especie de reptil documentada en La Española.",
+            "en": "Trachemys stejnegeri is a reptile documented on Hispaniola."
+          },
+          "sourceUrl": "https://en.wikipedia.org/wiki/Central_Antillean_slider"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Central_Antillean_slider",
+          "editor": "Wikipedia contributors · English edition",
+          "checkedAt": "2026-11-11",
+          "httpStatus": 200,
+          "checkedVia": "https://en.wikipedia.org/api/rest_v1/page/summary/Trachemys%20stejnegeri",
+          "representation": "REST summary of this Wikipedia page"
+        },
+        {
+          "url": "https://www.wikidata.org/w/api.php?action=wbgetentities&ids=Q1428432%7CQ426103%7CQ11682049%7CQ5616549%7CQ4428744%7CQ7842514%7CQ2713653%7CQ3388586%7CQ64056624%7CQ1032577%7CQ1049305%7CQ15148345%7CQ17624527%7CQ5969128%7CQ7042165%7CQ4211765%7CQ20811931%7CQ9072006%7CQ2049917%7CQ23778944%7CQ17002125&props=labels%7Cdescriptions%7Caliases%7Cclaims%7Csitelinks&languages=es%7Cen&format=json",
+          "editor": "Wikidata contributors · entity API",
+          "checkedAt": "2026-11-11",
+          "httpStatus": 200
+        }
+      ],
+      "images": [],
+      "reviewNotes": "Borrador. Texto redactado a partir del resumen citado. Revisar nombre habitual, relación regional y foto antes de aprobar; las imágenes de especies o alimentos pueden ser ilustrativas y no estar tomadas en la República Dominicana."
+    },
+    "filename": "Trachemys stejnegeri01.jpg"
+  },
+  {
+    "entry": {
+      "key": "parque-nacional-sierra-de-bahoruco",
+      "status": "draft",
+      "kind": "nature",
+      "tags": [
+        "nature"
+      ],
+      "wikidata": "Q17624527",
+      "province": "Ámbito nacional o varias provincias",
+      "title": {
+        "es": "Parque nacional Sierra de Bahoruco",
+        "en": "Sierra de Bahoruco National Park"
+      },
+      "aliases": {
+        "es": [
+          "parque nacional sierra de bahoruco"
+        ],
+        "en": [
+          "sierra de bahoruco national park"
+        ]
+      },
+      "summary": {
+        "es": "Parque nacional Sierra de Bahoruco es un parque nacional dominicano.",
+        "en": "Sierra de Bahoruco National Park is a Dominican national park."
+      },
+      "description": {
+        "es": "Parque nacional Sierra de Bahoruco es un parque nacional dominicano.",
+        "en": "Sierra de Bahoruco National Park is a Dominican national park."
+      },
+      "facts": [
+        {
+          "text": {
+            "es": "Parque nacional Sierra de Bahoruco es un parque nacional dominicano.",
+            "en": "Sierra de Bahoruco National Park is a Dominican national park."
+          },
+          "sourceUrl": "https://en.wikipedia.org/wiki/Sierra_de_Bahoruco_National_Park"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Sierra_de_Bahoruco_National_Park",
+          "editor": "Wikipedia contributors · English edition",
+          "checkedAt": "2026-11-11",
+          "httpStatus": 200,
+          "checkedVia": "https://en.wikipedia.org/api/rest_v1/page/summary/Sierra%20de%20Bahoruco%20National%20Park",
+          "representation": "REST summary of this Wikipedia page"
+        },
+        {
+          "url": "https://www.wikidata.org/w/api.php?action=wbgetentities&ids=Q1428432%7CQ426103%7CQ11682049%7CQ5616549%7CQ4428744%7CQ7842514%7CQ2713653%7CQ3388586%7CQ64056624%7CQ1032577%7CQ1049305%7CQ15148345%7CQ17624527%7CQ5969128%7CQ7042165%7CQ4211765%7CQ20811931%7CQ9072006%7CQ2049917%7CQ23778944%7CQ17002125&props=labels%7Cdescriptions%7Caliases%7Cclaims%7Csitelinks&languages=es%7Cen&format=json",
+          "editor": "Wikidata contributors · entity API",
+          "checkedAt": "2026-11-11",
+          "httpStatus": 200
+        }
+      ],
+      "images": [],
+      "reviewNotes": "Borrador. Texto redactado a partir del resumen citado. Revisar nombre habitual, relación regional y foto antes de aprobar; las imágenes de especies o alimentos pueden ser ilustrativas y no estar tomadas en la República Dominicana.",
+      "location": {
+        "label": "Parque nacional Sierra de Bahoruco",
+        "lat": 18.16,
+        "lng": -71.5,
+        "source": "https://www.wikidata.org/wiki/Q17624527"
+      }
+    },
+    "filename": "Brunellia comocladifolia 3.JPG"
+  },
+  {
+    "entry": {
+      "key": "rio-camu",
+      "status": "draft",
+      "kind": "nature",
+      "tags": [
+        "nature"
+      ],
+      "wikidata": "Q4211765",
+      "province": "Ámbito nacional o varias provincias",
+      "title": {
+        "es": "Río Camú",
+        "en": "Camú River"
+      },
+      "aliases": {
+        "es": [
+          "río camú",
+          "rio camu"
+        ],
+        "en": [
+          "camú river",
+          "camu river"
+        ]
+      },
+      "summary": {
+        "es": "Río Camú es un río dominicano.",
+        "en": "Camú River is a Dominican river."
+      },
+      "description": {
+        "es": "Río Camú es un río dominicano.",
+        "en": "Camú River is a Dominican river."
+      },
+      "facts": [
+        {
+          "text": {
+            "es": "Río Camú es un río dominicano.",
+            "en": "Camú River is a Dominican river."
+          },
+          "sourceUrl": "https://en.wikipedia.org/wiki/Cam%C3%BA_River"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Cam%C3%BA_River",
+          "editor": "Wikipedia contributors · English edition",
+          "checkedAt": "2026-11-11",
+          "httpStatus": 200,
+          "checkedVia": "https://en.wikipedia.org/api/rest_v1/page/summary/Cam%C3%BA%20River",
+          "representation": "REST summary of this Wikipedia page"
+        },
+        {
+          "url": "https://www.wikidata.org/w/api.php?action=wbgetentities&ids=Q1428432%7CQ426103%7CQ11682049%7CQ5616549%7CQ4428744%7CQ7842514%7CQ2713653%7CQ3388586%7CQ64056624%7CQ1032577%7CQ1049305%7CQ15148345%7CQ17624527%7CQ5969128%7CQ7042165%7CQ4211765%7CQ20811931%7CQ9072006%7CQ2049917%7CQ23778944%7CQ17002125&props=labels%7Cdescriptions%7Caliases%7Cclaims%7Csitelinks&languages=es%7Cen&format=json",
+          "editor": "Wikidata contributors · entity API",
+          "checkedAt": "2026-11-11",
+          "httpStatus": 200
+        }
+      ],
+      "images": [],
+      "reviewNotes": "Borrador. Texto redactado a partir del resumen citado. Revisar nombre habitual, relación regional y foto antes de aprobar; las imágenes de especies o alimentos pueden ser ilustrativas y no estar tomadas en la República Dominicana.",
+      "location": {
+        "label": "Río Camú",
+        "lat": 19.1531,
+        "lng": -70.0969,
+        "source": "https://www.wikidata.org/wiki/Q4211765"
+      }
+    },
+    "filename": "Yuna River Map.png"
+  },
+  {
+    "entry": {
+      "key": "provincia-de-las-galeras",
+      "status": "draft",
+      "kind": "region",
+      "tags": [
+        "history"
+      ],
+      "wikidata": "Q3308366",
+      "province": "Samaná",
+      "title": {
+        "es": "Provincia de Las Galeras",
+        "en": "Las Galeras"
+      },
+      "aliases": {
+        "es": [
+          "provincia de las galeras"
+        ],
+        "en": [
+          "las galeras"
+        ]
+      },
+      "summary": {
+        "es": "Provincia de Las Galeras es una provincia dominicana.",
+        "en": "Las Galeras is a Dominican province."
+      },
+      "description": {
+        "es": "Provincia de Las Galeras es una provincia dominicana.",
+        "en": "Las Galeras is a Dominican province."
+      },
+      "facts": [
+        {
+          "text": {
+            "es": "Provincia de Las Galeras es una provincia dominicana.",
+            "en": "Las Galeras is a Dominican province."
+          },
+          "sourceUrl": "https://en.wikipedia.org/wiki/Las_Galeras"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Las_Galeras",
+          "editor": "Wikipedia contributors · English edition",
+          "checkedAt": "2026-11-11",
+          "httpStatus": 200,
+          "checkedVia": "https://en.wikipedia.org/api/rest_v1/page/summary/Las%20Galeras",
+          "representation": "REST summary of this Wikipedia page"
+        },
+        {
+          "url": "https://www.wikidata.org/w/api.php?action=wbgetentities&sites=enwiki&titles=Loma+Gajo+en+Medio%7CPico+Diego+de+Ocampo%7CPresa+de+Hatillo%7CRinc%C3%B3n+Dam%7CMonci%C3%B3n+Dam%7CPinalito+Dam%7CBao+Dam%7CTavera+Dam%7CSabana+Yegua+Dam%7CValdesia+Dam%7CLas+Galeras%7CR%C3%ADo+San+Juan%2C+Dominican+Republic%7CMonte+Plata%7CCotu%C3%AD%7CSan+Ignacio+de+Sabaneta%7CNeiba%7CDuverg%C3%A9%7CVilla+Altagracia%7CMiches%7CEl+Valle%2C+Dominican+Republic%7CVilla+Tapia%7CTenares%7CLuper%C3%B3n%7CVilla+Isabela%7CLoma+de+Cabrera%7CSan+Jos%C3%A9+de+las+Matas%7CJ%C3%A1nico%7CSan+Jos%C3%A9+de+Los+Llanos%7CPolo%2C+Dominican+Republic%7CCibao&props=labels%7Cdescriptions%7Caliases%7Cclaims%7Csitelinks&languages=es%7Cen&format=json",
+          "editor": "Wikidata contributors · entity API",
+          "checkedAt": "2026-11-11",
+          "httpStatus": 200
+        }
+      ],
+      "images": [],
+      "reviewNotes": "Borrador. Texto redactado a partir del resumen citado. Revisar nombre habitual, relación regional y foto antes de aprobar; las imágenes de especies o alimentos pueden ser ilustrativas y no estar tomadas en la República Dominicana.",
+      "location": {
+        "label": "Provincia de Las Galeras",
+        "lat": 19.3,
+        "lng": -69.2,
+        "source": "https://www.wikidata.org/wiki/Q3308366"
+      }
+    },
+    "filename": "Playa Frontón December 2020.jpg"
+  },
+  {
+    "entry": {
+      "key": "provincia-de-monte-plata",
+      "status": "draft",
+      "kind": "region",
+      "tags": [
+        "history"
+      ],
+      "wikidata": "Q634487",
+      "province": "Monte Plata",
+      "title": {
+        "es": "Provincia de Monte Plata",
+        "en": "Monte Plata"
+      },
+      "aliases": {
+        "es": [
+          "provincia de monte plata"
+        ],
+        "en": [
+          "monte plata"
+        ]
+      },
+      "summary": {
+        "es": "Provincia de Monte Plata es una provincia dominicana.",
+        "en": "Monte Plata is a Dominican province."
+      },
+      "description": {
+        "es": "Provincia de Monte Plata es una provincia dominicana.",
+        "en": "Monte Plata is a Dominican province."
+      },
+      "facts": [
+        {
+          "text": {
+            "es": "Provincia de Monte Plata es una provincia dominicana.",
+            "en": "Monte Plata is a Dominican province."
+          },
+          "sourceUrl": "https://en.wikipedia.org/wiki/Monte_Plata"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Monte_Plata",
+          "editor": "Wikipedia contributors · English edition",
+          "checkedAt": "2026-11-11",
+          "httpStatus": 200,
+          "checkedVia": "https://en.wikipedia.org/api/rest_v1/page/summary/Monte%20Plata",
+          "representation": "REST summary of this Wikipedia page"
+        },
+        {
+          "url": "https://www.wikidata.org/w/api.php?action=wbgetentities&sites=enwiki&titles=Loma+Gajo+en+Medio%7CPico+Diego+de+Ocampo%7CPresa+de+Hatillo%7CRinc%C3%B3n+Dam%7CMonci%C3%B3n+Dam%7CPinalito+Dam%7CBao+Dam%7CTavera+Dam%7CSabana+Yegua+Dam%7CValdesia+Dam%7CLas+Galeras%7CR%C3%ADo+San+Juan%2C+Dominican+Republic%7CMonte+Plata%7CCotu%C3%AD%7CSan+Ignacio+de+Sabaneta%7CNeiba%7CDuverg%C3%A9%7CVilla+Altagracia%7CMiches%7CEl+Valle%2C+Dominican+Republic%7CVilla+Tapia%7CTenares%7CLuper%C3%B3n%7CVilla+Isabela%7CLoma+de+Cabrera%7CSan+Jos%C3%A9+de+las+Matas%7CJ%C3%A1nico%7CSan+Jos%C3%A9+de+Los+Llanos%7CPolo%2C+Dominican+Republic%7CCibao&props=labels%7Cdescriptions%7Caliases%7Cclaims%7Csitelinks&languages=es%7Cen&format=json",
+          "editor": "Wikidata contributors · entity API",
+          "checkedAt": "2026-11-11",
+          "httpStatus": 200
+        }
+      ],
+      "images": [],
+      "reviewNotes": "Borrador. Texto redactado a partir del resumen citado. Revisar nombre habitual, relación regional y foto antes de aprobar; las imágenes de especies o alimentos pueden ser ilustrativas y no estar tomadas en la República Dominicana.",
+      "location": {
+        "label": "Provincia de Monte Plata",
+        "lat": 18.81,
+        "lng": -69.79,
+        "source": "https://www.wikidata.org/wiki/Q634487"
+      }
+    },
+    "filename": "Monte Plata Dominican Republic.jpg"
+  },
+  {
+    "entry": {
+      "key": "provincia-de-cotui",
+      "status": "draft",
+      "kind": "region",
+      "tags": [
+        "history"
+      ],
+      "wikidata": "Q2087489",
+      "province": "Sánchez Ramírez",
+      "title": {
+        "es": "Provincia de Cotuí",
+        "en": "Cotuí"
+      },
+      "aliases": {
+        "es": [
+          "provincia de cotuí",
+          "provincia de cotui",
+          "cotui"
+        ],
+        "en": [
+          "cotuí",
+          "cotui"
+        ]
+      },
+      "summary": {
+        "es": "Provincia de Cotuí es una provincia dominicana.",
+        "en": "Cotuí is a Dominican province."
+      },
+      "description": {
+        "es": "Provincia de Cotuí es una provincia dominicana.",
+        "en": "Cotuí is a Dominican province."
+      },
+      "facts": [
+        {
+          "text": {
+            "es": "Provincia de Cotuí es una provincia dominicana.",
+            "en": "Cotuí is a Dominican province."
+          },
+          "sourceUrl": "https://en.wikipedia.org/wiki/Cotu%C3%AD"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Cotu%C3%AD",
+          "editor": "Wikipedia contributors · English edition",
+          "checkedAt": "2026-11-11",
+          "httpStatus": 200,
+          "checkedVia": "https://en.wikipedia.org/api/rest_v1/page/summary/Cotu%C3%AD",
+          "representation": "REST summary of this Wikipedia page"
+        },
+        {
+          "url": "https://www.wikidata.org/w/api.php?action=wbgetentities&sites=enwiki&titles=Loma+Gajo+en+Medio%7CPico+Diego+de+Ocampo%7CPresa+de+Hatillo%7CRinc%C3%B3n+Dam%7CMonci%C3%B3n+Dam%7CPinalito+Dam%7CBao+Dam%7CTavera+Dam%7CSabana+Yegua+Dam%7CValdesia+Dam%7CLas+Galeras%7CR%C3%ADo+San+Juan%2C+Dominican+Republic%7CMonte+Plata%7CCotu%C3%AD%7CSan+Ignacio+de+Sabaneta%7CNeiba%7CDuverg%C3%A9%7CVilla+Altagracia%7CMiches%7CEl+Valle%2C+Dominican+Republic%7CVilla+Tapia%7CTenares%7CLuper%C3%B3n%7CVilla+Isabela%7CLoma+de+Cabrera%7CSan+Jos%C3%A9+de+las+Matas%7CJ%C3%A1nico%7CSan+Jos%C3%A9+de+Los+Llanos%7CPolo%2C+Dominican+Republic%7CCibao&props=labels%7Cdescriptions%7Caliases%7Cclaims%7Csitelinks&languages=es%7Cen&format=json",
+          "editor": "Wikidata contributors · entity API",
+          "checkedAt": "2026-11-11",
+          "httpStatus": 200
+        }
+      ],
+      "images": [],
+      "reviewNotes": "Borrador. Texto redactado a partir del resumen citado. Revisar nombre habitual, relación regional y foto antes de aprobar; las imágenes de especies o alimentos pueden ser ilustrativas y no estar tomadas en la República Dominicana.",
+      "location": {
+        "label": "Provincia de Cotuí",
+        "lat": 19.06,
+        "lng": -70.15,
+        "source": "https://www.wikidata.org/wiki/Q2087489"
+      }
+    },
+    "filename": "Cotui Dominican Republic church.jpg"
+  },
+  {
+    "entry": {
+      "key": "provincia-de-neiba",
+      "status": "draft",
+      "kind": "region",
+      "tags": [
+        "history"
+      ],
+      "wikidata": "Q2107258",
+      "province": "Bahoruco",
+      "title": {
+        "es": "Provincia de Neiba",
+        "en": "Neiba"
+      },
+      "aliases": {
+        "es": [
+          "provincia de neiba"
+        ],
+        "en": [
+          "neiba",
+          "neybe"
+        ]
+      },
+      "summary": {
+        "es": "Provincia de Neiba es una provincia dominicana.",
+        "en": "Neiba is a Dominican province."
+      },
+      "description": {
+        "es": "Provincia de Neiba es una provincia dominicana.",
+        "en": "Neiba is a Dominican province."
+      },
+      "facts": [
+        {
+          "text": {
+            "es": "Provincia de Neiba es una provincia dominicana.",
+            "en": "Neiba is a Dominican province."
+          },
+          "sourceUrl": "https://en.wikipedia.org/wiki/Neiba"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Neiba",
+          "editor": "Wikipedia contributors · English edition",
+          "checkedAt": "2026-11-11",
+          "httpStatus": 200,
+          "checkedVia": "https://en.wikipedia.org/api/rest_v1/page/summary/Neiba",
+          "representation": "REST summary of this Wikipedia page"
+        },
+        {
+          "url": "https://www.wikidata.org/w/api.php?action=wbgetentities&sites=enwiki&titles=Loma+Gajo+en+Medio%7CPico+Diego+de+Ocampo%7CPresa+de+Hatillo%7CRinc%C3%B3n+Dam%7CMonci%C3%B3n+Dam%7CPinalito+Dam%7CBao+Dam%7CTavera+Dam%7CSabana+Yegua+Dam%7CValdesia+Dam%7CLas+Galeras%7CR%C3%ADo+San+Juan%2C+Dominican+Republic%7CMonte+Plata%7CCotu%C3%AD%7CSan+Ignacio+de+Sabaneta%7CNeiba%7CDuverg%C3%A9%7CVilla+Altagracia%7CMiches%7CEl+Valle%2C+Dominican+Republic%7CVilla+Tapia%7CTenares%7CLuper%C3%B3n%7CVilla+Isabela%7CLoma+de+Cabrera%7CSan+Jos%C3%A9+de+las+Matas%7CJ%C3%A1nico%7CSan+Jos%C3%A9+de+Los+Llanos%7CPolo%2C+Dominican+Republic%7CCibao&props=labels%7Cdescriptions%7Caliases%7Cclaims%7Csitelinks&languages=es%7Cen&format=json",
+          "editor": "Wikidata contributors · entity API",
+          "checkedAt": "2026-11-11",
+          "httpStatus": 200
+        }
+      ],
+      "images": [],
+      "reviewNotes": "Borrador. Texto redactado a partir del resumen citado. Revisar nombre habitual, relación regional y foto antes de aprobar; las imágenes de especies o alimentos pueden ser ilustrativas y no estar tomadas en la República Dominicana.",
+      "location": {
+        "label": "Provincia de Neiba",
+        "lat": 18.49,
+        "lng": -71.42,
+        "source": "https://www.wikidata.org/wiki/Q2107258"
+      }
+    },
+    "filename": "Neiba.jpg"
+  },
+  {
+    "entry": {
+      "key": "provincia-de-duverge",
+      "status": "draft",
+      "kind": "region",
+      "tags": [
+        "history"
+      ],
+      "wikidata": "Q3716731",
+      "province": "Independencia",
+      "title": {
+        "es": "Provincia de Duvergé",
+        "en": "Duvergé"
+      },
+      "aliases": {
+        "es": [
+          "provincia de duvergé",
+          "provincia de duverge",
+          "duverge"
+        ],
+        "en": [
+          "duvergé",
+          "duverge"
+        ]
+      },
+      "summary": {
+        "es": "Provincia de Duvergé es una provincia dominicana.",
+        "en": "Duvergé is a Dominican province."
+      },
+      "description": {
+        "es": "Provincia de Duvergé es una provincia dominicana.",
+        "en": "Duvergé is a Dominican province."
+      },
+      "facts": [
+        {
+          "text": {
+            "es": "Provincia de Duvergé es una provincia dominicana.",
+            "en": "Duvergé is a Dominican province."
+          },
+          "sourceUrl": "https://en.wikipedia.org/wiki/Duverg%C3%A9"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Duverg%C3%A9",
+          "editor": "Wikipedia contributors · English edition",
+          "checkedAt": "2026-11-11",
+          "httpStatus": 200,
+          "checkedVia": "https://en.wikipedia.org/api/rest_v1/page/summary/Duverg%C3%A9",
+          "representation": "REST summary of this Wikipedia page"
+        },
+        {
+          "url": "https://www.wikidata.org/w/api.php?action=wbgetentities&sites=enwiki&titles=Loma+Gajo+en+Medio%7CPico+Diego+de+Ocampo%7CPresa+de+Hatillo%7CRinc%C3%B3n+Dam%7CMonci%C3%B3n+Dam%7CPinalito+Dam%7CBao+Dam%7CTavera+Dam%7CSabana+Yegua+Dam%7CValdesia+Dam%7CLas+Galeras%7CR%C3%ADo+San+Juan%2C+Dominican+Republic%7CMonte+Plata%7CCotu%C3%AD%7CSan+Ignacio+de+Sabaneta%7CNeiba%7CDuverg%C3%A9%7CVilla+Altagracia%7CMiches%7CEl+Valle%2C+Dominican+Republic%7CVilla+Tapia%7CTenares%7CLuper%C3%B3n%7CVilla+Isabela%7CLoma+de+Cabrera%7CSan+Jos%C3%A9+de+las+Matas%7CJ%C3%A1nico%7CSan+Jos%C3%A9+de+Los+Llanos%7CPolo%2C+Dominican+Republic%7CCibao&props=labels%7Cdescriptions%7Caliases%7Cclaims%7Csitelinks&languages=es%7Cen&format=json",
+          "editor": "Wikidata contributors · entity API",
+          "checkedAt": "2026-11-11",
+          "httpStatus": 200
+        }
+      ],
+      "images": [],
+      "reviewNotes": "Borrador. Texto redactado a partir del resumen citado. Revisar nombre habitual, relación regional y foto antes de aprobar; las imágenes de especies o alimentos pueden ser ilustrativas y no estar tomadas en la República Dominicana.",
+      "location": {
+        "label": "Provincia de Duvergé",
+        "lat": 18.3188,
+        "lng": -71.5945,
+        "source": "https://www.wikidata.org/wiki/Q3716731"
+      }
+    },
+    "filename": "Duverge Dominican Republic.jpg"
+  },
+  {
+    "entry": {
+      "key": "provincia-de-villa-tapia",
+      "status": "draft",
+      "kind": "region",
+      "tags": [
+        "history"
+      ],
+      "wikidata": "Q1770889",
+      "province": "Hermanas Mirabal",
+      "title": {
+        "es": "Provincia de Villa Tapia",
+        "en": "Villa Tapia"
+      },
+      "aliases": {
+        "es": [
+          "provincia de villa tapia"
+        ],
+        "en": [
+          "villa tapia"
+        ]
+      },
+      "summary": {
+        "es": "Provincia de Villa Tapia es una provincia dominicana.",
+        "en": "Villa Tapia is a Dominican province."
+      },
+      "description": {
+        "es": "Provincia de Villa Tapia es una provincia dominicana.",
+        "en": "Villa Tapia is a Dominican province."
+      },
+      "facts": [
+        {
+          "text": {
+            "es": "Provincia de Villa Tapia es una provincia dominicana.",
+            "en": "Villa Tapia is a Dominican province."
+          },
+          "sourceUrl": "https://en.wikipedia.org/wiki/Villa_Tapia"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Villa_Tapia",
+          "editor": "Wikipedia contributors · English edition",
+          "checkedAt": "2026-11-11",
+          "httpStatus": 200,
+          "checkedVia": "https://en.wikipedia.org/api/rest_v1/page/summary/Villa%20Tapia",
+          "representation": "REST summary of this Wikipedia page"
+        },
+        {
+          "url": "https://www.wikidata.org/w/api.php?action=wbgetentities&sites=enwiki&titles=Loma+Gajo+en+Medio%7CPico+Diego+de+Ocampo%7CPresa+de+Hatillo%7CRinc%C3%B3n+Dam%7CMonci%C3%B3n+Dam%7CPinalito+Dam%7CBao+Dam%7CTavera+Dam%7CSabana+Yegua+Dam%7CValdesia+Dam%7CLas+Galeras%7CR%C3%ADo+San+Juan%2C+Dominican+Republic%7CMonte+Plata%7CCotu%C3%AD%7CSan+Ignacio+de+Sabaneta%7CNeiba%7CDuverg%C3%A9%7CVilla+Altagracia%7CMiches%7CEl+Valle%2C+Dominican+Republic%7CVilla+Tapia%7CTenares%7CLuper%C3%B3n%7CVilla+Isabela%7CLoma+de+Cabrera%7CSan+Jos%C3%A9+de+las+Matas%7CJ%C3%A1nico%7CSan+Jos%C3%A9+de+Los+Llanos%7CPolo%2C+Dominican+Republic%7CCibao&props=labels%7Cdescriptions%7Caliases%7Cclaims%7Csitelinks&languages=es%7Cen&format=json",
+          "editor": "Wikidata contributors · entity API",
+          "checkedAt": "2026-11-11",
+          "httpStatus": 200
+        }
+      ],
+      "images": [],
+      "reviewNotes": "Borrador. Texto redactado a partir del resumen citado. Revisar nombre habitual, relación regional y foto antes de aprobar; las imágenes de especies o alimentos pueden ser ilustrativas y no estar tomadas en la República Dominicana.",
+      "location": {
+        "label": "Provincia de Villa Tapia",
+        "lat": 19.3,
+        "lng": -70.42,
+        "source": "https://www.wikidata.org/wiki/Q1770889"
+      }
+    },
+    "filename": "Dominican Republic People.JPG"
+  },
+  {
+    "entry": {
+      "key": "provincia-de-loma-de-cabrera",
+      "status": "draft",
+      "kind": "region",
+      "tags": [
+        "history"
+      ],
+      "wikidata": "Q1771467",
+      "province": "Dajabón",
+      "title": {
+        "es": "Provincia de Loma de Cabrera",
+        "en": "Loma de Cabrera"
+      },
+      "aliases": {
+        "es": [
+          "provincia de loma de cabrera"
+        ],
+        "en": [
+          "loma de cabrera"
+        ]
+      },
+      "summary": {
+        "es": "Provincia de Loma de Cabrera es una provincia dominicana.",
+        "en": "Loma de Cabrera is a Dominican province."
+      },
+      "description": {
+        "es": "Provincia de Loma de Cabrera es una provincia dominicana.",
+        "en": "Loma de Cabrera is a Dominican province."
+      },
+      "facts": [
+        {
+          "text": {
+            "es": "Provincia de Loma de Cabrera es una provincia dominicana.",
+            "en": "Loma de Cabrera is a Dominican province."
+          },
+          "sourceUrl": "https://en.wikipedia.org/wiki/Loma_de_Cabrera"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Loma_de_Cabrera",
+          "editor": "Wikipedia contributors · English edition",
+          "checkedAt": "2026-11-11",
+          "httpStatus": 200,
+          "checkedVia": "https://en.wikipedia.org/api/rest_v1/page/summary/Loma%20de%20Cabrera",
+          "representation": "REST summary of this Wikipedia page"
+        },
+        {
+          "url": "https://www.wikidata.org/w/api.php?action=wbgetentities&sites=enwiki&titles=Loma+Gajo+en+Medio%7CPico+Diego+de+Ocampo%7CPresa+de+Hatillo%7CRinc%C3%B3n+Dam%7CMonci%C3%B3n+Dam%7CPinalito+Dam%7CBao+Dam%7CTavera+Dam%7CSabana+Yegua+Dam%7CValdesia+Dam%7CLas+Galeras%7CR%C3%ADo+San+Juan%2C+Dominican+Republic%7CMonte+Plata%7CCotu%C3%AD%7CSan+Ignacio+de+Sabaneta%7CNeiba%7CDuverg%C3%A9%7CVilla+Altagracia%7CMiches%7CEl+Valle%2C+Dominican+Republic%7CVilla+Tapia%7CTenares%7CLuper%C3%B3n%7CVilla+Isabela%7CLoma+de+Cabrera%7CSan+Jos%C3%A9+de+las+Matas%7CJ%C3%A1nico%7CSan+Jos%C3%A9+de+Los+Llanos%7CPolo%2C+Dominican+Republic%7CCibao&props=labels%7Cdescriptions%7Caliases%7Cclaims%7Csitelinks&languages=es%7Cen&format=json",
+          "editor": "Wikidata contributors · entity API",
+          "checkedAt": "2026-11-11",
+          "httpStatus": 200
+        }
+      ],
+      "images": [],
+      "reviewNotes": "Borrador. Texto redactado a partir del resumen citado. Revisar nombre habitual, relación regional y foto antes de aprobar; las imágenes de especies o alimentos pueden ser ilustrativas y no estar tomadas en la República Dominicana.",
+      "location": {
+        "label": "Provincia de Loma de Cabrera",
+        "lat": 19.422,
+        "lng": -71.615,
+        "source": "https://www.wikidata.org/wiki/Q1771467"
+      }
+    },
+    "filename": "BalnearioElSalto.jpg"
+  },
+  {
+    "entry": {
+      "key": "provincia-de-san-jose-de-las-matas",
+      "status": "draft",
+      "kind": "region",
+      "tags": [
+        "history"
+      ],
+      "wikidata": "Q3947426",
+      "province": "Santiago",
+      "title": {
+        "es": "Provincia de San José de las Matas",
+        "en": "San José de las Matas"
+      },
+      "aliases": {
+        "es": [
+          "provincia de san josé de las matas",
+          "provincia de san jose de las matas",
+          "san jose de las matas"
+        ],
+        "en": [
+          "san josé de las matas",
+          "san jose de las matas"
+        ]
+      },
+      "summary": {
+        "es": "Provincia de San José de las Matas es una provincia dominicana.",
+        "en": "San José de las Matas is a Dominican province."
+      },
+      "description": {
+        "es": "Provincia de San José de las Matas es una provincia dominicana.",
+        "en": "San José de las Matas is a Dominican province."
+      },
+      "facts": [
+        {
+          "text": {
+            "es": "Provincia de San José de las Matas es una provincia dominicana.",
+            "en": "San José de las Matas is a Dominican province."
+          },
+          "sourceUrl": "https://en.wikipedia.org/wiki/San_Jos%C3%A9_de_las_Matas"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/San_Jos%C3%A9_de_las_Matas",
+          "editor": "Wikipedia contributors · English edition",
+          "checkedAt": "2026-11-11",
+          "httpStatus": 200,
+          "checkedVia": "https://en.wikipedia.org/api/rest_v1/page/summary/San%20Jos%C3%A9%20de%20las%20Matas",
+          "representation": "REST summary of this Wikipedia page"
+        },
+        {
+          "url": "https://www.wikidata.org/w/api.php?action=wbgetentities&sites=enwiki&titles=Loma+Gajo+en+Medio%7CPico+Diego+de+Ocampo%7CPresa+de+Hatillo%7CRinc%C3%B3n+Dam%7CMonci%C3%B3n+Dam%7CPinalito+Dam%7CBao+Dam%7CTavera+Dam%7CSabana+Yegua+Dam%7CValdesia+Dam%7CLas+Galeras%7CR%C3%ADo+San+Juan%2C+Dominican+Republic%7CMonte+Plata%7CCotu%C3%AD%7CSan+Ignacio+de+Sabaneta%7CNeiba%7CDuverg%C3%A9%7CVilla+Altagracia%7CMiches%7CEl+Valle%2C+Dominican+Republic%7CVilla+Tapia%7CTenares%7CLuper%C3%B3n%7CVilla+Isabela%7CLoma+de+Cabrera%7CSan+Jos%C3%A9+de+las+Matas%7CJ%C3%A1nico%7CSan+Jos%C3%A9+de+Los+Llanos%7CPolo%2C+Dominican+Republic%7CCibao&props=labels%7Cdescriptions%7Caliases%7Cclaims%7Csitelinks&languages=es%7Cen&format=json",
+          "editor": "Wikidata contributors · entity API",
+          "checkedAt": "2026-11-11",
+          "httpStatus": 200
+        }
+      ],
+      "images": [],
+      "reviewNotes": "Borrador. Texto redactado a partir del resumen citado. Revisar nombre habitual, relación regional y foto antes de aprobar; las imágenes de especies o alimentos pueden ser ilustrativas y no estar tomadas en la República Dominicana.",
+      "location": {
+        "label": "Provincia de San José de las Matas",
+        "lat": 19.33,
+        "lng": -70.93,
+        "source": "https://www.wikidata.org/wiki/Q3947426"
+      }
+    },
+    "filename": "Desde la mansion.jpg"
+  },
+  {
+    "entry": {
+      "key": "provincia-de-janico",
+      "status": "draft",
+      "kind": "region",
+      "tags": [
+        "history"
+      ],
+      "wikidata": "Q1770660",
+      "province": "Santiago",
+      "title": {
+        "es": "Provincia de Jánico",
+        "en": "Jánico"
+      },
+      "aliases": {
+        "es": [
+          "provincia de jánico",
+          "provincia de janico",
+          "janico"
+        ],
+        "en": [
+          "jánico",
+          "janico"
+        ]
+      },
+      "summary": {
+        "es": "Provincia de Jánico es una provincia dominicana.",
+        "en": "Jánico is a Dominican province."
+      },
+      "description": {
+        "es": "Provincia de Jánico es una provincia dominicana.",
+        "en": "Jánico is a Dominican province."
+      },
+      "facts": [
+        {
+          "text": {
+            "es": "Provincia de Jánico es una provincia dominicana.",
+            "en": "Jánico is a Dominican province."
+          },
+          "sourceUrl": "https://en.wikipedia.org/wiki/J%C3%A1nico"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/J%C3%A1nico",
+          "editor": "Wikipedia contributors · English edition",
+          "checkedAt": "2026-11-11",
+          "httpStatus": 200,
+          "checkedVia": "https://en.wikipedia.org/api/rest_v1/page/summary/J%C3%A1nico",
+          "representation": "REST summary of this Wikipedia page"
+        },
+        {
+          "url": "https://www.wikidata.org/w/api.php?action=wbgetentities&sites=enwiki&titles=Loma+Gajo+en+Medio%7CPico+Diego+de+Ocampo%7CPresa+de+Hatillo%7CRinc%C3%B3n+Dam%7CMonci%C3%B3n+Dam%7CPinalito+Dam%7CBao+Dam%7CTavera+Dam%7CSabana+Yegua+Dam%7CValdesia+Dam%7CLas+Galeras%7CR%C3%ADo+San+Juan%2C+Dominican+Republic%7CMonte+Plata%7CCotu%C3%AD%7CSan+Ignacio+de+Sabaneta%7CNeiba%7CDuverg%C3%A9%7CVilla+Altagracia%7CMiches%7CEl+Valle%2C+Dominican+Republic%7CVilla+Tapia%7CTenares%7CLuper%C3%B3n%7CVilla+Isabela%7CLoma+de+Cabrera%7CSan+Jos%C3%A9+de+las+Matas%7CJ%C3%A1nico%7CSan+Jos%C3%A9+de+Los+Llanos%7CPolo%2C+Dominican+Republic%7CCibao&props=labels%7Cdescriptions%7Caliases%7Cclaims%7Csitelinks&languages=es%7Cen&format=json",
+          "editor": "Wikidata contributors · entity API",
+          "checkedAt": "2026-11-11",
+          "httpStatus": 200
+        }
+      ],
+      "images": [],
+      "reviewNotes": "Borrador. Texto redactado a partir del resumen citado. Revisar nombre habitual, relación regional y foto antes de aprobar; las imágenes de especies o alimentos pueden ser ilustrativas y no estar tomadas en la República Dominicana.",
+      "location": {
+        "label": "Provincia de Jánico",
+        "lat": 19.4,
+        "lng": -70.8,
+        "source": "https://www.wikidata.org/wiki/Q1770660"
+      }
+    },
+    "filename": "Janico Dominican Republic countryside town 2.jpg"
+  },
+  {
+    "entry": {
+      "key": "cibao",
+      "status": "draft",
+      "kind": "region",
+      "tags": [
+        "history"
+      ],
+      "wikidata": "Q2257629",
+      "province": "Ámbito nacional o varias provincias",
+      "title": {
+        "es": "Cibao",
+        "en": "Cibao"
+      },
+      "aliases": {
+        "es": [
+          "cibao",
+          "el cibao"
+        ],
+        "en": [
+          "cibao"
+        ]
+      },
+      "summary": {
+        "es": "Cibao es una región dominicana.",
+        "en": "Cibao is a Dominican region."
+      },
+      "description": {
+        "es": "Cibao es una región dominicana.",
+        "en": "Cibao is a Dominican region."
+      },
+      "facts": [
+        {
+          "text": {
+            "es": "Cibao es una región dominicana.",
+            "en": "Cibao is a Dominican region."
+          },
+          "sourceUrl": "https://en.wikipedia.org/wiki/Cibao"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Cibao",
+          "editor": "Wikipedia contributors · English edition",
+          "checkedAt": "2026-11-11",
+          "httpStatus": 200,
+          "checkedVia": "https://en.wikipedia.org/api/rest_v1/page/summary/Cibao",
+          "representation": "REST summary of this Wikipedia page"
+        },
+        {
+          "url": "https://www.wikidata.org/w/api.php?action=wbgetentities&ids=Q24529780%7CQ11032%7CQ2142152%7CQ56291528%7CQ937217%7CQ60176300%7CQ34038%7CQ592624%7CQ10313934%7CQ39594%7CQ55471069%7CQ23770738%7CQ12323%7CQ15911738%7CQ42195%7CQ15221623%7CQ74817647%7CQ1057026%7CQ11822917%7CQ623109%7CQ2122214%7CQ2257629%7CQ24354%7CQ207694%7CQ66344%7CQ7278%7CQ276548%7CQ34763%7CQ1774831%7CQ46135307%7CQ676050%7CQ702492%7CQ57831%7CQ464980%7CQ174782%7CQ2772772%7CQ746549%7CQ46622%7CQ35112127%7CQ6617741&props=labels%7Cdescriptions%7Caliases%7Cclaims%7Csitelinks&languages=es%7Cen&format=json",
+          "editor": "Wikidata contributors · entity API",
+          "checkedAt": "2026-11-11",
+          "httpStatus": 200
+        }
+      ],
+      "images": [],
+      "reviewNotes": "Borrador. Texto redactado a partir del resumen citado. Revisar nombre habitual, relación regional y foto antes de aprobar; las imágenes de especies o alimentos pueden ser ilustrativas y no estar tomadas en la República Dominicana.",
+      "location": {
+        "label": "Cibao",
+        "lat": 19.6269,
+        "lng": -70.2774,
+        "source": "https://www.wikidata.org/wiki/Q2257629"
+      }
+    },
+    "filename": "ELCIBAO.png"
+  },
+  {
+    "entry": {
+      "key": "provincia-de-san-cristobal",
+      "status": "draft",
+      "kind": "region",
+      "tags": [
+        "history"
+      ],
+      "wikidata": "Q1366107",
+      "province": "San Cristóbal",
+      "title": {
+        "es": "Provincia de San Cristóbal",
+        "en": "San Cristóbal Province"
+      },
+      "aliases": {
+        "es": [
+          "provincia de san cristóbal",
+          "provincia de san cristobal",
+          "san cristobal",
+          "yaguate",
+          "provincia san cristóbal",
+          "provincia san cristobal"
+        ],
+        "en": [
+          "san cristóbal province",
+          "san cristobal province",
+          "san cristobal"
+        ]
+      },
+      "summary": {
+        "es": "Provincia de San Cristóbal es una provincia dominicana.",
+        "en": "San Cristóbal Province is a Dominican province."
+      },
+      "description": {
+        "es": "Provincia de San Cristóbal es una provincia dominicana.",
+        "en": "San Cristóbal Province is a Dominican province."
+      },
+      "facts": [
+        {
+          "text": {
+            "es": "Provincia de San Cristóbal es una provincia dominicana.",
+            "en": "San Cristóbal Province is a Dominican province."
+          },
+          "sourceUrl": "https://en.wikipedia.org/wiki/San_Crist%C3%B3bal_Province"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/San_Crist%C3%B3bal_Province",
+          "editor": "Wikipedia contributors · English edition",
+          "checkedAt": "2026-11-11",
+          "httpStatus": 200,
+          "checkedVia": "https://en.wikipedia.org/api/rest_v1/page/summary/San%20Crist%C3%B3bal%20Province",
+          "representation": "REST summary of this Wikipedia page"
+        },
+        {
+          "url": "https://www.wikidata.org/w/api.php?action=wbgetentities&sites=enwiki&titles=San+Crist%C3%B3bal+Province%7CSanto+Domingo+Province%7CDistrito+Nacional%7CMonte+Plata+Province%7CEl+Seibo+Province%7CHato+Mayor+Province%7CHermanas+Mirabal+Province%7CLa+Altagracia+Province%7CEl%C3%ADas+Pi%C3%B1a+Province%7CMonte+Cristi+Province%7CSantiago+Rodr%C3%ADguez+Province%7CMuseo+de+Arte+Moderno+%28Santo+Domingo%29%7CMuseo+Bellapart%7CMuseo+Hermanas+Mirabal%7CMuseo+del+Larimar%7CMuseo+del+%C3%81mbar%7CMuseo+Gregorio+Luper%C3%B3n%7CMercado+Modelo+%28Santo+Domingo%29%7CPlaza+de+la+Cultura%7CSanctuary+of+Santo+Cerro%7CPalacio+de+Bellas+Artes+%28Santo+Domingo%29%7CParque+Independencia%7CNational+Aquarium+of+the+Dominican+Republic%7CNational+Zoological+Park+%28Dominican+Republic%29&props=labels%7Cdescriptions%7Caliases%7Cclaims%7Csitelinks&languages=es%7Cen&format=json",
+          "editor": "Wikidata contributors · entity API",
+          "checkedAt": "2026-11-11",
+          "httpStatus": 200
+        }
+      ],
+      "images": [],
+      "reviewNotes": "Borrador. Texto redactado a partir del resumen citado. Revisar nombre habitual, relación regional y foto antes de aprobar; las imágenes de especies o alimentos pueden ser ilustrativas y no estar tomadas en la República Dominicana."
+    },
+    "filename": "San Cristobal Dominican Republic landscape.jpg"
+  },
+  {
+    "entry": {
+      "key": "provincia-de-santo-domingo",
+      "status": "draft",
+      "kind": "region",
+      "tags": [
+        "history"
+      ],
+      "wikidata": "Q1352536",
+      "province": "Provincia Santo Domingo",
+      "title": {
+        "es": "Provincia de Santo Domingo",
+        "en": "Santo Domingo Province"
+      },
+      "aliases": {
+        "es": [
+          "provincia de santo domingo"
+        ],
+        "en": [
+          "santo domingo province"
+        ]
+      },
+      "summary": {
+        "es": "Provincia de Santo Domingo es una provincia dominicana.",
+        "en": "Santo Domingo Province is a Dominican province."
+      },
+      "description": {
+        "es": "Provincia de Santo Domingo es una provincia dominicana.",
+        "en": "Santo Domingo Province is a Dominican province."
+      },
+      "facts": [
+        {
+          "text": {
+            "es": "Provincia de Santo Domingo es una provincia dominicana.",
+            "en": "Santo Domingo Province is a Dominican province."
+          },
+          "sourceUrl": "https://en.wikipedia.org/wiki/Santo_Domingo_Province"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Santo_Domingo_Province",
+          "editor": "Wikipedia contributors · English edition",
+          "checkedAt": "2026-11-11",
+          "httpStatus": 200,
+          "checkedVia": "https://en.wikipedia.org/api/rest_v1/page/summary/Santo%20Domingo%20Province",
+          "representation": "REST summary of this Wikipedia page"
+        },
+        {
+          "url": "https://www.wikidata.org/w/api.php?action=wbgetentities&sites=enwiki&titles=San+Crist%C3%B3bal+Province%7CSanto+Domingo+Province%7CDistrito+Nacional%7CMonte+Plata+Province%7CEl+Seibo+Province%7CHato+Mayor+Province%7CHermanas+Mirabal+Province%7CLa+Altagracia+Province%7CEl%C3%ADas+Pi%C3%B1a+Province%7CMonte+Cristi+Province%7CSantiago+Rodr%C3%ADguez+Province%7CMuseo+de+Arte+Moderno+%28Santo+Domingo%29%7CMuseo+Bellapart%7CMuseo+Hermanas+Mirabal%7CMuseo+del+Larimar%7CMuseo+del+%C3%81mbar%7CMuseo+Gregorio+Luper%C3%B3n%7CMercado+Modelo+%28Santo+Domingo%29%7CPlaza+de+la+Cultura%7CSanctuary+of+Santo+Cerro%7CPalacio+de+Bellas+Artes+%28Santo+Domingo%29%7CParque+Independencia%7CNational+Aquarium+of+the+Dominican+Republic%7CNational+Zoological+Park+%28Dominican+Republic%29&props=labels%7Cdescriptions%7Caliases%7Cclaims%7Csitelinks&languages=es%7Cen&format=json",
+          "editor": "Wikidata contributors · entity API",
+          "checkedAt": "2026-11-11",
+          "httpStatus": 200
+        }
+      ],
+      "images": [],
+      "reviewNotes": "Borrador. Texto redactado a partir del resumen citado. Revisar nombre habitual, relación regional y foto antes de aprobar; las imágenes de especies o alimentos pueden ser ilustrativas y no estar tomadas en la República Dominicana."
+    },
+    "filename": "Santo Domingo in Dominican Republic.svg"
+  },
+  {
+    "entry": {
+      "key": "provincia-de-distrito-nacional",
+      "status": "draft",
+      "kind": "region",
+      "tags": [
+        "history"
+      ],
+      "wikidata": "Q2499228",
+      "province": "Distrito Nacional",
+      "title": {
+        "es": "Provincia de Distrito Nacional",
+        "en": "Distrito Nacional"
+      },
+      "aliases": {
+        "es": [
+          "provincia de distrito nacional"
+        ],
+        "en": [
+          "distrito nacional"
+        ]
+      },
+      "summary": {
+        "es": "Provincia de Distrito Nacional es una provincia dominicana.",
+        "en": "Distrito Nacional is a Dominican province."
+      },
+      "description": {
+        "es": "Provincia de Distrito Nacional es una provincia dominicana.",
+        "en": "Distrito Nacional is a Dominican province."
+      },
+      "facts": [
+        {
+          "text": {
+            "es": "Provincia de Distrito Nacional es una provincia dominicana.",
+            "en": "Distrito Nacional is a Dominican province."
+          },
+          "sourceUrl": "https://en.wikipedia.org/wiki/Distrito_Nacional"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Distrito_Nacional",
+          "editor": "Wikipedia contributors · English edition",
+          "checkedAt": "2026-11-11",
+          "httpStatus": 200,
+          "checkedVia": "https://en.wikipedia.org/api/rest_v1/page/summary/Distrito%20Nacional",
+          "representation": "REST summary of this Wikipedia page"
+        },
+        {
+          "url": "https://www.wikidata.org/w/api.php?action=wbgetentities&sites=enwiki&titles=San+Crist%C3%B3bal+Province%7CSanto+Domingo+Province%7CDistrito+Nacional%7CMonte+Plata+Province%7CEl+Seibo+Province%7CHato+Mayor+Province%7CHermanas+Mirabal+Province%7CLa+Altagracia+Province%7CEl%C3%ADas+Pi%C3%B1a+Province%7CMonte+Cristi+Province%7CSantiago+Rodr%C3%ADguez+Province%7CMuseo+de+Arte+Moderno+%28Santo+Domingo%29%7CMuseo+Bellapart%7CMuseo+Hermanas+Mirabal%7CMuseo+del+Larimar%7CMuseo+del+%C3%81mbar%7CMuseo+Gregorio+Luper%C3%B3n%7CMercado+Modelo+%28Santo+Domingo%29%7CPlaza+de+la+Cultura%7CSanctuary+of+Santo+Cerro%7CPalacio+de+Bellas+Artes+%28Santo+Domingo%29%7CParque+Independencia%7CNational+Aquarium+of+the+Dominican+Republic%7CNational+Zoological+Park+%28Dominican+Republic%29&props=labels%7Cdescriptions%7Caliases%7Cclaims%7Csitelinks&languages=es%7Cen&format=json",
+          "editor": "Wikidata contributors · entity API",
+          "checkedAt": "2026-11-11",
+          "httpStatus": 200
+        }
+      ],
+      "images": [],
+      "reviewNotes": "Borrador. Texto redactado a partir del resumen citado. Revisar nombre habitual, relación regional y foto antes de aprobar; las imágenes de especies o alimentos pueden ser ilustrativas y no estar tomadas en la República Dominicana.",
+      "location": {
+        "label": "Provincia de Distrito Nacional",
+        "lat": 18.5,
+        "lng": -69.9833,
+        "source": "https://www.wikidata.org/wiki/Q2499228"
+      }
+    },
+    "filename": "Distrito Nacional in Dominican Republic (special marker).svg"
+  },
+  {
+    "entry": {
+      "key": "provincia-de-monte-plata",
+      "status": "draft",
+      "kind": "region",
+      "tags": [
+        "history"
+      ],
+      "wikidata": "Q1772745",
+      "province": "Monte Plata",
+      "title": {
+        "es": "Provincia de Monte Plata",
+        "en": "Monte Plata Province"
+      },
+      "aliases": {
+        "es": [
+          "provincia de monte plata",
+          "boyá",
+          "boya",
+          "sabana grande de boya"
+        ],
+        "en": [
+          "monte plata province"
+        ]
+      },
+      "summary": {
+        "es": "Provincia de Monte Plata es una provincia dominicana.",
+        "en": "Monte Plata Province is a Dominican province."
+      },
+      "description": {
+        "es": "Provincia de Monte Plata es una provincia dominicana.",
+        "en": "Monte Plata Province is a Dominican province."
+      },
+      "facts": [
+        {
+          "text": {
+            "es": "Provincia de Monte Plata es una provincia dominicana.",
+            "en": "Monte Plata Province is a Dominican province."
+          },
+          "sourceUrl": "https://en.wikipedia.org/wiki/Monte_Plata_Province"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Monte_Plata_Province",
+          "editor": "Wikipedia contributors · English edition",
+          "checkedAt": "2026-11-11",
+          "httpStatus": 200,
+          "checkedVia": "https://en.wikipedia.org/api/rest_v1/page/summary/Monte%20Plata%20Province",
+          "representation": "REST summary of this Wikipedia page"
+        },
+        {
+          "url": "https://www.wikidata.org/w/api.php?action=wbgetentities&sites=enwiki&titles=San+Crist%C3%B3bal+Province%7CSanto+Domingo+Province%7CDistrito+Nacional%7CMonte+Plata+Province%7CEl+Seibo+Province%7CHato+Mayor+Province%7CHermanas+Mirabal+Province%7CLa+Altagracia+Province%7CEl%C3%ADas+Pi%C3%B1a+Province%7CMonte+Cristi+Province%7CSantiago+Rodr%C3%ADguez+Province%7CMuseo+de+Arte+Moderno+%28Santo+Domingo%29%7CMuseo+Bellapart%7CMuseo+Hermanas+Mirabal%7CMuseo+del+Larimar%7CMuseo+del+%C3%81mbar%7CMuseo+Gregorio+Luper%C3%B3n%7CMercado+Modelo+%28Santo+Domingo%29%7CPlaza+de+la+Cultura%7CSanctuary+of+Santo+Cerro%7CPalacio+de+Bellas+Artes+%28Santo+Domingo%29%7CParque+Independencia%7CNational+Aquarium+of+the+Dominican+Republic%7CNational+Zoological+Park+%28Dominican+Republic%29&props=labels%7Cdescriptions%7Caliases%7Cclaims%7Csitelinks&languages=es%7Cen&format=json",
+          "editor": "Wikidata contributors · entity API",
+          "checkedAt": "2026-11-11",
+          "httpStatus": 200
+        }
+      ],
+      "images": [],
+      "reviewNotes": "Borrador. Texto redactado a partir del resumen citado. Revisar nombre habitual, relación regional y foto antes de aprobar; las imágenes de especies o alimentos pueden ser ilustrativas y no estar tomadas en la República Dominicana."
+    },
+    "filename": "Monte Plata Dominican Republic Church.jpg"
+  },
+  {
+    "entry": {
+      "key": "provincia-de-el-seibo",
+      "status": "draft",
+      "kind": "region",
+      "tags": [
+        "history"
+      ],
+      "wikidata": "Q1774831",
+      "province": "El Seibo",
+      "title": {
+        "es": "Provincia de El Seibo",
+        "en": "El Seibo Province"
+      },
+      "aliases": {
+        "es": [
+          "provincia de el seibo",
+          "el seybo"
+        ],
+        "en": [
+          "el seibo province"
+        ]
+      },
+      "summary": {
+        "es": "Provincia de El Seibo es una provincia dominicana.",
+        "en": "El Seibo Province is a Dominican province."
+      },
+      "description": {
+        "es": "Provincia de El Seibo es una provincia dominicana.",
+        "en": "El Seibo Province is a Dominican province."
+      },
+      "facts": [
+        {
+          "text": {
+            "es": "Provincia de El Seibo es una provincia dominicana.",
+            "en": "El Seibo Province is a Dominican province."
+          },
+          "sourceUrl": "https://en.wikipedia.org/wiki/El_Seibo_Province"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/El_Seibo_Province",
+          "editor": "Wikipedia contributors · English edition",
+          "checkedAt": "2026-11-11",
+          "httpStatus": 200,
+          "checkedVia": "https://en.wikipedia.org/api/rest_v1/page/summary/El%20Seibo%20Province",
+          "representation": "REST summary of this Wikipedia page"
+        },
+        {
+          "url": "https://www.wikidata.org/w/api.php?action=wbgetentities&sites=enwiki&titles=San+Crist%C3%B3bal+Province%7CSanto+Domingo+Province%7CDistrito+Nacional%7CMonte+Plata+Province%7CEl+Seibo+Province%7CHato+Mayor+Province%7CHermanas+Mirabal+Province%7CLa+Altagracia+Province%7CEl%C3%ADas+Pi%C3%B1a+Province%7CMonte+Cristi+Province%7CSantiago+Rodr%C3%ADguez+Province%7CMuseo+de+Arte+Moderno+%28Santo+Domingo%29%7CMuseo+Bellapart%7CMuseo+Hermanas+Mirabal%7CMuseo+del+Larimar%7CMuseo+del+%C3%81mbar%7CMuseo+Gregorio+Luper%C3%B3n%7CMercado+Modelo+%28Santo+Domingo%29%7CPlaza+de+la+Cultura%7CSanctuary+of+Santo+Cerro%7CPalacio+de+Bellas+Artes+%28Santo+Domingo%29%7CParque+Independencia%7CNational+Aquarium+of+the+Dominican+Republic%7CNational+Zoological+Park+%28Dominican+Republic%29&props=labels%7Cdescriptions%7Caliases%7Cclaims%7Csitelinks&languages=es%7Cen&format=json",
+          "editor": "Wikidata contributors · entity API",
+          "checkedAt": "2026-11-11",
+          "httpStatus": 200
+        }
+      ],
+      "images": [],
+      "reviewNotes": "Borrador. Texto redactado a partir del resumen citado. Revisar nombre habitual, relación regional y foto antes de aprobar; las imágenes de especies o alimentos pueden ser ilustrativas y no estar tomadas en la República Dominicana."
+    },
+    "filename": "Miches, El Seibo, Dominican Republic 4.jpg"
+  },
+  {
+    "entry": {
+      "key": "provincia-de-hato-mayor",
+      "status": "draft",
+      "kind": "region",
+      "tags": [
+        "history"
+      ],
+      "wikidata": "Q937217",
+      "province": "Hato Mayor",
+      "title": {
+        "es": "Provincia de Hato Mayor",
+        "en": "Hato Mayor Province"
+      },
+      "aliases": {
+        "es": [
+          "provincia de hato mayor"
+        ],
+        "en": [
+          "hato mayor province"
+        ]
+      },
+      "summary": {
+        "es": "Provincia de Hato Mayor es una provincia dominicana.",
+        "en": "Hato Mayor Province is a Dominican province."
+      },
+      "description": {
+        "es": "Provincia de Hato Mayor es una provincia dominicana.",
+        "en": "Hato Mayor Province is a Dominican province."
+      },
+      "facts": [
+        {
+          "text": {
+            "es": "Provincia de Hato Mayor es una provincia dominicana.",
+            "en": "Hato Mayor Province is a Dominican province."
+          },
+          "sourceUrl": "https://en.wikipedia.org/wiki/Hato_Mayor_Province"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Hato_Mayor_Province",
+          "editor": "Wikipedia contributors · English edition",
+          "checkedAt": "2026-11-11",
+          "httpStatus": 200,
+          "checkedVia": "https://en.wikipedia.org/api/rest_v1/page/summary/Hato%20Mayor%20Province",
+          "representation": "REST summary of this Wikipedia page"
+        },
+        {
+          "url": "https://www.wikidata.org/w/api.php?action=wbgetentities&sites=enwiki&titles=San+Crist%C3%B3bal+Province%7CSanto+Domingo+Province%7CDistrito+Nacional%7CMonte+Plata+Province%7CEl+Seibo+Province%7CHato+Mayor+Province%7CHermanas+Mirabal+Province%7CLa+Altagracia+Province%7CEl%C3%ADas+Pi%C3%B1a+Province%7CMonte+Cristi+Province%7CSantiago+Rodr%C3%ADguez+Province%7CMuseo+de+Arte+Moderno+%28Santo+Domingo%29%7CMuseo+Bellapart%7CMuseo+Hermanas+Mirabal%7CMuseo+del+Larimar%7CMuseo+del+%C3%81mbar%7CMuseo+Gregorio+Luper%C3%B3n%7CMercado+Modelo+%28Santo+Domingo%29%7CPlaza+de+la+Cultura%7CSanctuary+of+Santo+Cerro%7CPalacio+de+Bellas+Artes+%28Santo+Domingo%29%7CParque+Independencia%7CNational+Aquarium+of+the+Dominican+Republic%7CNational+Zoological+Park+%28Dominican+Republic%29&props=labels%7Cdescriptions%7Caliases%7Cclaims%7Csitelinks&languages=es%7Cen&format=json",
+          "editor": "Wikidata contributors · entity API",
+          "checkedAt": "2026-11-11",
+          "httpStatus": 200
+        }
+      ],
+      "images": [],
+      "reviewNotes": "Borrador. Texto redactado a partir del resumen citado. Revisar nombre habitual, relación regional y foto antes de aprobar; las imágenes de especies o alimentos pueden ser ilustrativas y no estar tomadas en la República Dominicana."
+    },
+    "filename": "Hato mayor, dominican republic waterfall.jpg"
+  },
+  {
+    "entry": {
+      "key": "provincia-de-hermanas-mirabal",
+      "status": "draft",
+      "kind": "region",
+      "tags": [
+        "history"
+      ],
+      "wikidata": "Q549386",
+      "province": "Hermanas Mirabal",
+      "title": {
+        "es": "Provincia de Hermanas Mirabal",
+        "en": "Hermanas Mirabal Province"
+      },
+      "aliases": {
+        "es": [
+          "provincia de hermanas mirabal"
+        ],
+        "en": [
+          "hermanas mirabal province"
+        ]
+      },
+      "summary": {
+        "es": "Provincia de Hermanas Mirabal es una provincia dominicana.",
+        "en": "Hermanas Mirabal Province is a Dominican province."
+      },
+      "description": {
+        "es": "Provincia de Hermanas Mirabal es una provincia dominicana.",
+        "en": "Hermanas Mirabal Province is a Dominican province."
+      },
+      "facts": [
+        {
+          "text": {
+            "es": "Provincia de Hermanas Mirabal es una provincia dominicana.",
+            "en": "Hermanas Mirabal Province is a Dominican province."
+          },
+          "sourceUrl": "https://en.wikipedia.org/wiki/Hermanas_Mirabal_Province"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Hermanas_Mirabal_Province",
+          "editor": "Wikipedia contributors · English edition",
+          "checkedAt": "2026-11-11",
+          "httpStatus": 200,
+          "checkedVia": "https://en.wikipedia.org/api/rest_v1/page/summary/Hermanas%20Mirabal%20Province",
+          "representation": "REST summary of this Wikipedia page"
+        },
+        {
+          "url": "https://www.wikidata.org/w/api.php?action=wbgetentities&sites=enwiki&titles=San+Crist%C3%B3bal+Province%7CSanto+Domingo+Province%7CDistrito+Nacional%7CMonte+Plata+Province%7CEl+Seibo+Province%7CHato+Mayor+Province%7CHermanas+Mirabal+Province%7CLa+Altagracia+Province%7CEl%C3%ADas+Pi%C3%B1a+Province%7CMonte+Cristi+Province%7CSantiago+Rodr%C3%ADguez+Province%7CMuseo+de+Arte+Moderno+%28Santo+Domingo%29%7CMuseo+Bellapart%7CMuseo+Hermanas+Mirabal%7CMuseo+del+Larimar%7CMuseo+del+%C3%81mbar%7CMuseo+Gregorio+Luper%C3%B3n%7CMercado+Modelo+%28Santo+Domingo%29%7CPlaza+de+la+Cultura%7CSanctuary+of+Santo+Cerro%7CPalacio+de+Bellas+Artes+%28Santo+Domingo%29%7CParque+Independencia%7CNational+Aquarium+of+the+Dominican+Republic%7CNational+Zoological+Park+%28Dominican+Republic%29&props=labels%7Cdescriptions%7Caliases%7Cclaims%7Csitelinks&languages=es%7Cen&format=json",
+          "editor": "Wikidata contributors · entity API",
+          "checkedAt": "2026-11-11",
+          "httpStatus": 200
+        }
+      ],
+      "images": [],
+      "reviewNotes": "Borrador. Texto redactado a partir del resumen citado. Revisar nombre habitual, relación regional y foto antes de aprobar; las imágenes de especies o alimentos pueden ser ilustrativas y no estar tomadas en la República Dominicana."
+    },
+    "filename": "Hermanas Mirabal in Dominican Republic.svg"
+  },
+  {
+    "entry": {
+      "key": "provincia-de-la-altagracia",
+      "status": "draft",
+      "kind": "region",
+      "tags": [
+        "history"
+      ],
+      "wikidata": "Q1323353",
+      "province": "La Altagracia",
+      "title": {
+        "es": "Provincia de La Altagracia",
+        "en": "La Altagracia Province"
+      },
+      "aliases": {
+        "es": [
+          "provincia de la altagracia"
+        ],
+        "en": [
+          "la altagracia province"
+        ]
+      },
+      "summary": {
+        "es": "Provincia de La Altagracia es una provincia dominicana.",
+        "en": "La Altagracia Province is a Dominican province."
+      },
+      "description": {
+        "es": "Provincia de La Altagracia es una provincia dominicana.",
+        "en": "La Altagracia Province is a Dominican province."
+      },
+      "facts": [
+        {
+          "text": {
+            "es": "Provincia de La Altagracia es una provincia dominicana.",
+            "en": "La Altagracia Province is a Dominican province."
+          },
+          "sourceUrl": "https://en.wikipedia.org/wiki/La_Altagracia_Province"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/La_Altagracia_Province",
+          "editor": "Wikipedia contributors · English edition",
+          "checkedAt": "2026-11-11",
+          "httpStatus": 200,
+          "checkedVia": "https://en.wikipedia.org/api/rest_v1/page/summary/La%20Altagracia%20Province",
+          "representation": "REST summary of this Wikipedia page"
+        },
+        {
+          "url": "https://www.wikidata.org/w/api.php?action=wbgetentities&sites=enwiki&titles=San+Crist%C3%B3bal+Province%7CSanto+Domingo+Province%7CDistrito+Nacional%7CMonte+Plata+Province%7CEl+Seibo+Province%7CHato+Mayor+Province%7CHermanas+Mirabal+Province%7CLa+Altagracia+Province%7CEl%C3%ADas+Pi%C3%B1a+Province%7CMonte+Cristi+Province%7CSantiago+Rodr%C3%ADguez+Province%7CMuseo+de+Arte+Moderno+%28Santo+Domingo%29%7CMuseo+Bellapart%7CMuseo+Hermanas+Mirabal%7CMuseo+del+Larimar%7CMuseo+del+%C3%81mbar%7CMuseo+Gregorio+Luper%C3%B3n%7CMercado+Modelo+%28Santo+Domingo%29%7CPlaza+de+la+Cultura%7CSanctuary+of+Santo+Cerro%7CPalacio+de+Bellas+Artes+%28Santo+Domingo%29%7CParque+Independencia%7CNational+Aquarium+of+the+Dominican+Republic%7CNational+Zoological+Park+%28Dominican+Republic%29&props=labels%7Cdescriptions%7Caliases%7Cclaims%7Csitelinks&languages=es%7Cen&format=json",
+          "editor": "Wikidata contributors · entity API",
+          "checkedAt": "2026-11-11",
+          "httpStatus": 200
+        }
+      ],
+      "images": [],
+      "reviewNotes": "Borrador. Texto redactado a partir del resumen citado. Revisar nombre habitual, relación regional y foto antes de aprobar; las imágenes de especies o alimentos pueden ser ilustrativas y no estar tomadas en la República Dominicana."
+    },
+    "filename": "Higuey Dominican Republic statue.jpg"
+  },
+  {
+    "entry": {
+      "key": "provincia-de-elias-pina",
+      "status": "draft",
+      "kind": "region",
+      "tags": [
+        "history"
+      ],
+      "wikidata": "Q1137545",
+      "province": "Elías Piña",
+      "title": {
+        "es": "Provincia de Elías Piña",
+        "en": "Elías Piña Province"
+      },
+      "aliases": {
+        "es": [
+          "provincia de elías piña",
+          "provincia de elias pina",
+          "elias pina",
+          "elias piña",
+          "elías pina"
+        ],
+        "en": [
+          "elías piña province",
+          "elias pina province"
+        ]
+      },
+      "summary": {
+        "es": "Provincia de Elías Piña es una provincia dominicana.",
+        "en": "Elías Piña Province is a Dominican province."
+      },
+      "description": {
+        "es": "Provincia de Elías Piña es una provincia dominicana.",
+        "en": "Elías Piña Province is a Dominican province."
+      },
+      "facts": [
+        {
+          "text": {
+            "es": "Provincia de Elías Piña es una provincia dominicana.",
+            "en": "Elías Piña Province is a Dominican province."
+          },
+          "sourceUrl": "https://en.wikipedia.org/wiki/El%C3%ADas_Pi%C3%B1a_Province"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/El%C3%ADas_Pi%C3%B1a_Province",
+          "editor": "Wikipedia contributors · English edition",
+          "checkedAt": "2026-11-11",
+          "httpStatus": 200,
+          "checkedVia": "https://en.wikipedia.org/api/rest_v1/page/summary/El%C3%ADas%20Pi%C3%B1a%20Province",
+          "representation": "REST summary of this Wikipedia page"
+        },
+        {
+          "url": "https://www.wikidata.org/w/api.php?action=wbgetentities&sites=enwiki&titles=San+Crist%C3%B3bal+Province%7CSanto+Domingo+Province%7CDistrito+Nacional%7CMonte+Plata+Province%7CEl+Seibo+Province%7CHato+Mayor+Province%7CHermanas+Mirabal+Province%7CLa+Altagracia+Province%7CEl%C3%ADas+Pi%C3%B1a+Province%7CMonte+Cristi+Province%7CSantiago+Rodr%C3%ADguez+Province%7CMuseo+de+Arte+Moderno+%28Santo+Domingo%29%7CMuseo+Bellapart%7CMuseo+Hermanas+Mirabal%7CMuseo+del+Larimar%7CMuseo+del+%C3%81mbar%7CMuseo+Gregorio+Luper%C3%B3n%7CMercado+Modelo+%28Santo+Domingo%29%7CPlaza+de+la+Cultura%7CSanctuary+of+Santo+Cerro%7CPalacio+de+Bellas+Artes+%28Santo+Domingo%29%7CParque+Independencia%7CNational+Aquarium+of+the+Dominican+Republic%7CNational+Zoological+Park+%28Dominican+Republic%29&props=labels%7Cdescriptions%7Caliases%7Cclaims%7Csitelinks&languages=es%7Cen&format=json",
+          "editor": "Wikidata contributors · entity API",
+          "checkedAt": "2026-11-11",
+          "httpStatus": 200
+        }
+      ],
+      "images": [],
+      "reviewNotes": "Borrador. Texto redactado a partir del resumen citado. Revisar nombre habitual, relación regional y foto antes de aprobar; las imágenes de especies o alimentos pueden ser ilustrativas y no estar tomadas en la República Dominicana."
+    },
+    "filename": "Comendador, Elias Pina Dominican Republic.jpg"
+  },
+  {
+    "entry": {
+      "key": "provincia-de-monte-cristi",
+      "status": "draft",
+      "kind": "region",
+      "tags": [
+        "history"
+      ],
+      "wikidata": "Q592624",
+      "province": "Monte Cristi",
+      "title": {
+        "es": "Provincia de Monte Cristi",
+        "en": "Monte Cristi Province"
+      },
+      "aliases": {
+        "es": [
+          "provincia de monte cristi"
+        ],
+        "en": [
+          "monte cristi province"
+        ]
+      },
+      "summary": {
+        "es": "Provincia de Monte Cristi es una provincia dominicana.",
+        "en": "Monte Cristi Province is a Dominican province."
+      },
+      "description": {
+        "es": "Provincia de Monte Cristi es una provincia dominicana.",
+        "en": "Monte Cristi Province is a Dominican province."
+      },
+      "facts": [
+        {
+          "text": {
+            "es": "Provincia de Monte Cristi es una provincia dominicana.",
+            "en": "Monte Cristi Province is a Dominican province."
+          },
+          "sourceUrl": "https://en.wikipedia.org/wiki/Monte_Cristi_Province"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Monte_Cristi_Province",
+          "editor": "Wikipedia contributors · English edition",
+          "checkedAt": "2026-11-11",
+          "httpStatus": 200,
+          "checkedVia": "https://en.wikipedia.org/api/rest_v1/page/summary/Monte%20Cristi%20Province",
+          "representation": "REST summary of this Wikipedia page"
+        },
+        {
+          "url": "https://www.wikidata.org/w/api.php?action=wbgetentities&sites=enwiki&titles=San+Crist%C3%B3bal+Province%7CSanto+Domingo+Province%7CDistrito+Nacional%7CMonte+Plata+Province%7CEl+Seibo+Province%7CHato+Mayor+Province%7CHermanas+Mirabal+Province%7CLa+Altagracia+Province%7CEl%C3%ADas+Pi%C3%B1a+Province%7CMonte+Cristi+Province%7CSantiago+Rodr%C3%ADguez+Province%7CMuseo+de+Arte+Moderno+%28Santo+Domingo%29%7CMuseo+Bellapart%7CMuseo+Hermanas+Mirabal%7CMuseo+del+Larimar%7CMuseo+del+%C3%81mbar%7CMuseo+Gregorio+Luper%C3%B3n%7CMercado+Modelo+%28Santo+Domingo%29%7CPlaza+de+la+Cultura%7CSanctuary+of+Santo+Cerro%7CPalacio+de+Bellas+Artes+%28Santo+Domingo%29%7CParque+Independencia%7CNational+Aquarium+of+the+Dominican+Republic%7CNational+Zoological+Park+%28Dominican+Republic%29&props=labels%7Cdescriptions%7Caliases%7Cclaims%7Csitelinks&languages=es%7Cen&format=json",
+          "editor": "Wikidata contributors · entity API",
+          "checkedAt": "2026-11-11",
+          "httpStatus": 200
+        }
+      ],
+      "images": [],
+      "reviewNotes": "Borrador. Texto redactado a partir del resumen citado. Revisar nombre habitual, relación regional y foto antes de aprobar; las imágenes de especies o alimentos pueden ser ilustrativas y no estar tomadas en la República Dominicana."
+    },
+    "filename": "Monte Cristi, Coastline.JPG"
+  },
+  {
+    "entry": {
+      "key": "museo-bellapart",
+      "status": "draft",
+      "kind": "museum",
+      "tags": [
+        "history"
+      ],
+      "wikidata": "Q6940459",
+      "province": "Distrito Nacional",
+      "title": {
+        "es": "Museo Bellapart",
+        "en": "Museo Bellapart"
+      },
+      "aliases": {
+        "es": [
+          "museo bellapart"
+        ],
+        "en": [
+          "museo bellapart"
+        ]
+      },
+      "summary": {
+        "es": "Museo Bellapart es un museo de la República Dominicana.",
+        "en": "Museo Bellapart is a museum in the Dominican Republic."
+      },
+      "description": {
+        "es": "Museo Bellapart es un museo de la República Dominicana.",
+        "en": "Museo Bellapart is a museum in the Dominican Republic."
+      },
+      "facts": [
+        {
+          "text": {
+            "es": "Museo Bellapart es un museo de la República Dominicana.",
+            "en": "Museo Bellapart is a museum in the Dominican Republic."
+          },
+          "sourceUrl": "https://en.wikipedia.org/wiki/Museo_Bellapart"
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Museo_Bellapart",
+          "editor": "Wikipedia contributors · English edition",
+          "checkedAt": "2026-11-11",
+          "httpStatus": 200,
+          "checkedVia": "https://en.wikipedia.org/api/rest_v1/page/summary/Museo%20Bellapart",
+          "representation": "REST summary of this Wikipedia page"
+        },
+        {
+          "url": "https://www.wikidata.org/w/api.php?action=wbgetentities&sites=enwiki&titles=San+Crist%C3%B3bal+Province%7CSanto+Domingo+Province%7CDistrito+Nacional%7CMonte+Plata+Province%7CEl+Seibo+Province%7CHato+Mayor+Province%7CHermanas+Mirabal+Province%7CLa+Altagracia+Province%7CEl%C3%ADas+Pi%C3%B1a+Province%7CMonte+Cristi+Province%7CSantiago+Rodr%C3%ADguez+Province%7CMuseo+de+Arte+Moderno+%28Santo+Domingo%29%7CMuseo+Bellapart%7CMuseo+Hermanas+Mirabal%7CMuseo+del+Larimar%7CMuseo+del+%C3%81mbar%7CMuseo+Gregorio+Luper%C3%B3n%7CMercado+Modelo+%28Santo+Domingo%29%7CPlaza+de+la+Cultura%7CSanctuary+of+Santo+Cerro%7CPalacio+de+Bellas+Artes+%28Santo+Domingo%29%7CParque+Independencia%7CNational+Aquarium+of+the+Dominican+Republic%7CNational+Zoological+Park+%28Dominican+Republic%29&props=labels%7Cdescriptions%7Caliases%7Cclaims%7Csitelinks&languages=es%7Cen&format=json",
+          "editor": "Wikidata contributors · entity API",
+          "checkedAt": "2026-11-11",
+          "httpStatus": 200
+        }
+      ],
+      "images": [],
+      "reviewNotes": "Borrador. Texto redactado a partir del resumen citado. Revisar nombre habitual, relación regional y foto antes de aprobar; las imágenes de especies o alimentos pueden ser ilustrativas y no estar tomadas en la República Dominicana.",
+      "location": {
+        "label": "Museo Bellapart",
+        "lat": 18.482,
+        "lng": -69.9253,
+        "source": "https://www.wikidata.org/wiki/Q6940459"
+      }
+    },
+    "filename": "Goletaseparacion.jpg"
+  }
+]
