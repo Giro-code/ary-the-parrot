@@ -12,6 +12,7 @@
     "typecheck": "tsc --noEmit",
     "test": "vitest run --configLoader native",
     "test:e2e": "playwright test",
+    "ai:report": "node scripts/ai-usage-report.ts",
     "db:generate": "drizzle-kit generate",
     "db:migrate": "node scripts/database.ts migrate",
     "db:seed": "node scripts/database.ts seed",

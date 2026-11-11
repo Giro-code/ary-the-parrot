@@ -1,6 +1,7 @@
 import { mkdir, mkdtemp, readFile, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
 import { spawn } from "node:child_process";
+import { pathToFileURL } from "node:url";
 import { connectDatabase } from "../src/db/client.ts";
 import { migrateDatabase } from "../src/db/migrate.ts";
 import { seedDatabase, type SourceCheck } from "../src/db/seed.ts";
@@ -13,6 +14,11 @@ process.env.APP_BASE_URL = "http://127.0.0.1:3002";
 process.env.EMAIL_DRY_RUN = "true";
 // Never call a real AI provider from automated/browser tests, even if .env.local has a key.
 process.env.GEMINI_API_KEY = "";
+if (process.env.ARY_E2E_AI_FAILURE === "1") {
+  process.env.GEMINI_API_KEY = "synthetic-e2e-key-never-sent";
+  process.env.AI_MODEL = "gemini-e2e-mock";
+  process.env.NODE_OPTIONS = `${process.env.NODE_OPTIONS || ""} --import=${pathToFileURL(resolve("scripts/e2e-ai-failure.ts")).href}`.trim();
+}
 process.env.ROBOT_BRIDGE_SECRET = "synthetic-e2e-bridge-secret-32-characters";
 process.env.FEATURE_ENABLE_MARKETING = "false";
 process.env.FEATURE_ENABLE_PARTNER_SHARING = "true";

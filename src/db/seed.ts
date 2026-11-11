@@ -4,8 +4,23 @@ import { culturalItems, culturalBridges } from "./schema.ts";
 import type { Interest } from "../i18n/index.ts";
 import { seedImages, seedLocations } from "./seed-media.ts";
 type Entry = { key: string; title: string; tags: Interest[]; url: string; editor: string; es: string; en: string };
+// Search-only ES/EN aliases, stored with tags and never rendered as visitor copy.
+export const searchAliases: Record<string, string[]> = {
+  "ciudad-colonial": ["zona colonial", "colonial zone", "santo domingo colonial", "casco historico", "historic district", "catedral primada", "first cathedral"],
+  haitises: ["cuevas", "caves", "manglares", "mangroves", "petroglifos", "petroglyphs"],
+  ballenas: ["ballenas", "whales", "samana", "avistamiento", "whale watching"],
+  mangu: ["comida", "desayuno", "food", "breakfast", "platano", "plantain"],
+  merengue: ["musica", "baile", "music", "dance"],
+  bachata: ["musica", "baile", "music", "dance"],
+  larimar: ["piedras", "joyas", "gems", "jewelry", "souvenir"],
+  ambar: ["piedras", "joyas", "gems", "jewelry", "souvenir", "amber"],
+  carnaval: ["diablos cojuelos", "mascaras", "masks", "carnival"],
+  "altos-chavon": ["la romana", "anfiteatro", "amphitheatre", "amphitheater"],
+  cocolo: ["san pedro de macoris", "cocolo dance drama"],
+  congos: ["villa mella", "congos brotherhood"],
+};
 export const seedEntries: Entry[] = [
-  { key: "ciudad-colonial", title: "Ciudad Colonial de Santo Domingo", tags: ["history", "art"], url: "https://whc.unesco.org/en/list/526/", editor: "UNESCO World Heritage Centre", es: "La Ciudad Colonial conserva un trazado en cuadrícula y edificios históricos. Forma parte del Patrimonio Mundial de la UNESCO: una invitación a conocer la historia urbana de Santo Domingo.", en: "The Ciudad Colonial preserves a grid street plan and historic buildings. It is a UNESCO World Heritage site and an introduction to the urban history of Santo Domingo." },
+  { key: "ciudad-colonial", title: "Ciudad Colonial de Santo Domingo", tags: ["history", "art"], url: "https://www.godominicanrepublic.com/destinations/santo-domingo", editor: "Ministerio de Turismo de República Dominicana", es: "La Zona Colonial de Santo Domingo es Patrimonio Mundial de la UNESCO. Sus calles adoquinadas reúnen museos e historia colonial con la vida cultural de la ciudad.", en: "Santo Domingo's Colonial Zone is a UNESCO World Heritage Site. Its cobblestone streets bring together museums and colonial history with the city's cultural life." },
   { key: "merengue", title: "Merengue", tags: ["music"], url: "https://ich.unesco.org/en/RL/music-and-dance-of-the-merengue-in-the-dominican-republic-01162", editor: "UNESCO · Patrimonio Cultural Inmaterial", es: "El merengue une música y baile en la vida social dominicana. La UNESCO lo inscribió en su Lista Representativa en 2016; sus conocimientos se transmiten mediante observación y participación.", en: "Merengue brings music and dance into Dominican social life. UNESCO inscribed it on its Representative List in 2016; knowledge is passed on through observation and participation." },
   { key: "bachata", title: "Bachata", tags: ["music"], url: "https://ich.unesco.org/en/RL/music-and-dance-of-dominican-bachata-01514", editor: "UNESCO · Patrimonio Cultural Inmaterial", es: "La bachata dominicana combina música y baile, con guitarras y percusión. La UNESCO la inscribió en su Lista Representativa en 2019 como una expresión presente en celebraciones y encuentros sociales.", en: "Dominican bachata combines music and dance, with guitars and percussion. UNESCO inscribed it on its Representative List in 2019 as an expression found in celebrations and social gatherings." },
   { key: "cocolo", title: "Teatro Cocolo Danzante", tags: ["music", "history", "art"], url: "https://ich.unesco.org/en/RL/cocolo-dance-drama-tradition-00104", editor: "UNESCO · Patrimonio Cultural Inmaterial", es: "Esta tradición surgió entre comunidades procedentes del Caribe británico. Sus representaciones combinan música, danza y teatro, y la UNESCO las inscribió en su Lista Representativa en 2008.", en: "This tradition developed among communities from the British Caribbean. Performances combine music, dance and theatre; UNESCO inscribed the tradition on its Representative List in 2008." },
@@ -36,7 +51,7 @@ export async function seedDatabase(db: Database, checks: SourceCheck[], options:
     const check = checks.find(row => row.url === entry.url && row.verified);
     for (const language of ["es", "en"] as const) {
       const values = {
-        contentKey: entry.key, title: entry.title, type: "heritage", language, summary: entry[language], validatedDescription: entry[language], tags: entry.tags,
+        contentKey: entry.key, title: entry.title, type: "heritage", language, summary: entry[language], validatedDescription: entry[language], tags: [...new Set([...entry.tags, ...searchAliases[entry.key]])],
         sourceUrl: check ? entry.url : null, sourceCheckedAt: check ? new Date(check.checkedAt) : null,
         imageAsset: seedImages[entry.key] ? `/assets/items/${entry.key}.webp` : null,
         image: seedImages[entry.key] || null, location: seedLocations[entry.key] || null,

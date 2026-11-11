@@ -317,3 +317,5 @@ body { margin: 0; }
 .chat-countdown { font-size: .95rem; color: #5b6b5d; }
 @media (prefers-reduced-motion: no-preference) { .email-success .account-illustrations img { animation: ary-pop .5s ease-out both; } }
 @keyframes ary-pop { from { transform: scale(.85); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+
+.ary-app footer .made-by { display: inline-flex; align-items: center; gap: 8px; } .ary-app footer .made-by img { width: 32px; height: 32px; border-radius: 50%; }

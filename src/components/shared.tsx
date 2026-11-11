@@ -1,6 +1,7 @@
 "use client";
 import { uiText } from "../i18n/ui";
 import { useEffect, type ReactNode } from "react";
+import Image from "next/image";
 import { LanguageSelector } from "./locale-provider";
 export { useLocale } from "./locale-provider";
 import { dictionaries, interests, interestLabels, type Interest, type Locale } from "../i18n";
@@ -23,7 +24,7 @@ export function Shell({ locale, setLocale, children, kiosk = false }: { locale: 
       </nav>
     </header>
     <main id="main" tabIndex={-1}>{children}</main>
-    <footer><span>Ary · {t.demo}</span><a href="/#inicio">{t.home}</a><a href="/terminos">{locale === "es" ? "Términos" : "Terms"}</a></footer>
+    <footer><span className="made-by"><Image src="/assets/brand/mecanicos-express-96.webp" width={32} height={32} alt="" unoptimized />{locale === "es" ? "Hecha por" : "Made by"} <b>Mecánicos Express</b></span><span>Ary · {t.demo}</span><a href="/#inicio">{t.home}</a><a href="/terminos">{locale === "es" ? "Términos" : "Terms"}</a></footer>
   </div>;
 }
 export function ErrorNotice({ error, locale, retry }: { error: unknown; locale: Locale; retry?: () => void }) {

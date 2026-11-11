@@ -15,6 +15,7 @@ import type { Locale } from "../../i18n/index.ts";
 import { archiveConversation } from "../conversations.ts";
 import { requestedDestination } from "../places.ts";
 import { itemImageSchema, itemMedia } from "../item-media.ts";
+import { hasSearchTerms, lexicalScore } from "./retrieval.ts";
 
 // Card summaries end on a whole word with an ellipsis, never mid-word.
 function shortSummary(text: string, max = 180) {
@@ -60,28 +61,31 @@ export async function chatHistory(db: Database, session: Session) {
 }
 async function retrieve(db: Database, session: Session, message: string, audio = false) {
   const rows = await db.select().from(s.culturalItems).where(and(eq(s.culturalItems.status, "published"), eq(s.culturalItems.language, session.locale))).limit(100);
-  const words = normalize(message).split(/\W+/).filter(word => word.length >= 4 && !["como", "llego", "llegar", "quiero", "donde", "queda", "esta", "estan", "ubicacion", "mapa", "location", "want", "where", "would", "like", "directions", "take", "visitar", "visit", "reach", "tell", "about", "cuentame", "sobre"].includes(word));
-  return rows.filter(item => { try { return item.sourceUrl && new URL(item.sourceUrl).protocol === "https:" && !injection.test([item.title, item.summary, item.validatedDescription].join(" ")); } catch { return false; } }).map(item => {
-    const text = normalize(`${item.title} ${item.summary} ${item.tags.join(" ")}`);
-    const lexical = words.reduce((score, word) => score + (text.includes(word) ? 3 : 0), 0);
+  const voiceOrder = ["merengue", "bachata", "mangu", "ciudad-colonial", "haitises", "ballenas", "carnaval", "altos-chavon"];
+  const priority = (item: CulturalItem) => { const index = voiceOrder.indexOf(item.contentKey); return index < 0 ? voiceOrder.length : index; };
+  return rows.filter(searchableItem).map(item => {
+    const lexical = lexicalScore(item, message);
     return { item, lexical, score: lexical + item.tags.filter(tag => session.interests.includes(tag)).length };
-  }).filter(row => audio || row.lexical > 0).sort((a, b) => b.score - a.score || a.item.contentKey.localeCompare(b.item.contentKey)).slice(0, audio ? 12 : 6).map(row => ({ ...row.item, validatedDescription: row.item.validatedDescription.slice(0, audio ? 1000 : 1800) }));
+  }).filter(row => audio || row.lexical > 0).sort((a, b) => b.score - a.score || (audio ? priority(a.item) - priority(b.item) : 0) || a.item.contentKey.localeCompare(b.item.contentKey)).slice(0, audio ? 8 : 4).map(row => ({ ...row.item, validatedDescription: row.item.validatedDescription.slice(0, 600) }));
+}
+function searchableItem(item: CulturalItem) {
+  try { return !!item.sourceCheckedAt && !!item.sourceUrl && new URL(item.sourceUrl).protocol === "https:" && !injection.test([item.title, item.summary, item.validatedDescription, ...item.tags].join(" ")); } catch { return false; }
 }
 function fixedAnswer(text: string, intent: Answer["intent"] = "preferences"): Answer { return { detectedLanguage: "en", displayText: text, spokenText: text, intent, citedItemIds: [], followUps: [], confidence: 0 }; }
 function conversationalAnswer(message: string, locale: Locale) {
   if (/^(hola[!,. ]*|hello[!,. ]*|hi[!,. ]*|espanol[.! ]*|english[.! ]*|soy de .+|vengo de .+|visito desde .+|i am from .+|i'm from .+|prefiero no decirlo[.! ]*|prefer not to say[.! ]*)$/.test(normalize(message))) return fixedAnswer(locale === "es" ? "¡Qué gusto conversar contigo! ¿Qué te gustaría descubrir? Música, comida, playas, historia…" : "Lovely to chat with you! What would you like to discover? Music, food, beaches, history…");
   return null;
 }
-function redirect(locale: Locale, intent: ReturnType<typeof classifyIntent>) {
+function redirect(locale: Locale, intent: "sensitive" | "injection" | "unverified") {
   return fixedAnswer(intent === "sensitive" ? locale === "es" ? "Para vuelos, puertas, migración, aduanas, seguridad, emergencias, salud o leyes, consulta al personal del aeropuerto o la autoridad oficial. Para tus datos, abre Privacidad. Yo te acompaño con la cultura." : "For flights, gates, immigration, customs, security, emergencies, health or laws, ask airport staff or the official authority. For your data, open Privacy. I can help with culture." : locale === "es" ? "No tengo una fuente verificada para eso. ¿Descubrimos las fichas culturales?" : "I don't have a verified source for that. Shall we explore the cultural cards?", intent);
 }
-async function persistReply(db: Database, token: string | undefined, session: Session, message: string | null, answer: Answer, items: CulturalItem[], mode: ChatMode, transcript?: string, greeting = false): Promise<ChatReply> {
+async function persistReply(db: Database, token: string | undefined, session: Session, message: string | null, answer: Answer, items: CulturalItem[], mode: ChatMode, transcript?: string, greeting = false, photos = false): Promise<ChatReply> {
   items = await localizeItems(db, items, detectedLocale(answer.detectedLanguage));
   const messageId = crypto.randomUUID();
   const destination = answer.intent === "directions" && message ? requestedDestination(message) : undefined;
   const sensitive = answer.intent !== "culture" && answer.intent !== "preferences";
   const sources = citedSources(items, answer.citedItemIds, detectedLocale(answer.detectedLanguage));
-  const reply: ChatReply = { ...answer, citedItemIds: sources.map(source => source.id), spokenText: answer.intent === "directions" && sources.some(source => source.mapsUrl) ? answer.spokenText : spokenText(answer.displayText, answer.spokenText, sensitive, greeting), answer: answer.displayText, messageId, mode, handoff: answer.intent === "sensitive", sources };
+  const reply: ChatReply = { ...answer, citedItemIds: sources.map(source => source.id), spokenText: (photos && sources.some(source => source.image)) || (answer.intent === "directions" && sources.some(source => source.mapsUrl)) ? answer.spokenText : spokenText(answer.displayText, answer.spokenText, sensitive, greeting), answer: answer.displayText, messageId, mode, handoff: answer.intent === "sensitive", sources };
   const preferences = message ? { ...conversationPreferences(message, { locale: session.locale as Locale, countryDeclared: session.countryDeclared, interests: session.interests as ConversationPreferences["interests"] }), locale: detectedLocale(answer.detectedLanguage) } : undefined;
   if (destination) reply.destination = destination;
   if (preferences) await setPreferences(db, session, preferences);
@@ -122,6 +126,20 @@ function directionsAnswer(items: CulturalItem[], locale: Locale, kiosk: boolean)
   const text = places ? `${places}. ${cue}` : copy.missing;
   return { ...fixedAnswer(text, "directions"), detectedLanguage: locale, citedItemIds: sources.map(source => source.id), spokenText: places ? cue : text };
 }
+async function imageItems(db: Database, session: Session, message: string) {
+  const relevant = await retrieve(db, session, message);
+  if (hasSearchTerms(message)) return relevant.filter(item => itemMedia(item, session.locale as Locale).image).slice(0, 3);
+  const history = await chatHistory(db, session);
+  const ids = history.findLast(row => row.reply?.sources.some(source => source.image))?.reply?.sources.filter(source => source.image).map(source => source.id) || [];
+  const featured = ["ciudad-colonial", "haitises", "altos-chavon"];
+  const rows = await db.select().from(s.culturalItems).where(and(eq(s.culturalItems.status, "published"), ids.length ? inArray(s.culturalItems.id, ids) : and(eq(s.culturalItems.language, session.locale), inArray(s.culturalItems.contentKey, featured))));
+  return (await localizeItems(db, rows, session.locale as Locale)).filter(item => searchableItem(item) && itemMedia(item, session.locale as Locale).image).sort((a, b) => ids.length ? ids.indexOf(a.id) - ids.indexOf(b.id) : featured.indexOf(a.contentKey) - featured.indexOf(b.contentKey)).slice(0, 3);
+}
+function imagesAnswer(items: CulturalItem[], locale: Locale): Answer {
+  if (!items.length) return { ...fixedAnswer(locale === "es" ? "Aún no tengo fotos verificadas de ese tema. ¿Quieres ver Los Haitises o la Ciudad Colonial?" : "I don't have verified photos of that topic yet. Would you like to see Los Haitises or Ciudad Colonial?", "general"), followUps: locale === "es" ? ["Fotos de Los Haitises", "Fotos de la zona colonial"] : ["Photos of Los Haitises", "Photos of the colonial zone"] };
+  const titles = items.map(item => item.title.slice(0, 150)).join(" · ");
+  return { ...fixedAnswer(locale === "es" ? `¡Mira! Aquí tienes fotos de ${titles}.` : `Here are some photos of ${titles}.`, "culture"), citedItemIds: items.map(item => item.id), spokenText: locale === "es" ? "Te dejé las fotos en pantalla." : "I've put the photos on screen.", confidence: 1 };
+}
 export async function chatCue(db: Database, token: string | undefined, raw: unknown) {
   const parsed = cueSchema.safeParse(raw); if (!parsed.success) throw new AppError("invalid_body", 400);
   const session = await getSession(db, token), en = session.locale === "en";
@@ -144,17 +162,21 @@ export async function chat(db: Database, token: string | undefined, raw: unknown
   const locale = detectedLocale(detectedLanguage), started = Date.now();
   if (!audio) session = { ...session, locale };
   let mode: ChatMode = "demo", model = "template", inputTokens = 0, outputTokens = 0, errorCode: string | null = null;
-  let answer: Answer = redirect(locale, "unverified"), items: CulturalItem[] = [], unavailable = false;
+  let answer: Answer = redirect(locale, "unverified"), items: CulturalItem[] = [], unavailable = false, photos = false;
   const conversational = !audio && /^(espanol|english|soy de |vengo de |visito desde |i am from |i'm from |prefiero no decirlo|prefer not to say)/.test(normalize(message)) ? conversationalAnswer(message, locale) : null;
-  if (!audio && ["sensitive", "injection", "unverified"].includes(intent)) answer = redirect(locale, intent);
+  if (!audio && (intent === "sensitive" || intent === "injection" || intent === "unverified")) answer = redirect(locale, intent);
   else if (!audio && intent === "directions") {
     items = await directionItems(db, session, message);
     answer = directionsAnswer(items, locale, !!session.kioskDeviceId);
   }
+  else if (!audio && intent === "images") {
+    items = await imageItems(db, session, message); answer = imagesAnswer(items, locale); photos = true;
+  }
   else if (conversational) answer = conversational;
   else {
     items = await retrieve(db, session, message, !!audio);
-    const history = (await chatHistory(db, session)).filter(row => ["culture", "general", "directions"].includes(classifyIntent(row.text)) && !conversationalAnswer(row.text, locale) && (!row.reply || ["culture", "general", "directions"].includes(row.reply.intent))).slice(-4).map(row => ({ role: row.role, text: row.text.slice(0, 1200) }));
+    if (!audio && intent === "general" && items.length) intent = "culture";
+    const history = (await chatHistory(db, session)).filter(row => ["culture", "general", "directions", "images"].includes(classifyIntent(row.text)) && !conversationalAnswer(row.text, locale) && (!row.reply || ["culture", "general", "directions"].includes(row.reply.intent))).slice(-4).map(row => ({ role: row.role, text: row.text.slice(0, 300) }));
     const input: AiInput = { message, locale, items, history, audio }, demo = new DemoAiProvider();
     if (session.retentionClass !== "kiosk_demo" && process.env.GEMINI_API_KEY?.trim() && (items.length || audio || intent === "general")) {
       model = defaultModel;
@@ -167,15 +189,18 @@ export async function chat(db: Database, token: string | undefined, raw: unknown
         errorCode = error instanceof AiError ? error.code : "provider_error";
         if (error instanceof AiError) { ({ inputTokens, outputTokens } = error.usage); if (audio && error.transcript) { message = error.transcript; detectedLanguage = textLanguage(message, locale); } }
         unavailable = !!audio && !message;
-        answer = (await demo.generate({ ...input, message })).answer;
+        const responseLocale = detectedLocale(detectedLanguage);
+        if (audio && message) items = await retrieve(db, { ...session, locale: responseLocale }, message);
+        answer = (await demo.generate({ ...input, message, items, locale: responseLocale })).answer;
       }
     } else { model = "demo"; unavailable = !!audio; answer = (await demo.generate(input)).answer; if (audio) errorCode = "voice_not_configured"; }
     if (audio && message) {
       intent = classifyIntent(message);
       const responseLocale = detectedLocale(detectedLanguage);
       const fixed = conversationalAnswer(message, responseLocale);
-      if (["sensitive", "injection", "unverified"].includes(intent)) { answer = redirect(responseLocale, intent); mode = "demo"; }
+      if (intent === "sensitive" || intent === "injection" || intent === "unverified") { answer = redirect(responseLocale, intent); mode = "demo"; }
       else if (intent === "directions") { items = await directionItems(db, { ...session, locale: responseLocale }, message); answer = directionsAnswer(items, responseLocale, !!session.kioskDeviceId); }
+      else if (intent === "images") { items = await imageItems(db, { ...session, locale: responseLocale }, message); answer = imagesAnswer(items, responseLocale); photos = true; mode = "demo"; }
       else if (fixed && /^(espanol|english|soy de |vengo de |visito desde |i am from |i'm from |prefiero no decirlo|prefer not to say)/.test(normalize(message))) { answer = fixed; mode = "demo"; }
     }
   }
@@ -184,5 +209,5 @@ export async function chat(db: Database, token: string | undefined, raw: unknown
   if (answer.intent === "directions") answer = directionsAnswer(items.filter(item => answer.citedItemIds.includes(item.id)), detectedLocale(detectedLanguage), !!session.kioskDeviceId);
   answer.detectedLanguage = detectedLanguage;
   if (detectedLanguage === "other") { const text = "I currently speak English and Spanish. Would you like to explore Dominican culture in English?"; answer = { ...fixedAnswer(text), detectedLanguage: "other" }; mode = "demo"; }
-  return persistReply(db, token, session, message, answer, items, mode, audio ? message : undefined);
+  return persistReply(db, token, session, message, answer, items, mode, audio ? message : undefined, false, photos);
 }

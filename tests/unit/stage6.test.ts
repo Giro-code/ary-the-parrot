@@ -113,7 +113,7 @@ test("one audio call returns a transcript and grounded cards, persists only encr
   const reply = await response.json(); expect(reply.transcript).toBe("Cuéntame del merengue"); expect(reply.preferences.interests).toEqual(["music"]); expect(reply.sources).toHaveLength(1);
   expect(reply.spokenText).not.toMatch(/rrrr/); expect(fetch).toHaveBeenCalledTimes(1);
   const payload = JSON.parse(String(vi.mocked(fetch).mock.calls[0][1]?.body)); expect(payload.contents[0].parts).toHaveLength(4); expect(payload.contents[0].parts[3].inlineData.mimeType).toBe("audio/webm");
-  const records = JSON.parse(payload.contents[0].parts[0].text.split("\n")[1]); expect(records.length).toBeLessThanOrEqual(12); expect(records.some((row: { title: string }) => /merengue/i.test(row.title))).toBe(true);
+  const records = JSON.parse(payload.contents[0].parts[0].text.split("\n")[1]); expect(records.length).toBeLessThanOrEqual(8); expect(records.some((row: { title: string }) => /merengue/i.test(row.title))).toBe(true);
   const messages = await db().select().from(s.chatMessages).where(eq(s.chatMessages.sessionId, visitor.session.id));
   expect(messages).toHaveLength(2); expect(JSON.stringify(messages)).not.toContain(reply.transcript); expect(JSON.stringify(messages)).not.toContain(Buffer.from(webm()).toString("base64"));
   for (const row of messages) { const payload = decrypt(row.encryptedPayload!); expect(payload).not.toContain(Buffer.from(webm()).toString("base64")); expect(payload).not.toMatch(/inlineData|mimeType|audioBytes/); }
@@ -157,7 +157,7 @@ test.each(["es", "en", "other"] as const)("one mocked provider call detects %s i
   vi.mocked(fetch).mockImplementation(async (_url, options) => {
     const body = JSON.parse(String(options?.body)), records = JSON.parse(body.contents[0].parts[0].text.split("\n")[1]);
     const voice = !!body.generationConfig.responseSchema.properties.transcript;
-    expect(body.systemInstruction.parts[0].text).toContain("language the visitor actually spoke or typed");
+      expect(body.systemInstruction.parts[0].text).toContain("visitor's actual language");
     return Response.json({ candidates: [{ finishReason: "STOP", content: { parts: [{ text: JSON.stringify({ ...(voice ? { transcript } : {}), detectedLanguage, displayText: caption, spokenText: caption, intent: "culture", citedItemIds: [records[0].id], followUps: [], confidence: .95 }) }] } }] });
   });
   for (const audio of [false, true]) {

@@ -101,3 +101,8 @@
 @media (min-width: 900px) {
   .kiosk-app .ary-portrait { width: 112px; height: 112px; flex-basis: 112px; }
 }
+/* The status row may be empty after email verification: pin rows so the composer never drops below the screen. */
+.ary-app .voice-chat > .ary-stage, .ary-app .voice-chat > .voice-stage { grid-row: 1; }
+.ary-app .voice-chat > .voice-status { grid-row: 2; }
+.ary-app .voice-chat > .conversation-scroll { grid-row: 3; }
+.ary-app .voice-chat > .voice-composer { grid-row: 4; }

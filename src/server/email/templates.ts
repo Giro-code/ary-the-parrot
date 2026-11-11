@@ -121,7 +121,7 @@ export function renderEmail(template: Template, locale: Locale, data: TemplateDa
       </table>
       <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="max-width:560px;">
         <tr><td align="center" style="padding:20px 16px 0;font-family:${font};font-size:12px;line-height:1.6;color:${C.muted};">
-          ${escape(why)}<br>${footerLinks}<br><a href="${escape(origin)}" style="color:${C.muted};">arytheparrot.app</a> · ${es ? "República Dominicana" : "Dominican Republic"}
+          ${escape(why)}<br>${footerLinks}<br><a href="${escape(origin)}" style="color:${C.muted};">arytheparrot.app</a> · ${es ? "República Dominicana" : "Dominican Republic"}<br><table role="presentation" align="center" cellpadding="0" cellspacing="0" border="0" style="margin:12px auto 0;"><tr><td valign="middle" style="padding-right:8px;"><img src="${escape(origin)}/assets/brand/mecanicos-express-192.png" width="32" height="32" alt="Mecánicos Express" style="display:block;width:32px;height:32px;border:0;border-radius:50%;"></td><td valign="middle" style="font-family:${font};font-size:12px;color:${C.muted};">${es ? "Hecha por" : "Made by"} <strong style="color:${C.ink};">Mecánicos Express</strong></td></tr></table>
         </td></tr>
       </table>
     </td></tr>

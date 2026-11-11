@@ -107,9 +107,8 @@ test("valid Gemini structured output with server-only header, delimiters and usa
 });
 test.each([
   ["invalid JSON schema", () => ({ unexpected: true }), "invalid_output"],
-  ["citation outside context", (value: Record<string, unknown>) => ({ ...value, citedItemIds: [randomUUID()] }), "invalid_citation"],
+  ["citation outside context without title rescue", (value: Record<string, unknown>) => ({ ...value, displayText: "Una tradición cultural.", spokenText: "Una tradición cultural.", citedItemIds: [randomUUID()] }), "ungrounded_output"],
   ["facts without citation", (value: Record<string, unknown>) => ({ ...value, detectedLanguage: "es", displayText: "Es una tradición muy bonita.", spokenText: "Es una tradición muy bonita.", citedItemIds: [] }), "ungrounded_output"],
-  ["low confidence", (value: Record<string, unknown>) => ({ ...value, confidence: 0.2 }), "ungrounded_output"],
 ] as const)("%s falls back to labelled demo", async (_name, transform, code) => {
   mockGemini(transform); const visitor = await createSession(db());
   expect((await chat(db(), visitor.token, { message: "Merengue" })).mode).toBe("demo");

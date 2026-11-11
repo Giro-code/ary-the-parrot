@@ -83,5 +83,12 @@
     "status": 200,
     "checkedAt": "2026-11-10T13:46:18.389Z",
     "verified": true
+  },
+  {
+    "url": "https://www.godominicanrepublic.com/destinations/santo-domingo",
+    "finalUrl": "https://www.godominicanrepublic.com/destinations/santo-domingo",
+    "status": 200,
+    "checkedAt": "2026-11-11T16:00:00.000Z",
+    "verified": true
   }
 ]

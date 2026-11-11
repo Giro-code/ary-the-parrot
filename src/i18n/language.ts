@@ -28,8 +28,8 @@ export function kioskLocale(configured?: string): Locale { return supportedLocal
 // Local templates and provider outages only. Online replies use model detection.
 export function textLanguage(text: string, fallback: Locale): "en" | "es" | "other" {
   const value = text.normalize("NFKD").replace(/\p{M}/gu, "").toLowerCase();
-  if (/\b(hola|espanol|cuentame|quiero|comida|musica|playas?|historia|soy|necesito|donde|que|prefiero|gracias)\b/.test(value)) return "es";
-  if (/\b(hello|hi|english|tell|want|food|music|beaches?|history|where|what|please|thanks|i am|i'm)\b/.test(value)) return "en";
+  if (/\b(hola|espanol|cuentame|hablame|muestrame|ensename|imagenes|iamgenes|fotos?|quiero|comida|musica|playas?|historia|soy|necesito|donde|que|prefiero|gracias)\b/.test(value)) return "es";
+  if (/\b(hello|hi|english|tell|show|see|photos?|pictures?|images?|want|food|music|beaches?|history|where|what|please|thanks|i am|i'm)\b/.test(value)) return "en";
   if (/\b(bonjour|francais|merci|bonjour|guten|deutsch|danke|ciao|italiano|ola|portugues|obrigado)\b|[\p{Script=Han}\p{Script=Cyrillic}\p{Script=Arabic}]/u.test(value)) return "other";
   return fallback;
 }
