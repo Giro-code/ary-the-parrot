@@ -173,3 +173,20 @@ Detalles, evidencia y pendientes: [informe](../docs/hardware/informe-etapa11.md)
 
 ### Sin internet (`--local-state`, opt-in)
 Sin internet el kiosco no puede pedir el token firmado a Vercel. Con `--local-state` el puente acepta, solo en loopback y solo desde el `Origin` exacto permitido, órdenes `{"type":"state"}` sin token (nunca gestos ni ángulos). El kiosco las reenvía cada 1,5 s; si dejan de llegar 4 s, el puente deja de enviar PING y el firmware vuelve al reposo a los 3 s.
+
+## Ari sin pantalla (`headless`, Raspberry Pi OS Lite)
+
+Ari funciona sin navegador: micrófono USB → Vosk → fichas locales → voz (caché de Gemini o Piper) por el jack → mientras suena, `STATE speaking` al Arduino (pico, alas suaves y señal con el ala). No guarda audio ni conversaciones; con `--verbose` solo se muestran en pantalla.
+
+```sh
+cd ~/ary/pi
+../venv/bin/python -m headless --text "háblame del merengue" --verbose   # un turno, sin micrófono
+../venv/bin/python -m headless --wav ../piper-test.wav --verbose        # transcribe un WAV y responde
+../venv/bin/python -m headless --greet --serial /dev/serial/by-id/usb-Silicon_Labs_CP2102_*   # escucha y se mueve
+```
+
+- Mientras Ari habla se descarta lo que entra por el micrófono (no se escucha a sí mismo); frases de una palabra se ignoran.
+- Sin `--serial` no hay movimiento (solo registra estados). Con `--serial` no ejecutar a la vez el puente: comparten el puerto.
+- Servicio: `systemd/ary-headless.service` (no habilitado). Requiere micrófono USB.
+- Pendiente: modo con internet (Gemini a través de Vercel) con identidad de dispositivo; hoy responde siempre con las fichas locales.
+- Probado en la Pi el 2026-11-13 con `--text` y `--wav` (≈10 s incluyendo la carga de Piper la primera vez; en modo continuo el modelo queda cargado). Micrófono y movimiento sin probar: falta micrófono y el Arduino estaba desconectado.

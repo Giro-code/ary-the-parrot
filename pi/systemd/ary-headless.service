@@ -1,0 +1,21 @@
+[Unit]
+Description=Ari sin pantalla: microfono, voz local y movimiento
+After=sound.target network-online.target
+Wants=network-online.target
+# No usar a la vez que ary-bridge con --serial: comparten el puerto del Arduino.
+Conflicts=ary-bridge.service
+
+[Service]
+Type=simple
+User=ari
+SupplementaryGroups=dialout audio
+WorkingDirectory=/home/ari/ary/pi
+Environment=PYTHONUNBUFFERED=1
+# Ajusta --serial al nombre de /dev/serial/by-id y --mic al de `arecord -l` (p. ej. plughw:1,0).
+ExecStart=/home/ari/ary/venv/bin/python -m headless --greet --serial /dev/serial/by-id/usb-Silicon_Labs_CP2102_USB_to_UART_Bridge_Controller_0001-if00-port0
+Restart=on-failure
+RestartSec=5
+NoNewPrivileges=true
+
+[Install]
+WantedBy=multi-user.target

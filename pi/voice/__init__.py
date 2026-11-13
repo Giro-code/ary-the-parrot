@@ -114,7 +114,12 @@ class Voice:
         self._text(text)
         fold = lambda value: ''.join(c for c in unicodedata.normalize('NFD', value.lower()) if not unicodedata.combining(c))
         import re
-        words = set(re.findall(r'\w+', fold(text))) - {'de', 'la', 'el', 'que', 'del', 'me', 'hablame', 'cuentame', 'sobre'}
+        # Palabras que no distinguen una ficha de otra (casi todas mencionan RD).
+        stop = {'de', 'la', 'el', 'los', 'las', 'lo', 'un', 'una', 'y', 'o', 'a', 'en', 'es', 'que', 'del', 'al', 'me', 'mi', 'tu', 'te',
+                'por', 'para', 'con', 'se', 'su', 'hablame', 'cuentame', 'dime', 'sobre', 'quiero', 'saber', 'conocer', 'descubrir',
+                'vamos', 'soy', 'eres', 'hola', 'ary', 'ari', 'gracias', 'como', 'cual', 'donde', 'mas', 'muy', 'republica',
+                'dominicana', 'dominicano', 'dominicanos', 'rd', 'pais'}
+        words = set(re.findall(r'\w+', fold(text))) - stop
         hits = []
         # No offline advice about live operational or sensitive matters.
         sensitive = {'vuelo', 'vuelos', 'puerta', 'emergencia', 'salud', 'medicina', 'migracion', 'aduana', 'seguridad', 'ley', 'visa'}
