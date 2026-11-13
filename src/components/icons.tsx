@@ -1,7 +1,9 @@
 import type { SVGProps } from "react";
-export type IconName = "trips" | "conversations" | "privacy" | "save" | "mic" | "keyboard" | "sound" | "mute" | "exit" | "globe" | "send" | "stop" | "open" | "mail" | "clock" | "pin";
+export type IconName = "trips" | "conversations" | "privacy" | "save" | "mic" | "keyboard" | "sound" | "mute" | "exit" | "globe" | "send" | "stop" | "open" | "mail" | "clock" | "pin" | "pause" | "play";
 export function Icon({ kind, label, ...props }: SVGProps<SVGSVGElement> & { kind: IconName; label?: string }) {
   const paths: Record<IconName, React.ReactNode> = {
+    pause: <path d="M8 5v14M16 5v14" strokeWidth="3"/>,
+    play: <path d="M7 4v16l13-8L7 4Z" fill="currentColor"/>,
     pin: <><path d="M20 10c0 6-8 11-8 11S4 16 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="3"/></>,
     mail: <><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 6 9 7 9-7"/></>,
     clock: <><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></>,

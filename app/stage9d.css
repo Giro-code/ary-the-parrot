@@ -40,3 +40,21 @@
 @media (prefers-reduced-motion: reduce) {
   .voice-first *, .voice-first *::before, .voice-first *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
 }
+
+/* Compact voice dock: the conversation and its cards stay visible while talking. */
+.voice-dock { display: flex; align-items: center; justify-content: center; gap: 28px; padding-top: 8px; }
+.ary-app .voice-dock .voice-main-mic { width: 56px; height: 56px; min-height: 56px; padding: 0; border-width: 2px; }
+.voice-dock .voice-main-mic svg { width: 26px; height: 26px; }
+.voice-dock .voice-main-mic.is-recording { box-shadow: 0 0 0 4px #8a302833; }
+.ary-app .voice-side-button { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; min-height: 44px; padding: 0; border-radius: 50%; background: transparent; color: var(--green); border: 1.5px solid var(--line); }
+.ary-app .voice-side-button:hover { background: #e6ece2; }
+.ary-app .voice-side-button[aria-pressed="true"] { background: var(--green); color: var(--white); border-color: var(--green); }
+.voice-side-button svg { width: 20px; height: 20px; }
+.voice-side-button.is-placeholder { visibility: hidden; }
+.voice-first .voice-main-label { margin: 4px 0 2px; font-size: .85rem; }
+.voice-first .voice-composer .voice-meter { margin: 2px auto 4px; }
+@media (max-width: 600px) {
+  .ary-app .voice-dock .voice-main-mic { width: 52px; height: 52px; min-height: 52px; padding: 0; }
+  .voice-dock { gap: 24px; padding-top: 6px; }
+  .voice-first .voice-main-label { margin: 2px 0 0; }
+}

@@ -213,11 +213,13 @@ export function AryChat(props: Props) {
     </div>
     <div className="voice-composer">
       {mode === "voice" ? <>
-        <button className={`voice-main-mic ${voice.recording || voice.microphonePending ? "is-recording" : ""}`} disabled={disabled || !online || loading || busy || voice.processing || voice.microphonePending || !!handoff} aria-label={micLabel} aria-pressed={voice.recording} onClick={() => { if (!active) (props.onVoiceStart || props.onStart)(); else voiceAction(); }}><Icon kind={voice.recording ? "stop" : "mic"}/></button>
-        <p className="voice-main-label" role="status">{micLabel}{voice.recording && ` · ${voice.seconds}/15 s`}</p>
+        <div className="voice-dock">
+          <button className="voice-side-button" aria-label={en ? "Type instead" : "Escribir"} title={en ? "Type instead" : "Escribir"} onClick={() => changeMode("chat")}><Icon kind="keyboard"/></button>
+          <button className={`voice-main-mic ${voice.recording || voice.microphonePending ? "is-recording" : ""}`} disabled={disabled || !online || loading || busy || voice.processing || voice.microphonePending || !!handoff} aria-label={micLabel} aria-pressed={voice.recording} onClick={() => { if (!active) (props.onVoiceStart || props.onStart)(); else voiceAction(); }}><Icon kind={voice.recording ? "stop" : "mic"}/></button>
+          {startedVoice ? <button className="voice-side-button" aria-label={paused ? (en ? "Resume conversation" : "Reanudar conversación") : (en ? "Pause conversation" : "Pausar conversación")} title={paused ? (en ? "Resume" : "Reanudar") : (en ? "Pause" : "Pausar")} aria-pressed={paused} onClick={() => { if (paused) { voiceAction(); return; } voiceStartEpoch.current++; startingVoice.current = false; voice.cancel(); setPaused(true); }}><Icon kind={paused ? "play" : "pause"}/></button> : <span className="voice-side-button is-placeholder" aria-hidden="true"/>}
+        </div>
+        <p className="voice-main-label" role="status">{paused ? (en ? "Paused" : "En pausa") : micLabel}{voice.recording && ` · ${voice.seconds}/15 s`}</p>
         {voice.recording && <div className="voice-meter" aria-hidden="true">{[.6, .9, 1, .8, .5].map((scale, index) => <span key={index} style={{ transform: `scaleY(${.15 + voice.level * scale})` }} />)}</div>}
-        {startedVoice && <button className="text-button" onClick={() => { voiceStartEpoch.current++; startingVoice.current = false; voice.cancel(); setPaused(true); }}>{paused ? (en ? "Paused · tap the mic to resume" : "En pausa · toca el micrófono para seguir") : (en ? "Pause conversation" : "Pausar conversación")}</button>}
-        <div className="voice-mode-actions"><button className="secondary" onClick={() => changeMode("chat")}><Icon kind="keyboard"/>{en ? "Type instead" : "Escribir"}</button><button className="text-button" onClick={() => changeMode("chat")}>{en ? "View conversation" : "Ver conversación"}</button></div>
       </> : !active ? <button className="start-chat" disabled={disabled || !online} onClick={props.onStart}>{uiText(locale, "start")} <Icon kind="conversations"/></button> : <>
         <button className="text-button return-to-voice" aria-label={en ? "Voice mode: Talk to Ary" : "Modo Voz: Hablar con Ary"} onClick={() => changeMode("voice")}>{en ? "Talk to Ary" : "Hablar con Ary"}</button>
         <div className="compact-composer">
@@ -235,7 +237,7 @@ export function AryChat(props: Props) {
         </p>}
         {voice.recording && <div className="voice-meter" aria-hidden="true">{[.6, .9, 1, .8, .5].map((scale, index) => <span key={index} style={{ transform: `scaleY(${.15 + voice.level * scale})` }} />)}</div>}
       </>}
-      <details className="voice-privacy"><summary>{en ? "Voice and privacy" : "Voz y privacidad"}</summary><p>{uiText(locale, "voiceGoesToGoogleAiAryDoes")} <a href={`/privacidad?lang=${locale}`} target="_blank" rel="noreferrer">{uiText(locale, "privacy")}</a></p></details>
+      {mode !== "voice" && <details className="voice-privacy"><summary>{en ? "Voice and privacy" : "Voz y privacidad"}</summary><p>{uiText(locale, "voiceGoesToGoogleAiAryDoes")} <a href={`/privacidad?lang=${locale}`} target="_blank" rel="noreferrer">{uiText(locale, "privacy")}</a></p></details>}
       {props.endControls}
     </div>
     <audio ref={node => { voice.bindAudio(node); }} onPlay={() => voice.activity("speaking")} onEnded={() => voice.ended()} onPause={() => { if (!voice.recording && !voice.processing) voice.activity("idle"); }} onError={voice.playbackFailed} />
