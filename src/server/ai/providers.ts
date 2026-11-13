@@ -42,7 +42,7 @@ export class DemoAiProvider implements AiProvider {
     const excerpt = summary.length <= available ? summary : `${summary.slice(0, available).replace(/\s+\S*$/, "").trimEnd()}…`;
     const text = item ? `${prefix}${excerpt}` : locale === "es" ? "¡Vamos a descubrir algo juntos! Puedes elegir música, comida, historia o naturaleza. ¿Qué te llama la atención?" : "Let's discover something together! You can choose music, food, history or nature. What interests you?";
     return { answer: { detectedLanguage: textLanguage(message, locale), displayText: text, spokenText: text, intent: item ? "culture" as const : "general" as const,
-      citedItemIds: relevant.map(row => row.id), followUps: item ? relevant.map(row => (locale === "es" ? `Cuéntame sobre ${row.title}` : `Tell me about ${row.title}`).slice(0, 120)) : locale === "es" ? ["Música", "Comida", "Naturaleza"] : ["Music", "Food", "Nature"], confidence: item ? 1 : 0,
+      citedItemIds: relevant.map(row => row.id), followUps: item ? relevant.slice(0, 3).map(row => (locale === "es" ? `Cuéntame sobre ${row.title}` : `Tell me about ${row.title}`).slice(0, 120)) : locale === "es" ? ["Música", "Comida", "Naturaleza"] : ["Music", "Food", "Nature"], confidence: item ? 1 : 0,
     }, usage: { inputTokens: 0, outputTokens: 0 } };
   }
 }

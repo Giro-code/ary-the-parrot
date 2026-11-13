@@ -9,10 +9,10 @@ import { AppError } from "../errors.ts";
 import { getSession, rateLimit } from "../service.ts";
 import { hashToken } from "../tokens.ts";
 import { numericEnv } from "../config.ts";
-import { replySchema } from "./chat.ts";
-import { AiError, type AudioInput } from "./providers.ts";
+import { AiError, answerSchema, type AudioInput } from "./providers.ts";
 
 export const defaultTtsModel = "gemini-3.8-flash-lite-tts", defaultTtsVoice = "Sulafat";
+const spokenTextSchema = answerSchema.shape.spokenText;
 export const speakInputSchema = z.object({ messageId: z.uuid() }).strict();
 export const maxAudioBytes = 1024 * 1024;
 export async function readAudio(request: NextRequest): Promise<AudioInput> {
@@ -91,13 +91,21 @@ export async function speak(db: Database, token: string | undefined, raw: unknow
   const parsed = speakInputSchema.safeParse(raw); if (!parsed.success) throw new AppError("invalid_body", 400);
   const session = await getSession(db, token), started = Date.now();
   if (session.retentionClass === "kiosk_demo") throw new AppError("voice_unavailable", 503);
-  await rateLimit(db, hashToken(`speak-session:${session.id}`), numericEnv("AI_TTS_SESSION_PER_MINUTE", 8, 20));
-  await rateLimit(db, hashToken("speak-global"), numericEnv("AI_TTS_GLOBAL_PER_MINUTE", 30, 120));
-  const [row] = await db.select().from(s.chatMessages).where(and(eq(s.chatMessages.id, parsed.data.messageId), eq(s.chatMessages.sessionId, session.id), eq(s.chatMessages.role, "assistant"), gt(s.chatMessages.retentionUntil, new Date())));
-  let text: string;
-  try { text = replySchema.parse(JSON.parse(decrypt(row.encryptedPayload!)).reply).spokenText; }
-  catch { throw new AppError("message_not_found", 404); }
   const model = process.env.AI_TTS_MODEL?.trim() || defaultTtsModel, voice = process.env.AI_TTS_VOICE?.trim() || defaultTtsVoice;
+  let text: string;
+  try {
+    await rateLimit(db, hashToken(`speak-session:${session.id}`), numericEnv("AI_TTS_SESSION_PER_MINUTE", 8, 20));
+    await rateLimit(db, hashToken("speak-global"), numericEnv("AI_TTS_GLOBAL_PER_MINUTE", 30, 120));
+    const [row] = await db.select().from(s.chatMessages).where(and(eq(s.chatMessages.id, parsed.data.messageId), eq(s.chatMessages.sessionId, session.id), eq(s.chatMessages.role, "assistant"), gt(s.chatMessages.retentionUntil, new Date())));
+    // Only the server-written speech is needed. Validating the whole stored reply made
+    // speech fail whenever an unrelated field (e.g. four follow-ups) was out of bounds.
+    try { text = spokenTextSchema.parse(JSON.parse(decrypt(row.encryptedPayload!)).reply?.spokenText); }
+    catch { throw new AppError("message_not_found", 404); }
+  } catch (error) {
+    // Record failures before synthesis too (no personal data), so the AI report shows them.
+    await db.insert(s.aiUsage).values({ model, latencyMs: Date.now() - started, mode: "demo", errorCode: `tts_${error instanceof AppError ? error.code : "lookup_error"}` }).catch(() => undefined);
+    throw error;
+  }
   const key = createHash("sha256").update(JSON.stringify([text, voice, model])).digest("hex");
   for (const [id, entry] of cache) if (entry.until <= Date.now()) { cache.delete(id); cacheBytes -= entry.wav.length; }
   const hit = cache.get(key);

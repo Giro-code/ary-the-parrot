@@ -87,7 +87,8 @@ async function persistReply(db: Database, token: string | undefined, session: Se
   const sensitive = answer.intent !== "culture" && answer.intent !== "preferences";
   const sources = citedSources(items, answer.citedItemIds, detectedLocale(answer.detectedLanguage));
   if (photos && sources.length > 1) for (const source of sources) source.gallery = source.image ? [source.image] : [];
-  const reply: ChatReply = { ...answer, citedItemIds: sources.map(source => source.id), spokenText: (photos && sources.some(source => source.image)) || (answer.intent === "directions" && sources.some(source => source.mapsUrl)) ? answer.spokenText : spokenText(answer.displayText, answer.spokenText, sensitive, greeting), answer: answer.displayText, messageId, mode, handoff: answer.intent === "sensitive", sources };
+  // answerSchema allows three follow-ups; /api/voice/speak re-reads this payload.
+  const reply: ChatReply = { ...answer, followUps: answer.followUps.slice(0, 3), citedItemIds: sources.map(source => source.id), spokenText: (photos && sources.some(source => source.image)) || (answer.intent === "directions" && sources.some(source => source.mapsUrl)) ? answer.spokenText : spokenText(answer.displayText, answer.spokenText, sensitive, greeting), answer: answer.displayText, messageId, mode, handoff: answer.intent === "sensitive", sources };
   const preferences = message ? { ...conversationPreferences(message, { locale: session.locale as Locale, countryDeclared: session.countryDeclared, interests: session.interests as ConversationPreferences["interests"] }), locale: detectedLocale(answer.detectedLanguage) } : undefined;
   if (destination) reply.destination = destination;
   if (preferences) await setPreferences(db, session, preferences);
@@ -208,7 +209,8 @@ export async function chat(db: Database, token: string | undefined, raw: unknown
         items = failed ? found : [...found, ...items.filter(item => !found.some(row => row.id === item.id))];
       }
       unavailable = !!audio && !message;
-      if (failed) answer = (await demo.generate({ ...input, message, items, locale: detectedLocale(detectedLanguage) })).answer;
+      // A failed turn is answered by the template provider; record it as such.
+      if (failed) { answer = (await demo.generate({ ...input, message, items, locale: detectedLocale(detectedLanguage) })).answer; mode = "demo"; }
     } else { model = "demo"; unavailable = !!audio; answer = (await demo.generate(input)).answer; if (audio) errorCode = "voice_not_configured"; }
     if (audio && message) {
       intent = classifyIntent(message);

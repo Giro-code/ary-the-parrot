@@ -14,7 +14,7 @@ import { maxAudioBytes, pcmToWav, validatedWav, defaultTtsModel, defaultTtsVoice
 import { cleanSpokenText, spokenText } from "../../src/server/ai/safety";
 import { textLanguage } from "../../src/i18n";
 import { conversationPreferences } from "../../src/conversation";
-import { decrypt } from "../../src/server/crypto";
+import { decrypt, encrypt } from "../../src/server/crypto";
 import { aryImage } from "../../src/components/ary-stage";
 
 import { grantConsent, noticeVersion } from "../../src/server/consents";
@@ -68,6 +68,17 @@ test("speak rejects client text, missing CSRF, unknown and another session's mes
   expect((await speak(request("/api/voice/speak", b.token, { messageId: reply.messageId }))).status).toBe(404);
   expect((await speak(request("/api/voice/speak", a.token, { messageId: randomUUID() }))).status).toBe(404);
   expect(fetch).not.toHaveBeenCalled();
+});
+test("speak needs only the stored speech and logs failures that happen before synthesis", async () => {
+  mockTts(); const visitor = await createSession(db()), reply = await chatCue(db(), visitor.token, { cue: "interests" });
+  // Replies stored before the fix could hold four follow-ups; they must stay speakable.
+  const [row] = await db().select().from(s.chatMessages).where(eq(s.chatMessages.id, reply.messageId));
+  const payload = JSON.parse(decrypt(row.encryptedPayload!)); payload.reply.followUps = ["a", "b", "c", "d"];
+  await db().update(s.chatMessages).set({ encryptedPayload: encrypt(JSON.stringify(payload)) }).where(eq(s.chatMessages.id, reply.messageId));
+  expect((await speak(request("/api/voice/speak", visitor.token, { messageId: reply.messageId }))).status).toBe(200);
+  await db().delete(s.aiUsage);
+  expect((await speak(request("/api/voice/speak", visitor.token, { messageId: randomUUID() }))).status).toBe(404);
+  expect(await db().select().from(s.aiUsage)).toMatchObject([{ mode: "demo", errorCode: "tts_message_not_found", inputTokens: 0 }]);
 });
 test("TTS uses only server speech, wraps PCM and caches after ownership and rate checks", async () => {
   mockTts(); const visitor = await createSession(db()), reply = await chatCue(db(), visitor.token, { cue: "welcome" });
