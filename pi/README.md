@@ -40,3 +40,136 @@ La cola SQLite conserva hasta 1000 eventos de estado/salud, sobrevive al reinici
 `GET /api/robot/commands` es secundario y entrega una sola vez comandos `maintenance/rest` o `maintenance/stop` no caducados de `robot_commands`. El operador autorizado puede insertarlos en BD con `device_id` interno y TTL breve. No hay endpoint público de inserción. Entrega es at-most-once, sin ACK de ejecución física. Las reacciones a presencia y estados van por loopback.
 
 `python -m ary_robot --simulate` permite verificar solo telemetría/polling, sin levantar el puente. No ejecutar ambos procesos de telemetría a la vez para el mismo dispositivo.
+
+## Despliegue simulado de la etapa 11
+
+Se ha copiado `pi/` a `/home/ari/ary/pi`, con venv en `/home/ari/ary/venv`.
+El entorno `/home/ari/ary/ary.env` es **DEV**, con secreto aleatorio, permisos
+0600, dispositivo UUID de prueba y origen `http://127.0.0.1:3000`. No está
+emparejado con producción y no incluye secreto de telemetría ni clave Gemini.
+No mostrar ese archivo en terminal, logs o informes. `scripts/dev_setup.py`
+lo crea de forma exclusiva y se niega a reemplazarlo si ya existe.
+
+```sh
+cd /home/ari/ary/pi
+/home/ari/ary/venv/bin/python -m unittest
+# Prueba breve: carga DEV en memoria, arranca SOLO simulación, llama curl y termina.
+/home/ari/ary/venv/bin/python scripts/smoke_bridge.py
+sh scripts/diagnose.sh
+```
+
+No hay servicios instalados/habilitados ni procesos de puente/voz persistentes
+dejados por esta etapa. No ejecutar `--serial` ni cargar el `.ino`: el programa
+actual del UNO no se conoce y la placa no está detectada. Las unidades `/opt/ary`
+son referencias; no se han copiado a `/etc/systemd` ni se ha usado sudo.
+
+## Modo sin internet
+
+El proceso `voice` es independiente del controlador y **no importa serie ni
+reproduce audio**. Escucha solo en `127.0.0.1:8766`, con Host fijo y Origin exacto.
+Puede funcionar sin token de hardware para no depender de renovarlo en Vercel
+durante un corte. Instalarlo solo en un kiosco con origen de confianza.
+
+```sh
+# Instalación ya efectuada en la Pi, sin paquetes globales ni modelos grandes:
+/home/ari/ary/venv/bin/python -m pip install --no-cache-dir -r requirements-voice.txt
+/home/ari/ary/venv/bin/python scripts/download_models.py
+# Elegir el origen EXACTO de la página del kiosco; este es el de pruebas locales.
+/home/ari/ary/venv/bin/python -m voice --origin http://127.0.0.1:3002
+```
+
+La descarga instala una sola voz `es_MX-ald-medium.onnx` (63.201.294 bytes),
+su JSON/MODEL_CARD de `rhasspy/piper-voices` y
+`vosk-model-small-es-0.42` (ZIP de 39.817.833 bytes) de alphacephei.com.
+Tiene límites de descarga/descompresión y exige 500 MiB disponibles. No descarga
+torch. Una descarga fallida conserva `.part` dentro de `models`; reejecutar vuelve
+a descargar ese archivo, sin tocar el sistema. Se conserva el ZIP como evidencia.
+
+Endpoints (cabecera `Origin` obligatoria, sin cookies):
+
+| Método y ruta | Entrada | Resultado |
+|---|---|---|
+| `GET /health` | — | `mode`, `checkedAt`, `piper`, `vosk`, `catalogItems` |
+| `POST /speak` | JSON `{"text":"Hola Ary"}` | WAV mono; primero caché, después Piper |
+| `POST /cache` | JSON `{"text":"Hola Ary","wav":"base64…"}` | Importa WAV validado, nunca órdenes |
+| `POST /transcribe` | WAV mono PCM16, máximo 15 s | JSON `text` con Vosk; no graba archivos |
+| `POST /reply` | JSON `{"text":"merengue"}` | Respuesta determinista con ficha/fuente local |
+
+`/health` comprueba conectividad TCP cada ~10 s en segundo plano; el modo puede
+ser `unknown` hasta el primer intento. No equivale a disponibilidad del proveedor.
+Los modelos se cargan de forma perezosa. Se admite una operación de voz a la vez;
+ocupación devuelve 429, entrada inválida 400 y modelo ausente 503.
+
+La web mantiene TTS Sulafat cuando funciona. Solo en kiosco intenta copiar sus
+WAV a la Pi para reutilizarlos offline; si falla la API usa voz local y, si esta
+también falla, conserva el aviso/respaldo existente. Vosk se utiliza como respaldo
+de `/api/voice/ask`; el navegador convierte a WAV16k en memoria. El consentimiento
+informa del procesamiento y de la caché de respuestas. No hay micrófono detectado:
+el recorrido completo con habla humana y permisos de Chromium sigue pendiente.
+
+La caché de respuestas tiene máximo 64 MiB y siete días, permisos 0700/0600,
+clave SHA-256 del texto normalizado y purga en acceso. No guarda micrófono ni
+transcripciones, pero el audio de Ary puede repetir datos personales: revisar
+retención antes de uso público. Piper no se cachea automáticamente para dar
+prioridad al audio real de Ary importado. No se encontraron pregrabaciones WAV/MP3
+en `public/`; mientras no se sincronicen, esos textos usan Piper.
+
+### Preparar y sincronizar audios Sulafat
+
+Desde el repositorio en PC/servidor:
+
+```powershell
+# Sin red, sin clave, sin llamadas ni escrituras: muestra el plan.
+node scripts/voice-assets.ts
+# Exporta solo catálogo/textos públicos validados, sin AI.
+node scripts/voice-assets.ts --export
+powershell -File scripts/sync-voice-assets.ps1
+# SOLO en un servidor con clave ya configurada: genera audios, con coste.
+# No se ha ejecutado ni se ha solicitado la clave durante esta etapa.
+# node scripts/voice-assets.ts --execute
+# Tras revisar salida, sincronización explícita:
+# powershell -File scripts/sync-voice-assets.ps1 -Execute
+```
+
+El plan final tiene 317 fichas y 320 frases (incluye saludo offline). El script no
+carga `.env` ni descarga claves de Vercel. Reutiliza `synthesize()` en el servidor
+solo con `--execute`. El resultado usa los mismos hashes que `POST /speak`.
+Sincroniza exclusivamente `catalog.json` y `voice-cache/*.wav`; no firmware ni
+secretos. Reiniciar manualmente voz para recargar el catálogo. Es una instantánea
+de archivos locales, no garantiza ocultaciones actuales de producción.
+
+`systemd/ary-voice.service` es una plantilla de **usuario**, no instalada ni
+habilitada. Usa `APP_BASE_URL` del env como origen; adaptar ese valor al kiosco
+antes de instalarla. No se ha habilitado arranque automático de ningún proceso.
+No tiene acceso programado a hardware. El servicio de hardware de referencia
+continúa con `--simulate`.
+
+### Verificación y límites
+
+`python -m unittest` no necesita modelos: inyecta sintetizador/reconocedor mock
+y prueba HTTP, caché, entradas inválidas, origen, Host y concurrencia.
+`scripts/benchmark_voice.py` sí usa los modelos, escribe un WAV sintético y mide
+síntesis/RTF/transcripción sin micrófono ni altavoz.
+`scripts/verify_voice.py` arranca voz brevemente, ejecuta curl y termina el hijo.
+
+El respaldo web requiere una página ya cargada. No se ha implementado carga
+inicial offline del shell Next/Vercel, service worker ni navegador en la Pi.
+El origen de producción y su permiso de acceso a loopback/PNA se deben comprobar
+en Chromium real. El modo local es español. Las dos pasadas visuales están
+pendientes por `spawn EPERM` en el entorno actual.
+
+Detalles, evidencia y pendientes: [informe](../docs/hardware/informe-etapa11.md),
+[arquitectura de voz](../docs/hardware/voz-local-etapa11.md) y
+[checklist Arduino](../docs/hardware/arduino-checklist.md).
+
+## Ari habla y se mueve (firmware `ari_control`, 2026-11-13)
+
+- Firmware real: `firmware/ari_control/ari_control.ino` (hex compilado al lado). Mismos pines que el sketch original del usuario (`firmware/ari_original/`, con copia binaria de la placa): 9 ala derecha, 10 ala izquierda en espejo, 11 pico; rango 30–60°.
+- Arranca quieto con los servos sueltos; no se mueve hasta recibir una orden. Imprime `ARI LISTO reinicio=<MCUSR>` (4 = caída de voltaje).
+- `STATE speaking` / `GESTURE talk`: el pico abre y cierra (30–60°) y las alas aletean suave (30–45°, a un tercio de velocidad); cada 4–9 s el ala derecha se extiende rápido hasta 60°, aguanta 0,7 s y vuelve, como si señalara algo (`SENAL` lo hace a mano; `handoff_qr` la deja extendida). Sirve igual para la voz de Gemini y para Piper sin internet, porque ambas suenan por el mismo `<audio>` del kiosco, que marca `speaking` al reproducir y vuelve a `listening`/`idle` al terminar.
+- Órdenes manuales para pruebas: `tools/ari_cmd.py PARAR | REPOSO | "ALETEAR 3000" | "HABLAR 3000" | "PICO 3000" | SENAL | SALUDAR | ESTADO`.
+- Cargar desde la Pi: `avrdude -p atmega328p -c arduino -P /dev/serial/by-id/usb-Silicon_Labs_CP2102_* -b 115200 -U flash:w:ari_control.hex:i`.
+- Puente real: `python -m bridge --serial /dev/serial/by-id/usb-Silicon_Labs_CP2102_... --local-state --queue ...`. Espera hasta 4 s al banner del firmware antes del `STATE idle`.
+
+### Sin internet (`--local-state`, opt-in)
+Sin internet el kiosco no puede pedir el token firmado a Vercel. Con `--local-state` el puente acepta, solo en loopback y solo desde el `Origin` exacto permitido, órdenes `{"type":"state"}` sin token (nunca gestos ni ángulos). El kiosco las reenvía cada 1,5 s; si dejan de llegar 4 s, el puente deja de enviar PING y el firmware vuelve al reposo a los 3 s.

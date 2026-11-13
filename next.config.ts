@@ -45,7 +45,7 @@ const config: NextConfig = {
       ],
     }, {
       source: "/kiosco",
-      headers: [{ key: "Content-Security-Policy", value: csp.replace(/connect-src [^;]+/, `connect-src 'self' http://127.0.0.1:8765 ws://127.0.0.1:8765${development ? " ws: wss:" : ""}`) }, { key: "Permissions-Policy", value: "camera=(), microphone=(self), geolocation=()" }],
+      headers: [{ key: "Content-Security-Policy", value: csp.replace(/connect-src [^;]+/, `connect-src 'self' http://127.0.0.1:8765 http://127.0.0.1:8766 ws://127.0.0.1:8765${development ? " ws: wss:" : ""}`) }, { key: "Permissions-Policy", value: "camera=(), microphone=(self), geolocation=()" }],
     }, {
       source: "/experiencia",
       headers: [{ key: "Permissions-Policy", value: "camera=(), microphone=(self), geolocation=()" }],

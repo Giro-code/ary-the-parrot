@@ -47,4 +47,10 @@ export class HardwareRobotAdapter implements RobotAdapter {
   }
   close() { this.controller.abort(); }
 }
+// Offline fallback (bridge started with --local-state): no signed token can be minted without internet,
+// so only named states are sent. The caller re-sends the state every 1.5 s as a keepalive.
+export async function sendLocalState(state: RobotState, signal?: AbortSignal) {
+  const response = await fetch(`${endpoint}/command`, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ type: "state", state }), signal: signal ? AbortSignal.any([signal, AbortSignal.timeout(2000)]) : AbortSignal.timeout(2000), cache: "no-store", credentials: "omit" });
+  if (!response.ok) throw new Error("bridge_command_failed");
+}
 export { defaultGesture };

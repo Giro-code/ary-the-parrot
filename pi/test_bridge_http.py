@@ -41,6 +41,20 @@ class BridgeHttpTests(unittest.TestCase):
                 response.read()
             finally: connection.close()
 
+    def test_local_state_only_when_enabled(self):
+        connection, response = self.request("POST", "/command", {"type": "state", "state": "speaking"}, authenticated=False)
+        try: self.assertEqual(response.status, 401)
+        finally: connection.close()
+        self.server.allow_local_state = True
+        for payload, origin, expected in (({"type": "state", "state": "speaking"}, ORIGIN, 200),
+                                          ({"type": "gesture", "name": "talk"}, ORIGIN, 401),
+                                          ({"type": "state", "state": "speaking"}, "https://evil.invalid", 403)):
+            connection, response = self.request("POST", "/command", payload, origin, authenticated=False)
+            try: self.assertEqual(response.status, expected)
+            finally: connection.close()
+        self.assertTrue(self.server.controller.local_active())
+        self.assertEqual(self.server.controller.state, "speaking")
+
     def test_preflight_and_invalid_motor_commands(self):
         connection, response = self.request("OPTIONS", "/command", authenticated=False)
         self.assertEqual(response.status, 204); self.assertEqual(response.getheader("Access-Control-Allow-Origin"), ORIGIN)

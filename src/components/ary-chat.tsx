@@ -12,6 +12,7 @@ import { api, ApiError } from "./api";
 import { Icon } from "./icons";
 import { AryStage } from "./ary-stage";
 import { useAryVoice } from "./use-ary-voice";
+import { localReply } from "./local-voice";
 import type { Saved } from "./types";
 import { SourceCarousel } from "./source-carousel";
 import { readMode, writeMode, type AryMode } from "./voice-turns";
@@ -23,18 +24,20 @@ type Props = {
   locale: Locale; active: boolean; online: boolean; disabled?: boolean; state?: RobotState; celebrating?: boolean; offlineImageAvailable?: boolean;
   playWelcome?: boolean;
   kiosk?: boolean;
+  localOnly?: boolean;
   voiceRequested?: boolean; presenceGreeting?: boolean; onVoiceStart?: () => void;
   onActivity?: (state: ChatActivity) => void; onStart: () => void; onPreferences: (text: string, value?: ConversationPreferences) => Promise<void>;
   savedIds: string[]; savedItems?: Saved[]; onSave: (id: string) => Promise<void>; canHandoff?: boolean; onHandoff?: () => void; handoff?: Handoff | null; now?: number;
   status?: ReactNode; endControls?: ReactNode; initialMessage?: string;
 };
-function MicrophoneConsent({ en, automatic, accept, close }: { en: boolean; automatic: boolean; accept: () => void; close: () => void }) {
+function MicrophoneConsent({ en, automatic, localOnly, kiosk, accept, close }: { en: boolean; automatic: boolean; localOnly?: boolean; kiosk?: boolean; accept: () => void; close: () => void }) {
   const locale = en ? "en" : "es";
   const dialog = useRef<HTMLDialogElement>(null);
   useEffect(() => { dialog.current?.showModal(); }, []);
   return <dialog ref={dialog} className="mic-consent" aria-labelledby="mic-consent-title" onCancel={close}>
     <h2 id="mic-consent-title">{uiText(locale, "shallWeTalk")}</h2>
-    <p>{automatic ? en ? "The microphone is visible while listening, up to 15 seconds per turn. After Ary speaks, it opens again. Your voice goes to Google Gemini to understand and answer you. Ary does not store audio. Pause or type at any time." : "Verás el micrófono activo mientras escucha, hasta 15 segundos por turno. Después de hablar Ary, vuelve a abrirse. Tu voz se envía a Google Gemini para entenderte y responderte. Ary no guarda el audio. Puedes pausar o escribir cuando quieras." : uiText(locale, "onlyWhileYouPressRecordYourMicrophone")}</p>
+    <p>{localOnly ? "Sin internet, tu voz se procesa en esta Raspberry con Vosk y las respuestas usan fichas locales en español. No se guarda tu grabación. Cada turno dura hasta 15 segundos; puedes pausar o usar el teclado." : automatic ? en ? "The microphone is visible while listening, up to 15 seconds per turn. After Ary speaks, it opens again. Your voice goes to Google Gemini to understand and answer you. Ary does not store audio. Pause or type at any time." : "Verás el micrófono activo mientras escucha, hasta 15 segundos por turno. Después de hablar Ary, vuelve a abrirse. Tu voz se envía a Google Gemini para entenderte y responderte. Ary no guarda el audio. Puedes pausar o escribir cuando quieras." : uiText(locale, "onlyWhileYouPressRecordYourMicrophone")}</p>
+    {kiosk && !localOnly && <p>{en ? "If online voice fails, this kiosk tries local speech. Ary's spoken replies are kept on this Raspberry for up to seven days for offline reuse. Your recording is not stored." : "Si falla la voz en línea se intenta el respaldo local. Las respuestas habladas de Ary se conservan hasta siete días en esta Raspberry para reutilizarlas sin internet; tu grabación no se guarda."}</p>}
     <p>{uiText(locale, "avoidNamesOrPersonalDetailsChildrenUse")} <a href="/privacidad" target="_blank" rel="noreferrer">{uiText(locale, "privacy")}</a></p>
     <div className="actions"><button onClick={accept} autoFocus>{uiText(locale, "iAgreeRecord")}</button><button className="secondary" onClick={close}>{uiText(locale, "useKeyboard")}</button></div>
   </dialog>;
@@ -62,9 +65,13 @@ export function AryChat(props: Props) {
     if (!live.current) return;
     setMessages(rows => [...rows, ...(reply.transcript ? [{ id: crypto.randomUUID(), role: "user" as const, text: reply.transcript }] : []), { id: reply.messageId, role: "assistant", text: reply.displayText, reply }]);
     setLanguageChosen(true); setError(null); void voice.play(reply);
-    if (reply.intent === "directions" && props.canHandoff && !handoff) { for (const source of reply.sources) await onSave(source.id); if (reply.destination && !reply.sources.length) await api("/api/trip-places", "POST", { name: reply.destination }); props.onHandoff?.(); }
+    if (!props.localOnly && reply.intent === "directions" && props.canHandoff && !handoff) { for (const source of reply.sources) await onSave(source.id); if (reply.destination && !reply.sources.length) await api("/api/trip-places", "POST", { name: reply.destination }); props.onHandoff?.(); }
   }
-  const voice = useAryVoice({ enabled: active && online && !disabled && !handoff, onReply: receiveReply, onActivity: report });
+  const voice = useAryVoice({ enabled: active && online && !disabled && !handoff, kiosk: props.kiosk, onReply: receiveReply, onActivity: report });
+  async function chatReply(text: string, cue?: string, signal?: AbortSignal) {
+    if (props.localOnly && props.kiosk) return localReply(text, signal);
+    return cue ? api<ChatReply>("/api/chat/cue", "POST", { cue }, signal) : api<ChatReply>("/api/chat", "POST", { message: text }, signal);
+  }
   function changeMode(value: AryMode, persist = true) {
     startingVoice.current = false;
     voiceStartEpoch.current++;
@@ -107,7 +114,7 @@ export function AryChat(props: Props) {
       const shown = messages.length === 1 && messages[0].role === "assistant" ? messages[0].reply : undefined;
       if (shown) { welcomePlayed.current = true; setError(null); void voice.play(shown); return; }
       report("thinking");
-      const reply = await api<ChatReply>("/api/chat/cue", "POST", { cue: "welcome" }, AbortSignal.timeout(18000));
+      const reply = await chatReply("hola", "welcome", AbortSignal.timeout(18000));
       if (!live.current || epoch !== voiceStartEpoch.current) return;
       welcomePlayed.current = true;
       await receiveReply(reply);
@@ -134,11 +141,11 @@ export function AryChat(props: Props) {
     live.current = true;
     if (!active) return;
     let mounted = true;
-    void api<{ messages: Message[] }>("/api/chat").then(async result => {
+    void (props.localOnly ? Promise.resolve({ messages: [] as Message[] }) : api<{ messages: Message[] }>("/api/chat")).then(async result => {
       if (!mounted) return;
       setMessages(result.messages);
       if (result.messages.length) { setLanguageChosen(result.messages.some(row => row.reply?.intent === "culture")); return; }
-      const reply = await api<ChatReply>("/api/chat/cue", "POST", { cue: "welcome" });
+      const reply = await chatReply("hola", "welcome");
       if (!mounted) return;
       setMessages([{ id: reply.messageId, role: "assistant", text: reply.displayText, reply }]);
       if (!welcomePlayed.current && props.playWelcome !== false && (mode === "chat" || props.presenceGreeting)) { welcomePlayed.current = true; void voice.play(reply); }
@@ -148,12 +155,12 @@ export function AryChat(props: Props) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [active, reloadKey]);
   useEffect(() => {
-    if (!online || !active) return;
+    if (!online || !active || (!navigator.onLine && !props.localOnly)) return;
     if (loadFailed) { const timer = setTimeout(() => { setLoading(true); setReloadKey(key => key + 1); }, 0); return () => clearTimeout(timer); }
     if (queued && !sending.current && !busy) { const text = queued, timer = setTimeout(() => { setQueued(null); void ask(text); }, 0); return () => clearTimeout(timer); }
     // ask reads current state; this only reacts to the connection returning.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [online, loadFailed, queued, busy, active]);
+  }, [online, loadFailed, queued, busy, active, props.localOnly]);
   useEffect(() => {
     const conversation = tail.current?.parentElement;
     conversation?.scrollTo({ top: conversation.scrollHeight, behavior: "instant" });
@@ -164,7 +171,7 @@ export function AryChat(props: Props) {
     sending.current = true; setBusy(true); voice.interrupt();
     try {
       await onPreferences(value === "es" ? "Español" : "English");
-      const reply = await api<ChatReply>("/api/chat/cue", "POST", { cue: "interests" });
+      const reply = await chatReply("hola", "interests");
       if (!live.current) return;
       setMessages(rows => [...rows, { id: crypto.randomUUID(), role: "user", text: value === "es" ? "Español" : "English" }, { id: reply.messageId, role: "assistant", text: reply.displayText, reply }]);
       setLanguageChosen(true); void voice.play(reply);
@@ -173,13 +180,13 @@ export function AryChat(props: Props) {
   }
   async function ask(text: string) {
     const clean = text.trim(); if (!clean || clean.length > 500 || sending.current || textBlocked || (mode === "chat" && voice.recording)) return;
-    if (!online || !navigator.onLine) { setQueued(clean); setMessage(""); setError(null); return; }
+    if ((!online || !navigator.onLine) && !props.localOnly) { setQueued(clean); setMessage(""); setError(null); return; }
     if (voice.recording) { voice.cancel(); voice.setAutomatic(mode === "voice" && startedVoice && !paused); }
     sending.current = true; setBusy(true); setError(null); voice.interrupt(); report("thinking");
     try {
       await onPreferences(clean);
       pending.current = new AbortController();
-      const reply = await api<ChatReply>("/api/chat", "POST", { message: clean }, AbortSignal.any([pending.current.signal, AbortSignal.timeout(18000)]));
+      const reply = await chatReply(clean, undefined, AbortSignal.any([pending.current.signal, AbortSignal.timeout(18000)]));
       if (!live.current) return;
       setMessages(rows => [...rows, { id: crypto.randomUUID(), role: "user", text: clean }]);
       setMessage(""); report("idle"); await receiveReply(reply);
@@ -202,14 +209,14 @@ export function AryChat(props: Props) {
     <div className="conversation-scroll" tabIndex={0} aria-label={uiText(locale, "conversationScrollToPreviousMessages")}>
       <ol className="chat-messages" aria-label={uiText(locale, "conversation")} aria-live="polite" aria-relevant="additions">
         {!active && <li className="chat-message assistant"><span className="mini-avatar" aria-hidden="true"><Image src="/assets/ary/ary-presentar.webp" alt="" width={30} height={30} sizes="30px" /></span><div className="bubble"><strong>Ary</strong><p>{props.initialMessage || (uiText(locale, "helloHelloIMAryLetS"))}</p><p className="muted">{uiText(locale, "noEmailNoAccountJustCuriosity")}</p></div></li>}
-        {mode === "chat" && !!props.savedItems?.length && <li className="chat-message assistant"><div className="bubble"><p>{uiText(locale, "yourSavedPlacesCameAlong")}</p><SourceCarousel sources={props.savedItems.filter(({ item }) => item.sourceUrl).map(({ item }) => ({ id: item.id, title: item.title, summary: item.summary, url: item.sourceUrl!, editor: item.editor, image: item.image, mapsUrl: item.mapsUrl }))} locale={locale} kiosk={!!props.onHandoff} blocked={blocked} savedIds={savedIds} onSave={() => {}} onLocation={source => void ask(en ? `Where is ${source.title}?` : `¿Dónde queda ${source.title}?`)} /></div></li>}
+        {mode === "chat" && !!props.savedItems?.length && <li className="chat-message assistant"><div className="bubble"><p>{uiText(locale, "yourSavedPlacesCameAlong")}</p><SourceCarousel sources={props.savedItems.filter(({ item }) => item.sourceUrl).map(({ item }) => ({ id: item.id, title: item.title, summary: item.summary, url: item.sourceUrl!, editor: item.editor, image: item.image, mapsUrl: item.mapsUrl }))} locale={locale} kiosk={!!props.kiosk} blocked={blocked} savedIds={savedIds} onSave={() => {}} onLocation={source => void ask(en ? `Where is ${source.title}?` : `¿Dónde queda ${source.title}?`)} /></div></li>}
         {visibleMessages.map(row => <li key={row.id} className={`chat-message ${row.role}`}>
           {row.role === "assistant" && <span className="mini-avatar" aria-hidden="true"><Image src="/assets/ary/ary-presentar.webp" alt="" width={30} height={30} sizes="30px" /></span>}
           <div className="bubble"><strong>{row.role === "user" ? uiText(locale, "you") : "Ary"}</strong><p>{row.text}</p>
             {row.reply?.intent === "general" && row.reply.mode === "gemini" && <p className="reply-mode">{en ? "General AI answer" : "Respuesta general de IA"}</p>}
             {row.reply?.intent === "directions" && row.reply.destination && !row.reply.sources.length && !props.onHandoff && <button className="secondary" disabled={blocked || savedPlaces.includes(row.reply.destination)} onClick={() => { const name = row.reply!.destination!; void api("/api/trip-places", "POST", { name }).then(() => setSavedPlaces(rows => [...rows, name])).catch(() => setError(uiText(locale, "iCouldnTSaveItPleaseTry"))); }}>{savedPlaces.includes(row.reply.destination) ? uiText(locale, "saved") : en ? "Save to My culture" : "Guardar en Mi cultura"}</button>}
-            {row.reply?.intent === "culture" && <p className="reply-mode">{row.reply.mode === "gemini" ? uiText(locale, "aiOnlineGemini") : uiText(locale, "exampleResponses")}</p>}
-            {!!row.reply?.sources.length && <SourceCarousel first={row.id === lastReply?.messageId} sources={row.reply.sources} locale={locale} kiosk={!!props.onHandoff} directions={row.reply.intent === "directions"} blocked={blocked} savedIds={savedIds} onSave={id => { void onSave(id).catch(() => setError(uiText(locale, "iCouldnTSaveItPleaseTry"))); }} onLocation={source => void ask(en ? `Where is ${source.title}?` : `¿Dónde queda ${source.title}?`)} />}
+            {row.reply?.intent === "culture" && <p className="reply-mode">{row.reply.mode === "gemini" ? uiText(locale, "aiOnlineGemini") : (props.localOnly ? "Ficha del catálogo local" : uiText(locale, "exampleResponses"))}</p>}
+            {!!row.reply?.sources.length && <SourceCarousel first={row.id === lastReply?.messageId} sources={row.reply.sources} locale={locale} kiosk={!!props.kiosk} directions={row.reply.intent === "directions"} blocked={blocked || !!props.localOnly} savedIds={savedIds} onSave={id => { void onSave(id).catch(() => setError(uiText(locale, "iCouldnTSaveItPleaseTry"))); }} onLocation={source => void ask(en ? `Where is ${source.title}?` : `¿Dónde queda ${source.title}?`)} />}
           </div>
         </li>)}
         {active && !loading && <li className="chat-quick-replies">{!languageChosen ? <><button className="secondary" disabled={blocked} onClick={() => void chooseLanguage("es")} lang="es">Español</button><button className="secondary" disabled={blocked} onClick={() => void chooseLanguage("en")} lang="en">English</button></> : <>{(lastReply?.followUps.length ? lastReply.followUps : en ? ["Music", "Food", "Beaches", "History"] : ["Música", "Comida", "Playas", "Historia"]).slice(0, 4).map(text => <button className="secondary" key={text} disabled={mode === "voice" ? textBlocked : blocked} onClick={() => void ask(text)}>{text}</button>)}</>}</li>}
@@ -253,6 +260,6 @@ export function AryChat(props: Props) {
       {props.endControls}
     </div>
     <audio ref={node => { voice.bindAudio(node); }} onPlay={() => voice.activity("speaking")} onEnded={() => voice.ended()} onPause={() => { if (!voice.recording && !voice.processing) voice.activity("idle"); }} onError={voice.playbackFailed} />
-    {consent && <MicrophoneConsent en={en} automatic={mode === "voice"} accept={() => { setConsent(false); setMicAccepted(true); if (mode === "voice") void beginVoice(); else void voice.startRecording(); }} close={() => { flushSync(() => { setConsent(false); changeMode("chat"); }); input.current?.focus(); }} />}
+    {consent && <MicrophoneConsent en={en} kiosk={props.kiosk} localOnly={props.localOnly} automatic={mode === "voice"} accept={() => { setConsent(false); setMicAccepted(true); if (mode === "voice") void beginVoice(); else void voice.startRecording(); }} close={() => { flushSync(() => { setConsent(false); changeMode("chat"); }); input.current?.focus(); }} />}
   </section>;
 }

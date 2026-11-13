@@ -3,9 +3,10 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import type { ChatReply } from "../server/ai/chat";
 import type { ChatActivity } from "./ary-chat";
 import { ApiError } from "./api";
+import { localAudioReply, speechAudio } from "./local-voice";
 import { nextTurn, readingDelay, sampleTurn, type SilenceWindow, type TurnState } from "./voice-turns";
 
-export function useAryVoice({ enabled, onReply, onActivity }: { enabled: boolean; onReply: (reply: ChatReply) => Promise<void>; onActivity: (activity: ChatActivity) => void }) {
+export function useAryVoice({ enabled, kiosk = false, onReply, onActivity }: { enabled: boolean; kiosk?: boolean; onReply: (reply: ChatReply) => Promise<void>; onActivity: (activity: ChatActivity) => void }) {
   const audio = useRef<HTMLAudioElement | null>(null);
   const bindAudio = useCallback((element: HTMLAudioElement | null) => { audio.current = element; }, []);
   const recorder = useRef<MediaRecorder | null>(null), stream = useRef<MediaStream | null>(null);
@@ -55,13 +56,11 @@ export function useAryVoice({ enabled, onReply, onActivity }: { enabled: boolean
     releaseMic();
     interrupt(); setNotice(null);
     lastText.current = reply.displayText;
-    if (!allowed.current || !navigator.onLine) return;
+    if (!allowed.current) return;
     if (silent.current) { ended(readingDelay(reply.displayText)); return; }
     const current = version.current, controller = new AbortController(); request.current = controller;
     try {
-      const response = await fetch("/api/voice/speak", { method: "POST", credentials: "same-origin", headers: { "Content-Type": "application/json", "X-Ary-Request": "1" }, body: JSON.stringify({ messageId: reply.messageId }), signal: AbortSignal.any([controller.signal, AbortSignal.timeout(12000)]) });
-      if (!response.ok) throw new ApiError("voice_unavailable");
-      const blob = await response.blob();
+      const blob = await speechAudio(reply, kiosk, controller.signal);
       if (!alive.current || current !== version.current || silent.current || !allowed.current) return;
       audioUrl.current = URL.createObjectURL(blob); audio.current?.setAttribute("src", audioUrl.current);
       await audio.current!.play();
@@ -110,9 +109,17 @@ export function useAryVoice({ enabled, onReply, onActivity }: { enabled: boolean
         const controller = new AbortController(); request.current = controller;
         void (async () => {
           try {
-            const response = await fetch("/api/voice/ask", { method: "POST", credentials: "same-origin", headers: { "Content-Type": mimeType, "X-Ary-Request": "1", "X-Ary-Audio-Duration": String(duration) }, body: new Blob(chunks, { type: mimeType }), signal: AbortSignal.any([controller.signal, AbortSignal.timeout(18000)]) });
-            const reply = await response.json();
-            if (!response.ok) throw new ApiError(reply.error);
+            const blob = new Blob(chunks, { type: mimeType });
+            let reply: ChatReply;
+            try {
+              if (!navigator.onLine) throw new Error("offline");
+              const response = await fetch("/api/voice/ask", { method: "POST", credentials: "same-origin", headers: { "Content-Type": mimeType, "X-Ary-Request": "1", "X-Ary-Audio-Duration": String(duration) }, body: blob, signal: AbortSignal.any([controller.signal, AbortSignal.timeout(18000)]) });
+              reply = await response.json();
+              if (!response.ok) throw new ApiError("voice_unavailable");
+            } catch (error) {
+              if (!kiosk || controller.signal.aborted) throw error;
+              reply = await localAudioReply(blob, controller.signal);
+            }
             if (alive.current && current === version.current && allowed.current) { setProcessing(false); callbacks.current.onActivity("idle"); await callbacks.current.onReply(reply); }
           } catch { if (alive.current && current === version.current && !controller.signal.aborted) { setNotice("ask"); callbacks.current.onActivity("error"); } }
           finally { if (alive.current && current === version.current) setProcessing(false); }

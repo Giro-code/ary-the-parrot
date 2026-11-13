@@ -1,0 +1,48 @@
+Captura real SSH, 2026-11-13. Se retir? el envoltorio NativeCommandError de PowerShell al reenviar stderr de unittest.
+
+Stopped owned temporary voice process
+.........................
+----------------------------------------------------------------------
+Ran 25 tests in 4.023s
+
+OK
+Simulador. Escribe presence 1 o presence 0 y Enter.
+Ary bridge listening on 127.0.0.1:8765
+Simulador · STATE thinking
+curl POST /command: 0 {"accepted": true}
+Ary voice listening on 127.0.0.1:8766
+GET /health {"mode": "online", "checkedAt": 1794594477, "piper": true, "vosk": true, "catalogItems": 317}
+POST /reply {"messageId": "48865259-7447-48fb-942b-fc143ed837d4", "detectedLanguage": "es", "displayText": "El merengue re\u00fane m\u00fasica y baile de origen dominicano.", "spokenText": "El merengue re\u00fane m\u00fasica y baile de origen dominicano.", "answer": "El merengue re\u00fane m\u00fasica y baile de origen dominicano.", "intent": "culture", "citedItemIds": ["283c6be3-c4eb-47ad-80cf-df1fd9d019d9"], "followUps": ["Merengue", "Mang\u00fa", "Bachata"], "confidence": 1, "mode": "demo", "sources": [{"id": "283c6be3-c4eb-47ad-80cf-df1fd9d019d9", "title": "Merengue", "summary": "El merengue re\u00fane m\u00fasica y baile de origen dominicano.", "url": "https://en.wikipedia.org/wiki/Merengue_music", "editor": "Wikipedia \u00b7 English article"}], "handoff": false}
+POST /speak WAV bytes: 75308
+POST /cache {"cached": true}
+POST /speak repeated: X-Ary-Voice: cache (synthetic Piper fixture, not Gemini)
+Temporary voice process stopped; no systemd unit enabled.
+{"phrase": "Hola, soy Ary, la cotorra. Vamos a descubrir la música y la comida de República Dominicana.", "source": "piper", "synthesisSeconds": 4.5192890529997385, "audioSeconds": 7.6741950113378685, "sampleRate": 22050, "realTimeFactor": 0.5888942157871846, "transcription": "hola soy gary la toba vamos a descubrir la música y la comida de república dominicana", "sttSeconds": 3.8912052510004287}
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/mmcblk0p2  6.8G  4.2G  2.3G  66% /
+366M	/home/ari/ary
+600
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/mmcblk0p2  6.8G  4.2G  2.3G  66% /
+State Recv-Q Send-Q Local Address:Port Peer Address:Port
+State Recv-Q Send-Q Local Address:Port Peer Address:Port
+certifi==2026.10.23
+cffi==2.1.1
+charset-normalizer==3.5.2
+flatbuffers==25.12.19
+idna==3.20
+numpy==2.5.4
+onnxruntime==1.32.0
+packaging==26.3
+pathvalidate==3.3.1
+pip==25.1.1
+piper-tts==1.8.0
+protobuf==7.36.2
+pycparser==3.12
+pyserial==3.5
+requests==2.34.2
+srt==3.5.3
+tqdm==4.70.1
+urllib3==2.8.0
+vosk==0.3.45
+websockets==17.4

@@ -1,0 +1,37 @@
+﻿UTC 2026-11-13T16:29:53Z
+Linux 6.18.50+rpt-rpi-v8 aarch64 GNU/Linux
+Python 3.13.5
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/mmcblk0p2  6.8G  3.9G  2.6G  60% /
+Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
+Bus 001 Device 002: ID 2109:3431 VIA Labs, Inc. Hub
+Bus 002 Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub
+
+Serial device names (not opened):
+
+Playback/capture inventory:
+**** List of PLAYBACK Hardware Devices ****
+card 0: Headphones [bcm2835 Headphones], device 0: bcm2835 Headphones [bcm2835 Headphones]
+  Subdevices: 8/8
+  Subdevice #0: subdevice #0
+  Subdevice #1: subdevice #1
+  Subdevice #2: subdevice #2
+  Subdevice #3: subdevice #3
+  Subdevice #4: subdevice #4
+  Subdevice #5: subdevice #5
+  Subdevice #6: subdevice #6
+  Subdevice #7: subdevice #7
+card 1: vc4hdmi0 [vc4-hdmi-0], device 0: MAI PCM i2s-hifi-0 [MAI PCM i2s-hifi-0]
+  Subdevices: 1/1
+  Subdevice #0: subdevice #0
+card 2: vc4hdmi1 [vc4-hdmi-1], device 0: MAI PCM i2s-hifi-0 [MAI PCM i2s-hifi-0]
+  Subdevices: 1/1
+  Subdevice #0: subdevice #0
+**** List of CAPTURE Hardware Devices ****
+
+Network links (no addresses or identifiers):
+lo UNKNOWN
+eth0 UP
+wlan0 UP
+
+Default route present: yes

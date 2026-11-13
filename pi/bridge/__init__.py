@@ -83,10 +83,18 @@ class Simulator:
 
 class SerialHardware:
     """ACK-gated transport with a latched fault. No automatic command retries."""
-    def __init__(self, serial_port):
+    def __init__(self, serial_port, boot_wait=0.0):
         self.port, self.status = serial_port, "error"
         self.lock = threading.Lock()
         self.sensors = []
+        if boot_wait > 0:
+            # Opening the port resets an Uno: wait for the firmware banner ("ARI LISTO ...") before the handshake.
+            deadline = time.monotonic() + boot_wait
+            while time.monotonic() < deadline:
+                if self.port.readline(128).decode("ascii", errors="replace").strip().startswith("ARI LISTO"):
+                    break
+            if hasattr(self.port, "reset_input_buffer"):
+                self.port.reset_input_buffer()
         self._exchange("STATE idle")
         self.status = "ok"
 
@@ -124,6 +132,12 @@ class Controller:
         self.lock = threading.RLock()
         self.commands = deque()
         self.subscribers = set()
+        self.last_local = 0.0  # monotonic time of the last token-less (offline) state command
+
+    def local_active(self, now=None):
+        """True while an offline kiosk keeps sending state (it re-sends at least every 1.5 s)."""
+        now = time.monotonic() if now is None else now
+        return now - self.last_local < 4
 
     def snapshot(self):
         with self.lock:
@@ -175,8 +189,11 @@ class BridgeServer(ThreadingHTTPServer):
     daemon_threads = True
     allow_reuse_address = True
 
-    def __init__(self, verifier, controller):
+    def __init__(self, verifier, controller, allow_local_state=False):
         self.verifier, self.controller = verifier, controller
+        # Opt-in (--local-state): without internet the kiosk cannot obtain a signed token, so the exact
+        # allowed Origin may still send named *states* (never gestures or angles) on loopback.
+        self.allow_local_state = allow_local_state
         # Deliberately fixed. Never bind this service to a public/network interface.
         super().__init__(("127.0.0.1", 8765), BridgeHandler)
 
@@ -230,14 +247,22 @@ class BridgeHandler(BaseHTTPRequestHandler):
     def do_POST(self):
         self.connection.settimeout(3)
         try:
-            self.authorize()
+            local = not self.headers.get("Authorization") and getattr(self.server, "allow_local_state", False)
+            if local:
+                self.origin()
+            else:
+                self.authorize()
             if self.path != "/command":
                 raise BridgeError("not_found", 404)
             length = int(self.headers.get("Content-Length", "0"))
             if not 0 < length <= 1024 or self.headers.get("Transfer-Encoding"):
                 raise BridgeError("invalid_body")
             data = json.loads(self.rfile.read(length))
+            if local and not (isinstance(data, dict) and data.get("type") == "state"):
+                raise BridgeError("token_required", 401)
             self.server.controller.command(data)
+            if local:
+                self.server.controller.last_local = time.monotonic()
             self.respond(200, {"accepted": True})
         except BridgeError as error:
             self.respond(error.status, {"error": error.code})

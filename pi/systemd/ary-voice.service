@@ -1,0 +1,14 @@
+# Optional USER unit. Not installed or enabled by deployment scripts.
+[Unit]
+Description=Ary local voice (no hardware)
+
+[Service]
+WorkingDirectory=%h/ary/pi
+EnvironmentFile=%h/ary/ary.env
+ExecStart=%h/ary/venv/bin/python -m voice --origin ${APP_BASE_URL}
+Restart=no
+UMask=0077
+NoNewPrivileges=true
+
+[Install]
+WantedBy=default.target

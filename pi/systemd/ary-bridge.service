@@ -11,7 +11,7 @@ SupplementaryGroups=dialout
 WorkingDirectory=/opt/ary/pi
 EnvironmentFile=/etc/ary/bridge.env
 Environment=PYTHONUNBUFFERED=1
-ExecStart=/opt/ary/venv/bin/python -m bridge --simulate --queue /var/lib/ary/events.sqlite3
+ExecStart=/opt/ary/venv/bin/python -m bridge --simulate --local-state --queue /var/lib/ary/events.sqlite3
 # Serial faults require an operator to inspect and restart, preventing a movement retry loop.
 Restart=no
 UMask=0077

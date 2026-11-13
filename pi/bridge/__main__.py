@@ -13,6 +13,7 @@ def main():
     mode.add_argument("--serial", help="Explicit serial device, e.g. /dev/ttyACM0")
     parser.add_argument("--dev", action="store_true", help="Allow localhost origins for development")
     parser.add_argument("--queue", default="events.sqlite3")
+    parser.add_argument("--local-state", action="store_true", help="Accept token-less state commands from the allowed Origin (offline kiosk)")
     args = parser.parse_args()
     verifier = TokenVerifier(os.environ["ROBOT_BRIDGE_SECRET"], os.environ["APP_BASE_URL"], os.environ["ROBOT_DEVICE_ID"], args.dev)
     if args.simulate:
@@ -20,10 +21,10 @@ def main():
     else:
         import serial  # Optional pyserial, installed by the operator for real hardware.
         port = serial.Serial(args.serial, baudrate=115200, timeout=0.1, write_timeout=0.5)
-        # Arduino may reset when serial opens. Operator starts bridge after boot is complete.
-        hardware = SerialHardware(port)
+        # The Arduino resets when the port opens; wait up to 4 s for firmware ari_control to boot.
+        hardware = SerialHardware(port, boot_wait=4.0)
     controller = Controller(hardware)
-    server = BridgeServer(verifier, controller)
+    server = BridgeServer(verifier, controller, args.local_state)
     stopped = threading.Event()
     offline = OfflineQueue(args.queue)
     threads = []
@@ -31,7 +32,7 @@ def main():
     def heartbeat():
         while not stopped.wait(1):
             with controller.lock:
-                if hardware.status == "ok" and controller.subscribers:
+                if hardware.status == "ok" and (controller.subscribers or controller.local_active()):
                     try:
                         hardware.heartbeat()
                         for value in hardware.sensors:
