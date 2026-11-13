@@ -103,3 +103,15 @@ for (const pass of [1, 2]) test(`visual capture pass ${pass}: ES EN, 390 and 144
     await expect(page.locator(".catalog-record")).toHaveCount(1); await capture(page, `pass${pass}-staff-${locale}-${width}`);
   }
 });
+test("welcome keeps the form offline and finishes on its own when the connection returns", async ({ page }) => {
+  await page.goto("/experiencia?lang=es");
+  await page.getByLabel("Tu correo").fill(`offline-${randomUUID()}@example.test`);
+  await page.getByRole("checkbox").first().check();
+  await page.route("**/api/auth/start", route => route.abort("internetdisconnected"));
+  await page.getByRole("button", { name: "Empezar a hablar con Ary" }).click();
+  await expect(page.getByRole("button", { name: "Esperando conexión…" })).toBeVisible();
+  await expect(page.locator(".waiting-connection")).toContainText("seguiré solo");
+  await page.unroute("**/api/auth/start");
+  await page.evaluate(() => window.dispatchEvent(new Event("online")));
+  await expect(page.getByText("¡Todo listo para conversar!")).toBeVisible({ timeout: 15000 });
+});

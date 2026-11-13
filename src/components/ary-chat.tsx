@@ -51,6 +51,8 @@ export function AryChat(props: Props) {
   const welcomePlayed = useRef(false);
   const [mode, setMode] = useState<AryMode>("voice"), [startedVoice, setStartedVoice] = useState(false), [paused, setPaused] = useState(false);
   const [fallback, setFallback] = useState<string | null>(null);
+  // Offline: a question waits here and is sent when the connection returns; a failed load retries.
+  const [queued, setQueued] = useState<string | null>(null), [loadFailed, setLoadFailed] = useState(false), [reloadKey, setReloadKey] = useState(0);
   const startingVoice = useRef(false);
   const voiceStartEpoch = useRef(0);
   const lastReply = messages.findLast(row => row.reply)?.reply;
@@ -119,7 +121,7 @@ export function AryChat(props: Props) {
     voice.setAutomatic(true); setPaused(false);
     if (voice.recording) voice.stopRecording(); else void voice.startRecording();
   }
-  const textBlocked = busy || loading || disabled || !online || !!handoff || voice.processing;
+  const textBlocked = busy || loading || disabled || !!handoff || voice.processing;
   const blocked = textBlocked || voice.recording;
   useEffect(() => {
     if (active && mode === "chat" && !loading && !welcomePlayed.current && props.playWelcome !== false && lastReply) {
@@ -140,11 +142,18 @@ export function AryChat(props: Props) {
       if (!mounted) return;
       setMessages([{ id: reply.messageId, role: "assistant", text: reply.displayText, reply }]);
       if (!welcomePlayed.current && props.playWelcome !== false && (mode === "chat" || props.presenceGreeting)) { welcomePlayed.current = true; void voice.play(reply); }
-    }).catch(() => { if (mounted) setError(uiText(locale, "iCouldnTLoadOurChatYou")); }).finally(() => { if (mounted) setLoading(false); });
+    }).then(() => { if (mounted) { setLoadFailed(false); setError(null); } }).catch(() => { if (mounted) { setLoadFailed(true); setError(uiText(locale, "iCouldnTLoadOurChatYou")); } }).finally(() => { if (mounted) setLoading(false); });
     return () => { mounted = false; live.current = false; pending.current?.abort(); };
     // This effect belongs to one mounted session. Language changes are explicit conversation actions.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [active]);
+  }, [active, reloadKey]);
+  useEffect(() => {
+    if (!online || !active) return;
+    if (loadFailed) { const timer = setTimeout(() => { setLoading(true); setReloadKey(key => key + 1); }, 0); return () => clearTimeout(timer); }
+    if (queued && !sending.current && !busy) { const text = queued, timer = setTimeout(() => { setQueued(null); void ask(text); }, 0); return () => clearTimeout(timer); }
+    // ask reads current state; this only reacts to the connection returning.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [online, loadFailed, queued, busy, active]);
   useEffect(() => {
     const conversation = tail.current?.parentElement;
     conversation?.scrollTo({ top: conversation.scrollHeight, behavior: "instant" });
@@ -164,6 +173,7 @@ export function AryChat(props: Props) {
   }
   async function ask(text: string) {
     const clean = text.trim(); if (!clean || clean.length > 500 || sending.current || textBlocked || (mode === "chat" && voice.recording)) return;
+    if (!online || !navigator.onLine) { setQueued(clean); setMessage(""); setError(null); return; }
     if (voice.recording) { voice.cancel(); voice.setAutomatic(mode === "voice" && startedVoice && !paused); }
     sending.current = true; setBusy(true); setError(null); voice.interrupt(); report("thinking");
     try {
@@ -175,6 +185,7 @@ export function AryChat(props: Props) {
       setMessage(""); report("idle"); await receiveReply(reply);
     } catch (error) {
       if (!live.current) return;
+      if ((!(error instanceof ApiError) && !(error instanceof DOMException && error.name === "TimeoutError")) || !navigator.onLine) { setQueued(clean); setMessage(""); setError(null); report("idle"); return; }
       setError(error instanceof ApiError && error.code === "email_verification_required" ? (en ? "You have used your 5 questions. Verify your email to continue. Open My conversations for help." : "Ya usaste tus 5 preguntas. Verifica tu correo para continuar. Abre Mis conversaciones para recibir ayuda.") : error instanceof ApiError && error.code === "rate_limited" ? uiText(locale, "messageLimitReachedWaitAMinuteUp") : error instanceof ApiError && error.code === "session_required" ? uiText(locale, "yourSessionExpiredStartAgain") : uiText(locale, "aryCouldNotReplyTryYourQuestion"));
       report("error");
     } finally { sending.current = false; if (live.current) setBusy(false); }
@@ -208,6 +219,7 @@ export function AryChat(props: Props) {
       {(busy || loading || voice.processing) && <p className="chat-wait" role="status">{loading ? uiText(locale, "openingOurChat") : uiText(locale, "aryIsThinking")}</p>}
       {error && <p className="notice error" role="alert">{error}</p>}
       {fallback && <p className="voice-notice" role="status">{fallback}</p>}
+      {queued && <p className="voice-notice queued-question" role="status">{en ? `No connection. I'll send “${queued}” as soon as the internet is back.` : `Sin conexión. Enviaré «${queued}» en cuanto vuelva internet.`}</p>}
       {voiceNotice && <p className="voice-notice" role="status">{voiceNotice} <button className="text-button" onClick={() => { flushSync(() => changeMode("chat")); input.current?.focus(); }}>{uiText(locale, "useKeyboard")}</button></p>}
       <div ref={tail} />
     </div>

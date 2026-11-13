@@ -58,3 +58,19 @@
   .voice-dock { gap: 24px; padding-top: 6px; }
   .voice-first .voice-main-label { margin: 2px 0 0; }
 }
+
+/* Ary's own colours: red crown, purple wings, green body. Darkened for white-icon contrast. */
+.ary-app { --ary-red: #b8383a; --ary-purple: #6e2f80; --ary-green: #4f7a2a; --ary-gradient: linear-gradient(135deg, var(--ary-red) 0%, var(--ary-purple) 48%, var(--ary-green) 100%); }
+.ary-app .voice-main-mic, .ary-app .voice-dock .voice-main-mic { background: var(--ary-gradient); border-color: transparent; box-shadow: 0 4px 14px #6e2f8040; }
+.ary-app .voice-main-mic:hover:not(:disabled) { filter: brightness(1.08); }
+.ary-app .voice-main-mic.is-recording, .ary-app .voice-dock .voice-main-mic.is-recording { background: linear-gradient(135deg, #c8403a 0%, var(--ary-red) 55%, var(--ary-purple) 100%); box-shadow: 0 0 0 4px #b8383a33, 0 4px 14px #b8383a40; }
+.ary-app .voice-side-button { color: var(--ary-purple); border-color: #6e2f8040; }
+.ary-app .voice-side-button:hover { background: #6e2f8012; }
+.ary-app .voice-side-button[aria-pressed="true"] { background: var(--ary-purple); color: var(--white); border-color: var(--ary-purple); }
+.ary-app .compact-composer .microphone { background: var(--ary-gradient); color: var(--white); border-color: transparent; }
+.ary-app .compact-composer .microphone.is-recording { background: linear-gradient(135deg, #c8403a, var(--ary-red) 55%, var(--ary-purple)); }
+.voice-first .voice-meter span { background: var(--ary-gradient); }
+.ary-app .voice-side-button:hover:not(:disabled) { background: #6e2f8014; color: var(--ary-purple); }
+.ary-app .voice-side-button[aria-pressed="true"]:hover:not(:disabled) { background: var(--ary-purple); color: var(--white); }
+.ary-app .voice-main-mic:hover:not(:disabled), .ary-app .compact-composer .microphone:hover:not(:disabled) { background: var(--ary-gradient); }
+.ary-app .voice-main-mic.is-recording:hover:not(:disabled) { background: linear-gradient(135deg, #c8403a 0%, var(--ary-red) 55%, var(--ary-purple) 100%); }

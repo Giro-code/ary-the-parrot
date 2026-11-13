@@ -85,14 +85,14 @@ test("English chat saves to My culture and welcome errors recover with page scro
   await page.locator("#welcome-email").fill(`${randomUUID()}@example.invalid`);
   await page.getByRole("checkbox").first().check();
   await page.getByRole("button", { name: "Start talking to Ary", exact: true }).click();
-  await expect(page.getByRole("alert").filter({ hasText: "Check your connection" })).toBeVisible();
+  await expect(page.getByRole("status").filter({ hasText: "continue on my own" })).toBeVisible();
   await page.setViewportSize({ width: 1280, height: 480 });
   await capture(page, "welcome-error-en-short-desktop");
   await page.locator(".account-form button").scrollIntoViewIfNeeded();
   expect(await page.evaluate(() => window.scrollY)).toBeGreaterThan(0);
   await page.unroute("**/api/auth/start");
-  await page.getByRole("button", { name: "Start talking to Ary", exact: true }).click();
-  await expect(page.locator(".voice-chat")).toBeVisible();
+  // No click: the form retries on its own once the service answers.
+  await expect(page.locator(".voice-chat")).toBeVisible({ timeout: 20000 });
   await askText(page, "Tell me about merengue");
   await page.getByRole("button", { name: "Save to My culture", exact: true }).first().click();
   await page.getByRole("link", { name: "My culture", exact: true }).click();
