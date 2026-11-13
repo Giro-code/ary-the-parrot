@@ -6,7 +6,10 @@ pasa por memoria hacia Vosk y el texto reconocido se descarta tras responder.
 import json
 import subprocess
 import threading
+from collections import deque
 
+# Saludo de Ary (version en espanol de "No plans? I'll guide ya!"), igual que en la web.
+GREETING = "¿Sin planes? ¡Yo te guío! Soy Ary, la cotorra de República Dominicana. ¿Qué quieres descubrir?"
 MIN_WORDS = 2            # ignora ruidos de una sola palabra ("eh", "ah")
 SAMPLE_RATE = 16000
 CHUNK_BYTES = 4000       # 125 ms de audio PCM16 mono a 16 kHz
@@ -76,14 +79,46 @@ def aplay_player(device=None):
     return play
 
 
+def bluetooth_reconnect(mac, runner=subprocess.run):
+    """Pide a BlueZ reconectar el parlante (ya emparejado y de confianza). No lanza errores."""
+    def reconnect():
+        try:
+            runner(["bluetoothctl", "connect", mac], capture_output=True, timeout=10)
+        except (OSError, subprocess.SubprocessError):
+            pass
+    return reconnect
+
+
+def resilient_player(players, reconnect=None, log=print):
+    """Prueba cada salida en orden (p. ej. parlante Bluetooth y luego el jack). Si el Bluetooth falla, intenta
+    reconectarlo una vez antes de pasar a la siguiente. Nunca lanza: si todo falla, Ari sigue sin sonido."""
+    def play(wav):
+        for index, (name, player) in enumerate(players):
+            for attempt in (0, 1):
+                try:
+                    player(wav)
+                    return name
+                except (OSError, subprocess.SubprocessError) as error:
+                    if attempt == 0 and index == 0 and reconnect:
+                        log("audio · %s falló (%s); reconectando" % (name, type(error).__name__))
+                        reconnect()
+                        continue
+                    log("audio · %s no disponible" % name)
+                    break
+        log("audio · ninguna salida funcionó; sigo sin sonido")
+        return None
+    return play
+
+
 class Conversation:
-    """Un turno: texto oído → respuesta local → voz (caché de Gemini o Piper) mientras se mueve."""
-    def __init__(self, voice, robot, play, log=print, verbose=False):
+    """Un turno: con internet, la web (Gemini entiende el audio, responde y habla con la voz Sulafat);
+    sin internet o si la web falla, Vosk + fichas locales + caché/Piper. Siempre se mueve mientras habla."""
+    def __init__(self, voice, robot, play, log=print, verbose=False, cloud=None):
         self.voice, self.robot, self.play, self.log, self.verbose = voice, robot, play, log, verbose
+        self.cloud = cloud
         self.speaking = threading.Event()
 
-    def say(self, text):
-        wav, source = self.voice.speak(text)
+    def _play(self, wav):
         self.speaking.set()
         self.robot.set_state("speaking")
         try:
@@ -91,13 +126,47 @@ class Conversation:
         finally:
             self.robot.set_state("idle")
             self.speaking.clear()
+
+    def say(self, text):
+        wav, source = self.voice.speak(text)
+        self._play(wav)
         return source
 
-    def handle(self, heard):
+    def _cloud_reply(self, reply):
+        """Reproduce la respuesta de la web con la voz de Gemini y la guarda para usarla también sin internet."""
+        wav = self.cloud.speak(reply["messageId"])
+        try:
+            self.voice.cache(reply["spokenText"], wav)
+        except (ValueError, OSError):
+            pass
+        self._play(wav)
+
+    def greet(self, fallback_text):
+        if self.cloud and self.cloud.available():
+            try:
+                self._cloud_reply(self.cloud.welcome())
+                return "gemini"
+            except Exception as error:  # noqa: BLE001 - cualquier fallo de la web cae al modo local
+                self.log("web · %s; saludo local" % getattr(error, "code", type(error).__name__))
+        return self.say(fallback_text)
+
+    def handle(self, heard, pcm=None):
         heard = " ".join((heard or "").split())
         if len(heard.split()) < MIN_WORDS:
             return None
         self.robot.set_state("thinking")
+        if self.cloud and self.cloud.available():
+            try:
+                reply = self.cloud.ask_audio(pcm) if pcm else self.cloud.ask_text(heard)
+                if self.verbose:
+                    self.log("oído (Gemini): " + str(reply.get("transcript") or heard))
+                    self.log("Ari: " + reply["spokenText"])
+                self._cloud_reply(reply)
+                self.log("turno · intención=%s voz=gemini" % reply.get("intent"))
+                return reply
+            except Exception as error:  # noqa: BLE001
+                self.log("web · %s; respondo en local" % getattr(error, "code", type(error).__name__))
+                self.robot.set_state("thinking")
         try:
             reply = self.voice.reply(heard)
         except ValueError:
@@ -115,6 +184,8 @@ def listen_forever(conversation, recognizer_factory, microphone, stopped, log=pr
     """Bucle del micrófono. Mientras Ari habla se descarta lo que entra para que no se escuche a sí mismo."""
     recognizer = recognizer_factory()
     hearing = False
+    preroll = deque(maxlen=4)          # ~0,5 s antes de que Vosk note la voz
+    utterance = []                     # audio de la frase en curso (para Gemini)
     while not stopped.is_set():
         chunk = microphone.read(CHUNK_BYTES)
         if not chunk:
@@ -123,21 +194,31 @@ def listen_forever(conversation, recognizer_factory, microphone, stopped, log=pr
         if conversation.speaking.is_set():
             recognizer = recognizer_factory()
             hearing = False
+            preroll.clear(); utterance = []
             continue
+        if hearing:
+            utterance.append(chunk)
         if recognizer.AcceptWaveform(chunk):
             text = json.loads(recognizer.Result()).get("text", "")
+            pcm = b"".join(list(preroll) + utterance + ([] if hearing else [chunk]))[-15 * SAMPLE_RATE * 2:]
             hearing = False
+            preroll.clear(); utterance = []
             if text:
-                conversation.handle(text)
+                conversation.handle(text, pcm)
                 recognizer = recognizer_factory()  # descarta el audio captado durante la respuesta
+            continue
         else:
             partial = json.loads(recognizer.PartialResult()).get("partial", "")
             if partial and not hearing:
                 hearing = True
+                utterance = [chunk]
                 conversation.robot.set_state("listening")
             elif not partial and hearing:
                 hearing = False
+                utterance = []
                 conversation.robot.set_state("idle")
+            if not hearing:
+                preroll.append(chunk)
 
 
 def arecord(device=None):

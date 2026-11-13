@@ -190,3 +190,12 @@ cd ~/ary/pi
 - Servicio: `systemd/ary-headless.service` (no habilitado). Requiere micrófono USB.
 - Pendiente: modo con internet (Gemini a través de Vercel) con identidad de dispositivo; hoy responde siempre con las fichas locales.
 - Probado en la Pi el 2026-11-13 con `--text` y `--wav` (≈10 s incluyendo la carga de Piper la primera vez; en modo continuo el modelo queda cargado). Micrófono y movimiento sin probar: falta micrófono y el Arduino estaba desconectado.
+
+## Ari con IA (Gemini a través de la web) y audio Bluetooth
+
+- La Pi conversa con arytheparrot.app como un **kiosco autorizado** (misma ruta que la pantalla del kiosco): envía el audio de la frase a `/api/voice/ask` (Gemini entiende, responde con las fichas) y reproduce `/api/voice/speak` (voz Sulafat). La clave de Gemini nunca está en la Pi; solo la credencial de kiosco en `~/ary/kiosk-device.json` (0600, 30 días).
+- Activación sin correo, desde el PC del propietario: `.\scripts\activate-pi.ps1` (crea el kiosco "Ari Raspberry" en producción y copia la credencial por SSH). Alternativa: `python -m headless --activate CODIGO` con un código de `/admin/dispositivos`.
+- Si la web falla o no hay internet: respuesta local (Vosk + fichas + caché/Piper) y no se reintenta la web durante 1 min. Cada audio de Gemini se guarda en la caché local y luego suena igual sin internet.
+- Tras 3 min sin hablar se cierra la sesión y el siguiente visitante empieza de cero.
+- **Bluetooth**: instalar una vez `sudo apt-get install -y bluez-alsa-utils && sudo usermod -aG bluetooth ari`, emparejar y marcar de confianza el parlante (`bluetoothctl`), y arrancar con `--bluetooth AA:BB:CC:DD:EE:FF`. Si el parlante se apaga o desconecta, Ari intenta reconectarlo una vez y si no, habla por el jack; nunca se detiene la conversación. El Bluetooth añade ~0,2–0,3 s de retraso entre el movimiento y el sonido.
+- Si el Arduino deja de responder o repite respuestas viejas, desconectar y reconectar su USB (mejor en un puerto negro USB 2.0): el chip CP2102 de la placa puede quedarse con datos atascados.

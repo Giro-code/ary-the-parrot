@@ -1,7 +1,7 @@
 // Public catalog export and server-side pre-generation. Dry-run is the default.
 // Never loads .env files or Vercel credentials; execute mode requires server env.
 import { createHash } from "node:crypto";
-import { mkdir, readFile, writeFile } from "node:fs/promises";
+import { mkdir, readFile, stat, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
 import { validateCatalog } from "../data/catalog/validate.mjs";
 import { type CatalogCandidate } from "../src/db/catalog-import.ts";
@@ -17,7 +17,8 @@ const catalog = candidates.map(item => {
   const source = item.sources.find(source => source.httpStatus === 200 && source.checkedAt && source.url.startsWith("https://"))!;
   return { id, title: item.title.es, summary: item.summary.es.slice(0, 600), aliases: [...item.aliases.es, ...item.tags], url: source.url, editor: source.editor };
 });
-const texts = ["¡Hola, hola! Soy Ary, la cotorra de República Dominicana. ¿Hablamos en español o en inglés?", "¡Hola, hola! Soy Ary, la cotorra de República Dominicana. Sin internet podemos descubrir música, comida e historia en mis fichas locales.", "¿Qué te gustaría descubrir? Música, comida, playas, historia… ¡Tú eliges!", ...catalog.map(item => item.summary)];
+// Saludos: el de la web y el de Ari sin pantalla (pi/headless GREETING) deben coincidir letra por letra con estos.
+const texts = ["¿Sin planes? ¡Yo te guío! Soy Ary, la cotorra de República Dominicana. ¿Hablamos en español o en inglés?", "¿Sin planes? ¡Yo te guío! Soy Ary, la cotorra de República Dominicana. ¿Qué quieres descubrir?", "¡Hola, hola! Soy Ary, la cotorra de República Dominicana. Sin internet podemos descubrir música, comida e historia en mis fichas locales.", "¿Qué te gustaría descubrir? Música, comida, playas, historia… ¡Tú eliges!", ...catalog.map(item => item.summary)];
 console.log(JSON.stringify({ mode: execute ? "execute" : exportOnly ? "export-public-only" : "dry-run", catalogItems: catalog.length, phrases: texts.length, output, providerCalls: execute ? texts.length : 0 }));
 if (execute || exportOnly) {
   await mkdir(output, { recursive: true });
@@ -28,8 +29,16 @@ if (execute) {
   if (!process.env.GEMINI_API_KEY) throw new Error("server_key_required");
   const { synthesize } = await import("../src/server/ai/voice.ts");
   const cache = resolve(output, "voice-cache"); await mkdir(cache, { recursive: true });
-  for (const text of [...new Set(texts)]) {
+  const unique = [...new Set(texts)];
+  let done = 0, skipped = 0;
+  for (const text of unique) {
     const key = createHash("sha256").update(text.trim().split(/\s+/u).join(" ")).digest("hex");
-    await writeFile(resolve(cache, `${key}.wav`), (await synthesize(text)).wav, { mode: 0o600 });
+    const file = resolve(cache, `${key}.wav`);
+    // Reanudable: si se corta (límite de la API), al repetir no se vuelve a pagar lo ya generado.
+    if (await stat(file).then(info => info.size > 44, () => false)) { skipped++; continue; }
+    await writeFile(file, (await synthesize(text)).wav, { mode: 0o600 });
+    done++;
+    if (done % 10 === 0) console.log(`generados ${done} · ya existían ${skipped} · total ${unique.length}`);
   }
+  console.log(`listo: generados ${done}, ya existían ${skipped}, total ${unique.length}`);
 }

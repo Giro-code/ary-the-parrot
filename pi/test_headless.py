@@ -114,5 +114,28 @@ class HeadlessTests(unittest.TestCase):
         self.assertEqual(robot.state, "idle")
 
 
+class ResilientAudioTests(unittest.TestCase):
+    def test_bluetooth_failure_reconnects_then_falls_back_to_jack(self):
+        import subprocess
+        from headless import resilient_player
+        calls, reconnects = [], []
+        def bluetooth(wav):
+            calls.append("bt")
+            raise subprocess.CalledProcessError(1, "aplay")
+        def jack(wav):
+            calls.append("jack")
+        play = resilient_player([("bluetooth", bluetooth), ("jack", jack)], lambda: reconnects.append(1), log=lambda *_: None)
+        self.assertEqual(play(b"RIFF"), "jack")
+        self.assertEqual(calls, ["bt", "bt", "jack"])
+        self.assertEqual(reconnects, [1])
+
+    def test_all_outputs_failing_never_raises(self):
+        from headless import resilient_player
+        def broken(wav):
+            raise OSError("sin audio")
+        play = resilient_player([("bluetooth", broken), ("jack", broken)], log=lambda *_: None)
+        self.assertIsNone(play(b"RIFF"))
+
+
 if __name__ == "__main__":
     unittest.main()

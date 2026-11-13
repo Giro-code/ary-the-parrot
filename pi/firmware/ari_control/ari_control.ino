@@ -13,14 +13,16 @@
 //   - En reposo, tras 1 s quieto, se sueltan los servos (sin par ni consumo).
 //
 // Protocolo: 115200 baudios, una orden por linea (\n). Respuesta "ACK <orden>" o "ERR <orden>".
-//   Espanol:  PARAR | REPOSO | ALETEAR [ms] | SALUDAR | PICO [ms] (solo pico) | HABLAR [ms] (pico + alas suaves + senal ocasional) | SENAL (un ala rapida) | ESCUCHAR | PENSAR | SENALAR | ESTADO | PING
+//   Espanol:  PARAR | REPOSO | ALETEAR [ms] | SALUDAR | PICO [ms] (solo pico) | HABLAR [ms] (pico + alas suaves + senal ocasional) | SENAL (un ala rapida) | ESCUCHAR | PENSAR | SENALAR | ALAS [min max] | ESTADO | PING
 //   Puente:   PING | STATE <idle|offline|welcome|listening|thinking|speaking|handoff_qr|error|maintenance>
 //             GESTURE <rest|wave|attentive|ponder|talk|point|stop>
 
 #include <Servo.h>
 
 const byte PIN_ALA_DER = 9, PIN_ALA_IZQ = 10, PIN_PICO = 11;
-const int LO = 30, HI = 60;
+const int LO = 30, HI = 60;     // pico (rango probado)
+// Alas: rango ajustable en caliente con ALAS <min> <max> (0..90 por el espejo 90 - x del ala izquierda).
+int aLo = 30, aHi = 60;
 const unsigned long PASO_MS = 15, WATCHDOG_MS = 3000, SOLTAR_MS = 1000;
 const unsigned long DUR_DEF = 3000, DUR_MAX = 15000;
 
@@ -83,17 +85,17 @@ void parar() {
 void irReposo() {
   alaOsc = picOsc = false;
   senalAuto = senalFija = false;   // una senal en curso termina y el ala vuelve sola
-  alaObj = LO; picObj = LO;
+  alaObj = aLo; picObj = LO;
   hasta = 0; continuo = false; reposo = true;
   quietoDesde = 0;
   modo = "reposo";
-  if (!sujetos && ala == LO && pic == LO && der == LO) return; // ya esta en reposo y suelto: no tocar
+  if (!sujetos && ala == aLo && pic == LO && der == aLo) return; // ya esta en reposo y suelto: no tocar
   sujetar();
 }
 
 void mover(const char *nombre, bool aOsc, int aObj, bool pOsc, int pObj, unsigned long dur, bool esContinuo) {
   alaOsc = aOsc; alaObj = aObj;
-  alaTope = HI; alaCada = 1;
+  alaTope = aHi; alaCada = 1;
   senalAuto = senalFija = false;
   picOsc = pOsc; picObj = pObj;
   hasta = dur ? millis() + dur : 0;
@@ -103,16 +105,16 @@ void mover(const char *nombre, bool aOsc, int aObj, bool pOsc, int pObj, unsigne
   sujetar();
 }
 
-// Hablar: el pico abre y cierra en todo su rango y las alas aletean suave (30..45, a un tercio de velocidad).
+// Hablar: el pico abre y cierra en todo su rango y las alas aletean 30..60 a media velocidad.
 void hablar(unsigned long dur, bool esContinuo) {
-  mover("hablar", true, LO, true, LO, dur, esContinuo);
-  alaTope = 45; alaCada = 3;
+  mover("hablar", true, aLo, true, LO, dur, esContinuo);
+  alaTope = aHi; alaCada = 2;   // rango completo de las alas a media velocidad
   senalAuto = true;
   proximaSenal = millis() + random(2500, 5000);
 }
 
 void senalar(bool fija, unsigned long dur, bool esContinuo) {
-  mover("senalar", false, LO, false, LO, dur, esContinuo);
+  mover("senalar", false, aLo, false, LO, dur, esContinuo);
   senalFija = fija;
   senalActiva = true;
   senalFin = millis() + (fija ? 0 : SENAL_AGUANTE);
@@ -139,9 +141,9 @@ bool orden(char *linea) {
   if (es(linea, "STATE") && arg) {
     if (es(arg, "IDLE") || es(arg, "OFFLINE") || es(arg, "MAINTENANCE")) { irReposo(); return true; }
     if (es(arg, "ERROR")) { parar(); return true; }
-    if (es(arg, "WELCOME")) { mover("saludar", true, LO, false, LO, 2000, false); return true; }
-    if (es(arg, "LISTENING")) { mover("escuchar", false, 40, false, LO, 0, true); return true; }
-    if (es(arg, "THINKING")) { mover("pensar", false, LO, false, 40, 0, true); return true; }
+    if (es(arg, "WELCOME")) { mover("saludar", true, aLo, false, LO, 2000, false); return true; }
+    if (es(arg, "LISTENING")) { mover("escuchar", false, aLo + (aHi - aLo) / 3, false, LO, 0, true); return true; }
+    if (es(arg, "THINKING")) { mover("pensar", false, aLo, false, 40, 0, true); return true; }
     if (es(arg, "SPEAKING")) { hablar(0, true); return true; }
     if (es(arg, "HANDOFF_QR")) { senalar(true, 0, true); return true; }
     return false;
@@ -149,9 +151,9 @@ bool orden(char *linea) {
   if (es(linea, "GESTURE") && arg) {
     if (es(arg, "REST")) { irReposo(); return true; }
     if (es(arg, "STOP")) { parar(); return true; }
-    if (es(arg, "WAVE")) { mover("saludar", true, LO, false, LO, 2000, false); return true; }
-    if (es(arg, "ATTENTIVE")) { mover("escuchar", false, 40, false, LO, 0, true); return true; }
-    if (es(arg, "PONDER")) { mover("pensar", false, LO, false, 40, 0, true); return true; }
+    if (es(arg, "WAVE")) { mover("saludar", true, aLo, false, LO, 2000, false); return true; }
+    if (es(arg, "ATTENTIVE")) { mover("escuchar", false, aLo + (aHi - aLo) / 3, false, LO, 0, true); return true; }
+    if (es(arg, "PONDER")) { mover("pensar", false, aLo, false, 40, 0, true); return true; }
     if (es(arg, "TALK")) { hablar(0, true); return true; }
     if (es(arg, "POINT")) { senalar(true, 0, true); return true; }
     return false;
@@ -159,14 +161,25 @@ bool orden(char *linea) {
 
   if (es(linea, "PARAR") || es(linea, "STOP")) { parar(); return true; }
   if (es(linea, "REPOSO")) { irReposo(); return true; }
-  if (es(linea, "ALETEAR")) { mover("aletear", true, LO, false, LO, duracion(arg), false); return true; }
-  if (es(linea, "SALUDAR")) { mover("saludar", true, LO, true, LO, 2500, false); return true; }
+  if (es(linea, "ALETEAR")) { mover("aletear", true, aLo, false, LO, duracion(arg), false); return true; }
+  if (es(linea, "SALUDAR")) { mover("saludar", true, aLo, true, LO, 2500, false); return true; }
   if (es(linea, "HABLAR")) { hablar(duracion(arg), false); return true; }
-  if (es(linea, "PICO")) { mover("pico", false, LO, true, LO, duracion(arg), false); return true; }
+  if (es(linea, "PICO")) { mover("pico", false, aLo, true, LO, duracion(arg), false); return true; }
   if (es(linea, "SENAL")) { senalar(false, 1500, false); return true; }
-  if (es(linea, "ESCUCHAR")) { mover("escuchar", false, 40, false, LO, 0, true); return true; }
-  if (es(linea, "PENSAR")) { mover("pensar", false, LO, false, 40, 0, true); return true; }
+  if (es(linea, "ESCUCHAR")) { mover("escuchar", false, aLo + (aHi - aLo) / 3, false, LO, 0, true); return true; }
+  if (es(linea, "PENSAR")) { mover("pensar", false, aLo, false, 40, 0, true); return true; }
   if (es(linea, "SENALAR")) { senalar(true, 0, true); return true; }
+  if (es(linea, "ALAS")) {
+    // ALAS <min> <max>: cambia el rango de las alas (no se guarda al reiniciar). Sin argumentos solo informa.
+    if (arg && *arg) {
+      char *fin; long lo = strtol(arg, &fin, 10), hi = strtol(fin, NULL, 10);
+      if (lo < 0 || hi > 90 || hi - lo < 10) return false;
+      aLo = lo; aHi = hi;
+      irReposo();
+    }
+    Serial.print("ALAS "); Serial.print(aLo); Serial.print(" "); Serial.println(aHi);
+    return true;
+  }
   return false;
 }
 
@@ -226,7 +239,7 @@ void loop() {
     ultimoPaso = ahora;
     tick++;
     if (alaOsc) {
-      if (tick % alaCada == 0) { ala += alaDir; if (ala >= alaTope) alaDir = -1; if (ala <= LO) alaDir = 1; }
+      if (tick % alaCada == 0) { ala += alaDir; if (ala >= alaTope) alaDir = -1; if (ala <= aLo) alaDir = 1; }
       if (ala > alaTope) { ala = alaTope; alaDir = -1; }
     }
     else ala = pasoHacia(ala, alaObj);
@@ -236,18 +249,18 @@ void loop() {
     // Ala derecha: sigue al aleteo salvo durante una senal.
     if (senalAuto && !senalActiva && (long)(ahora - proximaSenal) >= 0) { senalActiva = true; senalFin = ahora + SENAL_AGUANTE; }
     if (senalActiva) {
-      if (senalFija || (long)(ahora - senalFin) < 0) der = min(der + SENAL_VEL, HI);  // extender y aguantar
+      if (senalFija || (long)(ahora - senalFin) < 0) der = min(der + SENAL_VEL, aHi);  // extender y aguantar
       else {
         der = der > ala ? max(der - SENAL_VEL, ala) : ala;
         if (der == ala) { senalActiva = false; proximaSenal = ahora + random(4000, 9000); }
       }
     } else der = ala;
-    der = constrain(der, LO, HI);
-    ala = constrain(ala, LO, HI);
+    der = constrain(der, aLo, aHi);
+    ala = constrain(ala, aLo, aHi);
     pic = constrain(pic, LO, HI);
     escribir();
 
-    if (reposo && ala == LO && pic == LO && der == LO) {
+    if (reposo && ala == aLo && pic == LO && der == aLo) {
       if (!quietoDesde) quietoDesde = ahora;
       else if (ahora - quietoDesde >= SOLTAR_MS) { soltar(); modo = "reposo"; }
     }

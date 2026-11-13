@@ -147,7 +147,7 @@ export async function chatCue(db: Database, token: string | undefined, raw: unkn
   const parsed = cueSchema.safeParse(raw); if (!parsed.success) throw new AppError("invalid_body", 400);
   const session = await getSession(db, token), en = session.locale === "en";
   await rateLimit(db, hashToken(`chat-cue:${session.id}`), 8);
-  const text = parsed.data.cue === "welcome" ? en ? "Hi! I'm Ary, the Dominican parrot. Ask me anything… ¿o prefieres español?" : "¡Hola, hola! Soy Ary, la cotorra de República Dominicana. ¿Hablamos en español o en inglés?" : parsed.data.cue === "idle" ? en ? "Still there? Tap to stay a little longer." : "¿Sigues ahí? Toca para quedarte un poquito más." : en ? "What would you love to discover? Music, food, beaches, history… You choose!" : "¿Qué te gustaría descubrir? Música, comida, playas, historia… ¡Tú eliges!";
+  const text = parsed.data.cue === "welcome" ? en ? "No plans? I'll guide ya! I'm Ary, the Dominican parrot. Ask me anything… ¿o prefieres español?" : "¿Sin planes? ¡Yo te guío! Soy Ary, la cotorra de República Dominicana. ¿Hablamos en español o en inglés?" : parsed.data.cue === "idle" ? en ? "Still there? Tap to stay a little longer." : "¿Sigues ahí? Toca para quedarte un poquito más." : en ? "What would you love to discover? Music, food, beaches, history… You choose!" : "¿Qué te gustaría descubrir? Música, comida, playas, historia… ¡Tú eliges!";
   const answer = { ...fixedAnswer(text), detectedLanguage: session.locale as Locale };
   return persistReply(db, token, session, null, answer, [], "demo", undefined, parsed.data.cue === "welcome");
 }

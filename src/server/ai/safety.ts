@@ -11,7 +11,9 @@ export function classifyIntent(message: string): "culture" | "general" | "images
   return "general";
 }
 export function cleanSpokenText(text: string) {
-  return text.replace(/[¡!]*\b(?:r{3,}|prr+|tr[ií]+|chirp|squawk)\b[¡!, .]*/gi, "")
+  // Citation markers like [ea9d3401-…] are for the screen; the voice must never read them.
+  return text.replace(/\s*\[[0-9a-f]{8}(?:-[0-9a-f]{4}){3}-[0-9a-f]{12}\]/giu, "")
+    .replace(/[¡!]*\b(?:r{3,}|prr+|tr[ií]+|chirp|squawk)\b[¡!, .]*/gi, "")
     .replace(/\b([\p{L}]+)(?:[,! ]+\1\b)+/giu, "$1").trim();
 }
 export function spokenText(display: string, suggested: string, sensitive: boolean, greeting = false) {

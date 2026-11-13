@@ -93,7 +93,7 @@ def main():
     os.umask(0o077)
     root = Path(args.root)
     catalog_path = root / 'catalog.json'
-    voice = Voice(root / 'voice-cache', root / 'models/es_MX-ald-medium.onnx', root / 'models/vosk-model-small-es-0.42', json.loads(catalog_path.read_text()) if catalog_path.exists() else [])
+    voice = Voice(root / 'voice-cache', root / 'models/es_MX-claude-high.onnx', root / 'models/vosk-model-small-es-0.42', json.loads(catalog_path.read_text()) if catalog_path.exists() else [])
     server = ThreadingHTTPServer(('127.0.0.1', 8766), Handler)
     server.daemon_threads = True
     server.origin, server.voice, server.busy = args.origin, voice, threading.Semaphore(1)
