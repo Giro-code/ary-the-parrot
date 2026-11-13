@@ -54,7 +54,7 @@ for (const pass of [1, 2]) test(`visual pass ${pass}: grounded fallback, context
     await page.locator(".photo-open").last().click(); await capture(page, `pass${pass}-photo-${width}`); await page.keyboard.press("Escape");
     await page.context().clearCookies(); await emailStart(page); await page.reload();
     await askText(page, "muéstrame imágenes"); await capture(page, `pass${pass}-featured-${width}`);
-    await askText(page, "show me photos of Samaná"); await expect(page.locator(".source-carousel").last().locator("h2", { hasText: "Ballenas jorobadas de Samaná" })).toBeVisible();
+    await askText(page, "show me photos of Samaná"); await expect(page.locator(".source-carousel").last().getByRole("heading", { name: "Samaná", exact: true })).toBeVisible();
     await capture(page, `pass${pass}-english-${width}`);
   }
 });

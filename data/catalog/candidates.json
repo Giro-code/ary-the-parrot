@@ -4743,12 +4743,18 @@
     },
     "aliases": {
       "es": [
-        "independencia dominicana"
+        "independencia dominicana",
+        "día de la independencia",
+        "dia de la independencia",
+        "27 de febrero"
       ],
       "en": [
         "dominican independence",
         "independencia de la república dominicana",
-        "independencia de la republica dominicana"
+        "independencia de la republica dominicana",
+        "dominican independence day",
+        "independence day",
+        "february 27"
       ]
     },
     "summary": {
@@ -8385,7 +8391,9 @@
     },
     "aliases": {
       "es": [
-        "baluarte del conde"
+        "baluarte del conde",
+        "puerta del conde",
+        "baluarte de la puerta del conde"
       ],
       "en": [
         "puerta del conde"
@@ -8731,10 +8739,15 @@
     },
     "aliases": {
       "es": [
-        "altar de la patria"
+        "altar de la patria",
+        "parque independencia",
+        "parque de la independencia",
+        "altar de la patria en el parque independencia"
       ],
       "en": [
-        "altar of the homeland"
+        "altar of the homeland",
+        "independence park",
+        "parque independencia"
       ]
     },
     "summary": {

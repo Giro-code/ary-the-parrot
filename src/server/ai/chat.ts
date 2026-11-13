@@ -16,7 +16,7 @@ import { archiveConversation } from "../conversations.ts";
 import { requestedDestination } from "../places.ts";
 import { itemImageSchema, itemMedia } from "../item-media.ts";
 import { hasSearchTerms } from "./retrieval.ts";
-import { catalogSearch } from "./catalog-search.ts";
+import { catalogSearch, grounded, type SearchAnalysis } from "./catalog-search.ts";
 
 // Card summaries end on a whole word with an ellipsis, never mid-word.
 function shortSummary(text: string, max = 180) {
@@ -60,14 +60,27 @@ export async function chatHistory(db: Database, session: Session) {
   }
   return messages;
 }
-async function retrieve(db: Database, session: Session, message: string, audio = false) {
+async function analyze(db: Database, session: Session, message: string, audio = false): Promise<SearchAnalysis> {
   const search = await catalogSearch(db, session.locale);
   const voiceOrder = ["merengue", "bachata", "mangu", "ciudad-colonial", "haitises", "ballenas", "carnaval", "altos-chavon"];
   if (audio && !message) {
-    const rows = await Promise.all(voiceOrder.map(key => search.search(key, 8).find(hit => hit.item.contentKey === key)?.item));
-    return rows.filter((item): item is CulturalItem => !!item).slice(0, 8);
+    // Audio is not transcribed yet: a fixed shortlist the model may decline.
+    const rows = voiceOrder.map(key => search.search(key, 8).find(hit => hit.item.contentKey === key)?.item).filter((item): item is CulturalItem => !!item);
+    return { hits: rows.slice(0, 8).map(item => ({ item, score: 0, strength: "weak" as const })), ambiguity: null };
   }
-  return search.search(message, audio ? 8 : 4).map(hit => hit.item);
+  return search.analyze(message, audio ? 8 : 4);
+}
+const named = (analysis: SearchAnalysis) => analysis.hits.filter(hit => hit.strength === "exact" || hit.strength === "strong").map(hit => hit.item);
+// One short name with several meanings: ask, with one button per meaning.
+function clarifyAnswer(ambiguity: NonNullable<SearchAnalysis["ambiguity"]>, locale: Locale, directions: boolean): Answer {
+  const es = locale === "es";
+  const names = ambiguity.options.map(option => option.region ? es ? `la provincia ${option.label}` : `${option.label} province` : option.label);
+  const list = names.length > 1 ? `${names.slice(0, -1).join(", ")} ${es ? "o" : "or"} ${names.at(-1)}` : names[0];
+  const text = es ? `«${ambiguity.term}» puede ser varias cosas. ¿Te refieres a ${list}?` : `"${ambiguity.term}" can mean a few things. Do you mean ${list}?`;
+  const followUps = ambiguity.options.map(option => option.region
+    ? directions ? es ? `¿Dónde queda la provincia ${option.label}?` : `Where is ${option.label} province?` : es ? `¿Qué ver en la provincia ${option.label}?` : `What to see in ${option.label} province?`
+    : directions ? es ? `¿Dónde queda ${option.label}?` : `Where is ${option.label}?` : es ? `Cuéntame sobre ${option.label}` : `Tell me about ${option.label}`).map(line => line.slice(0, 120)).slice(0, 3);
+  return { ...fixedAnswer(text.slice(0, 600), "general"), detectedLanguage: locale, followUps };
 }
 function searchableItem(item: CulturalItem) {
   try { return !!item.sourceCheckedAt && !!item.sourceUrl && new URL(item.sourceUrl).protocol === "https:" && !injection.test([item.title, item.summary, item.validatedDescription, ...item.tags].join(" ")); } catch { return false; }
@@ -104,7 +117,8 @@ async function persistReply(db: Database, token: string | undefined, session: Se
   return { ...reply, ...(preferences ? { preferences } : {}), ...(transcript ? { transcript } : {}) };
 }
 async function directionItems(db: Database, session: Session, message: string) {
-  const items = await retrieve(db, session, message);
+  // Only an entry the question names gets the "here is the location" answer.
+  const items = named(await analyze(db, session, message));
   if (items.length) return items.slice(0, 1);
   const history = await chatHistory(db, session);
   const ids = history.findLast(row => row.reply?.citedItemIds.length)?.reply?.citedItemIds || [];
@@ -130,7 +144,7 @@ function directionsAnswer(items: CulturalItem[], locale: Locale, kiosk: boolean)
   return { ...fixedAnswer(text, "directions"), detectedLanguage: locale, citedItemIds: sources.map(source => source.id), spokenText: places ? cue : text };
 }
 async function imageItems(db: Database, session: Session, message: string) {
-  const relevant = await retrieve(db, session, message);
+  const relevant = (await analyze(db, session, message)).hits.filter(grounded).map(hit => hit.item);
   if (hasSearchTerms(message)) return relevant.filter(item => itemMedia(item, session.locale as Locale).image).slice(0, 3);
   const history = await chatHistory(db, session);
   const ids = history.findLast(row => row.reply?.sources.some(source => source.image))?.reply?.sources.filter(source => source.image).map(source => source.id) || [];
@@ -167,9 +181,12 @@ export async function chat(db: Database, token: string | undefined, raw: unknown
   let mode: ChatMode = "demo", model = "template", inputTokens = 0, outputTokens = 0, errorCode: string | null = null;
   let answer: Answer = redirect(locale, "unverified"), items: CulturalItem[] = [], unavailable = false, photos = false;
   const conversational = !audio && /^(espanol|english|soy de |vengo de |visito desde |i am from |i'm from |prefiero no decirlo|prefer not to say)/.test(normalize(message)) ? conversationalAnswer(message, locale) : null;
+  const analysis = !audio && !conversational && ["culture", "general", "directions", "images"].includes(intent) ? await analyze(db, session, message) : null;
+  let directionIds: string[] = [];
   if (!audio && (intent === "sensitive" || intent === "injection" || intent === "unverified")) answer = redirect(locale, intent);
-  else if (!audio && intent === "directions") {
-    items = await directionItems(db, session, message);
+  else if (analysis?.ambiguity) answer = clarifyAnswer(analysis.ambiguity, locale, intent === "directions");
+  else if (!audio && intent === "directions" && (items = await directionItems(db, session, message)).length) {
+    directionIds = items.map(item => item.id);
     answer = directionsAnswer(items, locale, !!session.kioskDeviceId);
   }
   else if (!audio && intent === "images") {
@@ -177,11 +194,14 @@ export async function chat(db: Database, token: string | undefined, raw: unknown
   }
   else if (conversational) answer = conversational;
   else {
-    items = await retrieve(db, session, message, !!audio);
-    if (!audio && intent === "general" && items.length) intent = "culture";
+    const found = analysis || await analyze(db, session, message, !!audio);
+    items = found.hits.map(hit => hit.item);
+    const ground = found.hits.some(grounded);
+    directionIds = named(found).map(item => item.id);
+    if (!audio && intent === "general" && ground) intent = "culture";
     const history = (await chatHistory(db, session)).filter(row => ["culture", "general", "directions", "images"].includes(classifyIntent(row.text)) && !conversationalAnswer(row.text, locale) && (!row.reply || ["culture", "general", "directions"].includes(row.reply.intent))).slice(-4).map(row => ({ role: row.role, text: row.text.slice(0, 300) }));
-    const input: AiInput = { message, locale, items, history, audio }, demo = new DemoAiProvider();
-    if (session.retentionClass !== "kiosk_demo" && process.env.GEMINI_API_KEY?.trim() && (items.length || audio || intent === "general")) {
+    const input: AiInput = { message, locale, items, history, audio, grounded: audio ? undefined : ground }, demo = new DemoAiProvider();
+    if (session.retentionClass !== "kiosk_demo" && process.env.GEMINI_API_KEY?.trim() && (items.length || audio || intent === "general" || intent === "directions")) {
       model = defaultModel;
       const provider = new GeminiProvider(), shortlist = items.map(item => item.contentKey);
       let failed = false;
@@ -198,10 +218,12 @@ export async function chat(db: Database, token: string | undefined, raw: unknown
       // entry outside it (or that call failed), answer once more from the transcript.
       if (audio && message) {
         const heard = detectedLocale(detectedLanguage);
-        const found = await retrieve(db, { ...session, locale: heard }, message);
+        const heardAnalysis = await analyze(db, { ...session, locale: heard }, message);
+        const found = heardAnalysis.hits.map(hit => hit.item);
+        directionIds = named(heardAnalysis).map(item => item.id);
         if (found.length && ["culture", "general"].includes(classifyIntent(message)) && (failed || !shortlist.includes(found[0].contentKey))) {
           try {
-            const second = await provider.generate({ message, locale: heard, items: found, history });
+            const second = await provider.generate({ message, locale: heard, items: found, history, grounded: heardAnalysis.hits.some(grounded) });
             answer = second.answer; detectedLanguage = answer.detectedLanguage; mode = "gemini"; failed = false; errorCode = null;
             inputTokens += second.usage.inputTokens; outputTokens += second.usage.outputTokens;
           } catch (error) { failed = true; errorCode = error instanceof AiError ? error.code : "provider_error"; }
@@ -216,15 +238,23 @@ export async function chat(db: Database, token: string | undefined, raw: unknown
       intent = classifyIntent(message);
       const responseLocale = detectedLocale(detectedLanguage);
       const fixed = conversationalAnswer(message, responseLocale);
+      const heardAmbiguity = ["culture", "general", "directions", "images"].includes(intent) ? (await analyze(db, { ...session, locale: responseLocale }, message)).ambiguity : null;
       if (intent === "sensitive" || intent === "injection" || intent === "unverified") { answer = redirect(responseLocale, intent); mode = "demo"; }
-      else if (intent === "directions") { items = await directionItems(db, { ...session, locale: responseLocale }, message); answer = directionsAnswer(items, responseLocale, !!session.kioskDeviceId); }
+      else if (heardAmbiguity) { answer = clarifyAnswer(heardAmbiguity, responseLocale, intent === "directions"); items = []; mode = "demo"; }
+      else if (intent === "directions") { const place = await directionItems(db, { ...session, locale: responseLocale }, message); if (place.length) { items = place; directionIds = place.map(item => item.id); answer = directionsAnswer(items, responseLocale, !!session.kioskDeviceId); } }
       else if (intent === "images") { items = await imageItems(db, { ...session, locale: responseLocale }, message); answer = imagesAnswer(items, responseLocale); photos = true; mode = "demo"; }
       else if (fixed && /^(espanol|english|soy de |vengo de |visito desde |i am from |i'm from |prefiero no decirlo|prefer not to say)/.test(normalize(message))) { answer = fixed; mode = "demo"; }
     }
   }
   await db.insert(s.aiUsage).values({ model, inputTokens, outputTokens, latencyMs: Date.now() - started, errorCode, mode });
   if (unavailable) throw new AppError("voice_unavailable", 503);
-  if (answer.intent === "directions") answer = directionsAnswer(items.filter(item => answer.citedItemIds.includes(item.id)), detectedLocale(detectedLanguage), !!session.kioskDeviceId);
+  // The location template only for an entry the question named; otherwise keep the AI's own words and cards.
+  // Without the AI, an unnamed place keeps the "save it in My culture" answer.
+  if (answer.intent === "directions" || (!audio && intent === "directions" && mode !== "gemini" && !analysis?.ambiguity)) {
+    const cited = items.filter(item => answer.citedItemIds.includes(item.id) && directionIds.includes(item.id));
+    if (cited.length) answer = directionsAnswer(cited, detectedLocale(detectedLanguage), !!session.kioskDeviceId);
+    else if (mode !== "gemini") answer = directionsAnswer([], detectedLocale(detectedLanguage), !!session.kioskDeviceId);
+  }
   answer.detectedLanguage = detectedLanguage;
   if (detectedLanguage === "other") { const text = "I currently speak English and Spanish. Would you like to explore Dominican culture in English?"; answer = { ...fixedAnswer(text), detectedLanguage: "other" }; mode = "demo"; }
   return persistReply(db, token, session, message, answer, items, mode, audio ? message : undefined, false, photos);

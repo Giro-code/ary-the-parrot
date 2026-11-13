@@ -6,8 +6,14 @@ import type { CulturalItem } from "../service.ts";
 import { injection } from "./safety.ts";
 import { searchTokens } from "./retrieval.ts";
 
-export type SearchHit = { item: CulturalItem; score: number };
-export interface CatalogSearch { search(query: string, limit?: number): SearchHit[] }
+// exact: the question names the entry (title or alias). strong: most question words are in its name.
+// list: it belongs to the requested type or province. weak: it only shares words with the text or region.
+export type MatchStrength = "exact" | "strong" | "list" | "weak";
+export type SearchHit = { item: CulturalItem; score: number; strength: MatchStrength };
+export type AmbiguityOption = { label: string; item?: CulturalItem; region?: string };
+export type SearchAnalysis = { hits: SearchHit[]; ambiguity: { term: string; options: AmbiguityOption[] } | null };
+export interface CatalogSearch { search(query: string, limit?: number): SearchHit[]; analyze(query: string, limit?: number): SearchAnalysis }
+export const grounded = (hit: SearchHit) => hit.strength !== "weak";
 const groups = ["playa playas beach beaches", "cascada cascadas salto waterfall waterfalls", "comida plato food comer breakfast desayuno", "fiesta fiestas festival carnaval carnival tradition tradiciones traditions", "museo museos museum museums", "iglesia catedral church cathedral"] .map(s => s.split(" "));
 const ignored = new Set("hacer puedo puede dame cinco quiero cuentame hablame dominicanas dominicanos what can doing things eat eating tell give five".split(" "));
 function words(text: string) { return searchTokens(text).filter(t => !ignored.has(t)); }
@@ -27,6 +33,7 @@ export function editOne(a: string, b: string) {
   }
   return edits + (i < a.length || j < b.length ? 1 : 0) <= 1;
 }
+const listWords = new Set("provincia provincias province region ver visitar hacer lugares sitios places see visit things".split(" "));
 export function createCatalogSearch(items: CulturalItem[]): CatalogSearch {
   const titleTokens = new Map(items.map(item => [item.id, words(item.title)]));
   const entries = items.map(item => {
@@ -37,39 +44,71 @@ export function createCatalogSearch(items: CulturalItem[]): CatalogSearch {
     add([...item.tags, item.type, item.region || ""].join(" "), 3);
     return { item, weights, phrases: [item.title, ...item.aliases].map(phrase).filter(s => s.length >= 4), region: normalize(item.region || "") };
   });
-  const regions = [...new Set(entries.map(e => e.region).filter(r => r && !r.includes("nacional")))];
-  return { search(query, limit = 4) {
+  const regionNames = new Map(items.filter(item => item.region && !normalize(item.region).includes("nacional")).map(item => [normalize(item.region!), item.region!]));
+  const regions = [...regionNames.keys()];
+  function analyze(query: string, limit = 4): SearchAnalysis {
     const normalized = phrase(query), terms = words(query), expansions = terms.map(expand);
     const region = regions.filter(r => normalized.includes(r)).sort((a, b) => b.length - a.length)[0] || regions.find(r => !r.includes(" ") && terms.some(t => t.length >= 5 && editOne(t, r)));
-    const category = /\b(comer|comida|platos?|food|eat|eating)\b/.test(normalized) ? "food" : /\b(playas?|beach(?:es)?)\b/.test(normalized) ? "beach" : /\b(fiestas?|festival|tradiciones|traditions|carnaval|carnival)\b/.test(normalized) ? "tradition" : /\b(museos?|museums?)\b/.test(normalized) ? "museum" : undefined;
+    const regionWords = region ? words(region) : [], provinceAsked = /\b(provincia|province|hacer|ver|visitar|lugares|sitios|do|see|visit|places)\b/.test(normalized);
+    const core = terms.filter(t => !regionWords.includes(t) && !listWords.has(t));
+    // An entry named in full ("Máscaras de carnaval") beats a type word inside its name.
+    const typeOf = (text: string) => /\b(comer|comida|platos?|food|eat|eating)\b/.test(text) ? "food" : /\b(playas?|beach(?:es)?)\b/.test(text) ? "beach" : /\b(fiestas?|festival|tradiciones|traditions|carnaval|carnival)\b/.test(text) ? "tradition" : /\b(museos?|museums?)\b/.test(text) ? "museum" : undefined;
+    const requested = typeOf(normalized);
+    const namesEntry = !!requested && entries.some(entry => entry.phrases.some(p => typeOf(p) === requested && (` ${normalized} `).includes(` ${p} `)));
+    const category = namesEntry ? undefined : requested;
     const destination = category ? normalized.match(/\b(?:en|in)\s+(.+?)[?.!]*$/)?.[1]?.trim() : undefined;
     const destinationExists = destination && !region && entries.some(e => e.phrases.some(p => p.includes(destination)));
     const scored = entries.flatMap(entry => {
       if (category && entry.item.type !== category) return [];
       if (destinationExists && ![...entry.phrases, normalize(entry.item.summary)].some(p => p.includes(destination))) return [];
+      let named = 0;
       let score = expansions.reduce((total, alternatives, index) => {
         let best = Math.max(0, ...alternatives.map(t => entry.weights.get(t) || 0));
         if (!best && terms[index].length >= 5) for (const [token, weight] of entry.weights) if (weight >= 12 && editOne(terms[index], token)) best = Math.max(best, weight * .7);
+        if (best >= 8 && !listWords.has(terms[index])) named++;
         return total + best;
       }, 0);
-      const exact = entry.phrases.some(p => (` ${normalized} `).includes(` ${p} `));
-      if (exact) score += 1000;
-      if (terms.length === 1 && terms[0].length >= 5 && editOne(terms[0], normalize(entry.item.title))) score += 200;
+      // The longest name the question contains wins: "Bahía de Samaná" over "Samaná".
+      const matched = entry.phrases.filter(p => (` ${normalized} `).includes(` ${p} `)).reduce((longest, p) => Math.max(longest, p.length), 0);
+      const exact = matched > 0;
+      if (exact) score += 1000 + matched * 40;
+      const close = terms.length === 1 && terms[0].length >= 5 && editOne(terms[0], normalize(entry.item.title));
+      if (close) score += 200;
       if (category) score += 12;
-      if (region && entry.region === region) score += 80;
-      if (region && entry.region !== region && !exact) return [];
-      return score > 0 ? [{ item: entry.item, score }] : [];
+      const inRegion = !!region && entry.region === region;
+      if (inRegion) score += 80;
+      // A province narrows type lists ("museos de Santiago"); otherwise it only ranks.
+      if (region && !inRegion && !exact && (category || (provinceAsked && !core.length))) return [];
+      const strength: MatchStrength = exact ? "exact" : close || (named > 0 && named >= Math.ceil(terms.filter(t => !listWords.has(t)).length / 2)) ? "strong" : category || (inRegion && !core.length) ? "list" : "weak";
+      return score > 0 ? [{ item: entry.item, score, strength }] : [];
     }).sort((a, b) => b.score - a.score || a.item.contentKey.localeCompare(b.item.contentKey));
-    if (!category && scored[0]?.score >= 1000 && !/\b(y|and|hacer|things|visitar|do)\b/.test(normalized)) return scored.filter(hit => hit.score >= 1000).slice(0, limit);
-    if (!category && !region && !/\b([2-9]|lista|list|varias|varios)\b/.test(normalized)) return scored.slice(0, limit);
-    const selected: SearchHit[] = [];
-    while (scored.length && selected.length < limit) {
-      const adjusted = new Map(scored.map(hit => [hit.item.id, hit.score - selected.reduce((penalty, s) => penalty + (s.item.region === hit.item.region ? 8 : 0) + titleTokens.get(s.item.id)!.filter(t => titleTokens.get(hit.item.id)!.includes(t)).length * 12, 0)]));
-      scored.sort((a, b) => adjusted.get(b.item.id)! - adjusted.get(a.item.id)!);
-      selected.push(scored.shift()!);
+    // One short name, several different things (a province, a holiday, an avenue): ask instead of guessing.
+    let ambiguity: SearchAnalysis["ambiguity"] = null;
+    if (!category && terms.length && terms.length <= 2 && !/\b(provincia|province)\b/.test(normalized) && !scored.some(hit => hit.strength === "exact")) {
+      const named = scored.filter(hit => hit.strength === "strong");
+      const province = region && !named.some(hit => normalize(hit.item.title) === region) ? regionNames.get(region) : undefined;
+      const kinds = new Set(named.slice(0, 3).map(hit => hit.item.type));
+      if ((province && named.length >= 1) || kinds.size >= 2) {
+        const options: AmbiguityOption[] = named.slice(0, province ? 2 : 3).map(hit => ({ label: hit.item.title, item: hit.item }));
+        if (province) options.push({ label: province, region: province });
+        const said = query.split(/\s+/).map(word => word.replace(/^[^\p{L}\p{N}]+|[^\p{L}\p{N}]+$/gu, "")).filter(word => word && terms.includes(normalize(word)));
+        ambiguity = { term: (said.join(" ") || terms.join(" ")).slice(0, 80), options };
+      }
     }
-    return selected;
-  } };
+    let hits: SearchHit[];
+    if (!category && scored[0]?.score >= 1000 && !/\b(y|and|hacer|things|visitar|do)\b/.test(normalized)) hits = scored.filter(hit => hit.score >= 1000).slice(0, limit);
+    else if (!category && !region && !/\b([2-9]|lista|list|varias|varios)\b/.test(normalized)) hits = scored.slice(0, limit);
+    else {
+      hits = [];
+      while (scored.length && hits.length < limit) {
+        const adjusted = new Map(scored.map(hit => [hit.item.id, hit.score - hits.reduce((penalty, s) => penalty + (s.item.region === hit.item.region ? 8 : 0) + titleTokens.get(s.item.id)!.filter(t => titleTokens.get(hit.item.id)!.includes(t)).length * 12, 0)]));
+        scored.sort((a, b) => adjusted.get(b.item.id)! - adjusted.get(a.item.id)!);
+        hits.push(scored.shift()!);
+      }
+    }
+    return { hits, ambiguity };
+  }
+  return { analyze, search: (query, limit = 4) => analyze(query, limit).hits };
 }
 type Cache = { expires: number; pending: Promise<CatalogSearch> };
 let cache = new WeakMap<Database, Map<string, Cache>>();

@@ -7,16 +7,16 @@ type Entry = { key: string; title: string; tags: Interest[]; url: string; editor
 // Search-only ES/EN aliases, stored with tags and never rendered as visitor copy.
 export const searchAliases: Record<string, string[]> = {
   "ciudad-colonial": ["zona colonial", "colonial zone", "santo domingo colonial", "casco historico", "historic district", "catedral primada", "first cathedral"],
-  haitises: ["cuevas", "caves", "manglares", "mangroves", "petroglifos", "petroglyphs"],
-  ballenas: ["ballenas", "whales", "samana", "avistamiento", "whale watching"],
-  mangu: ["comida", "desayuno", "food", "breakfast", "platano", "plantain"],
+  haitises: ["manglares", "mangroves", "petroglifos", "petroglyphs"],
+  ballenas: ["ballenas", "whales", "avistamiento", "whale watching"],
+  mangu: ["desayuno", "breakfast", "platano", "plantain"],
   merengue: ["musica", "baile", "music", "dance"],
   bachata: ["musica", "baile", "music", "dance"],
   larimar: ["piedras", "joyas", "gems", "jewelry", "souvenir"],
   ambar: ["piedras", "joyas", "gems", "jewelry", "souvenir", "amber"],
-  carnaval: ["diablos cojuelos", "mascaras", "masks", "carnival"],
-  "altos-chavon": ["la romana", "anfiteatro", "amphitheatre", "amphitheater"],
-  cocolo: ["san pedro de macoris", "cocolo dance drama"],
+  carnaval: ["diablos cojuelos", "carnival"],
+  "altos-chavon": ["anfiteatro", "amphitheatre", "amphitheater"],
+  cocolo: ["cocolo dance drama"],
   congos: ["villa mella", "congos brotherhood"],
 };
 export const seedEntries: Entry[] = [
