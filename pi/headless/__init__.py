@@ -134,18 +134,31 @@ class Conversation:
 
     def _cloud_reply(self, reply):
         """Reproduce la respuesta de la web con la voz de Gemini y la guarda para usarla también sin internet."""
-        wav = self.cloud.speak(reply["messageId"])
+        try:
+            try:
+                wav = self.cloud.speak(reply["messageId"])
+            except Exception as first:  # noqa: BLE001
+                # La voz de Gemini a veces falla en el primer intento y responde en el segundo.
+                if getattr(first, "code", "") != "voice_unavailable":
+                    raise
+                wav = self.cloud.speak(reply["messageId"])
+        except Exception as error:  # noqa: BLE001 - la respuesta de Gemini vale aunque su voz falle
+            self.log("web · voz de Gemini no disponible (%s); la digo con la voz local" % getattr(error, "code", type(error).__name__))
+            self.say(reply["spokenText"])
+            return "piper"
         try:
             self.voice.cache(reply["spokenText"], wav)
         except (ValueError, OSError):
             pass
         self._play(wav)
+        return "gemini"
 
     def greet(self, fallback_text):
         if self.cloud and self.cloud.available():
             try:
-                self._cloud_reply(self.cloud.welcome())
-                return "gemini"
+                source = self._cloud_reply(self.cloud.welcome())
+                self.log("saludo · voz=%s" % source)
+                return source
             except Exception as error:  # noqa: BLE001 - cualquier fallo de la web cae al modo local
                 self.log("web · %s; saludo local" % getattr(error, "code", type(error).__name__))
         return self.say(fallback_text)
@@ -161,8 +174,8 @@ class Conversation:
                 if self.verbose:
                     self.log("oído (Gemini): " + str(reply.get("transcript") or heard))
                     self.log("Ari: " + reply["spokenText"])
-                self._cloud_reply(reply)
-                self.log("turno · intención=%s voz=gemini" % reply.get("intent"))
+                source = self._cloud_reply(reply)
+                self.log("turno · intención=%s respuesta=gemini voz=%s" % (reply.get("intent"), source))
                 return reply
             except Exception as error:  # noqa: BLE001
                 self.log("web · %s; respondo en local" % getattr(error, "code", type(error).__name__))

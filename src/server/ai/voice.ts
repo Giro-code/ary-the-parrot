@@ -11,6 +11,8 @@ import { hashToken } from "../tokens.ts";
 import { numericEnv } from "../config.ts";
 import { AiError, answerSchema, type AudioInput } from "./providers.ts";
 
+// Long answers (~20 s of audio) need more than 10 s of synthesis; the route allows 30 s in total.
+const ttsTimeoutMs = () => Math.min(Math.max(Number(process.env.AI_TTS_TIMEOUT_MS) || 25000, 5000), 27000);
 export const defaultTtsModel = "gemini-3.8-flash-lite-tts", defaultTtsVoice = "Sulafat";
 const spokenTextSchema = answerSchema.shape.spokenText;
 export const speakInputSchema = z.object({ messageId: z.uuid() }).strict();
@@ -67,7 +69,7 @@ export async function synthesize(text: string, inspectFormat?: (format: { mimeTy
   let response: Response;
   try {
     response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent`, {
-      method: "POST", headers: { "Content-Type": "application/json", "x-goog-api-key": key }, signal: AbortSignal.timeout(10000), cache: "no-store",
+      method: "POST", headers: { "Content-Type": "application/json", "x-goog-api-key": key }, signal: AbortSignal.timeout(ttsTimeoutMs()), cache: "no-store",
       body: JSON.stringify({ contents: [{ parts: [speech] }], generationConfig: { responseModalities: ["AUDIO"], speechConfig: { voiceConfig: { prebuiltVoiceConfig: { voiceName: voice } } } } }),
     });
   } catch { throw new AiError("tts_timeout_or_network"); }

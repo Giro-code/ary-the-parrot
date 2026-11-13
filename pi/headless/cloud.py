@@ -115,7 +115,8 @@ class CloudAry:
                 if attempt == 0 and error.code in ("session_required", "rate_limited", "conversation_changed"):
                     self.session_token = None
                     continue
-                if error.code.startswith("network_") or error.status >= 500:
+                # Si solo falló la voz, Gemini sigue respondiendo: no se pausa la web por eso.
+                if error.code.startswith("network_") or (error.status >= 500 and error.code != "voice_unavailable"):
                     self.down_until = self.clock() + BACKOFF_S
                 raise
 

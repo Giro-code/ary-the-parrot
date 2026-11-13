@@ -116,6 +116,19 @@ class CloudTests(unittest.TestCase):
         Conversation(voice, NullRobot(log=lambda *_: None), played.append, log=lambda *_: None, cloud=cloud).handle("hola qué tal")
         self.assertEqual(played, [b"RIFF-piper"])
 
+    def test_gemini_voice_failure_speaks_gemini_answer_locally(self):
+        site = FakeSite(); cloud = self.cloud(site); cloud.activate("CODE")
+        original = site.open
+        def no_voice(request, timeout):
+            if request.full_url.endswith("/api/voice/speak"):
+                raise urllib.error.HTTPError(request.full_url, 503, "x", {}, io.BytesIO(b'{"error":"voice_unavailable"}'))
+            return original(request, timeout)
+        site.open = no_voice
+        voice, played = FakeVoice(), []
+        Conversation(voice, NullRobot(log=lambda *_: None), played.append, log=lambda *_: None, cloud=cloud).handle("háblame del merengue", b"\x00\x00" * 16000)
+        self.assertEqual(voice.spoken, ["¡El merengue!"])  # la respuesta de Gemini, no otra local
+        self.assertEqual(played, [b"RIFF-piper"])
+
     def test_audio_length_is_checked_before_upload(self):
         cloud = self.cloud(FakeSite()); cloud.activate("CODE")
         with self.assertRaises(CloudError):
