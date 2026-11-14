@@ -15,7 +15,7 @@ export type SearchAnalysis = { hits: SearchHit[]; ambiguity: { term: string; opt
 export interface CatalogSearch { search(query: string, limit?: number): SearchHit[]; analyze(query: string, limit?: number): SearchAnalysis }
 export const grounded = (hit: SearchHit) => hit.strength !== "weak";
 const groups = ["playa playas beach beaches", "cascada cascadas salto waterfall waterfalls", "comida plato food comer breakfast desayuno", "fiesta fiestas festival carnaval carnival tradition tradiciones traditions", "museo museos museum museums", "iglesia catedral church cathedral"] .map(s => s.split(" "));
-const ignored = new Set("hacer puedo puede dame cinco quiero cuentame hablame dominicanas dominicanos what can doing things eat eating tell give five".split(" "));
+const ignored = new Set("hacer puedo puede dame cinco quiero cuentame hablame dominicanas dominicanos what can doing things eat eating tell give five sabes sabe saben conoces conoce dime digame explicame know you does".split(" "));
 function words(text: string) { return searchTokens(text).filter(t => !ignored.has(t)); }
 function phrase(text: string) { return normalize(text).replace(/[^a-z0-9]+/g, " ").trim(); }
 function forms(token: string) { return [...new Set([token, ...(token.endsWith("s") ? [token.slice(0, -1)] : []), ...(token.endsWith("es") ? [token.slice(0, -2)] : [])])]; }
@@ -89,7 +89,17 @@ export function createCatalogSearch(items: CulturalItem[]): CatalogSearch {
       const province = region && !named.some(hit => normalize(hit.item.title) === region) ? regionNames.get(region) : undefined;
       const kinds = new Set(named.slice(0, 3).map(hit => hit.item.type));
       if ((province && named.length >= 1) || kinds.size >= 2) {
-        const options: AmbiguityOption[] = named.slice(0, province ? 2 : 3).map(hit => ({ label: hit.item.title, item: hit.item }));
+        // Different kinds first (a holiday, a place), then the best score within each kind.
+        const picked: SearchHit[] = [];
+        for (const hit of named) if (!picked.some(p => p.item.type === hit.item.type)) picked.push(hit);
+        for (const hit of named) if (!picked.includes(hit)) picked.push(hit);
+        // Name a place the way people say it when only an alias matches: "Parque Independencia (Altar de la Patria)".
+        const label = (item: CulturalItem) => {
+          if (terms.some(t => words(item.title).includes(t))) return item.title;
+          const alias = item.aliases.find(a => terms.every(t => words(a).includes(t)) && words(a).length <= 4);
+          return alias ? `${alias.replace(/(^|\s)\p{L}/gu, letter => letter.toUpperCase())} (${item.title})` : item.title;
+        };
+        const options: AmbiguityOption[] = picked.slice(0, province ? 2 : 3).map(hit => ({ label: label(hit.item).slice(0, 90), item: hit.item }));
         if (province) options.push({ label: province, region: province });
         const said = query.split(/\s+/).map(word => word.replace(/^[^\p{L}\p{N}]+|[^\p{L}\p{N}]+$/gu, "")).filter(word => word && terms.includes(normalize(word)));
         ambiguity = { term: (said.join(" ") || terms.join(" ")).slice(0, 80), options };

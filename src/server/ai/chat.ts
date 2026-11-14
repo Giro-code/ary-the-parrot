@@ -71,6 +71,8 @@ async function analyze(db: Database, session: Session, message: string, audio = 
   return search.analyze(message, audio ? 8 : 4);
 }
 const named = (analysis: SearchAnalysis) => analysis.hits.filter(hit => hit.strength === "exact" || hit.strength === "strong").map(hit => hit.item);
+// Only places get "where is"; a holiday, a dish or a person gets "tell me about".
+const placeTypes = new Set(["place", "nature", "beach", "region", "museum", "heritage"]);
 // One short name with several meanings: ask, with one button per meaning.
 function clarifyAnswer(ambiguity: NonNullable<SearchAnalysis["ambiguity"]>, locale: Locale, directions: boolean): Answer {
   const es = locale === "es";
@@ -79,7 +81,7 @@ function clarifyAnswer(ambiguity: NonNullable<SearchAnalysis["ambiguity"]>, loca
   const text = es ? `«${ambiguity.term}» puede ser varias cosas. ¿Te refieres a ${list}?` : `"${ambiguity.term}" can mean a few things. Do you mean ${list}?`;
   const followUps = ambiguity.options.map(option => option.region
     ? directions ? es ? `¿Dónde queda la provincia ${option.label}?` : `Where is ${option.label} province?` : es ? `¿Qué ver en la provincia ${option.label}?` : `What to see in ${option.label} province?`
-    : directions ? es ? `¿Dónde queda ${option.label}?` : `Where is ${option.label}?` : es ? `Cuéntame sobre ${option.label}` : `Tell me about ${option.label}`).map(line => line.slice(0, 120)).slice(0, 3);
+    : directions && placeTypes.has(option.item?.type || "") ? es ? `¿Dónde queda ${option.label}?` : `Where is ${option.label}?` : es ? `Cuéntame sobre ${option.label}` : `Tell me about ${option.label}`).map(line => line.slice(0, 120)).slice(0, 3);
   return { ...fixedAnswer(text.slice(0, 600), "general"), detectedLanguage: locale, followUps };
 }
 function searchableItem(item: CulturalItem) {
