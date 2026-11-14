@@ -219,6 +219,8 @@ def listen_forever(conversation, recognizer_factory, microphone, stopped, log=pr
             if text:
                 conversation.handle(text, pcm)
                 recognizer = recognizer_factory()  # descarta el audio captado durante la respuesta
+                if hasattr(microphone, "flush"):
+                    microphone.flush()
             continue
         else:
             partial = json.loads(recognizer.PartialResult()).get("partial", "")
@@ -232,6 +234,40 @@ def listen_forever(conversation, recognizer_factory, microphone, stopped, log=pr
                 conversation.robot.set_state("idle")
             if not hearing:
                 preroll.append(chunk)
+
+
+class LiveMicrophone:
+    """Lee el micrófono en un hilo propio sin pausa. Mientras Ari piensa o habla el bucle no consume audio:
+    aquí se descarta lo viejo (solo se guardan ~2 s), así arecord nunca se desborda (overrun) y Ari no
+    escucha audio atrasado ni su propia voz."""
+    def __init__(self, stream, keep_chunks=16):
+        self.stream = stream
+        self.chunks = deque(maxlen=keep_chunks)
+        self.ready = threading.Condition()
+        self.closed = False
+        threading.Thread(target=self._pump, daemon=True).start()
+
+    def _pump(self):
+        while True:
+            chunk = self.stream.read(CHUNK_BYTES)
+            with self.ready:
+                if not chunk:
+                    self.closed = True
+                else:
+                    self.chunks.append(chunk)
+                self.ready.notify_all()
+            if not chunk:
+                return
+
+    def flush(self):
+        with self.ready:
+            self.chunks.clear()
+
+    def read(self, _size=CHUNK_BYTES):
+        with self.ready:
+            while not self.chunks and not self.closed:
+                self.ready.wait(1)
+            return self.chunks.popleft() if self.chunks else b""
 
 
 def arecord(device=None):

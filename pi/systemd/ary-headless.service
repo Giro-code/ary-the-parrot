@@ -1,6 +1,6 @@
 [Unit]
-Description=Ari sin pantalla: microfono, voz local y movimiento
-After=sound.target network-online.target
+Description=Ari sin pantalla: microfono, IA (Gemini via la web) o voz local, y movimiento
+After=network-online.target sound.target
 Wants=network-online.target
 # No usar a la vez que ary-bridge con --serial: comparten el puerto del Arduino.
 Conflicts=ary-bridge.service
@@ -11,10 +11,12 @@ User=ari
 SupplementaryGroups=dialout audio
 WorkingDirectory=/home/ari/ary/pi
 Environment=PYTHONUNBUFFERED=1
-# Ajusta --serial al nombre de /dev/serial/by-id y --mic al de `arecord -l` (p. ej. plughw:1,0).
-ExecStart=/home/ari/ary/venv/bin/python -m headless --greet --serial /dev/serial/by-id/usb-Silicon_Labs_CP2102_USB_to_UART_Bridge_Controller_0001-if00-port0
-Restart=on-failure
-RestartSec=5
+# Microfono USB al maximo (si no esta conectado, se ignora).
+ExecStartPre=-/usr/bin/amixer -c Device sset Mic 100% cap
+ExecStart=/home/ari/ary/venv/bin/python -m headless --greet --mic plughw:CARD=Device,DEV=0 --serial /dev/serial/by-id/usb-Silicon_Labs_CP2102_USB_to_UART_Bridge_Controller_0001-if00-port0
+# Si falta el microfono o algo falla, reintenta cada 10 s (p. ej. al conectar el microfono despues).
+Restart=always
+RestartSec=10
 NoNewPrivileges=true
 
 [Install]

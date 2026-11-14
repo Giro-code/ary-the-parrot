@@ -14,7 +14,7 @@ import sys
 import threading
 from pathlib import Path
 
-from headless import GREETING, Conversation, NullRobot, SerialRobot, aplay_player, arecord, capture_devices, listen_forever
+from headless import GREETING, Conversation, LiveMicrophone, NullRobot, SerialRobot, aplay_player, arecord, capture_devices, listen_forever
 
 
 def main():
@@ -54,14 +54,17 @@ def main():
     voice = Voice(root / "voice-cache", root / "models" / (args.piper_voice + ".onnx"), root / "models/vosk-model-small-es-0.42",
                   json.loads(catalog.read_text()) if catalog.exists() else [])
 
+    robot = NullRobot()
     if args.serial:
-        import serial
-        from bridge import SerialHardware
-        port = serial.Serial(args.serial, baudrate=115200, timeout=0.1, write_timeout=0.5)
-        robot = SerialRobot(SerialHardware(port, boot_wait=4.0))
-        print("robot · Arduino listo", flush=True)
-    else:
-        robot = NullRobot()
+        # Sin Arduino (desconectado o sin respuesta) Ari conversa igual, solo que sin moverse.
+        try:
+            import serial
+            from bridge import SerialHardware
+            port = serial.Serial(args.serial, baudrate=115200, timeout=0.1, write_timeout=0.5)
+            robot = SerialRobot(SerialHardware(port, boot_wait=4.0))
+            print("robot · Arduino listo", flush=True)
+        except Exception as error:  # noqa: BLE001
+            print("robot · Arduino no disponible (%s); converso sin movimiento" % type(error).__name__, flush=True)
 
     if args.silent:
         play = lambda wav: None
@@ -75,6 +78,17 @@ def main():
     stopped = threading.Event()
     signal.signal(signal.SIGTERM, lambda *_: stopped.set())
 
+    if not (args.text or args.wav) and "card" not in capture_devices() and not args.mic:
+        print("No hay micrófono: conecta uno USB (arecord -l debe listarlo) o usa --text / --wav.", file=sys.stderr)
+        robot.close()
+        sys.exit(2)
+    if args.mic and not (args.text or args.wav):
+        card = args.mic.split("CARD=")[-1].split(",")[0] if "CARD=" in args.mic else None
+        if card and card not in capture_devices():
+            # Sin el micrófono indicado no se saluda (si no, el servicio saludaría en cada reintento).
+            print("micrófono %s no conectado; reintento luego" % card, file=sys.stderr)
+            robot.close()
+            sys.exit(2)
     try:
         if args.greet:
             conversation.greet(GREETING)
@@ -94,7 +108,7 @@ def main():
         microphone = arecord(args.mic)
         print("Ari escuchando… (Ctrl+C para salir)", flush=True)
         try:
-            listen_forever(conversation, lambda: KaldiRecognizer(model, 16000), microphone.stdout, stopped)
+            listen_forever(conversation, lambda: KaldiRecognizer(model, 16000), LiveMicrophone(microphone.stdout), stopped)
         finally:
             microphone.terminate()
     except KeyboardInterrupt:
