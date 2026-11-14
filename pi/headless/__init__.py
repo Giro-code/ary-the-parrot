@@ -6,10 +6,12 @@ pasa por memoria hacia Vosk y el texto reconocido se descarta tras responder.
 import json
 import subprocess
 import threading
+import time
 from collections import deque
 
 # Saludo de Ary (version en espanol de "No plans? I'll guide ya!"), igual que en la web.
 GREETING = "¿Sin planes? ¡Yo te guío! Soy Ary, la cotorra de República Dominicana. ¿Qué quieres descubrir?"
+MAX_UTTERANCE_CHUNKS = 80  # 10 s: si el ruido de fondo no deja a Vosk cerrar la frase, se corta aquí
 MIN_WORDS = 2            # ignora ruidos de una sola palabra ("eh", "ah")
 SAMPLE_RATE = 16000
 CHUNK_BYTES = 4000       # 125 ms de audio PCM16 mono a 16 kHz
@@ -135,11 +137,12 @@ class Conversation:
     def _cloud_reply(self, reply):
         """Reproduce la respuesta de la web con la voz de Gemini y la guarda para usarla también sin internet."""
         try:
+            started = time.monotonic()
             try:
                 wav = self.cloud.speak(reply["messageId"])
             except Exception as first:  # noqa: BLE001
-                # La voz de Gemini a veces falla en el primer intento y responde en el segundo.
-                if getattr(first, "code", "") != "voice_unavailable":
+                # La voz de Gemini a veces falla al instante y responde al segundo intento; si tardó, no se reintenta.
+                if getattr(first, "code", "") != "voice_unavailable" or time.monotonic() - started > 3:
                     raise
                 wav = self.cloud.speak(reply["messageId"])
         except Exception as error:  # noqa: BLE001 - la respuesta de Gemini vale aunque su voz falle
@@ -211,8 +214,13 @@ def listen_forever(conversation, recognizer_factory, microphone, stopped, log=pr
             continue
         if hearing:
             utterance.append(chunk)
-        if recognizer.AcceptWaveform(chunk):
+        final = recognizer.AcceptWaveform(chunk)
+        if not final and hearing and len(utterance) >= MAX_UTTERANCE_CHUNKS:
+            final = True  # frase demasiado larga o ruido continuo: se responde con lo oído hasta ahora
+            text = json.loads(recognizer.FinalResult()).get("text", "")
+        elif final:
             text = json.loads(recognizer.Result()).get("text", "")
+        if final:
             pcm = b"".join(list(preroll) + utterance + ([] if hearing else [chunk]))[-15 * SAMPLE_RATE * 2:]
             hearing = False
             preroll.clear(); utterance = []

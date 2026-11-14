@@ -15,6 +15,8 @@ from pathlib import Path
 
 DEFAULT_SITE = "https://arytheparrot.app"
 SESSION_IDLE_S = 180      # tras 3 min sin hablar, el siguiente visitante empieza una conversación nueva
+ANSWER_TIMEOUT_S = 10    # si Gemini no responde en 10 s, Ari contesta en local
+VOICE_TIMEOUT_S = 12     # si la voz de Gemini no llega en 12 s, Ari dice la respuesta con la voz local
 BACKOFF_S = 60            # tras un fallo de red, no se reintenta la web durante 1 min (responde en local)
 
 
@@ -50,7 +52,7 @@ class CloudAry:
             self.device_token = json.loads(self.credential_path.read_text()).get("ary_kiosk")
 
     # ---------- transporte ----------
-    def _request(self, method, path, body=None, content_type="application/json", headers=None, raw=False):
+    def _request(self, method, path, body=None, content_type="application/json", headers=None, raw=False, timeout=None):
         cookies = [f"{name}={value}" for name, value in (("ary_kiosk", self.device_token), ("ary_sid", self.session_token)) if value]
         data = json.dumps(body).encode() if body is not None and content_type == "application/json" else body
         request = urllib.request.Request(self.site + path, data=data, method=method)
@@ -64,7 +66,7 @@ class CloudAry:
         for key, value in (headers or {}).items():
             request.add_header(key, value)
         try:
-            with self.opener.open(request, timeout=self.timeout) as response:
+            with self.opener.open(request, timeout=timeout or self.timeout) as response:
                 for header in response.headers.get_all("Set-Cookie") or []:
                     name, _, rest = header.partition("=")
                     if name.strip() == "ary_sid":
@@ -128,13 +130,13 @@ class CloudAry:
         if not 300 <= duration <= 15000:
             raise CloudError("audio_length")
         wav = pcm_to_wav(pcm, rate)
-        return self._guard(lambda: self._request("POST", "/api/voice/ask", wav, "audio/wav", {"X-Ary-Audio-Duration": str(duration)}))
+        return self._guard(lambda: self._request("POST", "/api/voice/ask", wav, "audio/wav", {"X-Ary-Audio-Duration": str(duration)}, timeout=ANSWER_TIMEOUT_S))
 
     def ask_text(self, text):
-        return self._guard(lambda: self._request("POST", "/api/chat", {"message": text[:500]}))
+        return self._guard(lambda: self._request("POST", "/api/chat", {"message": text[:500]}, timeout=ANSWER_TIMEOUT_S))
 
     def speak(self, message_id):
-        return self._guard(lambda: self._request("POST", "/api/voice/speak", {"messageId": message_id}, raw=True))
+        return self._guard(lambda: self._request("POST", "/api/voice/speak", {"messageId": message_id}, raw=True, timeout=VOICE_TIMEOUT_S))
 
     def end(self):
         if self.session_token:

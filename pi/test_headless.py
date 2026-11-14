@@ -114,6 +114,27 @@ class HeadlessTests(unittest.TestCase):
         self.assertEqual(robot.state, "idle")
 
 
+class NoisyRecognizer:
+    """Ruido continuo: Vosk nunca cierra la frase por sí solo."""
+    def AcceptWaveform(self, chunk):
+        return False
+
+    def PartialResult(self):
+        return json.dumps({"partial": "háblame del merengue"})
+
+    def FinalResult(self):
+        return json.dumps({"text": "háblame del merengue"})
+
+
+class UtteranceLimitTests(unittest.TestCase):
+    def test_continuous_noise_is_cut_after_ten_seconds_and_answered(self):
+        robot, voice = RecordingRobot(), FakeVoice()
+        conversation = Conversation(voice, robot, lambda wav: None, log=lambda *_: None)
+        listen_forever(conversation, NoisyRecognizer, Microphone([b"x"] * 90), threading.Event(), log=lambda *_: None)
+        self.assertEqual(voice.spoken, ["El merengue es el ritmo nacional."])
+        self.assertIn("speaking", robot.history)
+
+
 class ResilientAudioTests(unittest.TestCase):
     def test_bluetooth_failure_reconnects_then_falls_back_to_jack(self):
         import subprocess

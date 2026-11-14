@@ -12,7 +12,7 @@ SupplementaryGroups=dialout audio
 WorkingDirectory=/home/ari/ary/pi
 Environment=PYTHONUNBUFFERED=1
 # Microfono USB al maximo (si no esta conectado, se ignora).
-ExecStartPre=-/usr/bin/amixer -c Device sset Mic 100% cap
+ExecStartPre=-/usr/bin/amixer -D hw:Device sset Mic 100% cap
 ExecStart=/home/ari/ary/venv/bin/python -m headless --greet --mic plughw:CARD=Device,DEV=0 --serial /dev/serial/by-id/usb-Silicon_Labs_CP2102_USB_to_UART_Bridge_Controller_0001-if00-port0
 # Si falta el microfono o algo falla, reintenta cada 10 s (p. ej. al conectar el microfono despues).
 Restart=always

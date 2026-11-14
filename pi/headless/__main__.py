@@ -66,6 +66,12 @@ def main():
         except Exception as error:  # noqa: BLE001
             print("robot · Arduino no disponible (%s); converso sin movimiento" % type(error).__name__, flush=True)
 
+    # Parlante Bluetooth guardado (una MAC en ~/ary/bluetooth.txt): así se cambia sin tocar el servicio ni usar sudo.
+    saved = Path(args.root) / "bluetooth.txt"
+    if not args.bluetooth and not args.speaker and saved.exists():
+        args.bluetooth = saved.read_text().split()[0] if saved.read_text().split() else None
+        if args.bluetooth:
+            print("audio · parlante Bluetooth %s (respaldo: jack)" % args.bluetooth, flush=True)
     if args.silent:
         play = lambda wav: None
     elif args.bluetooth:
