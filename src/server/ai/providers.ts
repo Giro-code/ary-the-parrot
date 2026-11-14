@@ -98,7 +98,12 @@ export class GeminiProvider implements AiProvider {
     catch { throw new AiError("invalid_output", usage); }
     // Validate the structure first, then discard unknown IDs (even non-UUID strings).
     const answer = (input.audio ? voiceAnswerSchema : answerSchema).extend({ citedItemIds: z.array(z.string()).max(6) }).safeParse(parsed);
-    if (!answer.success) throw new AiError("invalid_output", usage);
+    if (!answer.success) {
+      // Keep what Gemini heard even if another field is malformed: the caller answers again from the
+      // transcript instead of telling the kiosk "voice unavailable" (most failed voice turns were this).
+      const heard = (parsed as { transcript?: unknown } | null)?.transcript;
+      throw new AiError("invalid_output", usage, input.audio && typeof heard === "string" && heard.trim() ? heard.trim().slice(0, 500) : undefined);
+    }
     const transcript = "transcript" in answer.data ? String(answer.data.transcript) : undefined;
     const allowed = new Set(context.map(item => item.id));
     const fail = (code: string): never => { throw new AiError(code, usage, transcript); };

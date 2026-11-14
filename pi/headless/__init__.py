@@ -173,7 +173,14 @@ class Conversation:
         self.robot.set_state("thinking")
         if self.cloud and self.cloud.available():
             try:
-                reply = self.cloud.ask_audio(pcm) if pcm else self.cloud.ask_text(heard)
+                try:
+                    reply = self.cloud.ask_audio(pcm) if pcm else self.cloud.ask_text(heard)
+                except Exception as audio_error:  # noqa: BLE001
+                    # Si Gemini no pudo con el audio, se le manda el texto que oyó Vosk: sigue siendo conversación con IA.
+                    if not pcm or not getattr(audio_error, "code", "").startswith(("voice_unavailable", "invalid", "audio_length")):
+                        raise
+                    self.log("web · audio no entendido (%s); envío el texto oído a Gemini" % audio_error.code)
+                    reply = self.cloud.ask_text(heard)
                 if self.verbose:
                     self.log("oído (Gemini): " + str(reply.get("transcript") or heard))
                     self.log("Ari: " + reply["spokenText"])

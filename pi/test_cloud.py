@@ -129,6 +129,22 @@ class CloudTests(unittest.TestCase):
         self.assertEqual(voice.spoken, ["¡El merengue!"])  # la respuesta de Gemini, no otra local
         self.assertEqual(played, [b"RIFF-piper"])
 
+    def test_audio_not_understood_falls_back_to_gemini_text(self):
+        site = FakeSite(); cloud = self.cloud(site); cloud.activate("CODE")
+        original = site.open
+        def deaf(request, timeout):
+            path = request.full_url.split("arytheparrot.app", 1)[1]
+            if path == "/api/voice/ask":
+                raise urllib.error.HTTPError(request.full_url, 503, "x", {}, io.BytesIO(b'{"error":"voice_unavailable"}'))
+            if path == "/api/chat":
+                return FakeResponse(json.dumps({"messageId": "m2", "spokenText": "Respuesta de Gemini por texto", "intent": "culture"}).encode())
+            return original(request, timeout)
+        site.open = deaf
+        voice, played = FakeVoice(), []
+        reply = Conversation(voice, NullRobot(log=lambda *_: None), played.append, log=lambda *_: None, cloud=cloud).handle("háblame del merengue", bytes(32000))
+        self.assertEqual(reply["messageId"], "m2")
+        self.assertEqual(played, [b"RIFF-gemini"])
+
     def test_audio_length_is_checked_before_upload(self):
         cloud = self.cloud(FakeSite()); cloud.activate("CODE")
         with self.assertRaises(CloudError):
